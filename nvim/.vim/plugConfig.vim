@@ -38,10 +38,9 @@ if has('nvim') && !has('win32')
 endif
 if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'kyazdani42/nvim-web-devicons' " for file icons
-    Plug 'kyazdani42/nvim-tree.lua'
 endif
 " colorscheme & statusline {{{
+" show hex color in frontend languages
 Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase', 'for': ['css', 'vue', 'javascript', 'html', 'less', 'scss']}
 Plug 'morhetz/gruvbox'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
@@ -51,7 +50,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tribela/vim-transparent'
+Plug 'tribela/vim-transparent' " vim transparent background
 " }}}
 " filetype icon (always keeps at the bottom of plugin list)
 Plug 'ryanoasis/vim-devicons'
@@ -61,8 +60,8 @@ call plug#end()
 " open NERDTreeToggle {{{
 let g:NERDTreeQuitOnOpen=3
 let NERDTreeIgnore=[
-    \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]',
-    \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]'
+    \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
+    \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]'
     \ ]
 noremap <silent><M-`> :NERDTreeToggle<CR>
 " }}}
@@ -226,22 +225,6 @@ nnoremap <F5> :Prettier<CR>
 " RRethy/vim-hexokinase {{{
 if has('nvim')
     let g:Hexokinase_highlighters = ['virtual']
-endif
-" }}}
-" kyazdani42/nvim-tree.lua {{{
-if has('nvim')
-    let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
-    let g:nvim_tree_update_cwd = 1
-    let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
-    let g:nvim_tree_gitignore = 1 "0 by default
-    let g:nvim_tree_auto_open = 0 "0 by default, opens the tree when typing `vim $DIR` or `vim`
-    let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
-    let g:nvim_tree_quit_on_open = 1 "0 by default, closes the tree when you open a file
-    let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
-    let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
-    let g:nvim_tree_update_cwd = 1 "0 by default, will update the tree cwd when changing nvim's directory (DirChanged event). Behaves strangely with autochdir set.
-    let g:nvim_tree_ignore = ['*.class', '*.out', '*.exe'] "empty by default
-    nnoremap <M-f> :NvimTreeToggle<CR>
 endif
 " }}}
 " colorscheme plugins {{{

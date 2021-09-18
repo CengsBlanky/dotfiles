@@ -366,5 +366,5 @@ autocmd FileType cpp nnoremap <leader>r :CompileAndRun<CR>
 " }}}
 " }}}
 
-" TODO use gnu stew to manage these dot files
+" DONE use gnu stow to manage these dot files
 " TODO add .vscode config file
