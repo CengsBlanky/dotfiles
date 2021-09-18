@@ -1,0 +1,12 @@
+/**
+ *
+ * @author      : %USER%
+ * @since       : %FDATE%
+ * @version     : 1.0
+ */
+
+%HERE%
+
+int main(void) {
+    return 0;
+}
