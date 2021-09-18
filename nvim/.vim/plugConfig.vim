@@ -33,9 +33,7 @@ Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'sotte/presenting.vim', {'for': 'markdown'}
 Plug 'jsborjesson/vim-uppercase-sql', {'for': 'sql'}
 Plug 'honza/vim-snippets'
-if has('nvim') && !has('win32')
-    Plug 'preservim/vimux' " run command in tmux pane without leave vim window
-endif
+Plug 'preservim/vimux' " run command in tmux pane without leave vim window
 if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
@@ -43,10 +41,6 @@ endif
 " show hex color in frontend languages
 Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase', 'for': ['css', 'vue', 'javascript', 'html', 'less', 'scss']}
 Plug 'morhetz/gruvbox'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'joshdick/onedark.vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
