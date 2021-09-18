@@ -1,0 +1,9 @@
+[user]
+	name = zengshuai
+	email = zengs1994@gmail.com
+[pull]
+	rebase = false
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
