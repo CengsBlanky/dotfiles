@@ -328,9 +328,9 @@ function! CodeRun() abort
         return
     endif
     if &filetype == "c"
-        call TermWrapper(printf('gcc -std=c11 %s && ./a.out', expand('%')))
+        call TermWrapper(printf('gcc -Wall -std=c11 %s && ./a.out', expand('%')))
     elseif &filetype == "cpp"
-        call TermWrapper(printf('g++ -std=c++11 %s && ./a.out', expand('%')))
+        call TermWrapper(printf('g++ -Wall -std=c++11 %s && ./a.out', expand('%')))
     elseif &filetype == "python"
         call TermWrapper(printf('python %s', expand('%')))
     elseif &filetype == "java"
