@@ -291,42 +291,6 @@ endfunction
 " }}}
 " }}}
 " code compile and run {{{
-func! CompileRunCode()
-    let target_binary="./a.out"
-    if has("win32")
-        let target_binary="a.exe"
-    endif
-    if filereadable('Makefile')
-        nnoremap <C-c> :make clean<CR>
-        set makeprg=make\ -f\ Makefile
-        exec "wall | !make && make run"
-        return
-    endif
-    if &filetype=="c"
-        exec join(["wall | !gcc -Wall *.c &&", target_binary], " ")
-    elseif &filetype=="cpp"
-        exec join(["wall | !g++ -Wall *.cpp &&", target_binary], " ")
-    elseif &filetype=="java"
-        exec "wall | !javac %:p && java %:r"
-    elseif &filetype=="javascript"
-        exec "wall | !node %:p"
-    else
-        exec "make"
-    endif
-endfunc
-
-augroup exe_single_file_code
-    autocmd!
-    autocmd FileType c,java,go,python,javascript,rust
-            \ nnoremap <silent><nowait><buffer> <leader>r
-            \ :call CompileRunCode()<CR>
-augroup END
-
-autocmd FileType go setlocal makeprg=go\ run\ %
-autocmd FileType python setlocal makeprg=python\ %
-autocmd FileType rust setlocal makeprg=cargo\ run
-
-" cpp code compile and run {{{
 " for detecting OS
 if !exists("g:os")
     if has("win64") || has("win32") || has("win16")
@@ -337,7 +301,6 @@ if !exists("g:os")
 endif
 
 function! TermWrapper(command) abort
-    exec 'wa'
 	if !exists('g:split_term_style') | let g:split_term_style = 'vertical' | endif
 	if g:split_term_style ==# 'vertical'
 		let buffercmd = 'vnew'
@@ -357,13 +320,34 @@ function! TermWrapper(command) abort
 	autocmd BufEnter <buffer> startinsert
 endfunction
 
-command! -nargs=0 CompileAndRun call TermWrapper(printf('g++ -std=c++11 %s && ./a.out', expand('%')))
+function! CodeRun() abort
+    exec 'wa'
+    if filereadable('Makefile')
+        nnoremap <C-c> :make clean<CR>
+        call TermWrapper(printf('make && make run'))
+        return
+    endif
+    if &filetype == "c"
+        call TermWrapper(printf('gcc -std=c11 %s && ./a.out', expand('%')))
+    elseif &filetype == "cpp"
+        call TermWrapper(printf('g++ -std=c++11 %s && ./a.out', expand('%')))
+    elseif &filetype == "python"
+        call TermWrapper(printf('python %s', expand('%')))
+    elseif &filetype == "java"
+        call TermWrapper(printf('javac %s && java %s', expand('%'), expand('%:r')))
+    elseif &filetype == "javascript"
+        call TermWrapper(printf('node %s', expand('%')))
+    elseif &filetype == "go"
+        call TermWrapper(printf('go %s', expand('%')))
+    else
+        echo "Unsupported yet..."
+    endif
+endfunction
+
+autocmd FileType c,cpp,java,python,javascript,go,rust nnoremap <leader>r :call CodeRun()<CR>
+
 command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++11 %s && ./a.out < %s', expand('%'), <q-args>))
-autocmd FileType cpp nnoremap <leader>r :CompileAndRun<CR>
 
-" }}}
-
-" }}}
 " }}}
 
 " DONE use gnu stow to manage these dot files
