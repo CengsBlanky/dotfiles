@@ -7,6 +7,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 " auto close parenthese
 Plug 'cohama/lexima.vim'
+" align text
+Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 " vim multi languages debug tool
@@ -45,6 +47,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tribela/vim-transparent' " vim transparent background
+Plug 'Yggdroot/indentLine' " show indent level
 " }}}
 " filetype icon (always keeps at the bottom of plugin list)
 Plug 'ryanoasis/vim-devicons'
@@ -69,6 +72,12 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
+" }}}
+" junegunn/vim-easy-align {{{
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 " }}}
 " aperezdc/vim-template {{{
 let g:templates_directory=["~/.vim/templates/"]
