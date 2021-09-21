@@ -186,7 +186,7 @@ augroup END
 augroup filetype_indent_size
     autocmd!
     autocmd FileType html,css,javascript,typescript,vue,yaml,sql setlocal tabstop=2 shiftwidth=2
-    autocmd FileType json,text,markdown setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
+    autocmd FileType json,text,markdown,xml setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
 augroup END
 
 " augroup filetype_styleset

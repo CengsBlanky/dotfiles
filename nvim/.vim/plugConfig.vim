@@ -58,7 +58,7 @@ call plug#end()
 let g:NERDTreeQuitOnOpen=3
 let NERDTreeIgnore=[
     \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
-    \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]'
+    \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
     \ ]
 noremap <silent><M-`> :NERDTreeToggle<CR>
 " }}}
@@ -218,7 +218,7 @@ let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 " c/c++ and javascript autoformat config
-autocmd BufWritePre *.c,*.cpp,*.h,*.java :Format
+autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat<CR>
 "}}}
 " prettier/vim-prettier {{{
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html PrettierAsync
