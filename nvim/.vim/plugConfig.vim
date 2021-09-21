@@ -71,7 +71,9 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
-
+" }}}
+" Yggdroot/indentLine {{{
+let g:indentLine_fileTypeExclude = ['text', 'json', 'markdown']
 " }}}
 " junegunn/vim-easy-align {{{
 " Start interactive EasyAlign in visual mode (e.g. vipga)

@@ -189,13 +189,6 @@ augroup filetype_indent_size
     autocmd FileType json,text,markdown,xml setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
 augroup END
 
-" augroup filetype_styleset
-"     autocmd!
-"     autocmd FileType c,lua setlocal colorcolumn=91
-"     autocmd FileType cpp,rust,go setlocal colorcolumn=101
-"     autocmd FileType java setlocal colorcolumn=121
-" augroup END
-
 function TrimEndLinesAndTrailingSpaces()
     let save_cursor = getpos(".")
     silent! %s#\($\n\s*\)\+\%$##
