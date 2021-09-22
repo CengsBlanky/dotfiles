@@ -135,23 +135,23 @@ autocmd InsertLeave * set iminsert=0
 
 "" Open explorer where current file is located {{{
 "" Only for win for now.
-func! File_manager() abort
-    " Windows only for now
-    if has("win32")
-        if exists("b:netrw_curdir")
-            let path = substitute(b:netrw_curdir, "/", "\\", "g")
-        elseif expand("%:p") == ""
-            let path = expand("%:p:h")
-        else
-            let path = expand("%:p")
-        endif
-        silent exe '!start explorer.exe /select,' .. path
+func! OpenFileExplorer() abort
+    if exists("b:netrw_curdir")
+        let path = substitute(b:netrw_curdir, "/", "\\", "g")
+    elseif expand("%:p") == ""
+        let path = expand("%:p:h")
     else
-        echomsg "Not yet implemented!"
+        let path = expand("%:p")
+    endif
+    " support windows and macos for now
+    if has("win32")
+        silent exe '!start explorer.exe /select,' .. path
+    elseif has('unix')
+        silent exe '!open ' .. path
     endif
 endfunc
 
-nnoremap <silent> gof :call File_manager()<CR>
+nnoremap <silent> gof :call OpenFileExplorer()<CR>
 "}}}
 
 " to use `Meta+{h,j,k,l}` to navigate windows from any mode: {{{
