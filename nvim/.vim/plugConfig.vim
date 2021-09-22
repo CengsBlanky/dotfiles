@@ -244,6 +244,7 @@ if has("gui_running") && has("win32")
     let g:airline_theme='onehalflight'
 else
     colorscheme dracula
+    let g:dracula_italic = 0
     " colorscheme gruvbox
     " let g:airline_theme='base16'
     " let g:gruvbox_contrast_dark='hard'
