@@ -136,7 +136,7 @@ sysout="$(uname -s)"
 # 字符串比较一定要在=两边加上空格
 if [ "${sysout}" = "Darwin" ]; then
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home/"
-    export PATH="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home/:$PATH"
+    export PATH="$JAVA_HOME:$PATH"
     # llvm setting
     export PATH="/usr/local/opt/llvm/bin:$PATH"
     export PATH="/usr/local/opt/llvm:$PATH"
