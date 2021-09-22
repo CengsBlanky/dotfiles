@@ -1,0 +1,51 @@
+# path
+# VPATH=src include bin header obj object lib
+VPATH=include header headers src obj
+TARGET=main
+# define
+CFLAGS=-Wall
+CC=g++
+
+cppFiles=$(wildcard *.cpp)
+cppFiles+=$(wildcard */*.cpp)
+# CfilesDir=$(sort $(dir $(Cfiles)))
+
+Hfiles=$(wildcard *.h)
+Hfiles+=$(wildcard */*.h)
+HfilesDir=$(sort $(dir $(Hfiles)))
+
+SRCS=$(notdir $(cppFiles))
+
+HEADERS=$(notdir $(Hfiles))
+
+OBJ_DIR=./obj/
+OBJECT_FILES=$(patsubst %.cpp,%.o,$(SRCS))
+OBJECTS=$(addprefix $(OBJ_DIR), $(OBJECT_FILES))
+
+# CFLAGS+=-I
+# CFLAGS+=./$(HfilesDir)
+INCLUDE_HEADERS=-I ./$(HfilesDir)
+
+CFLAGS+=--std=c++11
+
+MKDIR_P=mkdir -p
+OUT_DIR=obj
+
+.PHONY:directories default all clean
+
+all: directories default
+directories: ${OUT_DIR}
+default: $(TARGET)
+
+${OUT_DIR}:
+	${MKDIR_P} ${OUT_DIR}
+
+# rules
+$(OBJ_DIR)%.o:%.cpp $(HEADERS)
+	$(CC) $(CFLAGS) $(INCLUDE_HEADERS) -c $< -o $@
+$(TARGET):$(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $@
+
+# clean
+clean:
+	rm -rf $(OBJECTS) $(TARGET)
