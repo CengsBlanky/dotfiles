@@ -23,7 +23,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'mattn/webapi-vim'
 Plug 'vim-autoformat/vim-autoformat', {'for': ['c', 'cpp', 'java']}
 Plug 'prettier/vim-prettier', {
-  \ 'for': ['javascript', 'vue', 'html', 'css'],
+  \ 'for': ['javascript', 'typescript', 'typescriptreact', 'vue', 'html', 'css', 'yaml'],
   \ 'do': 'yarn install'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries' }
@@ -219,13 +219,14 @@ let g:go_template_autocreate=0
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
-autocmd BufWrite *.c,*.cpp,*.cc,*.h,*.java :Autoformat
+autocmd BufWritePre *.c,*.cpp,*.cc,*.h,*.java :Autoformat
 autocmd FileType c,cpp,java nnoremap <C-f> :Autoformat<CR>
 "}}}
 " prettier/vim-prettier {{{
+autocmd BufEnter .prettierrc setlocal filetype=json " set prettierrc as json file
+autocmd FileType javascript,typescript,typescriptreact,html,css,less,scss,vue,yaml nnoremap <C-f> :PrettierAsync<CR>
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html PrettierAsync
-autocmd BufEnter .prettierrc setlocal filetype=json
-nnoremap <F5> :Prettier<CR>
+
 "}}}
 " RRethy/vim-hexokinase {{{
 if has('nvim')
