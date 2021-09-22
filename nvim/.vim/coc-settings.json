@@ -1,4 +1,9 @@
 {
     "java.jdt.ls.vmargs": "-javaagent:/Users/cengshuai/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar",
-    "typescript.autoClosingTags": true
+    "typescript.autoClosingTags": true,
+    "javascript.autoClosingTags": true,
+    "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "javascriptreact", "typescriptreact", "html", "css", "vue"],
+    "prettier.disableLanguages": [],
+    "prettier.disableSuccessMessage": true,
+    "prettier.statusItemText": "💋"
 }

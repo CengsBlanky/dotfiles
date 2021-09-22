@@ -11,6 +11,7 @@ let g:coc_global_extensions=['coc-json', 'coc-xml',
             \ 'coc-sh',
             \ 'coc-eslint',
             \ 'coc-snippets',
+            \ 'coc-prettier',
             \ ]
 " Configure the directory which will be used to for coc data
 " files(extensions...)
@@ -124,6 +125,7 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 command! -nargs=0 Format :call CocAction('format')
 " Format whole buffer use Format
 nnoremap <C-f> :Format<CR>
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
