@@ -1,0 +1,11 @@
+--style=attach
+--indent=spaces=4
+--indent-classes
+--indent-switches
+--indent-cases
+--indent-namespaces
+--pad-oper
+--pad-header
+--align-pointer=name
+--align-reference=name
+--delete-empty-lines

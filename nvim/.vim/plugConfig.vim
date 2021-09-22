@@ -219,8 +219,8 @@ let g:go_template_autocreate=0
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
-" c/c++ and javascript autoformat config
-autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat<CR>
+autocmd BufWrite *.c,*.cpp,*.cc,*.h,*.java :Autoformat
+autocmd FileType c,cpp,java nnoremap <C-f> :Autoformat<CR>
 "}}}
 " prettier/vim-prettier {{{
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html PrettierAsync
