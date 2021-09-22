@@ -38,7 +38,7 @@ if has('nvim')
 endif
 " colorscheme & statusline {{{
 " show hex color in frontend languages
-Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase', 'for': ['css', 'vue', 'javascript', 'html', 'less', 'scss']}
+Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase', 'for': ['css', 'vue', 'html', 'less', 'scss']}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine' " show indent level
