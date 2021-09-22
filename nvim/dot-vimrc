@@ -333,12 +333,14 @@ function! CodeRun() abort
         call TermWrapper(printf('node %s', expand('%')))
     elseif &filetype == "go"
         call TermWrapper(printf('go %s', expand('%')))
+    elseif &filetype == "typescript"
+        call TermWrapper(printf('tsc %s && node %s', expand('%'), expand('%:r')))
     else
         echo "Unsupported yet..."
     endif
 endfunction
 
-autocmd FileType c,cpp,java,python,javascript,go,rust nnoremap <leader>r :call CodeRun()<CR>
+autocmd FileType c,cpp,java,python,javascript,typescript,go,rust nnoremap <leader>r :call CodeRun()<CR>
 
 command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++11 %s && ./a.out < %s', expand('%'), <q-args>))
 
