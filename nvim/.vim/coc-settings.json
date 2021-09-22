@@ -1,3 +1,4 @@
 {
-    "java.jdt.ls.vmargs": "-javaagent:/Users/cengshuai/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar"
+    "java.jdt.ls.vmargs": "-javaagent:/Users/cengshuai/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar",
+    "typescript.autoClosingTags": true
 }
