@@ -42,12 +42,12 @@ endif
 " colorscheme & statusline {{{
 " show hex color in frontend languages
 Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase', 'for': ['css', 'vue', 'javascript', 'html', 'less', 'scss']}
-Plug 'morhetz/gruvbox'
-Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tribela/vim-transparent' " vim transparent background
 Plug 'Yggdroot/indentLine' " show indent level
+Plug 'morhetz/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'tribela/vim-transparent' " vim transparent background
 " }}}
 " filetype icon (always keeps at the bottom of plugin list)
 Plug 'ryanoasis/vim-devicons'
@@ -243,9 +243,10 @@ if has("gui_running") && has("win32")
     let ayucolor="light"
     let g:airline_theme='onehalflight'
 else
-    colorscheme gruvbox
-    let g:airline_theme='base16'
-    let g:gruvbox_contrast_dark='hard'
+    colorscheme dracula
+    " colorscheme gruvbox
+    " let g:airline_theme='base16'
+    " let g:gruvbox_contrast_dark='hard'
 endif
 " autocmd FileType markdown colorscheme Tomorrow
 " autocmd FileType markdown let g:airline_theme='tomorrow'
@@ -265,7 +266,7 @@ endif
 if has('nvim')
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "java", "javascript", "vue", "css", "python" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "c", "cpp", "java", "javascript", "vue", "css", "python", "bash" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
