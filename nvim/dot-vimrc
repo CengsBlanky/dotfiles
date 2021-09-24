@@ -212,8 +212,8 @@ augroup END
 
 augroup windows_display
     autocmd!
-    autocmd WinLeave * if &filetype!='help' | setlocal norelativenumber number
-    autocmd WinEnter * if &filetype!='help' | setlocal relativenumber
+    autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
+    autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
 augroup END
 
 function s:MkNonExDir(file, buf)
@@ -332,19 +332,33 @@ function! CodeRun() abort
     elseif &filetype == "javascript"
         call TermWrapper(printf('node %s', expand('%')))
     elseif &filetype == "go"
-        call TermWrapper(printf('go %s', expand('%')))
+        call TermWrapper(printf('go run %s', expand('%')))
     elseif &filetype == "typescript"
         call TermWrapper(printf('tsc %s && node %s', expand('%'), expand('%:r')))
+    elseif &filetype == "rust"
+        call TermWrapper(printf('cargo run'))
     else
         echo "Unsupported yet..."
     endif
 endfunction
 
+function CodeTest() abort
+    exec 'wa'
+    if &filetype == "rust"
+        call TermWrapper(printf('cargo test'))
+    elseif &filetype == "go"
+        let g:code_run_built_in_cmd = true
+        call TermWrapper(printf('GoBuild'))
+    endif
+endfunction
+
 autocmd FileType c,cpp,java,python,javascript,typescript,go,rust nnoremap <leader>r :call CodeRun()<CR>
+autocmd FileType rust nnoremap <leader>t :call CodeTest()<CR>
 
 command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++11 %s && ./a.out < %s', expand('%'), <q-args>))
 
 " }}}
-
+"}}}
 " DONE use gnu stow to manage these dot files
 " TODO add .vscode config file
+" TODO run built-in cmd in vertical terminal
