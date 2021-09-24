@@ -5,5 +5,7 @@
     "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "javascriptreact", "typescriptreact", "html", "css", "vue"],
     "prettier.disableLanguages": [],
     "prettier.disableSuccessMessage": true,
-    "prettier.statusItemText": "💋"
+    "prettier.statusItemText": "💋",
+    "eslint.autoFixOnSave": true,
+    "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
 }
