@@ -181,6 +181,9 @@ nnoremap <C-o> :RG<cr>
 " rust-lang/rust.vim {{{
 let g:rustfmt_autosave = 1
 " }}}
+" fatih/vim-go {{{
+let g:go_auto_type_info = 1
+" }}}
 " puremourning/vimspector {{{
 let g:vimspector_enable_mappings = 'HUMAN'
 " for normal mode - the word under the cursor

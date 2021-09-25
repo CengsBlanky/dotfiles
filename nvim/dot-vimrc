@@ -175,7 +175,10 @@ nnoremap <silent><M-DOWN> :resize -2<CR>
 " split current window
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
-
+" quickfix list operations
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprevious<CR>
+nnoremap <leader>c :cclose<CR>
 " }}}
 " autocmd {{{
 
@@ -186,7 +189,7 @@ augroup END
 
 augroup filetype_indent_size
     autocmd!
-    autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql setlocal tabstop=2 shiftwidth=2
+    autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json setlocal tabstop=2 shiftwidth=2
     autocmd FileType json,text,markdown,xml setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
 augroup END
 
@@ -347,13 +350,12 @@ function CodeTest() abort
     if &filetype == "rust"
         call TermWrapper(printf('cargo test'))
     elseif &filetype == "go"
-        let g:code_run_built_in_cmd = true
-        call TermWrapper(printf('GoBuild'))
+        exec 'GoBuild'
     endif
 endfunction
 
 autocmd FileType c,cpp,java,python,javascript,typescript,go,rust nnoremap <leader>r :call CodeRun()<CR>
-autocmd FileType rust nnoremap <leader>t :call CodeTest()<CR>
+autocmd FileType rust,go nnoremap <leader>t :call CodeTest()<CR>
 
 command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++11 %s && ./a.out < %s', expand('%'), <q-args>))
 

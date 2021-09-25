@@ -6,6 +6,5 @@
     "prettier.disableLanguages": [],
     "prettier.disableSuccessMessage": true,
     "prettier.statusItemText": "💋",
-    "eslint.autoFixOnSave": true,
-    "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+    "eslint.autoFixOnSave": true
 }
