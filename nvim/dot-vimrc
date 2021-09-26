@@ -9,12 +9,6 @@ let terminal_type=""
 if has("unix")
     let terminal_type=split(substitute(system('uname'), '\n', '', ''), "_")[0]
 endif
-if terminal_type!=?"MINGW64"
-    execute 'source' plug_config_file
-else
-    set background=dark
-    colorscheme slate
-endif
 " }}}
 " GUI {{{
 " must put on top
@@ -39,6 +33,15 @@ if has("win32") && has("vim") && has("gui_running")
     " enable ligatures in gvim
     set renderoptions=type:directx
     autocmd InsertLeave * exec "redraw!"
+endif
+set termguicolors
+" }}}
+" load plugins {{{
+if terminal_type!=?"MINGW64"
+    execute 'source' plug_config_file
+else
+    set background=dark
+    colorscheme slate
 endif
 " }}}
 " editor {{{
@@ -89,8 +92,9 @@ set shortmess+=c
 " display
 set hlsearch
 set mousehide
+set mouse=a " enable mouse scroll etc...
 set noshowmode
-set nocursorline
+set cursorline
 set signcolumn=yes
 set nowrap
 " Give more space for displaying messages.
@@ -324,9 +328,9 @@ function! CodeRun() abort
         return
     endif
     if &filetype == "c"
-        call TermWrapper(printf('gcc -Wall -std=c11 %s && ./a.out', expand('%')))
+        call TermWrapper(printf('gcc -Wall -std=c11 *.c && ./a.out'))
     elseif &filetype == "cpp"
-        call TermWrapper(printf('g++ -Wall -std=c++11 %s && ./a.out', expand('%')))
+        call TermWrapper(printf('g++ -Wall -std=c++11 *.cpp && ./a.out'))
     elseif &filetype == "python"
         call TermWrapper(printf('python %s', expand('%')))
     elseif &filetype == "java"

@@ -19,7 +19,8 @@ Plug 'aperezdc/vim-template'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-sneak'
 Plug 'mattn/webapi-vim'
 Plug 'vim-autoformat/vim-autoformat', {'for': ['c', 'cpp', 'java']}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
@@ -37,8 +38,7 @@ if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 " colorscheme & statusline {{{
-" show hex color in frontend languages
-Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase', 'for': ['css', 'vue', 'html', 'less', 'scss']}
+Plug 'norcalli/nvim-colorizer.lua' " show source code defined colors
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine' " show indent level
@@ -227,6 +227,20 @@ autocmd FileType c,cpp,java nnoremap <C-f> :Autoformat<CR>
 " RRethy/vim-hexokinase {{{
 if has('nvim')
     let g:Hexokinase_highlighters = ['virtual']
+endif
+" }}}
+" norcalli/nvim-colorizer.lua {{{
+if has('nvim')
+lua <<EOF
+require 'colorizer'.setup {
+  'css';
+  'javascript';
+  'html';
+  'typescript';
+  'typescriptreact';
+  'vue';
+}
+EOF
 endif
 " }}}
 " colorscheme plugins {{{
