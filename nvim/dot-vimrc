@@ -63,7 +63,7 @@ set relativenumber
 set backspace=2
 set incsearch
 set smartcase
-set tabstop=4 smarttab shiftwidth=4 expandtab autoindent shiftround
+set tabstop=4 smarttab smartindent shiftwidth=4 expandtab autoindent shiftround
 set showcmd
 set laststatus=2
 set wildmenu
@@ -178,7 +178,6 @@ nnoremap <silent><leader>/ :vsplit<CR>
 " quickfix list operations
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
-nnoremap <leader>c :cclose<CR>
 " }}}
 " autocmd {{{
 
@@ -189,7 +188,7 @@ augroup END
 
 augroup filetype_indent_size
     autocmd!
-    autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json setlocal tabstop=2 shiftwidth=2
+    autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json setlocal tabstop=2 shiftwidth=2 smarttab smartindent autoindent shiftround
     autocmd FileType json,text,markdown,xml setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
 augroup END
 

@@ -58,6 +58,7 @@ let NERDTreeIgnore=[
     \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
     \ ]
 noremap <silent><M-`> :NERDTreeToggle<CR>
+noremap <silent><F1> :NERDTreeToggle<CR>
 " }}}
 " haya14busa/incsearch.vim {{{
 " automatically turn off hlsearch
@@ -103,7 +104,8 @@ map g/ <Plug>(incsearch-stay)
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep=''
 let g:airline_left_alt_sep=''
-let g:airline#extensions#tabline#left_sep = '▐'
+" let g:airline#extensions#tabline#left_sep = '▐'
+let g:airline#extensions#tabline#left_sep = ''
 let g:airline_left_alt_sep = ''
 " enable fugitive show git info
 let g:airline#extensions#fugitiveline#enabled = 1
@@ -176,7 +178,7 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <C-p> :Files<cr>
-nnoremap <C-o> :RG<cr>
+nnoremap <C-l> :RG<cr>
 " }}}
 " rust-lang/rust.vim {{{
 let g:rustfmt_autosave = 1
