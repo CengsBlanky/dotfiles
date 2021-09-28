@@ -110,6 +110,7 @@ noremap <silent><M-w> :close<CR>
 noremap <silent><M-b> :bd<CR>
 " use keystroke to open my vimrc
 nnoremap <silent><F2> :execute 'edit' vim_config_file<CR>
+nnoremap <silent><M-2> :execute 'edit' plug_config_file<CR>
 nnoremap <silent><M-0> :execute 'source' vim_config_file<CR>
 " screen scroll add <nowait> to execute immediately
 " see autocmd keymap_force to set scroll down
@@ -184,15 +185,19 @@ nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 " }}}
 " autocmd {{{
+" set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
-augroup filetype_vim_specific
+augroup filetype_specific
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
+    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 augroup END
 
 augroup filetype_indent_size
     autocmd!
-    autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json setlocal tabstop=2 shiftwidth=2 smarttab smartindent autoindent shiftround
+    autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json,vim
+                \ setlocal tabstop=2 shiftwidth=2 smarttab smartindent autoindent shiftround
     autocmd FileType json,text,markdown,xml setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
 augroup END
 
@@ -364,6 +369,6 @@ command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('
 
 " }}}
 "}}}
-" DONE use gnu stow to manage these dot files
 " TODO add .vscode config file
 " TODO run built-in cmd in vertical terminal
+" TODO develop a vim plugin to increase selected section numbers

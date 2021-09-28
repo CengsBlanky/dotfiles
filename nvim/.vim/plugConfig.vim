@@ -5,8 +5,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
-" auto close parenthese
-Plug 'cohama/lexima.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'andymass/vim-matchup'
 " align text
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
@@ -26,6 +26,8 @@ Plug 'vim-autoformat/vim-autoformat', {'for': ['c', 'cpp', 'java']}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'godlygeek/tabular', {'for': 'markdown'}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'euclio/vim-markdown-composer', {'for': 'markdown'}
@@ -33,6 +35,8 @@ Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'sotte/presenting.vim', {'for': 'markdown'}
 Plug 'jsborjesson/vim-uppercase-sql', {'for': 'sql'}
 Plug 'honza/vim-snippets'
+Plug 'epilande/vim-es2015-snippets'
+Plug 'epilande/vim-react-snippets'
 Plug 'preservim/vimux' " run command in tmux pane without leave vim window
 if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -44,6 +48,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine' " show indent level
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'frazrepo/vim-rainbow'
 Plug 'tribela/vim-transparent' " vim transparent background
 " }}}
 " filetype icon (always keeps at the bottom of plugin list)
@@ -59,6 +64,9 @@ let NERDTreeIgnore=[
     \ ]
 noremap <silent><M-`> :NERDTreeToggle<CR>
 noremap <silent><F1> :NERDTreeToggle<CR>
+" }}}
+" tpope/vim-surround {{{
+autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
 " }}}
 " haya14busa/incsearch.vim {{{
 " automatically turn off hlsearch
@@ -243,8 +251,11 @@ require 'colorizer'.setup {
 EOF
 endif
 " }}}
+" vim-rainbow {{{
+" let g:rainbow_active = 1
+autocmd FileType c,cpp,java,go,rust call rainbow#load()
+" }}}
 " colorscheme plugins {{{
-
 set t_Co=256
 set termguicolors
 if has("gui_running") && has("win32")
@@ -273,11 +284,12 @@ endif
 " let g:airline_theme='onehalfdark'
 " enable Comment italic
 " highlight Comment cterm=italic gui=italic
-
+" }}}
+" nvim-treesitter {{{
 if has('nvim')
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "java", "javascript", "typescript", "tsx", "vue", "css", "python", "bash", "vim" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "c", "cpp", "java", "javascript", "typescript", "tsx", "vue", "css", "python", "bash", "dockerfile", "yaml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
@@ -288,9 +300,15 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
+  indent = {
+    enable = {"typescriptreact"}
+  },
+  matchup = {
+    enable = true, -- mandatory, false will disable the whole extension
+    disable = {},  -- optional, list of language that will be disabled
+  }
 }
 EOF
 endif
-
 " }}}
 " }}}

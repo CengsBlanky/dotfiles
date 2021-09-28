@@ -1,0 +1,72 @@
+{
+  "editor.wordBasedSuggestions": true,
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "editor.fontFamily": "'FiraCode NF', Consolas, Menlo, 'Anonymous Pro for Powerline', monospace,Monaco, 'Courier'",
+  "editor.fontSize": 17,
+  "editor.formatOnPaste": true,
+  "editor.insertSpaces": true,
+  "editor.lineNumbers": "relative",
+  "files.hotExit": "onExitAndWindowClose",
+  "explorer.confirmDelete": false,
+  "editor.autoIndent": "advanced",
+  "editor.tabSize": 4,
+  "editor.suggestSelection": "first",
+  "workbench.colorTheme": "Darcula",
+  "security.workspace.trust.untrustedFiles": "open",
+  "emmet.triggerExpansionOnTab": true,
+  "[c]": {
+    "editor.wordBasedSuggestions": false,
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true
+  },
+  "[html]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[vue]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<Space>"],
+      "after": ["<C-f>"]
+    },
+    {
+      "before": ["<Backspace>"],
+      "after": ["<C-b>"]
+    },
+    {
+      "before": ["<Shift>", "<Space>"],
+      "after": ["<C-b>"]
+    },
+    {
+      "before": ["<Enter>"],
+      "commands": [":w"]
+    }
+  ],
+  "vim.showcmd": true,
+  "vim.vimrc.enable": true
+}
