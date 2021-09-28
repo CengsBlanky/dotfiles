@@ -259,17 +259,21 @@ autocmd FileType c,cpp,java,go,rust call rainbow#load()
 set t_Co=256
 set termguicolors
 if has("gui_running") && has("win32")
-    set background=light
-    colorscheme ayu
-    let ayucolor="light"
-    let g:airline_theme='onehalflight'
+  set background=light
+  colorscheme ayu
+  let ayucolor="light"
+  let g:airline_theme='onehalflight'
 else
-    colorscheme dracula
-    let g:dracula_italic = 0
-    " colorscheme gruvbox
-    " let g:airline_theme='base16'
-    " let g:gruvbox_contrast_dark='hard'
+  colorscheme dracula
+  let g:dracula_italic = 0
+  let g:dracula_underline = 1
+  " colorscheme gruvbox
+  " let g:airline_theme='base16'
+  " let g:gruvbox_contrast_dark='hard'
 endif
+
+autocmd FileType * highlight CocUnusedHighlight ctermfg=53 guifg=93
+
 " autocmd FileType markdown colorscheme Tomorrow
 " autocmd FileType markdown let g:airline_theme='tomorrow'
 " let g:airline_theme='apprentice'
@@ -311,4 +315,5 @@ require'nvim-treesitter.configs'.setup {
 EOF
 endif
 " }}}
+
 " }}}
