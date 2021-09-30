@@ -348,7 +348,7 @@ function! CodeRun() abort
   elseif &filetype == "rust"
     call TermWrapper(printf('cargo run'))
   elseif &filetype == "sh"
-    call TermWrapper(printf("sh %s", expand('%')))
+    call TermWrapper(printf("bash %s", expand('%')))
   else
     echo "Unsupported yet..."
   endif

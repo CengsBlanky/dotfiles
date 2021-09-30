@@ -1,4 +1,4 @@
-#! /bin/sh
+#! bash
 # @since   %FDATE%
 # @author  %USER%
 # @version 1.0
