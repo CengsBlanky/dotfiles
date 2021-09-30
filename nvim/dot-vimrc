@@ -92,7 +92,7 @@ set shortmess+=c
 " display
 set hlsearch
 set mousehide
-set mouse=a " enable mouse scroll etc...
+set mouse=nv " enable mouse scroll etc...
 set noshowmode
 set cursorline
 set signcolumn=yes
