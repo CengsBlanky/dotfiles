@@ -68,8 +68,10 @@ Host openEuler
 
 > tmux会在状态栏显示当前所在的窗口和已经存在的其他窗口
 
+* `<C-a>c`新建窗口
 * `<C-a>,`重命名当前窗口
 * `<C-a>n/p`在不同的窗口之间切换, `n`是下一个window, `p`是前一个window
+* `<C-a>0-9`switch between windows by window number
 * `<C-a>w`显示所有窗口, 可以在其中选择一个
 * `<C-a>&`删除当前窗口
 
