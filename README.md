@@ -50,8 +50,27 @@ Host openEuler
 * 仓库新增clang-format.yaml文件，将该文件重命名为`.clang-format`放在代码项目根目录或者代码所在文件夹，插件会根据该文件规则对代码进行格式化
 * 一般来说，以`.git`所在文件夹为根目录，将`.clang-format`放在根目录，项目中所有满足要求的代码文件都以该文件设置的规则进行格式化
 
-### TODO: 使用session保存文件编辑状态，以便迅速在不同项目之间切换
+## 使用gnu stow管理各种配置文件
 
-## TODO: 使用stow对dotfile(用户配置文件)进行统一管理
+详见script目录下的bash脚本文件, 运行该脚本需要使用4.0版本以上的bash, macos默认使用的bash版本较低,不支持关联数组, 需要使用HomeBrew安装一个更新版本的bash, 并在shell配置文件中将bash别名设为该bash的可执行二进制文件
 
-### TODO: 编写脚本使stow操作自动化
+## Tmux使用技巧🧩
+
+> `<C-a>`是自定义tmux前缀快捷键, 默认快捷键是`<C-b>`
+
+### session操作
+
+* `tmux new -s [sessionName]` 创建一个新session
+* `tmux attach -t [sessionName]` 重新连接到一个现有session
+* `<C-a>d` 脱离当前session
+
+### window操作
+
+> tmux会在状态栏显示当前所在的窗口和已经存在的其他窗口
+
+* `<C-a>,`重命名当前窗口
+* `<C-a>n/p`在不同的窗口之间切换, `n`是下一个window, `p`是前一个window
+* `<C-a>w`显示所有窗口, 可以在其中选择一个
+* `<C-a>&`删除当前窗口
+
+> 在编辑代码时, 可以使用一个窗口编辑代码, 一个窗口运行本地构建运行服务器或编译检查服务器, 此时给每个窗口一个名称会更简单明了
