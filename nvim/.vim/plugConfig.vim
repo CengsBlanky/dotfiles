@@ -19,7 +19,6 @@ Plug 'aperezdc/vim-template'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'
 Plug 'mattn/webapi-vim'
 Plug 'vim-autoformat/vim-autoformat', {'for': ['c', 'cpp', 'java']}
@@ -67,6 +66,10 @@ noremap <silent><F1> :NERDTreeToggle<CR>
 " }}}
 " tpope/vim-surround {{{
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
+" }}}
+" auto-pairs {{{
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutBackInsert = '<M-b>'
 " }}}
 " haya14busa/incsearch.vim {{{
 " automatically turn off hlsearch
@@ -193,6 +196,10 @@ let g:rustfmt_autosave = 1
 " }}}
 " fatih/vim-go {{{
 let g:go_auto_type_info = 1
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_template_autocreate=0
+autocmd FileType go nmap <leader>r <Plug>(go-run-split)
 " }}}
 " puremourning/vimspector {{{
 let g:vimspector_enable_mappings = 'HUMAN'
@@ -202,10 +209,6 @@ nmap <Leader>di <Plug>VimspectorBalloonEval
 xmap <Leader>di <Plug>VimspectorBalloonEval
 nmap <LocalLeader><F11> <Plug>VimspectorUpFrame
 nmap <LocalLeader><F12> <Plug>VimspectorDownFrame
-" }}}
-" easymotion/vim-easymotion {{{
-" use <leader>w to invoke easymotion, so do not add use <leader>w keybinding again
-map <leader> <Plug>(easymotion-prefix)
 " }}}
 " plasticboy/vim-markdown {{{
 " keybinding
@@ -218,12 +221,6 @@ augroup END
 " euclio/vim-markdown-composer {{{
 autocmd BufWritePost *.md :ComposerUpdate
 let g:markdown_composer_open_browser = 0
-" }}}
-" fatih/vim-go {{{
-" autocmd FileType go nmap <leader>r <Plug>(go-run-split)
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-let g:go_template_autocreate=0
 " }}}
 " vim-autoformat/vim-autoformat {{{
 let g:autoformat_autoindent = 0
@@ -267,26 +264,19 @@ else
   colorscheme dracula
   let g:dracula_italic = 0
   let g:dracula_underline = 1
+  let g:dracula_undercurl = 1
   " colorscheme gruvbox
   " let g:airline_theme='base16'
   " let g:gruvbox_contrast_dark='hard'
 endif
 
-autocmd FileType * highlight CocUnusedHighlight ctermfg=53 guifg=93
-
-" autocmd FileType markdown colorscheme Tomorrow
-" autocmd FileType markdown let g:airline_theme='tomorrow'
-" let g:airline_theme='apprentice'
-" colorscheme OceanicNext
-" colorscheme ayu
-" let ayucolor="mirage"
-" colorscheme gruvbox
-" colorscheme onedark
-" colorscheme onehalflight
-" colorscheme onehalfdark
-" let g:airline_theme='papercolor'
-" let g:airline_theme='onehalfdark'
-" enable Comment italic
+" highlight works just in certain color name, otherwise color would be normal font color
+" set guifg would be enough, but ctermfg would't hurt
+augroup color_settings
+  autocmd!
+  autocmd ColorScheme dracula hi CocUnusedHighlight ctermfg=DarkYellow guifg=DarkYellow
+  autocmd ColorScheme dracula hi Comment ctermfg=DarkGray guifg=DarkGray
+augroup END
 " highlight Comment cterm=italic gui=italic
 " }}}
 " nvim-treesitter {{{
@@ -302,7 +292,7 @@ require'nvim-treesitter.configs'.setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = true,
   },
   indent = {
     enable = {"typescriptreact"}
@@ -315,5 +305,4 @@ require'nvim-treesitter.configs'.setup {
 EOF
 endif
 " }}}
-
 " }}}

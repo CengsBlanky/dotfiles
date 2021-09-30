@@ -1,4 +1,4 @@
-;; set init window size 
+;; set init window size
 (if (display-graphic-p)
     (progn
 	(setq default-frame-alist
@@ -7,9 +7,9 @@
 		;; guarantee each line has exact 80 chars
 		(width . 83)
 		; lines
-		(height . 36) 
+		(height . 36)
 		(left . 720)
-		(top . 12))) 
+		(top . 12)))
     )
 )
 
@@ -21,7 +21,7 @@
 ;; ---------- editor apearance ----------
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-(scroll-bar-mode 0)
+; (scroll-bar-mode 0)
 (global-linum-mode t)
 (column-number-mode t)
 (setq inhibit-startup-screen t)
@@ -35,17 +35,17 @@
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-one-light t)
+  (load-theme 'doom-one' t)
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
-  
+
   ;; Enable custom neotree theme (all-the-icons must be installed!)
   (doom-themes-neotree-config)
   ;; or for treemacs users
   (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
   (doom-themes-treemacs-config)
-  
+
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 ;; ---------- mode line ----------

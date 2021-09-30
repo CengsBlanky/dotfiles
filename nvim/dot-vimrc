@@ -97,7 +97,6 @@ set noshowmode
 set cursorline
 set signcolumn=yes
 set nowrap
-" Give more space for displaying messages.
 set cmdheight=1
 " }}}
 " keymappings {{{
@@ -372,3 +371,4 @@ command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('
 " TODO add .vscode config file
 " TODO run built-in cmd in vertical terminal
 " TODO develop a vim plugin to increase selected section numbers
+" TODO develop a code run plugin for vim
