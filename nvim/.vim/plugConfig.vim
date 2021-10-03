@@ -9,6 +9,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'andymass/vim-matchup'
 " align text
 Plug 'junegunn/vim-easy-align'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 " vim multi languages debug tool
@@ -90,6 +91,20 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 " }}}
+" terryma/vim-multiple-cursors {{{
+let g:multi_cursor_use_default_mapping=0
+" Default mapping
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<M-a>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<M-a>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+let g:multi_cursor_exit_from_visual_mode=1
+let g:multi_cursor_exit_from_insert_mode=1
+" }}}
 " aperezdc/vim-template {{{
 let g:templates_directory=["~/.vim/templates/"]
 let g:username='zengshuai'
@@ -168,6 +183,7 @@ nnoremap <M-s> :Git status<CR>
 nnoremap <M-d> :!git diff<CR>
 nnoremap <leader>ca :wall <bar> Git add * <bar> Git commit -am "
 nnoremap <leader>cm :Git commit -am "
+nnoremap <leader>ad :Git add %<CR>
 " git push
 nnoremap <leader>ps :Git push<CR>
 " }}}
