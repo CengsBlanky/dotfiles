@@ -50,6 +50,10 @@ Host openEuler
 * 仓库新增clang-format.yaml文件，将该文件重命名为`.clang-format`放在代码项目根目录或者代码所在文件夹，插件会根据该文件规则对代码进行格式化
 * 一般来说，以`.git`所在文件夹为根目录，将`.clang-format`放在根目录，项目中所有满足要求的代码文件都以该文件设置的规则进行格式化
 
+### 使用nvim-treesitter缩进解决问题
+
+* treesitter在设置缩进的时候会出现自动缩进出问题的情况, 建议目前不要使用treesitter提供的缩进功能, 关于缩进这块, treesitter的配置存疑 *
+
 ## 使用gnu stow管理各种配置文件
 
 详见script目录下的bash脚本文件, 运行该脚本需要使用4.0版本以上的bash, macos默认使用的bash版本较低,不支持关联数组, 需要使用HomeBrew安装一个更新版本的bash, 并在shell配置文件中将bash别名设为该bash的可执行二进制文件

@@ -37,7 +37,6 @@ Plug 'jsborjesson/vim-uppercase-sql', {'for': 'sql'}
 Plug 'honza/vim-snippets'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
-Plug 'preservim/vimux' " run command in tmux pane without leave vim window
 if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
@@ -69,7 +68,6 @@ noremap <silent><F1> :NERDTreeToggle<CR>
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
 " }}}
 " auto-pairs {{{
-let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = '<M-b>'
 " }}}
 " haya14busa/incsearch.vim {{{
@@ -245,11 +243,6 @@ let g:autoformat_remove_trailing_spaces = 0
 autocmd BufWritePre *.c,*.cpp,*.cc,*.h,*.java :Autoformat
 autocmd FileType c,cpp,java nnoremap <C-f> :Autoformat<CR>
 "}}}
-" RRethy/vim-hexokinase {{{
-if has('nvim')
-    let g:Hexokinase_highlighters = ['virtual']
-endif
-" }}}
 " norcalli/nvim-colorizer.lua {{{
 if has('nvim')
 lua <<EOF
@@ -310,9 +303,9 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = true,
   },
-  indent = {
-    enable = {"typescriptreact"}
-  },
+--  indent = {
+--    enable = {"typescriptreact", "c", "cpp", "java", "go", "javascript", "rust", "sh", "python", "vue", "html", "css"}
+--  },
   matchup = {
     enable = true, -- mandatory, false will disable the whole extension
     disable = {},  -- optional, list of language that will be disabled
