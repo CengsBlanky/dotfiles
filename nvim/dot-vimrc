@@ -110,8 +110,8 @@ noremap <silent><M-w> :close<CR>
 noremap <silent><M-b> :bd<CR>
 " use keystroke to open my vimrc
 nnoremap <silent><M-0> :execute 'source' vim_config_file<CR>
-nnoremap <silent><M-1> :execute 'edit' vim_config_file<CR>
-nnoremap <silent><M-2> :execute 'edit' plug_config_file<CR>
+nnoremap <silent><M-8> :execute 'edit' vim_config_file<CR>
+nnoremap <silent><M-9> :execute 'edit' plug_config_file<CR>
 " screen scroll add <nowait> to execute immediately
 " see autocmd keymap_force to set scroll down
 " use backspace to scroll up

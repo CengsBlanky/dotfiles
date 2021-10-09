@@ -61,8 +61,7 @@ let NERDTreeIgnore=[
     \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
     \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
     \ ]
-noremap <silent><M-`> :NERDTreeToggle<CR>
-noremap <silent><F1> :NERDTreeToggle<CR>
+noremap <silent><M-1> :NERDTreeToggle<CR>
 " }}}
 " tpope/vim-surround {{{
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
