@@ -27,15 +27,17 @@ set surround
 set scrolloff=5
 " Don't use Ex mode, use Q for formatting.
 map Q gq
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
 
-"" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
+"" -- Map IDE actions to IdeaVim --
+" https://jb.gg/abva4t
+" use <leader>f to format code
+map <leader>f <Action>(ReformatCode)
 
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
+" Map <leader>t to start debug
+map <leader>t <Action>(Debug)
+
+" Map \b to toggle the breakpoint on the current line
+" map \b <Action>(ToggleLineBreakpoint)
 
 
 " Find more examples here: https://jb.gg/share-ideavimrc
