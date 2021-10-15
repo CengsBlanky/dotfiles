@@ -115,7 +115,7 @@ nnoremap <silent><M-9> :execute 'edit' plug_config_file<CR>
 " screen scroll add <nowait> to execute immediately
 " see autocmd keymap_force to set scroll down
 " use backspace to scroll up
-nnoremap <BS> <C-b>
+nnoremap <silent><BS> <C-b>
 " <leader> <Enter> to create new line in normal mode
 nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
 " switch between buffers
@@ -218,7 +218,7 @@ augroup END
 
 augroup keymap_force
     autocmd!
-    autocmd FileType * nnoremap <nowait> <Space> <C-f>
+    autocmd FileType * nnoremap <nowait><silent> <Space> <C-f>
 augroup END
 
 augroup windows_display
