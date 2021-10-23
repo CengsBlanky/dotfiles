@@ -10,39 +10,8 @@ if has("unix")
     let terminal_type=split(substitute(system('uname'), '\n', '', ''), "_")[0]
 endif
 " }}}
-" GUI {{{
-" must put on top
-set guioptions-=T
-set guioptions-=m
-set guioptions-=r
-set guioptions-=L
-" do not allowed vim menu get loaded
-" because it might conflicts with some key binding
-set guioptions+=M
-
-set guifont=FiraCode\ NF:h12
-if has("nvim") && has("win32")
-    let g:python3_host_prog='i:/python3.9/python.exe'
-endif
-
-if has("win32") && has("vim") && has("gui_running")
-    let language_set="en-us"
-    " Make shift-insert work like in Xterm
-    map <S-Insert> <MiddleMouse>
-    map! <S-Insert> <MiddleMouse>
-    " enable ligatures in gvim
-    set renderoptions=type:directx
-    autocmd InsertLeave * exec "redraw!"
-endif
-set termguicolors
-" }}}
 " load plugins {{{
-if terminal_type!=?"MINGW64"
-    execute 'source' plug_config_file
-else
-    set background=dark
-    colorscheme slate
-endif
+execute 'source' plug_config_file
 " }}}
 " editor {{{
 " default {{{
@@ -371,7 +340,3 @@ command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('
 
 " }}}
 "}}}
-" TODO add .vscode config file
-" TODO run built-in cmd in vertical terminal
-" TODO develop a vim plugin to increase selected section numbers
-" TODO develop a code run plugin for vim

@@ -13,6 +13,7 @@ registry=http://registry.npm.taobao.org/
 init-author-email=zengs1994@gmail.com
 init-author-name=zengshuai
 init-license=MIT
+prefix="/home/cengshuai"
 
 ;;;;
 ; all available options shown below with default values
