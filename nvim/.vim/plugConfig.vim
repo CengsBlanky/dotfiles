@@ -7,6 +7,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'jiangmiao/auto-pairs'
 Plug 'andymass/vim-matchup'
+Plug 'tpope/vim-dadbod'
 " align text
 Plug 'junegunn/vim-easy-align'
 Plug 'terryma/vim-multiple-cursors'
@@ -127,7 +128,6 @@ map g/ <Plug>(incsearch-stay)
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep=''
 let g:airline_left_alt_sep=''
-" let g:airline#extensions#tabline#left_sep = '▐'
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline_left_alt_sep = ''
 " enable fugitive show git info
@@ -312,5 +312,8 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 endif
+" }}}
+" Plug 'tpope/vim-dadbod' {{{
+nnoremap <M-3> :DB mysql://root@localhost<CR>
 " }}}
 " }}}
