@@ -36,9 +36,9 @@ call plug#end()
 " open NERDTreeToggle {{{
 let g:NERDTreeQuitOnOpen=3
 let NERDTreeIgnore=[
-    \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
-    \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
-    \ ]
+      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
+      \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
+      \ ]
 noremap <silent><M-1> :NERDTreeToggle<CR>
 " }}}
 " tpope/vim-surround {{{
@@ -87,21 +87,21 @@ let g:email='zengs1994@gmail.com'
 " }}}
 " tpope/vim-commentary {{{
 augroup commentary_vim
-    autocmd!
-    autocmd FileType c setlocal commentstring=//\ %s
-    autocmd FileType cpp setlocal commentstring=//\ %s
+  autocmd!
+  autocmd FileType c setlocal commentstring=//\ %s
+  autocmd FileType cpp setlocal commentstring=//\ %s
 augroup END
 " }}}
 " neoclide/coc.nvim {{{
 let g:coc_config_home="~/.vim/"
 " Global extension names to install when they aren't installed.
 let g:coc_global_extensions=['coc-json', 'coc-xml',
-            \ 'coc-clangd',
-            \ 'coc-tsserver',
-            \ 'coc-pyright',
-            \ 'coc-sh',
-            \ 'coc-snippets',
-            \ ]
+      \ 'coc-clangd',
+      \ 'coc-tsserver',
+      \ 'coc-pyright',
+      \ 'coc-sh',
+      \ 'coc-snippets',
+      \ ]
 " Configure the directory which will be used to for coc data
 " files(extensions...)
 let g:coc_data_home="~/.vim/coc_data/"
@@ -130,7 +130,7 @@ endif
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -392,19 +392,19 @@ autocmd InsertLeave * set iminsert=0
 "" Open explorer where current file is located {{{
 "" Only for win for now.
 func! OpenFileExplorer() abort
-    if exists("b:netrw_curdir")
-        let path = substitute(b:netrw_curdir, "/", "\\", "g")
-    elseif expand("%:p") == ""
-        let path = expand("%:p:h")
-    else
-        let path = expand("%:p")
-    endif
-    " support windows and macos for now
-    if has("win32")
-        silent exe '!start explorer.exe /select,' .. path
-    elseif has('unix')
-        silent exe '!open ' .. path
-    endif
+  if exists("b:netrw_curdir")
+    let path = substitute(b:netrw_curdir, "/", "\\", "g")
+  elseif expand("%:p") == ""
+    let path = expand("%:p:h")
+  else
+    let path = expand("%:p")
+  endif
+  " support windows and macos for now
+  if has("win32")
+    silent exe '!start explorer.exe /select,' .. path
+  elseif has('unix')
+    silent exe '!open ' .. path
+  endif
 endfunc
 
 nnoremap <silent> gof :call OpenFileExplorer()<CR>
@@ -439,94 +439,95 @@ nnoremap <C-k> :cprevious<CR>
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 augroup filetype_specific
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 augroup END
 
 augroup filetype_indent_size
-    autocmd!
-    autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json,vim
-                \ setlocal tabstop=2 shiftwidth=2 smarttab smartindent autoindent shiftround
-    autocmd FileType json,text,markdown,xml setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
+  autocmd!
+  autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json,vim
+        \ setlocal tabstop=2 shiftwidth=2 smarttab smartindent autoindent shiftround
+  autocmd FileType json,text,markdown,xml setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
 augroup END
 
 function TrimEndLinesAndTrailingSpaces()
-    let save_cursor = getpos(".")
-    silent! %s#\($\n\s*\)\+\%$##
-    silent! %s/\s\+$//e
-    call setpos('.', save_cursor)
+  let save_cursor = getpos(".")
+  silent! %s#\($\n\s*\)\+\%$##
+  silent! %s/\s\+$//e
+  call setpos('.', save_cursor)
+  echom "trailing spaces and empty lines done!"
 endfunction
 augroup filetype_edit_behavior
-    autocmd!
-    autocmd FileType * setlocal textwidth=0
-    " do not auto add comment when add new comment line in normal mode
-    autocmd FileType * setlocal formatoptions-=o
-    " auto remove all trailing empty lines before saving
-    autocmd BufWritePre c,cpp call TrimEndLinesAndTrailingSpaces()
+  autocmd!
+  autocmd FileType * setlocal textwidth=0
+  " do not auto add comment when add new comment line in normal mode
+  autocmd FileType * setlocal formatoptions-=o
+  " auto remove all trailing empty lines before saving
+  autocmd BufWritePre *.c,*.cpp,*.h,*.sh call TrimEndLinesAndTrailingSpaces()
 augroup END
 
 augroup keymap_force
-    autocmd!
-    autocmd FileType * nnoremap <nowait><silent> <Space> <C-f>
+  autocmd!
+  autocmd FileType * nnoremap <nowait><silent> <Space> <C-f>
 augroup END
 
 augroup windows_display
-    autocmd!
-    autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
-    autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
+  autocmd!
+  autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
+  autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
 augroup END
 " when creating new buffer, auto switch to insert mode
 autocmd BufNewFile * startinsert
 " delete other buffers {{{
 command! -nargs=? -complete=buffer -bang Bonly
-    \ :call BufOnly('<args>', '<bang>')
+      \ :call BufOnly('<args>', '<bang>')
 
 function! BufOnly(buffer, bang)
-	if a:buffer == ''
-		" No buffer provided, use the current buffer.
-		let buffer = bufnr('%')
-	elseif (a:buffer + 0) > 0
-		" A buffer number was provided.
-		let buffer = bufnr(a:buffer + 0)
-	else
-		" A buffer name was provided.
-		let buffer = bufnr(a:buffer)
-	endif
+  if a:buffer == ''
+    " No buffer provided, use the current buffer.
+    let buffer = bufnr('%')
+  elseif (a:buffer + 0) > 0
+    " A buffer number was provided.
+    let buffer = bufnr(a:buffer + 0)
+  else
+    " A buffer name was provided.
+    let buffer = bufnr(a:buffer)
+  endif
 
-	if buffer == -1
-		echohl ErrorMsg
-		echomsg "No matching buffer for" a:buffer
-		echohl None
-		return
-	endif
+  if buffer == -1
+    echohl ErrorMsg
+    echomsg "No matching buffer for" a:buffer
+    echohl None
+    return
+  endif
 
-	let last_buffer = bufnr('$')
+  let last_buffer = bufnr('$')
 
-	let delete_count = 0
-	let n = 1
-	while n <= last_buffer
-		if n != buffer && buflisted(n)
-			if a:bang == '' && getbufvar(n, '&modified')
-				echohl ErrorMsg
-				echomsg 'No write since last change for buffer'
-							\ n '(add ! to override)'
-				echohl None
-			else
-				silent exe 'bdel' . a:bang . ' ' . n
-				if ! buflisted(n)
-					let delete_count = delete_count+1
-				endif
-			endif
-		endif
-		let n = n+1
-	endwhile
+  let delete_count = 0
+  let n = 1
+  while n <= last_buffer
+    if n != buffer && buflisted(n)
+      if a:bang == '' && getbufvar(n, '&modified')
+        echohl ErrorMsg
+        echomsg 'No write since last change for buffer'
+              \ n '(add ! to override)'
+        echohl None
+      else
+        silent exe 'bdel' . a:bang . ' ' . n
+        if ! buflisted(n)
+          let delete_count = delete_count+1
+        endif
+      endif
+    endif
+    let n = n+1
+  endwhile
 
-	if delete_count == 1
-		echomsg delete_count "buffer deleted"
-	elseif delete_count > 1
-		echomsg delete_count "buffers deleted"
-	endif
+  if delete_count == 1
+    echomsg delete_count "buffer deleted"
+  elseif delete_count > 1
+    echomsg delete_count "buffers deleted"
+  endif
 
 endfunction
 " }}}
