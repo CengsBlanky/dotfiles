@@ -29,7 +29,11 @@ Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 Plug 'git@github.com:dracula/vim.git', { 'as': 'dracula' }
 Plug 'git@github.com:frazrepo/vim-rainbow.git'
 Plug 'git@github.com:tribela/vim-transparent.git'
+Plug 'git@github.com:arcticicestudio/nord-vim.git'
+Plug 'git@github.com:vim-airline/vim-airline.git'
+" Plug "git@github.com:vim-airline/vim-airline-themes.git"
 " }}}
+Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 call plug#end()
 " }}}
 " plugins setting {{{
@@ -274,17 +278,56 @@ nnoremap <C-l> :RG<cr>
 " let g:rainbow_active = 1
 autocmd FileType c,cpp,java,go,rust call rainbow#load()
 " }}}
+" vim-airline/vim-airline {{{
+" Automatically displays all buffers when there's only one tab open.
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_left_sep=''
+let g:airline_left_alt_sep=''
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline_left_alt_sep = ''
+" enable fugitive show git info
+" let g:airline#extensions#fugitiveline#enabled = 1
+let g:airline#extensions#branch#empty_message = ''
+let g:airline#extensions#branch#enabled = 1
+let g:airline_skip_empty_sections = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_powerline_fonts = 1
+let g:airline_symbols.dirty=' '
+" let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+" use shorter mode name
+let g:airline_mode_map = {
+      \ '__'     : '-',
+      \ 'c'      : 'C',
+      \ 'i'      : 'I',
+      \ 'ic'     : 'I',
+      \ 'ix'     : 'I',
+      \ 'n'      : 'N',
+      \ 'multi'  : 'M',
+      \ 'ni'     : 'N',
+      \ 'no'     : 'N',
+      \ 'R'      : 'R',
+      \ 'Rv'     : 'R',
+      \ 's'      : 'S',
+      \ 'S'      : 'S',
+      \ ''     : 'S',
+      \ 't'      : 'T',
+      \ 'v'      : 'V',
+      \ 'V'      : 'V',
+      \ ''     : 'V',
+      \ }
+
+" }}}
 " colorscheme plugins {{{
 set t_Co=256
 set termguicolors
-colorscheme dracula
+colorscheme nord
 let g:dracula_italic = 0
 let g:dracula_underline = 1
 let g:dracula_undercurl = 1
-
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \}
 
 " highlight works just in certain color name, otherwise color would be normal font color
 " set guifg would be enough, but ctermfg would't hurt
@@ -294,6 +337,30 @@ augroup color_settings
   autocmd ColorScheme dracula hi Comment ctermfg=DarkGray guifg=DarkGray
 augroup END
 " highlight Comment cterm=italic gui=italic
+" }}}
+" nvim-treesitter {{{
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "cpp", "javascript", "typescript", "css", "python", "bash"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {}, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = true,
+  },
+--  indent = {
+--    enable = {"typescriptreact", "c", "cpp", "java", "go", "javascript", "rust", "sh", "python", "vue", "html", "css"}
+--  },
+  matchup = {
+    enable = true, -- mandatory, false will disable the whole extension
+    disable = {},  -- optional, list of language that will be disabled
+  }
+}
+EOF
 " }}}
 " }}}
 " editor {{{
@@ -608,16 +675,16 @@ command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('
 
 " }}}
 " custom statusline {{{
-set statusline=\ 
-set statusline+=%#PmenuSel#
-set statusline+=%f\ 
-set statusline+=%#LineNr#
-set statusline+=%m
-set statusline+=%=
-set statusline+=%#CursorColumn#
-set statusline+=%y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
+" set statusline=\ 
+" set statusline+=%#PmenuSel#
+" set statusline+=%f\ 
+" set statusline+=%#LineNr#
+" set statusline+=%m
+" set statusline+=%=
+" set statusline+=%#CursorColumn#
+" set statusline+=%y
+" set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+" set statusline+=\[%{&fileformat}\]
 " set statusline+=\ %p%%
 " set statusline+=\ %l:%c\ 
 " }}}
