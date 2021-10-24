@@ -25,10 +25,10 @@ Plug 'git@github.com:mattn/webapi-vim.git'
 Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
 Plug 'git@github.com:honza/vim-snippets.git'
 " colorscheme & statusline {{{
-Plug 'git@github.com:itchyny/lightline.vim.git'
 Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 Plug 'git@github.com:dracula/vim.git', { 'as': 'dracula' }
 Plug 'git@github.com:frazrepo/vim-rainbow.git'
+Plug 'git@github.com:tribela/vim-transparent.git'
 " }}}
 call plug#end()
 " }}}
@@ -463,7 +463,7 @@ augroup filetype_edit_behavior
     " do not auto add comment when add new comment line in normal mode
     autocmd FileType * setlocal formatoptions-=o
     " auto remove all trailing empty lines before saving
-    autocmd BufWritePre * call TrimEndLinesAndTrailingSpaces()
+    autocmd BufWritePre c,cpp call TrimEndLinesAndTrailingSpaces()
 augroup END
 
 augroup keymap_force
@@ -476,20 +476,6 @@ augroup windows_display
     autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
     autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
 augroup END
-
-function s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
-    endif
-endfunction
-augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-augroup END
-
 " when creating new buffer, auto switch to insert mode
 autocmd BufNewFile * startinsert
 " delete other buffers {{{
@@ -619,5 +605,19 @@ autocmd FileType rust,go nnoremap <leader>t :call CodeTest()<CR>
 
 command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++11 %s && ./a.out < %s', expand('%'), <q-args>))
 
+" }}}
+" custom statusline {{{
+set statusline=\ 
+set statusline+=%#PmenuSel#
+set statusline+=%f\ 
+set statusline+=%#LineNr#
+set statusline+=%m
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=%y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+" set statusline+=\ %p%%
+" set statusline+=\ %l:%c\ 
 " }}}
 "}}}
