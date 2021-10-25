@@ -6,6 +6,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'jiangmiao/auto-pairs'
+Plug 'justinmk/vim-sneak'
 Plug 'andymass/vim-matchup'
 Plug 'tpope/vim-dadbod'
 Plug 'kana/vim-textobj-user'
@@ -22,7 +23,6 @@ Plug 'aperezdc/vim-template'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'justinmk/vim-sneak'
 Plug 'mattn/webapi-vim'
 Plug 'vim-autoformat/vim-autoformat', {'for': ['c', 'cpp', 'java']}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
@@ -33,12 +33,8 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'godlygeek/tabular', {'for': 'markdown'}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'euclio/vim-markdown-composer', {'for': 'markdown'}
-Plug 'cespare/vim-toml', {'for': 'toml'}
-Plug 'sotte/presenting.vim', {'for': 'markdown'}
 Plug 'jsborjesson/vim-uppercase-sql', {'for': 'sql'}
 Plug 'honza/vim-snippets'
-Plug 'epilande/vim-es2015-snippets'
-Plug 'epilande/vim-react-snippets'
 if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
@@ -47,7 +43,6 @@ Plug 'norcalli/nvim-colorizer.lua' " show source code defined colors
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine' " show indent level
-Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'frazrepo/vim-rainbow'
 Plug 'tribela/vim-transparent' " vim transparent background
@@ -322,7 +317,7 @@ augroup END
 if has('nvim')
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "java", "javascript", "typescript", "tsx", "vue", "css", "python", "bash", "dockerfile", "yaml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "c", "cpp", "java", "html", "javascript", "typescript", "tsx", "vue", "css", "python", "bash", "dockerfile", "yaml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
