@@ -11,6 +11,7 @@ Plug 'git@github.com:tpope/vim-commentary.git'
 Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:andymass/vim-matchup.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
+Plug 'git@github.com:kana/vim-textobj-user.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
 " align text
 Plug 'git@github.com:junegunn/vim-easy-align.git'
@@ -24,6 +25,7 @@ Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'git@github.com:junegunn/fzf.vim.git'
 Plug 'git@github.com:mattn/webapi-vim.git'
 Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
+Plug 'git@github.com:pangloss/vim-javascript.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 " colorscheme & statusline {{{
 Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
@@ -32,7 +34,6 @@ Plug 'git@github.com:frazrepo/vim-rainbow.git'
 Plug 'git@github.com:tribela/vim-transparent.git'
 Plug 'git@github.com:arcticicestudio/nord-vim.git'
 Plug 'git@github.com:vim-airline/vim-airline.git'
-" Plug "git@github.com:vim-airline/vim-airline-themes.git"
 " }}}
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 call plug#end()
@@ -64,6 +65,38 @@ map g# <Plug>(incsearch-nohl-g#)
 " }}}
 " Yggdroot/indentLine {{{
 let g:indentLine_fileTypeExclude = ['text', 'json', 'markdown']
+" }}}
+" vim-textobj-user {{{
+" vim line textobj {{{
+call textobj#user#plugin('line', {
+\   '-': {
+\     'select-a-function': 'CurrentLineA',
+\     'select-a': 'al',
+\     'select-i-function': 'CurrentLineI',
+\     'select-i': 'il',
+\   },
+\ })
+
+function! CurrentLineA()
+  normal! 0
+  let head_pos = getpos('.')
+  normal! $
+  let tail_pos = getpos('.')
+  return ['v', head_pos, tail_pos]
+endfunction
+
+function! CurrentLineI()
+  normal! ^
+  let head_pos = getpos('.')
+  normal! g_
+  let tail_pos = getpos('.')
+  let non_blank_char_exists_p = getline('.')[head_pos[2] - 1] !~# '\s'
+  return
+  \ non_blank_char_exists_p
+  \ ? ['v', head_pos, tail_pos]
+  \ : 0
+endfunction
+" }}}
 " }}}
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
@@ -107,12 +140,16 @@ augroup END
 " neoclide/coc.nvim {{{
 let g:coc_config_home="~/.vim/"
 " Global extension names to install when they aren't installed.
-let g:coc_global_extensions=['coc-json', 'coc-xml',
+let g:coc_global_extensions=[
+      \ 'coc-json',
+      \ 'coc-xml',
       \ 'coc-clangd',
       \ 'coc-tsserver',
       \ 'coc-pyright',
+      \ 'coc-vetur',
       \ 'coc-sh',
       \ 'coc-snippets',
+      \ 'coc-prettier',
       \ ]
 " Configure the directory which will be used to for coc data
 " files(extensions...)
@@ -349,7 +386,7 @@ augroup END
 " nvim-treesitter {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "javascript", "typescript", "css", "python", "bash"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "c", "cpp", "javascript", "typescript", "css", "python", "bash", "html"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
@@ -360,9 +397,6 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = true,
   },
---  indent = {
---    enable = {"typescriptreact", "c", "cpp", "java", "go", "javascript", "rust", "sh", "python", "vue", "html", "css"}
---  },
   matchup = {
     enable = true, -- mandatory, false will disable the whole extension
     disable = {},  -- optional, list of language that will be disabled
