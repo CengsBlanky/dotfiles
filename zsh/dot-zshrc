@@ -139,8 +139,6 @@ if [ "${sysout}" = "Darwin" ]; then
     # llvm setting
     export PATH="/usr/local/opt/llvm/bin:$PATH"
     export PATH="/usr/local/opt/llvm:$PATH"
-    # add rust path
-    export PATH="$HOME/.cargo/bin:$PATH"
     # add mysql path
     export PATH="/usr/local/opt/mysql/bin:$PATH"
     # go path
@@ -161,8 +159,10 @@ elif [ "${sysout}" = "Linux" ]; then
     alias l="ls -lh"
     alias la="ls -lAh"
     alias vimdiff="nvim -d"
+    alias gui="gitui"
     export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.12.0.7-4.fc34.x86_64/"
     export PATH="$PATH:$HOME/Applications/idea-IU-212.5457.46/bin"
 fi
 export PATH="$JAVA_HOME:$PATH"
-
+# add rust path
+export PATH="$HOME/.cargo/bin:$PATH"

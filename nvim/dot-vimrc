@@ -26,6 +26,7 @@ Plug 'git@github.com:junegunn/fzf.vim.git'
 Plug 'git@github.com:mattn/webapi-vim.git'
 Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
 Plug 'git@github.com:pangloss/vim-javascript.git'
+Plug 'git@github.com:rust-lang/rust.vim.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 " colorscheme & statusline {{{
 Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
@@ -144,6 +145,7 @@ let g:coc_global_extensions=[
       \ 'coc-json',
       \ 'coc-xml',
       \ 'coc-clangd',
+      \ 'coc-rls',
       \ 'coc-tsserver',
       \ 'coc-pyright',
       \ 'coc-vetur',
@@ -293,6 +295,9 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+" }}}
+" git@github.com:rust-lang/rust.vim.git {{{
+let g:rustfmt_autosave = 1
 " }}}
 " haya14busa/incsearch.vim {{{
 map /  <Plug>(incsearch-forward)
