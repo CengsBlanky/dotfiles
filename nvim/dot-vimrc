@@ -474,8 +474,8 @@ nnoremap <leader>[ guiw
 " close current window or buffer
 noremap <silent><M-w> :close<CR>
 noremap <silent><M-b> :bd<CR>
-" use keystroke to open my vimrc
-nnoremap <silent><M-8> :execute 'edit' vim_config_file<CR>
+" use command to open my vimrc
+command! Editrc execute 'edit' vim_config_file
 " screen scroll add <nowait> to execute immediately
 " see autocmd keymap_force to set scroll down
 " use backspace to scroll up
