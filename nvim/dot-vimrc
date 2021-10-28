@@ -12,6 +12,7 @@ Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:andymass/vim-matchup.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:kana/vim-textobj-user.git'
+Plug 'git@github.com:chaoren/vim-wordmotion.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
 " align text
 Plug 'git@github.com:junegunn/vim-easy-align.git'
