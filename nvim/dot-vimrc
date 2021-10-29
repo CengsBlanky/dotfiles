@@ -569,7 +569,12 @@ augroup filetype_indent_size
   autocmd!
   autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json,vim
         \ setlocal tabstop=2 shiftwidth=2 smarttab smartindent autoindent shiftround
-  autocmd FileType json,text,markdown,xml setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
+  autocmd FileType text,markdown setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
+  autocmd FileType text,markdown nnoremap j gj
+  autocmd FileType text,markdown nnoremap k gk
+  autocmd FileType text,markdown nnoremap 0 g0
+  autocmd FileType text,markdown nnoremap $ g$
+  autocmd FileType text,markdown nnoremap ^ g^
 augroup END
 
 function TrimEndLinesAndTrailingSpaces()
@@ -601,16 +606,18 @@ augroup END
 
 function! MarkdownFolds()
   let thisline = getline(v:lnum)
-  if match(thisline, '^####') >= 0
-    return ">4"
-  elseif match(thisline, '^###') >= 0
-    return ">3"
-  elseif match(thisline, '^##') >= 0
-    return ">2"
-  elseif match(thisline, '^#') >= 0
-    return ">1"
-  else if match(thisline, '^#*') >= 0
+  if match(thisline, '^#\{6}') >= 0
+    return ">6"
+  elseif match(thisline, '^#\{5}') >= 0
     return ">5"
+  elseif match(thisline, '^#\{4}') >= 0
+    return ">4"
+  elseif match(thisline, '^#\{3}') >= 0
+    return ">3"
+  elseif match(thisline, '^#\{2}') >= 0
+    return ">2"
+  elseif match(thisline, '^#\{1}') >= 0
+    return ">1"
   else
     return "="
   endif
