@@ -606,17 +606,17 @@ augroup END
 
 function! MarkdownFolds()
   let thisline = getline(v:lnum)
-  if match(thisline, '^#\{6}') >= 0
+  if match(thisline, '^#\{6}[^#]*') >= 0
     return ">6"
-  elseif match(thisline, '^#\{5}') >= 0
+  elseif match(thisline, '^#\{5}[^#]*') >= 0
     return ">5"
-  elseif match(thisline, '^#\{4}') >= 0
+  elseif match(thisline, '^#\{4}[^#]*') >= 0
     return ">4"
-  elseif match(thisline, '^#\{3}') >= 0
+  elseif match(thisline, '^#\{3}[^#]*') >= 0
     return ">3"
-  elseif match(thisline, '^#\{2}') >= 0
+  elseif match(thisline, '^#\{2}[^#]*') >= 0
     return ">2"
-  elseif match(thisline, '^#\{1}') >= 0
+  elseif match(thisline, '^#\{1}[^#]*') >= 0
     return ">1"
   else
     return "="
