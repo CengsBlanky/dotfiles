@@ -582,7 +582,7 @@ function TrimEndLinesAndTrailingSpaces()
   silent! %s#\($\n\s*\)\+\%$##
   silent! %s/\s\+$//e
   call setpos('.', save_cursor)
-  echom "trailing spaces and empty lines done!"
+  " echom "trailing spaces and empty lines done!"
 endfunction
 augroup filetype_edit_behavior
   autocmd!
