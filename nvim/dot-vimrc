@@ -609,6 +609,8 @@ function! MarkdownFolds()
     return ">2"
   elseif match(thisline, '^#') >= 0
     return ">1"
+  else if match(thisline, '^#*') >= 0
+    return ">5"
   else
     return "="
   endif
