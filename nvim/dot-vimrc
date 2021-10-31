@@ -459,6 +459,7 @@ set nowritebackup
 set noswapfile
 set noundofile
 set clipboard=unnamed
+set clipboard+=unnamedplus
 " add ctags support
 set tags=tags
 " Don't pass messages to |ins-completion-menu|.
