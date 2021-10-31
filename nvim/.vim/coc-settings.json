@@ -2,7 +2,6 @@
     "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "javascriptreact", "typescriptreact", "html", "css", "vue"],
     "prettier.disableLanguages": [],
     "prettier.disableSuccessMessage": true,
-    "prettier.statusItemText": "💋",
     "prettier.statusItemText": "",
     "prettier.trailingComma": "es5",
     "prettier.singleQuote": true,

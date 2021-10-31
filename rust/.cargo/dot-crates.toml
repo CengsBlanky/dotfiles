@@ -1,4 +1,5 @@
 [v1]
 "cargo-edit 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-add", "cargo-rm", "cargo-set-version", "cargo-upgrade"]
 "cargo-watch 7.8.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-watch"]
+"mdbook 0.4.12 (registry+https://github.com/rust-lang/crates.io-index)" = ["mdbook"]
 "rustlings 4.4.0 (path+file:///Users/cengshuai/learn/rustlings)" = ["rustlings"]
