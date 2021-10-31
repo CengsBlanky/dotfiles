@@ -1,48 +1,421 @@
 " predefined variables {{{
-let language_set="en_US.UTF-8"
-let vim_config_file="~/.vimrc"
+let vim_config_file="~/.config/nvim/init.vim"
 let plugin_path="~/.vim/plugins/"
 let plug_file="~/.vim/plug.vim"
-let coc_config_file="~/.vim/coc-config.vim"
-let plug_config_file="~/.vim/plugConfig.vim"
-let terminal_type=""
-if has("unix")
-    let terminal_type=split(substitute(system('uname'), '\n', '', ''), "_")[0]
-endif
 " }}}
-" GUI {{{
-" must put on top
-set guioptions-=T
-set guioptions-=m
-set guioptions-=r
-set guioptions-=L
-" do not allowed vim menu get loaded
-" because it might conflicts with some key binding
-set guioptions+=M
-
-set guifont=FiraCode\ NF:h12
-if has("nvim") && has("win32")
-    let g:python3_host_prog='i:/python3.9/python.exe'
-endif
-
-if has("win32") && has("vim") && has("gui_running")
-    let language_set="en-us"
-    " Make shift-insert work like in Xterm
-    map <S-Insert> <MiddleMouse>
-    map! <S-Insert> <MiddleMouse>
-    " enable ligatures in gvim
-    set renderoptions=type:directx
-    autocmd InsertLeave * exec "redraw!"
-endif
-set termguicolors
+" plugins {{{
+execute 'source' plug_file
+call plug#begin(fnameescape(plugin_path))
+Plug 'git@github.com:tpope/vim-surround.git'
+Plug 'git@github.com:tpope/vim-commentary.git'
+Plug 'git@github.com:jiangmiao/auto-pairs.git'
+Plug 'git@github.com:andymass/vim-matchup.git'
+Plug 'git@github.com:justinmk/vim-sneak.git'
+Plug 'git@github.com:kana/vim-textobj-user.git'
+Plug 'git@github.com:chaoren/vim-wordmotion.git'
+Plug 'git@github.com:airblade/vim-gitgutter.git'
+" align text
+Plug 'git@github.com:junegunn/vim-easy-align.git'
+Plug 'git@github.com:terryma/vim-multiple-cursors.git'
+Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
+Plug 'git@github.com:neoclide/coc.nvim.git', {'branch': 'release'}
+" better hlsearch
+Plug 'git@github.com:haya14busa/incsearch.vim.git'
+Plug 'git@github.com:aperezdc/vim-template.git'
+Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
+Plug 'git@github.com:junegunn/fzf.vim.git'
+Plug 'git@github.com:mattn/webapi-vim.git'
+Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
+Plug 'git@github.com:pangloss/vim-javascript.git'
+Plug 'git@github.com:rust-lang/rust.vim.git'
+Plug 'git@github.com:honza/vim-snippets.git'
+Plug 'git@github.com:godlygeek/tabular.git'
+Plug 'git@github.com:plasticboy/vim-markdown.git'
+" colorscheme & statusline {{{
+Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
+Plug 'git@github.com:dracula/vim.git', { 'as': 'dracula' }
+Plug 'git@github.com:frazrepo/vim-rainbow.git'
+Plug 'git@github.com:tribela/vim-transparent.git'
+Plug 'git@github.com:arcticicestudio/nord-vim.git'
+Plug 'git@github.com:vim-airline/vim-airline.git'
 " }}}
-" load plugins {{{
-if terminal_type!=?"MINGW64"
-    execute 'source' plug_config_file
+Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
+call plug#end()
+" }}}
+" plugins setting {{{
+" open NERDTreeToggle {{{
+let g:NERDTreeQuitOnOpen=3
+let NERDTreeIgnore=[
+      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
+      \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
+      \ ]
+noremap <silent><M-1> :NERDTreeToggle<CR>
+" }}}
+" tpope/vim-surround {{{
+autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
+" }}}
+" auto-pairs {{{
+let g:AutoPairsShortcutBackInsert = '<M-b>'
+" }}}
+" haya14busa/incsearch.vim {{{
+" automatically turn off hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+" }}}
+" Yggdroot/indentLine {{{
+let g:indentLine_fileTypeExclude = ['text', 'json', 'markdown']
+" }}}
+" vim-textobj-user {{{
+" vim line textobj {{{
+call textobj#user#plugin('line', {
+\   '-': {
+\     'select-a-function': 'CurrentLineA',
+\     'select-a': 'al',
+\     'select-i-function': 'CurrentLineI',
+\     'select-i': 'il',
+\   },
+\ })
+
+function! CurrentLineA()
+  normal! 0
+  let head_pos = getpos('.')
+  normal! $
+  let tail_pos = getpos('.')
+  return ['v', head_pos, tail_pos]
+endfunction
+
+function! CurrentLineI()
+  normal! ^
+  let head_pos = getpos('.')
+  normal! g_
+  let tail_pos = getpos('.')
+  let non_blank_char_exists_p = getline('.')[head_pos[2] - 1] !~# '\s'
+  return
+  \ non_blank_char_exists_p
+  \ ? ['v', head_pos, tail_pos]
+  \ : 0
+endfunction
+" }}}
+" }}}
+" airblade/vim-gitgutter {{{
+let g:gitgutter_sign_priority = 0
+let g:gitgutter_sign_allow_clobber = 0
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '*'
+let g:gitgutter_sign_removed = '-'
+" }}}
+" junegunn/vim-easy-align {{{
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+" }}}
+" terryma/vim-multiple-cursors {{{
+let g:multi_cursor_use_default_mapping=0
+" Default mapping
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<M-a>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<M-a>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+let g:multi_cursor_exit_from_visual_mode=1
+let g:multi_cursor_exit_from_insert_mode=1
+" }}}
+" aperezdc/vim-template {{{
+let g:templates_directory=["~/.vim/templates/"]
+let g:username='zengshuai'
+let g:email='zengs1994@gmail.com'
+" }}}
+" tpope/vim-commentary {{{
+augroup commentary_vim
+  autocmd!
+  autocmd FileType c setlocal commentstring=//\ %s
+  autocmd FileType cpp setlocal commentstring=//\ %s
+augroup END
+" }}}
+" neoclide/coc.nvim {{{
+let g:coc_config_home="~/.vim/"
+" Global extension names to install when they aren't installed.
+let g:coc_global_extensions=[
+      \ 'coc-json',
+      \ 'coc-xml',
+      \ 'coc-clangd',
+      \ 'coc-rls',
+      \ 'coc-tsserver',
+      \ 'coc-pyright',
+      \ 'coc-vetur',
+      \ 'coc-sh',
+      \ 'coc-snippets',
+      \ 'coc-prettier',
+      \ ]
+" Configure the directory which will be used to for coc data
+" files(extensions...)
+let g:coc_data_home="~/.vim/coc_data/"
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
 else
-    set background=dark
-    colorscheme slate
+  inoremap <silent><expr> <c-@> coc#refresh()
 endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>n <Plug>(coc-rename)
+
+" Formatting selected code.
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+" Format whole buffer use Format
+nnoremap <C-f> :Format<CR>
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+" }}}
+" git@github.com:rust-lang/rust.vim.git {{{
+let g:rustfmt_autosave = 1
+" }}}
+" haya14busa/incsearch.vim {{{
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+" }}}
+" junegunn/fzf {{{
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading  --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+nnoremap <C-p> :Files<cr>
+nnoremap <C-l> :RG<cr>
+" }}}
+" vim-rainbow {{{
+" let g:rainbow_active = 1
+autocmd FileType c,cpp,java,go,rust call rainbow#load()
+" }}}
+" vim-airline/vim-airline {{{
+" Automatically displays all buffers when there's only one tab open.
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_left_sep=''
+let g:airline_left_alt_sep=''
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline_left_alt_sep = ''
+" enable fugitive show git info
+" let g:airline#extensions#fugitiveline#enabled = 1
+let g:airline#extensions#branch#empty_message = ''
+let g:airline#extensions#branch#enabled = 1
+let g:airline_skip_empty_sections = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_powerline_fonts = 1
+let g:airline_symbols.dirty=' '
+" let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+" use shorter mode name
+let g:airline_mode_map = {
+      \ '__'     : '-',
+      \ 'c'      : 'C',
+      \ 'i'      : 'I',
+      \ 'ic'     : 'I',
+      \ 'ix'     : 'I',
+      \ 'n'      : 'N',
+      \ 'multi'  : 'M',
+      \ 'ni'     : 'N',
+      \ 'no'     : 'N',
+      \ 'R'      : 'R',
+      \ 'Rv'     : 'R',
+      \ 's'      : 'S',
+      \ 'S'      : 'S',
+      \ ''     : 'S',
+      \ 't'      : 'T',
+      \ 'v'      : 'V',
+      \ 'V'      : 'V',
+      \ ''     : 'V',
+      \ }
+
+" }}}
+" vim markdown {{{
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+" }}}
+" colorscheme plugins {{{
+set t_Co=256
+set termguicolors
+colorscheme nord
+let g:dracula_italic = 0
+let g:dracula_underline = 1
+let g:dracula_undercurl = 1
+
+" highlight works just in certain color name, otherwise color would be normal font color
+" set guifg would be enough, but ctermfg would't hurt
+augroup color_settings
+  autocmd!
+  autocmd ColorScheme dracula hi CocUnusedHighlight ctermfg=DarkYellow guifg=DarkYellow
+  autocmd ColorScheme dracula hi Comment ctermfg=DarkGray guifg=DarkGray
+augroup END
+" highlight Comment cterm=italic gui=italic
+" }}}
+" nvim-treesitter {{{
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "cpp", "javascript", "typescript", "css", "python", "bash", "html"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {}, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = true,
+  },
+  matchup = {
+    enable = true, -- mandatory, false will disable the whole extension
+    disable = {},  -- optional, list of language that will be disabled
+  }
+}
+EOF
+" }}}
 " }}}
 " editor {{{
 " default {{{
@@ -51,7 +424,7 @@ filetype plugin indent on
 syntax on
 set fileformat=unix
 set fileformats=unix,dos
-execute 'language' language_set
+language en_US.UTF-8
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
 set fileencoding=utf-8
@@ -108,10 +481,8 @@ nnoremap <leader>[ guiw
 " close current window or buffer
 noremap <silent><M-w> :close<CR>
 noremap <silent><M-b> :bd<CR>
-" use keystroke to open my vimrc
-nnoremap <silent><M-0> :execute 'source' vim_config_file<CR>
-nnoremap <silent><M-8> :execute 'edit' vim_config_file<CR>
-nnoremap <silent><M-9> :execute 'edit' plug_config_file<CR>
+" use command to open my vimrc
+command! Editrc execute 'edit' vim_config_file
 " screen scroll add <nowait> to execute immediately
 " see autocmd keymap_force to set scroll down
 " use backspace to scroll up
@@ -142,19 +513,19 @@ autocmd InsertLeave * set iminsert=0
 "" Open explorer where current file is located {{{
 "" Only for win for now.
 func! OpenFileExplorer() abort
-    if exists("b:netrw_curdir")
-        let path = substitute(b:netrw_curdir, "/", "\\", "g")
-    elseif expand("%:p") == ""
-        let path = expand("%:p:h")
-    else
-        let path = expand("%:p")
-    endif
-    " support windows and macos for now
-    if has("win32")
-        silent exe '!start explorer.exe /select,' .. path
-    elseif has('unix')
-        silent exe '!open ' .. path
-    endif
+  if exists("b:netrw_curdir")
+    let path = substitute(b:netrw_curdir, "/", "\\", "g")
+  elseif expand("%:p") == ""
+    let path = expand("%:p:h")
+  else
+    let path = expand("%:p")
+  endif
+  " support windows and macos for now
+  if has("win32")
+    silent exe '!start explorer.exe /select,' .. path
+  elseif has('unix')
+    silent exe '!open ' .. path
+  endif
 endfunc
 
 nnoremap <silent> gof :call OpenFileExplorer()<CR>
@@ -189,108 +560,129 @@ nnoremap <C-k> :cprevious<CR>
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 augroup filetype_specific
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 augroup END
 
 augroup filetype_indent_size
-    autocmd!
-    autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json,vim
-                \ setlocal tabstop=2 shiftwidth=2 smarttab smartindent autoindent shiftround
-    autocmd FileType json,text,markdown,xml setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
+  autocmd!
+  autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json,vim
+        \ setlocal tabstop=2 shiftwidth=2 smarttab smartindent autoindent shiftround
+  autocmd FileType text,markdown setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
+  autocmd FileType text,markdown nnoremap j gj
+  autocmd FileType text,markdown nnoremap k gk
+  autocmd FileType text,markdown nnoremap 0 g0
+  autocmd FileType text,markdown nnoremap $ g$
+  autocmd FileType text,markdown nnoremap ^ g^
 augroup END
 
 function TrimEndLinesAndTrailingSpaces()
-    let save_cursor = getpos(".")
-    silent! %s#\($\n\s*\)\+\%$##
-    silent! %s/\s\+$//e
-    call setpos('.', save_cursor)
+  let save_cursor = getpos(".")
+  silent! %s#\($\n\s*\)\+\%$##
+  silent! %s/\s\+$//e
+  call setpos('.', save_cursor)
+  " echom "trailing spaces and empty lines done!"
 endfunction
 augroup filetype_edit_behavior
-    autocmd!
-    autocmd FileType * setlocal textwidth=0
-    " do not auto add comment when add new comment line in normal mode
-    autocmd FileType * setlocal formatoptions-=o
-    " auto remove all trailing empty lines before saving
-    autocmd BufWritePre * call TrimEndLinesAndTrailingSpaces()
+  autocmd!
+  autocmd FileType * setlocal textwidth=0
+  " do not auto add comment when add new comment line in normal mode
+  autocmd FileType * setlocal formatoptions-=o
+  " auto remove all trailing empty lines before saving
+  autocmd BufWritePre *.c,*.cpp,*.h,*.sh,*.py call TrimEndLinesAndTrailingSpaces()
 augroup END
 
 augroup keymap_force
-    autocmd!
-    autocmd FileType * nnoremap <nowait><silent> <Space> <C-f>
+  autocmd!
+  autocmd FileType * nnoremap <nowait><silent> <Space> <C-f>
 augroup END
 
 augroup windows_display
-    autocmd!
-    autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
-    autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
+  autocmd!
+  autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
+  autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
 augroup END
 
-function s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
-    endif
+function! MarkdownFolds()
+  let thisline = getline(v:lnum)
+  if match(thisline, '^#\{6}[^#]*') >= 0
+    return ">6"
+  elseif match(thisline, '^#\{5}[^#]*') >= 0
+    return ">5"
+  elseif match(thisline, '^#\{4}[^#]*') >= 0
+    return ">4"
+  elseif match(thisline, '^#\{3}[^#]*') >= 0
+    return ">3"
+  elseif match(thisline, '^#\{2}[^#]*') >= 0
+    return ">2"
+  elseif match(thisline, '^#\{1}[^#]*') >= 0
+    return ">1"
+  else
+    return "="
+  endif
 endfunction
-augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+
+function! MarkdownFoldText()
+  let foldsize = (v:foldend-v:foldstart)
+  return getline(v:foldstart).' ('.foldsize.' lines)'
+endfunction
+augroup filetype_fold
+  autocmd!
+  autocmd FileType markdown set foldmethod=expr foldexpr=MarkdownFolds() foldtext=MarkdownFoldText()
 augroup END
 
 " when creating new buffer, auto switch to insert mode
 autocmd BufNewFile * startinsert
 " delete other buffers {{{
 command! -nargs=? -complete=buffer -bang Bonly
-    \ :call BufOnly('<args>', '<bang>')
+      \ :call BufOnly('<args>', '<bang>')
 
 function! BufOnly(buffer, bang)
-	if a:buffer == ''
-		" No buffer provided, use the current buffer.
-		let buffer = bufnr('%')
-	elseif (a:buffer + 0) > 0
-		" A buffer number was provided.
-		let buffer = bufnr(a:buffer + 0)
-	else
-		" A buffer name was provided.
-		let buffer = bufnr(a:buffer)
-	endif
+  if a:buffer == ''
+    " No buffer provided, use the current buffer.
+    let buffer = bufnr('%')
+  elseif (a:buffer + 0) > 0
+    " A buffer number was provided.
+    let buffer = bufnr(a:buffer + 0)
+  else
+    " A buffer name was provided.
+    let buffer = bufnr(a:buffer)
+  endif
 
-	if buffer == -1
-		echohl ErrorMsg
-		echomsg "No matching buffer for" a:buffer
-		echohl None
-		return
-	endif
+  if buffer == -1
+    echohl ErrorMsg
+    echomsg "No matching buffer for" a:buffer
+    echohl None
+    return
+  endif
 
-	let last_buffer = bufnr('$')
+  let last_buffer = bufnr('$')
 
-	let delete_count = 0
-	let n = 1
-	while n <= last_buffer
-		if n != buffer && buflisted(n)
-			if a:bang == '' && getbufvar(n, '&modified')
-				echohl ErrorMsg
-				echomsg 'No write since last change for buffer'
-							\ n '(add ! to override)'
-				echohl None
-			else
-				silent exe 'bdel' . a:bang . ' ' . n
-				if ! buflisted(n)
-					let delete_count = delete_count+1
-				endif
-			endif
-		endif
-		let n = n+1
-	endwhile
+  let delete_count = 0
+  let n = 1
+  while n <= last_buffer
+    if n != buffer && buflisted(n)
+      if a:bang == '' && getbufvar(n, '&modified')
+        echohl ErrorMsg
+        echomsg 'No write since last change for buffer'
+              \ n '(add ! to override)'
+        echohl None
+      else
+        silent exe 'bdel' . a:bang . ' ' . n
+        if ! buflisted(n)
+          let delete_count = delete_count+1
+        endif
+      endif
+    endif
+    let n = n+1
+  endwhile
 
-	if delete_count == 1
-		echomsg delete_count "buffer deleted"
-	elseif delete_count > 1
-		echomsg delete_count "buffers deleted"
-	endif
+  if delete_count == 1
+    echomsg delete_count "buffer deleted"
+  elseif delete_count > 1
+    echomsg delete_count "buffers deleted"
+  endif
 
 endfunction
 " }}}
@@ -370,8 +762,18 @@ autocmd FileType rust,go nnoremap <leader>t :call CodeTest()<CR>
 command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++11 %s && ./a.out < %s', expand('%'), <q-args>))
 
 " }}}
+" custom statusline {{{
+" set statusline=\ 
+" set statusline+=%#PmenuSel#
+" set statusline+=%f\ 
+" set statusline+=%#LineNr#
+" set statusline+=%m
+" set statusline+=%=
+" set statusline+=%#CursorColumn#
+" set statusline+=%y
+" set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+" set statusline+=\[%{&fileformat}\]
+" set statusline+=\ %p%%
+" set statusline+=\ %l:%c\ 
+" }}}
 "}}}
-" TODO add .vscode config file
-" TODO run built-in cmd in vertical terminal
-" TODO develop a vim plugin to increase selected section numbers
-" TODO develop a code run plugin for vim

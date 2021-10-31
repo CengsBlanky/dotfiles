@@ -1,11 +1,13 @@
 {
-    "java.jdt.ls.vmargs": "-javaagent:/Users/cengshuai/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar",
     "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "javascriptreact", "typescriptreact", "html", "css", "vue"],
     "prettier.disableLanguages": [],
     "prettier.disableSuccessMessage": true,
     "prettier.statusItemText": "💋",
+    "prettier.statusItemText": "",
+    "prettier.trailingComma": "es5",
+    "prettier.singleQuote": true,
     "typescript.format.enabled": false,
     "tsserver.formatOnType": false,
     "javascript.format.enabled": false,
-    "python.pythonPath": "/usr/local/opt/python@3.9/bin/python3.9"
+    "clangd.path": "~/.vim/coc_data/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
 }

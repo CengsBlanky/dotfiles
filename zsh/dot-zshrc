@@ -136,12 +136,9 @@ sysout="$(uname -s)"
 # 字符串比较一定要在=两边加上空格
 if [ "${sysout}" = "Darwin" ]; then
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home/"
-    export PATH="$JAVA_HOME:$PATH"
     # llvm setting
     export PATH="/usr/local/opt/llvm/bin:$PATH"
     export PATH="/usr/local/opt/llvm:$PATH"
-    # add rust path
-    export PATH="$HOME/.cargo/bin:$PATH"
     # add mysql path
     export PATH="/usr/local/opt/mysql/bin:$PATH"
     # go path
@@ -161,13 +158,14 @@ if [ "${sysout}" = "Darwin" ]; then
 elif [ "${sysout}" = "Linux" ]; then
     alias l="ls -lh"
     alias la="ls -lAh"
-    alias lg="lazygit"
-    # llvm setting
-    export PATH="/usr/local/opt/llvm/bin:$PATH"
-    export PATH="/usr/local/opt/llvm:$PATH"
-    # in linux raspberry pi
-    export PATH="/lib/llvm-9/bin:$PATH"
-    export LDFLAGS="-L/usr/local/opt/llvm/lib"
-    export CPPFLAGS="-I/usr/local/opt/llvm/include"
-    export PATH="~/.local/bin:$PATH"
+    alias vimdiff="nvim -d"
+    alias gui="gitui"
+    export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.12.0.7-4.fc34.x86_64/"
+    export GTK_IM_MODULE DEFAULT=fcitx5
+    export QT_IM_MODULE  DEFAULT=fcitx5
+    export XMODIFIERS    DEFAULT=\@im=fcitx5
 fi
+export PATH="$JAVA_HOME:$PATH"
+# add rust path
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$HOME/.local/bin/"
