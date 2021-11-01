@@ -159,19 +159,11 @@ elif [ "${sysout}" = "Linux" ]; then
     alias l="ls -lh"
     alias la="ls -lAh"
     alias vimdiff="nvim -d"
-    alias gui="gitui"
     export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
-    export GTK_IM_MODULE DEFAULT=fcitx5
-    export QT_IM_MODULE  DEFAULT=fcitx5
-    export XMODIFIERS    DEFAULT=\@im=fcitx5
     export PATH="$PATH:/usr/local/go/bin"
 fi
+alias gui="gitui"
 export PATH="$JAVA_HOME:$PATH"
 # add rust path
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin/"
-# cancel proxy
-export http_proxy=""
-export https_proxy=""
-export HTTP_PROXY=""
-export HTTPS_PROXY=""
