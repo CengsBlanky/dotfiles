@@ -12,7 +12,6 @@ Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:andymass/vim-matchup.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:kana/vim-textobj-user.git'
-Plug 'git@github.com:chaoren/vim-wordmotion.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
 " align text
 Plug 'git@github.com:junegunn/vim-easy-align.git'
@@ -28,6 +27,7 @@ Plug 'git@github.com:mattn/webapi-vim.git'
 Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
 Plug 'git@github.com:pangloss/vim-javascript.git'
 Plug 'git@github.com:rust-lang/rust.vim.git'
+Plug 'git@github.com:fatih/vim-go.git', {'do': ':GoUpdateBinaries'}
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:godlygeek/tabular.git'
 Plug 'git@github.com:plasticboy/vim-markdown.git'
@@ -152,6 +152,7 @@ let g:coc_global_extensions=[
       \ 'coc-xml',
       \ 'coc-clangd',
       \ 'coc-rls',
+      \ 'coc-go',
       \ 'coc-tsserver',
       \ 'coc-pyright',
       \ 'coc-vetur',
@@ -270,7 +271,7 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 " Format whole buffer use Format
-nnoremap <C-f> :Format<CR>
+" nnoremap <C-f> :Format<CR>
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Add `:Fold` command to fold current buffer.
