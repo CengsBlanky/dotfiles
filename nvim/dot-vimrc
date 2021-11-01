@@ -37,6 +37,7 @@ Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 Plug 'git@github.com:frazrepo/vim-rainbow.git'
 Plug 'git@github.com:tribela/vim-transparent.git'
 Plug 'git@github.com:shaunsingh/nord.nvim.git'
+Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:romgrk/barbar.nvim.git'
 Plug 'git@github.com:nvim-lualine/lualine.nvim.git'
 " }}}
@@ -359,6 +360,7 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 " }}}
 " colorscheme plugins {{{
+let &t_ut=''
 set t_Co=256
 set termguicolors
 colorscheme nord
@@ -366,6 +368,11 @@ let g:dracula_italic = 0
 let g:dracula_underline = 1
 let g:dracula_undercurl = 1
 
+" nvim-colorizer {{{
+lua <<EOF
+require 'colorizer'.setup()
+EOF
+" }}}
 " highlight works just in certain color name, otherwise color would be normal font color
 " set guifg would be enough, but ctermfg would't hurt
 augroup color_settings
