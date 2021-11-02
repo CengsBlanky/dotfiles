@@ -12,7 +12,9 @@ Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:andymass/vim-matchup.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:kana/vim-textobj-user.git'
+Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
+Plug 'git@github.com:preservim/tagbar.git'
 " align text
 Plug 'git@github.com:junegunn/vim-easy-align.git'
 Plug 'git@github.com:terryma/vim-multiple-cursors.git'
@@ -331,6 +333,42 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :RG<cr>
 " }}}
+" tagbar {{{
+nnoremap <F8> :TagbarToggle<CR>
+let g:rust_use_custom_ctags_defs = 1  " if using rust.vim
+let g:tagbar_type_rust = {
+  \ 'ctagstype' : 'rust',
+  \ 'kinds' : [
+      \ 'n:modules',
+      \ 's:structures:1',
+      \ 'i:interfaces',
+      \ 'c:implementations',
+      \ 'f:functions:1',
+      \ 'g:enumerations:1',
+      \ 't:type aliases:1:0',
+      \ 'v:constants:1:0',
+      \ 'M:macros:1',
+      \ 'm:fields:1:0',
+      \ 'e:enum variants:1:0',
+      \ 'P:methods:1',
+  \ ],
+  \ 'sro': '::',
+  \ 'kind2scope' : {
+      \ 'n': 'module',
+      \ 's': 'struct',
+      \ 'i': 'interface',
+      \ 'c': 'implementation',
+      \ 'f': 'function',
+      \ 'g': 'enum',
+      \ 't': 'typedef',
+      \ 'v': 'variable',
+      \ 'M': 'macro',
+      \ 'm': 'field',
+      \ 'e': 'enumerator',
+      \ 'P': 'method',
+  \ },
+\ }
+" }}}
 " vim-rainbow {{{
 " let g:rainbow_active = 1
 autocmd FileType c,cpp,java,go,rust call rainbow#load()
@@ -540,8 +578,10 @@ nnoremap <M-k> <C-w>k
 nnoremap <M-l> <C-w>l
 " }}}
 " resize window
-nnoremap <silent><M-UP> :resize +2<CR>
-nnoremap <silent><M-DOWN> :resize -2<CR>
+nnoremap <silent><M-UP> :resize +1<CR>
+nnoremap <silent><M-DOWN> :resize -1<CR>
+nnoremap <silent><M-LEFT> :vertical resize +1<CR>
+nnoremap <silent><M-RIGHT> :vertical resize -1<CR>
 " split current window
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
