@@ -378,8 +378,9 @@ EOF
 " set guifg would be enough, but ctermfg would't hurt
 augroup color_settings
   autocmd!
-  autocmd ColorScheme dracula hi CocUnusedHighlight ctermfg=DarkYellow guifg=DarkYellow
-  autocmd ColorScheme dracula hi Comment ctermfg=DarkGray guifg=DarkGray
+  autocmd ColorScheme nord highlight CocUnusedHighlight guifg=DarkYellow
+  autocmd ColorScheme nord highlight Comment guifg=DarkGray
+  autocmd ColorScheme nord highlight Visual guibg=DeepSkyBlue guifg=#000000
 augroup END
 " highlight Comment cterm=italic gui=italic
 " }}}
