@@ -334,7 +334,7 @@ nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :RG<cr>
 " }}}
 " tagbar {{{
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F8> :TagbarToggle<CR><ESC>
 let g:rust_use_custom_ctags_defs = 1  " if using rust.vim
 let g:tagbar_type_rust = {
   \ 'ctagstype' : 'rust',

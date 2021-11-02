@@ -161,10 +161,12 @@ elif [ "${sysout}" = "Linux" ]; then
     alias la="ls -lAh"
     alias vimdiff="nvim -d"
     export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
-    export PATH="$PATH:/usr/local/go/bin"
 fi
 alias gui="gitui"
 export PATH="$JAVA_HOME:$PATH"
 # add rust path
 export PATH="$HOME/.cargo/bin:$PATH"
+# add go path
+export PATH="$HOME/go/bin/:$PATH"
 export PATH="$PATH:$HOME/.local/bin/"
+export PATH="$PATH:$HOME/bin/"
