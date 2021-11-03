@@ -419,6 +419,7 @@ augroup color_settings
   autocmd ColorScheme nord highlight CocUnusedHighlight guifg=DarkYellow
   autocmd ColorScheme nord highlight Comment guifg=DarkGray
   autocmd ColorScheme nord highlight Visual guibg=DeepSkyBlue guifg=#000000
+  autocmd ColorScheme nord highlight Search guifg=gold guibg=#000000
 augroup END
 " highlight Comment cterm=italic gui=italic
 " }}}
@@ -624,7 +625,7 @@ augroup filetype_edit_behavior
   " do not auto add comment when add new comment line in normal mode
   autocmd FileType * setlocal formatoptions-=o
   " auto remove all trailing empty lines before saving
-  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.vim,*.md
+  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.vim,*.md,*.yml,*.yaml
         \ call TrimEndLinesAndTrailingSpaces()
 augroup END
 

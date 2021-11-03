@@ -124,7 +124,9 @@ alias python="python3.9"
 alias pip="pip3.9"
 alias cls="clear"
 export "LANG=en_US.UTF-8"
-export EDITO="nvim"
+export EDITOR="nvim"
+export VISUAL="nvim"
+
 
 # use rg for fzf finder
 if type rg &> /dev/null; then
