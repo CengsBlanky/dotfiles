@@ -38,13 +38,15 @@ Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 " Plug 'git@github.com:dracula/vim.git', { 'as': 'dracula' }
 Plug 'git@github.com:frazrepo/vim-rainbow.git'
 Plug 'git@github.com:tribela/vim-transparent.git'
-Plug 'git@github.com:shaunsingh/nord.nvim.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:romgrk/barbar.nvim.git'
 Plug 'git@github.com:nvim-lualine/lualine.nvim.git'
+Plug 'git@github.com:shaunsingh/nord.nvim.git'
+Plug 'git@github.com:rmehri01/onenord.nvim.git'
 " }}}
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:kyazdani42/nvim-web-devicons.git'
+Plug 'git@github.com:ryanoasis/vim-devicons.git'
 call plug#end()
 " }}}
 " plugins setting {{{
@@ -54,7 +56,7 @@ let NERDTreeIgnore=[
       \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
-noremap <silent><M-1> :NERDTreeToggle<CR>
+noremap <silent><M-t> :NERDTreeToggle<CR>
 " }}}
 " tpope/vim-surround {{{
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
@@ -402,7 +404,7 @@ let g:vim_markdown_conceal = 0
 let &t_ut=''
 set t_Co=256
 set termguicolors
-colorscheme nord
+colorscheme onenord
 let g:dracula_italic = 0
 let g:dracula_underline = 1
 let g:dracula_undercurl = 1
@@ -416,17 +418,18 @@ EOF
 " set guifg would be enough, but ctermfg would't hurt
 augroup color_settings
   autocmd!
-  autocmd ColorScheme nord highlight CocUnusedHighlight guifg=DarkYellow
-  autocmd ColorScheme nord highlight Comment guifg=DarkGray
-  autocmd ColorScheme nord highlight Visual guibg=DeepSkyBlue guifg=#000000
-  autocmd ColorScheme nord highlight Search guifg=gold guibg=#000000
+  autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow
+  autocmd ColorScheme * highlight Comment guifg=DarkGray
+  autocmd ColorScheme * highlight Visual guibg=DeepSkyBlue guifg=#000000
+  autocmd ColorScheme * highlight Search guifg=gold guibg=#000000
+  autocmd ColorScheme * highlight CursorLine guibg=#495057
 augroup END
 " highlight Comment cterm=italic gui=italic
 " }}}
 " nvim-treesitter {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "javascript", "typescript", "css", "python", "bash", "html"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "c", "cpp", "javascript", "typescript", "css", "python", "bash", "html", "toml"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
