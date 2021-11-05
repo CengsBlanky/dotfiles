@@ -33,6 +33,7 @@ Plug 'git@github.com:fatih/vim-go.git', {'do': ':GoUpdateBinaries'}
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:godlygeek/tabular.git'
 Plug 'git@github.com:plasticboy/vim-markdown.git'
+Plug 'git@github.com:dstein64/vim-startuptime.git'
 " colorscheme & statusline {{{
 Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 " Plug 'git@github.com:dracula/vim.git', { 'as': 'dracula' }
