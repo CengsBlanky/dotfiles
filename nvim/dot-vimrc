@@ -360,8 +360,8 @@ lua <<EOF
 require'lualine'.setup{
   options = {
     theme  = 'auto' ,
-    component_separators = "",
-    section_separators = { right = '', left = '' },
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
     disable_filetypes = {},
   },
 }
