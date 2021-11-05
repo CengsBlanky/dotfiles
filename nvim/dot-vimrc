@@ -22,6 +22,7 @@ Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:neoclide/coc.nvim.git', {'branch': 'release'}
 " better hlsearch
 Plug 'git@github.com:haya14busa/incsearch.vim.git'
+Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:aperezdc/vim-template.git'
 Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'git@github.com:junegunn/fzf.vim.git'
@@ -36,13 +37,10 @@ Plug 'git@github.com:plasticboy/vim-markdown.git'
 Plug 'git@github.com:dstein64/vim-startuptime.git'
 " colorscheme & statusline {{{
 Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
-" Plug 'git@github.com:dracula/vim.git', { 'as': 'dracula' }
-Plug 'git@github.com:frazrepo/vim-rainbow.git'
 Plug 'git@github.com:tribela/vim-transparent.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:romgrk/barbar.nvim.git'
 Plug 'git@github.com:nvim-lualine/lualine.nvim.git'
-Plug 'git@github.com:shaunsingh/nord.nvim.git'
 Plug 'git@github.com:rmehri01/onenord.nvim.git'
 " }}}
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
@@ -64,16 +62,6 @@ autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
 " }}}
 " auto-pairs {{{
 let g:AutoPairsShortcutBackInsert = '<M-b>'
-" }}}
-" haya14busa/incsearch.vim {{{
-" automatically turn off hlsearch
-let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
 " }}}
 " Yggdroot/indentLine {{{
 let g:indentLine_fileTypeExclude = ['text', 'json', 'markdown']
@@ -372,10 +360,6 @@ let g:tagbar_type_rust = {
   \ },
 \ }
 " }}}
-" vim-rainbow {{{
-" let g:rainbow_active = 1
-autocmd FileType c,cpp,java,go,rust call rainbow#load()
-" }}}
 " lualine {{{
 lua <<EOF
 -- Change the background of lualine_c section for normal mode
@@ -406,9 +390,6 @@ let &t_ut=''
 set t_Co=256
 set termguicolors
 colorscheme onenord
-let g:dracula_italic = 0
-let g:dracula_underline = 1
-let g:dracula_undercurl = 1
 
 " nvim-colorizer {{{
 lua <<EOF
@@ -425,6 +406,24 @@ augroup color_settings
   autocmd ColorScheme * highlight Search guifg=gold guibg=#000000
   autocmd ColorScheme * highlight CursorLine guibg=#495057
 augroup END
+lua <<EOF
+require('onenord').setup({
+  borders = true, -- Split window borders
+  italics = {
+    comments = false, -- Italic comments
+    strings = false, -- Italic strings
+    keywords = false, -- Italic keywords
+    functions = false, -- Italic functions
+    variables = false, -- Italic variables
+    },
+  disable = {
+    background = false, -- Disable setting the background color
+    cursorline = false, -- Disable the cursorline
+    eob_lines = true, -- Hide the end-of-buffer lines
+    },
+  custom_highlights = {}, -- Overwrite default highlight groups
+})
+EOF
 " highlight Comment cterm=italic gui=italic
 " }}}
 " nvim-treesitter {{{
@@ -501,7 +500,7 @@ set hlsearch
 set mousehide
 set mouse=nv " enable mouse scroll etc...
 set noshowmode
-set cursorline
+" set cursorline
 set signcolumn=yes
 set nowrap
 set cmdheight=1
