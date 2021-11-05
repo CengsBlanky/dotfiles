@@ -21,7 +21,6 @@ Plug 'git@github.com:terryma/vim-multiple-cursors.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:neoclide/coc.nvim.git', {'branch': 'release'}
 " better hlsearch
-Plug 'git@github.com:haya14busa/incsearch.vim.git'
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:aperezdc/vim-template.git'
 Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
@@ -296,13 +295,8 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " }}}
-" git@github.com:rust-lang/rust.vim.git {{{
+" rust.vim {{{
 let g:rustfmt_autosave = 1
-" }}}
-" haya14busa/incsearch.vim {{{
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
 " }}}
 " junegunn/fzf {{{
 " [Buffers] Jump to the existing window if possible
@@ -365,9 +359,9 @@ lua <<EOF
 -- Change the background of lualine_c section for normal mode
 require'lualine'.setup{
   options = {
-    theme  = 'nord' ,
+    theme  = 'auto' ,
     component_separators = "",
-    section_separators = { right = '', left = '' },
+    section_separators = { right = '', left = '' },
     disable_filetypes = {},
   },
 }
@@ -410,7 +404,7 @@ lua <<EOF
 require('onenord').setup({
   borders = true, -- Split window borders
   italics = {
-    comments = false, -- Italic comments
+    comments = true, -- Italic comments
     strings = false, -- Italic strings
     keywords = false, -- Italic keywords
     functions = false, -- Italic functions
