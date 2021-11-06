@@ -390,16 +390,6 @@ lua <<EOF
 require 'colorizer'.setup()
 EOF
 " }}}
-" highlight works just in certain color name, otherwise color would be normal font color
-" set guifg would be enough, but ctermfg would't hurt
-augroup color_settings
-  autocmd!
-  autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow
-  autocmd ColorScheme * highlight Comment guifg=DarkGray
-  autocmd ColorScheme * highlight Visual guibg=DeepSkyBlue guifg=#000000
-  autocmd ColorScheme * highlight Search guifg=gold guibg=#000000
-  autocmd ColorScheme * highlight CursorLine guibg=#495057
-augroup END
 lua <<EOF
 require('onenord').setup({
   borders = true, -- Split window borders
@@ -415,9 +405,19 @@ require('onenord').setup({
     cursorline = false, -- Disable the cursorline
     eob_lines = true, -- Hide the end-of-buffer lines
     },
-  custom_highlights = {}, -- Overwrite default highlight groups
+  custom_highlights = {}, -- Overwrite default highlight groups TODO
 })
 EOF
+" highlight works just in certain color name, otherwise color would be normal font color
+" set guifg would be enough, but ctermfg would't hurt
+augroup color_settings
+  autocmd!
+  autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow
+  autocmd ColorScheme * highlight Comment guifg=DarkGray
+  autocmd ColorScheme * highlight Visual guibg=DeepSkyBlue guifg=#000000
+  autocmd ColorScheme * highlight Search guifg=gold guibg=#000000
+  autocmd ColorScheme * highlight CursorLine guibg=#495057
+augroup END
 " highlight Comment cterm=italic gui=italic
 " }}}
 " nvim-treesitter {{{
@@ -464,7 +464,7 @@ set relativenumber
 set backspace=2
 set incsearch
 set smartcase
-set tabstop=4 shiftwidth=4 expandtab autoindent shiftround
+set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
 set showcmd
 set laststatus=2
@@ -494,7 +494,6 @@ set hlsearch
 set mousehide
 set mouse=nv " enable mouse scroll etc...
 set noshowmode
-" set cursorline
 set signcolumn=yes
 set nowrap
 set cmdheight=1
@@ -600,7 +599,7 @@ augroup END
 augroup filetype_indent_size
   autocmd!
   autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json,vim
-        \ setlocal tabstop=2 shiftwidth=2 smarttab smartindent autoindent shiftround
+        \ setlocal tabstop=2 shiftwidth=2
   autocmd FileType text,markdown setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
   autocmd FileType text,markdown nnoremap j gj
   autocmd FileType text,markdown nnoremap k gk
