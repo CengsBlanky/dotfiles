@@ -39,7 +39,6 @@ Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 Plug 'git@github.com:tribela/vim-transparent.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:romgrk/barbar.nvim.git'
-Plug 'git@github.com:nvim-lualine/lualine.nvim.git'
 Plug 'git@github.com:rmehri01/onenord.nvim.git'
 " }}}
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
@@ -356,20 +355,6 @@ let g:tagbar_type_rust = {
   \ },
 \ }
 " }}}
-" lualine {{{
-lua <<EOF
--- Change the background of lualine_c section for normal mode
-require'lualine'.setup{
-  options = {
-    theme  = 'auto' ,
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    section_separators = {left = '', right = ''},
-    disable_filetypes = {},
-  },
-}
-EOF
-" }}}
 " barbar.nvim {{{
 let bufferline = get(g:, 'bufferline', {})
 let bufferline.icon_separator_active = ''
@@ -420,6 +405,11 @@ augroup color_settings
   autocmd ColorScheme * highlight Visual guibg=DeepSkyBlue guifg=#000000
   autocmd ColorScheme * highlight Search guifg=gold guibg=#000000
   autocmd ColorScheme * highlight CursorLine guibg=#495057
+
+  autocmd ColorScheme * highlight BufferCurrent      guibg=#495057 guifg=#eceff4
+  autocmd ColorScheme * highlight BufferCurrentIndex guibg=#495057 guifg=#eceff4
+  autocmd ColorScheme * highlight BufferCurrentMod   guibg=#495057 guifg=#eceff4
+  autocmd ColorScheme * highlight BufferCurrentSign  guibg=#495057 guifg=#eceff4
 augroup END
 " highlight Comment cterm=italic gui=italic
 " }}}
@@ -624,7 +614,7 @@ augroup filetype_edit_behavior
   " do not auto add comment when add new comment line in normal mode
   autocmd FileType * setlocal formatoptions-=o
   " auto remove all trailing empty lines before saving
-  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.vim,*.md,*.yml,*.yaml
+  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.md,*.yml,*.yaml
         \ call TrimEndLinesAndTrailingSpaces()
 augroup END
 
@@ -797,4 +787,14 @@ autocmd FileType rust,go nnoremap <leader>t :call CodeTest()<CR>
 command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++11 %s && ./a.out < %s', expand('%'), <q-args>))
 
 " }}}
-"}}}
+" statueline
+highlight GrayYellow gui=bold guifg=#ebcb8b guibg=#625D5D
+set statusline=%#GrayYellow#
+set statusline+=\ %F
+set statusline+=%r
+set statusline+=%m
+set statusline+=%=
+set statusline+=%10.50l:%-5.50c
+set statusline+=%4p%%\ 
+
+" }}}
