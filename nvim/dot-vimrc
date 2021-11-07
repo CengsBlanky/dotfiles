@@ -794,7 +794,8 @@ set statusline+=\ %F
 set statusline+=%r
 set statusline+=%m
 set statusline+=%=
-set statusline+=%10.50l:%-5.50c
-set statusline+=%4p%%\ 
+set statusline+=%6.50l:%-6.50c
+set statusline+=%3p%%
+set statusline+=\ \ 
 
 " }}}
