@@ -2,6 +2,9 @@
 let vim_config_file="~/.config/nvim/init.vim"
 let plugin_path="~/.vim/plugins/"
 let plug_file="~/.vim/plug.vim"
+let g:python_host_skip_check=1
+let g:python3_host_skip_check=1
+let g:python3_host_prog = '/usr/bin/python'
 " }}}
 " plugins {{{
 execute 'source' plug_file
@@ -620,7 +623,7 @@ augroup END
 
 augroup keymap_force
   autocmd!
-  autocmd FileType * nnoremap <nowait><silent> <Space> <C-f>
+  autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
 augroup END
 
 augroup windows_display
