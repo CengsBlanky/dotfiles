@@ -18,6 +18,8 @@ Plug 'git@github.com:kana/vim-textobj-user.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
 Plug 'git@github.com:preservim/tagbar.git'
+" write as root
+Plug 'git@github.com:lambdalisue/suda.vim.git'
 " align text
 Plug 'git@github.com:junegunn/vim-easy-align.git'
 Plug 'git@github.com:terryma/vim-multiple-cursors.git'
@@ -259,8 +261,8 @@ endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -789,15 +791,23 @@ autocmd FileType rust,go nnoremap <leader>t :call CodeTest()<CR>
 command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++11 %s && ./a.out < %s', expand('%'), <q-args>))
 
 " }}}
-" statueline
+" statueline {{{
+
 set statusline+=%h
 set statusline+=\ %F
-set statusline+=%r
-set statusline+=%m
+echom "modifiable:" &modifiable
+function FileWritableSign()
+  return filewritable(expand('%')) == 0 ? ' ' : ''
+endfunction
+set statusline+=%{FileWritableSign()}
+set statusline+=\ %{&modified?'':''}
 set statusline+=%=
-set statusline+=%6.50l:%-6.50c
+set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
 highlight StatusLine gui=bold guifg=#ebcb8b guibg=#625d5d
 highlight StatusLineNC gui=none guifg=#eceff4 guibg=#3a3a3a 
+
+" }}}
+
 " }}}
