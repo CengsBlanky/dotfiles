@@ -792,10 +792,10 @@ highlight GrayYellow gui=bold guifg=#ebcb8b guibg=#625D5D
 set statusline=%#GrayYellow#
 set statusline+=\ %F
 set statusline+=%r
-set statusline+=%m
+set statusline+=\ %m
 set statusline+=%=
 set statusline+=%6.50l:%-6.50c
-set statusline+=%3p%%
+set statusline+=%P
 set statusline+=\ \ 
 
 " }}}
