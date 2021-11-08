@@ -409,10 +409,10 @@ augroup color_settings
   autocmd ColorScheme * highlight Search guifg=gold guibg=#000000
   autocmd ColorScheme * highlight CursorLine guibg=#495057
 
-  autocmd ColorScheme * highlight BufferCurrent      guibg=#495057 guifg=#eceff4
-  autocmd ColorScheme * highlight BufferCurrentIndex guibg=#495057 guifg=#eceff4
-  autocmd ColorScheme * highlight BufferCurrentMod   guibg=#495057 guifg=#eceff4
-  autocmd ColorScheme * highlight BufferCurrentSign  guibg=#495057 guifg=#eceff4
+  autocmd ColorScheme * highlight BufferCurrent      guibg=#495057 guifg=#eceff4 gui=bold
+  autocmd ColorScheme * highlight BufferCurrentIndex guibg=#495057 guifg=#eceff4 gui=bold
+  autocmd ColorScheme * highlight BufferCurrentMod   guibg=#495057 guifg=#eceff4 gui=bold
+  autocmd ColorScheme * highlight BufferCurrentSign  guibg=#495057 guifg=#eceff4 gui=bold
 augroup END
 " highlight Comment cterm=italic gui=italic
 " }}}
@@ -790,9 +790,10 @@ command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('
 
 " }}}
 " statueline
+set statusline+=%h
 set statusline+=\ %F
 set statusline+=%r
-set statusline+=\ %m
+set statusline+=%m
 set statusline+=%=
 set statusline+=%6.50l:%-6.50c
 set statusline+=%P
