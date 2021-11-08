@@ -88,5 +88,3 @@ Host openEuler
 * 如果出现某个快捷键不是你想要的功能或者是tmux默认的快捷键与其他软件出现冲突, 想要解除快捷键与对应功能的关系, 可以在命令行输入: `tmux list-keys | grep []`, 例如, tmux默认使用`Escape`键实现`previous-window`功能, 但是`Escape`与vim的快捷键冲突, 此时在命令行输入: `tmux list-keys | grep previous-window`可以查看到快捷键的绑定关系, 此时只需在tmux配置文件中使用`unbind-key -T root Escape`即可解绑`Escape`默认功能, 此时就可以在vim中顺畅使用`Escape`键了
 > `Escape`键位在网络上有许多讨论, 有些结论是在tmux配置文件中设置`set -s escape-time 0`, 以个人理解, 该办法是解决在tmux中使用`Escape`快捷键时出现延时, 导致操作不流畅, 也就是说tmux将`Escape`视为一个前缀命令, 如果在一段时间的延时之后没有后续命令, 就执行`Escape`快捷键对应的功能(tmux对应默认功能为previous-window,即切换到前一个窗口), 个人强烈不建议在tmux中绑定使用`Escape`快捷键, 尤其是配合vim使用的时候,
 > 很多人都会将vim中的复位键(即键盘左上角ESC)设置为`jk`或者`jj`这些更容易按到的键位, 即便如此, 默认的<ESC>仍然在很多情况下发挥作用, 比如可视模式下取消选择, 命令模式下取消输入命令, 待决模式下取消进一步操作 这些都需要使用<ESC>才能更有效率, 更不用说很多强迫症会多次按下<ESC>键以保证自己处在NORMAL模式下
-
-test
