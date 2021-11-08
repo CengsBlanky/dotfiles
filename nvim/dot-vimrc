@@ -4,7 +4,7 @@ let plugin_path="~/.vim/plugins/"
 let plug_file="~/.vim/plug.vim"
 let g:python_host_skip_check=1
 let g:python3_host_skip_check=1
-let g:python3_host_prog = '/usr/bin/python'
+" let g:python3_host_prog = '/usr/bin/python'
 " }}}
 " plugins {{{
 execute 'source' plug_file
@@ -793,13 +793,18 @@ command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('
 " }}}
 " statueline {{{
 
+set statusline=
 set statusline+=%h
 set statusline+=\ %F
 function FileWritableSign()
   return filewritable(expand('%')) == 0 ? ' ' : ''
 endfunction
+function ModifiedSign()
+  return &modified ? ' []' : ''
+endfunction
 set statusline+=%{FileWritableSign()}
-set statusline+=\ %{&modified?'':''}
+set statusline+=%{ModifiedSign()}
+set statusline+=%10.{coc#status()}
 set statusline+=%=
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
