@@ -795,7 +795,6 @@ command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('
 
 set statusline+=%h
 set statusline+=\ %F
-echom "modifiable:" &modifiable
 function FileWritableSign()
   return filewritable(expand('%')) == 0 ? ' ' : ''
 endfunction
