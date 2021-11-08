@@ -804,7 +804,6 @@ function ModifiedSign()
 endfunction
 set statusline+=%{FileWritableSign()}
 set statusline+=%{ModifiedSign()}
-set statusline+=%10.{coc#status()}
 set statusline+=%=
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
