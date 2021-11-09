@@ -19,6 +19,7 @@ Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'git@github.com:junegunn/fzf.vim.git'
+Plug 'git@github.com:nanotech/jellybeans.vim.git'
 " colorscheme & statusline {{{
 Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 Plug 'git@github.com:tribela/vim-transparent.git'
@@ -109,11 +110,6 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :RG<cr>
 " }}}
-" colorscheme plugins {{{
-let &t_ut=''
-set t_Co=256
-set termguicolors
-" colorscheme onenord
 " }}}
 " }}}
 " editor {{{
@@ -351,5 +347,11 @@ set statusline+=\ \
 highlight StatusLine gui=bold guifg=#ebcb8b guibg=#625d5d
 highlight StatusLineNC gui=none guifg=#eceff4 guibg=#3a3a3a 
 
+" }}}
+" colorscheme plugins {{{
+let &t_ut=''
+set t_Co=256
+set termguicolors
+colorscheme jellybeans
 " }}}
 " }}}
