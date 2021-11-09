@@ -14,7 +14,7 @@ font:
   bold_italic:
     family: 'Liga SFMono Nerd Font'
     style: Bold Italic
-  size: 15.0
+  size: 17.0
 colors:
   primary:
     background: '#343a40'
