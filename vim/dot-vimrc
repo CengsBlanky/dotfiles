@@ -1,0 +1,355 @@
+" predefined variables {{{
+let vim_config_file="~/.vimrc"
+let plugin_path="~/.vim/plugins/"
+let plug_file="~/.vim/plug.vim"
+" }}}
+" plugins {{{
+execute 'source' plug_file
+call plug#begin(fnameescape(plugin_path))
+Plug 'git@github.com:tpope/vim-surround.git'
+Plug 'git@github.com:justinmk/vim-sneak.git'
+Plug 'git@github.com:kana/vim-textobj-user.git'
+" write as root
+Plug 'git@github.com:lambdalisue/suda.vim.git'
+" align text
+Plug 'git@github.com:junegunn/vim-easy-align.git'
+Plug 'git@github.com:terryma/vim-multiple-cursors.git'
+Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
+" better hlsearch
+Plug 'git@github.com:romainl/vim-cool.git'
+Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
+Plug 'git@github.com:junegunn/fzf.vim.git'
+" colorscheme & statusline {{{
+Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
+Plug 'git@github.com:tribela/vim-transparent.git'
+" }}}
+call plug#end()
+" }}}
+" plugins setting {{{
+" open NERDTreeToggle {{{
+let g:NERDTreeQuitOnOpen=3
+let NERDTreeIgnore=[
+      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
+      \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
+      \ ]
+noremap <silent><M-t> :NERDTreeToggle<CR>
+" }}}
+" tpope/vim-surround {{{
+autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
+" }}}
+" vim-textobj-user {{{
+" vim line textobj {{{
+call textobj#user#plugin('line', {
+\   '-': {
+\     'select-a-function': 'CurrentLineA',
+\     'select-a': 'al',
+\     'select-i-function': 'CurrentLineI',
+\     'select-i': 'il',
+\   },
+\ })
+
+function! CurrentLineA()
+  normal! 0
+  let head_pos = getpos('.')
+  normal! $
+  let tail_pos = getpos('.')
+  return ['v', head_pos, tail_pos]
+endfunction
+
+function! CurrentLineI()
+  normal! ^
+  let head_pos = getpos('.')
+  normal! g_
+  let tail_pos = getpos('.')
+  let non_blank_char_exists_p = getline('.')[head_pos[2] - 1] !~# '\s'
+  return
+  \ non_blank_char_exists_p
+  \ ? ['v', head_pos, tail_pos]
+  \ : 0
+endfunction
+" }}}
+" }}}
+" junegunn/vim-easy-align {{{
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+" }}}
+" terryma/vim-multiple-cursors {{{
+let g:multi_cursor_use_default_mapping=0
+" Default mapping
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<M-a>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<M-a>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+let g:multi_cursor_exit_from_visual_mode=1
+let g:multi_cursor_exit_from_insert_mode=1
+" }}}
+" junegunn/fzf {{{
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading  --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+nnoremap <C-p> :Files<cr>
+nnoremap <C-l> :RG<cr>
+" }}}
+" colorscheme plugins {{{
+let &t_ut=''
+set t_Co=256
+set termguicolors
+" colorscheme onenord
+" }}}
+" }}}
+" editor {{{
+" default {{{
+set nocompatible
+filetype plugin indent on
+syntax on
+set fileformat=unix
+set fileformats=unix,dos
+language en_US.UTF-8
+" unicode characters in the file autoload/float.vim
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp936
+" let mapleader=","
+" let maplocalleader=","
+inoremap jk <esc>
+" TextEdit might fail if hidden is not set.
+set hidden
+set number
+set relativenumber
+set backspace=2
+set incsearch
+set smartcase
+set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
+set softtabstop=4
+set showcmd
+set laststatus=2
+set wildmenu
+set showmatch
+" when file has been chaged outside of vim buffer, autoload it
+set autoread
+" when switch between buffers or execute specific command save current buffer
+set autowrite
+set confirm
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=100
+" set nobackup set nowritebackup set noswapfile set noundofile
+set undodir=~/.vim/.undo//
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
+set clipboard=unnamed
+set clipboard+=unnamedplus
+" add ctags support
+set tags=tags
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+" display
+set hlsearch
+set mousehide
+set mouse=nv " enable mouse scroll etc...
+set noshowmode
+set signcolumn=yes
+set nowrap
+set cmdheight=1
+" }}}
+" keymappings {{{
+
+" quick upper/lower case
+nnoremap <leader>] gUiw
+nnoremap <leader>[ guiw
+" close current window or buffer
+noremap <silent><M-w> :close<CR>
+noremap <silent><M-b> :bd<CR>
+" use command to open my vimrc
+command! Editrc execute 'edit' vim_config_file
+" screen scroll add <nowait> to execute immediately
+" see autocmd keymap_force to set scroll down
+" use backspace to scroll up
+nnoremap <silent><BS> <C-b>
+" <leader> <Enter> to create new line in normal mode
+nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
+" switch between buffers
+nnoremap <silent><nowait><RIGHT> :bn<CR>
+nnoremap <silent><nowait><LEFT> :bp<CR>
+if exists("bufferline")
+  nnoremap <silent><TAB> :BufferNext<CR>
+else
+  nnoremap <silent><TAB> :bn<CR>
+endif
+" cd to current file directory
+nnoremap <leader>cd :lcd %:p:h<CR>
+" map <esc> to quit terminal mode
+tnoremap <Esc> <C-\><C-n>
+" use <UP> and <DOWN> to scroll screen
+nnoremap <silent><UP> 1<C-U><DOWN>
+nnoremap <silent><DOWN> 1<C-D><UP>
+" save
+nnoremap <silent><Enter> :w<CR>
+
+"}}}
+
+" to use `Meta+{h,j,k,l}` to navigate windows from any mode: {{{
+tnoremap <M-h> <C-\><C-N><C-w>h
+tnoremap <M-j> <C-\><C-N><C-w>j
+tnoremap <M-k> <C-\><C-N><C-w>k
+tnoremap <M-l> <C-\><C-N><C-w>l
+inoremap <M-h> <C-\><C-N><C-w>h
+inoremap <M-j> <C-\><C-N><C-w>j
+inoremap <M-k> <C-\><C-N><C-w>k
+inoremap <M-l> <C-\><C-N><C-w>l
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
+" }}}
+" resize window
+nnoremap <silent><M-UP> :resize +1<CR>
+nnoremap <silent><M-DOWN> :resize -1<CR>
+nnoremap <silent><M-LEFT> :vertical resize +1<CR>
+nnoremap <silent><M-RIGHT> :vertical resize -1<CR>
+" split current window
+nnoremap <silent><leader>- :split<CR>
+nnoremap <silent><leader>/ :vsplit<CR>
+" quickfix list operations
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprevious<CR>
+" }}}
+" autocmd {{{
+augroup filetype_specific
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+augroup END
+
+augroup filetype_indent_size
+  autocmd!
+  autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json,vim
+        \ setlocal tabstop=2 shiftwidth=2
+  autocmd FileType text,markdown setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
+  autocmd FileType text,markdown nnoremap j gj
+  autocmd FileType text,markdown nnoremap k gk
+  autocmd FileType text,markdown nnoremap 0 g0
+  autocmd FileType text,markdown nnoremap $ g$
+  autocmd FileType text,markdown nnoremap ^ g^
+augroup END
+
+function TrimEndLinesAndTrailingSpaces()
+  let save_cursor = getpos(".")
+  silent! %s#\($\n\s*\)\+\%$##
+  silent! %s/\s\+$//e
+  call setpos('.', save_cursor)
+endfunction
+augroup filetype_edit_behavior
+  autocmd!
+  autocmd FileType * setlocal textwidth=0
+  " do not auto add comment when add new comment line in normal mode
+  autocmd FileType * setlocal formatoptions-=o
+  " auto remove all trailing empty lines before saving
+  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.md,*.yml,*.yaml
+        \ call TrimEndLinesAndTrailingSpaces()
+augroup END
+
+augroup keymap_force
+  autocmd!
+  autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
+augroup END
+
+augroup windows_display
+  autocmd!
+  autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
+  autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
+augroup END
+
+" delete other buffers {{{
+command! -nargs=? -complete=buffer -bang Bonly
+      \ :call BufOnly('<args>', '<bang>')
+
+function! BufOnly(buffer, bang)
+  if a:buffer == ''
+    " No buffer provided, use the current buffer.
+    let buffer = bufnr('%')
+  elseif (a:buffer + 0) > 0
+    " A buffer number was provided.
+    let buffer = bufnr(a:buffer + 0)
+  else
+    " A buffer name was provided.
+    let buffer = bufnr(a:buffer)
+  endif
+
+  if buffer == -1
+    echohl ErrorMsg
+    echomsg "No matching buffer for" a:buffer
+    echohl None
+    return
+  endif
+
+  let last_buffer = bufnr('$')
+
+  let delete_count = 0
+  let n = 1
+  while n <= last_buffer
+    if n != buffer && buflisted(n)
+      if a:bang == '' && getbufvar(n, '&modified')
+        echohl ErrorMsg
+        echomsg 'No write since last change for buffer'
+              \ n '(add ! to override)'
+        echohl None
+      else
+        silent exe 'bdel' . a:bang . ' ' . n
+        if ! buflisted(n)
+          let delete_count = delete_count+1
+        endif
+      endif
+    endif
+    let n = n+1
+  endwhile
+
+  if delete_count == 1
+    echomsg delete_count "buffer deleted"
+  elseif delete_count > 1
+    echomsg delete_count "buffers deleted"
+  endif
+
+endfunction
+" }}}
+" }}}
+" statueline {{{
+set statusline=
+set statusline+=%h
+set statusline+=\ %f
+function FileWritableSign()
+  return filewritable(expand('%')) == 0 ? ' ' : ''
+endfunction
+function ModifiedSign()
+  return &modified ? ' []' : ''
+endfunction
+set statusline+=%{FileWritableSign()}
+set statusline+=%{ModifiedSign()}
+set statusline+=%=
+set statusline+=%6.50l/%-6.50L
+set statusline+=%P
+set statusline+=\ \ 
+highlight StatusLine gui=bold guifg=#ebcb8b guibg=#625d5d
+highlight StatusLineNC gui=none guifg=#eceff4 guibg=#3a3a3a 
+
+" }}}
+" }}}
