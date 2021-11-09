@@ -792,7 +792,6 @@ command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('
 
 " }}}
 " statueline {{{
-
 set statusline=
 set statusline+=%h
 set statusline+=\ %f
