@@ -1,6 +1,5 @@
 background_opacity: 0.95
 window:
-  decorations: none
   startup_mode: Windowed
   dynamic_title: true
   history: 20000
@@ -15,7 +14,7 @@ font:
   bold_italic:
     family: 'Liga SFMono Nerd Font'
     style: Bold Italic
-  size: 13.0
+  size: 15.0
 colors:
   primary:
     background: '#343a40'
