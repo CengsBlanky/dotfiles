@@ -528,16 +528,8 @@ nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>
 " save
 nnoremap <silent><Enter> :w<CR>
-" Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
-for c in range(char2nr('A'), char2nr('Z'))
-  execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
-  execute 'lnoremap ' . nr2char(c) . ' ' . nr2char(c+32)
-endfor
-" Kill the capslock when leaving insert mode.
-autocmd InsertLeave * set iminsert=0
-
-"" Open explorer where current file is located {{{
-"" Only for win for now.
+" Open explorer where current file is located {{{
+" Only for win for now.
 func! OpenFileExplorer() abort
   if exists("b:netrw_curdir")
     let path = substitute(b:netrw_curdir, "/", "\\", "g")
@@ -555,7 +547,7 @@ func! OpenFileExplorer() abort
 endfunc
 
 nnoremap <silent> gof :call OpenFileExplorer()<CR>
-"}}}
+" }}}
 
 " to use `Meta+{h,j,k,l}` to navigate windows from any mode: {{{
 tnoremap <M-h> <C-\><C-N><C-w>h
