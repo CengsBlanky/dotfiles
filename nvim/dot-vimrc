@@ -490,7 +490,6 @@ set shortmess+=c
 set hlsearch
 set mousehide
 set mouse=nv " enable mouse scroll etc...
-set noshowmode
 set signcolumn=yes
 set nowrap
 set cmdheight=1
