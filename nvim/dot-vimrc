@@ -43,6 +43,7 @@ Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 Plug 'git@github.com:tribela/vim-transparent.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
+
 Plug 'git@github.com:arcticicestudio/nord-vim.git'
 Plug 'git@github.com:rmehri01/onenord.nvim.git'
 Plug 'git@github.com:morhetz/gruvbox.git'
@@ -50,6 +51,9 @@ Plug 'git@github.com:andreasvc/vim-256noir.git'
 Plug 'git@github.com:ayu-theme/ayu-vim.git'
 Plug 'git@github.com:owickstrom/vim-colors-paramount.git'
 Plug 'git@github.com:fxn/vim-monochrome.git'
+Plug 'git@github.com:altercation/vim-colors-solarized.git'
+Plug 'git@github.com:cocopon/iceberg.vim.git'
+
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:kyazdani42/nvim-web-devicons.git'
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
@@ -373,27 +377,32 @@ let g:buftabline_show=1
 let g:buftabline_indicators=1
 let g:buftabline_numbers=1
 " }}}
-" colorscheme plugins {{{
+" colorscheme {{{
 let &t_ut=''
 set t_Co=256
 set termguicolors
 let ayucolor="mirage"
-colorscheme ayu
+colorscheme iceberg
 
 " highlight works just in certain color name, otherwise color would be normal font color
 " set guifg would be enough, but ctermfg would't hurt
 augroup color_settings
   autocmd!
-  autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow
   autocmd ColorScheme * highlight Comment guifg=DarkGray
   autocmd ColorScheme * highlight Visual guibg=DeepSkyBlue guifg=#000000
   autocmd ColorScheme * highlight Search guifg=gold guibg=#000000
   autocmd ColorScheme * highlight CursorLine guibg=#495057
+  autocmd ColorScheme * highlight LineNr guifg=#868e96 gui=none
+
+  autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow
 
   autocmd ColorScheme * highlight BufTabLineCurrent guibg=#5e81ac guifg=#eceff4 gui=bold
   autocmd ColorScheme * highlight BufTabLineFill guibg=#DarkGray
   autocmd ColorScheme * highlight BufTabLineHidden guibg=#DarkGray
-  autocmd ColorScheme ayu highlight LineNr guifg=#868e96 gui=none
+
+  autocmd ColorScheme * highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
+  autocmd ColorScheme * highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
+  autocmd ColorScheme * highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
 augroup END
 
 " }}}
