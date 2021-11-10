@@ -43,17 +43,7 @@ Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 Plug 'git@github.com:tribela/vim-transparent.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
-
-Plug 'git@github.com:arcticicestudio/nord-vim.git'
-Plug 'git@github.com:rmehri01/onenord.nvim.git'
-Plug 'git@github.com:morhetz/gruvbox.git'
-Plug 'git@github.com:andreasvc/vim-256noir.git'
-Plug 'git@github.com:ayu-theme/ayu-vim.git'
-Plug 'git@github.com:owickstrom/vim-colors-paramount.git'
-Plug 'git@github.com:fxn/vim-monochrome.git'
-Plug 'git@github.com:altercation/vim-colors-solarized.git'
 Plug 'git@github.com:cocopon/iceberg.vim.git'
-
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:kyazdani42/nvim-web-devicons.git'
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
