@@ -404,6 +404,7 @@ augroup color_settings
   autocmd ColorScheme * highlight Search guifg=gold guibg=#000000
   autocmd ColorScheme * highlight CursorLine guibg=#495057
   autocmd ColorScheme * highlight LineNr guifg=#868e96 gui=none
+  autocmd ColorScheme * highlight MatchParen guifg=#ffd43b guibg=none gui=bold
 
   autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow
 
