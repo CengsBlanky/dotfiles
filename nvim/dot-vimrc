@@ -39,13 +39,17 @@ Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:godlygeek/tabular.git'
 Plug 'git@github.com:plasticboy/vim-markdown.git'
 Plug 'git@github.com:dstein64/vim-startuptime.git'
-" colorscheme & statusline {{{
 Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 Plug 'git@github.com:tribela/vim-transparent.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
+Plug 'git@github.com:arcticicestudio/nord-vim.git'
 Plug 'git@github.com:rmehri01/onenord.nvim.git'
-" }}}
+Plug 'git@github.com:morhetz/gruvbox.git'
+Plug 'git@github.com:andreasvc/vim-256noir.git'
+Plug 'git@github.com:ayu-theme/ayu-vim.git'
+Plug 'git@github.com:owickstrom/vim-colors-paramount.git'
+Plug 'git@github.com:fxn/vim-monochrome.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:kyazdani42/nvim-web-devicons.git'
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
@@ -365,6 +369,7 @@ let g:tagbar_type_rust = {
 \ }
 " }}}
 " buftabline {{{
+let g:buftabline_show=1
 let g:buftabline_indicators=1
 let g:buftabline_numbers=1
 " }}}
@@ -372,31 +377,9 @@ let g:buftabline_numbers=1
 let &t_ut=''
 set t_Co=256
 set termguicolors
-colorscheme onenord
+let ayucolor="mirage"
+colorscheme ayu
 
-" nvim-colorizer {{{
-lua <<EOF
-require 'colorizer'.setup()
-EOF
-" }}}
-lua <<EOF
-require('onenord').setup({
-  borders = true, -- Split window borders
-  italics = {
-    comments = false, -- Italic comments
-    strings = false, -- Italic strings
-    keywords = false, -- Italic keywords
-    functions = false, -- Italic functions
-    variables = false, -- Italic variables
-    },
-  disable = {
-    background = false, -- Disable setting the background color
-    cursorline = false, -- Disable the cursorline
-    eob_lines = true, -- Hide the end-of-buffer lines
-    },
-  custom_highlights = {}, -- Overwrite default highlight groups TODO
-})
-EOF
 " highlight works just in certain color name, otherwise color would be normal font color
 " set guifg would be enough, but ctermfg would't hurt
 augroup color_settings
@@ -407,9 +390,17 @@ augroup color_settings
   autocmd ColorScheme * highlight Search guifg=gold guibg=#000000
   autocmd ColorScheme * highlight CursorLine guibg=#495057
 
-  autocmd ColorScheme * highlight BufTabLineCurrent guibg=#495057 guifg=#eceff4 gui=bold
+  autocmd ColorScheme * highlight BufTabLineCurrent guibg=#5e81ac guifg=#eceff4 gui=bold
+  autocmd ColorScheme * highlight BufTabLineFill guibg=#DarkGray
+  autocmd ColorScheme * highlight BufTabLineHidden guibg=#DarkGray
+  autocmd ColorScheme ayu highlight LineNr guifg=#868e96 gui=none
 augroup END
 
+" }}}
+" nvim-colorizer {{{
+lua <<EOF
+require 'colorizer'.setup()
+EOF
 " }}}
 " nvim-treesitter {{{
 lua <<EOF
