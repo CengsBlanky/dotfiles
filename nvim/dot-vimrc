@@ -790,16 +790,13 @@ set statusline+=\ %f
 function FileWritableSign()
   return filewritable(expand('%')) == 0 ? ' ' : ''
 endfunction
-function ModifiedSign()
-  return &modified ? ' []' : ''
-endfunction
 set statusline+=%{FileWritableSign()}
-set statusline+=%{ModifiedSign()}
+set statusline+=\ %m
 set statusline+=%=
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
-highlight StatusLine gui=bold guifg=#ebcb8b guibg=#434c5e
-highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#3b4252
+highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
+highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#343a40
 " }}}
 " }}}
