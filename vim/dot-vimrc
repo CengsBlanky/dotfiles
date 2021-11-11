@@ -1,95 +1,3 @@
-" predefined variables {{{
-let vim_config_file="~/.vimrc"
-let plug_file="~/.vim/plug.vim"
-" }}}
-" plugins {{{
-execute 'source' plug_file
-call plug#begin(fnameescape(plugin_path))
-Plug 'git@github.com:tpope/vim-surround.git'
-Plug 'git@github.com:justinmk/vim-sneak.git'
-" write as root
-Plug 'git@github.com:lambdalisue/suda.vim.git'
-" align text
-Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
-" better hlsearch
-Plug 'git@github.com:romainl/vim-cool.git'
-Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
-Plug 'git@github.com:junegunn/fzf.vim.git'
-Plug 'git@github.com:dstein64/vim-startuptime.git'
-Plug 'git@github.com:tribela/vim-transparent.git'
-Plug 'git@github.com:ap/vim-buftabline.git'
-Plug 'git@github.com:cocopon/iceberg.vim.git'
-Plug 'git@github.com:ryanoasis/vim-devicons.git'
-call plug#end()
-" }}}
-" plugins setting {{{
-" open NERDTreeToggle {{{
-let g:NERDTreeQuitOnOpen=3
-let NERDTreeIgnore=[
-      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
-      \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
-      \ ]
-noremap <silent><M-t> :NERDTreeToggle<CR>
-" }}}
-" tpope/vim-surround {{{
-autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
-" }}}
-" junegunn/fzf {{{
-" [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
-" [[B]Commits] Customize the options used by 'git log':
-let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-" [Tags] Command to generate tags file
-let g:fzf_tags_command = 'ctags -R'
-
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading  --smart-case -- %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
-
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-nnoremap <C-p> :Files<cr>
-nnoremap <C-l> :RG<cr>
-" }}}
-" buftabline {{{
-let g:buftabline_show=1
-let g:buftabline_indicators=1
-let g:buftabline_numbers=1
-" }}}
-" colorscheme {{{
-let &t_ut=''
-set t_Co=256
-set termguicolors
-let ayucolor="mirage"
-colorscheme iceberg
-
-" highlight works just in certain color name, otherwise color would be normal font color
-" set guifg would be enough, but ctermfg would't hurt
-augroup color_settings
-  autocmd!
-  autocmd ColorScheme * highlight Comment guifg=DarkGray
-  autocmd ColorScheme * highlight Visual guibg=DeepSkyBlue guifg=#000000
-  autocmd ColorScheme * highlight Search guifg=gold guibg=#000000
-  autocmd ColorScheme * highlight CursorLine guibg=#495057
-  autocmd ColorScheme * highlight LineNr guifg=#868e96 gui=none
-  autocmd ColorScheme * highlight MatchParen guifg=#ffd43b guibg=none gui=bold
-
-  autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow
-
-  autocmd ColorScheme * highlight BufTabLineCurrent guibg=#5e81ac guifg=#eceff4 gui=bold
-  autocmd ColorScheme * highlight BufTabLineFill guibg=#DarkGray
-  autocmd ColorScheme * highlight BufTabLineHidden guibg=#DarkGray
-
-  autocmd ColorScheme * highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
-  autocmd ColorScheme * highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
-  autocmd ColorScheme * highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
-augroup END
-
-" }}}
-" }}}
 " editor {{{
 " default {{{
 set nocompatible
@@ -196,25 +104,7 @@ endfunc
 nnoremap <silent> gof :call OpenFileExplorer()<CR>
 " }}}
 
-" to use `Meta+{h,j,k,l}` to navigate windows from any mode: {{{
-tnoremap <M-h> <C-\><C-N><C-w>h
-tnoremap <M-j> <C-\><C-N><C-w>j
-tnoremap <M-k> <C-\><C-N><C-w>k
-tnoremap <M-l> <C-\><C-N><C-w>l
-inoremap <M-h> <C-\><C-N><C-w>h
-inoremap <M-j> <C-\><C-N><C-w>j
-inoremap <M-k> <C-\><C-N><C-w>k
-inoremap <M-l> <C-\><C-N><C-w>l
-nnoremap <M-h> <C-w>h
-nnoremap <M-j> <C-w>j
-nnoremap <M-k> <C-w>k
-nnoremap <M-l> <C-w>l
 " }}}
-" resize window
-nnoremap <silent><M-UP> :resize +1<CR>
-nnoremap <silent><M-DOWN> :resize -1<CR>
-nnoremap <silent><M-LEFT> :vertical resize +1<CR>
-nnoremap <silent><M-RIGHT> :vertical resize -1<CR>
 " split current window
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
@@ -234,25 +124,10 @@ nnoremap <leader>8 :b8<CR>
 nnoremap <leader>9 :b9<CR>
 " }}}
 " autocmd {{{
-" set filetypes as typescriptreact
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
-  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-augroup END
-
-augroup filetype_indent_size
-  autocmd!
-  autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json,vim
-        \ setlocal tabstop=2 shiftwidth=2
-  autocmd FileType text,markdown setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
-  autocmd FileType text,markdown nnoremap j gj
-  autocmd FileType text,markdown nnoremap k gk
-  autocmd FileType text,markdown nnoremap 0 g0
-  autocmd FileType text,markdown nnoremap $ g$
-  autocmd FileType text,markdown nnoremap ^ g^
 augroup END
 
 function TrimEndLinesAndTrailingSpaces()
@@ -283,36 +158,6 @@ augroup windows_display
   autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
 augroup END
 
-function! MarkdownFolds()
-  let thisline = getline(v:lnum)
-  if match(thisline, '^#\{6}[^#]*') >= 0
-    return ">6"
-  elseif match(thisline, '^#\{5}[^#]*') >= 0
-    return ">5"
-  elseif match(thisline, '^#\{4}[^#]*') >= 0
-    return ">4"
-  elseif match(thisline, '^#\{3}[^#]*') >= 0
-    return ">3"
-  elseif match(thisline, '^#\{2}[^#]*') >= 0
-    return ">2"
-  elseif match(thisline, '^#\{1}[^#]*') >= 0
-    return ">1"
-  else
-    return "="
-  endif
-endfunction
-
-function! MarkdownFoldText()
-  let foldsize = (v:foldend-v:foldstart)
-  return getline(v:foldstart).' ('.foldsize.' lines)'
-endfunction
-augroup filetype_fold
-  autocmd!
-  autocmd FileType markdown set foldmethod=expr foldexpr=MarkdownFolds() foldtext=MarkdownFoldText()
-augroup END
-
-" when creating new buffer, auto switch to insert mode
-autocmd BufNewFile * startinsert
 " delete other buffers {{{
 command! -nargs=? -complete=buffer -bang Bonly
       \ :call BufOnly('<args>', '<bang>')
@@ -379,7 +224,88 @@ set statusline+=%=
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
-highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
-highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
 " }}}
+" }}}
+" predefined variables {{{
+let vim_config_file="~/.vimrc"
+let plug_file="~/.vim/plug.vim"
+let plugin_path="~/.vim/plugins/"
+" }}}
+" plugins {{{
+execute 'source' plug_file
+call plug#begin(fnameescape(plugin_path))
+Plug 'git@github.com:tpope/vim-surround.git'
+Plug 'git@github.com:justinmk/vim-sneak.git'
+" write as root
+Plug 'git@github.com:lambdalisue/suda.vim.git'
+" align text
+Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
+" better hlsearch
+Plug 'git@github.com:romainl/vim-cool.git'
+Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
+Plug 'git@github.com:junegunn/fzf.vim.git'
+Plug 'git@github.com:dstein64/vim-startuptime.git'
+Plug 'git@github.com:tribela/vim-transparent.git'
+Plug 'git@github.com:ap/vim-buftabline.git'
+Plug 'git@github.com:ryanoasis/vim-devicons.git'
+call plug#end()
+" }}}
+" plugins setting {{{
+" open NERDTreeToggle {{{
+let g:NERDTreeQuitOnOpen=3
+let NERDTreeIgnore=[
+      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
+      \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
+      \ ]
+noremap <silent><C-t> :NERDTreeToggle<CR>
+" }}}
+" tpope/vim-surround {{{
+autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
+" }}}
+" junegunn/fzf {{{
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading  --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+nnoremap <C-p> :Files<cr>
+nnoremap <C-l> :RG<cr>
+" }}}
+" buftabline {{{
+let g:buftabline_show=1
+let g:buftabline_indicators=1
+let g:buftabline_numbers=1
+" }}}
+" }}}
+" colorscheme {{{
+colorscheme peachpuff
+highlight Comment ctermfg=Gray
+highlight Visual ctermbg=Blue ctermfg=Black
+highlight Search ctermfg=Brown ctermbg=DarkYellow cterm=bold
+highlight LineNr ctermfg=White
+highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE cterm=NONE
+highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE cterm=NONE
+highlight MatchParen term=bold ctermfg=Yellow ctermbg=NONE
+highlight StatusLineNC term=bold ctermfg=Black ctermbg=LightGray
+highlight StatusLine term=bold ctermfg=LightGray ctermbg=Black
+highlight Folded ctermfg=DarkGrey ctermbg=NONE
+highlight TabLine ctermfg=Black ctermbg=DarkGray cterm=NONE
+highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE
+highlight TabLineSel ctermfg=White ctermbg=Black cterm=bold
+highlight SpecialKey ctermfg=LightYellow ctermbg=NONE cterm=bold
+
+syn match myTodo contained "\<\(TODO\|FIXME\|NOTE\):"
+hi def link myTodo Todo
+highlight Todo ctermfg=DarkYellow ctermbg=NONE cterm=bold
 " }}}
