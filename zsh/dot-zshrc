@@ -106,6 +106,7 @@ PURE_PROMPT_SYMBOL="🡺"
 alias ll='ls -lAh'
 alias cls="clear"
 alias vim='nvim'
+alias vi='/usr/bin/vim'
 alias vimdiff="nvim -d"
 alias gui="gitui"
 # use exa instead of ls

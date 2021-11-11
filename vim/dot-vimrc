@@ -1,0 +1,385 @@
+" predefined variables {{{
+let vim_config_file="~/.vimrc"
+let plug_file="~/.vim/plug.vim"
+" }}}
+" plugins {{{
+execute 'source' plug_file
+call plug#begin(fnameescape(plugin_path))
+Plug 'git@github.com:tpope/vim-surround.git'
+Plug 'git@github.com:justinmk/vim-sneak.git'
+" write as root
+Plug 'git@github.com:lambdalisue/suda.vim.git'
+" align text
+Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
+" better hlsearch
+Plug 'git@github.com:romainl/vim-cool.git'
+Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
+Plug 'git@github.com:junegunn/fzf.vim.git'
+Plug 'git@github.com:dstein64/vim-startuptime.git'
+Plug 'git@github.com:tribela/vim-transparent.git'
+Plug 'git@github.com:ap/vim-buftabline.git'
+Plug 'git@github.com:cocopon/iceberg.vim.git'
+Plug 'git@github.com:ryanoasis/vim-devicons.git'
+call plug#end()
+" }}}
+" plugins setting {{{
+" open NERDTreeToggle {{{
+let g:NERDTreeQuitOnOpen=3
+let NERDTreeIgnore=[
+      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
+      \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
+      \ ]
+noremap <silent><M-t> :NERDTreeToggle<CR>
+" }}}
+" tpope/vim-surround {{{
+autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
+" }}}
+" junegunn/fzf {{{
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading  --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+nnoremap <C-p> :Files<cr>
+nnoremap <C-l> :RG<cr>
+" }}}
+" buftabline {{{
+let g:buftabline_show=1
+let g:buftabline_indicators=1
+let g:buftabline_numbers=1
+" }}}
+" colorscheme {{{
+let &t_ut=''
+set t_Co=256
+set termguicolors
+let ayucolor="mirage"
+colorscheme iceberg
+
+" highlight works just in certain color name, otherwise color would be normal font color
+" set guifg would be enough, but ctermfg would't hurt
+augroup color_settings
+  autocmd!
+  autocmd ColorScheme * highlight Comment guifg=DarkGray
+  autocmd ColorScheme * highlight Visual guibg=DeepSkyBlue guifg=#000000
+  autocmd ColorScheme * highlight Search guifg=gold guibg=#000000
+  autocmd ColorScheme * highlight CursorLine guibg=#495057
+  autocmd ColorScheme * highlight LineNr guifg=#868e96 gui=none
+  autocmd ColorScheme * highlight MatchParen guifg=#ffd43b guibg=none gui=bold
+
+  autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow
+
+  autocmd ColorScheme * highlight BufTabLineCurrent guibg=#5e81ac guifg=#eceff4 gui=bold
+  autocmd ColorScheme * highlight BufTabLineFill guibg=#DarkGray
+  autocmd ColorScheme * highlight BufTabLineHidden guibg=#DarkGray
+
+  autocmd ColorScheme * highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
+  autocmd ColorScheme * highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
+  autocmd ColorScheme * highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
+augroup END
+
+" }}}
+" }}}
+" editor {{{
+" default {{{
+set nocompatible
+filetype plugin indent on
+syntax on
+set fileformat=unix
+set fileformats=unix,dos
+language en_US.UTF-8
+" unicode characters in the file autoload/float.vim
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp936
+" let mapleader=","
+" let maplocalleader=","
+inoremap jk <esc>
+" TextEdit might fail if hidden is not set.
+set hidden
+set number
+set relativenumber
+set backspace=2
+set incsearch
+set smartcase
+set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
+set softtabstop=4
+set showcmd
+set laststatus=2
+set wildmenu
+set showmatch
+" when file has been chaged outside of vim buffer, autoload it
+set autoread
+" when switch between buffers or execute specific command save current buffer
+set autowrite
+set confirm
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=100
+" set nobackup set nowritebackup set noswapfile set noundofile
+set undodir=~/.vim/.undo//
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
+set clipboard=unnamed
+set clipboard+=unnamedplus
+" add ctags support
+set tags=tags
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+" display
+set hlsearch
+set mousehide
+set mouse=nv " enable mouse scroll etc...
+set signcolumn=yes
+set nowrap
+set cmdheight=1
+set showtabline=2
+" }}}
+" keymappings {{{
+
+" quick upper/lower case
+nnoremap <leader>] gUiw
+nnoremap <leader>[ guiw
+" close current window or buffer
+noremap <silent><M-w> :close<CR>
+noremap <silent><M-b> :bd<CR>
+" use command to open my vimrc
+command! Editrc execute 'edit' vim_config_file
+" screen scroll add <nowait> to execute immediately
+" see autocmd keymap_force to set scroll down
+" use backspace to scroll up
+nnoremap <silent><BS> <C-b>
+" <leader> <Enter> to create new line in normal mode
+nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
+" switch between buffers
+nnoremap <silent><nowait><RIGHT> :bn<CR>
+nnoremap <silent><nowait><LEFT> :bp<CR>
+" go next buffer
+nnoremap <silent><TAB> :bn<CR>
+" cd to current file directory
+nnoremap <leader>cd :lcd %:p:h<CR>
+" map <esc> to quit terminal mode
+tnoremap <Esc> <C-\><C-n>
+" use <UP> and <DOWN> to scroll screen
+nnoremap <silent><UP> 1<C-U><DOWN>
+nnoremap <silent><DOWN> 1<C-D><UP>
+" save
+nnoremap <silent><Enter> :w<CR>
+" Open explorer where current file is located {{{
+" Only for win for now.
+func! OpenFileExplorer() abort
+  if exists("b:netrw_curdir")
+    let path = substitute(b:netrw_curdir, "/", "\\", "g")
+  elseif expand("%:p") == ""
+    let path = expand("%:p:h")
+  else
+    let path = expand("%:p")
+  endif
+  " support windows and macos for now
+  if has("win32")
+    silent exe '!start explorer.exe /select,' .. path
+  elseif has('unix')
+    silent exe '!open ' .. path
+  endif
+endfunc
+
+nnoremap <silent> gof :call OpenFileExplorer()<CR>
+" }}}
+
+" to use `Meta+{h,j,k,l}` to navigate windows from any mode: {{{
+tnoremap <M-h> <C-\><C-N><C-w>h
+tnoremap <M-j> <C-\><C-N><C-w>j
+tnoremap <M-k> <C-\><C-N><C-w>k
+tnoremap <M-l> <C-\><C-N><C-w>l
+inoremap <M-h> <C-\><C-N><C-w>h
+inoremap <M-j> <C-\><C-N><C-w>j
+inoremap <M-k> <C-\><C-N><C-w>k
+inoremap <M-l> <C-\><C-N><C-w>l
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
+" }}}
+" resize window
+nnoremap <silent><M-UP> :resize +1<CR>
+nnoremap <silent><M-DOWN> :resize -1<CR>
+nnoremap <silent><M-LEFT> :vertical resize +1<CR>
+nnoremap <silent><M-RIGHT> :vertical resize -1<CR>
+" split current window
+nnoremap <silent><leader>- :split<CR>
+nnoremap <silent><leader>/ :vsplit<CR>
+" quickfix list operations
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprevious<CR>
+
+" buffer jump
+nnoremap <leader>1 :b1<CR>
+nnoremap <leader>2 :b2<CR>
+nnoremap <leader>3 :b3<CR>
+nnoremap <leader>4 :b4<CR>
+nnoremap <leader>5 :b5<CR>
+nnoremap <leader>6 :b6<CR>
+nnoremap <leader>7 :b7<CR>
+nnoremap <leader>8 :b8<CR>
+nnoremap <leader>9 :b9<CR>
+" }}}
+" autocmd {{{
+" set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
+augroup filetype_specific
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+augroup END
+
+augroup filetype_indent_size
+  autocmd!
+  autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json,vim
+        \ setlocal tabstop=2 shiftwidth=2
+  autocmd FileType text,markdown setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
+  autocmd FileType text,markdown nnoremap j gj
+  autocmd FileType text,markdown nnoremap k gk
+  autocmd FileType text,markdown nnoremap 0 g0
+  autocmd FileType text,markdown nnoremap $ g$
+  autocmd FileType text,markdown nnoremap ^ g^
+augroup END
+
+function TrimEndLinesAndTrailingSpaces()
+  let save_cursor = getpos(".")
+  silent! %s#\($\n\s*\)\+\%$##
+  silent! %s/\s\+$//e
+  call setpos('.', save_cursor)
+  " echom "trailing spaces and empty lines done!"
+endfunction
+augroup filetype_edit_behavior
+  autocmd!
+  autocmd FileType * setlocal textwidth=0
+  " do not auto add comment when add new comment line in normal mode
+  autocmd FileType * setlocal formatoptions-=o
+  " auto remove all trailing empty lines before saving
+  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.md,*.yml,*.yaml
+        \ call TrimEndLinesAndTrailingSpaces()
+augroup END
+
+augroup keymap_force
+  autocmd!
+  autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
+augroup END
+
+augroup windows_display
+  autocmd!
+  autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
+  autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
+augroup END
+
+function! MarkdownFolds()
+  let thisline = getline(v:lnum)
+  if match(thisline, '^#\{6}[^#]*') >= 0
+    return ">6"
+  elseif match(thisline, '^#\{5}[^#]*') >= 0
+    return ">5"
+  elseif match(thisline, '^#\{4}[^#]*') >= 0
+    return ">4"
+  elseif match(thisline, '^#\{3}[^#]*') >= 0
+    return ">3"
+  elseif match(thisline, '^#\{2}[^#]*') >= 0
+    return ">2"
+  elseif match(thisline, '^#\{1}[^#]*') >= 0
+    return ">1"
+  else
+    return "="
+  endif
+endfunction
+
+function! MarkdownFoldText()
+  let foldsize = (v:foldend-v:foldstart)
+  return getline(v:foldstart).' ('.foldsize.' lines)'
+endfunction
+augroup filetype_fold
+  autocmd!
+  autocmd FileType markdown set foldmethod=expr foldexpr=MarkdownFolds() foldtext=MarkdownFoldText()
+augroup END
+
+" when creating new buffer, auto switch to insert mode
+autocmd BufNewFile * startinsert
+" delete other buffers {{{
+command! -nargs=? -complete=buffer -bang Bonly
+      \ :call BufOnly('<args>', '<bang>')
+
+function! BufOnly(buffer, bang)
+  if a:buffer == ''
+    " No buffer provided, use the current buffer.
+    let buffer = bufnr('%')
+  elseif (a:buffer + 0) > 0
+    " A buffer number was provided.
+    let buffer = bufnr(a:buffer + 0)
+  else
+    " A buffer name was provided.
+    let buffer = bufnr(a:buffer)
+  endif
+
+  if buffer == -1
+    echohl ErrorMsg
+    echomsg "No matching buffer for" a:buffer
+    echohl None
+    return
+  endif
+
+  let last_buffer = bufnr('$')
+
+  let delete_count = 0
+  let n = 1
+  while n <= last_buffer
+    if n != buffer && buflisted(n)
+      if a:bang == '' && getbufvar(n, '&modified')
+        echohl ErrorMsg
+        echomsg 'No write since last change for buffer'
+              \ n '(add ! to override)'
+        echohl None
+      else
+        silent exe 'bdel' . a:bang . ' ' . n
+        if ! buflisted(n)
+          let delete_count = delete_count+1
+        endif
+      endif
+    endif
+    let n = n+1
+  endwhile
+
+  if delete_count == 1
+    echomsg delete_count "buffer deleted"
+  elseif delete_count > 1
+    echomsg delete_count "buffers deleted"
+  endif
+
+endfunction
+" }}}
+" }}}
+" statueline {{{
+set statusline=
+set statusline+=%h
+set statusline+=\ %f
+function FileWritableSign()
+  return filewritable(expand('%')) == 0 ? ' ' : ''
+endfunction
+set statusline+=%{FileWritableSign()}
+set statusline+=\ %m
+set statusline+=%=
+set statusline+=%6.50l/%-6.50L
+set statusline+=%P
+set statusline+=\ \ 
+highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
+highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
+" }}}
+" }}}
