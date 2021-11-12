@@ -98,7 +98,8 @@ nnoremap <leader>8 :b8<CR>
 nnoremap <leader>9 :b9<CR>
 " close current buffer
 nnoremap <C-d> :bd<CR>
-" }}}
+" write as root
+cmap w!! w !sudo tee > /dev/null %
 " }}}
 " autocmd {{{
 
@@ -205,6 +206,7 @@ set statusline+=%P
 set statusline+=\ \ 
 " }}}
 " }}}
+" }}}
 " predefined variables {{{
 let vim_config_file="~/.vimrc"
 let plug_file="~/.vim/plug.vim"
@@ -215,8 +217,6 @@ execute 'source' plug_file
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
-" write as root
-Plug 'git@github.com:lambdalisue/suda.vim.git'
 " align text
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 " better hlsearch
@@ -270,18 +270,18 @@ let g:buftabline_numbers=1
 " colorscheme {{{
 colorscheme peachpuff
 highlight Comment ctermfg=Gray guifg=Gray
-highlight Visual ctermbg=Blue ctermfg=Black guibg=Blue guifg=Black
-highlight Search ctermfg=Brown ctermbg=DarkYellow guifg=Brown guibg=DarkYellow cterm=bold
+highlight Visual ctermbg=DarkGrey ctermfg=DarkGreen cterm=bold guibg=Blue guifg=Black
+highlight Search ctermfg=DarkGrey ctermbg=Green guifg=Brown guibg=DarkYellow cterm=bold
 highlight LineNr ctermfg=White guifg=White
 highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
 highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
 highlight MatchParen term=bold ctermfg=Yellow ctermbg=NONE gui=bold guifg=Yellow guibg=NONE
-highlight StatusLineNC term=bold ctermfg=Black ctermbg=LightGray gui=bold guifg=Black guibg=LightGray
+highlight StatusLineNC term=bold ctermfg=Black ctermbg=DarkGray gui=bold guifg=Black guibg=LightGray
 highlight StatusLine term=bold ctermfg=LightGray ctermbg=Black gui=bold guifg=LightGray guibg=Black
 highlight Folded ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE
-highlight TabLine ctermfg=Black ctermbg=DarkGray cterm=NONE guifg=Black guibg=DarkGray gui=NONE
+highlight TabLine ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=Black guibg=DarkGray gui=NONE
 highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
-highlight TabLineSel ctermfg=White ctermbg=Black cterm=bold guifg=White guibg=Black gui=bold
+highlight TabLineSel ctermfg=LightGray ctermbg=DarkGrey cterm=bold guifg=White guibg=Black gui=bold
 highlight SpecialKey ctermfg=LightYellow ctermbg=NONE cterm=bold guifg=LightYellow guibg=NONE gui=bold
 highlight String ctermfg=Green ctermbg=NONE cterm=NONE guifg=Green guibg=NONE gui=NONE
 
