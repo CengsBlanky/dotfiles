@@ -38,10 +38,12 @@ Plug 'git@github.com:godlygeek/tabular.git'
 Plug 'git@github.com:plasticboy/vim-markdown.git'
 Plug 'git@github.com:dstein64/vim-startuptime.git'
 Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
-Plug 'git@github.com:tribela/vim-transparent.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
-Plug 'git@github.com:cocopon/iceberg.vim.git'
-Plug 'git@github.com:rmehri01/onenord.nvim.git'
+
+Plug 'git@github.com:rktjmp/lush.nvim.git'
+Plug 'git@github.com:mcchrish/zenbones.nvim.git'
+Plug 'git@github.com:tribela/vim-transparent.git'
+
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:kyazdani42/nvim-web-devicons.git'
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
@@ -324,39 +326,25 @@ EOF
 let &t_ut=''
 set t_Co=256
 set termguicolors
-colorscheme onenord
-lua <<EOF
-require('onenord').setup({
-  borders = true, -- Split window borders
-  italics = {
-    comments = false, -- Italic comments
-    strings = false, -- Italic strings
-    keywords = false, -- Italic keywords
-    functions = false, -- Italic functions
-    variables = false, -- Italic variables
-  },
-  disable = {
-    background = true, -- Disable setting the background color
-    cursorline = true, -- Disable the cursorline
-    eob_lines = true, -- Hide the end-of-buffer lines
-  },
-  custom_highlights = {}, -- Overwrite default highlight groups
-})
-EOF
+set background=dark
+colorscheme forestbones
 " highlight works just in certain color name, otherwise color would be normal font color
 " set guifg would be enough, but ctermfg would't hurt
 augroup color_settings
   autocmd!
-  autocmd ColorScheme * highlight Comment guifg=DarkGray
-  autocmd ColorScheme * highlight Visual guibg=DeepSkyBlue guifg=#000000
-  autocmd ColorScheme * highlight Search guifg=gold guibg=#000000
+  autocmd ColorScheme * highlight Comment guifg=DarkGray gui=none
+  autocmd ColorScheme * highlight Visual guibg=#8fbcbb guifg=#000000
+  autocmd ColorScheme * highlight Search guifg=#a3be8c guibg=#495057 gui=bold
   autocmd ColorScheme * highlight CursorLine guibg=#495057
   autocmd ColorScheme * highlight LineNr guifg=#868e96 gui=none
   autocmd ColorScheme * highlight MatchParen guifg=#ffd43b guibg=none gui=bold
+  autocmd ColorScheme * highlight Number gui=none
+  autocmd ColorScheme * highlight String gui=none
+  autocmd ColorScheme * highlight Normal guifg=#d8dee9 gui=none
 
   autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow
 
-  autocmd ColorScheme * highlight BufTabLineCurrent guibg=#5e81ac guifg=#eceff4 gui=bold
+  autocmd ColorScheme * highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
   autocmd ColorScheme * highlight BufTabLineFill guibg=none
   autocmd ColorScheme * highlight BufTabLineHidden guibg=none
 
@@ -732,7 +720,7 @@ set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
 
-highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
+highlight StatusLine gui=bold guifg=#2e3440 guibg=#868e96
 highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
 highlight Comment ctermfg=Gray guifg=Gray
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
