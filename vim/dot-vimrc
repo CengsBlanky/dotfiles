@@ -105,6 +105,7 @@ nnoremap <C-d> :bd<CR>
 augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
+  autocmd BufRead *.log set filetype=text
 augroup END
 
 function TrimEndLinesAndTrailingSpaces()
@@ -198,6 +199,7 @@ endfunction
 set statusline+=%{FileWritableSign()}
 set statusline+=\ %m
 set statusline+=%=
+set statusline+=%y
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 

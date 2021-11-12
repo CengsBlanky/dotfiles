@@ -233,7 +233,9 @@ command! -nargs=0 Format :call CocAction('format')
 " nnoremap <C-f> :Format<CR>
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Auto format before buffer write
-autocmd BufWritePre *.c,*.h,*.cpp :call CocAction('format')
+if filereadable('.clang-format')
+  autocmd BufWritePre *.c,*.h,*.cpp :call CocAction('format')
+endif
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
