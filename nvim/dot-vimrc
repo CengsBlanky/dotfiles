@@ -5,7 +5,6 @@ let plug_file="~/.vim/plug.vim"
 let g:python_host_skip_check=1
 let g:python3_host_skip_check=1
 let g:python3_host_prog = '/usr/local/bin/python3.9'
-set guifont=Liga\ SFMono\ Nerd\ Font:h17
 " }}}
 " plugins {{{
 execute 'source' plug_file
@@ -15,7 +14,6 @@ Plug 'git@github.com:tpope/vim-commentary.git'
 Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:andymass/vim-matchup.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
-Plug 'git@github.com:kana/vim-textobj-user.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
 Plug 'git@github.com:preservim/tagbar.git'
@@ -40,13 +38,13 @@ Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:godlygeek/tabular.git'
 Plug 'git@github.com:plasticboy/vim-markdown.git'
 Plug 'git@github.com:dstein64/vim-startuptime.git'
-" colorscheme & statusline {{{
 Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
-Plug 'git@github.com:tribela/vim-transparent.git'
+Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
-Plug 'git@github.com:romgrk/barbar.nvim.git'
-Plug 'git@github.com:rmehri01/onenord.nvim.git'
-" }}}
+
+Plug 'git@github.com:tribela/vim-transparent.git'
+Plug 'git@github.com:arcticicestudio/nord-vim.git'
+
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:kyazdani42/nvim-web-devicons.git'
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
@@ -69,38 +67,6 @@ let g:AutoPairsShortcutBackInsert = '<M-b>'
 " }}}
 " Yggdroot/indentLine {{{
 let g:indentLine_fileTypeExclude = ['text', 'json', 'markdown']
-" }}}
-" vim-textobj-user {{{
-" vim line textobj {{{
-call textobj#user#plugin('line', {
-\   '-': {
-\     'select-a-function': 'CurrentLineA',
-\     'select-a': 'al',
-\     'select-i-function': 'CurrentLineI',
-\     'select-i': 'il',
-\   },
-\ })
-
-function! CurrentLineA()
-  normal! 0
-  let head_pos = getpos('.')
-  normal! $
-  let tail_pos = getpos('.')
-  return ['v', head_pos, tail_pos]
-endfunction
-
-function! CurrentLineI()
-  normal! ^
-  let head_pos = getpos('.')
-  normal! g_
-  let tail_pos = getpos('.')
-  let non_blank_char_exists_p = getline('.')[head_pos[2] - 1] !~# '\s'
-  return
-  \ non_blank_char_exists_p
-  \ ? ['v', head_pos, tail_pos]
-  \ : 0
-endfunction
-" }}}
 " }}}
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
@@ -361,13 +327,10 @@ let g:tagbar_type_rust = {
   \ },
 \ }
 " }}}
-" barbar.nvim {{{
-let bufferline = get(g:, 'bufferline', {})
-let bufferline.icon_separator_active = ''
-let bufferline.icon_separator_inactive = ''
-let bufferline.add_in_buffer_number_order = v:true
-let bufferline.animation = v:false
-let bufferline.closable = v:false
+" buftabline {{{
+let g:buftabline_show=1
+let g:buftabline_indicators=1
+let g:buftabline_numbers=1
 " }}}
 " vim markdown {{{
 let g:vim_markdown_folding_disabled = 1
@@ -377,47 +340,41 @@ let g:vim_markdown_conceal = 0
 let &t_ut=''
 set t_Co=256
 set termguicolors
-colorscheme onenord
-
+colorscheme nord
 " nvim-colorizer {{{
 lua <<EOF
 require 'colorizer'.setup()
 EOF
 " }}}
-lua <<EOF
-require('onenord').setup({
-  borders = true, -- Split window borders
-  italics = {
-    comments = false, -- Italic comments
-    strings = false, -- Italic strings
-    keywords = false, -- Italic keywords
-    functions = false, -- Italic functions
-    variables = false, -- Italic variables
-    },
-  disable = {
-    background = false, -- Disable setting the background color
-    cursorline = false, -- Disable the cursorline
-    eob_lines = true, -- Hide the end-of-buffer lines
-    },
-  custom_highlights = {}, -- Overwrite default highlight groups TODO
-})
-EOF
 " highlight works just in certain color name, otherwise color would be normal font color
 " set guifg would be enough, but ctermfg would't hurt
 augroup color_settings
   autocmd!
-  autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow
-  autocmd ColorScheme * highlight Comment guifg=DarkGray
-  autocmd ColorScheme * highlight Visual guibg=DeepSkyBlue guifg=#000000
-  autocmd ColorScheme * highlight Search guifg=gold guibg=#000000
-  autocmd ColorScheme * highlight CursorLine guibg=#495057
+  autocmd ColorScheme * highlight Comment ctermfg=Gray guifg=Gray
+  autocmd ColorScheme * highlight Visual guibg=#8fbcbb guifg=#000000
+  autocmd ColorScheme * highlight Search guifg=#a3be8c guibg=#495057 gui=bold
+  autocmd ColorScheme * highlight LineNr guifg=#868e96 gui=none
+  autocmd ColorScheme * highlight MatchParen guifg=#ffd43b guibg=none gui=bold
+  autocmd ColorScheme * highlight Number gui=none guifg=#a3be8c
+  autocmd ColorScheme * highlight String gui=none
+  autocmd ColorScheme * highlight Normal guifg=#d8dee9 gui=none
 
-  autocmd ColorScheme * highlight BufferCurrent      guibg=#495057 guifg=#eceff4 gui=bold
-  autocmd ColorScheme * highlight BufferCurrentIndex guibg=#495057 guifg=#eceff4 gui=bold
-  autocmd ColorScheme * highlight BufferCurrentMod   guibg=#495057 guifg=#eceff4 gui=bold
-  autocmd ColorScheme * highlight BufferCurrentSign  guibg=#495057 guifg=#eceff4 gui=bold
+  autocmd ColorScheme * highlight StatusLine gui=bold guifg=#2e3440 guibg=#81a1c1
+  autocmd ColorScheme * highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
+  autocmd ColorScheme * highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
+
+  autocmd ColorScheme * highlight CocUnusedHighlight guifg=#ebcb8b
+
+  autocmd ColorScheme * highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
+  autocmd ColorScheme * highlight BufTabLineFill guibg=none
+  autocmd ColorScheme * highlight BufTabLineHidden guibg=none
+
+  autocmd ColorScheme * highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
+  autocmd ColorScheme * highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
+  autocmd ColorScheme * highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
+
 augroup END
-" highlight Comment cterm=italic gui=italic
+
 " }}}
 " nvim-treesitter {{{
 lua <<EOF
@@ -491,7 +448,6 @@ set shortmess+=c
 set hlsearch
 set mousehide
 set mouse=nv " enable mouse scroll etc...
-set noshowmode
 set signcolumn=yes
 set nowrap
 set cmdheight=1
@@ -585,8 +541,6 @@ nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 " }}}
 " autocmd {{{
-" set filetypes as typescriptreact
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 augroup filetype_specific
   autocmd!
@@ -619,7 +573,7 @@ augroup filetype_edit_behavior
   " do not auto add comment when add new comment line in normal mode
   autocmd FileType * setlocal formatoptions-=o
   " auto remove all trailing empty lines before saving
-  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.md,*.yml,*.yaml
+  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.yml,*.yaml
         \ call TrimEndLinesAndTrailingSpaces()
 augroup END
 
@@ -661,9 +615,6 @@ augroup filetype_fold
   autocmd!
   autocmd FileType markdown set foldmethod=expr foldexpr=MarkdownFolds() foldtext=MarkdownFoldText()
 augroup END
-
-" when creating new buffer, auto switch to insert mode
-autocmd BufNewFile * startinsert
 " delete other buffers {{{
 command! -nargs=? -complete=buffer -bang Bonly
       \ :call BufOnly('<args>', '<bang>')
@@ -808,9 +759,5 @@ set statusline+=%=
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
-highlight StatusLine gui=bold guifg=#F6D155 guibg=#434c5e
-highlight StatusLineNC gui=none guifg=#eceff4 guibg=#3a3a3a 
-
 " }}}
-
 " }}}
