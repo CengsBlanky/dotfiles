@@ -100,6 +100,8 @@ nnoremap <leader>9 :b9<CR>
 nnoremap <C-d> :bd<CR>
 " write as root
 cmap w!! w !sudo tee > /dev/null %
+" normal quit editor
+nnoremap Q :q<CR>
 " }}}
 " autocmd {{{
 
