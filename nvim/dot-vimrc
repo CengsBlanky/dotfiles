@@ -14,10 +14,8 @@ Plug 'git@github.com:tpope/vim-commentary.git'
 Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:andymass/vim-matchup.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
-Plug 'git@github.com:kana/vim-textobj-user.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
-Plug 'git@github.com:preservim/tagbar.git'
 " write as root
 Plug 'git@github.com:lambdalisue/suda.vim.git'
 " align text
@@ -41,7 +39,6 @@ Plug 'git@github.com:plasticboy/vim-markdown.git'
 Plug 'git@github.com:dstein64/vim-startuptime.git'
 Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 Plug 'git@github.com:tribela/vim-transparent.git'
-Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:cocopon/iceberg.vim.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
@@ -66,38 +63,6 @@ let g:AutoPairsShortcutBackInsert = '<M-b>'
 " }}}
 " Yggdroot/indentLine {{{
 let g:indentLine_fileTypeExclude = ['text', 'json', 'markdown']
-" }}}
-" vim-textobj-user {{{
-" vim line textobj {{{
-call textobj#user#plugin('line', {
-\   '-': {
-\     'select-a-function': 'CurrentLineA',
-\     'select-a': 'al',
-\     'select-i-function': 'CurrentLineI',
-\     'select-i': 'il',
-\   },
-\ })
-
-function! CurrentLineA()
-  normal! 0
-  let head_pos = getpos('.')
-  normal! $
-  let tail_pos = getpos('.')
-  return ['v', head_pos, tail_pos]
-endfunction
-
-function! CurrentLineI()
-  normal! ^
-  let head_pos = getpos('.')
-  normal! g_
-  let tail_pos = getpos('.')
-  let non_blank_char_exists_p = getline('.')[head_pos[2] - 1] !~# '\s'
-  return
-  \ non_blank_char_exists_p
-  \ ? ['v', head_pos, tail_pos]
-  \ : 0
-endfunction
-" }}}
 " }}}
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
@@ -326,42 +291,6 @@ nnoremap <C-l> :RG<cr>
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 " }}}
-" tagbar {{{
-nnoremap <F8> :TagbarToggle<CR><ESC>
-let g:rust_use_custom_ctags_defs = 1  " if using rust.vim
-let g:tagbar_type_rust = {
-  \ 'ctagstype' : 'rust',
-  \ 'kinds' : [
-      \ 'n:modules',
-      \ 's:structures:1',
-      \ 'i:interfaces',
-      \ 'c:implementations',
-      \ 'f:functions:1',
-      \ 'g:enumerations:1',
-      \ 't:type aliases:1:0',
-      \ 'v:constants:1:0',
-      \ 'M:macros:1',
-      \ 'm:fields:1:0',
-      \ 'e:enum variants:1:0',
-      \ 'P:methods:1',
-  \ ],
-  \ 'sro': '::',
-  \ 'kind2scope' : {
-      \ 'n': 'module',
-      \ 's': 'struct',
-      \ 'i': 'interface',
-      \ 'c': 'implementation',
-      \ 'f': 'function',
-      \ 'g': 'enum',
-      \ 't': 'typedef',
-      \ 'v': 'variable',
-      \ 'M': 'macro',
-      \ 'm': 'field',
-      \ 'e': 'enumerator',
-      \ 'P': 'method',
-  \ },
-\ }
-" }}}
 " buftabline {{{
 let g:buftabline_show=1
 let g:buftabline_indicators=1
@@ -392,9 +321,7 @@ EOF
 let &t_ut=''
 set t_Co=256
 set termguicolors
-let ayucolor="mirage"
 colorscheme iceberg
-
 " highlight works just in certain color name, otherwise color would be normal font color
 " set guifg would be enough, but ctermfg would't hurt
 augroup color_settings
@@ -409,19 +336,13 @@ augroup color_settings
   autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow
 
   autocmd ColorScheme * highlight BufTabLineCurrent guibg=#5e81ac guifg=#eceff4 gui=bold
-  autocmd ColorScheme * highlight BufTabLineFill guibg=#DarkGray
-  autocmd ColorScheme * highlight BufTabLineHidden guibg=#DarkGray
+  autocmd ColorScheme * highlight BufTabLineFill guibg=none
+  autocmd ColorScheme * highlight BufTabLineHidden guibg=none
 
   autocmd ColorScheme * highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
   autocmd ColorScheme * highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
   autocmd ColorScheme * highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
 augroup END
-
-" }}}
-" nvim-colorizer {{{
-lua <<EOF
-require 'colorizer'.setup()
-EOF
 " }}}
 " }}}
 " editor {{{
@@ -775,7 +696,7 @@ autocmd FileType rust,go nnoremap <leader>t :call CodeTest()<CR>
 command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++11 %s && ./a.out < %s', expand('%'), <q-args>))
 
 " }}}
-" statueline {{{
+" default colors {{{
 set statusline=
 set statusline+=%h
 set statusline+=\ %f
@@ -788,7 +709,10 @@ set statusline+=%=
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
+
 highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
 highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
+highlight Comment ctermfg=Gray guifg=Gray
+highlight Folded ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE
 " }}}
 " }}}

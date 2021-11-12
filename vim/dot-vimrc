@@ -69,46 +69,23 @@ command! Editrc execute 'edit' vim_config_file
 nnoremap <silent><BS> <C-b>
 " <leader> <Enter> to create new line in normal mode
 nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
-" switch between buffers
-nnoremap <silent><nowait><RIGHT> :bn<CR>
-nnoremap <silent><nowait><LEFT> :bp<CR>
-" go next buffer
-nnoremap <silent><TAB> :bn<CR>
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>
 " map <esc> to quit terminal mode
 tnoremap <Esc> <C-\><C-n>
 " save
 nnoremap <silent><Enter> :w<CR>
-" Open explorer where current file is located {{{
-" Only for win for now.
-func! OpenFileExplorer() abort
-  if exists("b:netrw_curdir")
-    let path = substitute(b:netrw_curdir, "/", "\\", "g")
-  elseif expand("%:p") == ""
-    let path = expand("%:p:h")
-  else
-    let path = expand("%:p")
-  endif
-  " support windows and macos for now
-  if has("win32")
-    silent exe '!start explorer.exe /select,' .. path
-  elseif has('unix')
-    silent exe '!open ' .. path
-  endif
-endfunc
-
-nnoremap <silent> gof :call OpenFileExplorer()<CR>
-" }}}
-
-" }}}
 " split current window
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
 " quickfix list operations
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
-
+" switch between buffers
+nnoremap <silent><nowait><RIGHT> :bn<CR>
+nnoremap <silent><nowait><LEFT> :bp<CR>
+" go next buffer
+nnoremap <silent><TAB> :bn<CR>
 " buffer jump
 nnoremap <leader>1 :b1<CR>
 nnoremap <leader>2 :b2<CR>
@@ -119,6 +96,9 @@ nnoremap <leader>6 :b6<CR>
 nnoremap <leader>7 :b7<CR>
 nnoremap <leader>8 :b8<CR>
 nnoremap <leader>9 :b9<CR>
+" close current buffer
+nnoremap <C-d> :bd<CR>
+" }}}
 " }}}
 " autocmd {{{
 
@@ -287,22 +267,22 @@ let g:buftabline_numbers=1
 " }}}
 " colorscheme {{{
 colorscheme peachpuff
-highlight Comment ctermfg=Gray
-highlight Visual ctermbg=Blue ctermfg=Black
-highlight Search ctermfg=Brown ctermbg=DarkYellow cterm=bold
-highlight LineNr ctermfg=White
-highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE cterm=NONE
-highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE cterm=NONE
-highlight MatchParen term=bold ctermfg=Yellow ctermbg=NONE
-highlight StatusLineNC term=bold ctermfg=Black ctermbg=LightGray
-highlight StatusLine term=bold ctermfg=LightGray ctermbg=Black
-highlight Folded ctermfg=DarkGrey ctermbg=NONE
-highlight TabLine ctermfg=Black ctermbg=DarkGray cterm=NONE
-highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE
-highlight TabLineSel ctermfg=White ctermbg=Black cterm=bold
-highlight SpecialKey ctermfg=LightYellow ctermbg=NONE cterm=bold
+highlight Comment ctermfg=Gray guifg=Gray
+highlight Visual ctermbg=Blue ctermfg=Black guibg=Blue guifg=Black
+highlight Search ctermfg=Brown ctermbg=DarkYellow guifg=Brown guibg=DarkYellow cterm=bold
+highlight LineNr ctermfg=White guifg=White
+highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
+highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
+highlight MatchParen term=bold ctermfg=Yellow ctermbg=NONE gui=bold guifg=Yellow guibg=NONE
+highlight StatusLineNC term=bold ctermfg=Black ctermbg=LightGray gui=bold guifg=Black guibg=LightGray
+highlight StatusLine term=bold ctermfg=LightGray ctermbg=Black gui=bold guifg=LightGray guibg=Black
+highlight Folded ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE
+highlight TabLine ctermfg=Black ctermbg=DarkGray cterm=NONE guifg=Black guibg=DarkGray gui=NONE
+highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
+highlight TabLineSel ctermfg=White ctermbg=Black cterm=bold guifg=White guibg=Black gui=bold
+highlight SpecialKey ctermfg=LightYellow ctermbg=NONE cterm=bold guifg=LightYellow guibg=NONE gui=bold
 
 syn match myTodo contained "\<\(TODO\|FIXME\|NOTE\):"
 hi def link myTodo Todo
-highlight Todo ctermfg=DarkYellow ctermbg=NONE cterm=bold
+highlight Todo ctermfg=DarkYellow ctermbg=NONE cterm=bold guifg=DarkYellow guibg=NONE gui=NONE
 " }}}
