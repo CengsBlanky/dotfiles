@@ -283,6 +283,7 @@ highlight TabLine ctermfg=Black ctermbg=DarkGray cterm=NONE guifg=Black guibg=Da
 highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
 highlight TabLineSel ctermfg=White ctermbg=Black cterm=bold guifg=White guibg=Black gui=bold
 highlight SpecialKey ctermfg=LightYellow ctermbg=NONE cterm=bold guifg=LightYellow guibg=NONE gui=bold
+highlight String ctermfg=Green ctermbg=NONE cterm=NONE guifg=Green guibg=NONE gui=NONE
 
 syn match myTodo contained "\<\(TODO\|FIXME\|NOTE\):"
 hi def link myTodo Todo
