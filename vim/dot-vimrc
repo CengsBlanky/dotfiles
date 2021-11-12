@@ -14,12 +14,14 @@ Plug 'git@github.com:lambdalisue/suda.vim.git'
 Plug 'git@github.com:junegunn/vim-easy-align.git'
 Plug 'git@github.com:terryma/vim-multiple-cursors.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
+Plug 'git@github.com:ap/vim-buftabline.git'
 " better hlsearch
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'git@github.com:junegunn/fzf.vim.git'
 Plug 'git@github.com:morhetz/gruvbox.git'
 Plug 'git@github.com:tribela/vim-transparent.git'
+Plug 'git@github.com:dstein64/vim-startuptime.git'
 call plug#end()
 " }}}
 " plugins setting {{{
@@ -73,6 +75,11 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :RG<cr>
+" }}}
+" buftabline {{{
+let g:buftabline_show=1
+let g:buftabline_indicators=1
+let g:buftabline_numbers=1
 " }}}
 " }}}
 " }}}
@@ -275,20 +282,34 @@ set statusline+=\ %f
 function FileWritableSign()
   return filewritable(expand('%')) == 0 ? ' ' : ''
 endfunction
-function ModifiedSign()
-  return &modified ? ' []' : ''
-endfunction
 set statusline+=%{FileWritableSign()}
-set statusline+=%{ModifiedSign()}
+set statusline+=\ %m
 set statusline+=%=
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
-autocmd Colorscheme * highlight StatusLine gui=bold guifg=#ebcb8b guibg=#625d5d
-autocmd Colorscheme * highlight StatusLineNC gui=none guifg=#eceff4 guibg=#3a3a3a 
 
+" highlight StatusLine cterm=bold ctermbg=DarkGray ctermfg=Yellow
+" highlight StatusLineNC cterm=none ctermbg=DarkGray ctermfg=LightGray
 " }}}
 " colorscheme plugins {{{
+augroup color_settings
+  autocmd!
+  autocmd ColorScheme * highlight Comment ctermfg=Gray guifg=Gray
+  autocmd ColorScheme * highlight Visual guibg=#8fbcbb guifg=#000000
+  autocmd ColorScheme * highlight Search guifg=#a3be8c guibg=#495057 gui=bold
+  autocmd ColorScheme * highlight MatchParen guifg=#ffd43b guibg=NONE gui=bold
+
+  autocmd ColorScheme * highlight Folded ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE
+
+  autocmd ColorScheme * highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
+  autocmd ColorScheme * highlight BufTabLineFill guibg=NONE
+  autocmd ColorScheme * highlight BufTabLineHidden guibg=NONE
+
+  autocmd ColorScheme * highlight GitGutterAdd    guibg=NONE guifg=#74b816 ctermfg=2 gui=bold
+  autocmd ColorScheme * highlight GitGutterChange guibg=NONE guifg=#fdb924 ctermfg=3 gui=bold
+  autocmd ColorScheme * highlight GitGutterDelete guibg=NONE guifg=#c92a2a ctermfg=1 gui=bold
+augroup END
 let &t_ut=''
 set t_Co=256
 set termguicolors
