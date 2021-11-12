@@ -530,7 +530,7 @@ augroup filetype_edit_behavior
   " do not auto add comment when add new comment line in normal mode
   autocmd FileType * setlocal formatoptions-=o
   " auto remove all trailing empty lines before saving
-  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.md,*.yml,*.yaml
+  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.yml,*.yaml
         \ call TrimEndLinesAndTrailingSpaces()
 augroup END
 
