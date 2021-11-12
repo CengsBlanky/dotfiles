@@ -453,6 +453,8 @@ set nowrap
 set cmdheight=1
 " }}}
 " keymappings {{{
+" quick quit
+nnoremap Q :q<CR>
 
 " quick upper/lower case
 nnoremap <leader>] gUiw

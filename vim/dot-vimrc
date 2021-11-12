@@ -138,6 +138,8 @@ set nowrap
 set cmdheight=1
 " }}}
 " keymappings {{{
+" quick quit
+nnoremap Q :q<CR>
 
 " quick upper/lower case
 nnoremap <leader>] gUiw
@@ -288,9 +290,6 @@ set statusline+=%=
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
-
-" highlight StatusLine cterm=bold ctermbg=DarkGray ctermfg=Yellow
-" highlight StatusLineNC cterm=none ctermbg=DarkGray ctermfg=LightGray
 " }}}
 " colorscheme plugins {{{
 augroup color_settings
@@ -299,8 +298,9 @@ augroup color_settings
   autocmd ColorScheme * highlight Visual guibg=#8fbcbb guifg=#000000
   autocmd ColorScheme * highlight Search guifg=#a3be8c guibg=#495057 gui=bold
   autocmd ColorScheme * highlight MatchParen guifg=#ffd43b guibg=NONE gui=bold
-
   autocmd ColorScheme * highlight Folded ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE
+  autocmd ColorScheme * highlight StatusLine ctermfg=Black ctermbg=Gray cterm=bold guifg=Black guibg=#869c98
+  autocmd ColorScheme * highlight StatusLineNC ctermfg=LightGray ctermbg=DarkGray cterm=NONE guifg=LightGrey guibg=#495057
 
   autocmd ColorScheme * highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
   autocmd ColorScheme * highlight BufTabLineFill guibg=NONE
