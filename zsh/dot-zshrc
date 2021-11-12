@@ -109,6 +109,10 @@ alias vim='nvim'
 alias vi='/usr/bin/vim'
 alias vimdiff="nvim -d"
 alias gui="gitui"
+alias gst="git status"
+alias gdiff="git diff | cat"
+alias gpush="git push"
+alias gcom="git commit -am "
 # use exa instead of ls
 if [ "$(command -v exa)" ]; then
     unalias -m 'll'
