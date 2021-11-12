@@ -41,6 +41,7 @@ Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 Plug 'git@github.com:tribela/vim-transparent.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:cocopon/iceberg.vim.git'
+Plug 'git@github.com:rmehri01/onenord.nvim.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:kyazdani42/nvim-web-devicons.git'
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
@@ -323,7 +324,25 @@ EOF
 let &t_ut=''
 set t_Co=256
 set termguicolors
-colorscheme iceberg
+colorscheme onenord
+lua <<EOF
+require('onenord').setup({
+  borders = true, -- Split window borders
+  italics = {
+    comments = false, -- Italic comments
+    strings = false, -- Italic strings
+    keywords = false, -- Italic keywords
+    functions = false, -- Italic functions
+    variables = false, -- Italic variables
+  },
+  disable = {
+    background = true, -- Disable setting the background color
+    cursorline = true, -- Disable the cursorline
+    eob_lines = true, -- Hide the end-of-buffer lines
+  },
+  custom_highlights = {}, -- Overwrite default highlight groups
+})
+EOF
 " highlight works just in certain color name, otherwise color would be normal font color
 " set guifg would be enough, but ctermfg would't hurt
 augroup color_settings
@@ -403,6 +422,7 @@ set cmdheight=1
 set showtabline=2
 " }}}
 " keymappings {{{
+nnoremap Q :q<CR>
 
 " quick upper/lower case
 nnoremap <leader>] gUiw
@@ -715,6 +735,6 @@ set statusline+=\ \
 highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
 highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
 highlight Comment ctermfg=Gray guifg=Gray
-highlight Folded ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE
+highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
 " }}}
 " }}}
