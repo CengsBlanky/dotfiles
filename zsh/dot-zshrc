@@ -130,9 +130,9 @@ alias bash="/usr/local/Cellar/bash/5.1.8/bin/bash"
 alias gui="gitui"
 # git quick cmd
 alias gst="git status"
-alias gdiff="git diff | cat"
-alias gpush="git push"
-alias gcom="git commit -am"
+alias gdf="git diff | cat"
+alias gph="git push"
+alias gcm="git commit -am"
 # use exa instead of ls
 if [ "$(command -v exa)" ]; then
     unalias -m 'll'
