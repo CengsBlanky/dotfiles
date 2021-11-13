@@ -114,6 +114,7 @@ let g:coc_global_extensions=[
       \ 'coc-json',
       \ 'coc-xml',
       \ 'coc-clangd',
+      \ 'coc-java',
       \ 'coc-rls',
       \ 'coc-go',
       \ 'coc-tsserver',
@@ -343,7 +344,12 @@ set termguicolors
 colorscheme nord
 " nvim-colorizer {{{
 lua <<EOF
-require 'colorizer'.setup()
+require 'colorizer'.setup {
+  'css';
+  'vue';
+  'javascript';
+  'html';
+}
 EOF
 " }}}
 " highlight works just in certain color name, otherwise color would be normal font color
