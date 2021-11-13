@@ -17,15 +17,12 @@ Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
 Plug 'git@github.com:preservim/tagbar.git'
-" write as root
-Plug 'git@github.com:lambdalisue/suda.vim.git'
-" align text
-Plug 'git@github.com:junegunn/vim-easy-align.git'
+Plug 'git@github.com:lambdalisue/suda.vim.git' " write as root
+Plug 'git@github.com:junegunn/vim-easy-align.git' " align text
 Plug 'git@github.com:terryma/vim-multiple-cursors.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:neoclide/coc.nvim.git', {'branch': 'release'}
-" better hlsearch
-Plug 'git@github.com:romainl/vim-cool.git'
+Plug 'git@github.com:romainl/vim-cool.git' " better hlsearch
 Plug 'git@github.com:aperezdc/vim-template.git'
 Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'git@github.com:junegunn/fzf.vim.git'
@@ -41,10 +38,8 @@ Plug 'git@github.com:dstein64/vim-startuptime.git'
 Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
-
 Plug 'git@github.com:tribela/vim-transparent.git'
 Plug 'git@github.com:arcticicestudio/nord-vim.git'
-
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:kyazdani42/nvim-web-devicons.git'
 Plug 'git@github.com:ryanoasis/vim-devicons.git'

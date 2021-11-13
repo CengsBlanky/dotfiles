@@ -8,8 +8,6 @@ execute 'source' plug_file
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
-" write as root
-Plug 'git@github.com:lambdalisue/suda.vim.git'
 " align text
 Plug 'git@github.com:junegunn/vim-easy-align.git'
 Plug 'git@github.com:terryma/vim-multiple-cursors.git'
