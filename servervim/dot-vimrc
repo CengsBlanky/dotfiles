@@ -1,0 +1,155 @@
+" editor {{{
+" default {{{
+set nocompatible
+filetype plugin indent on
+syntax on
+inoremap jk <esc>
+set hidden
+set number
+set relativenumber
+set backspace=2
+set incsearch
+set smartcase
+set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
+set softtabstop=4
+set showcmd
+set laststatus=2
+set wildmenu
+set showmatch
+set autoread
+set autowrite
+set confirm
+set updatetime=100
+set noswapfile
+set nobackup
+set noundofile
+set clipboard=unnamed
+set shortmess+=c
+set hlsearch
+set mousehide
+set mouse=nv " enable mouse scroll etc...
+set showtabline=2
+" }}}
+" keymappings {{{
+
+" quick upper/lower case
+nnoremap <leader>] gUiw
+nnoremap <leader>[ guiw
+" close current window or buffer
+noremap <silent><M-w> :close<CR>
+noremap <silent><M-b> :bd<CR>
+" use command to open my vimrc
+command! Editrc execute 'edit' vim_config_file
+" screen scroll add <nowait> to execute immediately
+" see autocmd keymap_force to set scroll down
+" use backspace to scroll up
+nnoremap <silent><BS> <C-b>
+" <leader> <Enter> to create new line in normal mode
+nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
+" cd to current file directory
+nnoremap <leader>cd :lcd %:p:h<CR>
+" save
+nnoremap <silent><Enter> :w<CR>
+" split current window
+nnoremap <silent><leader>- :split<CR>
+nnoremap <silent><leader>/ :vsplit<CR>
+" quickfix list operations
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprevious<CR>
+" switch between buffers
+nnoremap <silent><nowait><RIGHT> :bn<CR>
+nnoremap <silent><nowait><LEFT> :bp<CR>
+" go next buffer
+nnoremap <silent><TAB> :bn<CR>
+" buffer jump
+nnoremap <leader>1 :b1<CR>
+nnoremap <leader>2 :b2<CR>
+nnoremap <leader>3 :b3<CR>
+nnoremap <leader>4 :b4<CR>
+nnoremap <leader>5 :b5<CR>
+nnoremap <leader>6 :b6<CR>
+nnoremap <leader>7 :b7<CR>
+nnoremap <leader>8 :b8<CR>
+nnoremap <leader>9 :b9<CR>
+" close current buffer
+nnoremap <C-d> :bd<CR>
+" write as root
+cmap w!! w !sudo tee > /dev/null %
+" normal quit editor
+nnoremap Q :q<CR>
+" }}}
+" autocmd {{{
+
+augroup filetype_specific
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+  autocmd BufRead *.log set filetype=text
+augroup END
+
+function TrimEndLinesAndTrailingSpaces()
+  let save_cursor = getpos(".")
+  silent! %s#\($\n\s*\)\+\%$##
+  silent! %s/\s\+$//e
+  call setpos('.', save_cursor)
+  " echom "trailing spaces and empty lines done!"
+endfunction
+augroup filetype_edit_behavior
+  autocmd!
+  autocmd FileType * setlocal textwidth=0
+  " do not auto add comment when add new comment line in normal mode
+  autocmd FileType * setlocal formatoptions-=o
+  " auto remove all trailing empty lines before saving
+  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.md,*.yml,*.yaml
+        \ call TrimEndLinesAndTrailingSpaces()
+augroup END
+
+augroup keymap_force
+  autocmd!
+  autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
+augroup END
+
+augroup windows_display
+  autocmd!
+  autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
+  autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
+augroup END
+" }}}
+" }}}
+" predefined variables {{{
+let vim_config_file="~/.vimrc"
+let plug_file="~/.vim/plug.vim"
+let plugin_path="~/.vim/plugins/"
+" }}}
+" plugins {{{
+execute 'source' plug_file
+call plug#begin(fnameescape(plugin_path))
+Plug 'git@github.com:tpope/vim-surround.git'
+Plug 'git@github.com:justinmk/vim-sneak.git'
+" align text
+Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
+" better hlsearch
+Plug 'git@github.com:romainl/vim-cool.git'
+Plug 'git@github.com:ap/vim-buftabline.git'
+call plug#end()
+" }}}
+" plugins setting {{{
+let g:NERDTreeQuitOnOpen=3
+let NERDTreeIgnore=[
+      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
+      \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
+      \ ]
+noremap <silent><C-t> :NERDTreeToggle<CR>
+
+let g:buftabline_show=1
+let g:buftabline_indicators=1
+let g:buftabline_numbers=1
+" }}}
+colorscheme peachpuff
+hi StatusLine ctermfg=Black ctermbg=LightGray cterm=bold
+hi StatusLineNC ctermfg=LightGray ctermbg=Black
+hi folded ctermfg=LightGray ctermbg=NONE
+hi String ctermfg=DarkGreen
+hi Number ctermfg=DarkBlue
+hi LineNr ctermfg=DarkGray
+hi CursorLineNr cterm=bold ctermfg=Yellow
+hi Comment ctermfg=Gray
