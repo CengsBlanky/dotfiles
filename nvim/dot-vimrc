@@ -37,9 +37,9 @@ Plug 'git@github.com:dstein64/vim-startuptime.git'
 Plug 'git@github.com:Yggdroot/indentLine.git' " show indent level
 Plug 'git@github.com:ap/vim-buftabline.git'
 
-Plug 'git@github.com:rktjmp/lush.nvim.git'
-Plug 'git@github.com:mcchrish/zenbones.nvim.git'
-Plug 'git@github.com:tribela/vim-transparent.git'
+" Plug 'git@github.com:arcticicestudio/nord-vim.git'
+Plug 'git@github.com:EdenEast/nightfox.nvim.git'
+" Plug 'git@github.com:tribela/vim-transparent.git'
 
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:kyazdani42/nvim-web-devicons.git'
@@ -324,7 +324,7 @@ let &t_ut=''
 set t_Co=256
 set termguicolors
 set background=dark
-colorscheme forestbones
+colorscheme nightfox
 " highlight works just in certain color name, otherwise color would be normal font color
 " set guifg would be enough, but ctermfg would't hurt
 augroup color_settings
@@ -335,7 +335,7 @@ augroup color_settings
   autocmd ColorScheme * highlight CursorLine guibg=#495057
   autocmd ColorScheme * highlight LineNr guifg=#868e96 gui=none
   autocmd ColorScheme * highlight MatchParen guifg=#ffd43b guibg=none gui=bold
-  autocmd ColorScheme * highlight Number gui=none
+  autocmd ColorScheme * highlight Number gui=none guifg=#a3be8c
   autocmd ColorScheme * highlight String gui=none
   autocmd ColorScheme * highlight Normal guifg=#d8dee9 gui=none
 
@@ -349,6 +349,21 @@ augroup color_settings
   autocmd ColorScheme * highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
   autocmd ColorScheme * highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
 augroup END
+" nightfox{{{
+lua << EOF
+local nightfox = require('nightfox')
+
+-- This function set the configuration of nightfox. If a value is not passed in the setup function
+-- it will be taken from the default configuration above
+nightfox.setup({
+  fox = "nordfox", -- change the colorscheme to use nordfox
+  transparent = true,
+})
+
+-- Load the configuration set above and apply the colorscheme
+nightfox.load()
+EOF
+" }}}
 " }}}
 " }}}
 " editor {{{
@@ -717,7 +732,7 @@ set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
 
-highlight StatusLine gui=bold guifg=#2e3440 guibg=#868e96
+highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
 highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
 highlight Comment ctermfg=Gray guifg=Gray
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
