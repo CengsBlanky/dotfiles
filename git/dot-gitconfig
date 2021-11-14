@@ -7,3 +7,5 @@
 	editor = nvim
 [init]
 	defaultBranch = master
+[push]
+	default = simple
