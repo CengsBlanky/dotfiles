@@ -1,3 +1,25 @@
+" predefined variables {{{
+let vim_config_file="~/.vimrc"
+" }}}
+" plugins {{{
+call plug#begin("~/.vim/plugins")
+Plug 'git@github.com:tpope/vim-surround.git'
+Plug 'git@github.com:justinmk/vim-sneak.git'
+" align text
+Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
+" better hlsearch
+Plug 'git@github.com:romainl/vim-cool.git'
+Plug 'git@github.com:ap/vim-buftabline.git'
+call plug#end()
+" }}}
+" plugins setting {{{
+let g:NERDTreeQuitOnOpen=3
+noremap <silent><C-t> :NERDTreeToggle<CR>
+
+let g:buftabline_show=1
+let g:buftabline_indicators=1
+let g:buftabline_numbers=1
+" }}}
 " editor {{{
 " default {{{
 set nocompatible
@@ -27,7 +49,6 @@ set clipboard=unnamed
 set shortmess+=c
 set hlsearch
 set mousehide
-set mouse=nv " enable mouse scroll etc...
 set showtabline=2
 " }}}
 " keymappings {{{
@@ -86,7 +107,7 @@ augroup filetype_specific
   autocmd BufRead *.log set filetype=text
 augroup END
 
-function TrimEndLinesAndTrailingSpaces()
+function! TrimEndLinesAndTrailingSpaces()
   let save_cursor = getpos(".")
   silent! %s#\($\n\s*\)\+\%$##
   silent! %s/\s\+$//e
@@ -115,41 +136,16 @@ augroup windows_display
 augroup END
 " }}}
 " }}}
-" predefined variables {{{
-let vim_config_file="~/.vimrc"
-let plug_file="~/.vim/plug.vim"
-let plugin_path="~/.vim/plugins/"
-" }}}
-" plugins {{{
-execute 'source' plug_file
-call plug#begin(fnameescape(plugin_path))
-Plug 'git@github.com:tpope/vim-surround.git'
-Plug 'git@github.com:justinmk/vim-sneak.git'
-" align text
-Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
-" better hlsearch
-Plug 'git@github.com:romainl/vim-cool.git'
-Plug 'git@github.com:ap/vim-buftabline.git'
-call plug#end()
-" }}}
-" plugins setting {{{
-let g:NERDTreeQuitOnOpen=3
-let NERDTreeIgnore=[
-      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
-      \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
-      \ ]
-noremap <silent><C-t> :NERDTreeToggle<CR>
-
-let g:buftabline_show=1
-let g:buftabline_indicators=1
-let g:buftabline_numbers=1
-" }}}
+" colors {{{
 colorscheme peachpuff
+hi Visual ctermfg=LightGray ctermbg=Black
+hi Search ctermfg=Yellow ctermbg=Gray
 hi StatusLine ctermfg=Black ctermbg=LightGray cterm=bold
 hi StatusLineNC ctermfg=LightGray ctermbg=Black
 hi folded ctermfg=LightGray ctermbg=NONE
 hi String ctermfg=DarkGreen
 hi Number ctermfg=DarkBlue
 hi LineNr ctermfg=DarkGray
-hi CursorLineNr cterm=bold ctermfg=Yellow
+hi CursorLineNr cterm=bold ctermfg=DarkYellow
 hi Comment ctermfg=Gray
+" }}}
