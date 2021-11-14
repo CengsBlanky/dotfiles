@@ -135,17 +135,29 @@ augroup windows_display
   autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
 augroup END
 " }}}
+" statusline {{{
+set statusline=%h
+set statusline+=\ %f
+set statusline+=%r
+set statusline+=\ %m
+set statusline+=%=
+set statusline+=%y
+set statusline+=%6.50l/%-6.50L
+set statusline+=%P
+set statusline+=\ 
+
+" }}}
 " }}}
 " colors {{{
 colorscheme peachpuff
 hi Visual ctermfg=LightGray ctermbg=Black
 hi Search ctermfg=Yellow ctermbg=Gray
-hi StatusLine ctermfg=Black ctermbg=LightGray cterm=bold
-hi StatusLineNC ctermfg=LightGray ctermbg=Black
 hi folded ctermfg=LightGray ctermbg=NONE
 hi String ctermfg=DarkGreen
 hi Number ctermfg=DarkBlue
 hi LineNr ctermfg=DarkGray
 hi CursorLineNr cterm=bold ctermfg=DarkYellow
 hi Comment ctermfg=Gray
+hi StatusLine ctermfg=Black ctermbg=Gray cterm=bold
+hi StatusLineNC ctermfg=Black ctermbg=LightGray
 " }}}
