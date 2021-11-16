@@ -17,6 +17,10 @@ alias l="ls -l"
 alias ll="ls -lAh"
 alias cls="clear"
 alias ..="cd .."
+alias gst="git status"
+alias gdf="git diff"
+alias gcm="git commit -a"
+alias gps="git push"
 
 DEFAULT=$PS1
 PS1="\e[90m[\u@\h]\e[m \e[1;34m\w\e[m\n\e[92m->\e[m "
