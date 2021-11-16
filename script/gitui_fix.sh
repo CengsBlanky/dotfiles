@@ -5,4 +5,6 @@
 
 # when push in gitui error: Bad Credential
 ssh-add <private-ssh-key>
-# and donw
+# edit ~/.ssh/config, add line:
+AddKeysToAgent yes
+# and done
