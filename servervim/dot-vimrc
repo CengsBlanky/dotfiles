@@ -1,7 +1,9 @@
 " predefined variables {{{
 let vim_config_file="~/.vimrc"
+let plug_vim="~/.vim/autoload/plug.vim"
 " }}}
 " plugins {{{
+if filereadable(expand(plug_vim))
 call plug#begin("~/.vim/plugins")
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
@@ -11,7 +13,6 @@ Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 call plug#end()
-" }}}
 " plugins setting {{{
 let g:NERDTreeQuitOnOpen=3
 noremap <silent><C-t> :NERDTreeToggle<CR>
@@ -19,6 +20,10 @@ noremap <silent><C-t> :NERDTreeToggle<CR>
 let g:buftabline_show=1
 let g:buftabline_indicators=1
 let g:buftabline_numbers=1
+" }}}
+else
+    echom "no outer plugin loaded..."
+endif
 " }}}
 " editor {{{
 " default {{{
@@ -154,7 +159,7 @@ hi Visual ctermfg=LightGray ctermbg=Black
 hi Search ctermfg=Yellow ctermbg=Gray
 hi folded ctermfg=LightGray ctermbg=NONE
 hi String ctermfg=DarkGreen
-hi Number ctermfg=DarkBlue
+hi Number ctermfg=Green
 hi LineNr ctermfg=DarkGray
 hi CursorLineNr cterm=bold ctermfg=DarkYellow
 hi Comment ctermfg=Gray
