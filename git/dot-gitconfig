@@ -9,3 +9,8 @@
 	defaultBranch = master
 [push]
 	default = simple
+[color]
+	status = always
+	diff = always
+	branch = always
+	interactive = always

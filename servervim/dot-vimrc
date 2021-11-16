@@ -158,6 +158,9 @@ hi Number ctermfg=DarkBlue
 hi LineNr ctermfg=DarkGray
 hi CursorLineNr cterm=bold ctermfg=DarkYellow
 hi Comment ctermfg=Gray
+hi TabLine ctermfg=White ctermbg=Black cterm=NONE
+hi TabLineFill ctermbg=Black ctermfg=Black
+hi TabLineSel ctermfg=White ctermbg=DarkCyan cterm=bold
 hi StatusLine ctermfg=Black ctermbg=Gray cterm=bold
-hi StatusLineNC ctermfg=Black ctermbg=LightGray
+hi StatusLineNC ctermfg=DarkGray ctermbg=Black
 " }}}
