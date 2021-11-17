@@ -442,7 +442,7 @@ set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
 set clipboard=unnamed
 set clipboard+=unnamedplus
-" add ctags support
+" set tag file names
 set tags=tags
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -453,6 +453,9 @@ set mouse=nv " enable mouse scroll etc...
 set signcolumn=yes
 set nowrap
 set cmdheight=1
+" set default grep cmd
+set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
+set grepformat=%f:%l:%c:%m
 " }}}
 " keymappings {{{
 " quick quit
@@ -489,13 +492,6 @@ nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>
 " save
 nnoremap <silent><Enter> :w<CR>
-" Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
-for c in range(char2nr('A'), char2nr('Z'))
-  execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
-  execute 'lnoremap ' . nr2char(c) . ' ' . nr2char(c+32)
-endfor
-" Kill the capslock when leaving insert mode.
-autocmd InsertLeave * set iminsert=0
 
 "" Open explorer where current file is located {{{
 "" Only for win for now.
@@ -517,7 +513,6 @@ endfunc
 
 nnoremap <silent> gof :call OpenFileExplorer()<CR>
 "}}}
-
 " to use `Meta+{h,j,k,l}` to navigate windows from any mode: {{{
 tnoremap <M-h> <C-\><C-N><C-w>h
 tnoremap <M-j> <C-\><C-N><C-w>j
@@ -541,6 +536,7 @@ nnoremap <silent><M-RIGHT> :vertical resize -1<CR>
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
 " quickfix list operations
+nnoremap <leader>o :copen<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 " }}}
@@ -584,6 +580,8 @@ augroup END
 augroup keymap_force
   autocmd!
   autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
+  " unremap <CR> key when in quickfix list
+  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
 augroup windows_display
