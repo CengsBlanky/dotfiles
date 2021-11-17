@@ -1,0 +1,25 @@
+#!/bin/bash
+nowdate=$(date +%F)
+nowtime=$(date +%H:%M)
+journalDir="$HOME/notebook/journal/$(date +%Y)"
+journalfilename="${journalDir}/${nowdate}.md"
+lastminute=""
+
+if [ ! -d $journalDir ]; then
+    mkdir -p $journalDir
+fi
+
+if [ ! -f $journalfilename ]; then
+    echo "# Note for ${nowdate}" > $journalfilename
+else
+    lastminute=$(cat $journalfilename | grep -e "^#\{2\}\ [0-2][0-9]:[0-6][0-9]$" | tail -n 1)
+fi
+
+if [ "$lastminute" = "## $nowtime" ]; then
+    $EDITOR -c "norm Gzzo" $journalfilename
+else
+    $EDITOR -c "norm G2o" \
+        -c "norm GI## $nowtime" \
+        -c "norm G2o" \
+        -c "norm zz" $journalfilename
+fi

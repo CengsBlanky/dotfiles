@@ -7,13 +7,16 @@ window:
 font:
   ligatures: true
   normal:
-    family: 'Liga SFMono Nerd Font'
+    family: 'FiraCode Nerd Font'
+    style: Medium
   bold:
-    family: 'Liga SFMono Nerd Font'
+    family: 'FiraCode Nerd Font'
+    style: Bold
   italic:
-    family: 'Liga SFMono Nerd Font'
+    family: 'Victor Mono'
+    style: Bold
   bold_italic:
-    family: 'Liga SFMono Nerd Font'
+    family: 'Victor Mono'
     style: Bold Italic
   size: 13.0
 colors:

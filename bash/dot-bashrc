@@ -10,8 +10,6 @@ fi
 
 # User specific aliases and functions
 export LANG=en_US.utf8
-export VISUAL=vim
-export EDITOR=vim
 
 alias l="ls -l"
 alias ll="ls -lAh"
@@ -21,6 +19,17 @@ alias gst="git status"
 alias gdf="git diff"
 alias gcm="git commit -a"
 alias gps="git push"
+
+if [ "$(command -v nvim)" ]
+then
+    alias vim=nvim
+    export VISUAL=nvim
+    export EDITOR=nvim
+elif [ "$(command -v vim)" ]
+then
+    export VISUAL=vim
+    export EDITOR=vim
+fi
 
 DEFAULT=$PS1
 PS1="\e[90m[\u@\h]\e[m \e[1;34m\w\e[m\n\e[92m->\e[m "

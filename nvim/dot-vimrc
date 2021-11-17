@@ -728,6 +728,7 @@ endfunction
 set statusline+=%{FileWritableSign()}
 set statusline+=\ %m
 set statusline+=%=
+set statusline+=%y
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
