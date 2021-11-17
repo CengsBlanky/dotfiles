@@ -131,7 +131,7 @@ alias gui="gitui"
 # git quick cmd
 alias gst="git status"
 alias gdf="git diff | cat"
-alias gph="git push"
+alias gps="git push"
 alias gcm="git commit -a"
 # use exa instead of ls
 if [ "$(command -v exa)" ]; then
