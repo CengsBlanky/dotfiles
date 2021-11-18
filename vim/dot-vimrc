@@ -52,6 +52,8 @@ set signcolumn=yes
 set nowrap
 set cmdheight=1
 set showtabline=2
+set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
+set grepformat=%f:%l:%c:%m
 " }}}
 " keymappings {{{
 
@@ -79,6 +81,7 @@ nnoremap <silent><Enter> :w<CR>
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
 " quickfix list operations
+nnoremap <leader>o :copen<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 " switch between buffers
@@ -131,6 +134,8 @@ augroup END
 augroup keymap_force
   autocmd!
   autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
+  " unremap <CR> key when in quickfix list
+  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
 augroup windows_display
@@ -219,16 +224,9 @@ execute 'source' plug_file
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
-" align text
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
-" better hlsearch
 Plug 'git@github.com:romainl/vim-cool.git'
-Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
-Plug 'git@github.com:junegunn/fzf.vim.git'
-Plug 'git@github.com:dstein64/vim-startuptime.git'
-Plug 'git@github.com:tribela/vim-transparent.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
-Plug 'git@github.com:ryanoasis/vim-devicons.git'
 call plug#end()
 " }}}
 " plugins setting {{{
