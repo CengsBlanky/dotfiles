@@ -743,5 +743,6 @@ highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
 highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
 highlight Comment ctermfg=Gray guifg=Gray
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
+highlight CursorLineNr gui=bold guifg=DarkYellow
 " }}}
 " }}}
