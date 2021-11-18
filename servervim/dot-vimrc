@@ -7,9 +7,7 @@ if filereadable(expand(plug_vim))
 call plug#begin("~/.vim/plugins")
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
-" align text
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
-" better hlsearch
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 call plug#end()
@@ -55,6 +53,9 @@ set shortmess+=c
 set hlsearch
 set mousehide
 set showtabline=2
+" set default grep cmd
+set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
+set grepformat=%f:%l:%c:%m
 " }}}
 " keymappings {{{
 
@@ -80,6 +81,7 @@ nnoremap <silent><Enter> :w<CR>
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
 " quickfix list operations
+nnoremap <leader>o :copen<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 " switch between buffers
@@ -132,6 +134,8 @@ augroup END
 augroup keymap_force
   autocmd!
   autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
+  " unremap <CR> key when in quickfix list
+  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
 augroup windows_display
