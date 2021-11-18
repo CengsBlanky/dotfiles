@@ -272,6 +272,7 @@ colorscheme peachpuff
 highlight Comment ctermfg=Gray guifg=Gray
 highlight Visual ctermbg=DarkGrey ctermfg=DarkGreen cterm=bold guibg=Blue guifg=Black
 highlight Search ctermfg=DarkGrey ctermbg=Green guifg=Brown guibg=DarkYellow cterm=bold
+highlight SignColumn ctermbg=NONE
 highlight LineNr ctermfg=White guifg=White
 highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
 highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
