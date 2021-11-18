@@ -420,6 +420,9 @@ set signcolumn=yes
 set nowrap
 set cmdheight=1
 set showtabline=2
+" set default grep cmd
+set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
+set grepformat=%f:%l:%c:%m
 " }}}
 " keymappings {{{
 nnoremap Q :q<CR>
@@ -496,6 +499,7 @@ nnoremap <silent><M-RIGHT> :vertical resize -1<CR>
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
 " quickfix list operations
+nnoremap <leader>o :copen<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 
@@ -552,6 +556,8 @@ augroup END
 augroup keymap_force
   autocmd!
   autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
+  " unremap <CR> key when in quickfix list
+  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
 augroup windows_display
