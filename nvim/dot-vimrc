@@ -454,6 +454,8 @@ set cmdheight=1
 " set default grep cmd
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
 set grepformat=%f:%l:%c:%m
+" add current directories
+set path+=**
 " }}}
 " keymappings {{{
 " quick quit
@@ -744,9 +746,7 @@ command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('
 
 " }}}
 " statueline {{{
-set statusline=
-set statusline+=%h
-set statusline+=\ %f
+set statusline=\ %f
 function FileWritableSign()
   return filewritable(expand('%')) == 0 ? ' ' : ''
 endfunction
@@ -754,7 +754,7 @@ set statusline+=%{FileWritableSign()}
 set statusline+=\ %m
 set statusline+=%=
 set statusline+=%y
-set statusline+=%6.50l/%-6.50L
+set statusline+=%7.50l/%-7.50L
 set statusline+=%P
 set statusline+=\ \ 
 " }}}

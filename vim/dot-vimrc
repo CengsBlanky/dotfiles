@@ -134,6 +134,8 @@ set mouse=nv " enable mouse scroll etc...
 set signcolumn=yes
 set nowrap
 set cmdheight=1
+" add sub directories in current directory
+set path+=**
 " }}}
 " keymappings {{{
 " quick quit
@@ -276,9 +278,7 @@ endfunction
 " }}}
 " }}}
 " statueline {{{
-set statusline=
-set statusline+=%h
-set statusline+=\ %f
+set statusline=\ %f
 function FileWritableSign()
   return filewritable(expand('%')) == 0 ? ' ' : ''
 endfunction
@@ -286,7 +286,7 @@ set statusline+=%{FileWritableSign()}
 set statusline+=\ %m
 set statusline+=%=
 set statusline+=%y
-set statusline+=%6.50l/%-6.50L
+set statusline+=%7.50l/%-7.50L
 set statusline+=%P
 set statusline+=\ \ 
 " }}}
