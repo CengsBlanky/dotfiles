@@ -81,7 +81,6 @@ let g:buftabline_indicators=1
 let g:buftabline_numbers=1
 " }}}
 " }}}
-" }}}
 " editor {{{
 " default {{{
 set nocompatible
@@ -286,6 +285,7 @@ endfunction
 set statusline+=%{FileWritableSign()}
 set statusline+=\ %m
 set statusline+=%=
+set statusline+=%y
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
@@ -313,5 +313,4 @@ let &t_ut=''
 set t_Co=256
 set termguicolors
 colorscheme gruvbox
-" }}}
 " }}}
