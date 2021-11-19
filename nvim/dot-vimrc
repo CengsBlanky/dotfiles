@@ -750,12 +750,10 @@ set statusline+=\ %f
 function FileWritableSign()
   return filewritable(expand('%')) == 0 ? ' ' : ''
 endfunction
-function ModifiedSign()
-  return &modified ? ' []' : ''
-endfunction
 set statusline+=%{FileWritableSign()}
-set statusline+=%{ModifiedSign()}
+set statusline+=\ %m
 set statusline+=%=
+set statusline+=%y
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
