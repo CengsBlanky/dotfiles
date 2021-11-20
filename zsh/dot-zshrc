@@ -146,3 +146,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
 export PATH="$PATH:$HOME/.local/bin/"
 export PATH="$PATH:$HOME/bin/"
+# add Flutter internal mirror
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+# add Flutter execute path
+export PATH="$PATH:/home/zengshuai/snap/flutter/common/flutter/bin"
+# add android studio path
+export PATH="$PATH:/home/zengshuai/tools/android-studio/bin"

@@ -30,6 +30,7 @@ Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
 Plug 'git@github.com:pangloss/vim-javascript.git'
 Plug 'git@github.com:rust-lang/rust.vim.git'
 Plug 'git@github.com:fatih/vim-go.git', {'do': ':GoUpdateBinaries'}
+Plug 'git@github.com:dart-lang/dart-vim-plugin.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:godlygeek/tabular.git'
 Plug 'git@github.com:plasticboy/vim-markdown.git'
@@ -104,12 +105,14 @@ let g:coc_config_home="~/.vim/"
 let g:coc_global_extensions=[
       \ 'coc-json',
       \ 'coc-xml',
+      \ 'coc-yaml',
       \ 'coc-clangd',
       \ 'coc-rls',
       \ 'coc-go',
       \ 'coc-tsserver',
       \ 'coc-pyright',
       \ 'coc-vetur',
+      \ 'coc-flutter',
       \ 'coc-sh',
       \ 'coc-snippets',
       \ 'coc-prettier',
