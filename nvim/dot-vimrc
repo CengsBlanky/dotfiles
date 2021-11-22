@@ -234,6 +234,8 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 if filereadable('.clang-format')
   autocmd BufWritePre *.c,*.h,*.cpp :call CocAction('format')
 endif
+" python autoformat
+autocmd BufWritePre *.py :call CocAction('format')
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
@@ -370,7 +372,7 @@ set nocompatible
 filetype plugin indent on
 syntax on
 set fileformat=unix
-set fileformats=unix,dos
+set fileformats+=unix,dos
 language en_US.UTF-8
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
@@ -489,10 +491,10 @@ nnoremap <M-k> <C-w>k
 nnoremap <M-l> <C-w>l
 " }}}
 " resize window
-nnoremap <silent><M-UP> :resize +1<CR>
-nnoremap <silent><M-DOWN> :resize -1<CR>
-nnoremap <silent><M-LEFT> :vertical resize +1<CR>
-nnoremap <silent><M-RIGHT> :vertical resize -1<CR>
+nnoremap <silent><leader><UP> :resize +1<CR>
+nnoremap <silent><leader><DOWN> :resize -1<CR>
+nnoremap <silent><leader><RIGHT> :vertical resize +1<CR>
+nnoremap <silent><leader><LEFT> :vertical resize -1<CR>
 " split current window
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
