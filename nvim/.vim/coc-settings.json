@@ -1,4 +1,5 @@
 {
+    "coc.preferences.colorSupport": false,
     "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "javascriptreact", "typescriptreact", "html", "css", "vue"],
     "prettier.disableLanguages": [],
     "prettier.disableSuccessMessage": true,
