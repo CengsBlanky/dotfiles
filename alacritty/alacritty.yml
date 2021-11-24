@@ -21,7 +21,7 @@ font:
   size: 13.0
 colors:
   primary:
-    background: '#343a40'
+    background: '#212529'
     foreground: '#d8dee9'
 bell:
   duration: 0

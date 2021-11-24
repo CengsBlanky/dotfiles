@@ -107,6 +107,7 @@ let g:coc_global_extensions=[
       \ 'coc-json',
       \ 'coc-xml',
       \ 'coc-yaml',
+      \ 'coc-html',
       \ 'coc-css',
       \ 'coc-clangd',
       \ 'coc-rls',
@@ -313,7 +314,7 @@ nmap <leader>0 <Plug>BufTabLine.Go(10)
 " nvim-treesitter {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "javascript", "typescript",  "python", "bash", "toml"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "c", "cpp", "javascript", "typescript",  "python", "bash", "toml", "yaml"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
@@ -335,13 +336,12 @@ EOF
 let &t_ut=''
 set t_Co=256
 set termguicolors
-set background=dark
-colorscheme monochrome
+colorscheme darkblue
 " highlight works just in certain color name, otherwise color would be normal font color
 " set guifg would be enough, but ctermfg would't hurt
 augroup color_settings
   autocmd!
-  autocmd ColorScheme * highlight Comment guifg=DarkGray gui=italic
+  autocmd ColorScheme * highlight Comment guifg=DarkGray gui=none
   autocmd ColorScheme * highlight Visual guibg=#8fbcbb guifg=#000000
   autocmd ColorScheme * highlight Search guifg=#a3be8c guibg=#495057 gui=bold
   autocmd ColorScheme * highlight CursorLine guibg=#495057
@@ -350,7 +350,7 @@ augroup color_settings
   " autocmd ColorScheme * highlight Number gui=none guifg=#a3be8c
   autocmd ColorScheme * highlight SignColumn gui=bold guibg=none
   autocmd ColorScheme * highlight String gui=none
-  autocmd ColorScheme * highlight Normal guifg=#d8dee9 gui=none
+  autocmd ColorScheme * highlight Normal guibg=none ctermbg=none " transparent background
 
   autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow
 
@@ -752,10 +752,6 @@ highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
 highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
 highlight CursorLineNr gui=bold guifg=#eceff4
-highlight htmlLink guifg=#e1e1e1 gui=underline
-    " - htmlBoldUnderline
-    " - htmlBoldUnderlineItalic
-    " - htmlUnderline
-    " - htmlUnderlineItalic
+highlight htmlLink guifg=#5e81ac gui=underline
 " }}}
 " }}}
