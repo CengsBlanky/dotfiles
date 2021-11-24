@@ -1,4 +1,4 @@
-background_opacity: 0.90
+background_opacity: 0.98
 window:
   decorations: none
   startup_mode: Windowed
@@ -14,7 +14,7 @@ font:
     style: Bold
   italic:
     family: 'Victor Mono'
-    style: Bold
+    style: Bold Italic
   bold_italic:
     family: 'Victor Mono'
     style: Bold Italic
