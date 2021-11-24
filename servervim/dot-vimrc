@@ -120,6 +120,7 @@ augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
   autocmd BufRead *.log set filetype=text
+  autocmd BufRead *.md set filetype=markdown
 augroup END
 
 function! TrimEndLinesAndTrailingSpaces()
@@ -180,4 +181,6 @@ hi TabLineFill ctermbg=Black ctermfg=Black
 hi TabLineSel ctermfg=White ctermbg=DarkCyan cterm=bold
 hi StatusLine ctermfg=Black ctermbg=Gray cterm=bold
 hi StatusLineNC ctermfg=DarkGray ctermbg=Black
+hi Normal ctermbg=NONE
+highlight NonText ctermbg=Black ctermfg=Black
 " }}}

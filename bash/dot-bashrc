@@ -10,6 +10,7 @@ fi
 
 # User specific aliases and functions
 export LANG=en_US.utf8
+export PATH="$PATH:$HOME/bin"
 
 alias l="ls -l"
 alias ll="ls -lAh"
