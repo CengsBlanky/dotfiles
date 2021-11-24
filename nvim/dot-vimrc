@@ -753,5 +753,7 @@ highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
 highlight CursorLineNr gui=bold guifg=#eceff4
 highlight htmlLink guifg=#5e81ac gui=underline
+highlight NonText guifg=none guibg=none ctermfg=none ctermbg=none gui=none
+highlight EndOfBuffer guifg=none guibg=none ctermfg=none ctermbg=none gui=none
 " }}}
 " }}}
