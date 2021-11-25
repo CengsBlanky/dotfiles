@@ -365,7 +365,7 @@ require'colorizer'.setup({
     css = true;
     css_fn = true;
     }
-  }, { mode = 'foreground' })
+  }, { mode = 'background' })
 EOF
 " }}}
 " }}}
