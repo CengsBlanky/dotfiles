@@ -11,7 +11,6 @@ execute 'source' plug_file
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:tpope/vim-commentary.git'
-Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:andymass/vim-matchup.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
@@ -37,6 +36,7 @@ Plug 'git@github.com:plasticboy/vim-markdown.git'
 Plug 'git@github.com:dstein64/vim-startuptime.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:fxn/vim-monochrome.git'
+Plug 'git@github.com:NLKNguyen/papercolor-theme.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:kyazdani42/nvim-web-devicons.git'
@@ -54,9 +54,6 @@ noremap <silent><M-t> :NERDTreeToggle<CR>
 " }}}
 " tpope/vim-surround {{{
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
-" }}}
-" auto-pairs {{{
-let g:AutoPairsShortcutBackInsert = '<M-b>'
 " }}}
 " Yggdroot/indentLine {{{
 let g:indentLine_fileTypeExclude = ['text', 'json', 'markdown']
@@ -314,7 +311,7 @@ nmap <leader>0 <Plug>BufTabLine.Go(10)
 " nvim-treesitter {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "javascript", "typescript",  "python", "bash", "toml", "yaml"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "c", "cpp", "javascript", "typescript", "css", "python", "bash", "toml", "yaml"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
@@ -336,7 +333,15 @@ EOF
 let &t_ut=''
 set t_Co=256
 set termguicolors
-colorscheme darkblue
+colorscheme PaperColor
+let g:PaperColor_Theme_Options = {
+\   'theme': {
+\       'default': {
+\         'transparent_background': 1
+\       }
+\     }
+\   }
+
 " highlight works just in certain color name, otherwise color would be normal font color
 " set guifg would be enough, but ctermfg would't hurt
 augroup color_settings
@@ -752,8 +757,5 @@ highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
 highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
 highlight CursorLineNr gui=bold guifg=#eceff4
-highlight htmlLink guifg=#5e81ac gui=underline
-highlight NonText guifg=none guibg=none ctermfg=none ctermbg=none gui=none
-highlight EndOfBuffer guifg=none guibg=none ctermfg=none ctermbg=none gui=none
 " }}}
 " }}}
