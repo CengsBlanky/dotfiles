@@ -35,8 +35,7 @@ Plug 'git@github.com:godlygeek/tabular.git'
 Plug 'git@github.com:plasticboy/vim-markdown.git'
 Plug 'git@github.com:dstein64/vim-startuptime.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
-Plug 'git@github.com:fxn/vim-monochrome.git'
-Plug 'git@github.com:NLKNguyen/papercolor-theme.git'
+Plug 'git@github.com:arcticicestudio/nord-vim.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:kyazdani42/nvim-web-devicons.git'
@@ -333,14 +332,7 @@ EOF
 let &t_ut=''
 set t_Co=256
 set termguicolors
-colorscheme PaperColor
-let g:PaperColor_Theme_Options = {
-\   'theme': {
-\       'default': {
-\         'transparent_background': 1
-\       }
-\     }
-\   }
+colorscheme nord
 
 " highlight works just in certain color name, otherwise color would be normal font color
 " set guifg would be enough, but ctermfg would't hurt
@@ -757,5 +749,7 @@ highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
 highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
 highlight CursorLineNr gui=bold guifg=#eceff4
+
+highlight htmlLink gui=underline guifg=#74c0fc
 " }}}
 " }}}
