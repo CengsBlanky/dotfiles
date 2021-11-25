@@ -8,8 +8,8 @@ function toggleCursor() {
 var body_dom = document.getElementsByTagName('body')[0];
 if (body_dom) {
   body_dom.onkeydown = function (event) {
-    event.preventDefault();
     if (event.keyCode == 27) {
+      event.preventDefault();
       toggleCursor();
     }
   };
