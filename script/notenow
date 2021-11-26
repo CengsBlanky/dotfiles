@@ -1,7 +1,7 @@
 #!/bin/bash
 nowdate=$(date +%F)
 nowtime=$(date +%H:%M)
-journalDir="$HOME/notebook/journal/$(date +%Y)"
+journalDir="$HOME/notes/journal/$(date +%Y)"
 journalfilename="${journalDir}/${nowdate}.md"
 lastminute=""
 

@@ -589,8 +589,6 @@ augroup filetype_fold
   autocmd FileType markdown set foldmethod=expr foldexpr=MarkdownFolds() foldtext=MarkdownFoldText()
 augroup END
 
-" when creating new buffer, auto switch to insert mode
-autocmd BufNewFile * startinsert
 " delete other buffers {{{
 command! -nargs=? -complete=buffer -bang Bonly
       \ :call BufOnly('<args>', '<bang>')
