@@ -182,5 +182,6 @@ hi TabLineSel ctermfg=White ctermbg=DarkCyan cterm=bold
 hi StatusLine ctermfg=Black ctermbg=Gray cterm=bold
 hi StatusLineNC ctermfg=DarkGray ctermbg=Black
 hi Normal ctermbg=NONE
+hi PreProc ctermfg=blue
 highlight NonText ctermbg=Black ctermfg=Black
 " }}}
