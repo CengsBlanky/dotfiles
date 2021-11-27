@@ -338,7 +338,7 @@ colorscheme nord
 " set guifg would be enough, but ctermfg would't hurt
 augroup color_settings
   autocmd!
-  autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow
+  autocmd ColorScheme * highlight CocUnusedHighlight guifg=DarkYellow gui=underline
 
   autocmd ColorScheme * highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
   autocmd ColorScheme * highlight BufTabLineFill guibg=none
