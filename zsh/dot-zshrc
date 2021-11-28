@@ -178,3 +178,10 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 # add go path
 export PATH="$HOME/go/bin/:$PATH"
+# add Flutter path
+export PATH="$HOME/tools/flutter/bin/:$PATH"
+# add latest ruby path
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+# self define ruby install dir
+export GEM_HOME=$HOME/.gem
+export PATH=$GEM_HOME/bin:$PATH

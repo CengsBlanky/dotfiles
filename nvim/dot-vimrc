@@ -12,12 +12,10 @@ execute 'source' plug_file
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:tpope/vim-commentary.git'
-Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:andymass/vim-matchup.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
-Plug 'git@github.com:preservim/tagbar.git'
 Plug 'git@github.com:lambdalisue/suda.vim.git' " write as root
 Plug 'git@github.com:junegunn/vim-easy-align.git' " align text
 Plug 'git@github.com:terryma/vim-multiple-cursors.git'
@@ -32,6 +30,7 @@ Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
 Plug 'git@github.com:pangloss/vim-javascript.git'
 Plug 'git@github.com:rust-lang/rust.vim.git'
 Plug 'git@github.com:fatih/vim-go.git', {'do': ':GoUpdateBinaries'}
+Plug 'git@github.com:dart-lang/dart-vim-plugin.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:godlygeek/tabular.git'
 Plug 'git@github.com:plasticboy/vim-markdown.git'
@@ -107,6 +106,7 @@ let g:coc_config_home="~/.vim/"
 let g:coc_global_extensions=[
       \ 'coc-json',
       \ 'coc-xml',
+      \ 'coc-yaml',
       \ 'coc-clangd',
       \ 'coc-java',
       \ 'coc-rls',
@@ -114,6 +114,7 @@ let g:coc_global_extensions=[
       \ 'coc-tsserver',
       \ 'coc-pyright',
       \ 'coc-vetur',
+      \ 'coc-flutter',
       \ 'coc-sh',
       \ 'coc-snippets',
       \ 'coc-prettier',
