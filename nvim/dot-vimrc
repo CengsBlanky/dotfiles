@@ -5,6 +5,7 @@ let plug_file="~/.vim/plug.vim"
 let g:python_host_skip_check=1
 let g:python3_host_skip_check=1
 let g:python3_host_prog = '/usr/local/bin/python3.9'
+let g:markdown_folding = 1
 set guifont=FiraCode\ NF:h18
 " }}}
 " plugins {{{
@@ -32,14 +33,11 @@ Plug 'git@github.com:rust-lang/rust.vim.git'
 Plug 'git@github.com:fatih/vim-go.git', {'do': ':GoUpdateBinaries'}
 Plug 'git@github.com:dart-lang/dart-vim-plugin.git'
 Plug 'git@github.com:honza/vim-snippets.git'
-Plug 'git@github.com:godlygeek/tabular.git'
-Plug 'git@github.com:plasticboy/vim-markdown.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:tribela/vim-transparent.git'
 Plug 'git@github.com:arcticicestudio/nord-vim.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
-Plug 'git@github.com:kyazdani42/nvim-web-devicons.git'
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
 call plug#end()
 " }}}
@@ -328,10 +326,6 @@ let g:buftabline_show=1
 let g:buftabline_indicators=1
 let g:buftabline_numbers=1
 " }}}
-" vim markdown {{{
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_conceal = 0
-" }}}
 " colorscheme plugins {{{
 let &t_ut=''
 set t_Co=256
@@ -591,33 +585,6 @@ augroup windows_display
   autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
 augroup END
 
-function! MarkdownFolds()
-  let thisline = getline(v:lnum)
-  if match(thisline, '^#\{6}[^#]*') >= 0
-    return ">6"
-  elseif match(thisline, '^#\{5}[^#]*') >= 0
-    return ">5"
-  elseif match(thisline, '^#\{4}[^#]*') >= 0
-    return ">4"
-  elseif match(thisline, '^#\{3}[^#]*') >= 0
-    return ">3"
-  elseif match(thisline, '^#\{2}[^#]*') >= 0
-    return ">2"
-  elseif match(thisline, '^#\{1}[^#]*') >= 0
-    return ">1"
-  else
-    return "="
-  endif
-endfunction
-
-function! MarkdownFoldText()
-  let foldsize = (v:foldend-v:foldstart)
-  return getline(v:foldstart).' ('.foldsize.' lines)'
-endfunction
-augroup filetype_fold
-  autocmd!
-  autocmd FileType markdown set foldmethod=expr foldexpr=MarkdownFolds() foldtext=MarkdownFoldText()
-augroup END
 " delete other buffers {{{
 command! -nargs=? -complete=buffer -bang Bonly
       \ :call BufOnly('<args>', '<bang>')
