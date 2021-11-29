@@ -138,6 +138,8 @@ fi
 export "LANG=en_US.UTF-8"
 export EDITOR="nvim"
 export VISUAL="nvim"
+export LESS=-RiX
+
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 export PATH="$JAVA_HOME:$PATH"
 # add rust path

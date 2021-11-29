@@ -267,7 +267,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 let g:rustfmt_autosave = 1
 " }}}
 " emmet vim {{{
-let g:user_emmet_leader_key='<leader>'
+let g:user_emmet_leader_key=';'
 " }}}
 " junegunn/fzf {{{
 " [Buffers] Jump to the existing window if possible
