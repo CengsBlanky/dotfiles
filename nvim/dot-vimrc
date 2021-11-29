@@ -31,6 +31,7 @@ Plug 'git@github.com:pangloss/vim-javascript.git'
 Plug 'git@github.com:rust-lang/rust.vim.git'
 Plug 'git@github.com:fatih/vim-go.git', {'do': ':GoUpdateBinaries'}
 Plug 'git@github.com:dart-lang/dart-vim-plugin.git'
+Plug 'git@github.com:mattn/emmet-vim.git' " powerful assert tags
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:arcticicestudio/nord-vim.git'
@@ -265,6 +266,9 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " rust.vim {{{
 let g:rustfmt_autosave = 1
 " }}}
+" emmet vim {{{
+let g:user_emmet_leader_key='<leader>'
+" }}}
 " junegunn/fzf {{{
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -284,10 +288,6 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :RG<cr>
-" }}}
-" vim markdown {{{
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_conceal = 0
 " }}}
 " buftabline {{{
 let g:buftabline_show=1
