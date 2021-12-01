@@ -8,5 +8,6 @@
     "typescript.format.enabled": false,
     "tsserver.formatOnType": false,
     "javascript.format.enabled": false,
-    "clangd.path": "~/.vim/coc_data/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
+    "clangd.path": "~/.vim/coc_data/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd",
+    "python.pythonPath": "/usr/local/bin/python3.9"
 }

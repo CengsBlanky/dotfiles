@@ -32,6 +32,7 @@ Plug 'git@github.com:pangloss/vim-javascript.git'
 Plug 'git@github.com:rust-lang/rust.vim.git'
 Plug 'git@github.com:fatih/vim-go.git', {'do': ':GoUpdateBinaries'}
 Plug 'git@github.com:dart-lang/dart-vim-plugin.git'
+Plug 'git@github.com:mattn/emmet-vim.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
@@ -52,9 +53,6 @@ noremap <silent><M-t> :NERDTreeToggle<CR>
 " }}}
 " tpope/vim-surround {{{
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
-" }}}
-" auto-pairs {{{
-let g:AutoPairsShortcutBackInsert = '<M-b>'
 " }}}
 " Yggdroot/indentLine {{{
 let g:indentLine_fileTypeExclude = ['text', 'json', 'markdown']
@@ -264,6 +262,9 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " }}}
 " rust.vim {{{
 let g:rustfmt_autosave = 1
+" }}}
+" emmet vim {{{
+let g:user_emmet_leader_key='<leader>'
 " }}}
 " junegunn/fzf {{{
 " [Buffers] Jump to the existing window if possible
