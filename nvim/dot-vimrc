@@ -36,6 +36,8 @@ Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:arcticicestudio/nord-vim.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
+Plug 'git@github.com:junegunn/goyo.vim.git'
+Plug 'git@github.com:junegunn/limelight.vim.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
 call plug#end()
@@ -267,7 +269,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 let g:rustfmt_autosave = 1
 " }}}
 " emmet vim {{{
-let g:user_emmet_leader_key=';'
+let g:user_emmet_leader_key='<leader>'
 " }}}
 " junegunn/fzf {{{
 " [Buffers] Jump to the existing window if possible
@@ -303,6 +305,33 @@ nmap <leader>7 <Plug>BufTabLine.Go(7)
 nmap <leader>8 <Plug>BufTabLine.Go(8)
 nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(10)
+" }}}
+" goyo and limelight {{{
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 1
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 " }}}
 " nvim-treesitter {{{
 lua <<EOF

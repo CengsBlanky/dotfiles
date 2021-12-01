@@ -7,18 +7,18 @@ window:
 font:
   ligatures: true
   normal:
-    family: 'FiraCode Nerd Font'
-    style: Medium
+    family: 'FiraCode NerdFont Mono'
+    style: regular
   bold:
-    family: 'FiraCode Nerd Font'
+    family: 'FiraCode NerdFont'
     style: Bold
   italic:
-    family: 'Victor Mono'
-    style: Bold Italic
+    family: 'FiraCode NerdFont'
+    style: Italic
   bold_italic:
-    family: 'Victor Mono'
+    family: 'FiraCode NerdFont'
     style: Bold Italic
-  size: 13.0
+  size: 14.0
 colors:
   primary:
     background: '#212529'

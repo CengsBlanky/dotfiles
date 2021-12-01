@@ -1,0 +1,11 @@
+liveReload.txt
+
+:Author: zengshuai
+:Email: zengs1994@gmail.com
+:Date: 2021-12-01 22:04
+
+Host URL:
+http://localhost:[0-9]+/
+
+Source file URLs
+http://*/*
