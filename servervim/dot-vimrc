@@ -60,6 +60,7 @@ set clipboard=unnamed
 set shortmess+=c
 set hlsearch
 set mousehide
+set cursorline
 set showtabline=2
 " set default grep cmd
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
@@ -183,5 +184,6 @@ hi StatusLine ctermfg=Black ctermbg=Gray cterm=bold
 hi StatusLineNC ctermfg=DarkGray ctermbg=Black
 hi Normal ctermbg=NONE
 hi PreProc ctermfg=blue
+hi CursorLine ctermfg=NONE ctermbg=LightGray cterm=NONE
 highlight NonText ctermbg=Black ctermfg=Black
 " }}}
