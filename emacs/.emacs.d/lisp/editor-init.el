@@ -7,7 +7,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (column-number-mode t)
-(setq inhibit-startup-screen t)
+;; (setq inhibit-startup-screen t)
 ;; ---------- highlight paired bracket ----------
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 ;; ---------- highlight current line ----------
@@ -54,7 +54,7 @@
 
 ;; ---------- font & size ----------
 (when (member "Monaco" (font-family-list))
-(set-frame-font "Monaco-15" t t))
+(set-frame-font "Monaco-17" t t))
 
 ;; =============================================================================
 ;; globally enabled packages
@@ -74,6 +74,14 @@
   (define-key evil-normal-state-map (kbd "TAB") 'next-buffer)
   (define-key evil-normal-state-map (kbd "M-b") 'kill-buffer)
   )
+;; ---------- markdown mode ----------
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 ;; ---------- doom theme ----------
 (use-package doom-themes
   :ensure t
