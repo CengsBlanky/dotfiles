@@ -1,4 +1,3 @@
-;; =============================================================================
 ;; package initialize
 ;; =============================================================================
 (require 'package)
@@ -22,7 +21,4 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (require 'editor-init)
-(require 'ui-init)
 (require 'org-init)
-(require 'lisp-env-init)
-(require 'doom-modeline-init)

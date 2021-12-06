@@ -1,6 +1,27 @@
-;; =============================================================================
 ;; better default setting
 ;; =============================================================================
+
+;; ---------- editor apearance ----------
+(add-to-list 'default-frame-alist '(width . 90))
+(add-to-list 'default-frame-alist '(height . 36))
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(column-number-mode t)
+(setq inhibit-startup-screen t)
+;; ---------- highlight paired bracket ----------
+(add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
+;; ---------- highlight current line ----------
+(global-hl-line-mode t)
+;; auto complete bracket
+(electric-pair-mode t)
+;; auto refresh buffer
+(global-auto-revert-mode t)
+;; show line number
+(global-display-line-numbers-mode 1)
+;; display relative line number
+(setq display-line-numbers-type 'relative)
+;; close scroll bar in graphic interface
+(when (display-graphic-p) (toggle-scroll-bar -1))
 ;; ---------- diable generate backup file ----------
 (setq make-backup-files nil)
 ;; ---------- disable session files ----------
@@ -11,16 +32,6 @@
 (put 'scroll-left 'disabled nil)
 ;; ---------- enable narrow region ----------
 (put 'narrow-to-region 'disabled nil)
-
-;; ---------- set env ----------
-(defun set-exec-path-from-shell-PATH ()
-  (let ((path-from-shell 
-      (replace-regexp-in-string "[[:space:]\n]*$" "" 
-        (shell-command-to-string "$SHELL -l -c 'echo $PATH'"))))
-    (setenv "PATH" path-from-shell)
-    (setq exec-path (split-string path-from-shell path-separator))))
-(when (equal system-type 'darwin) (set-exec-path-from-shell-PATH))
-
 ;; ---------- use command key as meta key in mac ----------
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta)
@@ -29,17 +40,21 @@
 ;; =============================================================================
 ;; global keybindings
 ;; =============================================================================
+
 ;; ---------- set <F2> as quick key to open my init file ----------
 (defun open-my-init-file ()
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 (global-set-key (kbd "<f2>") 'open-my-init-file)
-
 ;; ---------- go begining of the brace or end of brace ----------
 (global-set-key [(meta left)] 'backward-sexp)
 (global-set-key [(meta right)] 'forward-sexp)
 ;; ---------- M-g to go specfic line ----------
 (global-set-key [(meta g)] 'goto-line)
+
+;; ---------- font & size ----------
+(when (member "Monaco" (font-family-list))
+(set-frame-font "Monaco-15" t t))
 
 ;; =============================================================================
 ;; globally enabled packages
@@ -51,15 +66,32 @@
 ;; ---------- enable evil mode(vim-like mode) ----------
 (use-package evil
   :config
-  (evil-mode t))
-;; ---------- enable relative line number ----------
-(use-package linum-relative
+  (evil-mode t)
+  (define-key evil-insert-state-map (kbd "jk") 'evil-normal-state)
+  (define-key evil-normal-state-map (kbd "RET") 'save-buffer)
+  (define-key evil-normal-state-map (kbd "SPC") 'scroll-up-command)
+  (define-key evil-normal-state-map (kbd "DEL") 'scroll-down-command)
+  (define-key evil-normal-state-map (kbd "TAB") 'next-buffer)
+  (define-key evil-normal-state-map (kbd "M-b") 'kill-buffer)
+  )
+;; ---------- doom theme ----------
+(use-package doom-themes
+  :ensure t
   :config
-  (linum-relative-on))
-;; ---------- enable key-chord ----------
-(use-package key-chord
-  :config
-  (key-chord-mode t)
-  (key-chord-define evil-insert-state-map "jk" 'evil-normal-state))
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-nord-light t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-nord") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+
 
 (provide 'editor-init)
