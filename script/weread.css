@@ -1,0 +1,22 @@
+.app_content {
+  max-width: 100% !important;
+}
+
+.readerTopBar {
+  display: none;
+}
+
+.readerControls {
+  display: none;
+}
+
+.readerBottomBar {
+  display: flex;
+  opacity: 1;
+}
+
+.readerBottomSettingPanel {
+  display: block;
+  top: 88% !important;
+  height: 7% !important;
+}

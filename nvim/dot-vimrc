@@ -111,6 +111,8 @@ let g:coc_global_extensions=[
       \ 'coc-pyright',
       \ 'coc-vetur',
       \ 'coc-flutter',
+      \ '@yaegassy/coc-intelephense',
+      \ 'coc-php-cs-fixer',
       \ 'coc-sh',
       \ 'coc-snippets',
       \ 'coc-prettier',
@@ -542,7 +544,6 @@ nnoremap <C-k> :cprevious<CR>
 augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
-  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 augroup END
 
 augroup filetype_indent_size

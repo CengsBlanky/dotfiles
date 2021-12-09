@@ -157,6 +157,7 @@ fi
 
 export EDITOR="nvim"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home/"
+export PHP_HOME="/Applications/XAMPP/bin"
 export GOPATH="$HOME/go"
 export GO111MODULE=auto
 export NVM_DIR="$HOME/.nvm"
@@ -185,3 +186,5 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 # self define ruby install dir
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
+# add php path
+export PATH=$PHP_HOME:$PATH
