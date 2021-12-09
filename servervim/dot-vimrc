@@ -10,6 +10,7 @@ Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
+Plug 'git@github.com:mattn/emmet-vim.git'
 call plug#end()
 " plugins setting {{{
 let g:NERDTreeQuitOnOpen=3
@@ -28,6 +29,10 @@ nmap <leader>7 <Plug>BufTabLine.Go(7)
 nmap <leader>8 <Plug>BufTabLine.Go(8)
 nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(10)
+
+" emmet-vim
+let g:user_emmet_leader_key='<leader>'
+let g:user_emmet_mode='n'    "only enable normal mode function
 " }}}
 endif
 " }}}
@@ -65,6 +70,8 @@ set showtabline=2
 " set default grep cmd
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
 set grepformat=%f:%l:%c:%m
+" no beep
+set noeb vb t_vb=
 " }}}
 " keymappings {{{
 
@@ -157,7 +164,7 @@ augroup END
 " statusline {{{
 set statusline=%h
 set statusline+=\ %f
-set statusline+=%r
+set statusline+=\ %r
 set statusline+=\ %m
 set statusline+=%=
 set statusline+=%y
@@ -169,21 +176,21 @@ set statusline+=\
 " }}}
 " colors {{{
 colorscheme peachpuff
-hi Visual ctermfg=LightGray ctermbg=Black
-hi Search ctermfg=Yellow ctermbg=Gray
-hi folded ctermfg=LightGray ctermbg=NONE
-hi String ctermfg=DarkGreen
-hi Number ctermfg=Green
-hi LineNr ctermfg=DarkGray
-hi CursorLineNr cterm=bold ctermfg=DarkYellow
-hi Comment ctermfg=Gray
-hi TabLine ctermfg=White ctermbg=Black cterm=NONE
-hi TabLineFill ctermbg=Black ctermfg=Black
-hi TabLineSel ctermfg=White ctermbg=DarkCyan cterm=bold
-hi StatusLine ctermfg=Black ctermbg=Gray cterm=bold
-hi StatusLineNC ctermfg=DarkGray ctermbg=Black
-hi Normal ctermbg=NONE
-hi PreProc ctermfg=blue
-hi CursorLine ctermfg=NONE ctermbg=LightGray cterm=NONE
-highlight NonText ctermbg=Black ctermfg=Black
+autocmd colorscheme * hi Visual ctermfg=Gray  ctermbg=White
+autocmd colorscheme * hi Search ctermfg=Yellow ctermbg=Gray
+autocmd colorscheme * hi folded ctermfg=LightGray ctermbg=NONE
+autocmd colorscheme * hi String ctermfg=DarkGreen
+autocmd colorscheme * hi Number ctermfg=Green
+autocmd colorscheme * hi LineNr ctermfg=DarkGray
+autocmd colorscheme * hi CursorLineNr cterm=bold ctermfg=DarkYellow
+autocmd colorscheme * hi Comment ctermfg=Gray
+autocmd colorscheme * hi TabLine ctermfg=White ctermbg=Black cterm=NONE
+autocmd colorscheme * hi TabLineFill ctermbg=Black ctermfg=Black
+autocmd colorscheme * hi TabLineSel ctermfg=White ctermbg=DarkCyan cterm=bold
+autocmd colorscheme * hi StatusLine ctermfg=Black ctermbg=Gray cterm=bold
+autocmd colorscheme * hi StatusLineNC ctermfg=DarkGray ctermbg=Black
+autocmd colorscheme * hi Normal ctermbg=NONE
+autocmd colorscheme * hi PreProc ctermfg=blue
+autocmd colorscheme * hi CursorLine ctermfg=NONE ctermbg=LightGray cterm=NONE
+autocmd colorscheme * hi NonText ctermbg=Black ctermfg=Black
 " }}}
