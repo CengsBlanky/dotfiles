@@ -459,7 +459,8 @@ set path+=**
 " }}}
 " keymappings {{{
 " quick quit
-nnoremap Q :q<CR>
+nnoremap Q :x<CR>
+nnoremap <nowait><leader>q :x<CR>
 
 " quick upper/lower case
 nnoremap <leader>] gUiw
