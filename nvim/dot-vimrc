@@ -14,6 +14,7 @@ Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:tpope/vim-commentary.git'
 Plug 'git@github.com:andymass/vim-matchup.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
+Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
 Plug 'git@github.com:lambdalisue/suda.vim.git' " write as root
@@ -54,8 +55,13 @@ noremap <silent><M-t> :NERDTreeToggle<CR>
 " tpope/vim-surround {{{
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
 " }}}
-" Yggdroot/indentLine {{{
-let g:indentLine_fileTypeExclude = ['text', 'json', 'markdown']
+" auto-pair {{{
+let g:AutoPairs={'{':'}', '[':']'}
+augroup AutoPair_Custom
+  autocmd!
+  autocmd FileType html,php,jsp let b:AutoPairs = AutoPairsDefine({'<!--':'-->', '<?':'?>', '<?php':'?>', '<%':'%>'})
+  autocmd FileType rust let b:AutoPairs = AutoPairsDefine({'\w\zs<': '>'})
+augroup END
 " }}}
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
@@ -269,7 +275,8 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 let g:rustfmt_autosave = 1
 " }}}
 " emmet vim {{{
-let g:user_emmet_leader_key='<leader>'
+let g:user_emmet_mode='nv'    "only enable normal mode functions.
+let g:user_emmet_leader_key=','
 " }}}
 " junegunn/fzf {{{
 " [Buffers] Jump to the existing window if possible
@@ -446,7 +453,8 @@ set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
 set grepformat=%f:%l:%c:%m
 " }}}
 " keymappings {{{
-nnoremap Q :q<CR>
+nnoremap Q :x<CR>
+nnoremap <nowait><leader>q :x<CR>
 
 " quick upper/lower case
 nnoremap <leader>] gUiw
