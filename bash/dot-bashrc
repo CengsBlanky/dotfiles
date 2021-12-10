@@ -13,15 +13,6 @@ export LANG=en_US.utf8
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/npm/bin"
 
-alias l="ls -l --color=always"
-alias ll="ls -lAh --color=always"
-alias cls="clear"
-alias ..="cd .."
-alias gst="git status"
-alias gdf="git diff"
-alias gcm="git commit -a"
-alias gps="git push"
-
 if [ "$(command -v nvim)" ]
 then
     alias vim=nvim
@@ -32,6 +23,16 @@ then
     export VISUAL=vim
     export EDITOR=vim
 fi
+
+alias l="ls -l --color=always"
+alias ll="ls -lAh --color=always"
+alias cls="clear"
+alias ..="cd .."
+alias gst="git status"
+alias gdf="git diff"
+alias gcm="git commit -a"
+alias gps="git push"
+alias vims="sudo $EDITOR"
 
 DEFAULT=$PS1
 PS1="\e[90m[\u@\h]\e[m \e[1;34m\w\e[m\n\e[92m->\e[m "
