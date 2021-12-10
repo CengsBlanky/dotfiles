@@ -119,9 +119,20 @@ PURE_PROMPT_SYMBOL=""
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export "LANG=en_US.UTF-8"
 
+if [ "$(command -v nvim)" ]                                                                                                   
+then
+    alias vim=nvim
+    export VISUAL=nvim
+    export EDITOR=nvim
+elif [ "$(command -v vim)" ]
+then
+    export VISUAL=vim
+    export EDITOR=vim
+fi
+
+alias vims="sudo $EDITOR"
 alias ll='ls -lAh'
 alias vi='/usr/local/Cellar/vim/8.2.3550/bin/vim'
-alias vim='nvim'
 alias python="python3.9"
 alias pip="pip3.9"
 alias cls="clear"
@@ -155,7 +166,7 @@ if type rg &> /dev/null; then
     export FZF_DEFAULT_COMMAND="rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
 fi
 
-export EDITOR="nvim"
+
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home/"
 export PHP_HOME="/Applications/XAMPP/bin"
 export GOPATH="$HOME/go"
