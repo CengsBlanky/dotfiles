@@ -82,7 +82,8 @@ autoload -U promptinit; promptinit
 # change the color for both `prompt:success` and `prompt:error`
 zstyle ':prompt:pure:prompt:*' color cyan
 prompt pure
-PURE_PROMPT_SYMBOL="🡺"
+# PURE_PROMPT_SYMBOL="🡺"
+PURE_PROMPT_SYMBOL="$"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
