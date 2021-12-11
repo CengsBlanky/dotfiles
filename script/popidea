@@ -1,0 +1,32 @@
+#!/bin/bash
+nowdate=$(date +%F)
+nowtime=$(date +%H:%M)
+IDEA_FILENAME=$1
+
+if [ -z $IDEA_FILENAME ]; then
+    echo "Filename needed! Command exit."
+    exit
+fi
+
+IDEA_DIR="$HOME/notebook/ideas/$(date +%Y)"
+IDEA_NAME="${IDEA_DIR}/${IDEA_FILENAME}.md"
+lastminute=""
+
+if [ ! -d $IDEA_DIR ]; then
+    mkdir -p $IDEA_DIR
+fi
+
+if [ ! -f $IDEA_NAME ]; then
+    echo "# Idea at ${nowdate}" > $IDEA_NAME
+else
+    lastminute=$(cat $IDEA_NAME | grep -e "^#\{2\}\ [0-2][0-9]:[0-6][0-9]$" | tail -n 1)
+fi
+
+if [ "$lastminute" = "## $nowtime" ]; then
+    $EDITOR -c "norm Gzzo" $IDEA_NAME
+else
+    $EDITOR -c "norm G2o" \
+        -c "norm GI## $nowtime" \
+        -c "norm G2o" \
+        -c "norm zz" $IDEA_NAME
+fi
