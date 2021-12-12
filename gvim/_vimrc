@@ -58,6 +58,7 @@ set statusline=%h
 set statusline+=\ %f
 set statusline+=\ %r
 set statusline+=\ %m
+set statusline+=\ [%{&ff}]
 set statusline+=%=
 set statusline+=%y
 set statusline+=%6.50l/%-6.50L
