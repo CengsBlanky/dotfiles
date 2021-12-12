@@ -156,3 +156,7 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 export PATH="$PATH:/home/zengshuai/snap/flutter/common/flutter/bin"
 # add android studio path
 export PATH="$PATH:/home/zengshuai/tools/android-studio/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
