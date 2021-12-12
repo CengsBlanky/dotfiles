@@ -5,7 +5,7 @@ let $LANG='en_US'
 set guioptions-=m " menu bar
 set guioptions-=T " toolbar
 set guioptions-=r " scrollbar
-set guifont=Inconsolata\ NF:h13
+set guifont=Fira_Code_Medium:h12
 set mouse-=a
 
 set nocompatible
@@ -21,7 +21,6 @@ set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
 set showcmd
 set laststatus=2
-set ruler
 set wildmenu
 set showmatch
 set autoread
@@ -42,11 +41,18 @@ nnoremap <silent><M-w> :close<CR>
 nnoremap <silent><M-b> :bd<CR>
 nnoremap <Enter>  :w<CR>
 nnoremap <silent><TAB> :bn<CR>
-nnoremap <leader>q :x<CR>
 nnoremap <Space> <C-f>
 nnoremap <Backspace> <C-b>
+nnoremap <leader>q :x<CR>
 nnoremap Q :x<CR>
+" code quick run
+nnoremap <leader>r :!python %<CR>
+" TODO add c file execute cmd
+
 command! Editrc execute 'edit' $MYVIMRC
+
+" disable beep and screen flash both in terminal vim and gvim
+autocmd VimEnter * set vb t_vb=
 
 set statusline=%h
 set statusline+=\ %f
@@ -57,5 +63,10 @@ set statusline+=%y
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ 
-hi StatusLine guifg=LightGray guibg=DarkGreen gui=bold
+
+hi StatusLine guifg=White guibg=DarkGreen gui=bold
 hi StatusLineNC guifg=DarkGray guibg=Black
+if !has('gui')
+    hi CursorLine cterm=NONE
+    hi CursorLineNr cterm=bold ctermfg=DarkYellow
+endif
