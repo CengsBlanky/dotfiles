@@ -1,0 +1,59 @@
+set encoding=utf-8
+set fileencodings=utf-8,gbk,ucs-bom,cp936
+set langmenu=en_US
+let $LANG='en_US'
+set guioptions-=m " menu bar
+set guioptions-=T " toolbar
+set guioptions-=r " scrollbar
+set guifont=Inconsolata\ NF:h13
+set mouse-=a
+
+set nocompatible
+filetype plugin indent on
+syntax on
+set hidden
+set number
+set relativenumber
+set backspace=2
+set incsearch
+set smartcase
+set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
+set softtabstop=4
+set showcmd
+set laststatus=2
+set ruler
+set wildmenu
+set showmatch
+set autoread
+set autowrite
+set confirm
+set updatetime=100
+set noswapfile
+set nobackup
+set noundofile
+set clipboard=unnamed
+set hlsearch
+set mousehide
+set cursorline
+
+" key map
+inoremap jk <ESC>
+nnoremap <silent><M-w> :close<CR>
+nnoremap <silent><M-b> :bd<CR>
+nnoremap <Enter>  :w<CR>
+nnoremap <silent><TAB> :bn<CR>
+nnoremap <leader>q :x<CR>
+nnoremap <Space> <C-f>
+nnoremap <Backspace> <C-b>
+nnoremap Q :x<CR>
+command! Editrc execute 'edit' $MYVIMRC
+
+set statusline=%h
+set statusline+=\ %f
+set statusline+=\ %r
+set statusline+=\ %m
+set statusline+=%=
+set statusline+=%y
+set statusline+=%6.50l/%-6.50L
+set statusline+=%P
+set statusline+=\ 
