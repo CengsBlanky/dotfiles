@@ -57,3 +57,5 @@ set statusline+=%y
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ 
+hi StatusLine guifg=LightGray guibg=DarkGreen gui=bold
+hi StatusLineNC guifg=DarkGray guibg=Black
