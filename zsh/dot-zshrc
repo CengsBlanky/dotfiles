@@ -141,7 +141,8 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export LESS=-RiX
 
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+# export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+export JAVA_HOME="/usr/share/jdk1.8.0_311"
 export PATH="$JAVA_HOME:$PATH"
 # add rust path
 export PATH="$HOME/.cargo/bin:$PATH"
