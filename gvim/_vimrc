@@ -1,0 +1,73 @@
+set encoding=utf-8
+set fileencodings=utf-8,gbk,ucs-bom,cp936
+set langmenu=en_US
+let $LANG='en_US'
+set guioptions-=m " menu bar
+set guioptions-=T " toolbar
+set guioptions-=r " scrollbar
+set guifont=Fira_Code_Medium:h12
+set mouse-=a
+
+set nocompatible
+filetype plugin indent on
+syntax on
+set hidden
+set number
+set relativenumber
+set backspace=2
+set incsearch
+set smartcase
+set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
+set softtabstop=4
+set showcmd
+set laststatus=2
+set wildmenu
+set showmatch
+set autoread
+set autowrite
+set confirm
+set updatetime=100
+set noswapfile
+set nobackup
+set noundofile
+set clipboard=unnamed
+set hlsearch
+set mousehide
+set cursorline
+
+" key map
+inoremap jk <ESC>
+nnoremap <silent><M-w> :close<CR>
+nnoremap <silent><M-b> :bd<CR>
+nnoremap <Enter>  :w<CR>
+nnoremap <silent><TAB> :bn<CR>
+nnoremap <Space> <C-f>
+nnoremap <Backspace> <C-b>
+nnoremap <leader>q :x<CR>
+nnoremap Q :x<CR>
+" code quick run
+nnoremap <leader>r :!python %<CR>
+" TODO add c file execute cmd
+
+command! Editrc execute 'edit' $MYVIMRC
+
+" disable beep and screen flash both in terminal vim and gvim
+autocmd VimEnter * set vb t_vb=
+
+set statusline=%h
+set statusline+=\ %f
+set statusline+=\ %r
+set statusline+=\ %m
+set statusline+=\ [%{&ff}]
+set statusline+=%=
+set statusline+=%y
+set statusline+=%6.50l/%-6.50L
+set statusline+=%P
+set statusline+=\ 
+
+hi StatusLine guifg=White guibg=DarkGreen gui=bold
+hi StatusLineNC guifg=DarkGray guibg=Black
+if !has('gui')
+    hi CursorLine cterm=NONE
+    hi CursorLineNr cterm=bold ctermfg=DarkYellow
+endif

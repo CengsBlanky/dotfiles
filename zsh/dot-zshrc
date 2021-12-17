@@ -141,7 +141,8 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export LESS=-RiX
 
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+# export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+export JAVA_HOME="/usr/share/jdk1.8.0_311"
 export PATH="$JAVA_HOME:$PATH"
 # add rust path
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -156,3 +157,7 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 export PATH="$PATH:/home/zengshuai/snap/flutter/common/flutter/bin"
 # add android studio path
 export PATH="$PATH:/home/zengshuai/tools/android-studio/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
