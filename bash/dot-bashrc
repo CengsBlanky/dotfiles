@@ -35,7 +35,7 @@ alias gps="git push"
 alias vims="sudo $EDITOR"
 
 DEFAULT=$PS1
-PS1="\e[90m[\u@\h]\e[m \e[1;34m\w\e[m\n\e[92m->\e[m "
+PS1="\e[90m[\u@\h]\e[m \e[1;34m\w\e[m\n\e[92m$\e[m "
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

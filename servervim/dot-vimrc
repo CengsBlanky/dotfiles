@@ -192,5 +192,5 @@ autocmd colorscheme * hi StatusLineNC ctermfg=DarkGray ctermbg=Black
 autocmd colorscheme * hi Normal ctermbg=NONE
 autocmd colorscheme * hi PreProc ctermfg=blue
 autocmd colorscheme * hi CursorLine ctermfg=NONE ctermbg=LightGray cterm=NONE
-autocmd colorscheme * hi NonText ctermbg=Black ctermfg=Black
+autocmd colorscheme * hi NonText ctermbg=Black ctermfg=Black 
 " }}}
