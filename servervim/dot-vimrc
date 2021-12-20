@@ -177,7 +177,7 @@ set statusline+=\
 " }}}
 " }}}
 " colors {{{
-colorscheme peachpuff
+colorscheme delek
 autocmd colorscheme * hi Visual ctermfg=Gray  ctermbg=White
 autocmd colorscheme * hi Search ctermfg=Yellow ctermbg=Gray
 autocmd colorscheme * hi folded ctermfg=LightGray ctermbg=NONE
