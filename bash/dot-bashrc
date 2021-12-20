@@ -33,6 +33,7 @@ alias gdf="git diff"
 alias gcm="git commit -a"
 alias gps="git push"
 alias vims="sudo $EDITOR"
+alias python="python3"
 
 DEFAULT=$PS1
 PS1="\e[90m[\u@\h]\e[m \e[1;34m\w\e[m\n\e[92m$\e[m "
