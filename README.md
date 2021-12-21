@@ -36,6 +36,14 @@ Host openEuler
 > 1. 直接将另一个用户的.ssh文件夹拷贝到自己的家目录下
 > 2. 重新生成ssh key建立连接
 
+### use putty for remote connection
+
+* putty does not support openssh private key format, it should be transformed using `puttygen` cmd before private key can be recognized by putty
+```bash
+puttygen <private key> -O private -o <target pkk file>
+```
+once ppk file is generated, it can be imported to putty and used as private key
+
 ## vim 使用技巧🧩
 
 ### 以只读方式打开文件的方式：
