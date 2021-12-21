@@ -199,3 +199,12 @@ export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 # add php path
 export PATH=$PHP_HOME:$PATH
+
+##
+# Your previous /Users/cengshuai/.zprofile file was backed up as /Users/cengshuai/.zprofile.macports-saved_2021-12-21_at_14:32:34
+##
+
+# MacPorts Installer addition on 2021-12-21_at_14:32:34: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
