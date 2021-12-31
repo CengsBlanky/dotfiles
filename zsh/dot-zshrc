@@ -165,20 +165,26 @@ fi
 if type rg &> /dev/null; then
     export FZF_DEFAULT_COMMAND="rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
 fi
-
+# MacPorts Installer addition on 2021-12-21_at_14:32:34: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home/"
-export PHP_HOME="/Applications/XAMPP/bin"
 export GOPATH="$HOME/go"
 export GO111MODULE=auto
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# accelerate brew bottle
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
 export PATH="$PATH:$HOME/bin/"
 export PATH="$PATH:$HOME/.local/bin/"
 export PATH="$JAVA_HOME:$PATH"
+# php dependencies path
+export PHP_HOME="/usr/local/opt/php/bin"
+export PATH="/usr/local/opt/openldap/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:$PATH"
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+# add php path
+export PATH=$PHP_HOME:$PATH
 # llvm setting
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="/usr/local/opt/llvm:$PATH"
@@ -197,14 +203,4 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 # self define ruby install dir
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
-# add php path
-export PATH=$PHP_HOME:$PATH
-
-##
-# Your previous /Users/cengshuai/.zprofile file was backed up as /Users/cengshuai/.zprofile.macports-saved_2021-12-21_at_14:32:34
-##
-
-# MacPorts Installer addition on 2021-12-21_at_14:32:34: adding an appropriate PATH variable for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-# Finished adapting your PATH environment variable for use with MacPorts.
 
