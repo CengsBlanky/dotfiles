@@ -113,6 +113,7 @@ let g:coc_global_extensions=[
       \ 'coc-css',
       \ 'coc-clangd',
       \ 'coc-rls',
+      \ 'coc-java',
       \ 'coc-go',
       \ 'coc-tsserver',
       \ 'coc-pyright',
@@ -343,7 +344,7 @@ autocmd! User GoyoLeave Limelight!
 " nvim-treesitter {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "javascript", "typescript", "css", "python", "bash", "toml", "yaml"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "c", "cpp", "java", "javascript", "typescript", "css", "python", "bash", "toml", "yaml"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
@@ -579,7 +580,7 @@ augroup filetype_edit_behavior
   " do not auto add comment when add new comment line in normal mode
   autocmd FileType * setlocal formatoptions-=o
   " auto remove all trailing empty lines before saving
-  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.yml,*.yaml
+  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.yml,*.yaml,*.java
         \ call TrimEndLinesAndTrailingSpaces()
 augroup END
 
@@ -733,6 +734,7 @@ function FileWritableSign()
 endfunction
 set statusline+=%{FileWritableSign()}
 set statusline+=\ %m
+set statusline+=\ [%{&fileformat}]
 set statusline+=%=
 set statusline+=%y
 set statusline+=%6.50l/%-6.50L

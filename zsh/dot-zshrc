@@ -104,11 +104,17 @@ PURE_PROMPT_SYMBOL="$"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+export "LANG=en_US.UTF-8"
+export EDITOR="nvim"
+export VISUAL="nvim"
+export LESS=-RiX
+
 alias ll='ls -lAh'
 alias cls="clear"
 alias vim='nvim'
 alias vi='/usr/bin/vim'
 alias vimdiff="nvim -d"
+alias vims="sudo $EDITOR"
 alias gui="gitui"
 alias gst="git status"
 alias gdf="git diff | cat"
@@ -136,13 +142,9 @@ if type rg &> /dev/null; then
     export FZF_DEFAULT_COMMAND="rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
 fi
 
-export "LANG=en_US.UTF-8"
-export EDITOR="nvim"
-export VISUAL="nvim"
-export LESS=-RiX
 
-# export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
-export JAVA_HOME="/usr/share/jdk1.8.0_311"
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+# export JAVA_HOME="/usr/share/jdk1.8.0_311"
 export PATH="$JAVA_HOME:$PATH"
 # add rust path
 export PATH="$HOME/.cargo/bin:$PATH"
