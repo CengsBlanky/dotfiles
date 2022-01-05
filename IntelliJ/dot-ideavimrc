@@ -51,8 +51,10 @@ map <C-t> <Action>(Debug)
 map <C-r> <Action>(Run)
 " Map \b to toggle the breakpoint on the current line
 map \b <Action>(ToggleLineBreakpoint)
-nnoremap g] <Action>(GotoNextError)
-nnoremap g[ <Action>(GotoPreviousError)
+" nnoremap g] <Action>(GotoNextError)
+" nnoremap g[ <Action>(GotoPreviousError)
+nnoremap g] :action GotoNextError<CR>
+nnoremap g[ :action GotoPreviousError<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gp :action GotoSuperMethod<CR>
