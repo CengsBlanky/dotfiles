@@ -8,7 +8,7 @@ font:
   ligatures: true
   normal:
     family: 'FiraCode NerdFont Mono'
-    style: medium
+    style: normal
   bold:
     family: 'FiraCode NerdFont'
     style: Bold
@@ -18,7 +18,7 @@ font:
   bold_italic:
     family: 'FiraCode NerdFont'
     style: Bold Italic
-  size: 13.0
+  size: 12.0
 colors:
   primary:
     background: '#212529'
