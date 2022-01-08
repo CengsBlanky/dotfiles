@@ -267,7 +267,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 let g:rustfmt_autosave = 1
 " }}}
 " emmet vim {{{
-let g:user_emmet_mode='n'
+let g:user_emmet_mode='ni'
 let g:user_emmet_leader_key='<leader>'
 " }}}
 " junegunn/fzf {{{
