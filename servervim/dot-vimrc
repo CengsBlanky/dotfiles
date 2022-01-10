@@ -54,8 +54,6 @@ set showcmd
 set laststatus=2
 set wildmenu
 set showmatch
-set matchpairs-=(:)
-set matchpairs-=[:]
 set autoread
 set autowrite
 set confirm
