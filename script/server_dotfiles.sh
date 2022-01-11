@@ -7,9 +7,10 @@
 # check JAVA_HOME before use java
 
 cd
-git clone git@github.com:CengsBlanky/dotfiles.git ~/.dotfiles
-mv ~/.bashrc ~/.bashrc.origin
-ln -s ~/.dotfiles/bash/dot-bashrc ~/.bashrc
+if [ -f ~/.bashrc ];then
+    mv ~/.bashrc ~/.bashrc.origin
+    ln -s ~/.dotfiles/bash/dot-bashrc ~/.bashrc
+fi
 ln -s ~/.dotfiles/bash/dot-bash_aliases ~/.bash_aliases
 ln -s ~/.dotfiles/git/dot-gitconfig ~/.gitconfig
 mkdir -p ~/.vim/autoload
