@@ -54,8 +54,6 @@ set showcmd
 set laststatus=2
 set wildmenu
 set showmatch
-set matchpairs-=(:)
-set matchpairs-=[:]
 set autoread
 set autowrite
 set confirm
@@ -133,6 +131,7 @@ augroup filetype_specific
   autocmd FileType vim setlocal foldmethod=marker
   autocmd BufRead *.log set filetype=text
   autocmd BufRead *.md set filetype=markdown
+  autocmd FileType html,javascript set tabstop=2 shiftwidth=2 softtabstop=2
 augroup END
 
 function! TrimEndLinesAndTrailingSpaces()

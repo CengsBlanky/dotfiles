@@ -7,7 +7,7 @@ window:
 font:
   ligatures: true
   normal:
-    family: 'FiraCode NerdFont Mono'
+    family: 'FiraCode NerdFont'
     style: normal
   bold:
     family: 'FiraCode NerdFont'
