@@ -105,7 +105,7 @@ nnoremap <silent><nowait><LEFT> :bp<CR>
 " go next buffer
 nnoremap <silent><TAB> :bn<CR>
 " buffer jump
-if g:buftabline_numbers != 2
+if exists("g:buftabline_numbers")
 nnoremap <leader>1 :b1<CR>
 nnoremap <leader>2 :b2<CR>
 nnoremap <leader>3 :b3<CR>
