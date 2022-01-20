@@ -11,6 +11,7 @@ Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:mattn/emmet-vim.git'
+Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git'
 call plug#end()
 " plugins setting {{{
 let g:NERDTreeQuitOnOpen=3
@@ -132,6 +133,7 @@ augroup filetype_specific
   autocmd BufRead *.log set filetype=text
   autocmd BufRead *.md set filetype=markdown
   autocmd FileType html,javascript set tabstop=2 shiftwidth=2 softtabstop=2
+  autocmd BufRead,BufNewFile * if matchstr(expand('%:t:r'), '^sql*') != '' | set ft=sql | endif
 augroup END
 
 function! TrimEndLinesAndTrailingSpaces()
@@ -191,7 +193,7 @@ autocmd colorscheme * hi Comment ctermfg=Gray
 autocmd colorscheme * hi TabLine ctermfg=White ctermbg=Black cterm=NONE
 autocmd colorscheme * hi TabLineFill ctermbg=Black ctermfg=Black
 autocmd colorscheme * hi TabLineSel ctermfg=White ctermbg=DarkCyan cterm=bold
-autocmd colorscheme * hi StatusLine ctermfg=Black ctermbg=Gray cterm=bold
+autocmd colorscheme * hi StatusLine ctermfg=Black ctermbg=Gray cterm=bold gui=bold
 autocmd colorscheme * hi StatusLineNC ctermfg=DarkGray ctermbg=Black
 autocmd colorscheme * hi Normal ctermbg=NONE
 autocmd colorscheme * hi PreProc ctermfg=blue
