@@ -57,6 +57,9 @@ set grepformat=%f:%l:%c:%m
 " }}}
 " keymappings {{{
 
+" quit
+nnoremap <leader>q :x<CR>
+
 " quick upper/lower case
 nnoremap <leader>] gUiw
 nnoremap <leader>[ guiw
@@ -207,6 +210,7 @@ function FileWritableSign()
 endfunction
 set statusline+=%{FileWritableSign()}
 set statusline+=\ %m
+set statusline+=[%{&ff}]
 set statusline+=%=
 set statusline+=%y
 set statusline+=%6.50l/%-6.50L
@@ -295,6 +299,7 @@ highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE
 highlight TabLineSel ctermfg=LightGray ctermbg=DarkGrey cterm=bold guifg=White guibg=Black gui=bold
 highlight SpecialKey ctermfg=LightYellow ctermbg=NONE cterm=bold guifg=LightYellow guibg=NONE gui=bold
 highlight String ctermfg=Green ctermbg=NONE cterm=NONE guifg=Green guibg=NONE gui=NONE
+highlight Number ctermfg=Blue guifg=Blue
 
 syn match myTodo contained "\<\(TODO\|FIXME\|NOTE\):"
 hi def link myTodo Todo
