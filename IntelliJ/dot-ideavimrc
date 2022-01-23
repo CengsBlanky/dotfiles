@@ -61,6 +61,13 @@ nnoremap gp :action GotoSuperMethod<CR>
 nnoremap gt :action GotoTest<CR>
 nnoremap gb :action Back<CR>
 nnoremap gf :action Forward<CR>
+nnoremap gg :action Generate<CR>
+
+" set keystrock handler
+" use <C-x> and <C-n> in vim insert mode, otherwise handle by idea
+sethandler <C-x> n-v:ide i:vim
+sethandler <C-n> n-v:ide i:vim
 " Find more examples here: https://jb.gg/share-ideavimrc
+
 
 set ideastrictmode
