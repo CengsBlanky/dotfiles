@@ -43,16 +43,16 @@ set commentary
 " enable sneak
 set sneak
 set clipboard+=ideaput
-" use <leader>f to format code
-map <leader>f <Action>(ReformatCode)
+
+" trigger write command so that idea truly write file to disk
+nnoremap <Enter> :w<CR>
 " code test
 map <C-t> <Action>(Debug)
 " code run
 map <C-r> <Action>(Run)
 " Map \b to toggle the breakpoint on the current line
 map \b <Action>(ToggleLineBreakpoint)
-" nnoremap g] <Action>(GotoNextError)
-" nnoremap g[ <Action>(GotoPreviousError)
+
 nnoremap g] :action GotoNextError<CR>
 nnoremap g[ :action GotoPreviousError<CR>
 nnoremap gi :action GotoImplementation<CR>
@@ -61,7 +61,10 @@ nnoremap gp :action GotoSuperMethod<CR>
 nnoremap gt :action GotoTest<CR>
 nnoremap gb :action Back<CR>
 nnoremap gf :action Forward<CR>
-nnoremap gg :action Generate<CR>
+nnoremap <leader>g :action Generate<CR>
+nnoremap <leader>f :action ReformatCode<CR>
+" switch between buffers
+nnoremap <TAB> :bn<CR>
 
 " set keystrock handler
 " use <C-x> and <C-n> in vim insert mode, otherwise handle by idea
