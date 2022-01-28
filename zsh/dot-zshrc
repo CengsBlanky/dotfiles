@@ -105,9 +105,16 @@ PURE_PROMPT_SYMBOL="$"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export "LANG=en_US.UTF-8"
-export EDITOR="nvim"
-export VISUAL="nvim"
-export LESS=-RiX
+if [ "$(command -v nvim)" ]
+then
+    alias vim=nvim
+    export VISUAL=nvim
+    export EDITOR=nvim
+elif [ "$(command -v vim)" ]
+then
+    export VISUAL=vim
+    export EDITOR=vim
+fi
 
 alias ll='ls -lAh'
 alias cls="clear"
@@ -143,7 +150,7 @@ if type rg &> /dev/null; then
     export FZF_DEFAULT_COMMAND="rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
 fi
 
-
+export LESS=-RiX
 export JAVA_HOME="/opt/java"
 # export JAVA_HOME="/usr/share/jdk1.8.0_311"
 export PATH="$JAVA_HOME:$PATH"
