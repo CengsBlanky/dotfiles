@@ -105,7 +105,6 @@ let g:coc_global_extensions=[
       \ 'coc-xml',
       \ 'coc-yaml',
       \ 'coc-clangd',
-      \ 'coc-java',
       \ 'coc-rls',
       \ 'coc-go',
       \ 'coc-tsserver',
@@ -599,6 +598,9 @@ augroup windows_display
   autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
   autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
 augroup END
+
+" insert current datetime
+command! Curtime :put = strftime('%Y-%m-%d %H:%M:%S')
 
 " delete other buffers {{{
 command! -nargs=? -complete=buffer -bang Bonly
