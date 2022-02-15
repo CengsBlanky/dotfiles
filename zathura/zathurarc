@@ -1,0 +1,13 @@
+set font "DejaVu Sans Book"
+set window-height 1080
+set window-width 960
+set selection-clipboard clipboard
+
+map <Tab> toggle_index
+map = zoom in
+map - zoom out
+map <BackSpace> scroll half-up
+map <Space> scroll half-down
+map j scroll down
+map k scroll up
+map Q quit
