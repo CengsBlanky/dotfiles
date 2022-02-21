@@ -15,19 +15,9 @@ if status is-interactive
     # visual mode, but due to fish_cursor_default, is redundant here
     set fish_cursor_visual block
 
-    # ===== abbriviations =====
-    abbr --add cls "clear"
-    abbr --add gui "gitui"
-    abbr --add gst "git status"
-    abbr --add gdf "git diff | cat"
-    abbr --add gps "git push"
-    abbr --add gpl "git pull"
-    abbr --add gcm "git commit -am"
-    abbr --add vimdiff "nvim -d"
-    abbr --add vims "sudo $EDITOR"
-
     # ===== gloabal variables =====
     set -Ux LANG "en_US.UTF-8"
+    set -Ux EDITOR vim
     set -Ux LESS "-RiX"
     # ripgrep 
     if command -q rg
@@ -47,4 +37,16 @@ if status is-interactive
     set -Ux FLUTTER_STORAGE_BASE_URL "https://storage.flutter-io.cn"
     set PATH $PATH "$HOME/snap/flutter/common/flutter/bin"
     set PATH $PATH "$HOME/tools/android-studio/bin"
+
+    # ===== abbriviations =====
+    abbr --add cls "clear"
+    abbr --add gui "gitui"
+    abbr --add gst "git status"
+    abbr --add gdf "git diff | cat"
+    abbr --add gps "git push"
+    abbr --add gpl "git pull"
+    abbr --add gcm "git commit -am"
+    abbr --add vimdiff "nvim -d"
+    abbr --add vims "sudo $EDITOR"
+
 end
