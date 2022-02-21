@@ -1,14 +1,14 @@
 function fish_prompt --description 'Write out the prompt'
     set -l last_status $status
 
-    printf '%s%s%s@%s%s%s%s:' (set_color $user_name_color) (whoami) \
-        (set_color normal) \
-        (set_color $user_host_color) (hostname | cut -d . -f 1) \
-        (set_color normal)
+#    printf '%s%s%s@%s%s%s%s:' (set_color $user_name_color) (whoami) \
+#        (set_color normal) \
+#        (set_color $user_host_color) (hostname | cut -d . -f 1) \
+#        (set_color normal)
 
     # PWD
     set_color $user_cwd_color
-    echo -n (prompt_pwd)" "
+    echo -n (prompt_pwd)
     set_color normal
 
     __terlar_git_prompt
