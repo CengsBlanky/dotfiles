@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export EDITOR:vim
 SETUVAR --export FLUTTER_STORAGE_BASE_URL:https\x3a//storage\x2eflutter\x2dio\x2ecn
 SETUVAR --export FZF_DEFAULT_COMMAND:rg\x20\x2d\x2dfiles\x20\x2d\x2dhidden\x20\x2d\x2dcolumn\x20\x2d\x2dline\x2dnumber\x20\x2d\x2dno\x2dheading\x20\x2d\x2dno\x2dignore\x20\x2d\x2dsmart\x2dcase\x20\x2d\x2dignore\x2dfile\x20/home/zengshuai/\x2evim/ignorefile
 SETUVAR --export JAVA_HOME:/opt/java
@@ -17,7 +18,7 @@ SETUVAR _fish_abbr_gst:git\x20status
 SETUVAR _fish_abbr_gui:gitui
 SETUVAR _fish_abbr_l:ls\x20\x2dl
 SETUVAR _fish_abbr_vimdiff:nvim\x20\x2dd
-SETUVAR _fish_abbr_vims:sudo\x20nvim
+SETUVAR _fish_abbr_vims:sudo\x20vim
 SETUVAR _fisher_edc_2F_bass_files:/home/zengshuai/\x2econfig/fish/functions/__bass\x2epy\x1e/home/zengshuai/\x2econfig/fish/functions/bass\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:/home/zengshuai/\x2econfig/fish/functions/fisher\x2efish\x1e/home/zengshuai/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1eedc/bass
