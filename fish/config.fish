@@ -14,7 +14,7 @@ if status is-interactive
     # The following variable can be used to configure cursor shape in
     # visual mode, but due to fish_cursor_default, is redundant here
     set -U fish_cursor_visual block
-    set -g fish_vi_force_cursor 1
+    set -U fish_vi_force_cursor 1
 
     # ===== gloabal variables =====
     set -Ux LANG "en_US.UTF-8"
