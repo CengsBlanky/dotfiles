@@ -115,7 +115,7 @@ let g:coc_global_extensions=[
       \ 'coc-go',
       \ 'coc-tsserver',
       \ 'coc-pyright',
-      \ 'coc-vetur',
+      \ '@yaegassy/coc-volar',
       \ 'coc-flutter',
       \ 'coc-sh',
       \ 'coc-snippets',
@@ -412,6 +412,7 @@ inoremap jk <esc>
 set hidden
 set number
 set relativenumber
+set cursorline
 set backspace=2
 set incsearch
 set smartcase
@@ -553,6 +554,7 @@ augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
   autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType text set lcs+=space:· list
 augroup END
 
 augroup filetype_indent_size
