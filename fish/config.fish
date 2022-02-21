@@ -45,8 +45,7 @@ if status is-interactive
     abbr --add gdf "git diff | cat"
     abbr --add gps "git push"
     abbr --add gpl "git pull"
+    abbr --add gad "git add"
     abbr --add gcm "git commit -am"
-    abbr --add vimdiff "nvim -d"
-    abbr --add vims "sudo $EDITOR"
 
 end
