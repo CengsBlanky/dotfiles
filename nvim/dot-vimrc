@@ -6,6 +6,9 @@ let g:python_host_skip_check=1
 let g:python3_host_skip_check=1
 let g:markdown_folding = 1
 let g:python3_host_prog = '/usr/bin/python'
+if &shell =~# 'fish$'
+  set shell=sh
+endif
 " }}}
 " plugins {{{
 execute 'source' plug_file
@@ -33,6 +36,7 @@ Plug 'git@github.com:rust-lang/rust.vim.git'
 Plug 'git@github.com:fatih/vim-go.git', {'do': ':GoUpdateBinaries'}
 Plug 'git@github.com:dart-lang/dart-vim-plugin.git'
 Plug 'git@github.com:mattn/emmet-vim.git' " powerful assert tags
+Plug 'git@github.com:dag/vim-fish.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:arcticicestudio/nord-vim.git'
