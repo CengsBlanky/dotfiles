@@ -50,6 +50,6 @@ if status is-interactive
     abbr --add gcm "git commit -am"
 
     # key bind
-    bind --mode insert jk "" --sets-mode default
+    bind --mode insert \cr "" --sets-mode default
 
 end
