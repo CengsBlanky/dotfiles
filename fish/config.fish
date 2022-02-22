@@ -49,4 +49,7 @@ if status is-interactive
     abbr --add gad "git add"
     abbr --add gcm "git commit -am"
 
+    # key bind
+    bind --mode insert jk "" --sets-mode default
+
 end
