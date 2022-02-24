@@ -25,19 +25,36 @@ if status is-interactive
         set -Ux FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
     end
     # java
-    set -Ux JAVA_HOME "/opt/java"
+    set -l JAVA8_HOME "/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home"
+    set -l JAVA11_HOME "/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home"
+    set -gx JAVA_HOME $JAVA8_HOME
     set PATH $PATH "$HOME/.local/bin"
     set PATH $PATH "$HOME/bin"
     set PATH $PATH $JAVA_HOME 
     # rust
     set PATH $PATH "$HOME/.cargo/bin"
     # golang
+    set -gx GOPATH "$HOME/go"
+    set -gx GO111MODULE "auto"
     set PATH $PATH "$HOME/go/bin"
+    # php
+    set -gx PHP_HOME "/usr/local/opt/php/bin"
+    set PATH $PATH "/usr/local/opt/openldap/bin"
+    set PATH $PATH "/usr/local/opt/curl/bin"
+    set PATH $PATH "/usr/local/opt/libpq/bin"
+    set PATH $PATH $PHP_HOME
+    # llvm 
+    set PATH $PATH "/usr/local/opt/llvm/bin"
+    set PATH $PATH "/usr/local/opt/llvm"
+    # mysql
+    set PATH $PATH "/usr/local/opt/mysql/bin"
     # Flutter
-    set -Ux PUB_HOSTED_URL "https://pub.flutter-io.cn"
-    set -Ux FLUTTER_STORAGE_BASE_URL "https://storage.flutter-io.cn"
-    set PATH $PATH "$HOME/snap/flutter/common/flutter/bin"
-    set PATH $PATH "$HOME/tools/android-studio/bin"
+    set PATH $PATH "$HOME/tools/flutter/bin"
+    # ruby
+    set PATH $PATH "/usr/local/opt/ruby/bin"
+    set -gx GEM_HOME "$HOME/.gem"
+    set PATH $PATH "$GEM_HOME/bin"
+
 
     # ===== abbriviations =====
     abbr --add cls "clear"
@@ -48,6 +65,8 @@ if status is-interactive
     abbr --add gpl "git pull"
     abbr --add gad "git add"
     abbr --add gcm "git commit -am"
+    abbr --add python "python3.9"
+    abbr --add pip "pip.3.9"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default
