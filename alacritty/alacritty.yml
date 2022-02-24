@@ -6,15 +6,14 @@ window:
 font:
   ligatures: true
   normal:
-    family: 'Liga SFMono Nerd Font'
+    family: 'Monaco Nerd Font'
   bold:
-    family: 'Liga SFMono Nerd Font'
+    family: 'Fira Code Nerd Font'
   italic:
-    family: 'Liga SFMono Nerd Font'
+    family: 'Fira Code'
   bold_italic:
-    family: 'Liga SFMono Nerd Font'
-    style: Bold Italic
-  size: 17.0
+    family: 'Fira Code Nerd Font'
+  size: 16.0
 colors:
   primary:
     background: '#343a40'
