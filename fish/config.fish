@@ -6,23 +6,23 @@ if status is-interactive
     fish_vi_key_bindings
     # Emulates vim's cursor shape behavior
     # Set the normal and visual mode cursors to a block
-    set -U fish_cursor_default block
+    set -g fish_cursor_default block
     # Set the insert mode cursor to a line
-    set -U fish_cursor_insert line
+    set -g fish_cursor_insert line
     # Set the replace mode cursor to an underscore
-    set -U fish_cursor_replace_one underscore
+    set -g fish_cursor_replace_one underscore
     # The following variable can be used to configure cursor shape in
     # visual mode, but due to fish_cursor_default, is redundant here
-    set -U fish_cursor_visual block
-    set -U fish_vi_force_cursor 1
+    set -g fish_cursor_visual block
+    set -g fish_vi_force_cursor 1
 
     # ===== gloabal variables =====
-    set -Ux LANG "en_US.UTF-8"
-    set -Ux EDITOR vim
-    set -Ux LESS "-RiX"
+    set -gx LANG "en_US.UTF-8"
+    set -gx EDITOR vim
+    set -gx LESS "-RiX"
     # ripgrep 
     if command -q rg
-        set -Ux FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
+        set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
     end
     # java
     set -l JAVA8_HOME "/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home"
@@ -54,7 +54,6 @@ if status is-interactive
     set PATH $PATH "/usr/local/opt/ruby/bin"
     set -gx GEM_HOME "$HOME/.gem"
     set PATH $PATH "$GEM_HOME/bin"
-
 
     # ===== abbriviations =====
     abbr --add cls "clear"
