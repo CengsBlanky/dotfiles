@@ -12,6 +12,12 @@ function fish_prompt --description 'Write out the prompt'
     # PWD
     set_color $user_cwd_color
     echo -n (prompt_pwd)
+
+    if not test $last_status -eq 0
+        set_color $fish_color_error
+        printf ' [%s]' $last_status
+    end
+
     set_color normal
 
     __terlar_git_prompt
