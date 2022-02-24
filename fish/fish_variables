@@ -2,7 +2,7 @@
 # VERSION: 3.0
 SETUVAR --export EDITOR:vim
 SETUVAR --export FLUTTER_STORAGE_BASE_URL:https\x3a//storage\x2eflutter\x2dio\x2ecn
-SETUVAR --export FZF_DEFAULT_COMMAND:rg\x20\x2d\x2dfiles\x20\x2d\x2dhidden\x20\x2d\x2dcolumn\x20\x2d\x2dline\x2dnumber\x20\x2d\x2dno\x2dheading\x20\x2d\x2dno\x2dignore\x20\x2d\x2dsmart\x2dcase\x20\x2d\x2dignore\x2dfile\x20/home/zengshuai/\x2evim/ignorefile
+SETUVAR --export FZF_DEFAULT_COMMAND:rg\x20\x2d\x2dfiles\x20\x2d\x2dhidden\x20\x2d\x2dcolumn\x20\x2d\x2dline\x2dnumber\x20\x2d\x2dno\x2dheading\x20\x2d\x2dno\x2dignore\x20\x2d\x2dsmart\x2dcase\x20\x2d\x2dignore\x2dfile\x20/Users/cengshuai/\x2evim/ignorefile
 SETUVAR --export JAVA_HOME:/opt/java
 SETUVAR --export LANG:en_US\x2eUTF\x2d8
 SETUVAR --export LESS:\x2dRiX
