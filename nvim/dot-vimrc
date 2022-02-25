@@ -278,8 +278,8 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 let g:rustfmt_autosave = 1
 " }}}
 " emmet vim {{{
-let g:user_emmet_mode='nv'    "only enable normal mode functions.
-let g:user_emmet_leader_key=','
+" emmet default leader key: <C-y>
+let g:user_emmet_mode='a'    "enable emmet in all mode
 " }}}
 " junegunn/fzf {{{
 " [Buffers] Jump to the existing window if possible

@@ -1,6 +1,7 @@
 function vi
-    if test -x vim
+    if command -q vim
         vim $argv
     else
         $EDITOR $argv
+    end
 end
