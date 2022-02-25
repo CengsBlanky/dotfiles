@@ -1,5 +1,4 @@
 {
-    "java.home": "/usr/lib/jvm/java-11-openjdk/",
     "coc.preferences.colorSupport": false,
     "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "javascriptreact", "typescriptreact", "html", "css", "vue"],
     "prettier.disableLanguages": [],
@@ -7,6 +6,8 @@
     "prettier.statusItemText": "",
     "prettier.trailingComma": "es5",
     "prettier.singleQuote": true,
+    "prettier.bracketSpacing": true,
+    "prettier.bracketSameLine": true,
     "typescript.format.enabled": false,
     "tsserver.formatOnType": false,
     "javascript.format.enabled": false,
