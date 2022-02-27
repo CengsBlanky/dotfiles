@@ -44,6 +44,8 @@ nnoremap <Space> <C-f>
 nnoremap <Enter> :w<CR>
 " switch between buffers
 nnoremap <TAB> :bn<CR>
+nnoremap [ :bp<CR>
+nnoremap ] :bn<CR>
 
 " -- Map IDE actions to IdeaVim --
 " close current tab or other tabs
