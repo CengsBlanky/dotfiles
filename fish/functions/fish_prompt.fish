@@ -1,5 +1,4 @@
-# function fish_prompt --description 'Write out the prompt'
-function fish_prompt
+function fish_prompt --description 'Write out the prompt'
     set -l last_status $status
     set -l red_color 'ff2b2b'
     set -l gray_color '868e96'
@@ -23,8 +22,9 @@ function fish_prompt
 
     __terlar_git_prompt
     fish_hg_prompt
-    # echo;
-    printf '\n'
+
+    echo;
+
     set_color $user_prompt_symbol_color
 
     if not test $last_status -eq 0

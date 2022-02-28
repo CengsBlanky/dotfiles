@@ -3,4 +3,5 @@ function vi
         vim $argv
     else
         $EDITOR $argv
+    end
 end
