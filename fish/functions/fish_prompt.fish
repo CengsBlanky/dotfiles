@@ -7,7 +7,7 @@ function fish_prompt --description 'Write out the prompt'
         (set_color $gray_color) \
         (set_color $user_name_color) $USER \
         (set_color $gray_color) \
-        (set_color $user_host_color) $hostname \
+        (set_color $user_host_color) (prompt_hostname) \
         (set_color $gray_color)
     # PWD
     set_color $user_cwd_color
