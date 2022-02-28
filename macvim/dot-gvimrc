@@ -19,7 +19,6 @@ Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'git@github.com:junegunn/fzf.vim.git'
 Plug 'git@github.com:morhetz/gruvbox.git'
 Plug 'git@github.com:tribela/vim-transparent.git'
-Plug 'git@github.com:dstein64/vim-startuptime.git'
 Plug 'git@github.com:tpope/vim-dispatch.git'
 call plug#end()
 " }}}

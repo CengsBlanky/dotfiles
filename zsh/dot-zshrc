@@ -196,7 +196,6 @@ export PATH="/usr/local/opt/mysql/bin:$PATH"
 # go path
 export PATH="$HOME/go/bin:$PATH"
 # add rust path
-export PATH="$HOME/.cargo/bin:$PATH"
 # add go path
 export PATH="$HOME/go/bin/:$PATH"
 # add Flutter path
@@ -207,3 +206,4 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 
+. "$HOME/.cargo/env"

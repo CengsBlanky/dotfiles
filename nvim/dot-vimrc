@@ -32,6 +32,7 @@ Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
 Plug 'git@github.com:pangloss/vim-javascript.git'
 Plug 'git@github.com:rust-lang/rust.vim.git'
 Plug 'git@github.com:fatih/vim-go.git', {'do': ':GoUpdateBinaries'}
+Plug 'git@github.com:dag/vim-fish.git'
 Plug 'git@github.com:dart-lang/dart-vim-plugin.git'
 Plug 'git@github.com:mattn/emmet-vim.git'
 Plug 'git@github.com:honza/vim-snippets.git'
@@ -149,8 +150,8 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+nmap <silent> g] <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -743,6 +744,6 @@ set statusline+=%=
 set statusline+=%y
 set statusline+=%7.50l/%-7.50L
 set statusline+=%P
-set statusline+=\ \ 
+set statusline+=\ 
 " }}}
 " }}}
