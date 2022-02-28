@@ -3,9 +3,9 @@ function fish_prompt --description 'Write out the prompt'
 
     printf '%s[%s%s%s@%s%s%s]%s ' \
         (set_color 868e96) \
-        (set_color $user_name_color) (whoami) \
+        (set_color $user_name_color) $USER \
         (set_color 868e96) \
-        (set_color $user_host_color) (hostname | cut -d . -f 1) \
+        (set_color $user_host_color) $hostname \
         (set_color 868e96) \
 
     # PWD
