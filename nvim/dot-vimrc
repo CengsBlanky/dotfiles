@@ -64,7 +64,7 @@ let g:AutoPairs={'{':'}', '[':']'}
 augroup AutoPair_Custom
   autocmd!
   autocmd FileType html,php,jsp let b:AutoPairs = AutoPairsDefine({'<!--':'-->', '<?':'?>', '<?php':'?>', '<%':'%>'})
-  autocmd FileType rust let b:AutoPairs = AutoPairsDefine({'\w\zs<': '>'})
+  autocmd FileType rust let b:AutoPairs = AutoPairsDefine({'\w\zs<': '>', '(':')', '"':'"'})
 augroup END
 " }}}
 " airblade/vim-gitgutter {{{

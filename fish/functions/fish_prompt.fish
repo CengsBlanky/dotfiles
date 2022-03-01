@@ -1,20 +1,20 @@
 function fish_prompt --description 'Write out the prompt'
     set -l last_status $status
+    set -l red_color 'ff2b2b'
+    set -l gray_color '868e96'
 
     printf '%s[%s%s%s@%s%s%s]%s ' \
-        (set_color 868e96) \
-        (set_color $user_name_color) (whoami) \
-        (set_color 868e96) \
-        (set_color $user_host_color) (hostname | cut -d . -f 1) \
-        (set_color 868e96) \
-        (set_color normal)
-
+        (set_color $gray_color) \
+        (set_color $user_host_color) $USER \
+        (set_color $gray_color) \
+        (set_color $user_host_color) (prompt_hostname) \
+        (set_color $gray_color)
     # PWD
     set_color $user_cwd_color
     echo -n (prompt_pwd)
 
     if not test $last_status -eq 0
-        set_color $fish_color_error
+        set_color $red_color
         printf ' [%s]' $last_status
     end
 
@@ -22,27 +22,15 @@ function fish_prompt --description 'Write out the prompt'
 
     __terlar_git_prompt
     fish_hg_prompt
-    echo
+
+    echo;
 
     set_color $user_prompt_symbol_color
 
     if not test $last_status -eq 0
-        set_color $fish_color_error
+        set_color $red_color
     end
 
-    switch $fish_bind_mode
-    case default
-        set -l prompt_color 5e81ac
-    case insert
-        set -l prompt_color a3be8c
-    case replace_one
-        set -l prompt_color fdb924
-    case visual
-        set -l prompt_color a5d8ff
-    case '*'
-        set -l prompt_color red
-    end
-    set_color -b $prompt_color
     echo -n '➤ '
     set_color normal
 end
