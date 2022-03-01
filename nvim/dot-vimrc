@@ -57,7 +57,7 @@ noremap <silent><M-t> :NERDTreeToggle<CR>
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
 " }}}
 " auto-pair {{{
-let g:AutoPairs={'{':'}', '[':']'}
+" let g:AutoPairs={'{':'}', '[':']'}
 " }}}
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
