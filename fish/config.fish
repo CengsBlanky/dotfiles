@@ -6,15 +6,15 @@ if status is-interactive
     fish_vi_key_bindings
     # Emulates vim's cursor shape behavior
     # Set the normal and visual mode cursors to a block
-    set -U fish_cursor_default block
+    set -g fish_cursor_default block
     # Set the insert mode cursor to a line
-    set -U fish_cursor_insert line
+    set -g fish_cursor_insert line
     # Set the replace mode cursor to an underscore
-    set -U fish_cursor_replace_one underscore
+    set -g fish_cursor_replace_one underscore
     # The following variable can be used to configure cursor shape in
     # visual mode, but due to fish_cursor_default, is redundant here
-    set -U fish_cursor_visual block
-    set -U fish_vi_force_cursor 1
+    set -g fish_cursor_visual block
+    set -g fish_vi_force_cursor 1
 
     # ===== gloabal variables =====
     set -gx LANG "en_US.UTF-8"
@@ -22,10 +22,10 @@ if status is-interactive
     set -gx LESS "-RiX"
     # ripgrep 
     if command -q rg
-        set -Ux FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
+        set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
     end
     # java
-    set -Ux JAVA_HOME "/opt/java"
+    set -gx JAVA_HOME "/opt/java"
     set PATH $PATH "$HOME/.local/bin"
     set PATH $PATH "$HOME/bin"
     set PATH $PATH $JAVA_HOME 
@@ -34,8 +34,8 @@ if status is-interactive
     # golang
     set PATH $PATH "$HOME/go/bin"
     # Flutter
-    set -Ux PUB_HOSTED_URL "https://pub.flutter-io.cn"
-    set -Ux FLUTTER_STORAGE_BASE_URL "https://storage.flutter-io.cn"
+    set -gx PUB_HOSTED_URL "https://pub.flutter-io.cn"
+    set -gx FLUTTER_STORAGE_BASE_URL "https://storage.flutter-io.cn"
     set PATH $PATH "$HOME/snap/flutter/common/flutter/bin"
     set PATH $PATH "$HOME/tools/android-studio/bin"
 
