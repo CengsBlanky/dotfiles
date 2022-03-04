@@ -9,6 +9,7 @@ SETUVAR --export LESS:\x2dRiX
 SETUVAR --export NVM_DIR:/home/zengshuai/\x2envm
 SETUVAR --export PUB_HOSTED_URL:https\x3a//pub\x2eflutter\x2dio\x2ecn
 SETUVAR __fish_initialized:3100
+SETUVAR _fish_abbr_cdnote:cd\x20/home/zengshuai/notes/journal
 SETUVAR _fish_abbr_cls:clear
 SETUVAR _fish_abbr_gad:git\x20add
 SETUVAR _fish_abbr_gcm:git\x20commit\x20\x2dam

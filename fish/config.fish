@@ -48,6 +48,7 @@ if status is-interactive
     abbr --add gpl "git pull"
     abbr --add gad "git add"
     abbr --add gcm "git commit -am"
+    abbr --add cdnote "cd $HOME/notes/journal"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default
