@@ -557,20 +557,12 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
-  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType text set lcs+=space:· list
 augroup END
 
 augroup filetype_indent_size
   autocmd!
   autocmd FileType html,css,javascript,typescript,typescriptreact,vue,yaml,sql,json,vim
         \ setlocal tabstop=2 shiftwidth=2
-  autocmd FileType text,markdown setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
-  autocmd FileType text,markdown nnoremap j gj
-  autocmd FileType text,markdown nnoremap k gk
-  autocmd FileType text,markdown nnoremap 0 g0
-  autocmd FileType text,markdown nnoremap $ g$
-  autocmd FileType text,markdown nnoremap ^ g^
 augroup END
 
 function TrimEndLinesAndTrailingSpaces()
