@@ -19,7 +19,7 @@ if status is-interactive
     # ===== gloabal variables =====
     set -gx LANG "en_US.UTF-8"
     set -gx EDITOR vim
-    set -gx LESS "-RiX"
+    set -gx LESS "-FRiX"
     # ripgrep 
     if command -q rg
         set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"

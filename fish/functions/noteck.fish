@@ -14,7 +14,7 @@ function noteck
         if command -q glow
             glow $journalfilename
         else
-            less --use-color $journalfilename
+            less $journalfilename
         end
     else
         echo "note at "$ckdate" not found."
