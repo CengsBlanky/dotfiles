@@ -18,7 +18,7 @@ if status is-interactive
 
     # ===== gloabal variables =====
     set -gx LANG "en_US.UTF-8"
-    set -gx EDITOR vim
+    set -gx EDITOR nvim
     set -gx LESS "-RiX"
     # ripgrep 
     if command -q rg

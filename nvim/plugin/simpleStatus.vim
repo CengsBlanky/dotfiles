@@ -4,7 +4,7 @@ let s:filetypes = {
       \ "cpp": "",
       \ "rust": "",
       \ "java": "",
-      \ "go": "",
+      \ "go": "",
       \ "python": "",
       \ 
       \ "javascript": "",
@@ -13,13 +13,13 @@ let s:filetypes = {
       \ "css": "",
       \ "vue": "﵂",
       \ 
-      \ "docker": "",
+      \ "dockerfile": "",
       \ "sql": "",
       \ 
       \ "vim": "",
       \ "fish": "",
       \ "sh": "",
-      \ "crontab": "",
+      \ "crontab": "",
       \ "text": "",
       \
       \ "lock": "",
@@ -32,20 +32,19 @@ let s:fileformats = {
       \ "mac": "",
 \ }
 
-function! FileFormatSign(ff)
-  return get(s:fileformats, a:ff, a:ff)
+function! FileFormatSign()
+  return get(s:fileformats, &fileformat, &fileformat)
 endfunction
 
-function! FileTypeSign(ft)
-  return get(s:filetypes, a:ft, a:ft)
+function! FileTypeSign()
+  return get(s:filetypes, &filetype, &filetype)
 endfunction
 
-set statusline=%{&modifiable?'':''}
+set statusline=\ %-1{FileTypeSign()}
 set statusline+=\ %f
+set statusline+=%{&modifiable?'':'\ '}
 set statusline+=%{&modified?'\ פֿ':''}
-set statusline+=\ %{FileFormatSign(&fileformat)}
 set statusline+=%=
-set statusline+=%{FileTypeSign(&filetype)}
+set statusline+=\ %{FileFormatSign()}
 set statusline+=%6.50l/%-6.50L
-set statusline+=%P
-set statusline+=\ \ 
+set statusline+=%-4.10P
