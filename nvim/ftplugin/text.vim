@@ -4,4 +4,4 @@ nnoremap k gk
 nnoremap 0 g0
 nnoremap $ g$
 nnoremap ^ g^
-set lcs+=space:· list
+setlocal lcs+=space:· list

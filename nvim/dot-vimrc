@@ -60,6 +60,9 @@ noremap <silent><M-t> :NERDTreeToggle<CR>
 " tpope/vim-surround {{{
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
 " }}}
+" andymass/vim-matchup {{{
+let g:matchup_matchparen_offscreen = {}
+" }}}
 " auto-pair {{{
 augroup AutoPair_Custom
   autocmd!
@@ -371,19 +374,6 @@ let &t_ut=''
 set t_Co=256
 set termguicolors
 colorscheme ayu
-" highlight works just in certain color name, otherwise color would be normal font color
-" set guifg would be enough, but ctermfg would't hurt
-highlight CocUnusedHighlight guifg=DarkYellow gui=underline
-
-highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
-highlight BufTabLineFill guibg=none guifg=none ctermfg=none ctermbg=none gui=none
-highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=none
-
-highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
-highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
-highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
-" }}}
-highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=none" nvim colorizer {{{
 lua <<EOF
 require'colorizer'.setup({
   'html';
@@ -490,6 +480,8 @@ nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>
 " save
 nnoremap <silent><Enter> :w<CR>
+" toggle hlsearch
+nnoremap <leader>h :set hlsearch!<CR>
 " Open explorer where current file is located {{{
 " Only for win for now.
 func! OpenFileExplorer() abort
@@ -715,35 +707,43 @@ command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('
 
 " }}}
 " default colors {{{
-set statusline=
-set statusline+=%h
-set statusline+=\ %f
-function FileWritableSign()
-  return filewritable(expand('%')) == 0 ? ' ' : ''
-endfunction
-set statusline+=%{FileWritableSign()}
-set statusline+=\ %m
-set statusline+=\ [%{&fileformat}]
-set statusline+=%=
-set statusline+=%y
-set statusline+=%6.50l/%-6.50L
-set statusline+=%P
-set statusline+=\ \ 
-
 highlight Comment guifg=DarkGray gui=none
 highlight Visual guibg=#8fbcbb guifg=#000000
-highlight Search guifg=#a3be8c guibg=#495057 gui=bold
-highlight CursorLine guibg=#495057
-highlight LineNr guifg=#868e96 gui=none
-highlight MatchParen guifg=#ffd43b guibg=none gui=bold
 highlight SignColumn gui=bold guibg=none
-highlight Normal guibg=none ctermbg=none " transparent background
-highlight Number guifg=#88c0d0
-highlight String guifg=#a3be8c
-highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
-highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
+" for nord colorscheme
+" highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
+" highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
+highlight StatusLine gui=bold guifg=#adb5bd guibg=#3b4252
+highlight StatusLineNC gui=none guifg=DarkGray guibg=#4c566a
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
-highlight CursorLineNr gui=bold guifg=#eceff4
-highlight htmlLink gui=underline guifg=#74c0fc
+highlight LineNr guifg=#868e96 gui=none
+highlight Normal guibg=none ctermbg=none " transparent background
+highlight MatchParen gui=bold,underline
+highlight User1 guifg=#ff3300 gui=bold
+highlight User2 guifg=#e9ecef
+
+
+" highlight Search guifg=#a3be8c guibg=#495057 gui=bold
+" highlight MatchParen guifg=#ffd43b guibg=none gui=bold
+" highlight Number guifg=#88c0d0
+" highlight String guifg=#a3be8c
+" highlight CursorLine guibg=#495057
+" highlight CursorLineNr gui=bold guifg=#eceff4
+" highlight htmlLink gui=underline guifg=#74c0fc
+
+" self defined plugins colorscheme {{{
+highlight CocUnusedHighlight guifg=DarkYellow gui=underline
+
+highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
+highlight BufTabLineFill guibg=none guifg=none ctermfg=none ctermbg=none gui=none
+highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=none
+
+highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
+highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
+highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
+" }}}
+
+
+" }}}
 " }}}
 " }}}
