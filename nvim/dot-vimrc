@@ -231,7 +231,7 @@ command! -nargs=0 Format :call CocAction('format')
 " Format whole buffer use Format
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Auto format before buffer write
-autocmd BufWritePre *.c,*.h,*.cpp,*.java :call CocAction('format')
+autocmd BufWritePre *.c,*.h,*.cpp :call CocAction('format')
 " coc format keymap
 nnoremap <silent><leader>f :Format<CR>
 
