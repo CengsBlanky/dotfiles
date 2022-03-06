@@ -1,50 +1,50 @@
 let s:filetypes = {
-      \ "c": "",
-      \ "lua": "",
-      \ "cpp": "",
-      \ "rust": "",
-      \ "java": "",
-      \ "go": "",
-      \ "python": "",
+      \ 'c':          '',
+      \ 'lua':        '',
+      \ 'cpp':        '',
+      \ 'rust':       '',
+      \ 'java':       '',
+      \ 'go':         '',
+      \ 'python':     '',
       \ 
-      \ "javascript": "",
-      \ "typescript": "",
-      \ "html": "",
-      \ "css": "",
-      \ "vue": "﵂",
+      \ 'javascript': '',
+      \ 'typescript': '',
+      \ 'html':       '',
+      \ 'css':        '',
+      \ 'tsx':        '',
       \ 
-      \ "dockerfile": "",
-      \ "sql": "",
+      \ 'dockerfile': '',
+      \ 'sql':        '',
       \ 
-      \ "vim": "",
-      \ "fish": "",
-      \ "sh": "",
-      \ "crontab": "",
-      \ "text": "",
+      \ 'vim':        '',
+      \ 'fish':       '',
+      \ 'sh':         '',
+      \ 'crontab':    '',
+      \ 'text':       '',
       \
-      \ "lock": "",
-      \ "help": "",
+      \ 'lock':       '',
+      \ 'help':       '',
 \ }
 
 let s:fileformats = {
-      \ "dos": "",
-      \ "unix": "",
-      \ "mac": "",
+      \ 'dos':  '',
+      \ 'unix': '',
+      \ 'mac':  '',
 \ }
 
 function! FileFormatSign()
-  return get(s:fileformats, &fileformat, &fileformat)
+  return get(s:fileformats, &fileformat, '')
 endfunction
 
 function! FileTypeSign()
-  return get(s:filetypes, &filetype, &filetype)
+  return get(s:filetypes, &filetype, '')
 endfunction
 
-set statusline=\ %-1{FileTypeSign()}
+set statusline=%2{FileTypeSign()}
 set statusline+=\ %f
 set statusline+=%{&modifiable?'':'\ '}
 set statusline+=%{&modified?'\ פֿ':''}
 set statusline+=%=
-set statusline+=\ %{FileFormatSign()}
+set statusline+=%{FileFormatSign()}
 set statusline+=%6.50l/%-6.50L
 set statusline+=%-4.10P
