@@ -11,6 +11,7 @@ let s:filetypes = {
       \ 'typescript':      '',
       \ 'html':            '',
       \ 'css':             '',
+      \ 'scss':             '',
       \ 'vue':             '﵂',
       \ 'tsx':             '',
       \ 'typescriptreact': '',
