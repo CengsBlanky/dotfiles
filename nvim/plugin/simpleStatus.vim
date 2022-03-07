@@ -26,10 +26,11 @@ let s:filetypes = {
       \ 'crontab':         '',
       \ 'fstab':           '',
       \ 'conf':            '',
+      \ 'log':             '',
       \ 'text':            '',
       \
       \ 'lock':            '',
-      \ 'help':            '',
+      \ 'help':            '',
 \ }
 
 let s:fileformats = {
