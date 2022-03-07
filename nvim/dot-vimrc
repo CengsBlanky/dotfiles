@@ -373,7 +373,7 @@ EOF
 let &t_ut=''
 set t_Co=256
 set termguicolors
-colorscheme ayu
+colorscheme nord
 lua <<EOF
 require'colorizer'.setup({
   'html';
