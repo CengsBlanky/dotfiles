@@ -29,4 +29,4 @@ mouse:
   hide_when_typing: true
 key_bindings:
   - { key: T, mods: Control|Shift, action: SpawnNewInstance }
-  - { key: W, mods: Control|Shift, action: Quit }
+  - { key: K, mods: Control|Shift, action: Quit }
