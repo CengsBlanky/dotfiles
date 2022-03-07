@@ -16,6 +16,7 @@ let s:filetypes = {
       \ 'json':            '',
       \ 'dart':            '',
       \ 
+      \ 'markdown':        '',
       \ 'dockerfile':      '',
       \ 'sql':             '',
       \ 
