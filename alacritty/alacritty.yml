@@ -7,16 +7,16 @@ window:
 font:
   ligatures: true
   normal:
-    family: 'FiraCode NerdFont'
-    style: normal
+    family: 'FiraCode Nerd Font'
+    style: Retina
   bold:
-    family: 'FiraCode NerdFont'
+    family: 'FiraCode Nerd Font'
     style: Bold
   italic:
-    family: 'FiraCode NerdFont'
+    family: 'FiraCode Nerd Font'
     style: Italic
   bold_italic:
-    family: 'FiraCode NerdFont'
+    family: 'FiraCode Nerd Font'
     style: Bold Italic
   size: 12.0
 colors:
