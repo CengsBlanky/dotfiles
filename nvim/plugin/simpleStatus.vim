@@ -6,19 +6,18 @@ let s:filetypes = {
       \ 'java':            '',
       \ 'go':              '',
       \ 'python':          '',
-      \ 'php':             '',
       \ 
       \ 'javascript':      '',
       \ 'typescript':      '',
       \ 'html':            '',
       \ 'css':             '',
-      \ 'scss':            '',
       \ 'vue':             '﵂',
       \ 'tsx':             '',
       \ 'typescriptreact': '',
       \ 'json':            '',
       \ 'dart':            '',
       \ 
+      \ 'markdown':        '',
       \ 'dockerfile':      '',
       \ 'sql':             '',
       \ 
@@ -28,10 +27,11 @@ let s:filetypes = {
       \ 'crontab':         '',
       \ 'fstab':           '',
       \ 'conf':            '',
+      \ 'log':             '',
       \ 'text':            '',
       \
       \ 'lock':            '',
-      \ 'help':            '',
+      \ 'help':            '',
 \ }
 
 let s:fileformats = {
@@ -39,6 +39,21 @@ let s:fileformats = {
       \ 'unix': '',
       \ 'mac':  '',
 \ }
+
+let s:systypes = {
+      \ 'Linux':   '',
+      \ 'Darwin':  '',
+      \ 'Windows': '',
+\ }
+
+" detect OS
+if !exists("g:os")
+  if has("unix")
+    let g:os = substitute(system('uname'), '\n', '', '')
+  else
+    let g:os = "Windows"
+  endif
+endif
 
 function! FileFormatSign()
   return get(s:fileformats, &fileformat, '')
@@ -48,11 +63,15 @@ function! FileTypeSign()
   return get(s:filetypes, &filetype, '')
 endfunction
 
+function! SystypeIcon()
+  return get(s:systypes, g:os, '')
+endfunction
+
 set statusline=%2{FileTypeSign()}
 set statusline+=\ %f
 set statusline+=%{&modifiable?'':'\ '}
-set statusline+=%{&modified?'\ ':''}
+set statusline+=%{&modified?'\ פֿ':''}
 set statusline+=%=
-set statusline+=%{FileFormatSign()}
+set statusline+=%{SystypeIcon()}
 set statusline+=%6.50l/%-6.50L
 set statusline+=%-4.10P
