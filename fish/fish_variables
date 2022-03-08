@@ -23,12 +23,12 @@ SETUVAR _fisher_jorgebucaran_2F_fisher_files:/home/zengshuai/\x2econfig/fish/fun
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1eedc/bass
 SETUVAR fish_color_autosuggestion:555
 SETUVAR fish_color_cancel:normal
-SETUVAR fish_color_command:d7ffff
+SETUVAR fish_color_command:ffaf00
 SETUVAR fish_color_comment:af875f
 SETUVAR fish_color_cwd:008000
 SETUVAR fish_color_cwd_root:800000
-SETUVAR fish_color_end:ffd700
-SETUVAR fish_color_error:00d700
+SETUVAR fish_color_end:d75fff
+SETUVAR fish_color_error:5fff00
 SETUVAR fish_color_escape:00a6b2
 SETUVAR fish_color_history_current:normal
 SETUVAR fish_color_host:normal
@@ -37,7 +37,7 @@ SETUVAR fish_color_match:normal
 SETUVAR fish_color_normal:normal
 SETUVAR fish_color_operator:00a6b2
 SETUVAR fish_color_param:0087ff
-SETUVAR fish_color_quote:00d75f
+SETUVAR fish_color_quote:5faf5f
 SETUVAR fish_color_redirection:87d7ff
 SETUVAR fish_color_search_match:ffff00
 SETUVAR fish_color_selection:c0c0c0
