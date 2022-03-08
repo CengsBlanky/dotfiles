@@ -68,6 +68,7 @@ augroup AutoPair_Custom
   autocmd!
   autocmd FileType html,php,jsp let b:AutoPairs = AutoPairsDefine({'<!--':'-->', '<?':'?>', '<?php':'?>', '<%':'%>'})
 augroup END
+let g:AutoPairsMapCR = 0
 " }}}
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
@@ -373,7 +374,7 @@ EOF
 let &t_ut=''
 set t_Co=256
 set termguicolors
-colorscheme nord
+colorscheme ayu
 lua <<EOF
 require'colorizer'.setup({
   'html';

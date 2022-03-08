@@ -5,7 +5,7 @@ window:
   dynamic_title: true
   history: 20000
 font:
-  ligatures: true
+  ligatures: false
   normal:
     family: 'FiraCode Nerd Font'
     style: Retina

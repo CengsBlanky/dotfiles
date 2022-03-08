@@ -1,10 +1,10 @@
 let s:filetypes = {
       \ 'c':               '',
-      \ 'lua':             '',
       \ 'cpp':             '',
       \ 'rust':            '',
       \ 'java':            '',
       \ 'go':              '',
+      \ 'lua':             '',
       \ 'python':          '',
       \ 
       \ 'javascript':      '',
@@ -55,11 +55,11 @@ if !exists("g:os")
   endif
 endif
 
-function! FileFormatSign()
+function! FileformatIcon()
   return get(s:fileformats, &fileformat, '')
 endfunction
 
-function! FileTypeSign()
+function! FiletypeIcon()
   return get(s:filetypes, &filetype, '')
 endfunction
 
@@ -67,9 +67,9 @@ function! SystypeIcon()
   return get(s:systypes, g:os, '')
 endfunction
 
-set statusline=%2{FileTypeSign()}
+set statusline=%2{FiletypeIcon()}
 set statusline+=\ %f
-set statusline+=%{&modifiable?'':'\ '}
+set statusline+=%{&readonly?'\ ':''}
 set statusline+=%{&modified?'\ פֿ':''}
 set statusline+=%=
 set statusline+=%{SystypeIcon()}
