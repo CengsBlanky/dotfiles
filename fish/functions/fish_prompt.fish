@@ -8,8 +8,7 @@ function fish_prompt --description 'Write out the prompt'
 
     set -l last_status $status
 
-    printf '%s[%s%s%s@%s%s%s]%s ' \
-        (set_color $gray_color) \
+    printf '%s%s%s@%s%s%s:%s ' \
         (set_color $user_name_color) $USER \
         (set_color $gray_color) \
         (set_color $user_host_color) (prompt_hostname) \
