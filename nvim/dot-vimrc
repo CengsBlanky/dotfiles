@@ -405,7 +405,7 @@ inoremap jk <esc>
 set hidden
 set number
 set relativenumber
-set cursorline
+" set cursorline
 set backspace=2
 set incsearch
 set smartcase
@@ -591,6 +591,9 @@ highlight LineNr guifg=#868e96 gui=none
 highlight Normal guibg=none ctermbg=none " transparent background
 highlight MatchParen gui=bold,underline
 highlight CursorLineNr gui=bold guibg=none
+highlight LineNr gui=bold guibg=none guifg=#ebcb8b
+highlight LineNrAbove gui=none guibg=none
+highlight LineNrBelow gui=none guibg=none
 
 " highlight Search guifg=#a3be8c guibg=#495057 gui=bold
 " highlight MatchParen guifg=#ffd43b guibg=none gui=bold
