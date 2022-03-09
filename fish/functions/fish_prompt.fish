@@ -1,6 +1,6 @@
 function fish_prompt --description 'Write out the prompt'
-    set -l user_name_color '009acd'
-    set -l user_host_color '5e81ac'
+    set -l user_name_color '4c6a92'
+    set -l user_host_color '4c6a92'
     set -l user_cwd_color '8fbcbb'
     set -l user_prompt_symbol_color '2b8a3e'
     set -l red_color 'ff2b2b'
