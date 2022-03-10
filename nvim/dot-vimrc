@@ -1,5 +1,5 @@
 let vim_config_file="~/.config/nvim/init.vim"
-let plugin_path="~/.config/nvim/plugged"
+let plugin_path="~/.nvim/plugins"
 let plug_file="~/.vim/plug.vim"
 let g:python_host_skip_check=1
 let g:markdown_folding = 1
@@ -132,12 +132,6 @@ augroup keymap_force
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
-augroup windows_display
-  autocmd!
-  autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
-  autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
-augroup END
-
 execute 'source' plug_file
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:sainnhe/gruvbox-material'
@@ -145,9 +139,15 @@ Plug 'git@github.com:neovim/nvim-lspconfig'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
+Plug 'git@github.com:neovim/nvim-lspconfig'
+Plug 'git@github.com:hrsh7th/nvim-cmp'
+Plug 'git@github.com:hrsh7th/cmp-nvim-lsp'
+Plug 'git@github.com:saadparwaiz1/cmp_luasnip'
+Plug 'git@github.com:L3MON4D3/LuaSnip'
 call plug#end()
 
-let &t_ut=''
+lua require('init')
+
 set t_Co=256
 set termguicolors
 colorscheme gruvbox-material
