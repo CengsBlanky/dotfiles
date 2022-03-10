@@ -8,6 +8,13 @@ function fish_prompt --description 'Write out the prompt'
 
     set -l last_status $status
 
+    set -g __fish_git_prompt_showcolorhints true
+    set -g __fish_git_prompt_showdirtystate true
+    set -g __fish_git_prompt_showuntrackedfiles true
+    # set -g __fish_git_prompt_show_informative_status true
+    set -g __fish_git_prompt_use_informative_chars true
+
+
     printf '%s%s%s@%s%s%s:%s ' \
         (set_color $user_name_color) $USER \
         (set_color $gray_color) \
