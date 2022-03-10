@@ -1,6 +1,6 @@
 function vi
-    if command -q vim
-        vim $argv
+    if command -q /usr/bin/vim
+        /usr/bin/vim $argv
     else
         $EDITOR $argv
     end

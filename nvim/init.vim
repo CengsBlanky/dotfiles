@@ -564,5 +564,9 @@ highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
 highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
 highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
 
+syn match MyTodo contained "\<\(TODO\|DONE\|FIXME\|NOTE\):{0,}"
+hi def link MyTodo Todo
+highlight Todo ctermfg=DarkYellow ctermbg=NONE cterm=bold,underline guifg=DarkYellow guibg=NONE gui=bold,underline
+
 " }}}
 " }}}

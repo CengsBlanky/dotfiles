@@ -1,5 +1,5 @@
-" editor {{{
-" default {{{
+" editor 
+" default 
 set nocompatible
 filetype plugin indent on
 syntax on
@@ -8,12 +8,6 @@ set fileformats=unix,dos
 language en_US.UTF-8
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,cp936
-" let mapleader=","
-" let maplocalleader=","
-inoremap jk <esc>
-" TextEdit might fail if hidden is not set.
 set hidden
 set number
 set relativenumber
@@ -26,45 +20,33 @@ set showcmd
 set laststatus=2
 set wildmenu
 set showmatch
-" when file has been chaged outside of vim buffer, autoload it
 set autoread
-" when switch between buffers or execute specific command save current buffer
 set autowrite
 set confirm
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
 set updatetime=100
-" set nobackup set nowritebackup set noswapfile set noundofile
-set undodir=~/.vim/.undo//
-set backupdir=~/.vim/.backup//
-set directory=~/.vim/.swp//
+set noundofile
+set nobackup
 set clipboard=unnamed
 set clipboard+=unnamedplus
-" add ctags support
 set tags=tags
-" Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-" display
 set hlsearch
 set mousehide
-set mouse=nv " enable mouse scroll etc...
+set mouse=a
 set signcolumn=yes
 set nowrap
 set cmdheight=1
 set showtabline=2
+set splitbelow
+set splitright
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
 set grepformat=%f:%l:%c:%m
-" }}}
-" keymappings {{{
 
+" keymappings 
+inoremap jk <esc>
 " quit
 nnoremap <leader>q :x<CR>
-
-" quick upper/lower case
-nnoremap <leader>] gUiw
-nnoremap <leader>[ guiw
-" close current window or buffer
-noremap <silent><M-w> :close<CR>
+" close current or buffer
 noremap <silent><M-b> :bd<CR>
 " use command to open my vimrc
 command! Editrc execute 'edit' vim_config_file
@@ -84,7 +66,6 @@ nnoremap <silent><Enter> :w<CR>
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
 " quickfix list operations
-nnoremap <leader>o :copen<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 " switch between buffers
@@ -92,25 +73,13 @@ nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
 " go next buffer
 nnoremap <silent><TAB> :bn<CR>
-" buffer jump
-nnoremap <leader>1 :b1<CR>
-nnoremap <leader>2 :b2<CR>
-nnoremap <leader>3 :b3<CR>
-nnoremap <leader>4 :b4<CR>
-nnoremap <leader>5 :b5<CR>
-nnoremap <leader>6 :b6<CR>
-nnoremap <leader>7 :b7<CR>
-nnoremap <leader>8 :b8<CR>
-nnoremap <leader>9 :b9<CR>
 
 " close current buffer
 nnoremap <C-d> :bd<CR>
 " write as root
 cmap w!! w !sudo tee > /dev/null %
-" normal quit editor
-nnoremap Q :q<CR>
-" }}}
-" autocmd {{{
+" 
+" autocmd 
 
 augroup filetype_specific
   autocmd!
@@ -118,7 +87,7 @@ augroup filetype_specific
   autocmd BufRead *.log set filetype=text
 augroup END
 
-function TrimEndLinesAndTrailingSpaces()
+function! TrimEndLinesAndTrailingSpaces()
   let save_cursor = getpos(".")
   silent! %s#\($\n\s*\)\+\%$##
   silent! %s/\s\+$//e
@@ -148,7 +117,8 @@ augroup windows_display
   autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
 augroup END
 
-" delete other buffers {{{
+" delete other buffers 
+nnoremap <leader>o :Bonly<CR>
 command! -nargs=? -complete=buffer -bang Bonly
       \ :call BufOnly('<args>', '<bang>')
 
@@ -199,31 +169,26 @@ function! BufOnly(buffer, bang)
   endif
 
 endfunction
-" }}}
-" }}}
-" statueline {{{
-set statusline=
-set statusline+=%h
-set statusline+=\ %f
-function FileWritableSign()
-  return filewritable(expand('%')) == 0 ? ' ' : ''
-endfunction
-set statusline+=%{FileWritableSign()}
-set statusline+=\ %m
+" 
+" 
+" statueline 
+set statusline=\ %f
+set statusline+=\ %r
+set statusline+=%2m
 set statusline+=[%{&ff}]
 set statusline+=%=
 set statusline+=%y
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
-" }}}
-" }}}
-" predefined variables {{{
+" 
+" 
+" predefined variables 
 let vim_config_file="~/.vimrc"
 let plug_file="~/.vim/plug.vim"
 let plugin_path="~/.vim/plugins/"
-" }}}
-" plugins {{{
+" 
+" plugins 
 execute 'source' plug_file
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
@@ -232,20 +197,20 @@ Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 call plug#end()
-" }}}
-" plugins setting {{{
-" open NERDTreeToggle {{{
+" 
+" plugins setting 
+" open NERDTreeToggle 
 let g:NERDTreeQuitOnOpen=3
 let NERDTreeIgnore=[
       \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
 noremap <silent><C-t> :NERDTreeToggle<CR>
-" }}}
-" tpope/vim-surround {{{
+" 
+" tpope/vim-surround 
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
-" }}}
-" junegunn/fzf {{{
+" 
+" junegunn/fzf 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 " [[B]Commits] Customize the options used by 'git log':
@@ -264,8 +229,8 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :RG<cr>
-" }}}
-" buftabline {{{
+" 
+" buftabline 
 let g:buftabline_show=1
 let g:buftabline_indicators=1
 let g:buftabline_numbers=2
@@ -279,9 +244,9 @@ nmap <leader>7 <Plug>BufTabLine.Go(7)
 nmap <leader>8 <Plug>BufTabLine.Go(8)
 nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(10)
-" }}}
-" }}}
-" colorscheme {{{
+" 
+" 
+" colorscheme 
 colorscheme peachpuff
 highlight Comment ctermfg=Gray guifg=Gray
 highlight Visual ctermbg=DarkGrey ctermfg=DarkGreen cterm=bold guibg=Blue guifg=Black
@@ -291,8 +256,6 @@ highlight LineNr ctermfg=White guifg=White
 highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
 highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
 highlight MatchParen term=bold ctermfg=Yellow ctermbg=NONE gui=bold guifg=Yellow guibg=NONE
-highlight StatusLineNC term=bold ctermfg=Black ctermbg=DarkGray gui=bold guifg=Black guibg=LightGray
-highlight StatusLine term=bold ctermfg=LightGray ctermbg=Black gui=bold guifg=LightGray guibg=Black
 highlight Folded ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE
 highlight TabLine ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=Black guibg=DarkGray gui=NONE
 highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
@@ -300,8 +263,9 @@ highlight TabLineSel ctermfg=LightGray ctermbg=DarkGrey cterm=bold guifg=White g
 highlight SpecialKey ctermfg=LightYellow ctermbg=NONE cterm=bold guifg=LightYellow guibg=NONE gui=bold
 highlight String ctermfg=Green ctermbg=NONE cterm=NONE guifg=Green guibg=NONE gui=NONE
 highlight Number ctermfg=Blue guifg=Blue
+highlight StatusLine gui=bold guifg=#adb5bd guibg=#3b4252 cterm=bold ctermfg=Black ctermbg=DarkGray
+highlight StatusLineNC gui=NONE guifg=DarkGray guibg=#4c566a cterm=NONE ctermfg=DarkGray ctermbg=Black
 
 syn match myTodo contained "\<\(TODO\|FIXME\|NOTE\):"
 hi def link myTodo Todo
-highlight Todo ctermfg=DarkYellow ctermbg=NONE cterm=bold guifg=DarkYellow guibg=NONE gui=NONE
-" }}}
+highlight Todo ctermfg=DarkYellow ctermbg=NONE cterm=bold,underline guifg=DarkYellow guibg=NONE gui=bold,underline
