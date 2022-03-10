@@ -591,7 +591,7 @@ highlight LineNr guifg=#868e96 gui=none
 highlight Normal guibg=none ctermbg=none " transparent background
 highlight MatchParen gui=bold,underline
 highlight CursorLineNr gui=bold guibg=none
-highlight LineNr gui=bold guibg=none guifg=#ebcb8b
+highlight LineNr gui=bold guibg=none guifg=none
 highlight LineNrAbove gui=none guibg=none guifg=gray
 highlight LineNrBelow gui=none guibg=none guifg=gray
 
