@@ -29,7 +29,6 @@ Plug 'git@github.com:romainl/vim-cool.git' " better hlsearch
 Plug 'git@github.com:aperezdc/vim-template.git'
 Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'git@github.com:junegunn/fzf.vim.git'
-Plug 'git@github.com:mattn/webapi-vim.git'
 Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
 Plug 'git@github.com:pangloss/vim-javascript.git'
 Plug 'git@github.com:rust-lang/rust.vim.git'
@@ -40,10 +39,9 @@ Plug 'git@github.com:dag/vim-fish.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:arcticicestudio/nord-vim.git'
+Plug 'git@github.com:sainnhe/gruvbox-material.git'
 Plug 'git@github.com:ayu-theme/ayu-vim.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
-Plug 'git@github.com:junegunn/goyo.vim.git'
-Plug 'git@github.com:junegunn/limelight.vim.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
 call plug#end()
@@ -374,7 +372,8 @@ EOF
 let &t_ut=''
 set t_Co=256
 set termguicolors
-colorscheme ayu
+let g:gruvbox_material_background = 'hard'
+colorscheme gruvbox-material
 lua <<EOF
 require'colorizer'.setup({
   'html';
@@ -392,20 +391,12 @@ set nocompatible
 filetype plugin indent on
 syntax on
 set fileformat=unix
-set fileformats+=unix,dos
 language en_US.UTF-8
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,cp936
-" let mapleader=","
-" let maplocalleader=","
-inoremap jk <esc>
-" TextEdit might fail if hidden is not set.
 set hidden
 set number
 set relativenumber
-" set cursorline
 set backspace=2
 set incsearch
 set smartcase
@@ -427,7 +418,6 @@ set updatetime=100
 set undodir=~/.vim/.undo//
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
-set clipboard=unnamed
 set clipboard+=unnamedplus
 " add ctags support
 set tags=tags
@@ -442,23 +432,18 @@ set nowrap
 set cmdheight=1
 set showtabline=2
 set splitbelow
+set splitright
 " set default grep cmd
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
 set grepformat=%f:%l:%c:%m
 " }}}
 " keymappings {{{
-nnoremap Q :x<CR>
+inoremap jk <esc>
 nnoremap <nowait><leader>q :x<CR>
-
-" quick upper/lower case
-nnoremap <leader>] gUiw
-nnoremap <leader>[ guiw
-" close current window or buffer
-noremap <silent><M-w> :close<CR>
+" close current buffer
 noremap <silent><M-b> :bd<CR>
 " close other buffers see line: 590
 nnoremap <leader>o :Bonly<CR>
-
 " use command to open my vimrc
 command! Editrc execute 'edit' vim_config_file
 " screen scroll add <nowait> to execute immediately
@@ -476,34 +461,8 @@ nnoremap <silent><TAB> :bn<CR>
 nnoremap <leader>cd :lcd %:p:h<CR>
 " map <esc> to quit terminal mode
 tnoremap <Esc> <C-\><C-n>
-" use <UP> and <DOWN> to scroll screen
-nnoremap <silent><UP> 1<C-U><DOWN>
-nnoremap <silent><DOWN> 1<C-D><UP>
 " save
 nnoremap <silent><Enter> :w<CR>
-" toggle hlsearch
-nnoremap <leader>h :set hlsearch!<CR>
-" Open explorer where current file is located {{{
-" Only for win for now.
-func! OpenFileExplorer() abort
-  if exists("b:netrw_curdir")
-    let path = substitute(b:netrw_curdir, "/", "\\", "g")
-  elseif expand("%:p") == ""
-    let path = expand("%:p:h")
-  else
-    let path = expand("%:p")
-  endif
-  " support windows and macos for now
-  if has("win32")
-    silent exe '!start explorer.exe /select,' .. path
-  elseif has('unix')
-    silent exe '!open ' .. path
-  endif
-endfunc
-
-nnoremap <silent> gof :call OpenFileExplorer()<CR>
-" }}}
-
 " resize window
 nnoremap <silent><leader><UP> :resize +1<CR>
 nnoremap <silent><leader><DOWN> :resize -1<CR>
@@ -518,7 +477,7 @@ nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 
 " buffer jump
-if !g:buftabline_numbers == 2
+if !exists("g:buftabline_numbers")
   nnoremap <silent><leader>1 :b1<CR>
   nnoremap <silent><leader>2 :b2<CR>
   nnoremap <silent><leader>3 :b3<CR>
@@ -531,8 +490,8 @@ if !g:buftabline_numbers == 2
 endif
 " }}}
 " autocmd {{{
-" set filetypes as typescriptreact
 
+" set filetypes as typescriptreact
 augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
@@ -553,6 +512,7 @@ function TrimEndLinesAndTrailingSpaces()
   call setpos('.', save_cursor)
   " echom "trailing spaces and empty lines done!"
 endfunction
+
 augroup filetype_edit_behavior
   autocmd!
   autocmd FileType * setlocal textwidth=0
@@ -570,11 +530,11 @@ augroup keymap_force
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
-augroup windows_display
-  autocmd!
-  autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
-  autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
-augroup END
+" augroup windows_display
+"   autocmd!
+"   autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
+"   autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
+" augroup END
 
 " }}}
 " default colors {{{
@@ -588,33 +548,21 @@ highlight StatusLine gui=bold guifg=#adb5bd guibg=#3b4252
 highlight StatusLineNC gui=none guifg=DarkGray guibg=#4c566a
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
 highlight LineNr guifg=#868e96 gui=none
-highlight Normal guibg=none ctermbg=none " transparent background
+highlight Search guifg=#a3be8c guibg=#495057 gui=bold
+" highlight Normal guibg=none ctermbg=none " transparent background
 highlight MatchParen gui=bold,underline
 highlight CursorLineNr gui=bold guibg=none
 highlight LineNr gui=bold guibg=none guifg=none
 highlight LineNrAbove gui=none guibg=none guifg=gray
 highlight LineNrBelow gui=none guibg=none guifg=gray
-
-" highlight Search guifg=#a3be8c guibg=#495057 gui=bold
-" highlight MatchParen guifg=#ffd43b guibg=none gui=bold
-" highlight Number guifg=#88c0d0
-" highlight String guifg=#a3be8c
-" highlight CursorLine guibg=#495057
-" highlight CursorLineNr gui=bold guifg=#eceff4
-" highlight htmlLink gui=underline guifg=#74c0fc
-
-" self defined plugins colorscheme {{{
+" plugins color
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
-
 highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
 highlight BufTabLineFill guibg=none guifg=none ctermfg=none ctermbg=none gui=none
 highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=none
-
 highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
 highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
 highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
-" }}}
 
-" }}}
 " }}}
 " }}}
