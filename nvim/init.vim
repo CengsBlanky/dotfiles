@@ -403,7 +403,7 @@ set smartcase
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
 set showcmd
-set laststatus=2
+set laststatus=1
 set wildmenu
 set showmatch
 " when file has been chaged outside of vim buffer, autoload it
@@ -546,7 +546,7 @@ highlight SignColumn gui=bold guibg=none
 " highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
 " highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
 highlight StatusLine gui=bold guifg=#adb5bd guibg=#3b4252
-highlight StatusLineNC gui=none guifg=DarkGray guibg=#4c566a
+highlight StatusLineNC gui=none guifg=DarkGray guibg=#343a40
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
 highlight LineNr guifg=#868e96 gui=none
 highlight Search guifg=#a3be8c guibg=#495057 gui=bold
