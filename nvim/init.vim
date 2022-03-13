@@ -418,6 +418,7 @@ set updatetime=100
 set undodir=~/.vim/.undo//
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
+set clipboard+=unnamed
 set clipboard+=unnamedplus
 " add ctags support
 set tags=tags
