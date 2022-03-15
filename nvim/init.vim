@@ -489,6 +489,8 @@ augroup filetype_edit_behavior
   " auto remove all trailing empty lines before saving
   autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.yml,*.yaml,*.java
         \ call TrimEndLinesAndTrailingSpaces()
+  " disable syntax for large file
+  autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
 augroup END
 
 augroup keymap_force
