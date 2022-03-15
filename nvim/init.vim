@@ -408,6 +408,8 @@ set grepformat=%f:%l:%c:%m
 " }}}
 " keymappings {{{
 inoremap jk <esc>
+nnoremap D ^D
+nnoremap C ^C
 nnoremap <nowait><leader>q :x<CR>
 " close current buffer
 noremap <silent><M-b> :bd<CR>
