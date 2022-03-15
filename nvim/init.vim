@@ -47,7 +47,7 @@ Plug 'git@github.com:ryanoasis/vim-devicons.git'
 call plug#end()
 " }}}
 " plugins setting {{{
-" open NERDTreeToggle {{{
+" NERDTreeToggle {{{
 let g:NERDTreeQuitOnOpen=3
 let NERDTreeIgnore=[
       \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
@@ -57,6 +57,13 @@ noremap <silent><M-t> :NERDTreeToggle<CR>
 " }}}
 " tpope/vim-surround {{{
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
+" }}}
+" tpope/vim-commentary {{{
+augroup commentary_vim
+  autocmd!
+  autocmd FileType c setlocal commentstring=//\ %s
+  autocmd FileType cpp setlocal commentstring=//\ %s
+augroup END
 " }}}
 " andymass/vim-matchup {{{
 let g:matchup_matchparen_offscreen = {}
@@ -100,13 +107,6 @@ let g:templates_no_autocmd=1
 let g:templates_directory=["~/.vim/templates/"]
 let g:username='zengshuai'
 let g:email='zengs1994@gmail.com'
-" }}}
-" tpope/vim-commentary {{{
-augroup commentary_vim
-  autocmd!
-  autocmd FileType c setlocal commentstring=//\ %s
-  autocmd FileType cpp setlocal commentstring=//\ %s
-augroup END
 " }}}
 " neoclide/coc.nvim {{{
 let g:coc_config_home="~/.vim/"
@@ -319,33 +319,6 @@ nmap <leader>8 <Plug>BufTabLine.Go(8)
 nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(10)
 " }}}
-" goyo and limelight {{{
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-
-" Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = 'DarkGray'
-let g:limelight_conceal_guifg = '#777777'
-
-" Default: 0.5
-let g:limelight_default_coefficient = 0.7
-
-" Number of preceding/following paragraphs to include (default: 0)
-let g:limelight_paragraph_span = 1
-
-" Beginning/end of paragraph
-"   When there's no empty line between the paragraphs
-"   and each paragraph starts with indentation
-let g:limelight_bop = '^\s'
-let g:limelight_eop = '\ze\n^\s'
-
-" Highlighting priority (default: 10)
-"   Set it to -1 not to overrule hlsearch
-let g:limelight_priority = -1
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-" }}}
 " nvim-treesitter {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -371,8 +344,10 @@ EOF
 let &t_ut=''
 set t_Co=256
 set termguicolors
-let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_transparent_background=1
+let g:gruvbox_material_better_performance=1
 colorscheme gruvbox-material
+" colorizer setting
 lua <<EOF
 require'colorizer'.setup({
   'html';
@@ -389,7 +364,6 @@ EOF
 set nocompatible
 filetype plugin indent on
 syntax on
-set fileformat=unix
 language en_US.UTF-8
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
@@ -398,6 +372,7 @@ set number
 set relativenumber
 set backspace=2
 set incsearch
+set ignorecase
 set smartcase
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
@@ -405,28 +380,22 @@ set showcmd
 set laststatus=1
 set wildmenu
 set showmatch
-" when file has been chaged outside of vim buffer, autoload it
 set autoread
-" when switch between buffers or execute specific command save current buffer
 set autowrite
 set confirm
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
+" set shorter updatetime for better user experience
 set updatetime=100
 " set nobackup set nowritebackup set noswapfile set noundofile
 set undodir=~/.vim/.undo//
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
-set clipboard+=unnamed
 set clipboard+=unnamedplus
 " add ctags support
 set tags=tags
-" Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-" display
 set hlsearch
 set mousehide
-set mouse=nv " enable mouse scroll etc...
+set mouse=nv
 set signcolumn=yes
 set nowrap
 set cmdheight=1
@@ -472,7 +441,7 @@ nnoremap <silent><leader><LEFT> :vertical resize -1<CR>
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
 " quickfix list operations
-nnoremap <leader>f :copen<CR>
+nnoremap <M-q> :copen<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 
@@ -510,7 +479,6 @@ function TrimEndLinesAndTrailingSpaces()
   silent! %s#\($\n\s*\)\+\%$##
   silent! %s/\s\+$//e
   call setpos('.', save_cursor)
-  " echom "trailing spaces and empty lines done!"
 endfunction
 
 augroup filetype_edit_behavior
@@ -530,28 +498,17 @@ augroup keymap_force
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
-" augroup windows_display
-"   autocmd!
-"   autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
-"   autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
-" augroup END
-
 " }}}
 " default colors {{{
 highlight Comment guifg=DarkGray gui=none
 highlight Visual guibg=#8fbcbb guifg=#000000
 highlight SignColumn gui=bold guibg=none
-" for nord colorscheme
-" highlight StatusLine gui=bold guifg=#2e3440 guibg=#5e81ac
-" highlight StatusLineNC gui=none guifg=#d8dee9 guibg=#495057
+highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
+highlight Search guifg=#a3be8c guibg=#495057 gui=bold
+highlight MatchParen gui=bold,underline
+" highlight CursorLineNr gui=bold guibg=none
 highlight StatusLine gui=bold guifg=#adb5bd guibg=#3b4252
 highlight StatusLineNC gui=none guifg=DarkGray guibg=#343a40
-highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
-highlight LineNr guifg=#868e96 gui=none
-highlight Search guifg=#a3be8c guibg=#495057 gui=bold
-" highlight Normal guibg=none ctermbg=none " transparent background
-highlight MatchParen gui=bold,underline
-highlight CursorLineNr gui=bold guibg=none
 highlight LineNr gui=bold guibg=none guifg=none
 highlight LineNrAbove gui=none guibg=none guifg=gray
 highlight LineNrBelow gui=none guibg=none guifg=gray
@@ -563,10 +520,6 @@ highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=n
 highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
 highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
 highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
-
-syn match MyTodo contained "\<\(TODO\|DONE\|FIXME\|NOTE\):{0,}"
-hi def link MyTodo Todo
-highlight Todo ctermfg=DarkYellow ctermbg=NONE cterm=bold,underline guifg=DarkYellow guibg=NONE gui=bold,underline
 
 " }}}
 " }}}
