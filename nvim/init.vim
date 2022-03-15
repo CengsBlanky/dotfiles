@@ -282,8 +282,7 @@ let g:rustfmt_autosave = 1
 " emmet vim {{{
 " emmet default leader key: <C-y>
 let g:user_emmet_mode='a'    "enable emmet in all mode
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,vue,javacript,typescript EmmetInstall
+let g:user_emmet_install_global = 1
 " }}}
 " junegunn/fzf {{{
 " [Buffers] Jump to the existing window if possible
