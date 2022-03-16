@@ -59,7 +59,7 @@ if status is-interactive
     abbr --add cls "clear"
     abbr --add gui "gitui"
     abbr --add gst "git status"
-    abbr --add gdf "git diff | cat"
+    abbr --add gdf "git diff"
     abbr --add gps "git push"
     abbr --add gpl "git pull"
     abbr --add gad "git add"

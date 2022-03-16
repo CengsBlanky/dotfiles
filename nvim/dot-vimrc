@@ -38,8 +38,8 @@ Plug 'git@github.com:mattn/emmet-vim.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
-Plug 'git@github.com:tribela/vim-transparent.git'
 Plug 'git@github.com:arcticicestudio/nord-vim.git'
+Plug 'git@github.com:sainnhe/gruvbox-material.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
 call plug#end()
@@ -55,9 +55,6 @@ noremap <silent><M-t> :NERDTreeToggle<CR>
 " }}}
 " tpope/vim-surround {{{
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
-" }}}
-" auto-pair {{{
-" let g:AutoPairs={'{':'}', '[':']'}
 " }}}
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
@@ -345,7 +342,10 @@ nmap <leader>0 <Plug>BufTabLine.Go(10)
 let &t_ut=''
 set t_Co=256
 set termguicolors
-colorscheme nord
+let g:gruvbox_material_enable_bold=1
+let g:gruvbox_material_transparent_background=1
+let g:gruvbox_material_better_performance=1
+colorscheme gruvbox-material
 " nvim-colorizer {{{
 lua <<EOF
 require 'colorizer'.setup {
@@ -386,33 +386,23 @@ set nocompatible
 filetype plugin indent on
 syntax on
 language en_US.UTF-8
-" unicode characters in the file autoload/float.vim
 set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,cp936
-" let mapleader=","
-" let maplocalleader=","
-inoremap jk <esc>
-" TextEdit might fail if hidden is not set.
 set hidden
 set number
 set relativenumber
 set backspace=2
 set incsearch
+set ignorecase
 set smartcase
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
 set showcmd
-set laststatus=2
+set laststatus=1
 set wildmenu
 set showmatch
-" when file has been chaged outside of vim buffer, autoload it
 set autoread
-" when switch between buffers or execute specific command save current buffer
 set autowrite
 set confirm
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
 set updatetime=100
 " set nobackup set nowritebackup set noswapfile set noundofile
 set undodir=~/.vim/.undo//
@@ -431,6 +421,8 @@ set mouse=nv " enable mouse scroll etc...
 set signcolumn=yes
 set nowrap
 set cmdheight=1
+set splitright
+set splitbelow
 " set default grep cmd
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
 set grepformat=%f:%l:%c:%m
@@ -438,6 +430,7 @@ set grepformat=%f:%l:%c:%m
 set path+=**
 " }}}
 " keymappings {{{
+inoremap jk <esc>
 " quick quit
 nnoremap Q :x<CR>
 nnoremap <nowait><leader>q :x<CR>
@@ -473,32 +466,6 @@ nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>
 " save
 nnoremap <silent><Enter> :w<CR>
-
-"" Open explorer where current file is located {{{
-"" Only for win for now.
-func! OpenFileExplorer() abort
-  if exists("b:netrw_curdir")
-    let path = substitute(b:netrw_curdir, "/", "\\", "g")
-  elseif expand("%:p") == ""
-    let path = expand("%:p:h")
-  else
-    let path = expand("%:p")
-  endif
-  " support windows and macos for now
-  if has("win32")
-    silent exe '!start explorer.exe /select,' .. path
-  elseif has('unix')
-    silent exe '!open ' .. path
-  endif
-endfunc
-
-nnoremap <silent> gof :call OpenFileExplorer()<CR>
-"}}}
-" resize window
-nnoremap <silent><M-UP> :resize +1<CR>
-nnoremap <silent><M-DOWN> :resize -1<CR>
-nnoremap <silent><M-LEFT> :vertical resize +1<CR>
-nnoremap <silent><M-RIGHT> :vertical resize -1<CR>
 " split current window
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
@@ -544,12 +511,6 @@ augroup keymap_force
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
-augroup windows_display
-  autocmd!
-  autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
-  autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
-augroup END
-
 " insert current datetime
 command! Curtime :put = strftime('%Y-%m-%d %H:%M:%S')
 
@@ -566,7 +527,7 @@ highlight LineNr guifg=#868e96 gui=none
 highlight Normal guibg=none ctermbg=none " transparent background
 highlight MatchParen gui=bold,underline
 
-" self defined plugins colorscheme {{{
+" self defined plugins colorscheme
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
 
 highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
@@ -576,7 +537,6 @@ highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=n
 highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
 highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
 highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
-" }}}
 
 " }}}
 " }}}
