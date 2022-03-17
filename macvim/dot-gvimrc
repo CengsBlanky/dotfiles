@@ -96,16 +96,9 @@ set nocompatible
 filetype plugin indent on
 syntax on
 set guifont=InconsolataLGC\ NF:h17
-set fileformat=unix
-set fileformats=unix,dos
 language en_US.UTF-8
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,cp936
-" let mapleader=","
-" let maplocalleader=","
-inoremap jk <esc>
 " TextEdit might fail if hidden is not set.
 set hidden
 set number
@@ -116,7 +109,7 @@ set smartcase
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
 set showcmd
-set laststatus=2
+set laststatus=1
 set wildmenu
 set showmatch
 " when file has been chaged outside of vim buffer, autoload it
@@ -124,6 +117,8 @@ set autoread
 " when switch between buffers or execute specific command save current buffer
 set autowrite
 set confirm
+set splitright
+set splitbelow
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=100
@@ -148,13 +143,9 @@ set cmdheight=1
 set path+=**
 " }}}
 " keymappings {{{
+inoremap jk <esc>
 " quick quit
-nnoremap Q :x<CR>
 nnoremap <leader>q :x<CR>
-
-" quick upper/lower case
-nnoremap <leader>] gUiw
-nnoremap <leader>[ guiw
 " close current window or buffer
 noremap <silent><M-w> :close<CR>
 noremap <silent><M-b> :bd<CR>
@@ -301,24 +292,21 @@ set statusline+=%P
 set statusline+=\ \ 
 " }}}
 " colorscheme plugins {{{
-augroup color_settings
-  autocmd!
-  autocmd ColorScheme * highlight Comment ctermfg=Gray guifg=Gray
-  autocmd ColorScheme * highlight Visual guibg=#8fbcbb guifg=#000000
-  autocmd ColorScheme * highlight Search guifg=#a3be8c guibg=#495057 gui=bold
-  autocmd ColorScheme * highlight MatchParen guifg=#ffd43b guibg=NONE gui=bold
-  autocmd ColorScheme * highlight Folded ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE
-  autocmd ColorScheme * highlight StatusLine ctermfg=Black ctermbg=Gray cterm=bold guifg=Black guibg=#869c98
-  autocmd ColorScheme * highlight StatusLineNC ctermfg=LightGray ctermbg=DarkGray cterm=NONE guifg=LightGrey guibg=#495057
+highlight Comment ctermfg=Gray guifg=Gray
+highlight Visual guibg=#8fbcbb guifg=#000000
+highlight Search guifg=#a3be8c guibg=#495057 gui=bold
+highlight MatchParen guifg=#ffd43b guibg=NONE gui=bold
+highlight Folded ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE
+highlight StatusLine ctermfg=Black ctermbg=Gray cterm=bold guifg=Black guibg=#869c98
+highlight StatusLineNC ctermfg=LightGray ctermbg=DarkGray cterm=NONE guifg=LightGrey guibg=#495057
 
-  autocmd ColorScheme * highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
-  autocmd ColorScheme * highlight BufTabLineFill guibg=NONE
-  autocmd ColorScheme * highlight BufTabLineHidden guibg=NONE
+highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
+highlight BufTabLineFill guibg=NONE
+highlight BufTabLineHidden guibg=NONE
 
-  autocmd ColorScheme * highlight GitGutterAdd    guibg=NONE guifg=#74b816 ctermfg=2 gui=bold
-  autocmd ColorScheme * highlight GitGutterChange guibg=NONE guifg=#fdb924 ctermfg=3 gui=bold
-  autocmd ColorScheme * highlight GitGutterDelete guibg=NONE guifg=#c92a2a ctermfg=1 gui=bold
-augroup END
+highlight GitGutterAdd    guibg=NONE guifg=#74b816 ctermfg=2 gui=bold
+highlight GitGutterChange guibg=NONE guifg=#fdb924 ctermfg=3 gui=bold
+highlight GitGutterDelete guibg=NONE guifg=#c92a2a ctermfg=1 gui=bold
 let &t_ut=''
 set t_Co=256
 set termguicolors

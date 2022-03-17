@@ -431,13 +431,8 @@ set path+=**
 " }}}
 " keymappings {{{
 inoremap jk <esc>
-" quick quit
-nnoremap Q :x<CR>
 nnoremap <nowait><leader>q :x<CR>
 
-" quick upper/lower case
-nnoremap <leader>] gUiw
-nnoremap <leader>[ guiw
 " close current window or buffer
 noremap <silent><M-w> :close<CR>
 noremap <silent><M-b> :bd<CR>
@@ -470,7 +465,7 @@ nnoremap <silent><Enter> :w<CR>
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
 " quickfix list operations
-nnoremap <leader>o :copen<CR>
+" nnoremap <leader>o :copen<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 " }}}
