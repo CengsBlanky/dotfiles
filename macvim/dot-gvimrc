@@ -41,18 +41,17 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 " }}}
 " terryma/vim-multiple-cursors {{{
-let g:multi_cursor_use_default_mapping=0
-" Default mapping
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<M-a>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<M-a>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
-let g:multi_cursor_exit_from_visual_mode=1
-let g:multi_cursor_exit_from_insert_mode=1
+let g:multi_cursor_use_default_mapping   = 0
+let g:multi_cursor_start_word_key        = '<C-n>'
+let g:multi_cursor_select_all_word_key   = '<M-a>'
+let g:multi_cursor_start_key             = 'g<C-n>'
+let g:multi_cursor_select_all_key        = 'g<M-a>'
+let g:multi_cursor_next_key              = '<C-n>'
+let g:multi_cursor_prev_key              = '<C-p>'
+let g:multi_cursor_skip_key              = '<C-x>'
+let g:multi_cursor_quit_key              = '<Esc>'
+let g:multi_cursor_exit_from_visual_mode = 1
+let g:multi_cursor_exit_from_insert_mode = 1
 " }}}
 " junegunn/fzf {{{
 " [Buffers] Jump to the existing window if possible
@@ -218,12 +217,7 @@ augroup keymap_force
   autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
 augroup END
 
-augroup windows_display
-  autocmd!
-  autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
-  autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
-augroup END
-
+autocmd VimEnter * set vb t_vb=
 " delete other buffers {{{
 command! -nargs=? -complete=buffer -bang Bonly
       \ :call BufOnly('<args>', '<bang>')
