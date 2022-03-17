@@ -1,5 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+
+    # show dir name with full length
     set -g fish_prompt_pwd_dir_length 0
 
     # ===== vi mode =====
@@ -24,10 +26,11 @@ if status is-interactive
     if command -q rg
         set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
     end
-    # java
-    set -gx JAVA_HOME "/opt/java"
+    # general
     set PATH $PATH "$HOME/.local/bin"
     set PATH $PATH "$HOME/bin"
+    # java
+    set -gx JAVA_HOME "/opt/java"
     set PATH $PATH $JAVA_HOME 
     # rust
     set PATH $PATH "$HOME/.cargo/bin"
