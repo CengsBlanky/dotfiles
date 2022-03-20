@@ -45,6 +45,8 @@ function! CodeRun() abort
     call TermWrapper(printf("bash %s", expand('%')))
   elseif &filetype == "lua"
     call TermWrapper(printf("lua %s", expand('%')))
+  elseif &filetype == "lisp"
+    call TermWrapper(printf("sbcl --script %s", expand('%')))
   else
     echo "Unsupported yet..."
   endif
@@ -59,7 +61,7 @@ function! CodeTest() abort
   endif
 endfunction
 
-autocmd FileType c,cpp,java,python,javascript,typescript,go,rust,sh,lua nnoremap <leader>r :call CodeRun()<CR>
+autocmd FileType c,cpp,java,python,javascript,typescript,go,rust,sh,lua,lisp nnoremap <leader>r :call CodeRun()<CR>
 autocmd FileType rust,go nnoremap <leader>t :call CodeTest()<CR>
 
 command! -nargs=1 -complete=file CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++11 %s && ./a.out < %s', expand('%'), <q-args>))

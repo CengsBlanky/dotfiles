@@ -112,6 +112,7 @@ let g:email='zengs1994@gmail.com'
 let g:coc_config_home="~/.vim/"
 " Global extension names to install when they aren't installed.
 let g:coc_global_extensions=[
+      \ 'coc-cl',
       \ 'coc-json',
       \ 'coc-yaml',
       \ 'coc-html',

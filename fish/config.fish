@@ -22,6 +22,8 @@ if status is-interactive
     set -gx LANG "en_US.UTF-8"
     set -gx EDITOR nvim
     set -gx LESS "-RiX"
+    # bc scale
+    set -gx BC_ENV_ARGS "/home/zengshuai/.bc"
     # ripgrep 
     if command -q rg
         set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
