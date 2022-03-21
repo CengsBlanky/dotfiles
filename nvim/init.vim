@@ -443,10 +443,6 @@ nnoremap <silent><leader><LEFT> :vertical resize -1<CR>
 " split current window
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
-" quickfix list operations
-nnoremap <M-q> :copen<CR>
-nnoremap <C-j> :cnext<CR>
-nnoremap <C-k> :cprevious<CR>
 
 " buffer jump
 if !exists("g:buftabline_numbers")
@@ -460,6 +456,14 @@ if !exists("g:buftabline_numbers")
   nnoremap <silent><leader>8 :b8<CR>
   nnoremap <silent><leader>9 :b9<CR>
 endif
+
+command! -nargs=+ Grep execute 'silent grep! <args>' | copen
+
+" quickfix list operations
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprevious<CR>
+nnoremap <leader>co :copen<CR>
+nnoremap <leader>cc :cclose<CR>
 " }}}
 " autocmd {{{
 
