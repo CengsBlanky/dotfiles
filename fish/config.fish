@@ -43,6 +43,8 @@ if status is-interactive
     set -gx FLUTTER_STORAGE_BASE_URL "https://storage.flutter-io.cn"
     set PATH $PATH "$HOME/snap/flutter/common/flutter/bin"
     set PATH $PATH "$HOME/tools/android-studio/bin"
+    # spring boot cli
+    set PATH $PATH "$HOME/tools/spring-2.6.4/bin"
 
     # ===== abbriviations =====
     abbr --add cls "clear"
