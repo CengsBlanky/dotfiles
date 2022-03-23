@@ -1,0 +1,38 @@
+
+function fish_prompt --description 'Write out the prompt'
+set -l last_status $status
+
+printf '%s[%s%s%s@%s%s%s]%s ' \
+           (set_color 868e96) \
+           (set_color 81a1c1) (whoami) \
+           (set_color 868e96) \
+           (set_color 5e81ac) (hostname | cut -d . -f 1) \
+           (set_color 868e96) \
+           (set_color normal)
+
+    # PWD
+    set_color $user_cwd_color
+    echo -n (prompt_pwd)
+
+    if not test $last_status -eq 0
+        set_color $fish_color_error
+        printf ' [%s]' $last_status
+    end
+
+    set_color normal
+
+    __terlar_git_prompt
+    fish_hg_prompt
+    echo
+
+    set_color $user_prompt_symbol_color
+
+    if not test $last_status -eq 0
+        set_color $fish_color_error
+    end
+
+    set_color green
+
+    echo -n '$ '
+    set_color normal
+    end
