@@ -177,21 +177,21 @@ set statusline+=\
 " }}}
 " colors {{{
 colorscheme delek
-" autocmd colorscheme * hi Visual ctermfg=Gray  ctermbg=White
-" autocmd colorscheme * hi Search ctermfg=Yellow ctermbg=Gray
-" autocmd colorscheme * hi folded ctermfg=LightGray ctermbg=NONE cterm=NONE
-" autocmd colorscheme * hi String ctermfg=DarkGreen
-" autocmd colorscheme * hi Number ctermfg=Green
-" autocmd colorscheme * hi LineNr ctermfg=DarkGray
-" autocmd colorscheme * hi CursorLineNr cterm=bold ctermfg=DarkYellow
-" autocmd colorscheme * hi Comment ctermfg=Gray
-" autocmd colorscheme * hi TabLine ctermfg=White ctermbg=Black cterm=NONE
-" autocmd colorscheme * hi TabLineFill ctermbg=Black ctermfg=Black
-" autocmd colorscheme * hi TabLineSel ctermfg=White ctermbg=DarkCyan cterm=bold
-" autocmd colorscheme * hi StatusLine ctermfg=Black ctermbg=Gray cterm=bold gui=bold
-" autocmd colorscheme * hi StatusLineNC ctermfg=DarkGray ctermbg=Black
-" autocmd colorscheme * hi Normal ctermbg=NONE
-" autocmd colorscheme * hi PreProc ctermfg=blue
-" autocmd colorscheme * hi CursorLine ctermfg=NONE ctermbg=LightGray cterm=NONE
-" autocmd colorscheme * hi NonText ctermbg=Black ctermfg=Black 
+hi Visual ctermfg=Gray  ctermbg=White
+hi Search ctermfg=Yellow ctermbg=Gray
+hi folded ctermfg=LightGray ctermbg=NONE cterm=NONE
+hi String ctermfg=DarkGreen
+hi Number ctermfg=Green
+hi LineNr ctermfg=DarkGray
+hi CursorLineNr cterm=bold ctermfg=DarkYellow
+hi Comment ctermfg=Gray
+hi TabLine ctermfg=White ctermbg=Black cterm=NONE
+hi TabLineFill ctermbg=Black ctermfg=Black
+hi TabLineSel ctermfg=White ctermbg=DarkCyan cterm=bold
+hi StatusLine ctermfg=Black ctermbg=Gray cterm=bold gui=bold
+hi StatusLineNC ctermfg=DarkGray ctermbg=Black
+hi Normal ctermbg=NONE
+hi PreProc ctermfg=blue
+hi CursorLine ctermfg=NONE ctermbg=LightGray cterm=NONE
+hi NonText ctermbg=Black ctermfg=Black 
 " }}}
