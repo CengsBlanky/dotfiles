@@ -68,6 +68,7 @@ set hlsearch
 set mousehide
 set showtabline=2
 " set default grep cmd
+set path+=**
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
 set grepformat=%f:%l:%c:%m
 set path+=**
@@ -77,9 +78,6 @@ set noeb vb t_vb=
 " }}}
 " keymappings {{{
 
-" quick upper/lower case
-nnoremap <leader>] gUiw
-nnoremap <leader>[ guiw
 " close current window or buffer
 noremap <silent><M-w> :close<CR>
 noremap <silent><M-b> :bd<CR>
@@ -99,7 +97,7 @@ nnoremap <silent><Enter> :w<CR>
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
 " quickfix list operations
-nnoremap <leader>o :copen<CR>
+nnoremap <leader>co :copen<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 " switch between buffers
@@ -162,11 +160,6 @@ augroup keymap_force
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
-augroup windows_display
-  autocmd!
-  autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
-  autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
-augroup END
 " }}}
 " statusline {{{
 set statusline=%h
@@ -184,21 +177,21 @@ set statusline+=\
 " }}}
 " colors {{{
 colorscheme delek
-autocmd colorscheme * hi Visual ctermfg=Gray  ctermbg=White
-autocmd colorscheme * hi Search ctermfg=Yellow ctermbg=Gray
-autocmd colorscheme * hi folded ctermfg=LightGray ctermbg=NONE cterm=NONE
-autocmd colorscheme * hi String ctermfg=DarkGreen
-autocmd colorscheme * hi Number ctermfg=Green
-autocmd colorscheme * hi LineNr ctermfg=DarkGray
-autocmd colorscheme * hi CursorLineNr cterm=bold ctermfg=DarkYellow
-autocmd colorscheme * hi Comment ctermfg=Gray
-autocmd colorscheme * hi TabLine ctermfg=White ctermbg=Black cterm=NONE
-autocmd colorscheme * hi TabLineFill ctermbg=Black ctermfg=Black
-autocmd colorscheme * hi TabLineSel ctermfg=White ctermbg=DarkCyan cterm=bold
-autocmd colorscheme * hi StatusLine ctermfg=Black ctermbg=Gray cterm=bold gui=bold
-autocmd colorscheme * hi StatusLineNC ctermfg=DarkGray ctermbg=Black
-autocmd colorscheme * hi Normal ctermbg=NONE
-autocmd colorscheme * hi PreProc ctermfg=blue
-autocmd colorscheme * hi CursorLine ctermfg=NONE ctermbg=LightGray cterm=NONE
-autocmd colorscheme * hi NonText ctermbg=Black ctermfg=Black 
+" autocmd colorscheme * hi Visual ctermfg=Gray  ctermbg=White
+" autocmd colorscheme * hi Search ctermfg=Yellow ctermbg=Gray
+" autocmd colorscheme * hi folded ctermfg=LightGray ctermbg=NONE cterm=NONE
+" autocmd colorscheme * hi String ctermfg=DarkGreen
+" autocmd colorscheme * hi Number ctermfg=Green
+" autocmd colorscheme * hi LineNr ctermfg=DarkGray
+" autocmd colorscheme * hi CursorLineNr cterm=bold ctermfg=DarkYellow
+" autocmd colorscheme * hi Comment ctermfg=Gray
+" autocmd colorscheme * hi TabLine ctermfg=White ctermbg=Black cterm=NONE
+" autocmd colorscheme * hi TabLineFill ctermbg=Black ctermfg=Black
+" autocmd colorscheme * hi TabLineSel ctermfg=White ctermbg=DarkCyan cterm=bold
+" autocmd colorscheme * hi StatusLine ctermfg=Black ctermbg=Gray cterm=bold gui=bold
+" autocmd colorscheme * hi StatusLineNC ctermfg=DarkGray ctermbg=Black
+" autocmd colorscheme * hi Normal ctermbg=NONE
+" autocmd colorscheme * hi PreProc ctermfg=blue
+" autocmd colorscheme * hi CursorLine ctermfg=NONE ctermbg=LightGray cterm=NONE
+" autocmd colorscheme * hi NonText ctermbg=Black ctermfg=Black 
 " }}}

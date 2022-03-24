@@ -457,13 +457,17 @@ if !exists("g:buftabline_numbers")
   nnoremap <silent><leader>9 :b9<CR>
 endif
 
-command! -nargs=+ Grep execute 'silent grep! <args>' | copen
-
 " quickfix list operations
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 nnoremap <leader>co :copen<CR>
 nnoremap <leader>cc :cclose<CR>
+
+" customize command
+
+" better grep
+command! -nargs=+ Grep execute 'silent grep! <args>' | copen
+
 " }}}
 " autocmd {{{
 
