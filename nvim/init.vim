@@ -519,10 +519,7 @@ highlight SignColumn gui=bold guibg=none
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
 highlight Search guifg=#a3be8c guibg=#495057 gui=bold
 highlight MatchParen gui=bold,underline
-" highlight CursorLineNr gui=bold guibg=none
-" highlight StatusLine gui=bold guifg=#adb5bd guibg=#3b4252
 highlight StatusLine gui=bold
-" highlight StatusLineNC gui=none guifg=DarkGray guibg=#343a40
 highlight LineNr gui=bold guibg=none guifg=none
 highlight LineNrAbove gui=none guibg=none guifg=gray
 highlight LineNrBelow gui=none guibg=none guifg=gray
