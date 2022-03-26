@@ -196,6 +196,7 @@ Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
+Plug 'git@github.com:igemnace/highlight.vim.git'
 call plug#end()
 " 
 " plugins setting 
@@ -247,7 +248,7 @@ nmap <leader>0 <Plug>BufTabLine.Go(10)
 " 
 " 
 " colorscheme 
-colorscheme peachpuff
+colorscheme highlight
 highlight Comment ctermfg=Gray guifg=Gray
 highlight Visual ctermbg=DarkGrey ctermfg=DarkGreen cterm=bold guibg=Blue guifg=Black
 highlight Search ctermfg=DarkGrey ctermbg=Green guifg=Brown guibg=DarkYellow cterm=bold
