@@ -28,11 +28,8 @@ if status is-interactive
     if command -q rg
         set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
     end
-    # general
-    set PATH $PATH "$HOME/.local/bin"
-    set PATH $PATH "$HOME/bin"
     # java
-    set -gx JAVA_HOME "/opt/java"
+    set -gx JAVA_HOME "/opt/jdk"
     set PATH $PATH $JAVA_HOME 
     # rust
     set PATH $PATH "$HOME/.cargo/bin"
@@ -45,6 +42,9 @@ if status is-interactive
     set PATH $PATH "$HOME/tools/android-studio/bin"
     # spring boot cli
     set PATH $PATH "$HOME/tools/spring-2.6.4/bin"
+    # general
+    set PATH $PATH "$HOME/.local/bin"
+    set PATH $PATH "$HOME/bin"
 
     # ===== abbriviations =====
     abbr --add cls "clear"
