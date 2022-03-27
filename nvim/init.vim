@@ -378,7 +378,7 @@ set smartcase
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
 set showcmd
-set laststatus=1
+set laststatus=2
 set wildmenu
 set showmatch
 set autoread
