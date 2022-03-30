@@ -23,10 +23,6 @@ function fish_prompt --description '[user]@[host]: pwd [prompt_symbol]'
 
     set_color $user_prompt_symbol_color
 
-    if not test $last_status -eq 0
-        set_color $red_color
-    end
-
     echo -n '  '
     set_color normal
 end

@@ -11,7 +11,7 @@ font:
     style: Retina
   bold:
     family: 'FiraCode Nerd Font'
-    style: Bold
+    style: Medium
   italic:
     family: 'FiraCode Nerd Font'
     style: Italic
