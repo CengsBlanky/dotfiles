@@ -5,6 +5,7 @@ SETUVAR _fish_abbr_clashstate:systemctl\x20status\x20clash
 SETUVAR _fish_abbr_cls:clear
 SETUVAR _fish_abbr_gad:git\x20add
 SETUVAR _fish_abbr_gcm:git\x20commit\x20\x2dam
+SETUVAR _fish_abbr_gdf:git\x20diff
 SETUVAR _fish_abbr_gpl:git\x20pull
 SETUVAR _fish_abbr_gps:git\x20push
 SETUVAR _fish_abbr_gst:git\x20status
