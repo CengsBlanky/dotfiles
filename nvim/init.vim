@@ -309,16 +309,16 @@ nnoremap <C-l> :RG<cr>
 let g:buftabline_show=1
 let g:buftabline_indicators=1
 let g:buftabline_numbers=2
-nmap <leader>1 <Plug>BufTabLine.Go(1)
-nmap <leader>2 <Plug>BufTabLine.Go(2)
-nmap <leader>3 <Plug>BufTabLine.Go(3)
-nmap <leader>4 <Plug>BufTabLine.Go(4)
-nmap <leader>5 <Plug>BufTabLine.Go(5)
-nmap <leader>6 <Plug>BufTabLine.Go(6)
-nmap <leader>7 <Plug>BufTabLine.Go(7)
-nmap <leader>8 <Plug>BufTabLine.Go(8)
-nmap <leader>9 <Plug>BufTabLine.Go(9)
-nmap <leader>0 <Plug>BufTabLine.Go(10)
+nmap g1 <Plug>BufTabLine.Go(1)
+nmap g2 <Plug>BufTabLine.Go(2)
+nmap g3 <Plug>BufTabLine.Go(3)
+nmap g4 <Plug>BufTabLine.Go(4)
+nmap g5 <Plug>BufTabLine.Go(5)
+nmap g6 <Plug>BufTabLine.Go(6)
+nmap g7 <Plug>BufTabLine.Go(7)
+nmap g8 <Plug>BufTabLine.Go(8)
+nmap g9 <Plug>BufTabLine.Go(9)
+nmap g0 <Plug>BufTabLine.Go(10)
 " }}}
 " nvim-treesitter {{{
 lua <<EOF
@@ -446,15 +446,16 @@ nnoremap <silent><leader>/ :vsplit<CR>
 
 " buffer jump
 if !exists("g:buftabline_numbers")
-  nnoremap <silent><leader>1 :b1<CR>
-  nnoremap <silent><leader>2 :b2<CR>
-  nnoremap <silent><leader>3 :b3<CR>
-  nnoremap <silent><leader>4 :b4<CR>
-  nnoremap <silent><leader>5 :b5<CR>
-  nnoremap <silent><leader>6 :b6<CR>
-  nnoremap <silent><leader>7 :b7<CR>
-  nnoremap <silent><leader>8 :b8<CR>
-  nnoremap <silent><leader>9 :b9<CR>
+  nnoremap g1 :b1<CR>
+  nnoremap g2 :b2<CR>
+  nnoremap g3 :b3<CR>
+  nnoremap g4 :b4<CR>
+  nnoremap g5 :b5<CR>
+  nnoremap g6 :b6<CR>
+  nnoremap g7 :b7<CR>
+  nnoremap g8 :b8<CR>
+  nnoremap g9 :b9<CR>
+  nnoremap g0 :b10<CR>
 endif
 
 " quickfix list operations
