@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 
     # show dir name with full length
-    set -g fish_prompt_pwd_dir_length 0
+    set -g fish_prompt_pwd_dir_length 2
 
     # ===== vi mode =====
     fish_vi_key_bindings
@@ -19,6 +19,16 @@ if status is-interactive
     set -g fish_vi_force_cursor 1
 
     # ===== gloabal variables =====
+    set -g __fish_git_prompt_showcolorhints true
+    set -g __fish_git_prompt_showdirtystate true
+    set -g __fish_git_prompt_showuntrackedfiles true
+    set -g __fish_git_prompt_showupstream auto
+    set -g __fish_git_prompt_char_upstream_ahead ' ⇡'
+    set -g __fish_git_prompt_char_upstream_behind ' ⇣'
+    set -g __fish_git_prompt_char_upstream_diverged ' ⇵'
+    set -g __fish_git_prompt_char_upstream_equal ""
+
+    # ===== ENV =====
     set -gx LANG "en_US.UTF-8"
     set -gx EDITOR nvim
     set -gx LESS "-RiX"
@@ -28,11 +38,8 @@ if status is-interactive
     if command -q rg
         set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
     end
-    # general
-    set PATH $PATH "$HOME/.local/bin"
-    set PATH $PATH "$HOME/bin"
     # java
-    set -gx JAVA_HOME "/opt/java"
+    set -gx JAVA_HOME "/opt/jdk"
     set PATH $PATH $JAVA_HOME 
     # rust
     set PATH $PATH "$HOME/.cargo/bin"
@@ -45,6 +52,9 @@ if status is-interactive
     set PATH $PATH "$HOME/tools/android-studio/bin"
     # spring boot cli
     set PATH $PATH "$HOME/tools/spring-2.6.4/bin"
+    # general
+    set PATH $PATH "$HOME/.local/bin"
+    set PATH $PATH "$HOME/bin"
 
     # ===== abbriviations =====
     abbr --add cls "clear"

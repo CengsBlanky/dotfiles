@@ -6,7 +6,7 @@ let s:filetypes = {
       \ 'go':              '',
       \ 'lua':             '',
       \ 'python':          '',
-      \ 
+      \
       \ 'javascript':      '',
       \ 'typescript':      '',
       \ 'html':            '',
@@ -15,12 +15,13 @@ let s:filetypes = {
       \ 'tsx':             '',
       \ 'typescriptreact': '',
       \ 'json':            '',
+      \ 'xml':             '',
       \ 'dart':            '',
-      \ 
+      \
       \ 'markdown':        '',
       \ 'dockerfile':      '',
       \ 'sql':             '',
-      \ 
+      \
       \ 'vim':             '',
       \ 'fish':            '',
       \ 'sh':              '',
@@ -72,6 +73,6 @@ set statusline+=\ %f
 set statusline+=%{&readonly?'\ ':''}
 set statusline+=%{&modified?'\ פֿ':''}
 set statusline+=%=
-set statusline+=%{SystypeIcon()}
+set statusline+=%{FileformatIcon()}
 set statusline+=%6.50l/%-6.50L
 set statusline+=%-4.10P
