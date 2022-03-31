@@ -515,8 +515,9 @@ highlight Comment guifg=DarkGray gui=none
 highlight Visual guibg=#8fbcbb guifg=#000000
 highlight SignColumn gui=bold guibg=none
 " for nord colorscheme
-highlight StatusLine gui=bold guifg=#adb5bd guibg=#3b4252
-highlight StatusLineNC gui=none guifg=DarkGray guibg=#4c566a
+highlight StatusLine gui=bold
+" highlight StatusLine gui=bold guifg=#adb5bd guibg=#3b4252
+" highlight StatusLineNC gui=none guifg=DarkGray guibg=#4c566a
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
 highlight LineNr guifg=#868e96 gui=none
 highlight Normal guibg=none ctermbg=none " transparent background
