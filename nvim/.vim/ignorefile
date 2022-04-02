@@ -13,8 +13,12 @@ packages/
 .idea/
 # ignore files
 tags
+*.tar
+*.tar.gz
 *.prefs
 *.class
+*.jar
+*.war
 *.out
 *.exe
 *.o
