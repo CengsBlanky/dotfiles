@@ -6,6 +6,6 @@ function weather
         set location $default_location
     end
 
-    set -l query "http://wttr.in/$location?format=v2"
+    set -l query "http://wttr.in/$location"
     curl -s $query
 end
