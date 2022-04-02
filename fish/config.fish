@@ -1,7 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
-    # show dir name with full length
+    # show dir name with specific length
     set -g fish_prompt_pwd_dir_length 2
 
     # ===== vi mode =====
