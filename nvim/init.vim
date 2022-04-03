@@ -116,9 +116,7 @@ let g:coc_global_extensions=[
       \ 'coc-rls',
       \ 'coc-go',
       \ 'coc-pyright',
-      \ 'coc-cl',
-      \ 'coc-sh',
-      \ 'coc-lua',
+      \
       \ 'coc-json',
       \ 'coc-yaml',
       \ 'coc-html',
@@ -126,6 +124,9 @@ let g:coc_global_extensions=[
       \ 'coc-tsserver',
       \ '@yaegassy/coc-volar',
       \ 'coc-flutter',
+      \
+      \ 'coc-sh',
+      \
       \ 'coc-snippets',
       \ 'coc-prettier',
       \ ]
