@@ -112,19 +112,20 @@ let g:email='zengs1994@gmail.com'
 let g:coc_config_home="~/.vim/"
 " Global extension names to install when they aren't installed.
 let g:coc_global_extensions=[
+      \ 'coc-clangd',
+      \ 'coc-rls',
+      \ 'coc-go',
+      \ 'coc-pyright',
       \ 'coc-cl',
+      \ 'coc-sh',
+      \ 'coc-lua',
       \ 'coc-json',
       \ 'coc-yaml',
       \ 'coc-html',
       \ 'coc-css',
-      \ 'coc-clangd',
-      \ 'coc-rls',
-      \ 'coc-go',
       \ 'coc-tsserver',
-      \ 'coc-pyright',
       \ '@yaegassy/coc-volar',
       \ 'coc-flutter',
-      \ 'coc-sh',
       \ 'coc-snippets',
       \ 'coc-prettier',
       \ ]
