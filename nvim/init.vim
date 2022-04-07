@@ -114,6 +114,7 @@ let g:coc_config_home="~/.vim/"
 let g:coc_global_extensions=[
       \ 'coc-clangd',
       \ 'coc-rls',
+      \ 'coc-java',
       \ 'coc-go',
       \ 'coc-pyright',
       \
@@ -241,20 +242,20 @@ endif
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 " Format whole buffer use Format
-" nnoremap <C-f> :Format<CR>
+nnoremap <leader>f :Format<CR>
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Auto format before buffer write
 if filereadable('.clang-format')
   autocmd BufWritePre *.c,*.h,*.cpp :call CocAction('format')
 endif
-" python autoformat
-autocmd BufWritePre *.py :call CocAction('format')
+" autoformat
+autocmd BufWritePre *.py,*.java :call CocAction('format')
 
 " Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
