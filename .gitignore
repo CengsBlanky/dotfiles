@@ -1,3 +1,3 @@
 emacs/.emacs.d/elpa/
 kitty
-**/runtime/
+helix/runtime

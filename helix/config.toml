@@ -1,1 +1,17 @@
-theme=""
+theme = "nord"
+
+[editor]
+auto-info = false
+line-number = "relative"
+mouse = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.insert]
+j = { k = "normal_mode" }
+
+[keys.normal]
+"ret" = ":w"
