@@ -41,6 +41,8 @@ if status is-interactive
     # java
     set -gx JAVA_HOME "/opt/jdk"
     set PATH $PATH $JAVA_HOME 
+    # gradle
+    set PATH $PATH "/opt/gradle/gradle-7.4.1/bin"
     # rust
     set PATH $PATH "$HOME/.cargo/bin"
     # golang
