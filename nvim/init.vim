@@ -414,6 +414,7 @@ set grepformat=%f:%l:%c:%m
 inoremap jk <esc>
 nnoremap D ^D
 nnoremap C ^C
+nnoremap <M-q> :x<CR>
 nnoremap <nowait><leader>q :x<CR>
 " close current buffer
 noremap <silent><M-b> :bd<CR>
