@@ -68,7 +68,6 @@ if status is-interactive
     abbr --add gad "git add"
     abbr --add gcm "git commit -am"
     abbr --add cdnote "cd $HOME/notes/journal"
-    abbr --add hx "helix"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default

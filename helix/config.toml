@@ -1,4 +1,4 @@
-theme = "nord"
+theme = "gruvbox"
 
 [editor]
 auto-info = false
@@ -15,3 +15,6 @@ j = { k = "normal_mode" }
 
 [keys.normal]
 "ret" = ":w"
+A-q = ":wq"
+D = ["extend_line", "delete_selection"]
+G = "goto_last_line"
