@@ -15,7 +15,6 @@ execute 'source' plug_file
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:tpope/vim-commentary.git'
-Plug 'git@github.com:andymass/vim-matchup.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
@@ -33,15 +32,11 @@ Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
 Plug 'git@github.com:pangloss/vim-javascript.git'
 Plug 'git@github.com:rust-lang/rust.vim.git'
 Plug 'git@github.com:fatih/vim-go.git', {'do': ':GoUpdateBinaries'}
-Plug 'git@github.com:dart-lang/dart-vim-plugin.git'
 Plug 'git@github.com:mattn/emmet-vim.git' " powerful assert tags
 Plug 'git@github.com:dag/vim-fish.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
-Plug 'git@github.com:arcticicestudio/nord-vim.git'
 Plug 'git@github.com:sainnhe/gruvbox-material.git'
-Plug 'git@github.com:ayu-theme/ayu-vim.git'
-Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
 call plug#end()
@@ -64,9 +59,6 @@ augroup commentary_vim
   autocmd FileType c setlocal commentstring=//\ %s
   autocmd FileType cpp setlocal commentstring=//\ %s
 augroup END
-" }}}
-" andymass/vim-matchup {{{
-let g:matchup_matchparen_offscreen = {}
 " }}}
 " auto-pair {{{
 augroup AutoPair_Custom
@@ -114,7 +106,6 @@ let g:coc_config_home="~/.vim/"
 let g:coc_global_extensions=[
       \ 'coc-clangd',
       \ 'coc-rls',
-      \ 'coc-java',
       \ 'coc-go',
       \ 'coc-pyright',
       \
@@ -249,7 +240,7 @@ if filereadable('.clang-format')
   autocmd BufWritePre *.c,*.h,*.cpp :call CocAction('format')
 endif
 " autoformat
-autocmd BufWritePre *.py,*.java :call CocAction('format')
+autocmd BufWritePre *.py :call CocAction('format')
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
@@ -351,16 +342,6 @@ set termguicolors
 let g:gruvbox_material_transparent_background=1
 let g:gruvbox_material_better_performance=1
 colorscheme gruvbox-material
-" colorizer setting
-lua <<EOF
-require'colorizer'.setup({
-  'html';
-  css = {
-    css = true;
-    css_fn = true;
-    }
-  }, { mode = 'background' })
-EOF
 " }}}
 " }}}
 " editor {{{
@@ -468,10 +449,14 @@ nnoremap <C-k> :cprevious<CR>
 nnoremap <leader>co :copen<CR>
 nnoremap <leader>cc :cclose<CR>
 
-" customize command
 
+
+" }}}
+" customize command {{{
 " better grep
 command! -nargs=+ Grep execute 'silent grep! <args>' | copen
+" indent whole buffer
+command! Indent normal! ggVG=
 
 " }}}
 " autocmd {{{
@@ -490,11 +475,17 @@ augroup filetype_indent_size
         \ setlocal tabstop=2 shiftwidth=2
 augroup END
 
-function TrimEndLinesAndTrailingSpaces()
+function! TrimEndLinesAndTrailingSpaces() abort
   let save_cursor = getpos(".")
   silent! %s#\($\n\s*\)\+\%$##
   silent! %s/\s\+$//e
   call setpos('.', save_cursor)
+endfunction
+
+function! IndentAll() abort
+  let cursor_pos = getpos(".")
+  silent! Indent
+  call setpos(".", cursor_pos)
 endfunction
 
 augroup filetype_edit_behavior
@@ -505,6 +496,8 @@ augroup filetype_edit_behavior
   " auto remove all trailing empty lines before saving
   autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.yml,*.yaml,*.java
         \ call TrimEndLinesAndTrailingSpaces()
+  autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.yaml,*.toml,*.java,*.json,*.fish
+        \ call IndentAll()
   " disable syntax for large file
   autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
 augroup END
