@@ -449,8 +449,6 @@ nnoremap <C-k> :cprevious<CR>
 nnoremap <leader>co :copen<CR>
 nnoremap <leader>cc :cclose<CR>
 
-
-
 " }}}
 " customize command {{{
 " better grep
