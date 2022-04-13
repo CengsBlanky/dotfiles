@@ -374,7 +374,6 @@ inoremap jk <esc>
 nnoremap D ^D
 nnoremap C ^C
 nnoremap <M-q> :x<CR>
-nnoremap <nowait><leader>q :x<CR>
 " close current buffer
 noremap <silent><M-b> :bd<CR>
 " close other buffers see line: 590
