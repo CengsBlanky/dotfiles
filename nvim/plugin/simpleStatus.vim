@@ -20,7 +20,7 @@ let s:filetypes = {
       \
       \ 'markdown':        '',
       \ 'dockerfile':      '',
-      \ 'sql':             '',
+      \ 'sql':             '',
       \
       \ 'vim':             '',
       \ 'fish':            '',
