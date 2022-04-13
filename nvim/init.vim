@@ -19,7 +19,6 @@ Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
-Plug 'git@github.com:lambdalisue/suda.vim.git' " write as root
 Plug 'git@github.com:junegunn/vim-easy-align.git' " align text easily
 Plug 'git@github.com:terryma/vim-multiple-cursors.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
@@ -70,9 +69,9 @@ let g:AutoPairsMapCR = 0
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
 let g:gitgutter_sign_allow_clobber = 0
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '*'
-let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_added = ''
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
 " }}}
 " junegunn/vim-easy-align {{{
 " Start interactive EasyAlign in visual mode (e.g. vipga)
