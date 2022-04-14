@@ -35,6 +35,7 @@ Plug 'git@github.com:mattn/emmet-vim.git' " powerful assert tags
 Plug 'git@github.com:dag/vim-fish.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
+Plug 'git@github.com:christoomey/vim-tmux-navigator.git'
 Plug 'git@github.com:sainnhe/gruvbox-material.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
@@ -48,6 +49,7 @@ let NERDTreeIgnore=[
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
 noremap <silent><M-t> :NERDTreeToggle<CR>
+noremap <F1> :NERDTreeToggle<CR>
 " }}}
 " tpope/vim-surround {{{
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
@@ -292,6 +294,15 @@ nmap <leader>8 <Plug>BufTabLine.Go(8)
 nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(10)
 " }}}
+" vim-tmux-navigator {{{
+let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_save_on_switch = 1
+nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <M-\> :TmuxNavigatePrevious<cr>
+" }}}
 " nvim-treesitter {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -405,6 +416,11 @@ nnoremap <silent><leader><LEFT> :vertical resize -1<CR>
 " split current window
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
+" navigate windows
+" nnoremap <M-j> <C-w>j
+" nnoremap <M-k> <C-w>k
+" nnoremap <M-h> <C-w>h
+" nnoremap <M-l> <C-w>l
 
 " buffer jump
 if !exists("g:buftabline_numbers")
