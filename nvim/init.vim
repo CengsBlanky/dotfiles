@@ -431,7 +431,7 @@ nnoremap <leader>cc :cclose<CR>
 " better grep
 command! -nargs=+ Grep execute 'silent grep! <args>' | copen
 " indent whole buffer
-command! Indent normal! ggVG=
+command! Indent normal! gg=G
 
 " }}}
 " autocmd {{{
@@ -461,6 +461,7 @@ function! IndentAll() abort
   let cursor_pos = getpos(".")
   silent! Indent
   call setpos(".", cursor_pos)
+  normal zz
 endfunction
 
 augroup filetype_edit_behavior
