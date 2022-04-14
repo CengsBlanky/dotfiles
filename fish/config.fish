@@ -1,9 +1,4 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
-
-    # show dir name with specific length
-    set -g fish_prompt_pwd_dir_length 2
-
     # ===== vi mode =====
     fish_vi_key_bindings
     # Emulates vim's cursor shape behavior
