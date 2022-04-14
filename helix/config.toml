@@ -1,0 +1,20 @@
+theme = "bogster"
+
+[editor]
+auto-info = false
+line-number = "relative"
+mouse = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.insert]
+j = { k = "normal_mode" }
+
+[keys.normal]
+"ret" = ":w"
+A-q = ":wq"
+D = ["extend_line", "delete_selection"]
+G = "goto_last_line"

@@ -15,12 +15,10 @@ execute 'source' plug_file
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:tpope/vim-commentary.git'
-Plug 'git@github.com:andymass/vim-matchup.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
-Plug 'git@github.com:lambdalisue/suda.vim.git' " write as root
 Plug 'git@github.com:junegunn/vim-easy-align.git' " align text easily
 Plug 'git@github.com:terryma/vim-multiple-cursors.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
@@ -33,15 +31,12 @@ Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
 Plug 'git@github.com:pangloss/vim-javascript.git'
 Plug 'git@github.com:rust-lang/rust.vim.git'
 Plug 'git@github.com:fatih/vim-go.git', {'do': ':GoUpdateBinaries'}
-Plug 'git@github.com:dart-lang/dart-vim-plugin.git'
 Plug 'git@github.com:mattn/emmet-vim.git' " powerful assert tags
 Plug 'git@github.com:dag/vim-fish.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
-Plug 'git@github.com:arcticicestudio/nord-vim.git'
+Plug 'git@github.com:christoomey/vim-tmux-navigator.git'
 Plug 'git@github.com:sainnhe/gruvbox-material.git'
-Plug 'git@github.com:ayu-theme/ayu-vim.git'
-Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
 call plug#end()
@@ -54,6 +49,7 @@ let NERDTreeIgnore=[
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
 noremap <silent><M-t> :NERDTreeToggle<CR>
+noremap <F1> :NERDTreeToggle<CR>
 " }}}
 " tpope/vim-surround {{{
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
@@ -64,9 +60,6 @@ augroup commentary_vim
   autocmd FileType c setlocal commentstring=//\ %s
   autocmd FileType cpp setlocal commentstring=//\ %s
 augroup END
-" }}}
-" andymass/vim-matchup {{{
-let g:matchup_matchparen_offscreen = {}
 " }}}
 " auto-pair {{{
 augroup AutoPair_Custom
@@ -149,11 +142,11 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+" if has('nvim')
+"   inoremap <silent><expr> <c-space> coc#refresh()
+" else
+"   inoremap <silent><expr> <c-@> coc#refresh()
+" endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
@@ -189,10 +182,6 @@ endfunction
 
 " Symbol renaming.
 nmap <leader>n <Plug>(coc-rename)
-
-" Formatting selected code.
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -241,43 +230,26 @@ endif
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 " Format whole buffer use Format
-" nnoremap <C-f> :Format<CR>
+nnoremap <leader>f :Format<CR>
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Auto format before buffer write
 if filereadable('.clang-format')
   autocmd BufWritePre *.c,*.h,*.cpp :call CocAction('format')
 endif
-" python autoformat
+" autoformat
 autocmd BufWritePre *.py :call CocAction('format')
 
 " Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" Mappings for CoCList
-" Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " }}}
 " rust.vim {{{
 let g:rustfmt_autosave = 1
@@ -311,16 +283,25 @@ nnoremap <C-l> :RG<cr>
 let g:buftabline_show=1
 let g:buftabline_indicators=1
 let g:buftabline_numbers=2
-nmap g1 <Plug>BufTabLine.Go(1)
-nmap g2 <Plug>BufTabLine.Go(2)
-nmap g3 <Plug>BufTabLine.Go(3)
-nmap g4 <Plug>BufTabLine.Go(4)
-nmap g5 <Plug>BufTabLine.Go(5)
-nmap g6 <Plug>BufTabLine.Go(6)
-nmap g7 <Plug>BufTabLine.Go(7)
-nmap g8 <Plug>BufTabLine.Go(8)
-nmap g9 <Plug>BufTabLine.Go(9)
-nmap g0 <Plug>BufTabLine.Go(10)
+nmap <leader>1 <Plug>BufTabLine.Go(1)
+nmap <leader>2 <Plug>BufTabLine.Go(2)
+nmap <leader>3 <Plug>BufTabLine.Go(3)
+nmap <leader>4 <Plug>BufTabLine.Go(4)
+nmap <leader>5 <Plug>BufTabLine.Go(5)
+nmap <leader>6 <Plug>BufTabLine.Go(6)
+nmap <leader>7 <Plug>BufTabLine.Go(7)
+nmap <leader>8 <Plug>BufTabLine.Go(8)
+nmap <leader>9 <Plug>BufTabLine.Go(9)
+nmap <leader>0 <Plug>BufTabLine.Go(10)
+" }}}
+" vim-tmux-navigator {{{
+let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_save_on_switch = 1
+nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <M-\> :TmuxNavigatePrevious<cr>
 " }}}
 " nvim-treesitter {{{
 lua <<EOF
@@ -350,16 +331,6 @@ set termguicolors
 let g:gruvbox_material_transparent_background=1
 let g:gruvbox_material_better_performance=1
 colorscheme gruvbox-material
-" colorizer setting
-lua <<EOF
-require'colorizer'.setup({
-  'html';
-  css = {
-    css = true;
-    css_fn = true;
-    }
-  }, { mode = 'background' })
-EOF
 " }}}
 " }}}
 " editor {{{
@@ -413,7 +384,7 @@ set grepformat=%f:%l:%c:%m
 inoremap jk <esc>
 nnoremap D ^D
 nnoremap C ^C
-nnoremap <nowait><leader>q :x<CR>
+nnoremap <M-q> :x<CR>
 " close current buffer
 noremap <silent><M-b> :bd<CR>
 " close other buffers see line: 590
@@ -445,19 +416,24 @@ nnoremap <silent><leader><LEFT> :vertical resize -1<CR>
 " split current window
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
+" navigate windows
+" nnoremap <M-j> <C-w>j
+" nnoremap <M-k> <C-w>k
+" nnoremap <M-h> <C-w>h
+" nnoremap <M-l> <C-w>l
 
 " buffer jump
 if !exists("g:buftabline_numbers")
-  nnoremap g1 :b1<CR>
-  nnoremap g2 :b2<CR>
-  nnoremap g3 :b3<CR>
-  nnoremap g4 :b4<CR>
-  nnoremap g5 :b5<CR>
-  nnoremap g6 :b6<CR>
-  nnoremap g7 :b7<CR>
-  nnoremap g8 :b8<CR>
-  nnoremap g9 :b9<CR>
-  nnoremap g0 :b10<CR>
+  nnoremap <leader>1 :b1<CR>
+  nnoremap <leader>2 :b2<CR>
+  nnoremap <leader>3 :b3<CR>
+  nnoremap <leader>4 :b4<CR>
+  nnoremap <leader>5 :b5<CR>
+  nnoremap <leader>6 :b6<CR>
+  nnoremap <leader>7 :b7<CR>
+  nnoremap <leader>8 :b8<CR>
+  nnoremap <leader>9 :b9<CR>
+  nnoremap <leader>0 :b10<CR>
 endif
 
 " quickfix list operations
@@ -466,10 +442,12 @@ nnoremap <C-k> :cprevious<CR>
 nnoremap <leader>co :copen<CR>
 nnoremap <leader>cc :cclose<CR>
 
-" customize command
-
+" }}}
+" customize command {{{
 " better grep
 command! -nargs=+ Grep execute 'silent grep! <args>' | copen
+" indent whole buffer
+command! Indent normal! gg=G
 
 " }}}
 " autocmd {{{
@@ -488,11 +466,18 @@ augroup filetype_indent_size
         \ setlocal tabstop=2 shiftwidth=2
 augroup END
 
-function TrimEndLinesAndTrailingSpaces()
+function! TrimEndLinesAndTrailingSpaces() abort
   let save_cursor = getpos(".")
   silent! %s#\($\n\s*\)\+\%$##
   silent! %s/\s\+$//e
   call setpos('.', save_cursor)
+endfunction
+
+function! IndentAll() abort
+  let cursor_pos = getpos(".")
+  silent! Indent
+  call setpos(".", cursor_pos)
+  normal zz
 endfunction
 
 augroup filetype_edit_behavior
@@ -503,6 +488,8 @@ augroup filetype_edit_behavior
   " auto remove all trailing empty lines before saving
   autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.yml,*.yaml,*.java
         \ call TrimEndLinesAndTrailingSpaces()
+  autocmd BufWritePre *.c,*.cpp,*.h,*.java,*.lua,*.js,*.html,*.sh,*.py,*.yaml,*.toml,*.json
+        \ call IndentAll()
   " disable syntax for large file
   autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
 augroup END

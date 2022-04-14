@@ -14,7 +14,8 @@ function fish_prompt --description '[user]@[host]: pwd [prompt_symbol]'
     #     (set_color $gray_color)
     # PWD
     set_color $pwd_color
-    echo -n (prompt_pwd)
+
+    echo -n (basename (prompt_pwd))
 
     if not test $last_status -eq 0
         set_color $red_color

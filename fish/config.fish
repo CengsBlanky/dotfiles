@@ -1,9 +1,4 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
-
-    # show dir name with specific length
-    set -g fish_prompt_pwd_dir_length 2
-
     # ===== vi mode =====
     fish_vi_key_bindings
     # Emulates vim's cursor shape behavior
@@ -41,6 +36,8 @@ if status is-interactive
     # java
     set -gx JAVA_HOME "/opt/jdk"
     set PATH $PATH $JAVA_HOME 
+    # gradle
+    set PATH $PATH "/opt/gradle/gradle-7.4.1/bin"
     # rust
     set PATH $PATH "$HOME/.cargo/bin"
     # golang
