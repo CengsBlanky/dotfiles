@@ -67,6 +67,8 @@ set shortmess+=c
 set hlsearch
 set mousehide
 set showtabline=2
+set splitbelow
+set splitright
 " set default grep cmd
 set path+=**
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
@@ -122,8 +124,7 @@ nnoremap <C-d> :bd<CR>
 " write as root
 cmap w!! w !sudo tee > /dev/null %
 " normal quit editor
-nnoremap Q :q<CR>
-nnoremap <leader>q :x<CR>
+nnoremap <C-q> :x<CR>
 " }}}
 " autocmd {{{
 
@@ -176,7 +177,7 @@ set statusline+=\
 " }}}
 " }}}
 " colors {{{
-colorscheme delek
+colorscheme default
 hi Visual ctermfg=Gray  ctermbg=White
 hi Search ctermfg=Yellow ctermbg=Gray
 hi folded ctermfg=LightGray ctermbg=NONE cterm=NONE
