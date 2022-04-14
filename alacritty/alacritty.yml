@@ -7,7 +7,7 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'Cousine'
+    family: 'FiraCode NerdFont'
     style: Normal
   bold:
     family: 'FiraCode Nerd Font'
@@ -18,7 +18,7 @@ font:
   bold_italic:
     family: 'FiraCode Nerd Font'
     style: Bold Italic
-  size: 15.0
+  size: 14.0
 colors:
   primary:
     background: '#212529'
