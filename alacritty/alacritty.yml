@@ -7,8 +7,8 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'FiraCode Nerd Font'
-    style: Retina
+    family: 'Cousine'
+    style: Normal
   bold:
     family: 'FiraCode Nerd Font'
     style: Medium

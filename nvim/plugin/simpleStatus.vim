@@ -6,6 +6,8 @@ let s:filetypes = {
       \ 'go':              '',
       \ 'lua':             '',
       \ 'python':          '',
+      \ 'dart':            '',
+      \ 'sql':             '',
       \
       \ 'javascript':      '',
       \ 'typescript':      '',
@@ -14,13 +16,14 @@ let s:filetypes = {
       \ 'vue':             '﵂',
       \ 'tsx':             '',
       \ 'typescriptreact': '',
+      \
       \ 'json':            '',
       \ 'xml':             '',
-      \ 'dart':            '',
+      \ 'yaml':            '',
+      \ 'toml':            '',
       \
       \ 'markdown':        '',
       \ 'dockerfile':      '',
-      \ 'sql':             '',
       \
       \ 'vim':             '',
       \ 'fish':            '',
