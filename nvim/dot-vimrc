@@ -423,6 +423,7 @@ set nowrap
 set cmdheight=1
 set splitright
 set splitbelow
+set cursorline
 " set default grep cmd
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
 set grepformat=%f:%l:%c:%m
@@ -514,22 +515,15 @@ command! Curtime :put = strftime('%Y-%m-%d %H:%M:%S')
 highlight Comment guifg=DarkGray gui=none
 highlight Visual guibg=#8fbcbb guifg=#000000
 highlight SignColumn gui=bold guibg=none
-" for nord colorscheme
 highlight StatusLine gui=bold
-" highlight StatusLine gui=bold guifg=#adb5bd guibg=#3b4252
-" highlight StatusLineNC gui=none guifg=DarkGray guibg=#4c566a
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
-highlight LineNr guifg=#868e96 gui=none
-highlight Normal guibg=none ctermbg=none " transparent background
+" highlight LineNr guifg=#868e96 gui=none
 highlight MatchParen gui=bold,underline
-
 " self defined plugins colorscheme
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
-
 highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
 highlight BufTabLineFill guibg=none guifg=none ctermfg=none ctermbg=none gui=none
 highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=none
-
 highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
 highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
 highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
