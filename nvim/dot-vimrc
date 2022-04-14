@@ -431,7 +431,7 @@ set path+=**
 " }}}
 " keymappings {{{
 inoremap jk <esc>
-nnoremap <nowait><leader>q :x<CR>
+nnoremap <C-q> :x<CR>
 
 " close current window or buffer
 noremap <silent><M-w> :close<CR>
