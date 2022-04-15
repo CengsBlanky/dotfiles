@@ -432,7 +432,7 @@ set path+=**
 " }}}
 " keymappings {{{
 inoremap jk <esc>
-nnoremap <C-q> :x<CR>
+nnoremap <M-q> :x<CR>
 
 " close current window or buffer
 noremap <silent><M-w> :close<CR>
@@ -470,6 +470,9 @@ nnoremap <silent><leader>/ :vsplit<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 " }}}
+" commands {{{
+command IndentCurBuf call IndentBuf()
+" }}}
 " autocmd {{{
 
 augroup filetype_specific
@@ -488,8 +491,14 @@ function TrimEndLinesAndTrailingSpaces()
   silent! %s#\($\n\s*\)\+\%$##
   silent! %s/\s\+$//e
   call setpos('.', save_cursor)
-  " echom "trailing spaces and empty lines done!"
 endfunction
+
+function IndentBuf()
+  let save_cursor = getpos(".")
+  norm gg=G
+  call setpos(".", save_cursor)
+endfunction
+
 augroup filetype_edit_behavior
   autocmd!
   autocmd FileType * setlocal textwidth=0
@@ -498,6 +507,8 @@ augroup filetype_edit_behavior
   " auto remove all trailing empty lines before saving
   autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.yml,*.yaml
         \ call TrimEndLinesAndTrailingSpaces()
+  autocmd BufWritePre *.java,*.yaml,*.yml,*.sh
+        \ call IndentBuf()
 augroup END
 
 augroup keymap_force
