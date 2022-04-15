@@ -8,10 +8,10 @@ font:
   ligatures: false
   normal:
     family: 'FiraCode NerdFont'
-    style: Normal
+    style: Retina
   bold:
     family: 'FiraCode Nerd Font'
-    style: Medium
+    style: Semibold
   italic:
     family: 'FiraCode Nerd Font'
     style: Italic
