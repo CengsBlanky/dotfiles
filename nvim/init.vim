@@ -160,7 +160,7 @@ nmap <silent> g[ <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
@@ -387,6 +387,8 @@ nnoremap C ^C
 nnoremap <M-q> :x<CR>
 " close current buffer
 noremap <silent><M-b> :bd<CR>
+" yank whole buffer
+nnoremap gy :%y<CR>
 " close other buffers see line: 590
 nnoremap <leader>o :Bonly<CR>
 " use command to open my vimrc
@@ -447,7 +449,7 @@ nnoremap <leader>cc :cclose<CR>
 " better grep
 command! -nargs=+ Grep execute 'silent grep! <args>' | copen
 " indent whole buffer
-command! Indent normal! gg=G
+command! IndentBuf normal gg=G
 
 " }}}
 " autocmd {{{
@@ -473,48 +475,10 @@ function! TrimEndLinesAndTrailingSpaces() abort
   call setpos('.', save_cursor)
 endfunction
 
-function CurPos(action)
-  if a:action == "save"
-    let b:saveve = &virtualedit
-    let b:savesiso = &sidescrolloff
-    set virtualedit=all
-    set sidescrolloff=0
-    let b:curline = line(".")
-    let b:curvcol = virtcol(".")
-    let b:curwcol = wincol()
-    normal! g0
-    let b:algvcol = virtcol(".")
-    normal! M
-    let b:midline = line(".")
-    execute "normal! ".b:curline."G".b:curvcol."|"
-    let &virtualedit = b:saveve
-    let &sidescrolloff = b:savesiso
-  elseif a:action == "restore"
-    let b:saveve = &virtualedit
-    let b:savesiso = &sidescrolloff
-    set virtualedit=all
-    set sidescrolloff=0
-    execute "normal! ".b:midline."Gzz".b:curline."G0"
-    let nw = wincol() - 1
-    if b:curvcol != b:curwcol - nw
-      execute "normal! ".b:algvcol."|zs"
-      let s = wincol() - nw - 1
-      if s != 0
-        execute "normal! ".s."zl"
-      endif
-    endif
-    execute "normal! ".b:curvcol."|"
-    let &virtualedit = b:saveve
-    let &sidescrolloff = b:savesiso
-    unlet b:saveve b:savesiso b:curline b:curvcol b:curwcol b:algvcol b:midline
-  endif
-  return ""
-endfunction
-
 function! IndentAll() abort
-  call CurPos("save")
-  silent! Indent
-  call CurPos("restore")
+  let save_cursor = getpos(".")
+  silent! IndentBuf
+  call setpos('.', save_cursor)
 endfunction
 
 augroup filetype_edit_behavior
