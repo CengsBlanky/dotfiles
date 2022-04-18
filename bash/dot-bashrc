@@ -91,6 +91,7 @@ fi
 export LANG=en_US.utf8
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/npm/bin"
+export PATH="$PATH:$HOME/go/bin"
 
 if [ "$(command -v nvim)" ]
 then
@@ -105,6 +106,12 @@ fi
 
 DEFAULT=$PS1
 PS1="\e[90m[\u@\h]\e[m \e[1;34m\w\e[m\n\e[92m$\e[m "
+
+# set git prompt
+if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    source $HOME/.bash-git-prompt/gitprompt.sh
+fi
 
 # ===== software path =====
 export NVM_DIR="$HOME/.nvm"
