@@ -1,5 +1,5 @@
 window:
-  opacity: 1
+  opacity: 0.98
   decorations: none
   startup_mode: Windowed
   dynamic_title: true
@@ -7,7 +7,7 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'FiraCode NerdFont'
+    family: 'FiraCode Nerd Font'
     style: Retina
   bold:
     family: 'FiraCode Nerd Font'
@@ -18,7 +18,7 @@ font:
   bold_italic:
     family: 'FiraCode Nerd Font'
     style: Bold Italic
-  size: 12.0
+  size: 13.0
 colors:
   primary:
     background: '#212529'
