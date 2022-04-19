@@ -16,6 +16,7 @@ function fish_prompt --description '[user]@[host]: pwd [prompt_symbol]'
     set_color $pwd_color
     # echo -n (prompt_pwd)
     echo -n (basename (prompt_pwd))
+    echo -n (fish_git_prompt)
 
     if not test $last_status -eq 0
         set_color $red_color
