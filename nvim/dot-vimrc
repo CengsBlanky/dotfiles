@@ -53,9 +53,6 @@ let NERDTreeIgnore=[
       \ ]
 noremap <silent><M-t> :NERDTreeToggle<CR>
 " }}}
-" tpope/vim-surround {{{
-autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
-" }}}
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
 let g:gitgutter_sign_allow_clobber = 0
@@ -84,6 +81,7 @@ let g:multi_cursor_exit_from_visual_mode=1
 let g:multi_cursor_exit_from_insert_mode=1
 " }}}
 " aperezdc/vim-template {{{
+let g:templates_no_autocmd=1
 let g:templates_directory=["~/.vim/templates/"]
 let g:username='zengshuai'
 let g:email='zengs1994@gmail.com'
