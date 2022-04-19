@@ -3,8 +3,6 @@
 set nocompatible
 filetype plugin indent on
 syntax on
-set fileformat=unix
-set fileformats=unix,dos
 language en_US.UTF-8
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
@@ -13,11 +11,12 @@ set number
 set relativenumber
 set backspace=2
 set incsearch
+set ignorecase
 set smartcase
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
 set showcmd
-set laststatus=1
+set laststatus=2
 set wildmenu
 set showmatch
 set autoread
@@ -58,8 +57,6 @@ nnoremap <silent><BS> <C-b>
 nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>
-" map <esc> to quit terminal mode
-tnoremap <Esc> <C-\><C-n>
 " save
 nnoremap <silent><Enter> :w<CR>
 " split current window
@@ -109,12 +106,6 @@ augroup keymap_force
   autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
   " unremap <CR> key when in quickfix list
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-augroup END
-
-augroup windows_display
-  autocmd!
-  autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
-  autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
 augroup END
 
 " delete other buffers 
@@ -175,7 +166,6 @@ endfunction
 set statusline=\ %f
 set statusline+=\ %r
 set statusline+=%2m
-set statusline+=[%{&ff}]
 set statusline+=%=
 set statusline+=%y
 set statusline+=%6.50l/%-6.50L
@@ -206,10 +196,7 @@ let NERDTreeIgnore=[
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
 noremap <silent><C-t> :NERDTreeToggle<CR>
-" 
-" tpope/vim-surround 
-autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
-" 
+
 " junegunn/fzf 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -247,7 +234,7 @@ nmap <leader>0 <Plug>BufTabLine.Go(10)
 " 
 " 
 " colorscheme 
-colorscheme peachpuff
+" colorscheme default
 highlight Comment ctermfg=Gray guifg=Gray
 highlight Visual ctermbg=DarkGrey ctermfg=DarkGreen cterm=bold guibg=Blue guifg=Black
 highlight Search ctermfg=DarkGrey ctermbg=Green guifg=Brown guibg=DarkYellow cterm=bold
@@ -265,7 +252,3 @@ highlight String ctermfg=Green ctermbg=NONE cterm=NONE guifg=Green guibg=NONE gu
 highlight Number ctermfg=Blue guifg=Blue
 highlight StatusLine gui=bold guifg=#adb5bd guibg=#3b4252 cterm=bold ctermfg=Black ctermbg=DarkGray
 highlight StatusLineNC gui=NONE guifg=DarkGray guibg=#4c566a cterm=NONE ctermfg=DarkGray ctermbg=Black
-
-syn match myTodo contained "\<\(TODO\|FIXME\|NOTE\):"
-hi def link myTodo Todo
-highlight Todo ctermfg=DarkYellow ctermbg=NONE cterm=bold,underline guifg=DarkYellow guibg=NONE gui=bold,underline
