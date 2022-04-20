@@ -6,7 +6,6 @@ let g:python_host_skip_check=1
 let g:python3_host_skip_check=1
 let g:python3_host_prog = '/usr/local/bin/python3.9'
 let g:markdown_folding = 1
-set guifont=FiraCode\ NF:h18
 " }}}
 " plugins {{{
 execute 'source' plug_file
@@ -487,7 +486,7 @@ augroup filetype_edit_behavior
   " auto remove all trailing empty lines before saving
   autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.yml,*.yaml
         \ call TrimEndLinesAndTrailingSpaces()
-  autocmd BufWritePre *.java,*.yaml,*.yml,*.sh
+  autocmd BufWritePre *.java,*.sh
         \ call IndentBuf()
 augroup END
 
