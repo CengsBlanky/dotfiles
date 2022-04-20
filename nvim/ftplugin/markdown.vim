@@ -3,6 +3,3 @@ setlocal foldlevel=3
 setlocal nowrap
 nnoremap j gj
 nnoremap k gk
-nnoremap 0 g0
-nnoremap $ g$
-nnoremap ^ g^
