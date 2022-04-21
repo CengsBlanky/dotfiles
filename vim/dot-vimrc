@@ -188,7 +188,6 @@ Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:christoomey/vim-tmux-navigator.git'
-Plug 'fxn/vim-monochrome'
 call plug#end()
  
 " plugins setting 
