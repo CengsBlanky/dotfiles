@@ -383,12 +383,10 @@ nnoremap gy :%y<CR>
 nnoremap <leader>o :Bonly<CR>
 " use command to open my vimrc
 command! Editrc execute 'edit' vim_config_file
-" screen scroll add <nowait> to execute immediately
-" see autocmd keymap_force to set scroll down
-" use backspace to scroll up
+command! Reloadrc execute 'edit' vim_config_file
+" use backspace to scroll up and Space to scroll down
 nnoremap <silent><BS> <C-b>
-" <leader> <Enter> to create new line in normal mode
-nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
+nnoremap <silent><Space> <C-f>
 " switch between buffers
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
@@ -487,7 +485,7 @@ augroup END
 
 augroup keymap_force
   autocmd!
-  autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
+  " autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
   " unremap <CR> key when in quickfix list
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
@@ -495,10 +493,10 @@ augroup END
 " }}}
 " default colors {{{
 highlight Comment guifg=DarkGray gui=none
-highlight Visual guibg=#8fbcbb guifg=#000000
+highlight Visual guibg=Gray guifg=Black
 highlight SignColumn gui=bold guibg=none
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
-highlight Search guifg=#a3be8c guibg=#495057 gui=bold
+highlight Search guifg=Black guibg=Gray gui=bold
 highlight MatchParen gui=bold,underline
 highlight StatusLine gui=bold
 highlight LineNr gui=bold guibg=none guifg=none
