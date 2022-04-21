@@ -3,7 +3,6 @@
 set nocompatible
 filetype plugin indent on
 language en_US.UTF-8
-" unicode characters in the file autoload/float.vim
 set encoding=utf-8
 set hidden
 set number
@@ -15,7 +14,7 @@ set smartcase
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
 set showcmd
-set laststatus=1
+set laststatus=2
 set wildmenu
 set showmatch
 set autoread
@@ -46,7 +45,6 @@ inoremap jk <esc>
 " quit
 " use <Esc> instead of <M- keybind
 nnoremap <Esc>q :x<CR>
-nnoremap <leader>q :x<CR>
 " close current or buffer
 noremap <silent><Esc>b :bd<CR>
 " use command to open my vimrc
@@ -71,10 +69,7 @@ nnoremap <C-k> :cprevious<CR>
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
 " go next buffer
-nnoremap <silent><TAB> :bn<CR>
-
-" close current buffer
-nnoremap <C-d> :bd<CR>
+nnoremap <C-n> :bn<CR>
 " write as root
 cmap w!! w !sudo tee > /dev/null %
 
@@ -166,8 +161,7 @@ function! BufOnly(buffer, bang)
   endif
 
 endfunction
-" 
-" 
+
 " statueline 
 set statusline=\ %f
 set statusline+=\ %r
@@ -177,13 +171,12 @@ set statusline+=%y
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
-" 
-" 
+ 
 " predefined variables 
 let vim_config_file="~/.vimrc"
 let plug_file="~/.vim/plug.vim"
 let plugin_path="~/.vim/plugins/"
-" 
+ 
 " plugins 
 execute 'source' plug_file
 call plug#begin(fnameescape(plugin_path))
@@ -194,7 +187,7 @@ Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 call plug#end()
-" 
+ 
 " plugins setting 
 " NERDTree
 let NERDTreeMinimalUI=1
@@ -205,8 +198,8 @@ let NERDTreeIgnore=[
       \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
-noremap <silent><Esc>t :NERDTreeToggle<CR>
 nnoremap <silent><F1> :NERDTreeToggle<CR>
+nnoremap <Tab> :NERDTreeToggle<CR>
 
 " junegunn/fzf 
 " [Buffers] Jump to the existing window if possible
@@ -227,7 +220,7 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :RG<cr>
-" 
+ 
 " buftabline 
 let g:buftabline_show=1
 let g:buftabline_indicators=1
