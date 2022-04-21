@@ -23,8 +23,7 @@ set confirm
 set updatetime=100
 set noundofile
 set nobackup
-set clipboard=unnamed
-set clipboard+=unnamedplus
+set clipboard^=unnamed,unnamedplus
 set tags=tags
 set shortmess+=c
 set hlsearch
@@ -46,7 +45,9 @@ inoremap jk <esc>
 " use <Esc> instead of <M- keybind
 nnoremap <Esc>q :x<CR>
 " close current or buffer
-noremap <silent><Esc>b :bd<CR>
+nnoremap <silent><Esc>b :bd<CR>
+" yank whole buffer
+nnoremap gy :%y<CR>
 " use command to open my vimrc
 command! Editrc execute 'edit' vim_config_file
 command! Reloadrc execute 'source' vim_config_file
