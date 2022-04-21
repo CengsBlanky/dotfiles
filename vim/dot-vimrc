@@ -2,6 +2,7 @@
 " default 
 set nocompatible
 filetype plugin indent on
+syntax on
 language en_US.UTF-8
 set encoding=utf-8
 set hidden
@@ -37,7 +38,6 @@ set splitright
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
 set grepformat=%f:%l:%c:%m
 
-colorscheme bw
 
 " keymappings 
 inoremap jk <esc>
@@ -187,6 +187,7 @@ Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
+Plug 'fxn/vim-monochrome'
 call plug#end()
  
 " plugins setting 
@@ -236,4 +237,22 @@ nmap <leader>8 <Plug>BufTabLine.Go(8)
 nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(10)
 
-syntax off
+colorscheme monochrome
+" basic colors
+highlight SignColumn ctermbg=NONE
+highlight LineNr ctermfg=White guifg=White cterm=Bold gui=Bold
+highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
+highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
+highlight StatusLine cterm=bold ctermfg=Black ctermbg=DarkGray
+highlight StatusLineNC cterm=NONE ctermfg=Gray ctermbg=DarkGray
+highlight Folded ctermfg=DarkGrey ctermbg=NONE
+highlight Visual ctermbg=Gray ctermfg=White
+highlight Search ctermbg=Gray ctermfg=White
+highlight ColorColumn ctermbg=DarkGray ctermfg=NONE
+highlight MatchParen ctermbg=NONE cterm=underline,bold
+highlight NonText ctermfg=Black ctermbg=NONE
+highlight String ctermfg=LightGray ctermbg=NONE
+
+highlight TabLine ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=Black guibg=DarkGray gui=NONE
+highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
+highlight TabLineSel ctermfg=LightGray ctermbg=DarkGrey cterm=bold guifg=White guibg=Black gui=bold
