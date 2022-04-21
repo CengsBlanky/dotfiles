@@ -6,6 +6,7 @@ highlight StatusLine cterm=bold ctermfg=Black ctermbg=Gray
 highlight StatusLineNC cterm=NONE ctermfg=Gray ctermbg=DarkGray
 highlight Folded ctermfg=DarkGrey ctermbg=NONE
 highlight Visual ctermbg=Gray ctermfg=White
+highlight MatchParen ctermbg=NONE cterm=underline,bold
 
 highlight TabLine ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=Black guibg=DarkGray gui=NONE
 highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE

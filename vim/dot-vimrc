@@ -77,7 +77,13 @@ nnoremap <silent><TAB> :bn<CR>
 nnoremap <C-d> :bd<CR>
 " write as root
 cmap w!! w !sudo tee > /dev/null %
-" 
+
+" window navigation
+nnoremap <Esc>h <C-w>h
+nnoremap <Esc>j <C-w>j
+nnoremap <Esc>k <C-w>k
+nnoremap <Esc>l <C-w>l
+
 " autocmd 
 augroup filetype_specific
   autocmd!
