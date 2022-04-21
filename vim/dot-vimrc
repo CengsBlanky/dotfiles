@@ -1,5 +1,4 @@
-" editor 
-" default 
+" default {{{
 set nocompatible
 filetype plugin indent on
 syntax on
@@ -37,9 +36,8 @@ set splitbelow
 set splitright
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
 set grepformat=%f:%l:%c:%m
-
-
-" keymappings 
+" }}}
+" keymappings {{{
 inoremap jk <esc>
 " quit
 " use <Esc> instead of <M- keybind
@@ -79,8 +77,8 @@ nnoremap <Esc>h <C-w>h
 nnoremap <Esc>j <C-w>j
 nnoremap <Esc>k <C-w>k
 nnoremap <Esc>l <C-w>l
-
-" autocmd 
+" }}}
+" autocmd {{{
 augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
@@ -110,60 +108,8 @@ augroup keymap_force
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
-" delete other buffers 
-nnoremap <leader>o :Bonly<CR>
-command! -nargs=? -complete=buffer -bang Bonly
-      \ :call BufOnly('<args>', '<bang>')
-
-function! BufOnly(buffer, bang)
-  if a:buffer == ''
-    " No buffer provided, use the current buffer.
-    let buffer = bufnr('%')
-  elseif (a:buffer + 0) > 0
-    " A buffer number was provided.
-    let buffer = bufnr(a:buffer + 0)
-  else
-    " A buffer name was provided.
-    let buffer = bufnr(a:buffer)
-  endif
-
-  if buffer == -1
-    echohl ErrorMsg
-    echomsg "No matching buffer for" a:buffer
-    echohl None
-    return
-  endif
-
-  let last_buffer = bufnr('$')
-
-  let delete_count = 0
-  let n = 1
-  while n <= last_buffer
-    if n != buffer && buflisted(n)
-      if a:bang == '' && getbufvar(n, '&modified')
-        echohl ErrorMsg
-        echomsg 'No write since last change for buffer'
-              \ n '(add ! to override)'
-        echohl None
-      else
-        silent exe 'bdel' . a:bang . ' ' . n
-        if ! buflisted(n)
-          let delete_count = delete_count+1
-        endif
-      endif
-    endif
-    let n = n+1
-  endwhile
-
-  if delete_count == 1
-    echomsg delete_count "buffer deleted"
-  elseif delete_count > 1
-    echomsg delete_count "buffers deleted"
-  endif
-
-endfunction
-
-" statueline 
+" }}}
+" statueline {{{
 set statusline=\ %f
 set statusline+=\ %r
 set statusline+=%2m
@@ -172,13 +118,13 @@ set statusline+=%y
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
- 
-" predefined variables 
+" }}}
+" predefined variables {{{
 let vim_config_file="~/.vimrc"
 let plug_manager="~/.vim/plug.vim"
 let plugin_path="~/.vim/plugins/"
- 
-" plugins 
+" }}}
+" plugins {{{
 execute 'source' plug_manager
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
@@ -189,8 +135,8 @@ Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:christoomey/vim-tmux-navigator.git'
 call plug#end()
- 
-" plugins setting 
+" }}}
+" plugins setting {{{
 " NERDTree
 let NERDTreeMinimalUI=1
 let g:NERDTreeStatusline=' פּ'
@@ -221,7 +167,7 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :RG<cr>
- 
+
 " buftabline 
 let g:buftabline_show=1
 let g:buftabline_indicators=1
@@ -245,7 +191,8 @@ nnoremap <silent> <Esc>j :TmuxNavigateDown<cr>
 nnoremap <silent> <Esc>k :TmuxNavigateUp<cr>
 nnoremap <silent> <Esc>l :TmuxNavigateRight<cr>
 nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
-
+" }}}
+" colors {{{
 colorscheme monochrome
 " basic colors
 highlight SignColumn ctermbg=NONE
@@ -265,3 +212,4 @@ highlight String ctermfg=LightGray ctermbg=NONE
 highlight TabLine ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=Black guibg=DarkGray gui=NONE
 highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
 highlight TabLineSel ctermfg=LightGray ctermbg=DarkGrey cterm=bold guifg=White guibg=Black gui=bold
+" }}}
