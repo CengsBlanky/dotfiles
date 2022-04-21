@@ -187,6 +187,7 @@ Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
+Plug 'git@github.com:christoomey/vim-tmux-navigator.git'
 Plug 'fxn/vim-monochrome'
 call plug#end()
  
@@ -237,14 +238,23 @@ nmap <leader>8 <Plug>BufTabLine.Go(8)
 nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(10)
 
+" tmux-vim-navigation
+let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_save_on_switch = 1
+nnoremap <silent> <Esc>h :TmuxNavigateLeft<cr>
+nnoremap <silent> <Esc>j :TmuxNavigateDown<cr>
+nnoremap <silent> <Esc>k :TmuxNavigateUp<cr>
+nnoremap <silent> <Esc>l :TmuxNavigateRight<cr>
+nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
+
 colorscheme monochrome
 " basic colors
 highlight SignColumn ctermbg=NONE
 highlight LineNr ctermfg=White guifg=White cterm=Bold gui=Bold
 highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
 highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
-highlight StatusLine cterm=bold ctermfg=Black ctermbg=DarkGray
-highlight StatusLineNC cterm=NONE ctermfg=Gray ctermbg=DarkGray
+highlight StatusLine cterm=bold ctermfg=lightgray ctermbg=Black
+highlight StatusLineNC cterm=NONE ctermfg=DarkGray ctermbg=Black
 highlight Folded ctermfg=DarkGrey ctermbg=NONE
 highlight Visual ctermbg=Gray ctermfg=White
 highlight Search ctermbg=Gray ctermfg=White
