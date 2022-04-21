@@ -24,7 +24,7 @@ let s:filetypes = {
       \ 'toml':            '',
       \ 'vim':             '',
       \ 'fish':            '',
-      \ 'sh':              '',
+      \ 'sh':              '',
       \ 'crontab':         '',
       \ 'fstab':           '',
       \ 'conf':            '',
