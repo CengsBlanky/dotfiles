@@ -198,8 +198,7 @@ let NERDTreeIgnore=[
       \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
-nnoremap <silent><F1> :NERDTreeToggle<CR>
-nnoremap <Tab> :NERDTreeToggle<CR>
+nnoremap <silent><Tab> :NERDTreeToggle<CR>
 
 " junegunn/fzf 
 " [Buffers] Jump to the existing window if possible

@@ -20,7 +20,6 @@ Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
 Plug 'git@github.com:junegunn/vim-easy-align.git' " align text easily
-Plug 'git@github.com:terryma/vim-multiple-cursors.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:neoclide/coc.nvim.git', {'branch': 'release'}
 Plug 'git@github.com:romainl/vim-cool.git' " better hlsearch
@@ -50,8 +49,7 @@ let NERDTreeIgnore=[
       \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
-noremap <silent><M-t> :NERDTreeToggle<CR>
-noremap <F1> :NERDTreeToggle<CR>
+nnoremap <silent><Tab> :NERDTreeToggle<CR>
 " }}}
 " tpope/vim-surround {{{
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
@@ -82,20 +80,6 @@ let g:gitgutter_sign_removed = '-'
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-" }}}
-" terryma/vim-multiple-cursors {{{
-let g:multi_cursor_use_default_mapping=0
-" Default mapping
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<M-a>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<M-a>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
-let g:multi_cursor_exit_from_visual_mode=1
-let g:multi_cursor_exit_from_insert_mode=1
 " }}}
 " aperezdc/vim-template {{{
 let g:templates_no_autocmd=1
@@ -391,7 +375,7 @@ nnoremap <silent><Space> <C-f>
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
 " go next buffer
-nnoremap <silent><TAB> :bn<CR>
+nnoremap <C-n> :bn<CR>
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>
 " map <esc> to quit terminal mode
