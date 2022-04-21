@@ -140,7 +140,6 @@ call plug#end()
 " NERDTree
 let NERDTreeMinimalUI=1
 let g:NERDTreeStatusline=' פּ'
-let g:NERDTreeNodeDelimiter = "\u00a0"
 let g:NERDTreeQuitOnOpen=3
 let NERDTreeIgnore=[
       \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
