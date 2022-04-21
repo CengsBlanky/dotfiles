@@ -2,7 +2,6 @@
 " default 
 set nocompatible
 filetype plugin indent on
-syntax on
 language en_US.UTF-8
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
@@ -16,7 +15,7 @@ set smartcase
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
 set showcmd
-set laststatus=2
+set laststatus=1
 set wildmenu
 set showmatch
 set autoread
@@ -31,7 +30,6 @@ set tags=tags
 set shortmess+=c
 set hlsearch
 set mousehide
-set mouse=a
 set signcolumn=yes
 set nowrap
 set cmdheight=1
@@ -41,20 +39,24 @@ set splitright
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
 set grepformat=%f:%l:%c:%m
 
+colorscheme bw
+
 " keymappings 
 inoremap jk <esc>
 " quit
+" use <Esc> instead of <M- keybind
+nnoremap <Esc>q :x<CR>
 nnoremap <leader>q :x<CR>
 " close current or buffer
-noremap <silent><M-b> :bd<CR>
+noremap <silent><Esc>b :bd<CR>
 " use command to open my vimrc
 command! Editrc execute 'edit' vim_config_file
+command! Sourcerc execute 'source' vim_config_file
 " screen scroll add <nowait> to execute immediately
 " see autocmd keymap_force to set scroll down
 " use backspace to scroll up
 nnoremap <silent><BS> <C-b>
-" <leader> <Enter> to create new line in normal mode
-nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
+nnoremap <silent><Space> <C-f>
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>
 " save
@@ -77,7 +79,6 @@ nnoremap <C-d> :bd<CR>
 cmap w!! w !sudo tee > /dev/null %
 " 
 " autocmd 
-
 augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
@@ -103,7 +104,6 @@ augroup END
 
 augroup keymap_force
   autocmd!
-  autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
   " unremap <CR> key when in quickfix list
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
@@ -182,6 +182,7 @@ let plugin_path="~/.vim/plugins/"
 execute 'source' plug_file
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
+Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:romainl/vim-cool.git'
@@ -189,13 +190,17 @@ Plug 'git@github.com:ap/vim-buftabline.git'
 call plug#end()
 " 
 " plugins setting 
-" open NERDTreeToggle 
+" NERDTree
+let NERDTreeMinimalUI=1
+let g:NERDTreeStatusline=' פּ'
+let g:NERDTreeNodeDelimiter = "\u00a0"
 let g:NERDTreeQuitOnOpen=3
 let NERDTreeIgnore=[
       \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
-noremap <silent><C-t> :NERDTreeToggle<CR>
+noremap <silent><Esc>t :NERDTreeToggle<CR>
+nnoremap <silent><F1> :NERDTreeToggle<CR>
 
 " junegunn/fzf 
 " [Buffers] Jump to the existing window if possible
@@ -231,24 +236,5 @@ nmap <leader>7 <Plug>BufTabLine.Go(7)
 nmap <leader>8 <Plug>BufTabLine.Go(8)
 nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(10)
-" 
-" 
-" colorscheme 
-" colorscheme default
-highlight Comment ctermfg=Gray guifg=Gray
-highlight Visual ctermbg=DarkGrey ctermfg=DarkGreen cterm=bold guibg=Blue guifg=Black
-highlight Search ctermfg=DarkGrey ctermbg=Green guifg=Brown guibg=DarkYellow cterm=bold
-highlight SignColumn ctermbg=NONE
-highlight LineNr ctermfg=White guifg=White
-highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
-highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
-highlight MatchParen term=bold ctermfg=Yellow ctermbg=NONE gui=bold guifg=Yellow guibg=NONE
-highlight Folded ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE
-highlight TabLine ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=Black guibg=DarkGray gui=NONE
-highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
-highlight TabLineSel ctermfg=LightGray ctermbg=DarkGrey cterm=bold guifg=White guibg=Black gui=bold
-highlight SpecialKey ctermfg=LightYellow ctermbg=NONE cterm=bold guifg=LightYellow guibg=NONE gui=bold
-highlight String ctermfg=Green ctermbg=NONE cterm=NONE guifg=Green guibg=NONE gui=NONE
-highlight Number ctermfg=Blue guifg=Blue
-highlight StatusLine gui=bold guifg=#adb5bd guibg=#3b4252 cterm=bold ctermfg=Black ctermbg=DarkGray
-highlight StatusLineNC gui=NONE guifg=DarkGray guibg=#4c566a cterm=NONE ctermfg=DarkGray ctermbg=Black
+
+syntax off
