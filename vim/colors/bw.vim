@@ -7,6 +7,7 @@ highlight StatusLineNC cterm=NONE ctermfg=Gray ctermbg=DarkGray
 highlight Folded ctermfg=DarkGrey ctermbg=NONE
 highlight Visual ctermbg=Gray ctermfg=White
 highlight Search ctermbg=Gray ctermfg=White
+highlight ColorColumn ctermbg=DarkGray ctermfg=NONE
 highlight MatchParen ctermbg=NONE cterm=underline,bold
 highlight NonText ctermfg=Black ctermbg=NONE
 

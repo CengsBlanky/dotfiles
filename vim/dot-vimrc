@@ -49,7 +49,7 @@ nnoremap <Esc>q :x<CR>
 noremap <silent><Esc>b :bd<CR>
 " use command to open my vimrc
 command! Editrc execute 'edit' vim_config_file
-command! Sourcerc execute 'source' vim_config_file
+command! Reloadrc execute 'source' vim_config_file
 " screen scroll add <nowait> to execute immediately
 " see autocmd keymap_force to set scroll down
 " use backspace to scroll up
@@ -174,11 +174,11 @@ set statusline+=\ \
  
 " predefined variables 
 let vim_config_file="~/.vimrc"
-let plug_file="~/.vim/plug.vim"
+let plug_manager="~/.vim/plug.vim"
 let plugin_path="~/.vim/plugins/"
  
 " plugins 
-execute 'source' plug_file
+execute 'source' plug_manager
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
