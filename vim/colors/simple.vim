@@ -16,11 +16,11 @@ highlight StatusLine cterm=bold ctermfg=lightgray ctermbg=Black
 highlight StatusLineNC cterm=NONE ctermfg=DarkGray ctermbg=Black
 highlight NonText ctermfg=Black ctermbg=NONE
 
-highlight Statement ctermfg=Yellow cterm=bold
+highlight Statement ctermfg=Yellow
 highlight Type ctermfg=3
 highlight Identifier ctermfg=Magenta
 highlight Special ctermfg=Cyan
-highlight Function ctermfg=Cyan
+highlight Function ctermfg=DarkYellow cterm=bold
 highlight Constant ctermfg=153
 
 highlight TabLine ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=Black guibg=DarkGray gui=NONE
