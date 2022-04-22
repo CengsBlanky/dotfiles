@@ -16,7 +16,7 @@ highlight StatusLine cterm=bold ctermfg=lightgray ctermbg=Black
 highlight StatusLineNC cterm=NONE ctermfg=DarkGray ctermbg=Black
 highlight NonText ctermfg=Black ctermbg=NONE
 
-highlight Statement ctermfg=15 cterm=bold
+highlight Statement ctermfg=Yellow cterm=bold
 highlight Type ctermfg=3
 highlight Identifier ctermfg=Magenta
 highlight Special ctermfg=Cyan
