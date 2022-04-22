@@ -1,17 +1,6 @@
 if status is-interactive
     # ===== vi mode =====
     fish_vi_key_bindings
-    # Emulates vim's cursor shape behavior
-    # Set the normal and visual mode cursors to a block
-    set -g fish_cursor_default block
-    # Set the insert mode cursor to a line
-    set -g fish_cursor_insert line
-    # Set the replace mode cursor to an underscore
-    set -g fish_cursor_replace_one underscore
-    # The following variable can be used to configure cursor shape in
-    # visual mode, but due to fish_cursor_default, is redundant here
-    set -g fish_cursor_visual block
-    set -g fish_vi_force_cursor 1
 
     # ===== gloabal variables =====
     set -g __fish_git_prompt_showcolorhints true
