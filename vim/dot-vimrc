@@ -148,6 +148,7 @@ Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:christoomey/vim-tmux-navigator.git'
 call plug#end()
+packadd! matchit
 " }}}
 " plugins setting {{{
 " NERDTree
@@ -205,7 +206,6 @@ nnoremap <silent> <Esc>l :TmuxNavigateRight<cr>
 nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
 " }}}
 " colors {{{
-set background=dark
 highlight String ctermfg=2 ctermbg=NONE
 highlight Number ctermfg=172
 highlight Comment ctermbg=NONE ctermfg=Gray
