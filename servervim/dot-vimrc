@@ -81,16 +81,13 @@ set noeb vb t_vb=
 " keymappings {{{
 
 " close current window or buffer
-noremap <silent><M-w> :close<CR>
-noremap <silent><M-b> :bd<CR>
+noremap <silent><Esc>b :bd<CR>
 " use command to open my vimrc
 command! Editrc execute 'edit' vim_config_file
 " screen scroll add <nowait> to execute immediately
-" see autocmd keymap_force to set scroll down
-" use backspace to scroll up
+" scroll up/down
 nnoremap <silent><BS> <C-b>
-" <leader> <Enter> to create new line in normal mode
-nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
+nnoremap <silent><Space> <C-f>
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>
 " save
@@ -119,12 +116,10 @@ nnoremap <leader>7 :b7<CR>
 nnoremap <leader>8 :b8<CR>
 nnoremap <leader>9 :b9<CR>
 endif
-" close current buffer
-nnoremap <C-d> :bd<CR>
 " write as root
 cmap w!! w !sudo tee > /dev/null %
 " normal quit editor
-nnoremap <C-q> :x<CR>
+nnoremap <Esc>q :x<CR>
 " }}}
 " autocmd {{{
 
@@ -156,7 +151,6 @@ augroup END
 
 augroup keymap_force
   autocmd!
-  autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
   " unremap <CR> key when in quickfix list
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
@@ -173,11 +167,9 @@ set statusline+=%y
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ 
-
 " }}}
 " }}}
 " colors {{{
-colorscheme default
 hi Visual ctermfg=Gray  ctermbg=White
 hi Search ctermfg=Yellow ctermbg=Gray
 hi folded ctermfg=LightGray ctermbg=NONE cterm=NONE
