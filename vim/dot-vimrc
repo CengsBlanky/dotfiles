@@ -1,24 +1,22 @@
-" editor 
-" default 
+" default {{{
 set nocompatible
 filetype plugin indent on
 syntax on
-set fileformat=unix
-set fileformats=unix,dos
 language en_US.UTF-8
-" unicode characters in the file autoload/float.vim
 set encoding=utf-8
 set hidden
 set number
 set relativenumber
 set backspace=2
 set incsearch
+set ignorecase
 set smartcase
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
 set showcmd
-set laststatus=1
+set laststatus=2
 set wildmenu
+set wildoptions=pum,tagfile
 set showmatch
 set autoread
 set autowrite
@@ -26,13 +24,11 @@ set confirm
 set updatetime=100
 set noundofile
 set nobackup
-set clipboard=unnamed
-set clipboard+=unnamedplus
+set clipboard^=unnamed,unnamedplus
 set tags=tags
 set shortmess+=c
 set hlsearch
 set mousehide
-set mouse=a
 set signcolumn=yes
 set nowrap
 set cmdheight=1
@@ -41,25 +37,26 @@ set splitbelow
 set splitright
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
 set grepformat=%f:%l:%c:%m
-
-" keymappings 
+" }}}
+" keymappings {{{
 inoremap jk <esc>
 " quit
-nnoremap <leader>q :x<CR>
+" use <Esc> instead of <M- keybind
+nnoremap <Esc>q :x<CR>
 " close current or buffer
-noremap <silent><M-b> :bd<CR>
+nnoremap <silent><Esc>b :bd<CR>
+" yank whole buffer
+nnoremap gy :%y<CR>
 " use command to open my vimrc
 command! Editrc execute 'edit' vim_config_file
+command! Reloadrc execute 'source' vim_config_file
 " screen scroll add <nowait> to execute immediately
 " see autocmd keymap_force to set scroll down
 " use backspace to scroll up
 nnoremap <silent><BS> <C-b>
-" <leader> <Enter> to create new line in normal mode
-nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
+nnoremap <silent><Space> <C-f>
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>
-" map <esc> to quit terminal mode
-tnoremap <Esc> <C-\><C-n>
 " save
 nnoremap <silent><Enter> :w<CR>
 " split current window
@@ -72,15 +69,17 @@ nnoremap <C-k> :cprevious<CR>
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
 " go next buffer
-nnoremap <silent><TAB> :bn<CR>
-
-" close current buffer
-nnoremap <C-d> :bd<CR>
+nnoremap <C-n> :bn<CR>
 " write as root
 cmap w!! w !sudo tee > /dev/null %
-" 
-" autocmd 
 
+" window navigation
+nnoremap <Esc>h <C-w>h
+nnoremap <Esc>j <C-w>j
+nnoremap <Esc>k <C-w>k
+nnoremap <Esc>l <C-w>l
+" }}}
+" autocmd {{{
 augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
@@ -92,7 +91,6 @@ function! TrimEndLinesAndTrailingSpaces()
   silent! %s#\($\n\s*\)\+\%$##
   silent! %s/\s\+$//e
   call setpos('.', save_cursor)
-  " echom "trailing spaces and empty lines done!"
 endfunction
 augroup filetype_edit_behavior
   autocmd!
@@ -106,110 +104,63 @@ augroup END
 
 augroup keymap_force
   autocmd!
-  autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
   " unremap <CR> key when in quickfix list
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
-augroup windows_display
-  autocmd!
-  autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
-  autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
-augroup END
-
-" delete other buffers 
-nnoremap <leader>o :Bonly<CR>
-command! -nargs=? -complete=buffer -bang Bonly
-      \ :call BufOnly('<args>', '<bang>')
-
-function! BufOnly(buffer, bang)
-  if a:buffer == ''
-    " No buffer provided, use the current buffer.
-    let buffer = bufnr('%')
-  elseif (a:buffer + 0) > 0
-    " A buffer number was provided.
-    let buffer = bufnr(a:buffer + 0)
-  else
-    " A buffer name was provided.
-    let buffer = bufnr(a:buffer)
-  endif
-
-  if buffer == -1
-    echohl ErrorMsg
-    echomsg "No matching buffer for" a:buffer
-    echohl None
-    return
-  endif
-
-  let last_buffer = bufnr('$')
-
-  let delete_count = 0
-  let n = 1
-  while n <= last_buffer
-    if n != buffer && buflisted(n)
-      if a:bang == '' && getbufvar(n, '&modified')
-        echohl ErrorMsg
-        echomsg 'No write since last change for buffer'
-              \ n '(add ! to override)'
-        echohl None
-      else
-        silent exe 'bdel' . a:bang . ' ' . n
-        if ! buflisted(n)
-          let delete_count = delete_count+1
-        endif
-      endif
-    endif
-    let n = n+1
-  endwhile
-
-  if delete_count == 1
-    echomsg delete_count "buffer deleted"
-  elseif delete_count > 1
-    echomsg delete_count "buffers deleted"
-  endif
-
-endfunction
-" 
-" 
-" statueline 
+" }}}
+" statueline {{{
 set statusline=\ %f
 set statusline+=\ %r
 set statusline+=%2m
-set statusline+=[%{&ff}]
 set statusline+=%=
 set statusline+=%y
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ \ 
-" 
-" 
-" predefined variables 
+" }}}
+" predefined variables {{{
 let vim_config_file="~/.vimrc"
-let plug_file="~/.vim/plug.vim"
+let plug_manager="~/.vim/plug.vim"
 let plugin_path="~/.vim/plugins/"
-" 
-" plugins 
-execute 'source' plug_file
+
+" change vim cursor shape
+if empty($TMUX)
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+  let &t_SR = "\<Esc>]50;CursorShape=2\x7" " underline in replace mode
+else
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+endif
+
+" }}}
+" plugins {{{
+execute 'source' plug_manager
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
+Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
+Plug 'git@github.com:mattn/emmet-vim.git'
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
+Plug 'git@github.com:christoomey/vim-tmux-navigator.git'
 call plug#end()
-" 
-" plugins setting 
-" open NERDTreeToggle 
+packadd! matchit
+" }}}
+" plugins setting {{{
+" NERDTree
+let NERDTreeMinimalUI=1
+let g:NERDTreeStatusline=' פּ'
 let g:NERDTreeQuitOnOpen=3
 let NERDTreeIgnore=[
       \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
-noremap <silent><C-t> :NERDTreeToggle<CR>
-" 
-" tpope/vim-surround 
-autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
-" 
+nnoremap <silent><Tab> :NERDTreeToggle<CR>
+
 " junegunn/fzf 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -229,7 +180,7 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :RG<cr>
-" 
+
 " buftabline 
 let g:buftabline_show=1
 let g:buftabline_indicators=1
@@ -244,28 +195,36 @@ nmap <leader>7 <Plug>BufTabLine.Go(7)
 nmap <leader>8 <Plug>BufTabLine.Go(8)
 nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(10)
-" 
-" 
-" colorscheme 
-colorscheme peachpuff
-highlight Comment ctermfg=Gray guifg=Gray
-highlight Visual ctermbg=DarkGrey ctermfg=DarkGreen cterm=bold guibg=Blue guifg=Black
-highlight Search ctermfg=DarkGrey ctermbg=Green guifg=Brown guibg=DarkYellow cterm=bold
+
+" tmux-vim-navigation
+let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_save_on_switch = 1
+nnoremap <silent> <Esc>h :TmuxNavigateLeft<cr>
+nnoremap <silent> <Esc>j :TmuxNavigateDown<cr>
+nnoremap <silent> <Esc>k :TmuxNavigateUp<cr>
+nnoremap <silent> <Esc>l :TmuxNavigateRight<cr>
+nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
+" }}}
+" colors {{{
+colorscheme torte
+highlight String ctermfg=2 ctermbg=NONE
+highlight Number ctermfg=172
+highlight Comment ctermbg=NONE ctermfg=Gray
+highlight Visual ctermbg=Gray ctermfg=White
+highlight Search ctermbg=Gray ctermfg=White
+highlight Folded ctermfg=DarkGrey ctermbg=NONE
 highlight SignColumn ctermbg=NONE
-highlight LineNr ctermfg=White guifg=White
+highlight MatchParen ctermbg=NONE cterm=underline,bold
+highlight Pmenu ctermfg=lightgray ctermbg=DarkGray
+highlight PmenuSel ctermfg=White ctermbg=gray cterm=bold
+highlight LineNr ctermfg=White guifg=White cterm=Bold gui=Bold
 highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
 highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
-highlight MatchParen term=bold ctermfg=Yellow ctermbg=NONE gui=bold guifg=Yellow guibg=NONE
-highlight Folded ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE
+highlight StatusLine cterm=bold ctermfg=lightgray ctermbg=Black
+highlight StatusLineNC cterm=NONE ctermfg=DarkGray ctermbg=Black
+highlight NonText ctermfg=Black ctermbg=NONE
+
 highlight TabLine ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=Black guibg=DarkGray gui=NONE
 highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
 highlight TabLineSel ctermfg=LightGray ctermbg=DarkGrey cterm=bold guifg=White guibg=Black gui=bold
-highlight SpecialKey ctermfg=LightYellow ctermbg=NONE cterm=bold guifg=LightYellow guibg=NONE gui=bold
-highlight String ctermfg=Green ctermbg=NONE cterm=NONE guifg=Green guibg=NONE gui=NONE
-highlight Number ctermfg=Blue guifg=Blue
-highlight StatusLine gui=bold guifg=#adb5bd guibg=#3b4252 cterm=bold ctermfg=Black ctermbg=DarkGray
-highlight StatusLineNC gui=NONE guifg=DarkGray guibg=#4c566a cterm=NONE ctermfg=DarkGray ctermbg=Black
-
-syn match myTodo contained "\<\(TODO\|FIXME\|NOTE\):"
-hi def link myTodo Todo
-highlight Todo ctermfg=DarkYellow ctermbg=NONE cterm=bold,underline guifg=DarkYellow guibg=NONE gui=bold,underline
+" }}}

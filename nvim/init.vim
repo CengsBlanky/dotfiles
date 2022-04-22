@@ -1,7 +1,7 @@
 " predefined variables {{{
 let vim_config_file="~/.config/nvim/init.vim"
 let plugin_path="~/.vim/plugins/"
-let plug_file="~/.vim/plug.vim"
+let plug_manager="~/.vim/plug.vim"
 let g:python_host_skip_check=1
 let g:python3_host_skip_check=1
 let g:markdown_folding = 1
@@ -11,7 +11,7 @@ if &shell =~# 'fish$'
 endif
 " }}}
 " plugins {{{
-execute 'source' plug_file
+execute 'source' plug_manager
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:tpope/vim-commentary.git'
@@ -20,7 +20,6 @@ Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
 Plug 'git@github.com:junegunn/vim-easy-align.git' " align text easily
-Plug 'git@github.com:terryma/vim-multiple-cursors.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:neoclide/coc.nvim.git', {'branch': 'release'}
 Plug 'git@github.com:romainl/vim-cool.git' " better hlsearch
@@ -43,13 +42,14 @@ call plug#end()
 " }}}
 " plugins setting {{{
 " NERDTreeToggle {{{
+let NERDTreeMinimalUI=1
 let g:NERDTreeQuitOnOpen=3
+let g:NERDTreeStatusline=' פּ'
 let NERDTreeIgnore=[
       \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
-noremap <silent><M-t> :NERDTreeToggle<CR>
-noremap <F1> :NERDTreeToggle<CR>
+nnoremap <silent><Tab> :NERDTreeToggle<CR>
 " }}}
 " tpope/vim-surround {{{
 autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
@@ -80,20 +80,6 @@ let g:gitgutter_sign_removed = '-'
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-" }}}
-" terryma/vim-multiple-cursors {{{
-let g:multi_cursor_use_default_mapping=0
-" Default mapping
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<M-a>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<M-a>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
-let g:multi_cursor_exit_from_visual_mode=1
-let g:multi_cursor_exit_from_insert_mode=1
 " }}}
 " aperezdc/vim-template {{{
 let g:templates_no_autocmd=1
@@ -140,13 +126,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Use <c-space> to trigger completion.
-" if has('nvim')
-"   inoremap <silent><expr> <c-space> coc#refresh()
-" else
-"   inoremap <silent><expr> <c-@> coc#refresh()
-" endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
@@ -221,11 +200,6 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
-
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
-" nmap <silent> <C-s> <Plug>(coc-range-select)
-" xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -384,8 +358,6 @@ set grepformat=%f:%l:%c:%m
 " }}}
 " keymappings {{{
 inoremap jk <esc>
-nnoremap D ^D
-nnoremap C ^C
 nnoremap <M-q> :x<CR>
 " close current buffer
 noremap <silent><M-b> :bd<CR>
@@ -395,17 +367,15 @@ nnoremap gy :%y<CR>
 nnoremap <leader>o :Bonly<CR>
 " use command to open my vimrc
 command! Editrc execute 'edit' vim_config_file
-" screen scroll add <nowait> to execute immediately
-" see autocmd keymap_force to set scroll down
-" use backspace to scroll up
+command! Reloadrc execute 'edit' vim_config_file
+" use backspace to scroll up and Space to scroll down
 nnoremap <silent><BS> <C-b>
-" <leader> <Enter> to create new line in normal mode
-nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
+nnoremap <silent><Space> <C-f>
 " switch between buffers
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
 " go next buffer
-nnoremap <silent><TAB> :bn<CR>
+nnoremap <C-n> :bn<CR>
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>
 " map <esc> to quit terminal mode
@@ -491,7 +461,7 @@ augroup filetype_edit_behavior
   " auto remove all trailing empty lines before saving
   autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.yml,*.yaml,*.java
         \ call TrimEndLinesAndTrailingSpaces()
-  autocmd BufWritePre *.java,*.lua,*.sh,*.yaml,*.yml,*.toml
+  autocmd BufWritePre *.java,*.lua,*.sh
         \ call IndentAll()
   " disable syntax for large file
   autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
@@ -499,7 +469,7 @@ augroup END
 
 augroup keymap_force
   autocmd!
-  autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
+  " autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
   " unremap <CR> key when in quickfix list
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
@@ -507,10 +477,10 @@ augroup END
 " }}}
 " default colors {{{
 highlight Comment guifg=DarkGray gui=none
-highlight Visual guibg=#8fbcbb guifg=#000000
+highlight Visual guibg=Gray guifg=Black
 highlight SignColumn gui=bold guibg=none
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
-highlight Search guifg=#a3be8c guibg=#495057 gui=bold
+highlight Search guifg=Black guibg=Gray gui=bold
 highlight MatchParen gui=bold,underline
 highlight StatusLine gui=bold
 highlight LineNr gui=bold guibg=none guifg=none
