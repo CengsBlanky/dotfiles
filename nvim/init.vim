@@ -390,11 +390,6 @@ nnoremap <silent><leader><LEFT> :vertical resize -1<CR>
 " split current window
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
-" navigate windows
-" nnoremap <M-j> <C-w>j
-" nnoremap <M-k> <C-w>k
-" nnoremap <M-h> <C-w>h
-" nnoremap <M-l> <C-w>l
 
 " buffer jump
 if !exists("g:buftabline_numbers")
