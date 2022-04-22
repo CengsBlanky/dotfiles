@@ -14,7 +14,7 @@ if status is-interactive
 
     # ===== ENV =====
     set -gx LANG "en_US.UTF-8"
-    set -gx EDITOR nvim
+    set -gx EDITOR vim
     set -gx LESS "-RiXF"
     # bc scale
     set -gx BC_ENV_ARGS "/home/zengshuai/.bc"
