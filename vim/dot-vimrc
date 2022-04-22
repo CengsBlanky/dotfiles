@@ -192,6 +192,4 @@ nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
 " }}}
 " colors {{{
 colorscheme simple
-" basic colors
-
 " }}}
