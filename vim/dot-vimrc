@@ -206,6 +206,7 @@ nnoremap <silent> <Esc>l :TmuxNavigateRight<cr>
 nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
 " }}}
 " colors {{{
+colorscheme torte
 highlight String ctermfg=2 ctermbg=NONE
 highlight Number ctermfg=172
 highlight Comment ctermbg=NONE ctermfg=Gray
