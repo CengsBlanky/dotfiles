@@ -72,6 +72,8 @@ nnoremap <silent><nowait><LEFT> :bp<CR>
 nnoremap <C-n> :bn<CR>
 " write as root
 cmap w!! w !sudo tee > /dev/null %
+" add new line between parenthesis
+inoremap {<CR> {<CR>}<Esc>ko
 
 " window navigation
 nnoremap <Esc>h <C-w>h
@@ -208,7 +210,7 @@ nnoremap <silent> <Esc>l :TmuxNavigateRight<cr>
 nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
 " }}}
 " colors {{{
-colorscheme torte
+colorscheme default
 highlight String ctermfg=2 ctermbg=NONE
 highlight Number ctermfg=172
 highlight Comment ctermbg=NONE ctermfg=Gray
@@ -222,9 +224,10 @@ highlight PmenuSel ctermfg=White ctermbg=gray cterm=bold
 highlight LineNr ctermfg=White guifg=White cterm=Bold gui=Bold
 highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
 highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
-highlight StatusLine cterm=bold ctermfg=lightgray ctermbg=Black
-highlight StatusLineNC cterm=NONE ctermfg=DarkGray ctermbg=Black
+highlight StatusLine cterm=bold ctermfg=16 ctermbg=8
+highlight StatusLineNC cterm=NONE ctermfg=8 ctermbg=16
 highlight NonText ctermfg=Black ctermbg=NONE
+highlight Statement ctermfg=Yellow ctermbg=NONE
 
 highlight TabLine ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=Black guibg=DarkGray gui=NONE
 highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
