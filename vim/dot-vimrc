@@ -212,24 +212,26 @@ nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
 " colors {{{
 colorscheme default
 highlight String ctermfg=2 ctermbg=NONE
-highlight Number ctermfg=172
-highlight Comment ctermbg=NONE ctermfg=Gray
-highlight Visual ctermbg=Gray ctermfg=White
-highlight Search ctermbg=Gray ctermfg=White
+highlight Number ctermfg=Cyan
+highlight Comment ctermfg=Gray ctermbg=NONE
+highlight Visual ctermfg=White ctermbg=Gray
+highlight Search ctermfg=White ctermbg=Gray
 highlight Folded ctermfg=DarkGrey ctermbg=NONE
 highlight SignColumn ctermbg=NONE
 highlight MatchParen ctermbg=NONE cterm=underline,bold
 highlight Pmenu ctermfg=lightgray ctermbg=DarkGray
 highlight PmenuSel ctermfg=White ctermbg=gray cterm=bold
-highlight LineNr ctermfg=White guifg=White cterm=Bold gui=Bold
-highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
-highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
-highlight StatusLine cterm=bold ctermfg=16 ctermbg=8
-highlight StatusLineNC cterm=NONE ctermfg=8 ctermbg=16
+highlight LineNr ctermfg=White cterm=Bold
+highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE cterm=NONE
+highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE cterm=NONE
+highlight StatusLine ctermfg=16 ctermbg=8 cterm=bold
+highlight StatusLineNC ctermfg=8 ctermbg=16 cterm=NONE
 highlight NonText ctermfg=Black ctermbg=NONE
-highlight Statement ctermfg=Yellow ctermbg=NONE
+highlight Statement ctermfg=11
+highlight Type ctermfg=3
+highlight Constant ctermfg=LightMagenta
 
-highlight TabLine ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=Black guibg=DarkGray gui=NONE
-highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
-highlight TabLineSel ctermfg=LightGray ctermbg=DarkGrey cterm=bold guifg=White guibg=Black gui=bold
+highlight TabLine ctermfg=White ctermbg=NONE cterm=NONE
+highlight TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE
+highlight TabLineSel ctermfg=LightGray ctermbg=DarkGrey cterm=bold
 " }}}
