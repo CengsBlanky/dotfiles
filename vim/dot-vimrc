@@ -119,7 +119,7 @@ set statusline+=%=
 set statusline+=%y
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
-set statusline+=\ \ 
+set statusline+=\ 
 " }}}
 " predefined variables {{{
 let vim_config_file="~/.vimrc"
@@ -136,6 +136,8 @@ else
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
   let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
 endif
+
+set fillchars+=vert:│
 
 " }}}
 " plugins {{{
@@ -211,7 +213,7 @@ nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
 " }}}
 " colors {{{
 colorscheme default
-highlight String ctermfg=2 ctermbg=NONE
+highlight String ctermfg=10 ctermbg=NONE
 highlight Number ctermfg=Cyan
 highlight Comment ctermfg=Gray ctermbg=NONE
 highlight Visual ctermfg=White ctermbg=Gray
@@ -224,12 +226,13 @@ highlight PmenuSel ctermfg=White ctermbg=gray cterm=bold
 highlight LineNr ctermfg=White cterm=Bold
 highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE cterm=NONE
 highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE cterm=NONE
-highlight StatusLine ctermfg=16 ctermbg=DarkGray cterm=bold
-highlight StatusLineNC ctermfg=LightGray ctermbg=DarkGray cterm=NONE
+highlight StatusLine ctermfg=16 ctermbg=Gray cterm=bold
+highlight StatusLineNC ctermfg=16 ctermbg=DarkGray cterm=NONE
 highlight NonText ctermfg=Black ctermbg=NONE
 highlight Statement ctermfg=11
 highlight Type ctermfg=3
 highlight Constant ctermfg=LightMagenta
+highlight VertSplit ctermfg=Black ctermbg=DarkGray
 
 highlight TabLine ctermfg=White ctermbg=NONE cterm=NONE
 highlight TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE
