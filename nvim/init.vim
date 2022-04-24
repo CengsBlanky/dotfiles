@@ -26,7 +26,6 @@ Plug 'git@github.com:romainl/vim-cool.git' " better hlsearch
 Plug 'git@github.com:aperezdc/vim-template.git'
 Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'git@github.com:junegunn/fzf.vim.git'
-Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
 Plug 'git@github.com:pangloss/vim-javascript.git'
 Plug 'git@github.com:rust-lang/rust.vim.git'
 Plug 'git@github.com:fatih/vim-go.git', {'do': ':GoUpdateBinaries'}

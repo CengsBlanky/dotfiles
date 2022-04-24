@@ -154,6 +154,7 @@ Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:christoomey/vim-tmux-navigator.git'
 Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'git@github.com:junegunn/fzf.vim.git'
+Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
 call plug#end()
 packadd! matchit
 " }}}
