@@ -74,6 +74,7 @@ nnoremap <C-n> :bn<CR>
 cmap w!! w !sudo tee > /dev/null %
 " add new line between parenthesis
 inoremap {<CR> {<CR>}<Esc>ko
+inoremap {<Space> {<Space><Space>}<Esc>hi
 
 " window navigation
 nnoremap <Esc>h <C-w>h
@@ -229,8 +230,8 @@ highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE cterm=NONE
 highlight StatusLine ctermfg=16 ctermbg=Gray cterm=bold
 highlight StatusLineNC ctermfg=16 ctermbg=DarkGray cterm=NONE
 highlight NonText ctermfg=Black ctermbg=NONE
-highlight Statement ctermfg=11
-highlight Type ctermfg=3
+highlight Statement ctermfg=166
+highlight Type ctermfg=11
 highlight Constant ctermfg=LightMagenta
 highlight VertSplit ctermfg=Black ctermbg=DarkGray
 
