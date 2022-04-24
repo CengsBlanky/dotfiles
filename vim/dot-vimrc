@@ -224,8 +224,8 @@ highlight PmenuSel ctermfg=White ctermbg=gray cterm=bold
 highlight LineNr ctermfg=White cterm=Bold
 highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE cterm=NONE
 highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE cterm=NONE
-highlight StatusLine ctermfg=16 ctermbg=8 cterm=bold
-highlight StatusLineNC ctermfg=8 ctermbg=16 cterm=NONE
+highlight StatusLine ctermfg=16 ctermbg=DarkGray cterm=bold
+highlight StatusLineNC ctermfg=LightGray ctermbg=DarkGray cterm=NONE
 highlight NonText ctermfg=Black ctermbg=NONE
 highlight Statement ctermfg=11
 highlight Type ctermfg=3
