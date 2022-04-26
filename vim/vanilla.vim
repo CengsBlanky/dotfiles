@@ -50,6 +50,6 @@ nnoremap <C-n> :bn<CR>
 
 hi SignColumn ctermbg=NONE
 hi StatusLine ctermfg=LightGray ctermbg=NONE cterm=bold
-hi StatusLineNC ctermfg=DarkGray ctermbg=NONE
+hi StatusLineNC ctermfg=Gray ctermbg=NONE cterm=NONE
 
 set statusline=\ %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
