@@ -471,10 +471,10 @@ augroup END
 " }}}
 " default colors {{{
 highlight Comment guifg=DarkGray gui=none
-highlight Visual guifg=NONE guibg=DarkGray 
+highlight Visual guifg=NONE guibg=#495057
 highlight SignColumn guibg=NONE gui=bold 
 highlight Folded guifg=DarkGrey guibg=none
-highlight Search guifg=NONE guibg=DarkGray
+highlight Search guifg=NONE guibg=#495057
 highlight MatchParen gui=bold,underline
 highlight StatusLine gui=bold
 highlight LineNr guifg=none guibg=none gui=bold
@@ -488,7 +488,7 @@ highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=n
 highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
 highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
 highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
-highlight Sneak guifg=DarkGray guibg=none
+highlight Sneak guifg=none guibg=#495057
 
 " }}}
 " }}}
