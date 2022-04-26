@@ -47,7 +47,7 @@ nnoremap <Esc>q :x<CR>
 nnoremap <silent><Esc>b :bd<CR>
 " yank whole buffer
 nnoremap gy :%y<CR>
-" use command to open my vimrc
+" use command to open/reload my vimrc
 command! Editrc execute 'edit' vim_config_file
 command! Reloadrc execute 'source' vim_config_file
 " screen scroll add <nowait> to execute immediately
@@ -218,8 +218,8 @@ colorscheme default
 highlight String ctermfg=10 ctermbg=NONE
 highlight Number ctermfg=35
 highlight Comment ctermfg=Gray ctermbg=NONE
-highlight Visual ctermfg=White ctermbg=Gray
-highlight Search ctermfg=White ctermbg=Gray
+highlight Visual ctermfg=NONE ctermbg=DarkGray
+highlight Search ctermfg=NONE ctermbg=DarkGray
 highlight Folded ctermfg=DarkGrey ctermbg=NONE
 highlight SignColumn ctermbg=NONE
 highlight MatchParen ctermbg=NONE cterm=underline,bold
@@ -239,4 +239,6 @@ highlight VertSplit ctermfg=Black ctermbg=DarkGray
 highlight TabLine ctermfg=White ctermbg=NONE cterm=NONE
 highlight TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE
 highlight TabLineSel ctermfg=LightGray ctermbg=DarkGrey cterm=bold
+
+highlight Sneak ctermfg=NONE ctermbg=DarkGray
 " }}}
