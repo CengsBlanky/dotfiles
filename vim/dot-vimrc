@@ -216,7 +216,7 @@ nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
 " colors {{{
 colorscheme default
 highlight String ctermfg=10 ctermbg=NONE
-highlight Number ctermfg=35
+highlight Number ctermfg=LightCyan
 highlight Comment ctermfg=Gray ctermbg=NONE
 highlight Visual ctermfg=NONE ctermbg=DarkGray
 highlight Search ctermfg=NONE ctermbg=DarkGray
