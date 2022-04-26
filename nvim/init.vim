@@ -458,7 +458,7 @@ augroup filetype_edit_behavior
   autocmd BufWritePre *.java,*.lua,*.sh
         \ call IndentAll()
   " disable syntax for large file
-  autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
+  autocmd BufWinEnter * if line2byte(line("$") + 1) > 3000 | syntax clear | endif
 augroup END
 
 augroup keymap_force
