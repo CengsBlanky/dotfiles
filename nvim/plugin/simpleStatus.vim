@@ -1,4 +1,5 @@
 let s:filetypes = {
+      \ 'asm':             '',
       \ 'c':               '',
       \ 'cpp':             '',
       \ 'rust':            '',

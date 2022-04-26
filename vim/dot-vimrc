@@ -86,6 +86,7 @@ nnoremap <Esc>l <C-w>l
 augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
+  autocmd BufRead *.asm set filetype=asm
   autocmd BufRead *.log set filetype=text
   autocmd BufWinEnter * if line("$") > 3000 | syntax clear | endif
 augroup END
