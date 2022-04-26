@@ -87,6 +87,7 @@ augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
   autocmd BufRead *.log set filetype=text
+  autocmd BufWinEnter * if line2byte(line("$") + 1) > 3000 | syntax clear | endif
 augroup END
 
 function! TrimEndLinesAndTrailingSpaces()
