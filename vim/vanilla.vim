@@ -13,6 +13,7 @@ set smartcase
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
 set showcmd
+set laststatus=2
 set wildmenu
 set wildoptions=pum,tagfile
 set showmatch
@@ -46,3 +47,9 @@ nnoremap <silent><Space> <C-f>
 nnoremap <silent><Enter> :w<CR>
 " go next buffer
 nnoremap <C-n> :bn<CR>
+
+hi SignColumn ctermbg=NONE
+hi StatusLine ctermfg=LightGray ctermbg=NONE cterm=bold
+hi StatusLineNC ctermfg=DarkGray ctermbg=NONE
+
+set statusline=\ %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
