@@ -156,7 +156,7 @@ Plug 'git@github.com:christoomey/vim-tmux-navigator.git'
 Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'git@github.com:junegunn/fzf.vim.git'
 Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
-Plug 'git@github.com:morhetz/gruvbox.git'
+Plug 'git@github.com:sainnhe/gruvbox-material.git'
 Plug 'git@github.com:sheerun/vim-polyglot.git'
 call plug#end()
 packadd! matchit
@@ -217,9 +217,11 @@ nnoremap <silent> <Esc>l :TmuxNavigateRight<cr>
 nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
 " }}}
 " colors {{{
-let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_material_better_performance=1
+let g:gruvbox_material_disable_italic_comment=1
+let g:gruvbox_material_transparent_background=1
 set background=dark
-colorscheme gruvbox
+colorscheme gruvbox-material
 highlight Normal ctermbg=NONE
 highlight Comment ctermfg=Gray ctermbg=NONE
 highlight Visual ctermfg=NONE ctermbg=DarkGray
@@ -233,7 +235,7 @@ highlight NonText ctermfg=Black ctermbg=NONE
 
 highlight TabLine ctermfg=White ctermbg=NONE cterm=NONE
 highlight TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE
-highlight TabLineSel ctermfg=LightGray ctermbg=DarkGrey cterm=bold
+highlight TabLineSel ctermfg=Black ctermbg=Gray
 
 highlight Sneak ctermfg=NONE ctermbg=DarkGray
 " }}}
