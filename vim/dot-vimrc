@@ -155,6 +155,8 @@ Plug 'git@github.com:christoomey/vim-tmux-navigator.git'
 Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'git@github.com:junegunn/fzf.vim.git'
 Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
+Plug 'git@github.com:morhetz/gruvbox.git'
+Plug 'git@github.com:sheerun/vim-polyglot.git'
 call plug#end()
 packadd! matchit
 " }}}
@@ -214,27 +216,19 @@ nnoremap <silent> <Esc>l :TmuxNavigateRight<cr>
 nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
 " }}}
 " colors {{{
-colorscheme default
-highlight String ctermfg=10 ctermbg=NONE
-highlight Number ctermfg=LightCyan
+let g:gruvbox_contrast_dark="hard"
+set background=dark
+colorscheme gruvbox
+highlight Normal ctermbg=NONE
 highlight Comment ctermfg=Gray ctermbg=NONE
 highlight Visual ctermfg=NONE ctermbg=DarkGray
 highlight Search ctermfg=NONE ctermbg=DarkGray
 highlight Folded ctermfg=DarkGrey ctermbg=NONE
 highlight SignColumn ctermbg=NONE
 highlight MatchParen ctermbg=NONE cterm=underline,bold
-highlight Pmenu ctermfg=lightgray ctermbg=DarkGray
-highlight PmenuSel ctermfg=White ctermbg=gray cterm=bold
-highlight LineNr ctermfg=White cterm=Bold
-highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE cterm=NONE
-highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE cterm=NONE
-highlight StatusLine ctermfg=LightGray ctermbg=NONE cterm=bold
+highlight StatusLine ctermfg=LightGray ctermbg=NONE cterm=bold 
 highlight StatusLineNC ctermfg=DarkGray ctermbg=NONE cterm=NONE
 highlight NonText ctermfg=Black ctermbg=NONE
-highlight Statement ctermfg=6
-highlight Type ctermfg=11
-highlight Constant ctermfg=LightMagenta
-highlight VertSplit ctermfg=Black ctermbg=DarkGray
 
 highlight TabLine ctermfg=White ctermbg=NONE cterm=NONE
 highlight TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE
