@@ -229,6 +229,7 @@ highlight Visual ctermfg=NONE ctermbg=DarkGray
 highlight Search ctermfg=NONE ctermbg=DarkGray
 highlight Folded ctermfg=DarkGrey ctermbg=NONE
 highlight SignColumn ctermbg=NONE
+highlight LineNr ctermfg=Gray
 highlight MatchParen ctermbg=NONE cterm=underline,bold
 highlight StatusLine ctermfg=LightGray ctermbg=NONE cterm=bold 
 highlight StatusLineNC ctermfg=DarkGray ctermbg=NONE cterm=NONE
