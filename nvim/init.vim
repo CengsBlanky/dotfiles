@@ -16,7 +16,6 @@ call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:tpope/vim-commentary.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
-Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
 Plug 'git@github.com:junegunn/vim-easy-align.git' " align text easily
@@ -59,13 +58,6 @@ augroup commentary_vim
   autocmd FileType c setlocal commentstring=//\ %s
   autocmd FileType cpp setlocal commentstring=//\ %s
 augroup END
-" }}}
-" auto-pair {{{
-augroup AutoPair_Custom
-  autocmd!
-  autocmd FileType html,php,jsp let b:AutoPairs = AutoPairsDefine({'<!--':'-->', '<?':'?>', '<?php':'?>', '<%':'%>'})
-augroup END
-let g:AutoPairsMapCR = 0
 " }}}
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
@@ -410,6 +402,11 @@ nnoremap <C-k> :cprevious<CR>
 nnoremap <leader>co :copen<CR>
 nnoremap <leader>cc :cclose<CR>
 
+" add new line between parenthesis
+inoremap {<CR> {<CR>}<Esc>ko
+inoremap {<Space> {<Space><Space>}<Esc>hi
+inoremap [<Space> [<Space><Space>]<Esc>hi
+
 " }}}
 " customize command {{{
 " better grep
@@ -482,7 +479,7 @@ highlight LineNrAbove guifg=gray guibg=none gui=none
 highlight LineNrBelow guifg=gray guibg=none gui=none 
 " plugins color
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
-highlight BufTabLineCurrent guifg=#eceff4 guibg=#4c566a gui=bold
+highlight BufTabLineCurrent guifg=Black guibg=#4c566a gui=bold
 highlight BufTabLineFill guibg=none guifg=none ctermfg=none ctermbg=none gui=none
 highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=none
 highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
