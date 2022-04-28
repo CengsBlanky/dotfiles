@@ -403,7 +403,8 @@ nnoremap <leader>co :copen<CR>
 nnoremap <leader>cc :cclose<CR>
 
 " add new line between parenthesis
-inoremap {<CR> {<CR>}<Esc>ko
+inoremap {<CR> {<CR>}<Esc>O
+inoremap (<CR> (<CR>)<Esc>O
 inoremap {<Space> {<Space><Space>}<Esc>hi
 inoremap [<Space> [<Space><Space>]<Esc>hi
 

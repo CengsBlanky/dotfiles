@@ -73,8 +73,10 @@ nnoremap <C-n> :bn<CR>
 " write as root
 cmap w!! w !sudo tee > /dev/null %
 " add new line between parenthesis
-inoremap {<CR> {<CR>}<Esc>ko
+inoremap {<CR> {<CR>}<Esc>O
+inoremap (<CR> (<CR>)<Esc>O
 inoremap {<Space> {<Space><Space>}<Esc>hi
+inoremap [<Space> [<Space><Space>]<Esc>hi
 
 " window navigation
 nnoremap <Esc>h <C-w>h
@@ -124,7 +126,7 @@ set statusline+=%6.50l/%-6.50L
 set statusline+=%P
 set statusline+=\ 
 " }}}
-" predefined variables {{{
+" environment {{{
 let vim_config_file="~/.vimrc"
 let plug_manager="~/.vim/plug.vim"
 let plugin_path="~/.vim/plugins/"
