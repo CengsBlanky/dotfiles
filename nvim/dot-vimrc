@@ -12,12 +12,10 @@ execute 'source' plug_file
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:tpope/vim-commentary.git'
-Plug 'git@github.com:andymass/vim-matchup.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
-Plug 'git@github.com:lambdalisue/suda.vim.git' " write as root
 Plug 'git@github.com:junegunn/vim-easy-align.git' " align text
 Plug 'git@github.com:terryma/vim-multiple-cursors.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
@@ -26,7 +24,6 @@ Plug 'git@github.com:romainl/vim-cool.git' " better hlsearch
 Plug 'git@github.com:aperezdc/vim-template.git'
 Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'git@github.com:junegunn/fzf.vim.git'
-Plug 'git@github.com:mattn/webapi-vim.git'
 Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
 Plug 'git@github.com:pangloss/vim-javascript.git'
 Plug 'git@github.com:rust-lang/rust.vim.git'
@@ -37,7 +34,6 @@ Plug 'git@github.com:mattn/emmet-vim.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
-Plug 'git@github.com:arcticicestudio/nord-vim.git'
 Plug 'git@github.com:sainnhe/gruvbox-material.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
 Plug 'git@github.com:ryanoasis/vim-devicons.git'
@@ -45,12 +41,14 @@ call plug#end()
 " }}}
 " plugins setting {{{
 " open NERDTreeToggle {{{
+let g:NERDTreeStatusline=' '
 let g:NERDTreeQuitOnOpen=3
+let NERDTreeMinimalUI=1
 let NERDTreeIgnore=[
       \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
-noremap <silent><M-t> :NERDTreeToggle<CR>
+nnoremap <silent><Tab> :NERDTreeToggle<CR>
 " }}}
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
@@ -68,7 +66,7 @@ nmap ga <Plug>(EasyAlign)
 " terryma/vim-multiple-cursors {{{
 let g:multi_cursor_use_default_mapping=0
 " Default mapping
-let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_start_word_key      = '<M-n>'
 let g:multi_cursor_select_all_word_key = '<M-a>'
 let g:multi_cursor_start_key           = 'g<C-n>'
 let g:multi_cursor_select_all_key      = 'g<M-a>'
@@ -422,16 +420,13 @@ command! Editrc execute 'edit' vim_config_file
 " see autocmd keymap_force to set scroll down
 " use backspace to scroll up
 nnoremap <silent><BS> <C-b>
+nnoremap <silent><Space> <C-f>
 " <leader> <Enter> to create new line in normal mode
 nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
 " switch between buffers
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
-if exists("bufferline")
-  nnoremap <silent><TAB> :BufferNext<CR>
-else
-  nnoremap <silent><TAB> :bn<CR>
-endif
+nnoremap <silent><C-n> :bn<CR>
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>
 " map <esc> to quit terminal mode
@@ -448,6 +443,11 @@ nnoremap <silent><leader>/ :vsplit<CR>
 " nnoremap <leader>o :copen<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
+" windows navigation
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
 " }}}
 " commands {{{
 command IndentCurBuf call IndentBuf()
@@ -492,7 +492,6 @@ augroup END
 
 augroup keymap_force
   autocmd!
-  autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
   " unremap <CR> key when in quickfix list
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
@@ -503,7 +502,8 @@ command! Curtime :put = strftime('%Y-%m-%d %H:%M:%S')
 " }}}
 " default colors {{{
 highlight Comment guifg=DarkGray gui=none
-highlight Visual guibg=#8fbcbb guifg=#000000
+highlight Visual guibg=#495057 guifg=none
+highlight Search guibg=#495057 guifg=none
 highlight SignColumn gui=bold guibg=none
 highlight StatusLine gui=bold
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
