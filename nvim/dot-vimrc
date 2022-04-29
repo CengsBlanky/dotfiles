@@ -13,7 +13,6 @@ call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:tpope/vim-commentary.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
-Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
 Plug 'git@github.com:junegunn/vim-easy-align.git' " align text
@@ -416,13 +415,12 @@ noremap <silent><M-w> :close<CR>
 noremap <silent><M-b> :bd<CR>
 " use command to open my vimrc
 command! Editrc execute 'edit' vim_config_file
+command! Reloadrc execute 'source' vim_config_file
 " screen scroll add <nowait> to execute immediately
 " see autocmd keymap_force to set scroll down
 " use backspace to scroll up
 nnoremap <silent><BS> <C-b>
 nnoremap <silent><Space> <C-f>
-" <leader> <Enter> to create new line in normal mode
-nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
 " switch between buffers
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
@@ -436,18 +434,23 @@ nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>
 " save
 nnoremap <silent><Enter> :w<CR>
-" split current window
-nnoremap <silent><leader>- :split<CR>
-nnoremap <silent><leader>/ :vsplit<CR>
 " quickfix list operations
 " nnoremap <leader>o :copen<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
+" split current window
+nnoremap <silent><leader>- :split<CR>
+nnoremap <silent><leader>/ :vsplit<CR>
 " windows navigation
 nnoremap <M-h> <C-w>h
 nnoremap <M-j> <C-w>j
 nnoremap <M-k> <C-w>k
 nnoremap <M-l> <C-w>l
+
+inoremap {<CR> {<CR>}<Esc>O
+inoremap (<CR> (<CR>)<Esc>O
+inoremap {<Space> {<Space><Space>}<Esc>hi
+inoremap [<Space> [<Space><Space>]<Esc>hi
 " }}}
 " commands {{{
 command IndentCurBuf call IndentBuf()
