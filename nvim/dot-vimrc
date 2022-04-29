@@ -146,7 +146,7 @@ nmap <silent> g] <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
@@ -399,7 +399,6 @@ set nowrap
 set cmdheight=1
 set splitright
 set splitbelow
-set cursorline
 " set default grep cmd
 set grepprg=rg\ -p\ --vimgrep\ --ignore-file\ ~/.vim/ignorefile
 set grepformat=%f:%l:%c:%m
@@ -409,13 +408,11 @@ set path+=**
 " keymappings {{{
 inoremap jk <esc>
 nnoremap <M-q> :x<CR>
+nnoremap gy :%y<CR>
 
 " close current window or buffer
 noremap <silent><M-w> :close<CR>
 noremap <silent><M-b> :bd<CR>
-" use command to open my vimrc
-command! Editrc execute 'edit' vim_config_file
-command! Reloadrc execute 'source' vim_config_file
 " screen scroll add <nowait> to execute immediately
 " see autocmd keymap_force to set scroll down
 " use backspace to scroll up
@@ -453,6 +450,8 @@ inoremap {<Space> {<Space><Space>}<Esc>hi
 inoremap [<Space> [<Space><Space>]<Esc>hi
 " }}}
 " commands {{{
+command! Editrc execute 'edit' vim_config_file
+command! Reloadrc execute 'source' vim_config_file
 command IndentCurBuf call IndentBuf()
 " }}}
 " autocmd {{{
@@ -514,7 +513,7 @@ highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
 highlight MatchParen gui=bold,underline
 " self defined plugins colorscheme
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
-highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
+highlight BufTabLineCurrent guibg=#4c566a guifg=Black gui=none
 highlight BufTabLineFill guibg=none guifg=none ctermfg=none ctermbg=none gui=none
 highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=none
 highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
