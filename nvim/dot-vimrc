@@ -32,6 +32,7 @@ Plug 'git@github.com:dart-lang/dart-vim-plugin.git'
 Plug 'git@github.com:mattn/emmet-vim.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
+Plug 'git@github.com:christoomey/vim-tmux-navigator.git'
 Plug 'git@github.com:norcalli/nvim-colorizer.lua.git'
 Plug 'git@github.com:sainnhe/gruvbox-material.git'
 Plug 'git@github.com:nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
@@ -273,11 +274,20 @@ nmap <leader>8 <Plug>BufTabLine.Go(8)
 nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(10)
 " }}}
+" tmux-vim navigator {{{
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <M-\> :TmuxNavigatePrevious<cr>
+" }}}
 " colorscheme plugins {{{
 let &t_ut=''
 set t_Co=256
 set termguicolors
-let g:gruvbox_material_enable_bold=1
+" let g:gruvbox_material_enable_bold=1
 let g:gruvbox_material_transparent_background=1
 let g:gruvbox_material_better_performance=1
 colorscheme gruvbox-material
@@ -397,11 +407,6 @@ nnoremap <C-k> :cprevious<CR>
 " split current window
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
-" windows navigation
-nnoremap <M-h> <C-w>h
-nnoremap <M-j> <C-w>j
-nnoremap <M-k> <C-w>k
-nnoremap <M-l> <C-w>l
 
 inoremap {<CR> {<CR>}<Esc>O
 inoremap (<CR> (<CR>)<Esc>O
