@@ -5,7 +5,7 @@ function noteck
     set -l dayago $argv[1]
 
     if test -n "$dayago"; and test $dayago -ge 1
-        set ckdate (date --date=$dayago" day ago" +%F)
+        set ckdate (date -v-"$dayago"d +%F)
     end
 
     set -l journalfilename $journalDir/$ckdate.md
