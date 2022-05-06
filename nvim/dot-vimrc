@@ -423,6 +423,8 @@ command IndentCurBuf call IndentBuf()
 augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
+  " disable syntax for large file
+  autocmd BufWinEnter * if line("$") > 10000 | syntax clear | endif
 augroup END
 
 augroup filetype_indent_size
@@ -467,6 +469,7 @@ command! Curtime :put = strftime('%Y-%m-%d %H:%M:%S')
 
 " }}}
 " default colors {{{
+highlight Normal guifg=#ced4da
 highlight Comment guifg=DarkGray gui=none
 highlight Visual guibg=#495057 guifg=none
 highlight Search guibg=#495057 guifg=none
