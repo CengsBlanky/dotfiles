@@ -74,8 +74,9 @@ nnoremap <C-m> :action Maven.ExecuteGoal<CR>
 
 " -- set keystrock handler --
 " use <C-x> and <C-n> in vim insert mode, otherwise handle by idea
-sethandler <C-x> n-v:ide i:vim
-sethandler <C-n> n-v:ide i:vim
+sethandler <C-x> i:ide
+sethandler <C-p> i:ide
+sethandler <C-n> i:ide
 " Find more examples here: https://jb.gg/share-ideavimrc
 
 set ideastrictmode
