@@ -474,7 +474,6 @@ highlight Comment guifg=DarkGray gui=none
 highlight Visual guibg=#495057 guifg=none
 highlight Search guibg=#495057 guifg=none
 highlight SignColumn gui=bold guibg=none
-highlight StatusLine gui=bold
 highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
 " highlight LineNr guifg=#868e96 gui=none
 highlight MatchParen gui=bold,underline
