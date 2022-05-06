@@ -425,6 +425,7 @@ augroup filetype_specific
   autocmd FileType vim setlocal foldmethod=marker
   " disable syntax for large file
   autocmd BufWinEnter * if line("$") > 10000 | syntax clear | endif
+  autocmd BufWinEnter * if empty(expand('%')) | setlocal laststatus=0 | else | setlocal laststatus=2 | endif
 augroup END
 
 augroup filetype_indent_size
