@@ -26,9 +26,10 @@ let s:filetypes = {
       \ 'markdown':        '',
       \ 'dockerfile':      '',
       \
+      \ 'sh':              '',
+      \ 'awk':             '',
       \ 'vim':             '',
       \ 'fish':            '',
-      \ 'sh':              '',
       \ 'crontab':         '',
       \ 'fstab':           '',
       \ 'conf':            '',
