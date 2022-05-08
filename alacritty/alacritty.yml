@@ -7,16 +7,16 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'FiraCode Nerd Font'
+    family: 'FiraCode NF'
     style: Regular
   bold:
-    family: 'FiraCode Nerd Font'
+    family: 'FiraCode NF'
     style: Medium
   italic:
-    family: 'FiraCode Nerd Font'
+    family: 'FiraCode NF'
     style: Italic
   bold_italic:
-    family: 'FiraCode Nerd Font'
+    family: 'FiraCode NF'
     style: Medium Italic
   size: 12.0
   offset:
