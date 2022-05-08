@@ -481,7 +481,7 @@ highlight LineNrAbove guifg=gray guibg=none gui=none
 highlight LineNrBelow guifg=gray guibg=none gui=none 
 " plugins color
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
-highlight BufTabLineCurrent guifg=Black guibg=#4c566a gui=bold
+highlight BufTabLineCurrent guifg=White guibg=#3b4252
 highlight BufTabLineFill guibg=none guifg=none ctermfg=none ctermbg=none gui=none
 highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=none
 highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
