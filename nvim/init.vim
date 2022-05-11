@@ -311,7 +311,7 @@ set encoding=utf-8
 set hidden
 set number
 set relativenumber
-set backspace=2
+set backspace=eol,start
 set incsearch
 set ignorecase
 set smartcase
