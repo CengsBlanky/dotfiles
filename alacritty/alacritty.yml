@@ -7,21 +7,21 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'FiraCode NF'
+    family: 'FiraMono NF'
     style: Regular
   bold:
-    family: 'FiraCode NF'
+    family: 'FiraMono NF'
     style: Medium
   italic:
-    family: 'FiraCode NF'
+    family: 'FiraMono NF'
     style: Italic
   bold_italic:
-    family: 'FiraCode NF'
+    family: 'FiraMono NF'
     style: Medium Italic
   size: 11.0
   offset:
     x: 0
-    y: 0
+    y: -3
 colors:
   primary:
     background: '#212529'
