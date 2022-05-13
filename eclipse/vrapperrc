@@ -1,5 +1,6 @@
 " http://vrapper.sourceforge.net/documentation/?topic=introduction
 set autoindent
+set ignorecase
 set smartcase
 set incsearch
 set number
@@ -9,12 +10,18 @@ set softtabstop=4
 set tabstop=4
 set shiftround
 set clipboard=unnamed
+set contentassistmode
+set startnormalmode
 
 set imdisable
 
 inoremap jk <ESC>
 nnoremap <Enter> :w<CR>
 nnoremap <leader>q :bd<CR>
+nnoremap <Right> :bn<CR>
+nnoremap <Left> :bp<CR>
+nnoremap <M-q> :bd<CR>
+nnoremap <leader>o :tabonly<CR>
 
 nmap s <Plug>(sneak_s)
 nmap S <Plug>(sneak_S)
