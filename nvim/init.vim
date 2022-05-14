@@ -468,7 +468,6 @@ augroup END
 
 " }}}
 " default colors {{{
-highlight Normal guifg=LightGray
 highlight Comment guifg=DarkGray gui=none
 highlight Visual guifg=NONE guibg=#495057
 highlight SignColumn guibg=NONE gui=bold 
