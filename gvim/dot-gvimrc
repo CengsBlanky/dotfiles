@@ -8,7 +8,7 @@ set guioptions-=m " menu bar
 set guioptions-=T " toolbar
 set guioptions-=r " scrollbar right
 set guioptions-=L " scrollbar left
-set guifont=FiraMono\ Nerd\ Font\ 12
+set guifont=FiraMono\ NF\ 12
 set hidden
 set number
 set relativenumber

@@ -86,6 +86,7 @@ let g:coc_global_extensions=[
       \ 'coc-rls',
       \ 'coc-go',
       \ 'coc-pyright',
+      \ 'coc-java',
       \
       \ 'coc-json',
       \ 'coc-yaml',
@@ -294,8 +295,10 @@ let &t_ut=''
 set t_Co=256
 set termguicolors
 
+set background=light
 let g:gruvbox_material_enable_bold=1
-let g:gruvbox_material_transparent_background=1
+let g:gruvbox_material_transparent_background=0
+let g:gruvbox_material_background="hard"
 let g:gruvbox_material_better_performance=1
 colorscheme gruvbox-material
 " }}}
@@ -311,7 +314,7 @@ set encoding=utf-8
 set hidden
 set number
 set relativenumber
-set backspace=eol,start
+set backspace=2
 set incsearch
 set ignorecase
 set smartcase
@@ -453,8 +456,8 @@ augroup filetype_edit_behavior
   " auto remove all trailing empty lines before saving
   autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.yml,*.yaml,*.java
         \ call TrimEndLinesAndTrailingSpaces()
-  autocmd BufWritePre *.java,*.lua,*.sh
-        \ call IndentAll()
+  " autocmd BufWritePre *.java,*.lua,*.sh
+  "       \ call IndentAll()
   " disable syntax for large file
   autocmd BufWinEnter * if line("$") > 30000 | syntax clear | endif
 augroup END
@@ -469,12 +472,14 @@ augroup END
 " }}}
 " default colors {{{
 highlight Comment guifg=DarkGray gui=none
-highlight Visual guifg=NONE guibg=#495057
+" highlight Visual guifg=NONE guibg=#495057
+" highlight Search guifg=NONE guibg=#495057
+highlight Visual guifg=NONE guibg=#ebcb8b
+highlight Search guifg=NONE guibg=#ebcb8b
 highlight SignColumn guibg=NONE gui=bold 
 highlight Folded guifg=DarkGrey guibg=none
-highlight Search guifg=NONE guibg=#495057
 highlight MatchParen gui=bold,underline
-highlight StatusLine gui=bold
+highlight StatusLine gui=bold 
 highlight LineNr guifg=none guibg=none gui=bold
 highlight LineNrAbove guifg=gray guibg=none gui=none 
 highlight LineNrBelow guifg=gray guibg=none gui=none 
@@ -486,7 +491,7 @@ highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=n
 highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
 highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
 highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
-highlight Sneak guifg=none guibg=#495057
+" highlight Sneak guifg=none guibg=#495057
 
 " }}}
 " }}}
