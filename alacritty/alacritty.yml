@@ -7,13 +7,13 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'FiraMono NF'
+    family: 'FiraCode NF'
     style: Regular
   bold:
-    family: 'FiraMono NF'
+    family: 'FiraCode NF'
     style: Medium
   italic:
-    family: 'FiraMono NF'
+    family: 'FiraCode NF'
     style: Italic
   bold_italic:
     family: 'FiraMono NF'

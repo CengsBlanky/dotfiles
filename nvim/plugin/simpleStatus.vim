@@ -78,7 +78,6 @@ set statusline+=\ %f
 set statusline+=%{&readonly?'\ ':''}
 set statusline+=%{&modified?'\ פֿ':''}
 set statusline+=%=
-set statusline+=%{coc#status()}
 set statusline+=%6{FileformatIcon()}
 set statusline+=%6.50l/%-6.50L
 set statusline+=%-4.10P
