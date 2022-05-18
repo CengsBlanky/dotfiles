@@ -295,9 +295,9 @@ let &t_ut=''
 set t_Co=256
 set termguicolors
 
-set background=light
+" set background=light
 let g:gruvbox_material_enable_bold=1
-let g:gruvbox_material_transparent_background=0
+let g:gruvbox_material_transparent_background=1
 let g:gruvbox_material_background="hard"
 let g:gruvbox_material_better_performance=1
 colorscheme gruvbox-material
@@ -472,17 +472,18 @@ augroup END
 " }}}
 " default colors {{{
 highlight Comment guifg=DarkGray gui=none
-" highlight Visual guifg=NONE guibg=#495057
-" highlight Search guifg=NONE guibg=#495057
-highlight Visual guifg=NONE guibg=#ebcb8b
-highlight Search guifg=NONE guibg=#ebcb8b
+highlight Visual guifg=NONE guibg=#495057
+highlight Search guifg=NONE guibg=#495057
+" highlight Visual guifg=NONE guibg=#ebcb8b
+" highlight Search guifg=NONE guibg=#ebcb8b
 highlight SignColumn guibg=NONE gui=bold 
 highlight Folded guifg=DarkGrey guibg=none
 highlight MatchParen gui=bold,underline
-highlight StatusLine gui=bold 
-highlight LineNr guifg=none guibg=none gui=bold
-highlight LineNrAbove guifg=gray guibg=none gui=none 
-highlight LineNrBelow guifg=gray guibg=none gui=none 
+highlight StatusLine gui=bold guibg=#434c5e
+highlight StatusLineNC gui=bold guibg=#434c5e
+highlight LineNr guifg=#868e96 guibg=none
+" highlight LineNrAbove guifg=gray guibg=none gui=none 
+" highlight LineNrBelow guifg=gray guibg=none gui=none 
 " plugins color
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
 highlight BufTabLineCurrent guifg=White guibg=#3b4252
@@ -491,7 +492,6 @@ highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=n
 highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
 highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
 highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
-" highlight Sneak guifg=none guibg=#495057
 
 " }}}
 " }}}
