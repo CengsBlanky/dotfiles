@@ -291,14 +291,12 @@ require'nvim-treesitter.configs'.setup {
 EOF
 " }}}
 " colorscheme {{{
-let &t_ut=''
-set t_Co=256
 set termguicolors
 
 " set background=light
 let g:gruvbox_material_enable_bold=1
 let g:gruvbox_material_transparent_background=1
-let g:gruvbox_material_background="hard"
+let g:gruvbox_material_background="soft"
 let g:gruvbox_material_better_performance=1
 colorscheme gruvbox-material
 " }}}
@@ -479,7 +477,7 @@ highlight Search  guifg=NONE     guibg=#495057
 highlight SignColumn gui=bold       guibg=NONE
 highlight Folded     guifg=DarkGrey guibg=none
 highlight MatchParen gui=bold,underline
-highlight StatusLine gui=bold       guibg=none
+highlight StatusLine gui=bold       guibg=#212529
 highlight LineNr     guifg=#868e96  guibg=none
 " plugins color
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
