@@ -1,5 +1,5 @@
 window:
-  opacity: 0.98
+  opacity: 1
   decorations: none
   startup_mode: Windowed
   dynamic_title: true
@@ -7,22 +7,28 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'FiraMono Nerd Font'
+    family: 'FiraCode NF'
     style: Regular
   bold:
-    family: 'FiraMono Nerd Font'
+    family: 'FiraCode NF'
     style: Medium
   italic:
-    family: 'FiraMono Nerd Font'
+    family: 'FiraCode NF'
     style: Italic
   bold_italic:
-    family: 'FiraMono Nerd Font'
-    style: Bold Italic
-  size: 12.0
+    family: 'FiraMono NF'
+    style: Medium Italic
+  size: 11.0
+  offset:
+    x: 0
+    y: -1
 colors:
   primary:
-    background: '#212529'
+    background: '#2e3440'
     foreground: '#d8dee9'
+cursor:
+  style: Beam
+  unfocused_hollow: true
 bell:
   duration: 0
 mouse:

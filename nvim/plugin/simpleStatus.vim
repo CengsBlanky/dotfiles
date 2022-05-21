@@ -1,4 +1,5 @@
 let s:filetypes = {
+      \ 'asm':             '',
       \ 'c':               '',
       \ 'cpp':             '',
       \ 'rust':            '',
@@ -25,9 +26,10 @@ let s:filetypes = {
       \ 'markdown':        '',
       \ 'dockerfile':      '',
       \
+      \ 'sh':              '',
+      \ 'awk':             '',
       \ 'vim':             '',
       \ 'fish':            '',
-      \ 'sh':              '',
       \ 'crontab':         '',
       \ 'fstab':           '',
       \ 'conf':            '',
@@ -76,6 +78,6 @@ set statusline+=\ %f
 set statusline+=%{&readonly?'\ ':''}
 set statusline+=%{&modified?'\ פֿ':''}
 set statusline+=%=
-set statusline+=%{FileformatIcon()}
+set statusline+=%6{FileformatIcon()}
 set statusline+=%6.50l/%-6.50L
 set statusline+=%-4.10P

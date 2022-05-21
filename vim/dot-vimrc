@@ -47,7 +47,7 @@ nnoremap <Esc>q :x<CR>
 nnoremap <silent><Esc>b :bd<CR>
 " yank whole buffer
 nnoremap gy :%y<CR>
-" use command to open my vimrc
+" use command to open/reload my vimrc
 command! Editrc execute 'edit' vim_config_file
 command! Reloadrc execute 'source' vim_config_file
 " screen scroll add <nowait> to execute immediately
@@ -72,6 +72,11 @@ nnoremap <silent><nowait><LEFT> :bp<CR>
 nnoremap <C-n> :bn<CR>
 " write as root
 cmap w!! w !sudo tee > /dev/null %
+" add new line between parenthesis
+inoremap {<CR> {<CR>}<Esc>O
+inoremap (<CR> (<CR>)<Esc>O
+inoremap {<Space> {<Space><Space>}<Esc>hi
+inoremap [<Space> [<Space><Space>]<Esc>hi
 
 " window navigation
 nnoremap <Esc>h <C-w>h
@@ -83,7 +88,9 @@ nnoremap <Esc>l <C-w>l
 augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
+  autocmd BufRead,BufNewFile *.asm set filetype=asm
   autocmd BufRead *.log set filetype=text
+  autocmd BufWinEnter * if line("$") > 3000 | syntax clear | endif
 augroup END
 
 function! TrimEndLinesAndTrailingSpaces()
@@ -117,9 +124,9 @@ set statusline+=%=
 set statusline+=%y
 set statusline+=%6.50l/%-6.50L
 set statusline+=%P
-set statusline+=\ \ 
+set statusline+=\ 
 " }}}
-" predefined variables {{{
+" environment {{{
 let vim_config_file="~/.vimrc"
 let plug_manager="~/.vim/plug.vim"
 let plugin_path="~/.vim/plugins/"
@@ -135,6 +142,8 @@ else
   let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
 endif
 
+set fillchars+=vert:│
+
 " }}}
 " plugins {{{
 execute 'source' plug_manager
@@ -147,6 +156,11 @@ Plug 'git@github.com:mattn/emmet-vim.git'
 Plug 'git@github.com:romainl/vim-cool.git'
 Plug 'git@github.com:ap/vim-buftabline.git'
 Plug 'git@github.com:christoomey/vim-tmux-navigator.git'
+Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
+Plug 'git@github.com:junegunn/fzf.vim.git'
+Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
+Plug 'git@github.com:sainnhe/gruvbox-material.git'
+Plug 'git@github.com:sheerun/vim-polyglot.git'
 call plug#end()
 packadd! matchit
 " }}}
@@ -206,25 +220,26 @@ nnoremap <silent> <Esc>l :TmuxNavigateRight<cr>
 nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
 " }}}
 " colors {{{
-colorscheme torte
-highlight String ctermfg=2 ctermbg=NONE
-highlight Number ctermfg=172
-highlight Comment ctermbg=NONE ctermfg=Gray
-highlight Visual ctermbg=Gray ctermfg=White
-highlight Search ctermbg=Gray ctermfg=White
+let g:gruvbox_material_better_performance=1
+let g:gruvbox_material_disable_italic_comment=1
+let g:gruvbox_material_transparent_background=1
+set background=dark
+colorscheme gruvbox-material
+highlight Normal ctermfg=LightGray
+highlight Comment ctermfg=Gray ctermbg=NONE
+highlight Visual ctermfg=NONE ctermbg=DarkGray
+highlight Search ctermfg=NONE ctermbg=DarkGray
 highlight Folded ctermfg=DarkGrey ctermbg=NONE
 highlight SignColumn ctermbg=NONE
+highlight LineNr ctermfg=Gray
 highlight MatchParen ctermbg=NONE cterm=underline,bold
-highlight Pmenu ctermfg=lightgray ctermbg=DarkGray
-highlight PmenuSel ctermfg=White ctermbg=gray cterm=bold
-highlight LineNr ctermfg=White guifg=White cterm=Bold gui=Bold
-highlight LineNrAbove ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
-highlight LineNrBelow ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE cterm=NONE
-highlight StatusLine cterm=bold ctermfg=lightgray ctermbg=Black
-highlight StatusLineNC cterm=NONE ctermfg=DarkGray ctermbg=Black
+highlight StatusLine ctermfg=LightGray ctermbg=NONE cterm=bold 
+highlight StatusLineNC ctermfg=DarkGray ctermbg=NONE cterm=NONE
 highlight NonText ctermfg=Black ctermbg=NONE
 
-highlight TabLine ctermfg=DarkGray ctermbg=NONE cterm=NONE guifg=Black guibg=DarkGray gui=NONE
-highlight TabLineFill ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
-highlight TabLineSel ctermfg=LightGray ctermbg=DarkGrey cterm=bold guifg=White guibg=Black gui=bold
+highlight TabLine ctermfg=White ctermbg=NONE cterm=NONE
+highlight TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE
+highlight TabLineSel ctermfg=Black ctermbg=Gray
+
+highlight Sneak ctermfg=NONE ctermbg=DarkGray
 " }}}

@@ -1,0 +1,108 @@
+set nocompatible
+filetype plugin indent on
+syntax on
+
+set encoding=utf-8
+let $LANG='en_US'
+set guioptions-=m " menu bar
+set guioptions-=T " toolbar
+set guioptions-=r " scrollbar right
+set guioptions-=L " scrollbar left
+set guifont=FiraMono\ NF\ 12
+set hidden
+set number
+set relativenumber
+set backspace=2
+set incsearch
+set smartcase
+set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
+set softtabstop=4
+set showcmd
+set laststatus=2
+set wildmenu
+set wildoptions+=tagfile
+set showmatch
+set autoread
+set autowrite
+set confirm
+set updatetime=100
+set noswapfile
+set nobackup
+set noundofile
+set clipboard=unnamed
+set hlsearch
+set mousehide
+set cursorline
+set splitright
+set splitbelow
+set guicursor=a:blinkon0
+colorscheme zellner
+
+" key map
+nnoremap <Enter>  :w<CR>
+nnoremap <silent><M-b> :bd<CR>
+nnoremap <silent><C-n> :bn<CR>
+nnoremap <Space> <C-f>
+nnoremap <Backspace> <C-b>
+nnoremap <M-q> :x<CR>
+nnoremap <silent><Tab> :Lexplore<CR>
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
+nnoremap <leader>- :sp<CR>
+nnoremap <leader>/ :vs<CR>
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <silent><leader>s :set hlsearch!<CR>
+nnoremap gy :%y<CR>
+
+inoremap jk <ESC>
+inoremap {<CR> {<CR>}<Esc>O
+inoremap (<CR> (<CR>)<Esc>O
+inoremap {<Space> {<Space><Space>}<Esc>hi
+inoremap [<Space> [<Space><Space>]<Esc>hi
+
+command! Editrc execute 'edit ~/.gvimrc'
+command! Reloadrc execute 'source ~/.gvimrc'
+
+" disable beep and screen flash both in terminal vim and gvim
+autocmd VimEnter * set vb t_vb=
+autocmd FileType javascript,html,vim set tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType * set formatoptions-=o
+" code run
+autocmd FileType python nnoremap <leader>r :!python %<CR>
+autocmd FileType go nnoremap <leader>r :!go run %<CR>
+" code formatter
+autocmd FileType go nnoremap <leader>f :silent !gofmt -w %<CR>
+autocmd FileType java nnoremap <leader>r :!javac %:t && java %:t:r<CR>
+
+set statusline=%h
+set statusline+=\ %f
+set statusline+=\ %r
+set statusline+=\ %m
+set statusline+=\ [%{&ff}]
+set statusline+=%=
+set statusline+=%y
+set statusline+=%6.50l/%-6.50L
+set statusline+=%P
+set statusline+=\ 
+
+" netrw setting
+let g:netrw_winsize=40
+let g:netrw_usetab=1
+let g:netrw_keepdir=0
+
+hi Comment guifg=DarkGreen guibg=NONE
+hi Search guifg=NONE guibg=LightGray
+hi Visual guifg=NONE guibg=LightGray
+hi String guifg=DarkBlue
+hi SignColumn guibg=NONE
+hi StatusLine guifg=White guibg=DarkGreen ctermfg=Gray
+hi StatusLineNC guifg=DarkGray guibg=Black
+hi NonText guifg=White
+hi Pmenu guifg=DarkGray guibg=LightGray
+hi PmenuSel guifg=Black
+hi PmenuSbar guifg=Gray guibg=LightGray
+hi PmenuThumb guifg=Gray guibg=Gray
+hi VertSplit guifg=White guibg=DarkGray
+hi MatchParen guibg=NONE gui=bold,underline

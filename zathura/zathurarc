@@ -1,13 +1,32 @@
-set font "DejaVu Sans Book"
-set window-height 1080
-set window-width 960
+# Zathura configuration file
+# See man `man zathurarc'
+
+set font "Source Han Sans CN Medium"
 set selection-clipboard clipboard
 
+# Open document in fit-width mode by default
+set window-width 960
+set window-height 1080
+
+# One page per row by default
+set pages-per-row 1
+
+#stop at page boundries
+set scroll-page-aware "true"
+set smooth-scroll "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
+
+#zoom settings
+set zoom-min 10
+set guioptions ""
+
+set render-loading "false"
+set scroll-step 50
+
 map <Tab> toggle_index
-map = zoom in
-map - zoom out
-map <BackSpace> scroll half-up
+map u scroll half-up
 map <Space> scroll half-down
-map j scroll down
-map k scroll up
-map Q quit
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen

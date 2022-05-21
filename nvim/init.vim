@@ -16,7 +16,6 @@ call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:tpope/vim-commentary.git'
 Plug 'git@github.com:justinmk/vim-sneak.git'
-Plug 'git@github.com:jiangmiao/auto-pairs.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
 Plug 'git@github.com:junegunn/vim-easy-align.git' " align text easily
@@ -26,7 +25,6 @@ Plug 'git@github.com:romainl/vim-cool.git' " better hlsearch
 Plug 'git@github.com:aperezdc/vim-template.git'
 Plug 'git@github.com:junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'git@github.com:junegunn/fzf.vim.git'
-Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git', {'for': 'sql'}
 Plug 'git@github.com:pangloss/vim-javascript.git'
 Plug 'git@github.com:rust-lang/rust.vim.git'
 Plug 'git@github.com:fatih/vim-go.git', {'do': ':GoUpdateBinaries'}
@@ -46,7 +44,7 @@ let NERDTreeMinimalUI=1
 let g:NERDTreeQuitOnOpen=3
 let g:NERDTreeStatusline=' פּ'
 let NERDTreeIgnore=[
-      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
+      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]', '\.bin$[[file]]',
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
 nnoremap <silent><Tab> :NERDTreeToggle<CR>
@@ -60,13 +58,6 @@ augroup commentary_vim
   autocmd FileType c setlocal commentstring=//\ %s
   autocmd FileType cpp setlocal commentstring=//\ %s
 augroup END
-" }}}
-" auto-pair {{{
-augroup AutoPair_Custom
-  autocmd!
-  autocmd FileType html,php,jsp let b:AutoPairs = AutoPairsDefine({'<!--':'-->', '<?':'?>', '<?php':'?>', '<%':'%>'})
-augroup END
-let g:AutoPairsMapCR = 0
 " }}}
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
@@ -95,6 +86,7 @@ let g:coc_global_extensions=[
       \ 'coc-rls',
       \ 'coc-go',
       \ 'coc-pyright',
+      \ 'coc-java',
       \
       \ 'coc-json',
       \ 'coc-yaml',
@@ -280,7 +272,7 @@ nnoremap <silent> <M-\> :TmuxNavigatePrevious<cr>
 " nvim-treesitter {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "java", "javascript", "typescript", "css", "python", "bash", "toml", "yaml"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "c", "cpp", "java", "go", "javascript", "typescript", "css", "python", "bash", "toml", "yaml"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
@@ -299,12 +291,12 @@ require'nvim-treesitter.configs'.setup {
 EOF
 " }}}
 " colorscheme {{{
-let &t_ut=''
-set t_Co=256
 set termguicolors
 
+" set background=light
 let g:gruvbox_material_enable_bold=1
 let g:gruvbox_material_transparent_background=1
+let g:gruvbox_material_background="soft"
 let g:gruvbox_material_better_performance=1
 colorscheme gruvbox-material
 " }}}
@@ -390,11 +382,6 @@ nnoremap <silent><leader><LEFT> :vertical resize -1<CR>
 " split current window
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
-" navigate windows
-" nnoremap <M-j> <C-w>j
-" nnoremap <M-k> <C-w>k
-" nnoremap <M-h> <C-w>h
-" nnoremap <M-l> <C-w>l
 
 " buffer jump
 if !exists("g:buftabline_numbers")
@@ -415,6 +402,12 @@ nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 nnoremap <leader>co :copen<CR>
 nnoremap <leader>cc :cclose<CR>
+
+" add new line between parenthesis
+inoremap {<CR> {<CR>}<Esc>O
+inoremap (<CR> (<CR>)<Esc>O
+inoremap {<Space> {<Space><Space>}<Esc>hi
+inoremap [<Space> [<Space><Space>]<Esc>hi
 
 " }}}
 " customize command {{{
@@ -461,10 +454,10 @@ augroup filetype_edit_behavior
   " auto remove all trailing empty lines before saving
   autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.html,*.sh,*.py,*.yml,*.yaml,*.java
         \ call TrimEndLinesAndTrailingSpaces()
-  autocmd BufWritePre *.java,*.lua,*.sh
-        \ call IndentAll()
+  " autocmd BufWritePre *.java,*.lua,*.sh
+  "       \ call IndentAll()
   " disable syntax for large file
-  autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
+  autocmd BufWinEnter * if line("$") > 30000 | syntax clear | endif
 augroup END
 
 augroup keymap_force
@@ -477,23 +470,22 @@ augroup END
 " }}}
 " default colors {{{
 highlight Comment guifg=DarkGray gui=none
-highlight Visual guibg=Gray guifg=Black
-highlight SignColumn gui=bold guibg=none
-highlight Folded ctermfg=DarkGrey ctermbg=none guifg=DarkGrey guibg=none
-highlight Search guifg=Black guibg=Gray gui=bold
+highlight Visual  guifg=NONE     guibg=#495057
+highlight Search  guifg=NONE     guibg=#495057
+" highlight Visual  guifg=NONE     guibg=#ebcb8b
+" highlight Search  guifg=NONE     guibg=#ebcb8b
+highlight SignColumn gui=bold       guibg=NONE
+highlight Folded     guifg=DarkGrey guibg=none
 highlight MatchParen gui=bold,underline
-highlight StatusLine gui=bold
-highlight LineNr gui=bold guibg=none guifg=none
-highlight LineNrAbove gui=none guibg=none guifg=gray
-highlight LineNrBelow gui=none guibg=none guifg=gray
+highlight StatusLine gui=bold       guibg=#212529
+highlight LineNr     guifg=#868e96  guibg=none
 " plugins color
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
-highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
+highlight BufTabLineCurrent guifg=White guibg=#3b4252
 highlight BufTabLineFill guibg=none guifg=none ctermfg=none ctermbg=none gui=none
 highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=none
 highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
 highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
 highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
-
 " }}}
 " }}}
