@@ -15,7 +15,7 @@ Plug 'git@github.com:jsborjesson/vim-uppercase-sql.git'
 call plug#end()
 " plugins setting {{{
 let g:NERDTreeQuitOnOpen=3
-noremap <silent><C-t> :NERDTreeToggle<CR>
+nnoremap <silent><Tab> :NERDTreeToggle<CR>
 
 let g:buftabline_show=1
 let g:buftabline_indicators=1
@@ -103,7 +103,7 @@ nnoremap <C-k> :cprevious<CR>
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
 " go next buffer
-nnoremap <silent><TAB> :bn<CR>
+nnoremap <silent><C-n> :bn<CR>
 " buffer jump
 if !exists("g:buftabline_numbers")
 nnoremap <leader>1 :b1<CR>
