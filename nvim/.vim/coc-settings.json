@@ -1,5 +1,4 @@
 {
-    "coc.preferences.colorSupport": false,
     "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "javascriptreact", "typescriptreact", "html", "css", "vue"],
     "prettier.disableLanguages": [],
     "prettier.disableSuccessMessage": true,
@@ -7,6 +6,7 @@
     "prettier.trailingComma": "es5",
     "prettier.singleQuote": true,
     "prettier.bracketSpacing": true,
+    "java.format.settings.url": "~/dotfiles/formatter/javastyle.xml",
     "typescript.format.enabled": false,
     "tsserver.formatOnType": false,
     "javascript.format.enabled": false,

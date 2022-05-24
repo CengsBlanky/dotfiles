@@ -24,7 +24,7 @@ font:
     y: -1
 colors:
   primary:
-    background: '#2e3440'
+    background: '#212529'
     foreground: '#d8dee9'
 cursor:
   style: Beam

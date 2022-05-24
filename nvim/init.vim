@@ -126,8 +126,8 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> g] <Plug>(coc-diagnostic-prev)
-nmap <silent> g[ <Plug>(coc-diagnostic-next)
+nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+nmap <silent> g] <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -367,7 +367,7 @@ nnoremap <silent><Space> <C-f>
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
 " go next buffer
-nnoremap <C-n> :bn<CR>
+nnoremap <silent><C-n> :bn<CR>
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>
 " map <esc> to quit terminal mode
@@ -477,7 +477,7 @@ highlight Search  guifg=NONE     guibg=#495057
 highlight SignColumn gui=bold       guibg=NONE
 highlight Folded     guifg=DarkGrey guibg=none
 highlight MatchParen gui=bold,underline
-highlight StatusLine gui=bold       guibg=#212529
+highlight StatusLine gui=bold       guibg=#3b4252
 highlight LineNr     guifg=#868e96  guibg=none
 " plugins color
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
