@@ -42,7 +42,7 @@ call plug#end()
 " NERDTreeToggle {{{
 let NERDTreeMinimalUI=1
 let g:NERDTreeQuitOnOpen=3
-let g:NERDTreeStatusline=' פּ'
+let g:NERDTreeStatusline=' '
 let NERDTreeIgnore=[
       \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]', '\.bin$[[file]]',
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
@@ -62,9 +62,9 @@ augroup END
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
 let g:gitgutter_sign_allow_clobber = 0
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '*'
-let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_added = '┃'
+let g:gitgutter_sign_modified = '┃'
+let g:gitgutter_sign_removed = '┃'
 " }}}
 " junegunn/vim-easy-align {{{
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -478,14 +478,15 @@ highlight SignColumn gui=bold       guibg=NONE
 highlight Folded     guifg=DarkGrey guibg=none
 highlight MatchParen gui=bold,underline
 highlight StatusLine gui=bold       guibg=#3b4252
-highlight LineNr     guifg=#868e96  guibg=none
+highlight LineNr     guifg=#434c5e  guibg=none
+highlight EndOfBuffer guifg=#212529
 " plugins color
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
 highlight BufTabLineCurrent guifg=White guibg=#3b4252
 highlight BufTabLineFill guibg=none guifg=none ctermfg=none ctermbg=none gui=none
 highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=none
-highlight GitGutterAdd    guibg=none guifg=#74b816 ctermfg=2 gui=bold
-highlight GitGutterChange guibg=none guifg=#fdb924 ctermfg=3 gui=bold
-highlight GitGutterDelete guibg=none guifg=#c92a2a ctermfg=1 gui=bold
+highlight GitGutterAdd    guibg=none guifg=#74b816 gui=bold
+highlight GitGutterChange guibg=none guifg=#fdb924 gui=bold
+highlight GitGutterDelete guibg=none guifg=#c92a2a gui=bold
 " }}}
 " }}}
