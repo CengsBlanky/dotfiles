@@ -364,8 +364,8 @@ command! Reloadrc execute 'edit' vim_config_file
 nnoremap <silent><BS> <C-b>
 nnoremap <silent><Space> <C-f>
 " switch between buffers
-nnoremap <silent><nowait><RIGHT> :bn<CR>
-nnoremap <silent><nowait><LEFT> :bp<CR>
+nnoremap <silent>]] :bn<CR>
+nnoremap <silent>[[ :bp<CR>
 " go next buffer
 nnoremap <silent><C-n> :bn<CR>
 " cd to current file directory
