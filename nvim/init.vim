@@ -59,6 +59,9 @@ augroup commentary_vim
   autocmd FileType cpp setlocal commentstring=//\ %s
 augroup END
 " }}}
+" figutive {{{
+nnoremap <leader>g :G<CR>
+" }}}
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
 let g:gitgutter_sign_allow_clobber = 0

@@ -26,9 +26,6 @@ colors:
   primary:
     background: '#212529'
     foreground: '#d8dee9'
-cursor:
-  style: Beam
-  unfocused_hollow: true
 bell:
   duration: 0
 mouse:
