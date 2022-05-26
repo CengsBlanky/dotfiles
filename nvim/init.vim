@@ -481,7 +481,8 @@ highlight Search  guifg=NONE     guibg=#495057
 highlight SignColumn gui=bold       guibg=NONE
 highlight Folded     guifg=DarkGrey guibg=none
 highlight MatchParen gui=bold,underline
-highlight StatusLine gui=bold       guibg=#3b4252
+highlight StatusLine gui=bold guifg=#adb5bd guibg=#343a40
+highlight StatusLineNC gui=none guifg=Gray guibg=#343a40
 highlight LineNr     guifg=#434c5e  guibg=none
 highlight EndOfBuffer guifg=#212529
 " plugins color
