@@ -5,6 +5,7 @@ function fish_prompt --description '[user]@[host]: pwd [prompt_symbol]'
     set -l err_color 'c92a2a'
     set -l gray_color '868e96'
     set -l dir_background 'a3be8c'
+    set -l love_color 'bf616a'
 
     set -l last_status $status
     # printf '%s%s%s@%s%s%s%s' \
@@ -15,6 +16,10 @@ function fish_prompt --description '[user]@[host]: pwd [prompt_symbol]'
     # PWD
     set_color -o $pwd_color
     set_color -b $dir_background
+
+    set_color -o $love_color
+    echo -n ' '
+    set_color -o $pwd_color
 
     echo -n (prompt_pwd) 
 
