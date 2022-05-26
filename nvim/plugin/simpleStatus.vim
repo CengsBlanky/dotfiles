@@ -76,12 +76,11 @@ endfunction
 hi User1 guibg=none
 hi User2 guifg=#343a40
 hi User3 guifg=#8fbcbb guibg=#343a40
-hi User4 guifg=#ebcb8b guibg=#343a40
 
 set statusline=%3*%2{FiletypeIcon()}%*
 set statusline+=\ %f
 set statusline+=%{&readonly?'\ ':''}
-set statusline+=%4*%{&modified?'\ פֿ':''}%*
+set statusline+=%{&modified?'\ פֿ':''}
 set statusline+=\ %2*%1*
 set statusline+=%=
 set statusline+=%2*%*
