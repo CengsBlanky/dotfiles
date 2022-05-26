@@ -44,7 +44,7 @@ let NERDTreeMinimalUI=1
 let g:NERDTreeQuitOnOpen=3
 let g:NERDTreeStatusline=' '
 let NERDTreeIgnore=[
-      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]', '\.bin$[[file]]',
+      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]', '\.bin$[[file]]', '\.svg$[[file]]', '\.png$[[file]]', '\.jpg$[[file]]',
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
       \ ]
 nnoremap <silent><Tab> :NERDTreeToggle<CR>
