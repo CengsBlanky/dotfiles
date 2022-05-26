@@ -68,6 +68,7 @@ let g:gitgutter_sign_allow_clobber = 0
 let g:gitgutter_sign_added = '┃'
 let g:gitgutter_sign_modified = '┃'
 let g:gitgutter_sign_removed = '┃'
+let g:gitgutter_sign_modified_removed = '┃'
 " }}}
 " junegunn/vim-easy-align {{{
 " Start interactive EasyAlign in visual mode (e.g. vipga)
