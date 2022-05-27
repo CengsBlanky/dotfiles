@@ -1,7 +1,7 @@
 function fish_prompt --description '[user]@[host]: pwd [prompt_symbol]'
     set -l user_name_color '4c6a92'
     set -l user_host_color $user_name_color
-    set -l pwd_color 'adb5bd'
+    set -l pwd_color 'a3be8c'
     set -l err_color 'c92a2a'
     set -l gray_color '868e96'
     set -l dir_background '343a40'
