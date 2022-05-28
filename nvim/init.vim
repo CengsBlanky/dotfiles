@@ -487,7 +487,7 @@ highlight LineNr     guifg=#434c5e  guibg=none
 highlight EndOfBuffer guifg=#212529
 " plugins color
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
-highlight BufTabLineCurrent guifg=White guibg=#3b4252
+highlight BufTabLineCurrent guifg=#ebcb8b guibg=#3b4252 gui=bold
 highlight BufTabLineFill guibg=none guifg=none ctermfg=none ctermbg=none gui=none
 highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=none
 highlight GitGutterAdd    guibg=none guifg=#74b816 gui=bold
