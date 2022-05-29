@@ -42,6 +42,8 @@ if status is-interactive
     # general
     set PATH $PATH "$HOME/.local/bin"
     set PATH $PATH "$HOME/bin"
+    # kubectl autocompletion
+    kubectl completion fish | source
 
     # ===== abbriviations =====
     abbr --add cls "clear"
