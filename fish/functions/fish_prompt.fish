@@ -1,5 +1,5 @@
 function fish_prompt
-    set -l pwd_color 'ced4da'
+    set -l pwd_color 'ebcb8b'
     set -l err_color 'c92a2a'
     set -l gray_color '868e96'
     set -l dir_background '434c5e'
@@ -12,7 +12,7 @@ function fish_prompt
     set_color -b $dir_background
 
     set_color -o $taiji_color
-    echo -n 'ﭾ '
+    echo -n ' '
     set_color -o $pwd_color
 
     echo -n (prompt_pwd)
