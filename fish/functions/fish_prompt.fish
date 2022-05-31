@@ -1,5 +1,5 @@
 function fish_prompt
-    set -l pwd_color 'ebcb8b'
+    set -l pwd_color '8fbcbb'
     set -l err_color 'c92a2a'
     set -l gray_color '868e96'
     set -l dir_background '434c5e'
