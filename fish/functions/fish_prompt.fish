@@ -1,11 +1,11 @@
 function fish_prompt
-    set -l pwd_color '868e96'
+    set -l pwd_color 'ced4da'
     set -l err_color 'c92a2a'
     set -l gray_color '868e96'
-    set -l dir_background '000'
+    set -l dir_background '434c5e'
     set -l love_color 'bf616a'
     set -l duck_color 'ffd43b'
-    set -l taiji_color 'fff'
+    set -l taiji_color 'ffd43b'
 
     set -l last_status $status
     set_color -o $pwd_color
