@@ -68,11 +68,17 @@ function! SystypeIcon()
   return get(s:systypes, g:os, '')
 endfunction
 
-set statusline=%2{FileTypeSign()}
+hi User1 guibg=none
+hi User2 guifg=#343a40
+hi User3 guifg=#8fbcbb guibg=#343a40
+
+set statusline=%3*%2{FileTypeSign()}%*
 set statusline+=\ %f
-set statusline+=%{&modifiable?'':'\ '}
-set statusline+=%{&modified?'\ פֿ':''}
+set statusline+=%{&readonly?'\ ':''}
+set statusline+=%{&modified?'\ ':''}
+set statusline+=\ %2*%1*
 set statusline+=%=
-set statusline+=%{SystypeIcon()}
+set statusline+=%2*%*
+set statusline+=%2{FileFormatSign()}
 set statusline+=%6.50l/%-6.50L
 set statusline+=%-4.10P
