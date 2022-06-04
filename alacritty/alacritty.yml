@@ -8,16 +8,16 @@ font:
   ligatures: false
   normal:
     family: 'FiraCode NF'
-    style: Regular
+    style: Medium
   bold:
     family: 'FiraCode NF'
-    style: Medium
+    style: Bold
   italic:
     family: 'FiraCode NF'
-    style: Italic
+    style: Medium Italic
   bold_italic:
     family: 'FiraMono NF'
-    style: Medium Italic
+    style: Bold Italic
   size: 11.0
   offset:
     x: 0

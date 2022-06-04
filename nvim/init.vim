@@ -481,7 +481,7 @@ highlight Folded     guifg=DarkGrey guibg=none
 highlight MatchParen gui=bold,underline
 highlight StatusLine gui=bold guifg=#adb5bd guibg=#343a40
 highlight StatusLineNC gui=none guifg=Gray guibg=#343a40
-highlight LineNr     guifg=#434c5e  guibg=none
+highlight LineNr     guifg=#868e96  guibg=none
 highlight EndOfBuffer guifg=#212529
 " plugins color
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline

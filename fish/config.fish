@@ -2,6 +2,9 @@ if status is-interactive
     # ===== vi mode =====
     fish_vi_key_bindings
 
+    # per dir length
+    set -g fish_prompt_pwd_dir_length 2
+
     # ===== gloabal variables =====
     set -g __fish_git_prompt_showcolorhints true
     set -g __fish_git_prompt_showdirtystate true
