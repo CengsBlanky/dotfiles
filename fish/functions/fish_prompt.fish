@@ -9,7 +9,7 @@ function fish_prompt
     set_color -b $dir_background
 
     set_color $power_color
-    echo -n ' '
+    echo -n ' '
     set_color $pwd_color
 
     echo -n (prompt_pwd)

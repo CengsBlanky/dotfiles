@@ -91,6 +91,7 @@ augroup filetype_specific
   autocmd BufRead,BufNewFile *.asm set filetype=asm
   autocmd BufRead *.log set filetype=text
   autocmd BufWinEnter * if line("$") > 3000 | syntax clear | endif
+  autocmd BufRead,BufNewFile * if expand('%:t') =~ '^sql*' | set filetype=sql | endif
 augroup END
 
 function! TrimEndLinesAndTrailingSpaces()
