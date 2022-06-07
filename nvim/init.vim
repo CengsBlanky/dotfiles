@@ -479,7 +479,7 @@ highlight Comment guifg=DarkGray gui=none
 highlight Visual  guifg=NONE     guibg=#495057
 highlight Search  guifg=NONE     guibg=#495057
 highlight SignColumn gui=bold       guibg=NONE
-highlight Folded     guifg=DarkGrey guibg=none
+highlight Folded     guifg=#4c566a guibg=none
 highlight MatchParen gui=bold,underline
 highlight StatusLine gui=bold guifg=#adb5bd guibg=#343a40
 highlight StatusLineNC gui=none guifg=Gray guibg=#343a40
@@ -488,8 +488,8 @@ highlight EndOfBuffer guifg=#212529
 " plugins color
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
 highlight BufTabLineCurrent guibg=#4c566a gui=bold
-highlight BufTabLineFill guibg=none guifg=none ctermfg=none ctermbg=none gui=none
-highlight BufTabLineHidden guibg=none guifg=none ctermfg=none ctermbg=none gui=none
+highlight BufTabLineFill guibg=none guifg=none gui=none
+highlight BufTabLineHidden guibg=none guifg=none gui=none
 highlight GitGutterAdd    guibg=none guifg=#74b816 gui=bold
 highlight GitGutterChange guibg=none guifg=#fdb924 gui=bold
 highlight GitGutterDelete guibg=none guifg=#c92a2a gui=bold
