@@ -3,13 +3,14 @@ function fish_prompt
     set -l err_color 'c92a2a'
     set -l dir_background '434c5e'
     set -l power_color 'ffd43b'
+    set -l cherry_color 'f9a7b0'
 
     set -l last_status $status
     set_color $pwd_color
     set_color -b $dir_background
 
-    set_color $power_color
-    echo -n ' '
+    set_color $cherry_color
+    echo -n ' '
     set_color $pwd_color
 
     echo -n (prompt_pwd)
