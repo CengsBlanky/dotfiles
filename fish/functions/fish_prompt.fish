@@ -22,6 +22,7 @@ function fish_prompt
 
     set_color -b normal
     set_color $dir_background
-    echo -n ' '
+    # echo -n ' '
+    echo -n ' '
     set_color normal
 end
