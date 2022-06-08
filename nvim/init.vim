@@ -355,6 +355,8 @@ set grepformat=%f:%l:%c:%m
 " keymappings {{{
 inoremap jk <esc>
 nnoremap <M-q> :x<CR>
+inoremap <C-s> <Esc>:w<CR>gi
+nnoremap <C-s> :w<CR>
 " close current buffer
 noremap <silent><M-b> :bd<CR>
 " yank whole buffer
@@ -474,7 +476,7 @@ augroup END
 
 " }}}
 " default colors {{{
-highlight Normal guifg=#d8dee9
+highlight Normal guifg=#d1d0ce
 highlight Comment guifg=DarkGray gui=none
 highlight Visual  guifg=NONE     guibg=#495057
 highlight Search  guifg=NONE     guibg=#495057
