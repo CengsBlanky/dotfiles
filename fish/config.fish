@@ -43,6 +43,8 @@ if status is-interactive
     set PATH $PATH "$HOME/tools/android-studio/bin"
     # spring boot cli
     set PATH $PATH "$HOME/tools/spring-2.6.4/bin"
+    # ruby binaries
+    set PATH $PATH "$HOME/.local/share/gem/ruby/3.0.0/bin"
     # general
     set PATH $PATH "$HOME/.local/bin"
     set PATH $PATH "$HOME/bin"
