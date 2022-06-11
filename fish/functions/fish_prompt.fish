@@ -5,7 +5,7 @@ function fish_prompt
     set -l power_color 'ffd43b'
     set -l plant_color 'bcee68'
     set -l ship_color '339af0'
-    set -l rocket_color 'b197fc'
+    set -l rocket_color 'fcc419'
 
     set -l last_status $status
     set_color $pwd_color
