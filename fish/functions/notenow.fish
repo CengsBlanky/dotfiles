@@ -16,12 +16,14 @@ function notenow
         set lastminute (cat $journalfilename | grep -e '^#\{2\}\ [0-2][0-9]:[0-6][0-9]$' | tail -n 1)
     end
 
-    if test $lastminute = "## $curtime"
-        vim -c "norm Gzzo" $journalfilename
+    if test "$lastminute" = "## $curtime"
+        vim -c "norm Gzzo" \
+            -c "startinsert" $journalfilename
     else
         vim -c "norm G2o" \
             -c "norm GI## $curtime" \
             -c "norm G2o" \
-            -c "norm zz" $journalfilename
+            -c "norm zz" \
+            -c "startinsert" $journalfilename
     end
 end
