@@ -6,13 +6,14 @@ function fish_prompt
     set -l plant_color 'bcee68'
     set -l ship_color '339af0'
     set -l rocket_color 'fcc419'
+    set -l square_color '74c0fc'
 
     set -l last_status $status
     set_color $pwd_color
     set_color -b $dir_background
 
-    set_color $rocket_color
-    echo -n ' '
+    set_color $square_color
+    echo -n 'ﯟ '
     set_color $pwd_color
 
     echo -n (prompt_pwd)
@@ -24,7 +25,6 @@ function fish_prompt
 
     set_color -b normal
     set_color $dir_background
-    # echo -n ' '
-    echo -n ' '
+    echo -n ''
     set_color normal
 end
