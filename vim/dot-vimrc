@@ -129,7 +129,6 @@ set statusline+=\
 " }}}
 " environment {{{
 let vim_config_file="~/.vimrc"
-let plug_manager="~/.vim/plug.vim"
 let plugin_path="~/.vim/plugins/"
 
 " change vim cursor shape
@@ -147,7 +146,6 @@ set fillchars+=vert:│
 
 " }}}
 " plugins {{{
-execute 'source' plug_manager
 call plug#begin(fnameescape(plugin_path))
 Plug 'git@github.com:tpope/vim-surround.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
