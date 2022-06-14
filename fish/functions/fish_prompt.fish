@@ -5,13 +5,14 @@ function fish_prompt
     set -l dir_background '434c5e'
     set -l cherry_color 'fa5252'
     set -l banana_color 'ffd43b'
+    set -l square_color '74c0fc'
 
     set -l last_status $status
     set_color -o $pwd_color
     set_color -b $dir_background
 
-    set_color -o $banana_color
-    echo -n ' '
+    set_color -o $square_color
+    echo -n 'ﯟ '
     set_color -o $pwd_color
 
     echo -n (prompt_pwd)
@@ -23,6 +24,6 @@ function fish_prompt
 
     set_color -b normal
     set_color $dir_background
-    echo -n ' '
+    echo -n ''
     set_color normal
 end
