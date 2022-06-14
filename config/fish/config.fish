@@ -5,17 +5,6 @@ if status is-interactive
     # per dir length
     set -g fish_prompt_pwd_dir_length 0
 
-    # ===== gloabal variables =====
-    set -g __fish_git_prompt_showcolorhints true
-    set -g __fish_git_prompt_showdirtystate true
-    set -g __fish_git_prompt_showuntrackedfiles true
-    # set -g __fish_git_prompt_showupstream auto
-    set -g __fish_git_prompt_char_stateseparator ' '
-    set -g __fish_git_prompt_char_upstream_ahead '⇡'
-    set -g __fish_git_prompt_char_upstream_behind '⇣'
-    set -g __fish_git_prompt_char_upstream_diverged '⇵'
-    set -g __fish_git_prompt_char_upstream_equal ""
-
     # ===== ENV =====
     set -gx LANG "en_US.UTF-8"
     set -gx EDITOR vim
