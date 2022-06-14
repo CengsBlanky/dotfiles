@@ -100,8 +100,6 @@ let g:coc_global_extensions=[
       \ '@yaegassy/coc-volar',
       \ 'coc-flutter',
       \
-      \ 'coc-sh',
-      \
       \ 'coc-snippets',
       \ 'coc-prettier',
       \ ]
