@@ -1,7 +1,7 @@
 " predefined variables {{{
 let vim_config_file="~/.config/nvim/init.vim"
 let plugin_path="~/.vim/plugins/"
-let plug_manager="~/.vim/plug.vim"
+let plug_manager="~/.config/nvim/plug.vim"
 let g:python_host_skip_check=1
 let g:python3_host_skip_check=1
 let g:markdown_folding = 1
