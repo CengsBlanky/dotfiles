@@ -5,8 +5,8 @@ function fish_right_prompt
 
     set -g __fish_git_prompt_color_branch magenta
     set -g __fish_git_prompt_showupstream "informative"
-    set -g __fish_git_prompt_char_upstream_ahead ""
-    set -g __fish_git_prompt_char_upstream_behind ""
+    set -g __fish_git_prompt_char_upstream_ahead ""
+    set -g __fish_git_prompt_char_upstream_behind ""
     set -g __fish_git_prompt_char_upstream_prefix ""
 
     set -g __fish_git_prompt_char_stagedstate "●"
