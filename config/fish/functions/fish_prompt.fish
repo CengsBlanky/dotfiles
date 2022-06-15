@@ -1,61 +1,30 @@
-function fish_prompt --description 'Write out the prompt'
-    set -l last_pipestatus $pipestatus
-    set -lx __fish_last_status $status # Export for __fish_print_pipestatus.
+function fish_prompt
+    set -l pwd_color '8fbcbb'
+    set -l err_color 'c92a2a'
+    set -l dir_background '434c5e'
+    set -l power_color 'ffd43b'
+    set -l plant_color 'bcee68'
+    set -l ship_color '339af0'
+    set -l rocket_color 'fcc419'
+    set -l square_color '74c0fc'
 
-    if not set -q __fish_git_prompt_show_informative_status
-        set -g __fish_git_prompt_show_informative_status 1
-    end
-    if not set -q __fish_git_prompt_hide_untrackedfiles
-        set -g __fish_git_prompt_hide_untrackedfiles 1
-    end
-    if not set -q __fish_git_prompt_color_branch
-        set -g __fish_git_prompt_color_branch magenta --bold
-    end
-    if not set -q __fish_git_prompt_showupstream
-        set -g __fish_git_prompt_showupstream informative
-    end
-    if not set -q __fish_git_prompt_color_dirtystate
-        set -g __fish_git_prompt_color_dirtystate blue
-    end
-    if not set -q __fish_git_prompt_color_stagedstate
-        set -g __fish_git_prompt_color_stagedstate yellow
-    end
-    if not set -q __fish_git_prompt_color_invalidstate
-        set -g __fish_git_prompt_color_invalidstate red
-    end
-    if not set -q __fish_git_prompt_color_untrackedfiles
-        set -g __fish_git_prompt_color_untrackedfiles $fish_color_normal
-    end
-    if not set -q __fish_git_prompt_color_cleanstate
-        set -g __fish_git_prompt_color_cleanstate green --bold
-    end
+    set -l last_status $status
+    set_color $pwd_color
+    set_color -b $dir_background
 
-    set -l color_cwd
-    set -l suffix
-    if functions -q fish_is_root_user; and fish_is_root_user
-        if set -q fish_color_cwd_root
-            set color_cwd $fish_color_cwd_root
-        else
-            set color_cwd $fish_color_cwd
-        end
-        set suffix '#'
-    else
-        set color_cwd $fish_color_cwd
-        set suffix '$'
-    end
+    set_color $square_color
+    echo -n 'ﯟ '
+    set_color $pwd_color
 
-    # PWD
-    set_color $color_cwd
     echo -n (prompt_pwd)
+    
+    if not test $last_status -eq 0
+        set_color -o $err_color
+        printf ' %s' $last_status
+    end
+
+    set_color -b normal
+    set_color $dir_background
+    echo -n ''
     set_color normal
-
-    printf '%s ' (fish_vcs_prompt)
-
-    set -l status_color (set_color $fish_color_status)
-    set -l statusb_color (set_color --bold $fish_color_status)
-    set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
-    echo -n $prompt_status
-    set_color normal
-
-    echo -n "$suffix "
 end
