@@ -202,7 +202,7 @@ bar {
         separator_symbol ⁞
         mode hide
         hidden_state hide
-        modifier Mod1
+        modifier Mod4
 }
 
 exec_always feh --bg-fill $HOME/Pictures/wallpaper/pexels-stephane-hurbe-4198029.jpg
