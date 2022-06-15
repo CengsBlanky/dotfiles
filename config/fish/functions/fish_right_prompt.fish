@@ -1,6 +1,7 @@
 function fish_right_prompt
     set -g __fish_git_prompt_show_informative_status 0
     set -g __fish_git_prompt_hide_untrackedfiles 1
+    set -g __fish_git_prompt_char_stateseparator " "
 
     set -g __fish_git_prompt_color_branch magenta
     set -g __fish_git_prompt_showupstream "informative"
