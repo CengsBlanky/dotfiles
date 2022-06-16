@@ -9,7 +9,7 @@ if status is-interactive
     set -gx LANG "en_US.UTF-8"
     set -gx EDITOR vim
     set -gx LESS "-RiXF"
-    set -gx MANPAGER most
+    # set -gx MANPAGER most
     # bc scale
     set -gx BC_ENV_ARGS "/home/zengshuai/.bc"
     # ripgrep 
