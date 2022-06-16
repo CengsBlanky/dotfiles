@@ -208,21 +208,18 @@ bindsym $mod+r mode "resize"
 # }
 
 set $darkblue #2e3440
-set $grayblue #98AFC7
-set $deepblue #5e81ac
 set $lightwhite #e5e9f0
 set $red #bf616a
 set $pureblack #0c090a
-set $darkblack #212529
 set $darkgray #495057
-set $deepgray #495057
-set $lightgray #868e96
-set $yellow #ebcb8b
+set $bgbasic #25383C
+set $fgbasic #8fbcbb
+set $outline #495057
 
 # class                border background text indicator child_border
-client.focused $pureblack $pureblack $lightwhite $pureblack
-client.unfocused $darkblack $darkblack $darkgray $darkblack
-client.focused_inactive $darkgray $pureblack $lightwhite $pureblack
+client.focused $bgbasic $bgbasic $fgbasic $bgbasic
+client.unfocused $bgbasic $bgbasic $darkgray $bgbasic
+client.focused_inactive $bgbasic $bgbasic $darkgray $bgbasic
 client.urgent $red $red $lightwhite $red
 client.placeholder $darkblue $pureblack $lightwhite $darkblue
 
