@@ -83,7 +83,7 @@ let g:username='zengshuai'
 let g:email='zengs1994@gmail.com'
 " }}}
 " neoclide/coc.nvim {{{
-let g:coc_config_home="~/.config/nvim/"
+let g:coc_config_home="~/.config/nvim"
 " Global extension names to install when they aren't installed.
 let g:coc_global_extensions=[
       \ 'coc-clangd',
