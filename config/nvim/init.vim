@@ -1,6 +1,6 @@
 " predefined variables {{{
 let vim_config_file="~/.config/nvim/init.vim"
-let plugin_path="~/.vim/plugins/"
+let plugin_path="~/.config/nvim/plugins/"
 let plug_manager="~/.config/nvim/plug.vim"
 let g:python_host_skip_check=1
 let g:python3_host_skip_check=1
@@ -83,7 +83,7 @@ let g:username='zengshuai'
 let g:email='zengs1994@gmail.com'
 " }}}
 " neoclide/coc.nvim {{{
-let g:coc_config_home="~/.vim/"
+let g:coc_config_home="~/.config/nvim/"
 " Global extension names to install when they aren't installed.
 let g:coc_global_extensions=[
       \ 'coc-clangd',
