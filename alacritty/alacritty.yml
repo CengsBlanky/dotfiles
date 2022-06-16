@@ -1,5 +1,5 @@
 window:
-  opacity: 0.97
+  opacity: 0.90
   decorations: none
   startup_mode: Windowed
   dynamic_title: true
