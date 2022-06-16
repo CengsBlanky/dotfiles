@@ -210,4 +210,4 @@ exec_always feh --bg-fill $HOME/Pictures/wallpaper/pexels-stephane-hurbe-4198029
 # use polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # opacity and animation
-exec_always compton
+exec_always compton --no-fading-openclose
