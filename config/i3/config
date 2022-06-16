@@ -207,14 +207,14 @@ bindsym $mod+r mode "resize"
 #         modifier Mod4
 # }
 
+set $bgbasic #282A2E
+set $fgbasic #C5C8C6
+set $outline #495057
 set $darkblue #2e3440
 set $lightwhite #e5e9f0
 set $red #bf616a
 set $pureblack #0c090a
 set $darkgray #495057
-set $bgbasic #25383C
-set $fgbasic #8fbcbb
-set $outline #495057
 
 # class                border background text indicator child_border
 client.focused $bgbasic $bgbasic $fgbasic $bgbasic
