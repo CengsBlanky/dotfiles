@@ -145,4 +145,6 @@ configuration {
       sorting-method:    "name";
   }
 }
-@theme "nord.rasi"
+//@theme "nord.rasi"
+//@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+@theme "/usr/share/rofi/themes/dmenu.rasi"
