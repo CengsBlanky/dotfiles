@@ -15,8 +15,9 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:Droid Sans 11
 
-default_border none
-hide_edge_borders smart
+hide_edge_borders both
+default_border pixel 1
+default_floating_border pixel 1
 
 focus_follows_mouse yes
 workspace_layout tabbed
@@ -205,6 +206,25 @@ bindsym $mod+r mode "resize"
 #         hidden_state hide
 #         modifier Mod4
 # }
+
+set $darkblue #2e3440
+set $grayblue #98AFC7
+set $deepblue #5e81ac
+set $lightwhite #e5e9f0
+set $red #bf616a
+set $pureblack #0c090a
+set $darkblack #212529
+set $darkgray #495057
+set $deepgray #495057
+set $lightgray #868e96
+set $yellow #ebcb8b
+
+# class                border background text indicator child_border
+client.focused $pureblack $pureblack $lightwhite $pureblack
+client.unfocused $darkblack $darkblack $darkgray $darkblack
+client.focused_inactive $darkgray $pureblack $lightwhite $pureblack
+client.urgent $red $red $lightwhite $red
+client.placeholder $darkblue $pureblack $lightwhite $darkblue
 
 exec_always feh --bg-fill $HOME/Pictures/wallpaper/pexels-stephane-hurbe-4198029.jpg
 # use polybar
