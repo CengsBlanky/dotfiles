@@ -14,7 +14,7 @@ if status is-interactive
     set -gx BC_ENV_ARGS "/home/zengshuai/.bc"
     # ripgrep 
     if command -q rg
-        set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
+        set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.config/nvim/ignorefile"
     end
     # current location
     set -gx MY_CUR_LOCATION '郑场镇'
