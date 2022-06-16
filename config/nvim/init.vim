@@ -78,7 +78,7 @@ nmap ga <Plug>(EasyAlign)
 " }}}
 " aperezdc/vim-template {{{
 let g:templates_no_autocmd=1
-let g:templates_directory=["~/.vim/templates/"]
+let g:templates_directory=["~/.config/nvim/templates/"]
 let g:username='zengshuai'
 let g:email='zengs1994@gmail.com'
 " }}}
