@@ -476,7 +476,7 @@ highlight Search guibg=#495057 guifg=none
 highlight SignColumn gui=bold guibg=none
 highlight Folded guifg=DarkGrey guibg=none
 highlight LineNr guifg=#868e96
-highlight StatusLine guibg=#343a40
+highlight StatusLine gui=bold guibg=#343a40
 highlight StatusLineNC guibg=#343a40
 highlight MatchParen gui=bold,underline
 " self defined plugins colorscheme
