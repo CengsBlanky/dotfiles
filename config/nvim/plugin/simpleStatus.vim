@@ -66,7 +66,7 @@ function! FileformatIcon()
 endfunction
 
 function! FiletypeIcon()
-  return get(s:filetypes, &filetype, '')
+  return get(s:filetypes, &filetype, '')
 endfunction
 
 function! SystypeIcon()
@@ -75,7 +75,7 @@ endfunction
 
 hi User1 guibg=none
 hi User2 guifg=#343a40
-hi User3 guifg=#8fbcbb guibg=#343a40
+hi User3 guifg=#ffffff guibg=#343a40
 
 set statusline=%3*%2{FiletypeIcon()}%*
 set statusline+=\ %f

@@ -1,7 +1,6 @@
 {
     "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "javascriptreact", "typescriptreact", "html", "css", "vue"],
     "prettier.disableLanguages": [],
-    "prettier.disableSuccessMessage": true,
     "prettier.statusItemText": "",
     "prettier.trailingComma": "es5",
     "prettier.singleQuote": true,
@@ -9,6 +8,5 @@
     "java.format.settings.profile": "GoogleStyle",
     "typescript.format.enabled": false,
     "tsserver.formatOnType": false,
-    "javascript.format.enabled": false,
-    "clangd.path": "~/.vim/coc_data/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
+    "javascript.format.enabled": false
 }
