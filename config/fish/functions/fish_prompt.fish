@@ -1,6 +1,6 @@
 function fish_prompt
     set -l last_status $status
-    set -l pwd_color 'ffd8a8'
+    set -l pwd_color 'ded6d8'
     set -l prompt_color 'ffb90f'
     set -l err_color 'c92a2a'
     set_color $pwd_color
