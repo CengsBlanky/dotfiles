@@ -5,7 +5,6 @@
     "prettier.trailingComma": "es5",
     "prettier.singleQuote": true,
     "prettier.bracketSpacing": true,
-    "java.format.settings.profile": "GoogleStyle",
     "typescript.format.enabled": false,
     "tsserver.formatOnType": false,
     "javascript.format.enabled": false
