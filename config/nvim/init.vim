@@ -470,24 +470,23 @@ augroup END
 
 " }}}
 " default colors {{{
-highlight Normal guifg=#d1d0ce
-highlight Comment guifg=DarkGray gui=none
-highlight Visual  guifg=NONE     guibg=#495057
-highlight Search  guifg=NONE     guibg=#495057
-highlight SignColumn gui=bold       guibg=NONE
-highlight Folded     guifg=#4c566a guibg=none
-highlight MatchParen gui=bold,underline
-highlight StatusLine gui=bold guifg=#adb5bd guibg=#343a40
-highlight StatusLineNC gui=none guifg=Gray guibg=#343a40
-highlight LineNr     guifg=#868e96  guibg=none
-highlight EndOfBuffer guifg=#212529
-" plugins color
+highlight Normal             guifg=#d1d0ce
+highlight Comment            guifg=DarkGray   gui=none
+highlight Visual             guifg=NONE       guibg=#495057
+highlight Search             guifg=NONE       guibg=#495057
+highlight SignColumn         guibg=NONE       gui=bold
+highlight Folded             guifg=#4c566a    guibg=none
+highlight MatchParen         gui=bold,underline
+highlight StatusLine         guifg=#adb5bd    guibg=#343a40 gui=bold
+highlight StatusLineNC       guifg=Gray       guibg=#343a40 gui=none
+highlight LineNr             guifg=#868e96    guibg=none
+highlight EndOfBuffer        guifg=#212529
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
-highlight BufTabLineCurrent guibg=#4c566a gui=bold
-highlight BufTabLineFill guibg=none guifg=none gui=none
-highlight BufTabLineHidden guibg=none guifg=none gui=none
-highlight GitGutterAdd    guibg=none guifg=#74b816 gui=bold
-highlight GitGutterChange guibg=none guifg=#fdb924 gui=bold
-highlight GitGutterDelete guibg=none guifg=#c92a2a gui=bold
+highlight BufTabLineCurrent  guibg=#4c566a    gui=bold
+highlight BufTabLineFill     guifg=none       guibg=none    gui=none
+highlight BufTabLineHidden   guifg=none       guibg=none    gui=none
+highlight GitGutterAdd       guifg=#74b816    guibg=none    gui=bold
+highlight GitGutterChange    guifg=#fdb924    guibg=none    gui=bold
+highlight GitGutterDelete    guifg=#c92a2a    guibg=none    gui=bold
 " }}}
 " }}}
