@@ -1,0 +1,1 @@
+/home/zengshuai/dotfiles/config/nvim/plug.vim
