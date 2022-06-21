@@ -1,3 +1,4 @@
+highlight Normal             guifg=#d1d0ce
 setlocal wrap linebreak sidescroll=5 listchars+=precedes:<,extends:>
 nnoremap j gj
 nnoremap k gk
