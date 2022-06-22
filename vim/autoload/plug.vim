@@ -1,1 +1,1 @@
-/home/zengshuai/dotfiles/config/nvim/plug.vim
+/home/zeng/.dotfiles/config/nvim/plug.vim

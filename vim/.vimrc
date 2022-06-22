@@ -16,7 +16,6 @@ set softtabstop=4
 set showcmd
 set laststatus=2
 set wildmenu
-set wildoptions=pum,tagfile
 set showmatch
 set autoread
 set autowrite
