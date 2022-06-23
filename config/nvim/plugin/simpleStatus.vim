@@ -83,7 +83,8 @@ set statusline+=%{&readonly?'\ ':''}
 set statusline+=%{&modified?'\ פֿ':''}
 set statusline+=\ %2*%1*
 set statusline+=%=
-set statusline+=%2*%*
+set statusline+=%2*
+set statusline+=*%*
 set statusline+=%2{FileformatIcon()}
 set statusline+=%6.50l/%-6.50L
 set statusline+=%-4.10P
