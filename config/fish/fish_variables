@@ -7,8 +7,8 @@ SETUVAR --export LANG:en_US\x2eUTF\x2d8
 SETUVAR --export LESS:\x2dRiX
 SETUVAR --export NVM_DIR:/home/zengshuai/\x2envm
 SETUVAR --export PUB_HOSTED_URL:https\x3a//pub\x2eflutter\x2dio\x2ecn
-SETUVAR __fish_initialized:3400
-SETUVAR _fish_abbr_cdnote:cd\x20/home/zengshuai/notes/journal
+SETUVAR __fish_initialized:3100
+SETUVAR _fish_abbr_cdnote:cd\x20/home/zeng/notes/journal
 SETUVAR _fish_abbr_cls:clear
 SETUVAR _fish_abbr_gad:git\x20add
 SETUVAR _fish_abbr_gcm:git\x20commit\x20\x2dam
@@ -47,6 +47,7 @@ SETUVAR fish_cursor_default:block
 SETUVAR fish_cursor_insert:line
 SETUVAR fish_cursor_replace_one:underscore
 SETUVAR fish_cursor_visual:block
+SETUVAR fish_greeting:Welcome\x20to\x20fish\x2c\x20the\x20friendly\x20interactive\x20shell
 SETUVAR fish_key_bindings:fish_vi_key_bindings
 SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D

@@ -23,10 +23,6 @@ colors:
   primary:
     background: '#212529'
     foreground: '#d8dee9'
-cursor:
-  style:
-    shape: Beam
-    blinkin: Off
 bell:
   duration: 0
 mouse:
