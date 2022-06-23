@@ -1,0 +1,10 @@
+alias l="ls -l"
+alias la="ls -lAh"
+alias cls="clear"
+alias ..="cd .."
+# git aliaes
+alias gst="git status"
+alias gdf="git diff"
+alias gcm="git commit -am"
+alias gps="git push"
+alias gpl="git pull"
