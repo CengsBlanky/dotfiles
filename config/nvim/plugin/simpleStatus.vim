@@ -19,7 +19,7 @@ let s:filetypes = {
       \ 'typescriptreact': '',
       \
       \ 'json':            '',
-      \ 'xml':             '',
+      \ 'xml':             '鸞',
       \ 'yaml':            '',
       \ 'toml':            '',
       \

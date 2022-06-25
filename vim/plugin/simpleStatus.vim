@@ -18,8 +18,8 @@ let s:filetypes = {
       \ 'tsx':             '',
       \ 'typescriptreact': '',
       \
-      \ 'json':            '',
-      \ 'xml':             '',
+      \ 'json':            ' ',
+      \ 'xml':             '鸞',
       \ 'yaml':            '',
       \ 'toml':            '',
       \
