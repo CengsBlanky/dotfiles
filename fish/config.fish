@@ -5,9 +5,9 @@ if status is-interactive
     # Set the normal and visual mode cursors to a block
     set -g fish_cursor_default block
     # Set the insert mode cursor to a line
-    set -g fish_cursor_insert line
+    set -g fish_cursor_insert block
     # Set the replace mode cursor to an underscore
-    set -g fish_cursor_replace_one underscore
+    # set -g fish_cursor_replace_one underscore
     # The following variable can be used to configure cursor shape in
     # visual mode, but due to fish_cursor_default, is redundant here
     set -g fish_cursor_visual block
