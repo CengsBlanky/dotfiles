@@ -77,7 +77,7 @@ hi User1 guibg=none
 hi User2 guifg=#343a40
 hi User3 guifg=#5e81ac guibg=#343a40
 
-set statusline=%3*%2{FiletypeIcon()}%*
+set statusline=%3*%1{FiletypeIcon()}%*
 set statusline+=\ %f
 set statusline+=%{&readonly?'\ ':''}
 set statusline+=%{&modified?'\ פֿ':''}

@@ -1,4 +1,4 @@
-registry=http://registry.npm.taobao.org/
+registry=https://registry.npmmirror.com
 init-author-email=zengs1994@gmail.com
 init-author-name=zengshuai
 init-license=MIT
