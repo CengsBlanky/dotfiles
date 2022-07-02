@@ -118,7 +118,7 @@ fi
 # java home
 export JAVA_HOME="/opt/jdk"
 # golang
-export GOPROXY=https://goproxy.cn,direct
+export GOPROXY="https://goproxy.cn,direct"
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

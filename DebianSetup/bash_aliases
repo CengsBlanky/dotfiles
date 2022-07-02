@@ -9,3 +9,6 @@ alias gdf="git diff"
 alias gcm="git commit -am"
 alias gps="git push"
 alias gpl="git pull"
+# vim and neovim
+alias vi="/usr/bin/vim"
+alias vim="/usr/local/bin/nvim"
