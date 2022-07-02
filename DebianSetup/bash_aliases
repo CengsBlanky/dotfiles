@@ -4,6 +4,7 @@ alias cls="clear"
 alias ..="cd .."
 # git aliaes
 alias gst="git status"
+alias gad="git add"
 alias gdf="git diff"
 alias gcm="git commit -am"
 alias gps="git push"
