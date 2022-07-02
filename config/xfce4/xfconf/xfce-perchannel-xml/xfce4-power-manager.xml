@@ -9,8 +9,10 @@
     <property name="blank-on-ac" type="int" value="0"/>
     <property name="dpms-on-ac-sleep" type="uint" value="0"/>
     <property name="dpms-on-ac-off" type="uint" value="0"/>
-    <property name="lid-action-on-ac" type="uint" value="0"/>
+    <property name="lid-action-on-ac" type="uint" value="3"/>
     <property name="logind-handle-lid-switch" type="bool" value="false"/>
-    <property name="lid-action-on-battery" type="uint" value="0"/>
+    <property name="lid-action-on-battery" type="uint" value="3"/>
+    <property name="inactivity-sleep-mode-on-battery" type="uint" value="1"/>
+    <property name="brightness-level-on-ac" type="uint" value="40"/>
   </property>
 </channel>

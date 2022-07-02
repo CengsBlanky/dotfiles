@@ -17,7 +17,7 @@ if status is-interactive
         set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.config/nvim/ignorefile"
     end
     # current location
-    set -gx MY_CUR_LOCATION '郑场镇'
+    set -gx MY_CUR_LOCATION '雨花台'
     # java
     set -gx JAVA_HOME "/opt/jdk"
     set PATH $PATH $JAVA_HOME 
