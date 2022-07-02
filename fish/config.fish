@@ -19,6 +19,7 @@ if status is-interactive
     set -gx LANG "en_US.UTF-8"
     set -gx EDITOR vim
     set -gx LESS "-FRiX"
+    set -gx CUR_LOCATION '雨花台'
     # ripgrep 
     if command -q rg
         set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
