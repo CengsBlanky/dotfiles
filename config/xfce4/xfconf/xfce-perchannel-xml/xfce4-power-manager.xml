@@ -13,7 +13,7 @@
     <property name="logind-handle-lid-switch" type="bool" value="false"/>
     <property name="lid-action-on-battery" type="uint" value="3"/>
     <property name="inactivity-sleep-mode-on-battery" type="uint" value="1"/>
-    <property name="brightness-level-on-ac" type="uint" value="40"/>
+    <property name="brightness-level-on-ac" type="uint" value="1"/>
     <property name="inactivity-sleep-mode-on-ac" type="uint" value="1"/>
     <property name="brightness-on-ac" type="uint" value="120"/>
   </property>

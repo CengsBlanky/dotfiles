@@ -33,6 +33,7 @@ let s:filetypes = {
       \ 'crontab':         '',
       \ 'fstab':           '',
       \ 'conf':            '',
+      \ 'sshconfig':       '',
       \ 'log':             '',
       \ 'text':            '',
       \
