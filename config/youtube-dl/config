@@ -1,5 +1,8 @@
 # always extract audio
 -x
+# retry times
+-R 999
+--fragment-retries 999
 # Download best mp4 format available or any other best if no mp4 available
 -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'
 # use the proxy
