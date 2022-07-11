@@ -1,0 +1,8 @@
+# always extract audio
+-x
+# Download best mp4 format available or any other best if no mp4 available
+-f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'
+# use the proxy
+--proxy 192.168.1.88:7890
+# save location
+-o /media/zeng/30C653FCC653C0B0/download/youtube/%(title)s.%(ext)s
