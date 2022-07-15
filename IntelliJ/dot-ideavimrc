@@ -22,12 +22,15 @@ set scrolloff=5
 " smart join for <C-J>
 set ideajoin
 set ideamarks
-" enable vim-surround
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+" enable sneak
+set sneak
+" enable vim-surround after sneak to avoid conflict
 set surround
 " enable commentary
 set commentary
-" enable sneak
-set sneak
 set clipboard+=ideaput
 set ideastrictmode
 
@@ -46,6 +49,8 @@ nnoremap <Enter> :w<CR>
 nnoremap <TAB> :bn<CR>
 nnoremap [ :bp<CR>
 nnoremap ] :bn<CR>
+nnoremap <A-q> :bd<CR>
+nnoremap gy :%y<CR>
 
 " -- Map IDE actions to IdeaVim --
 " close current tab or other tabs
@@ -76,6 +81,6 @@ nnoremap <C-m> :action Maven.ExecuteGoal<CR>
 
 " -- set keystrock handler --
 " use <C-x> and <C-n> in vim insert mode, otherwise handle by idea
-sethandler <C-x> n-v:ide i:vim
+sethandler <C-x> n-v:vim i:ide
 sethandler <C-n> n-v:ide i:vim
-" Find more examples here: https://jb.gg/share-ideavimrc
+" Find more examples here: https://jb.gg/share-ideavimr
