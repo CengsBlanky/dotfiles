@@ -27,7 +27,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 " enable sneak
 set sneak
-" enable vim-surround after sneak to avoid conflict
+" enable vim-surround
 set surround
 " enable commentary
 set commentary
@@ -46,9 +46,19 @@ nnoremap <Space> <C-f>
 " trigger write command so that idea truly write file to disk
 nnoremap <Enter> :w<CR>
 " switch between buffers
-nnoremap <TAB> :bn<CR>
-nnoremap [ :bp<CR>
-nnoremap ] :bn<CR>
+nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :bp<CR>
+nnoremap <leader>1 :b1<CR>
+nnoremap <leader>2 :b2<CR>
+nnoremap <leader>3 :b3<CR>
+nnoremap <leader>4 :b4<CR>
+nnoremap <leader>5 :b5<CR>
+nnoremap <leader>6 :b6<CR>
+nnoremap <leader>7 :b7<CR>
+nnoremap <leader>8 :b8<CR>
+nnoremap <leader>9 :b9<CR>
+nnoremap <leader>0 :b10<CR>
+
 nnoremap <A-q> :bd<CR>
 nnoremap gy :%y<CR>
 
@@ -72,7 +82,7 @@ nnoremap gp :action GotoSuperMethod<CR>
 nnoremap gt :action GotoTest<CR>
 nnoremap gb :action Back<CR>
 nnoremap gf :action Forward<CR>
-nnoremap gl :action ToggleLineBreakpoint<CR>
+nnoremap <leader>l :action ToggleLineBreakpoint<CR>
 nnoremap <leader>g :action Generate<CR>
 nnoremap <leader>f :action ReformatCode<CR>
 nnoremap <leader>n :action RenameElement<CR>
@@ -81,6 +91,9 @@ nnoremap <C-m> :action Maven.ExecuteGoal<CR>
 
 " -- set keystrock handler --
 " use <C-x> and <C-n> in vim insert mode, otherwise handle by idea
+sethandler <C-a> n-v:vim i:ide
 sethandler <C-x> n-v:vim i:ide
-sethandler <C-n> n-v:ide i:vim
+sethandler <C-n> n-v:vim i:ide
+sethandler <C-p> n-v:vim i:ide
+sethandler <C-f> i-n:ide v:vim
 " Find more examples here: https://jb.gg/share-ideavimr
