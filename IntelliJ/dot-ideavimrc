@@ -1,5 +1,4 @@
-"" Source your .vimrc
-inoremap jk <esc>
+" -- default set --
 " TextEdit might fail if hidden is not set.
 set number
 set relativenumber
@@ -7,6 +6,7 @@ set incsearch
 set smartcase
 set autoindent
 set smartindent
+set smartcase
 set showcmd
 set showmatch
 " Some servers have issues with backup files, see #649.
@@ -14,31 +14,86 @@ set clipboard=unnamed
 " display
 set hlsearch
 set mousehide
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
 
+" -- IDEA set --
+" smart join for <C-J>
+set ideajoin
+set ideamarks
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+" enable sneak
+set sneak
+" enable vim-surround
+set surround
+" enable commentary
+set commentary
+set clipboard+=ideaput
+set ideastrictmode
+
+" -- default keymap --
+inoremap jk <esc>
 " quick upper/lower case
 nnoremap <leader>] gUiw
 nnoremap <leader>[ guiw
 " use backspace to scroll up
 nnoremap <BS> <C-b>
-" enable vim-surround
-set surround
-" Show a few lines of context around the cursor. Note that this makes the
-" text scroll if you mouse-click near the start or end of the window.
-set scrolloff=5
-" Don't use Ex mode, use Q for formatting.
-map Q gq
+" use space to scroll down
+nnoremap <Space> <C-f>
+" trigger write command so that idea truly write file to disk
+nnoremap <Enter> :w<CR>
+" switch between buffers
+nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :bp<CR>
+nnoremap <leader>1 :b1<CR>
+nnoremap <leader>2 :b2<CR>
+nnoremap <leader>3 :b3<CR>
+nnoremap <leader>4 :b4<CR>
+nnoremap <leader>5 :b5<CR>
+nnoremap <leader>6 :b6<CR>
+nnoremap <leader>7 :b7<CR>
+nnoremap <leader>8 :b8<CR>
+nnoremap <leader>9 :b9<CR>
+nnoremap <leader>0 :b10<CR>
 
-"" -- Map IDE actions to IdeaVim --
-" https://jb.gg/abva4t
-" use <leader>f to format code
-map <leader>f <Action>(ReformatCode)
+nnoremap <A-q> :bd<CR>
+nnoremap gy :%y<CR>
 
-" Map <leader>t to start debug
-map <leader>t <Action>(Debug)
+" -- Map IDE actions to IdeaVim --
+" close current tab or other tabs
+nnoremap <leader>q :action CloseEditor<CR>
+nnoremap <leader>o :action CloseAllEditorsButActive<CR>
+nnoremap <leader>r :action Run<CR>
+" nnoremap <leader>t :action Test<CR>
+nnoremap <leader>d :action Debug<CR>
+nnoremap <leader>l :action ToggleLineBreakpoint<CR>
+nnoremap <leader>c :action CompileProject<CR>
+" set UI actions TODO
 
-" Map \b to toggle the breakpoint on the current line
-" map \b <Action>(ToggleLineBreakpoint)
+" code actions
+nnoremap g] :action GotoNextError<CR>
+nnoremap g[ :action GotoPreviousError<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gp :action GotoSuperMethod<CR>
+nnoremap gt :action GotoTest<CR>
+nnoremap gb :action Back<CR>
+nnoremap gf :action Forward<CR>
+nnoremap <leader>l :action ToggleLineBreakpoint<CR>
+nnoremap <leader>g :action Generate<CR>
+nnoremap <leader>f :action ReformatCode<CR>
+nnoremap <leader>n :action RenameElement<CR>
+" maven actions
+nnoremap <C-m> :action Maven.ExecuteGoal<CR>
 
-
-" Find more examples here: https://jb.gg/share-ideavimrc
-set clipboard+=ideaput
+" -- set keystrock handler --
+" use <C-x> and <C-n> in vim insert mode, otherwise handle by idea
+sethandler <C-a> n-v:vim i:ide
+sethandler <C-x> n-v:vim i:ide
+sethandler <C-n> n-v:vim i:ide
+sethandler <C-p> n-v:vim i:ide
+sethandler <C-f> i-n:ide v:vim
+" Find more examples here: https://jb.gg/share-ideavimr
