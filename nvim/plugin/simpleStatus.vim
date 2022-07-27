@@ -80,5 +80,5 @@ set statusline+=\ %2*%1*
 set statusline+=%=
 set statusline+=%2*%*
 set statusline+=%2{FileFormatSign()}
-set statusline+=%6.50l/%-6.50L
+set statusline+=%7.50l/%-7.50L
 set statusline+=%-4.10P

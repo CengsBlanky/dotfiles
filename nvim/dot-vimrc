@@ -467,7 +467,6 @@ command! Curtime :put = strftime('%Y-%m-%d %H:%M:%S')
 
 " }}}
 " default colors {{{
-highlight Normal guifg=#ced4da
 highlight Normal guifg=LightGray
 highlight Comment guifg=DarkGray gui=none
 highlight Visual guibg=#495057 guifg=none
