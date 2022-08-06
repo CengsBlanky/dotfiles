@@ -10,7 +10,7 @@ set guioptions-=m " menu bar
 set guioptions-=T " toolbar
 set guioptions-=r " scrollbar right
 set guioptions-=L " scrollbar left
-set guifont=Consolas:h13:qANTIALIASED:W500
+set guifont=Fira_Code:h11
 set hidden
 set number
 set relativenumber
@@ -66,10 +66,13 @@ nnoremap <silent><leader>s :set hlsearch!<CR>
 nnoremap gy :%y<CR>
 
 inoremap jk <ESC>
-inoremap {<CR> {}<Esc>i<Enter><Esc>O
+inoremap {<CR> {<CR>}<Esc>O
 inoremap (<CR> (<CR>)<Esc>O
 inoremap {<Space> {<Space><Space>}<Esc>hi
 inoremap [<Space> [<Space><Space>]<Esc>hi
+
+" format json file
+nnoremap <leader>f :%!python3 -m json.tool<CR>
 " }}}
 " command {{{
 command! Editrc execute 'edit $MYVIMRC'
@@ -99,6 +102,7 @@ set statusline+=\ %f
 set statusline+=\ %r
 set statusline+=\ %m
 set statusline+=\ [%{&ff}]
+set statusline+=\ [%{&fileencoding}]
 set statusline+=%=
 set statusline+=%y
 set statusline+=%6.50l/%-6.50L
@@ -116,7 +120,7 @@ hi Search       guifg=NONE      guibg=LightGray
 hi Visual       guifg=NONE      guibg=LightGray
 hi String       guifg=DarkBlue
 hi SignColumn   guibg=NONE
-hi StatusLine   guifg=White     guibg=DarkGreen ctermfg=Gray gui=bold
+hi StatusLine   guifg=White     guibg=DarkGreen ctermfg=Gray gui=NONE
 hi StatusLineNC guifg=White     guibg=Gray
 hi NonText      guifg=White
 hi Pmenu        guifg=DarkGray  guibg=LightGray
@@ -125,7 +129,8 @@ hi PmenuSbar    guifg=Gray      guibg=LightGray
 hi PmenuThumb   guifg=Gray      guibg=Gray
 hi VertSplit    guifg=White     guibg=DarkGray
 hi MatchParen   guifg=NONE      guibg=NONE      gui=bold,underline
-hi Folded       guifg=Blue      guibg=NONE      gui=bold ctermbg=NONE
+hi Folded       guifg=Gray      guibg=NONE      gui=NONE ctermbg=NONE
+hi link markdownError NONE
 " }}}
 " plugins {{{
 let plugin_path="~/.vim/plugins"
