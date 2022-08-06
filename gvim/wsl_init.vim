@@ -120,7 +120,7 @@ call plug#end()
 " NERDTreeToggle {{{
 let NERDTreeMinimalUI=1
 let g:NERDTreeQuitOnOpen=3
-let g:NERDTreeStatusline=' 飭?
+let g:NERDTreeStatusline=' '
 let NERDTreeIgnore=[
       \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]', '\.bin$[[file]]', '\.svg$[[file]]', '\.png$[[file]]', '\.jpg$[[file]]',
       \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
@@ -179,62 +179,63 @@ hi CursorLine   ctermfg=NONE    ctermbg=DarkGray cterm=NONE
 hi BufTabLineCurrent guifg=Black    guibg=Grey      gui=NONE ctermfg=Black ctermbg=DarkGray  cterm=NONE
 hi BufTabLineHidden  guifg=DarkGrey guibg=LightGrey gui=NONE ctermfg=Gray ctermbg=NONE cterm=NONE
 hi BufTabLineFill    guifg=White    guibg=NONE      gui=NONE ctermfg=NONE ctermbg=NONE  cterm=NONE
+hi link markdownError NONE
 " }}}
 "{{{ simple status line
 let s:filetypes = {
-      \ 'asm':             '顦?,
-      \ 'c':               '顦?,
-      \ 'cpp':             '顦?,
-      \ 'rust':            '顬?,
-      \ 'java':            '顗?,
-      \ 'go':              '顦?,
-      \ 'lua':             '顦?,
-      \ 'python':          '顪?,
-      \ 'dart':            '顬?,
-      \ 'sql':             '飸?,
+      \ 'asm':             '',
+      \ 'c':               '',
+      \ 'cpp':             '',
+      \ 'rust':            '',
+      \ 'java':            '',
+      \ 'go':              '',
+      \ 'lua':             '',
+      \ 'python':          '',
+      \ 'dart':            '',
+      \ 'sql':             '',
       \
-      \ 'javascript':      '顫?,
-      \ 'typescript':      '顦?,
-      \ 'html':            '顪?,
-      \ 'css':             '顦?,
-      \ 'vue':             '锏?,
-      \ 'tsx':             '顬?,
-      \ 'typescriptreact': '顬?,
+      \ 'javascript':      '',
+      \ 'typescript':      '',
+      \ 'html':            '',
+      \ 'css':             '',
+      \ 'vue':             '﵂',
+      \ 'tsx':             '',
+      \ 'typescriptreact': '',
       \
-      \ 'json':            '顦?,
-      \ 'xml':             '铯?,
-      \ 'yaml':            '顦?,
-      \ 'toml':            '顦?,
+      \ 'json':            '',
+      \ 'xml':             '鸞',
+      \ 'yaml':            '',
+      \ 'toml':            '',
       \
-      \ 'markdown':        '顦?,
-      \ 'dockerfile':      '飳?,
+      \ 'markdown':        '',
+      \ 'dockerfile':      '',
       \
-      \ 'sh':              '顬?,
-      \ 'awk':             '顬?,
-      \ 'vim':             '顭?,
-      \ 'fish':            '餃?,
-      \ 'crontab':         '飾?,
-      \ 'fstab':           '顦?,
-      \ 'conf':            '顦?,
-      \ 'sshconfig':       '顦?,
-      \ 'log':             '餄?,
-      \ 'text':            '顦?,
+      \ 'sh':              '',
+      \ 'awk':             '',
+      \ 'vim':             '',
+      \ 'fish':            '',
+      \ 'crontab':         '',
+      \ 'fstab':           '',
+      \ 'conf':            '',
+      \ 'sshconfig':       '',
+      \ 'log':             '',
+      \ 'text':            '',
       \
-      \ 'lock':            '飥?,
-      \ 'help':            '飸?,
-      \ '':                '飪?
+      \ 'lock':            '',
+      \ 'help':            '',
+      \ '':                ''
 \ }
 
 let s:fileformats = {
-      \ 'dos':  '顪?,
-      \ 'unix': '顪?,
-      \ 'mac':  '顪?,
+      \ 'dos':  '',
+      \ 'unix': '',
+      \ 'mac':  '',
 \ }
 
 let s:systypes = {
-      \ 'Linux':   '顪?,
-      \ 'Darwin':  '顪?,
-      \ 'Windows': '顪?,
+      \ 'Linux':   '',
+      \ 'Darwin':  '',
+      \ 'Windows': '',
 \ }
 
 " detect OS
@@ -266,12 +267,13 @@ hi User3 ctermfg=Gray ctermbg=White
 
 set statusline=\ %{FiletypeIcon()}%*
 set statusline+=\ %f
-set statusline+=%{&readonly?'\ 飥?:''}
-set statusline+=%{&modified?'\ 锃?:''}
-set statusline+=\ %2*顐?1*
+set statusline+=%{&readonly?'\ ':''}
+set statusline+=%{&modified?'\ פֿ':''}
+set statusline+=\ %2*%1*
 set statusline+=%=
 set statusline+=%2*
-set statusline+=顐?set statusline+=%*
+set statusline+=
+set statusline+=%*
 set statusline+=%2{FileformatIcon()}
 set statusline+=%8.50l/%-8.50L
 set statusline+=%-4.10P
