@@ -7,16 +7,16 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'OverpassMono Nerd Font'
+    family: 'InconsolataLGC Nerd Font'
     style: Regular
   bold:
-    family: 'OverpassMono Nerd Font'
+    family: 'InconsolataLGC Nerd Font'
     style: Bold
   italic:
-    family: 'OverpassMono Nerd Font'
+    family: 'InconsolataLGC Nerd Font'
     style: Italic
   bold_italic:
-    family: 'OverpassMono Nerd Font'
+    family: 'InconsolataLGC Nerd Font'
     style: Bold Italic
   size: 11.0
 colors:
