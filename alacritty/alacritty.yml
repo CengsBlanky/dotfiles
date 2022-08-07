@@ -11,7 +11,7 @@ font:
     style: Regular
   bold:
     family: 'InconsolataLGC Nerd Font'
-    style: Bold
+    style: Medium
   italic:
     family: 'InconsolataLGC Nerd Font'
     style: Italic

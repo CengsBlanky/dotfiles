@@ -30,6 +30,7 @@ let s:filetypes = {
       \ 'awk':             '',
       \ 'vim':             '',
       \ 'fish':            '',
+      \ 'tmux':            '﬑',
       \ 'crontab':         '',
       \ 'fstab':           '',
       \ 'conf':            '',
@@ -39,6 +40,7 @@ let s:filetypes = {
       \
       \ 'lock':            '',
       \ 'help':            '',
+      \ '':                ''
 \ }
 
 let s:fileformats = {
