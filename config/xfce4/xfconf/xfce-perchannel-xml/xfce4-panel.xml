@@ -44,7 +44,7 @@
     <property name="plugin-8" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="firefox.instance1200;firefox.instance1525;firefox.instance1660;firefox.instance17998;firefox.instance2053;firefox.instance5387;firefox.instance58497;firefox.instance8015"/>
+      <property name="mpris-players" type="string" value="firefox.instance1200;firefox.instance1525;firefox.instance1656;firefox.instance1660;firefox.instance17998;firefox.instance2053;firefox.instance5387;firefox.instance58497;firefox.instance8015"/>
     </property>
     <property name="plugin-11" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
@@ -63,6 +63,7 @@
         <value type="string" value="networkmanager applet"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="steam"/>
         <value type="string" value="SimpleScreenRecorder"/>
         <value type="string" value="Fcitx"/>
       </property>

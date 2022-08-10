@@ -22,6 +22,7 @@ let s:filetypes = {
       \ 'xml':             '鸞',
       \ 'yaml':            '',
       \ 'toml':            '',
+      \ 'make':            '',
       \
       \ 'markdown':        '',
       \ 'dockerfile':      '',

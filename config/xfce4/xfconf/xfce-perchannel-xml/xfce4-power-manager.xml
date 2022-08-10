@@ -10,7 +10,11 @@
     <property name="logind-handle-lid-switch" type="bool" value="false"/>
     <property name="brightness-level-on-ac" type="uint" value="20"/>
     <property name="lid-action-on-battery" type="uint" value="0"/>
-    <property name="dpms-on-ac-sleep" type="uint" value="30"/>
-    <property name="dpms-on-ac-off" type="uint" value="31"/>
+    <property name="dpms-on-ac-sleep" type="uint" value="0"/>
+    <property name="dpms-on-ac-off" type="uint" value="0"/>
+    <property name="inactivity-sleep-mode-on-ac" type="uint" value="2"/>
+    <property name="blank-on-ac" type="int" value="0"/>
+    <property name="brightness-on-ac" type="uint" value="120"/>
+    <property name="lock-screen-suspend-hibernate" type="bool" value="false"/>
   </property>
 </channel>

@@ -7,5 +7,6 @@
     "prettier.bracketSpacing": true,
     "typescript.format.enabled": false,
     "tsserver.formatOnType": false,
-    "javascript.format.enabled": false
+    "javascript.format.enabled": false,
+    "clangd.path": "~/.dotfiles/config/nvim/coc_data/extensions/coc-clangd-data/install/14.0.3/clangd_14.0.3/bin/clangd"
 }

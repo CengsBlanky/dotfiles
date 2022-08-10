@@ -12,3 +12,7 @@ alias gpl="git pull"
 # vim and neovim
 alias vi="/usr/bin/vim"
 alias vim="/usr/local/bin/nvim"
+alias bat="batcat"
+
+# temp
+alias cdwin="cd /media/zeng/30C653FCC653C0B0"
