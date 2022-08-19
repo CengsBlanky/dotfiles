@@ -9,7 +9,6 @@
 ; Configs like `//<hostname>/:_authToken` are auth that is restricted
 ; to the registry host specified.
 
-registry=http://registry.npm.taobao.org/
 init-author-email=zengs1994@gmail.com
 init-author-name=zengshuai
 init-license=MIT
