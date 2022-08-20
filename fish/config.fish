@@ -54,6 +54,8 @@ if status is-interactive
     set PATH $PATH "/usr/local/opt/ruby/bin"
     set -gx GEM_HOME "$HOME/.gem"
     set PATH $PATH "$GEM_HOME/bin"
+    # nvm
+    set -gx NVM_DIR "$HOME/.nvm"
 
     # ===== abbriviations =====
     abbr --add cls "clear"

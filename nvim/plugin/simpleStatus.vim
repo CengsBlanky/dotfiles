@@ -21,6 +21,7 @@ let s:filetypes = {
       \ 'dockerfile':      '',
       \ 'sql':             '',
       \ 
+      \ 'yaml':            '',
       \ 'toml':            '',
       \ 'vim':             '',
       \ 'fish':            '',

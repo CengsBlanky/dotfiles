@@ -11,6 +11,7 @@ alias gui="gitui"
 alias gst="git status"
 alias gdf="git diff"
 alias gps="git push"
+alias gpl="git pull"
 alias gcm="git commit -am"
 alias gad="git add"
 # use exa instead of ls

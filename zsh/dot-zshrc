@@ -1,4 +1,4 @@
-export PS1="%F{cyan}%n@%m %F{yellow}%~ %F{green}$%F{fff} "
+export PS1="%F{cyan}%n@%m:%F{yellow}%~%F{green}$%F{fff} "
 export "LANG=en_US.UTF-8"
 
 # use rg for fzf finder
