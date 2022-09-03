@@ -7,16 +7,16 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'InconsolataLGC Nerd Font'
-    style: Regular
+    family: 'FiraCode NF'
+    style: Normal
   bold:
-    family: 'InconsolataLGC Nerd Font'
+    family: 'FiraCode NF'
     style: Medium
   italic:
-    family: 'InconsolataLGC Nerd Font'
+    family: 'FiraCode NF'
     style: Italic
   bold_italic:
-    family: 'InconsolataLGC Nerd Font'
+    family: 'FiraCode NF'
     style: Bold Italic
   size: 11.0
 colors:
