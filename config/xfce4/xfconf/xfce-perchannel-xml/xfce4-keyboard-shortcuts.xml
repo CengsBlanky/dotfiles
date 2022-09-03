@@ -60,6 +60,7 @@
       <property name="&lt;Super&gt;t" type="string" value="exo-open --launch TerminalEmulator"/>
       <property name="&lt;Super&gt;s" type="string" value="xfce4-screenshooter -r"/>
       <property name="&lt;Super&gt;b" type="string" value="chromium"/>
+      <property name="MonBrightnessDown" type="string" value="/usr/bin/flameshot gui"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
