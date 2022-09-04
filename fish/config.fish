@@ -68,6 +68,7 @@ if status is-interactive
     abbr --add gcm "git commit -am"
     abbr --add python "python3.9"
     abbr --add pip "pip.3.9"
+    abbr --add note "joplin"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default
