@@ -41,7 +41,7 @@ let s:filetypes = {
       \
       \ 'lock':            '',
       \ 'help':            '',
-      \ '':                ''
+      \ '':                ''
 \ }
 
 let s:fileformats = {
