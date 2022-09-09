@@ -69,7 +69,7 @@ function! SystypeIcon()
   return get(s:systypes, g:os, '')
 endfunction
 
-hi StatusLine   gui=bold      guibg=#343a40 guifg=LightGray
+hi StatusLine   guifg=#adb5bd guibg=#343a40 gui=bold
 hi StatusLineNC guibg=#343a40 guifg=DarkGray
 hi User1        guibg=none
 hi User2        guifg=#343a40

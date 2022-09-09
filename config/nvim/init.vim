@@ -56,9 +56,9 @@ nnoremap <silent><Tab> :NERDTreeToggle<CR>
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
 let g:gitgutter_sign_allow_clobber = 0
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '*'
-let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_added = '┃'
+let g:gitgutter_sign_modified = '┃'
+let g:gitgutter_sign_removed = '┃'
 " }}}
 " junegunn/vim-easy-align {{{
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -415,7 +415,6 @@ command! Reloadrc execute 'source' vim_config_file
 command IndentCurBuf call IndentBuf()
 " }}}
 " autocmd {{{
-
 augroup filetype_specific
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
