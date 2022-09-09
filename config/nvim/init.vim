@@ -1,10 +1,13 @@
 " predefined variables {{{
 let vim_config_file="~/.config/nvim/init.vim"
-let plugin_path="~/.vim/plugins/"
-let plug_file="~/.vim/plug.vim"
+let plugin_path="~/.config/nvim/plugins/"
+let plug_file="~/.config/nvim/plug.vim"
 let g:python_host_skip_check=1
 let g:python3_host_skip_check=1
 let g:python3_host_prog = '/usr/local/bin/python3.9'
+" Configure the directory which will be used to for coc data
+let g:coc_data_home="~/.config/nvim/coc_data/"
+let g:coc_config_home="~/.config/nvim"
 let g:markdown_folding = 1
 " }}}
 " plugins {{{
@@ -91,7 +94,6 @@ augroup commentary_vim
 augroup END
 " }}}
 " neoclide/coc.nvim {{{
-let g:coc_config_home="~/.vim/"
 " Global extension names to install when they aren't installed.
 let g:coc_global_extensions=[
       \ 'coc-json',
@@ -110,9 +112,6 @@ let g:coc_global_extensions=[
       \ 'coc-snippets',
       \ 'coc-prettier',
       \ ]
-" Configure the directory which will be used to for coc data
-" files(extensions...)
-let g:coc_data_home="~/.vim/coc_data/"
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
