@@ -474,6 +474,7 @@ augroup END
 
 " }}}
 " default colors {{{
+highlight Normal             guifg=LightGray
 highlight Comment            guifg=DarkGray   gui=none
 highlight Visual             guifg=NONE       guibg=#495057
 highlight Search             guifg=NONE       guibg=#495057
@@ -485,9 +486,9 @@ highlight StatusLineNC       guifg=Gray       guibg=#343a40 gui=none
 highlight LineNr             guifg=#868e96    guibg=none
 highlight EndOfBuffer        guifg=#212529
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
-highlight BufTabLineCurrent  guibg=#4c566a    gui=bold
-highlight BufTabLineFill     guifg=none       guibg=none    gui=none
-highlight BufTabLineHidden   guifg=none       guibg=none    gui=none
+highlight BufTabLineCurrent  guibg=#4c566a    guifg=Black   gui=none
+highlight BufTabLineFill     guibg=none       guifg=none    gui=none
+highlight BufTabLineHidden   guibg=none       guifg=none    gui=none
 highlight GitGutterAdd       guifg=#74b816    guibg=none    gui=bold
 highlight GitGutterChange    guifg=#fdb924    guibg=none    gui=bold
 highlight GitGutterDelete    guifg=#c92a2a    guibg=none    gui=bold
