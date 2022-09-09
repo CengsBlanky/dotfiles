@@ -337,6 +337,7 @@ set smartcase
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
 set showcmd
+set cursorline
 set laststatus=2
 set wildmenu
 set showmatch
@@ -469,8 +470,6 @@ highlight Search guibg=#495057 guifg=none
 highlight SignColumn gui=bold guibg=none
 highlight Folded guifg=DarkGrey guibg=none
 highlight LineNr guifg=#868e96
-highlight StatusLine gui=bold guibg=#343a40
-highlight StatusLineNC guibg=#343a40
 highlight MatchParen gui=bold,underline
 " self defined plugins colorscheme
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline

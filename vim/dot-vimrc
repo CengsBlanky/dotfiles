@@ -59,16 +59,14 @@ set path+=**
 " }}}
 " keymappings {{{
 " quick quit
-nnoremap Q :q<CR>
+nnoremap <Esc>q :x<CR>
 
 " quick upper/lower case
 nnoremap <leader>] gUiw
 nnoremap <leader>[ guiw
-" close current window or buffer
-noremap <silent><M-w> :close<CR>
-noremap <silent><M-b> :bd<CR>
 " use command to open my vimrc
 command! Editrc execute 'edit' vim_config_file
+command! Reloadrc execute 'source' vim_config_file
 " screen scroll add <nowait> to execute immediately
 " see autocmd keymap_force to set scroll down
 " use backspace to scroll up
@@ -78,11 +76,6 @@ nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR
 " switch between buffers
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
-if exists("bufferline")
-  nnoremap <silent><TAB> :BufferNext<CR>
-else
-  nnoremap <silent><TAB> :bn<CR>
-endif
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>
 " map <esc> to quit terminal mode
@@ -211,24 +204,22 @@ set statusline+=%P
 set statusline+=\ \ 
 " }}}
 " colorscheme plugins {{{
-augroup color_settings
-  autocmd!
-  autocmd ColorScheme * highlight Comment ctermfg=Gray guifg=Gray
-  autocmd ColorScheme * highlight Visual guibg=#8fbcbb guifg=#000000
-  autocmd ColorScheme * highlight Search guifg=#a3be8c guibg=#495057 gui=bold
-  autocmd ColorScheme * highlight MatchParen guifg=#ffd43b guibg=NONE gui=bold
-  autocmd ColorScheme * highlight Folded ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE
-  autocmd ColorScheme * highlight StatusLine ctermfg=Black ctermbg=Gray cterm=bold guifg=Black guibg=#869c98
-  autocmd ColorScheme * highlight StatusLineNC ctermfg=LightGray ctermbg=DarkGray cterm=NONE guifg=LightGrey guibg=#495057
+highlight Comment ctermfg=Gray guifg=Gray
+highlight Visual guibg=#8fbcbb guifg=#000000
+highlight Search guifg=#a3be8c guibg=#495057 gui=bold
+highlight MatchParen guifg=#ffd43b guibg=NONE gui=bold
+highlight Folded ctermfg=DarkGrey ctermbg=NONE guifg=DarkGrey guibg=NONE
+highlight SignColumn guibg=NONE
+highlight StatusLine ctermfg=Black ctermbg=Gray cterm=bold guifg=Black guibg=#869c98
+highlight StatusLineNC ctermfg=LightGray ctermbg=DarkGray cterm=NONE guifg=LightGrey guibg=#495057
 
-  autocmd ColorScheme * highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
-  autocmd ColorScheme * highlight BufTabLineFill guibg=NONE
-  autocmd ColorScheme * highlight BufTabLineHidden guibg=NONE
+highlight BufTabLineCurrent guibg=#4c566a guifg=#eceff4 gui=bold
+highlight BufTabLineFill guibg=NONE
+highlight BufTabLineHidden guibg=NONE
 
-  autocmd ColorScheme * highlight GitGutterAdd    guibg=NONE guifg=#74b816 ctermfg=2 gui=bold
-  autocmd ColorScheme * highlight GitGutterChange guibg=NONE guifg=#fdb924 ctermfg=3 gui=bold
-  autocmd ColorScheme * highlight GitGutterDelete guibg=NONE guifg=#c92a2a ctermfg=1 gui=bold
-augroup END
+highlight GitGutterAdd    guibg=NONE guifg=#74b816 ctermfg=2 gui=bold
+highlight GitGutterChange guibg=NONE guifg=#fdb924 ctermfg=3 gui=bold
+highlight GitGutterDelete guibg=NONE guifg=#c92a2a ctermfg=1 gui=bold
 let &t_ut=''
 set t_Co=256
 set termguicolors

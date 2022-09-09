@@ -69,9 +69,11 @@ function! SystypeIcon()
   return get(s:systypes, g:os, '')
 endfunction
 
-hi User1 guibg=none
-hi User2 guifg=#343a40
-hi User3 guifg=#8fbcbb guibg=#343a40
+hi StatusLine   gui=bold      guibg=#343a40 guifg=LightGray
+hi StatusLineNC guibg=#343a40 guifg=DarkGray
+hi User1        guibg=none
+hi User2        guifg=#343a40
+hi User3        guifg=#8fbcbb guibg=#343a40
 
 set statusline=%3*%2{FileTypeSign()}%*
 set statusline+=\ %f
