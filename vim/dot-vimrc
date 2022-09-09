@@ -131,12 +131,6 @@ augroup keymap_force
   autocmd BufEnter * nnoremap <nowait><silent> <Space> <C-f>
 augroup END
 
-augroup windows_display
-  autocmd!
-  autocmd WinLeave * if &filetype!='help' && &filetype!='nerdtree' | setlocal norelativenumber number
-  autocmd WinEnter * if &filetype!='help' && &filetype!='nerdtree' | setlocal relativenumber
-augroup END
-
 " delete other buffers {{{
 command! -nargs=? -complete=buffer -bang Bonly
       \ :call BufOnly('<args>', '<bang>')
