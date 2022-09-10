@@ -396,6 +396,8 @@ nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>
 " save
 nnoremap <silent><Enter> :w<CR>
+nnoremap <silent><C-s> :wa<CR>
+
 " quickfix list operations
 " nnoremap <leader>o :copen<CR>
 nnoremap <C-j> :cnext<CR>
@@ -413,6 +415,9 @@ inoremap [<Space> [<Space><Space>]<Esc>hi
 command! Editrc execute 'edit' vim_config_file
 command! Reloadrc execute 'source' vim_config_file
 command IndentCurBuf call IndentBuf()
+" insert current datetime
+command! Curtime :put! = strftime('%Y-%m-%d %H:%M:%S')
+command! Curdate :put! = strftime('%Y-%m-%d')
 " }}}
 " autocmd {{{
 augroup filetype_specific
@@ -457,8 +462,6 @@ augroup keymap_force
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
-" insert current datetime
-command! Curtime :put = strftime('%Y-%m-%d %H:%M:%S')
 
 " }}}
 " default colors {{{
