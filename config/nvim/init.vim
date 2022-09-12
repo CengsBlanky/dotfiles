@@ -465,21 +465,21 @@ augroup END
 
 " }}}
 " default colors {{{
-highlight Normal guifg=LightGray
-highlight Comment guifg=DarkGray gui=none
-highlight Visual guibg=#495057 guifg=none
-highlight Search guibg=#495057 guifg=none
-highlight SignColumn gui=bold guibg=none
-highlight Folded guifg=DarkGrey guibg=none
-highlight LineNr guifg=#868e96
+highlight Normal     guifg=LightGray
+highlight Comment    guifg=DarkGray gui=none
+highlight Visual     guibg=#495057  guifg=none
+highlight Search     guibg=#495057  guifg=none
+highlight SignColumn guibg=none     gui=bold
+highlight Folded     guifg=DarkGrey guibg=none
+highlight LineNr     guifg=#868e96
 highlight MatchParen gui=bold,underline
 " self defined plugins colorscheme
 highlight CocUnusedHighlight guifg=DarkYellow gui=underline
-highlight BufTabLineCurrent guibg=#4c566a guifg=Black gui=none
-highlight BufTabLineFill guibg=none guifg=none gui=none
-highlight BufTabLineHidden guibg=none guifg=none gui=none
-highlight GitGutterAdd guibg=none guifg=#74b816 gui=bold
-highlight GitGutterChange guibg=none guifg=#fdb924 gui=bold
-highlight GitGutterDelete guibg=none guifg=#c92a2a gui=bold
+highlight BufTabLineCurrent  guibg=#4c566a    guifg=Black   gui=none
+highlight BufTabLineFill     guibg=none       guifg=none    gui=none
+highlight BufTabLineHidden   guibg=none       guifg=none    gui=none
+highlight GitGutterAdd       guibg=none       guifg=#74b816 gui=bold
+highlight GitGutterChange    guibg=none       guifg=#fdb924 gui=bold
+highlight GitGutterDelete    guibg=none       guifg=#c92a2a gui=bold
 " }}}
 " }}}
