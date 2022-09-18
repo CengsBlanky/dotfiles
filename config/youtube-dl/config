@@ -1,11 +1,8 @@
-# always extract audio
-# -x
-# retry times
--R 999
---fragment-retries 999
-# Download best mp4 format available or any other best if no mp4 available
--f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'
-# use the proxy
+# only extract audio
+--extract-audio --audio-format mp3 --audio-quality 0
+# proxy
 --proxy 192.168.1.88:7890
-# save location
--o /media/zeng/30C653FCC653C0B0/download/youtube/%(title)s.%(ext)s
+# Download best mp4 format no better then 1080 available or any other best if no mp4 available
+# --format bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best+bestvideo[height<=1080]
+# save directory
+-o /home/share/video/download/%(title)s.%(ext)s
