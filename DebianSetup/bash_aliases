@@ -1,9 +1,11 @@
 alias l="ls -lh"
+alias la="ls -lAh"
 if [ -x "/usr/bin/exa" ]; then
     unalias l
+    unalias la
     alias l="exa --long --links --sort=name --git"
+    alias la="exa -l --color always --icons --git -a -s type"
 fi
-alias la="ls -lAh"
 alias cls="clear"
 alias ..="cd .."
 # git aliaes
