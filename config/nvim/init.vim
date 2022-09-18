@@ -97,7 +97,6 @@ let g:coc_global_extensions=[
       \ 'coc-html',
       \ 'coc-css',
       \ 'coc-tsserver',
-      \ '@yaegassy/coc-volar',
       \
       \ 'coc-snippets',
       \ 'coc-prettier',
@@ -355,6 +354,7 @@ set grepformat=%f:%l:%c:%m
 " keymappings {{{
 inoremap jk <esc>
 nnoremap <M-q> :x<CR>
+nnoremap Q :x<CR>
 inoremap <C-s> <Esc>:w<CR>gi
 nnoremap <C-s> :w<CR>
 " close current buffer
