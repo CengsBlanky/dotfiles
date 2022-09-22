@@ -373,6 +373,7 @@ set path+=**
 " keymappings {{{
 inoremap jk <esc>
 nnoremap <M-q> :x<CR>
+nnoremap Q :x<CR>
 nnoremap gy :%y<CR>
 
 " close current window or buffer

@@ -72,5 +72,5 @@ if status is-interactive
     bind --mode insert \cr "" --sets-mode default
     
     # startup
-    nvm use --lts > /dev/null
+    # nvm use --lts > /dev/null
 end
