@@ -25,3 +25,5 @@ if [ -x "/usr/bin/batcat" ]; then
 fi
 
 alias cdshare="cd /home/share/"
+# go to note directory
+alias cdnote="cd $NOTEDIR/$(date +%Y)"
