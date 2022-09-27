@@ -1,0 +1,184 @@
+" basic {{{
+set nocompatible
+filetype plugin indent on
+syntax on
+" set encoding=utf-8
+let $LANG='en_US'
+set hidden
+set number
+set relativenumber
+set backspace=2
+set incsearch
+set ignorecase
+set smartcase
+set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
+set softtabstop=4
+set showcmd
+set laststatus=2
+set wildmenu
+set showmatch
+set autoread
+set autowrite
+set confirm
+set updatetime=100
+set noswapfile
+set nobackup
+set noundofile
+set clipboard=unnamed
+set hlsearch
+set mouse=n
+set mousehide
+set nocursorline
+set splitright
+set splitbelow
+set textwidth=0
+set timeoutlen=1000
+set ttimeoutlen=5
+" }}}
+" keymaps {{{
+nnoremap <Enter> :w<CR>
+nnoremap <silent><C-s> :wa<CR>
+nnoremap <leader>q :x<CR>
+nnoremap <leader>b :bd<CR>
+nnoremap <silent><C-n> :bn<CR>
+nnoremap <Space> <C-f>
+nnoremap <Backspace> <C-b>
+nnoremap <silent><Tab> :Lexplore<CR>
+nnoremap <leader>- :sp<CR>
+nnoremap <leader>/ :vs<CR>
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <silent><leader>s :set hlsearch!<CR>
+nnoremap gy :%y<CR>
+nnoremap gl ^vg_y
+
+inoremap jk <ESC>
+inoremap {<CR> {<CR>}<Esc>O
+inoremap (<CR> (<CR>)<Esc>O
+inoremap {<Space> {<Space><Space>}<Esc>hi
+inoremap [<Space> [<Space><Space>]<Esc>hi
+
+nnoremap <leader>t :Curtime<CR>
+nnoremap <leader>d :Curdate<CR>
+" }}}
+" command {{{
+command! Editrc execute 'edit $MYVIMRC'
+command! Reloadrc execute 'source $MYVIMRC'
+command! -nargs=+ Grep execute 'silent grep! <args>' | copen
+" insert current datetime
+command! Curtime :put! = strftime('%Y-%m-%d %H:%M:%S')
+command! Curdate :put! = strftime('%Y-%m-%d')
+" }}}
+" plugins {{{
+if !has("gui_running")
+let plugin_path="/d/.vim/plugins"
+let plugin_manager="/d/.vim/plug.vim"
+execute 'source' plugin_manager
+call plug#begin(fnameescape(plugin_path))
+Plug 'tpope/vim-surround.git'
+Plug 'tpope/vim-commentary.git'
+Plug 'justinmk/vim-sneak.git'
+Plug 'junegunn/fzf.git', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim.git'
+Plug 'junegunn/vim-easy-align.git' " align text easily
+Plug 'preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
+Plug 'romainl/vim-cool.git' " better hlsearch
+Plug 'mattn/emmet-vim.git' " powerful assert tags
+Plug 'ap/vim-buftabline.git'
+Plug 'morhetz/gruvbox'
+call plug#end()
+
+" NERDTreeToggle {{{
+let NERDTreeMinimalUI=1
+let g:NERDTreeQuitOnOpen=3
+let g:NERDTreeStatusline=''
+let NERDTreeIgnore=[
+      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]', '\.bin$[[file]]', '\.svg$[[file]]', '\.png$[[file]]', '\.jpg$[[file]]',
+      \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
+      \ ]
+nnoremap <silent><Tab> :NERDTreeToggle<CR>
+" }}}
+" buftabline {{{
+let g:buftabline_show=1
+let g:buftabline_indicators=1
+let g:buftabline_numbers=2
+nmap <leader>1 <Plug>BufTabLine.Go(1)
+nmap <leader>2 <Plug>BufTabLine.Go(2)
+nmap <leader>3 <Plug>BufTabLine.Go(3)
+nmap <leader>4 <Plug>BufTabLine.Go(4)
+nmap <leader>5 <Plug>BufTabLine.Go(5)
+nmap <leader>6 <Plug>BufTabLine.Go(6)
+nmap <leader>7 <Plug>BufTabLine.Go(7)
+nmap <leader>8 <Plug>BufTabLine.Go(8)
+nmap <leader>9 <Plug>BufTabLine.Go(9)
+nmap <leader>0 <Plug>BufTabLine.Go(10)
+" }}}
+" junegunn/fzf {{{
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading  --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+nnoremap <C-p> :Files<cr>
+nnoremap <C-l> :RG<cr>
+
+" }}}
+" gruvbox {{{
+colorscheme gruvbox
+let g:gruvbox_transparent_bg=1
+let g:gruvbox_bold=0
+" }}}
+" end plugins load
+endif
+" }}}
+" autocmd {{{
+" disable beep and screen flash both in terminal vim and gvim
+autocmd VimEnter * set vb t_vb=
+autocmd FileType javascript,html,vim set tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType markdown setlocal foldlevel=6
+autocmd FileType vim setlocal foldmethod=marker
+autocmd FileType * set formatoptions-=o
+" code run
+autocmd FileType python nnoremap <leader>r :!python %<CR>
+autocmd FileType go nnoremap <leader>r :!go run %<CR>
+autocmd FileType java inoremap ; <Esc>A;
+" code formatter
+autocmd FileType go nnoremap <leader>f :silent !gofmt -w %<CR>
+autocmd FileType java nnoremap <leader>r :!javac %:t && java %:t:r<CR>
+autocmd FileType json nnoremap <silent><leader>f :%!jq<CR>
+autocmd FileType json vnoremap <silent><leader>f :'<,'>!jq<CR>
+autocmd FileType xml nnoremap <silent><leader>f :%!xmllint --format -<CR>
+autocmd FileType xml vnoremap <silent><leader>f :'<,'>!xmllint --format -<CR>
+autocmd BufRead *.fish setlocal filetype=fish
+autocmd BufRead *.log setlocal filetype=log
+" }}}
+" netrw setting {{{
+let g:netrw_winsize=40
+let g:netrw_usetab=1
+let g:netrw_keepdir=0
+" }}}
+" highlight {{{
+set background=dark
+hi link markdownError Normal
+hi Folded ctermbg=NONE
+hi MatchParen cterm=Bold,Underline ctermfg=NONE ctermbg=NONE gui=Bold,Underline guifg=NONE guibg=NONE
+" }}}
+" statusline {{{
+set statusline=\ %h\ %w
+set statusline=\ %f\ \(%{&ff}\)\ %r
+set statusline+=\ %m
+set statusline+=%=
+set statusline+=%y
+set statusline+=%8.50l/%-8.50L
+set statusline+=%-4.10P
+" }}}
