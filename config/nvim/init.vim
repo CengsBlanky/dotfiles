@@ -258,16 +258,16 @@ nnoremap <C-l> :RG<cr>
 let g:buftabline_show=1
 let g:buftabline_indicators=1
 let g:buftabline_numbers=2
-nmap <leader>1 <Plug>BufTabLine.Go(1)
-nmap <leader>2 <Plug>BufTabLine.Go(2)
-nmap <leader>3 <Plug>BufTabLine.Go(3)
-nmap <leader>4 <Plug>BufTabLine.Go(4)
-nmap <leader>5 <Plug>BufTabLine.Go(5)
-nmap <leader>6 <Plug>BufTabLine.Go(6)
-nmap <leader>7 <Plug>BufTabLine.Go(7)
-nmap <leader>8 <Plug>BufTabLine.Go(8)
-nmap <leader>9 <Plug>BufTabLine.Go(9)
-nmap <leader>0 <Plug>BufTabLine.Go(10)
+nmap <Space>1 <Plug>BufTabLine.Go(1)
+nmap <Space>2 <Plug>BufTabLine.Go(2)
+nmap <Space>3 <Plug>BufTabLine.Go(3)
+nmap <Space>4 <Plug>BufTabLine.Go(4)
+nmap <Space>5 <Plug>BufTabLine.Go(5)
+nmap <Space>6 <Plug>BufTabLine.Go(6)
+nmap <Space>7 <Plug>BufTabLine.Go(7)
+nmap <Space>8 <Plug>BufTabLine.Go(8)
+nmap <Space>9 <Plug>BufTabLine.Go(9)
+nmap <Space>0 <Plug>BufTabLine.Go(10)
 " }}}
 " tmux-vim navigator {{{
 let g:tmux_navigator_no_mappings = 1
@@ -372,22 +372,21 @@ set path+=**
 " }}}
 " keymappings {{{
 inoremap jk <esc>
-nnoremap <M-q> :x<CR>
-nnoremap Q :x<CR>
+nnoremap <nowait><leader>q :x<CR>
 nnoremap gy :%y<CR>
 
 " close current window or buffer
 noremap <silent><M-w> :close<CR>
-noremap <silent><M-b> :bd<CR>
-" screen scroll add <nowait> to execute immediately
-" see autocmd keymap_force to set scroll down
-" use backspace to scroll up
-nnoremap <silent><BS> <C-b>
-nnoremap <silent><Space> <C-f>
+noremap <silent><Space>b :bd<CR>
+" page down/up
+nnoremap ; <C-f>
+nnoremap ' <C-b>
 " switch between buffers
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
 nnoremap <silent><C-n> :bn<CR>
+nnoremap <M-]> :bn<CR>
+nnoremap <M-[> :bp<CR>
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>
 " map <esc> to quit terminal mode
