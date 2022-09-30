@@ -49,19 +49,6 @@ let NERDTreeIgnore=[
       \ ]
 nnoremap <silent><Tab> :NERDTreeToggle<CR>
 " }}}
-" tpope/vim-surround {{{
-autocmd FileType typescriptreact,javascriptreact nmap t <Plug>YSsurround
-" }}}
-" tpope/vim-commentary {{{
-augroup commentary_vim
-  autocmd!
-  autocmd FileType c setlocal commentstring=//\ %s
-  autocmd FileType cpp setlocal commentstring=//\ %s
-augroup END
-" }}}
-" figutive {{{
-nnoremap <leader>g :G<CR>
-" }}}
 " airblade/vim-gitgutter {{{
 let g:gitgutter_sign_priority = 0
 let g:gitgutter_sign_allow_clobber = 0
@@ -220,9 +207,6 @@ command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport
 " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " }}}
-" rust.vim {{{
-let g:rustfmt_autosave = 1
-" }}}
 " emmet vim {{{
 " emmet default leader key: <C-y>
 let g:user_emmet_mode='a'    "enable emmet in all mode
@@ -252,16 +236,16 @@ nnoremap <C-l> :RG<cr>
 let g:buftabline_show=1
 let g:buftabline_indicators=1
 let g:buftabline_numbers=2
-nmap <leader>1 <Plug>BufTabLine.Go(1)
-nmap <leader>2 <Plug>BufTabLine.Go(2)
-nmap <leader>3 <Plug>BufTabLine.Go(3)
-nmap <leader>4 <Plug>BufTabLine.Go(4)
-nmap <leader>5 <Plug>BufTabLine.Go(5)
-nmap <leader>6 <Plug>BufTabLine.Go(6)
-nmap <leader>7 <Plug>BufTabLine.Go(7)
-nmap <leader>8 <Plug>BufTabLine.Go(8)
-nmap <leader>9 <Plug>BufTabLine.Go(9)
-nmap <leader>0 <Plug>BufTabLine.Go(10)
+nmap <Space>1 <Plug>BufTabLine.Go(1)
+nmap <Space>2 <Plug>BufTabLine.Go(2)
+nmap <Space>3 <Plug>BufTabLine.Go(3)
+nmap <Space>4 <Plug>BufTabLine.Go(4)
+nmap <Space>5 <Plug>BufTabLine.Go(5)
+nmap <Space>6 <Plug>BufTabLine.Go(6)
+nmap <Space>7 <Plug>BufTabLine.Go(7)
+nmap <Space>8 <Plug>BufTabLine.Go(8)
+nmap <Space>9 <Plug>BufTabLine.Go(9)
+nmap <Space>0 <Plug>BufTabLine.Go(10)
 " }}}
 " vim-tmux-navigator {{{
 let g:tmux_navigator_no_mappings = 1
@@ -353,34 +337,29 @@ set grepformat=%f:%l:%c:%m
 " }}}
 " keymappings {{{
 inoremap jk <esc>
-nnoremap <M-q> :x<CR>
-nnoremap Q :x<CR>
 nnoremap <nowait><leader>q :x<CR>
-inoremap <C-s> <Esc>:w<CR>gi
-nnoremap <C-s> :w<CR>
+" save
+nnoremap <silent><Enter> :w<CR>
+nnoremap <C-s> :wa<CR>
+nnoremap <C-x> :xa<CR>
 " close current buffer
-noremap <silent><M-b> :bd<CR>
+noremap <Space>b :bd<CR>
 " yank whole buffer
 nnoremap gy :%y<CR>
-" close other buffers see line: 590
-nnoremap <leader>o :Bonly<CR>
 " use command to open my vimrc
 command! Editrc execute 'edit' vim_config_file
 command! Reloadrc execute 'edit' vim_config_file
-" use backspace to scroll up and Space to scroll down
-nnoremap <silent><BS> <C-b>
-nnoremap <silent><Space> <C-f>
-" switch between buffers
-nnoremap <silent>]] :bn<CR>
-nnoremap <silent>[[ :bp<CR>
+" page up/down
+nnoremap ; <C-f>
+nnoremap ' <C-b>
 " go next buffer
 nnoremap <silent><C-n> :bn<CR>
+nnoremap <M-]> :bn<CR>
+nnoremap <M-[> :bp<CR>
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>
 " map <esc> to quit terminal mode
 tnoremap <Esc> <C-\><C-n>
-" save
-nnoremap <silent><Enter> :w<CR>
 " resize window
 nnoremap <silent><leader><UP> :resize +1<CR>
 nnoremap <silent><leader><DOWN> :resize -1<CR>
@@ -392,16 +371,16 @@ nnoremap <silent><leader>/ :vsplit<CR>
 
 " buffer jump
 if !exists("g:buftabline_numbers")
-  nnoremap <leader>1 :b1<CR>
-  nnoremap <leader>2 :b2<CR>
-  nnoremap <leader>3 :b3<CR>
-  nnoremap <leader>4 :b4<CR>
-  nnoremap <leader>5 :b5<CR>
-  nnoremap <leader>6 :b6<CR>
-  nnoremap <leader>7 :b7<CR>
-  nnoremap <leader>8 :b8<CR>
-  nnoremap <leader>9 :b9<CR>
-  nnoremap <leader>0 :b10<CR>
+  nnoremap <Space>1 :b1<CR>
+  nnoremap <Space>2 :b2<CR>
+  nnoremap <Space>3 :b3<CR>
+  nnoremap <Space>4 :b4<CR>
+  nnoremap <Space>5 :b5<CR>
+  nnoremap <Space>6 :b6<CR>
+  nnoremap <Space>7 :b7<CR>
+  nnoremap <Space>8 :b8<CR>
+  nnoremap <Space>9 :b9<CR>
+  nnoremap <Space>0 :b10<CR>
 endif
 
 " quickfix list operations

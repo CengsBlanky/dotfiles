@@ -1,3 +1,4 @@
+nnoremap <leader>o :Bonly<CR>
 command! -nargs=? -complete=buffer -bang Bonly
       \ :call BufOnly('<args>', '<bang>')
 
