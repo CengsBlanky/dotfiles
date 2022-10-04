@@ -363,9 +363,6 @@ nnoremap gy :%y<CR>
 " close current window or buffer
 noremap <silent><M-w> :close<CR>
 noremap <silent><Space>b :bd<CR>
-" page down/up
-nnoremap <C-j> <C-f>
-nnoremap <C-k> <C-b>
 " switch between buffers
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
