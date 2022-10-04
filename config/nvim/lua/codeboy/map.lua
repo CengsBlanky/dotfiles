@@ -1,0 +1,22 @@
+local keymap = vim.keymap
+
+keymap.set('i', 'jk', '<Esc>')
+keymap.set('n', '<Enter>', ':w<CR>', { silent = true })
+keymap.set('n', '<C-s>', ':wa<CR>', { silent = true })
+keymap.set('n', '<leader>q', ':xa<CR>', { nowait = true })
+keymap.set('n', 'gy', ':%y<CR>')
+keymap.set('n', '<M-w>', ':close<CR>', { silent = true })
+keymap.set('n', '<M-o>', '<C-w>o', { silent = true })
+keymap.set('n', '<Space>b', ':bd<CR>', { silent = true, nowait = true })
+keymap.set('n', '<C-n>', ':bn<CR>', { silent = true, nowait = true })
+keymap.set('n', '<M-]>', ':bn<CR>', { silent = true })
+keymap.set('n', '<M-[>', ':bp<CR>', { silent = true })
+keymap.set('n', '<C-j>', '<C-f>')
+keymap.set('n', '<C-k>', '<C-b>')
+keymap.set('n', '<leader>-', ':split<CR>', { silent = true })
+keymap.set('n', '<leader>/', ':vsplit<CR>', { silent = true })
+
+keymap.set('i', '{<CR>', '{<CR>}<Esc>O')
+keymap.set('i', '(<CR>', '(<CR>)<Esc>O')
+keymap.set('i', '{<Space>', '{<Space><Space>}<Esc>hi')
+keymap.set('i', '[<Space>', '[<Space><Space>]<Esc>hi')
