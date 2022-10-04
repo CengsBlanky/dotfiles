@@ -19,7 +19,6 @@ Plug 'git@github.com:justinmk/vim-sneak.git'
 Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'git@github.com:airblade/vim-gitgutter.git'
 Plug 'git@github.com:junegunn/vim-easy-align.git' " align text
-Plug 'git@github.com:terryma/vim-multiple-cursors.git'
 Plug 'git@github.com:preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
 Plug 'git@github.com:neoclide/coc.nvim.git', {'branch': 'release'}
 Plug 'git@github.com:romainl/vim-cool.git' " better hlsearch
@@ -66,20 +65,6 @@ let g:gitgutter_sign_modified_removed = '┃'
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-" }}}
-" terryma/vim-multiple-cursors {{{
-let g:multi_cursor_use_default_mapping=0
-" Default mapping
-let g:multi_cursor_start_word_key      = '<M-n>'
-let g:multi_cursor_select_all_word_key = '<M-a>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<M-a>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
-let g:multi_cursor_exit_from_visual_mode=1
-let g:multi_cursor_exit_from_insert_mode=1
 " }}}
 " aperezdc/vim-template {{{
 let g:templates_no_autocmd=1
@@ -379,8 +364,8 @@ nnoremap gy :%y<CR>
 noremap <silent><M-w> :close<CR>
 noremap <silent><Space>b :bd<CR>
 " page down/up
-nnoremap ; <C-f>
-nnoremap ' <C-b>
+nnoremap <C-j> <C-f>
+nnoremap <C-k> <C-b>
 " switch between buffers
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
@@ -398,10 +383,6 @@ nnoremap <silent><DOWN> 1<C-D><UP>
 nnoremap <silent><Enter> :w<CR>
 nnoremap <silent><C-s> :wa<CR>
 
-" quickfix list operations
-" nnoremap <leader>o :copen<CR>
-nnoremap <C-j> :cnext<CR>
-nnoremap <C-k> :cprevious<CR>
 " split current window
 nnoremap <silent><leader>- :split<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
