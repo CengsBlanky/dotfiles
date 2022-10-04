@@ -20,6 +20,7 @@ if status is-interactive
     set -gx EDITOR vim
     set -gx LESS "-FRiX"
     set -gx CUR_LOCATION '雨花台'
+    set -gx ESPANSO_CONFIG "$HOME/Library/Application Support/espanso"
     # ripgrep 
     if command -q rg
         set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
