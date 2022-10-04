@@ -11,8 +11,6 @@ keymap.set('n', '<Space>b', ':bd<CR>', { silent = true, nowait = true })
 keymap.set('n', '<C-n>', ':bn<CR>', { silent = true, nowait = true })
 keymap.set('n', '<M-]>', ':bn<CR>', { silent = true })
 keymap.set('n', '<M-[>', ':bp<CR>', { silent = true })
-keymap.set('n', '<C-j>', '<C-f>')
-keymap.set('n', '<C-k>', '<C-b>')
 keymap.set('n', '<leader>-', ':split<CR>', { silent = true })
 keymap.set('n', '<leader>/', ':vsplit<CR>', { silent = true })
 

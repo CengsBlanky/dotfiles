@@ -44,6 +44,7 @@ vim.keymap.set('n', '<M-l>', ':TmuxNavigateRight<CR>', { silent = true })
 vim.keymap.set('n', '<M-\>', ':TmuxNavigatePrevious<CR>', { silent = true })
 --- telescope
 -- TODO config telescope with fzf and ripgrep
+
 --- colorscheme
 vim.g.gruvbox_material_enable_bold=1
 vim.g.gruvbox_material_transparent_background=1
