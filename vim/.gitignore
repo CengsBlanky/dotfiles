@@ -1,4 +1,5 @@
 .backup/
 .swp/
 .undo/
+.netrwhist
 coc_data
