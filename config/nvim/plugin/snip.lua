@@ -36,10 +36,13 @@ cmp.setup {
       end
     end, { 'i', 's' }),
   }),
-  sources = cmp.config.sources({
+  sources = cmp.config.sources {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-  }, {
     { name = 'buffer' },
-  })
+    { name = 'path' },
+  },
 }
+
+-- friendly-snippets
+require("luasnip.loaders.from_vscode").lazy_load()
