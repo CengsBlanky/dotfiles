@@ -60,13 +60,6 @@ if status is-interactive
 
     # ===== abbriviations =====
     abbr --add cls "clear"
-    abbr --add gui "gitui"
-    abbr --add gst "git status"
-    abbr --add gdf "git diff"
-    abbr --add gps "git push"
-    abbr --add gpl "git pull"
-    abbr --add gad "git add"
-    abbr --add gcm "git commit -am"
     abbr --add note "joplin"
 
     # key bind
