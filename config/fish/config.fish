@@ -49,6 +49,9 @@ if status is-interactive
     set PATH $PATH "/usr/local/opt/llvm"
     # mysql
     set PATH $PATH "/usr/local/opt/mysql/bin"
+    # android cmd line tools
+    set -gx ANDROID_CMD "$HOME/.android_cmd"
+    set PATH $PATH "$ANDROID_CMD/bin"
     # Flutter
     set PATH $PATH "$HOME/tools/flutter/bin"
     # ruby

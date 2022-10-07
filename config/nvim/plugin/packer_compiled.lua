@@ -94,6 +94,16 @@ _G.packer_plugins = {
     path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/emmet-vim",
     url = "git@github.com:mattn/emmet-vim"
   },
+  ["flutter-tools.nvim"] = {
+    loaded = true,
+    path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/flutter-tools.nvim",
+    url = "git@github.com:akinsho/flutter-tools.nvim"
+  },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "git@github.com:lewis6991/gitsigns.nvim"
+  },
   ["gruvbox-material"] = {
     loaded = true,
     path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/gruvbox-material",
@@ -178,11 +188,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/vim-fish",
     url = "git@github.com:dag/vim-fish"
-  },
-  ["vim-gitgutter"] = {
-    loaded = true,
-    path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
-    url = "git@github.com:airblade/vim-gitgutter"
   },
   ["vim-sneak"] = {
     loaded = true,

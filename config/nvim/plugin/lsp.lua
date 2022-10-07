@@ -2,6 +2,8 @@ local ensure_installed_list = {
     'awk_ls', 'bashls', 'clangd', 'cssls', 'dockerls', 'eslint', 'gopls', 'html', 'jsonls', 'jdtls', 'tsserver',
     'sumneko_lua', 'marksman', 'pyright', 'volar', 'lemminx', 'yamlls'
 }
+-- flutter setup
+require("flutter-tools").setup{}
 
 require("mason").setup()
 
