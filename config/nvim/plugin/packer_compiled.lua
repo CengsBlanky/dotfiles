@@ -94,11 +94,6 @@ _G.packer_plugins = {
     path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/emmet-vim",
     url = "git@github.com:mattn/emmet-vim"
   },
-  ["friendly-snippets"] = {
-    loaded = true,
-    path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    url = "git@github.com:rafamadriz/friendly-snippets"
-  },
   ["gruvbox-material"] = {
     loaded = true,
     path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/gruvbox-material",
@@ -193,6 +188,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/vim-sneak",
     url = "git@github.com:justinmk/vim-sneak"
+  },
+  ["vim-snippets"] = {
+    loaded = true,
+    path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/vim-snippets",
+    url = "git@github.com:honza/vim-snippets"
   },
   ["vim-surround"] = {
     loaded = true,

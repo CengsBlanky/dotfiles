@@ -44,5 +44,5 @@ cmp.setup {
   },
 }
 
--- friendly-snippets
-require("luasnip.loaders.from_vscode").lazy_load()
+-- code snippets source
+require("luasnip.loaders.from_snipmate").lazy_load()
