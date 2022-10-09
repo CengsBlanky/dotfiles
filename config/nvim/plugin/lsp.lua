@@ -1,3 +1,10 @@
+-- lsp sign icons
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 local ensure_installed_list = {
     'awk_ls', 'bashls', 'clangd', 'cssls', 'dockerls', 'eslint', 'gopls', 'html', 'jsonls', 'jdtls', 'tsserver',
     'sumneko_lua', 'marksman', 'pyright', 'volar', 'lemminx', 'yamlls'
