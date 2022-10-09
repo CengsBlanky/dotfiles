@@ -17,6 +17,12 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = fileTypeOptionGroup,
+    pattern = {"json"},
+    callback = function() vim.keymap.set('n', '<Space>f', ':%!jq<CR>', { silent = true }) end
+})
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+    group = fileTypeOptionGroup,
     pattern = {"*"},
     callback = function() 
         vim.opt.formatoptions:remove({'o'})

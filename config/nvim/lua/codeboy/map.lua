@@ -23,3 +23,5 @@ keymap.set('i', '{<CR>', '{<CR>}<Esc>O')
 keymap.set('i', '(<CR>', '(<CR>)<Esc>O')
 keymap.set('i', '{<Space>', '{<Space><Space>}<Esc>hi')
 keymap.set('i', '[<Space>', '[<Space><Space>]<Esc>hi')
+
+keymap.set('v', '<Space>f', ':\'<,\'>%!jq<CR>', { silent = true })
