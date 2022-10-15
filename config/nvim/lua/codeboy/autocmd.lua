@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = fileTypeOptionGroup,
-    pattern = { "html", "css", "javascript", "typescript", "vue", "yaml", "sql", "json", "vim", "lua" },
+    pattern = { "html", "css", "javascript", "typescript", "vue", "yaml", "sql", "json", "vim", "lua", "dart"},
     callback = function() 
         vim.opt_local.tabstop = 2
         vim.opt_local.shiftwidth = 2
