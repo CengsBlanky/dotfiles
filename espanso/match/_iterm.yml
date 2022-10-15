@@ -1,0 +1,13 @@
+matches:
+  - trigger: "gst"
+    replace: "git status"
+  - trigger: "gdf"
+    replace: "git diff"
+  - trigger: "gad"
+    replace: "git add"
+  - trigger: "gcm"
+    replace: "git commit -am"
+  - trigger: "gps"
+    replace: "git push"
+  - trigger: "gpl"
+    replace: "git pull"

@@ -1,0 +1,4 @@
+filter_exec: iTerm
+
+includes:
+  - "../match/_iterm.yml"
