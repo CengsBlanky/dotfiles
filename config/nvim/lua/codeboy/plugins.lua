@@ -10,7 +10,7 @@ vim.g.NERDTreeQuitOnOpen = 3
 vim.g.NERDTreeMinimalUI = 1
 vim.g.NERDTreeIgnore = {
     '\\.lock$[[file]]', '\\.o$[[file]]', '\\.out$[[file]]', '\\.class$[[file]]', '\\.exe$[[file]]',
-    '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]' 
+    '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]'
 }
 --- gitgutter
 require('gitsigns').setup {
