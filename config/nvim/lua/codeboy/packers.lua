@@ -36,6 +36,7 @@ return packer.startup(
     use "honza/vim-snippets"
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
+    use 'sbdchd/neoformat'
   end,
   config = {
     git = {

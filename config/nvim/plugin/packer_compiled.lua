@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "git@github.com:williamboman/mason.nvim"
   },
+  neoformat = {
+    loaded = true,
+    path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/neoformat",
+    url = "git@github.com:sbdchd/neoformat"
+  },
   nerdtree = {
     loaded = true,
     path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/nerdtree",

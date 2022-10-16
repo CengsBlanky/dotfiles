@@ -87,6 +87,9 @@ vim.keymap.set('n', '<M-\\>', ':TmuxNavigatePrevious<CR>', { silent = true })
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, {})
 vim.keymap.set('n', '<leader>l', builtin.live_grep, {})
+-- neoformat
+vim.g.neoformat_only_msg_on_error = 1
+vim.keymap.set('n', '<Space>f', ':Neoformat<CR>', { silent = true, nowait = true })
 --- colorscheme
 vim.g.gruvbox_material_enable_bold=1
 vim.g.gruvbox_material_transparent_background=1
