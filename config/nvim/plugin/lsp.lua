@@ -6,8 +6,8 @@ for type, icon in pairs(signs) do
 end
 
 local ensure_installed_list = {
-    'awk_ls', 'bashls', 'clangd', 'cssls', 'dockerls', 'eslint', 'gopls', 'html', 'jsonls', 'jdtls', 'tsserver',
-    'sumneko_lua', 'marksman', 'pyright', 'volar', 'lemminx', 'yamlls'
+  'awk_ls', 'bashls', 'clangd', 'cssls', 'dockerls', 'eslint', 'gopls', 'html', 'jsonls', 'jdtls', 'tsserver',
+  'sumneko_lua', 'marksman', 'pyright', 'volar', 'lemminx', 'yamlls'
 }
 -- flutter setup
 require("flutter-tools").setup{}
@@ -15,7 +15,7 @@ require("flutter-tools").setup{}
 require("mason").setup()
 
 require("mason-lspconfig").setup({
-    ensure_installed = ensure_installed_list
+  ensure_installed = ensure_installed_list
 })
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -56,10 +56,9 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 for _, lserver in pairs(ensure_installed_list) do
-    lspconfig[lserver].setup {
-        on_attach = on_attach,
-        flags = lsp_flags,
-        capabilities = capabilities,
-    }
+  lspconfig[lserver].setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+  }
 end
-
