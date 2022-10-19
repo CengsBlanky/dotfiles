@@ -1,9 +1,55 @@
 local status, packer = pcall(require, "packer")
 if (not status) then
-    print("Packer is not installed")
+  print("Packer is not installed")
+  return
 end
 
---- nerdtree
+local packerStartup = packer.startup(
+{
+  function(use)
+    use 'wbthomason/packer.nvim'
+    use 'preservim/nerdtree'
+    use 'tpope/vim-surround'
+    use 'tpope/vim-commentary'
+    use 'justinmk/vim-sneak'
+    use 'lewis6991/gitsigns.nvim'
+    use 'junegunn/vim-easy-align'
+    use 'romainl/vim-cool'
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use {
+      'nvim-telescope/telescope.nvim', tag = '0.1.0',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+    use 'dag/vim-fish'
+    use 'mattn/emmet-vim'
+    use 'ap/vim-buftabline'
+    use 'christoomey/vim-tmux-navigator'
+    use 'sainnhe/gruvbox-material'
+    use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate" }
+    use 'ryanoasis/vim-devicons'
+    use 'neovim/nvim-lspconfig'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'L3MON4D3/LuaSnip'
+    use "honza/vim-snippets"
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+    use 'sbdchd/neoformat'
+  end,
+  config = {
+    git = {
+      default_url_format = 'git@github.com:%s.git'
+    }
+  }
+})
+
+-- plugin settings
+
+-- nerdtree
 vim.keymap.set('n', '<Tab>', ':NERDTreeToggle<CR>', { silent = true })
 vim.g.NERDTreeStatusline=' '
 vim.g.NERDTreeQuitOnOpen = 3
@@ -12,7 +58,7 @@ vim.g.NERDTreeIgnore = {
     '\\.lock$[[file]]', '\\.o$[[file]]', '\\.out$[[file]]', '\\.class$[[file]]', '\\.exe$[[file]]',
     '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]'
 }
---- gitgutter
+-- gitsigns
 require('gitsigns').setup {
   signs = {
     add          = {hl = 'GitSignsAdd'   , text = '┃', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
@@ -21,45 +67,7 @@ require('gitsigns').setup {
     topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
     changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
   },
-  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-  watch_gitdir = {
-    interval = 1000,
-    follow_files = true
-  },
-  attach_to_untracked = true,
-  current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-  current_line_blame_opts = {
-    virt_text = true,
-    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-    delay = 1000,
-    ignore_whitespace = false,
-  },
-  current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
-  sign_priority = 6,
-  update_debounce = 100,
-  status_formatter = nil, -- Use default
-  max_file_length = 40000, -- Disable if file is longer than this (in lines)
-  preview_config = {
-    -- Options passed to nvim_open_win
-    border = 'single',
-    style = 'minimal',
-    relative = 'cursor',
-    row = 0,
-    col = 1
-  },
-  yadm = {
-    enable = false
-  },
 }
-vim.g.gitgutter_sign_priority = 0
-vim.g.gitgutter_sign_allow_clobber = 0
-vim.g.gitgutter_sign_added = '┃'
-vim.g.gitgutter_sign_modified = '┃'
-vim.g.gitgutter_sign_removed = '┃'
-vim.g.gitgutter_sign_modified_removed = '┃'
 --- buftabline
 vim.g.buftabline_show = 1
 vim.g.buftabline_indicators = 1
@@ -113,3 +121,7 @@ require'nvim-treesitter.configs'.setup {
     disable = {},  -- optional, list of language that will be disabled
   }
 }
+
+-- last line
+return packerStartup
+

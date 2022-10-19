@@ -9,14 +9,14 @@ local ensure_installed_list = {
   'awk_ls', 'bashls', 'clangd', 'cssls', 'dockerls', 'eslint', 'gopls', 'html', 'jsonls', 'jdtls', 'tsserver',
   'sumneko_lua', 'marksman', 'pyright', 'volar', 'lemminx', 'yamlls'
 }
--- flutter setup
-require("flutter-tools").setup{}
+
 
 require("mason").setup()
 
 require("mason-lspconfig").setup({
   ensure_installed = ensure_installed_list
 })
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -26,7 +26,7 @@ vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -39,7 +39,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>n', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<F4>', function() vim.lsp.buf.format { async = true } end, bufopts)
@@ -52,13 +52,21 @@ local lsp_flags = {
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local cmp_capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 for _, lserver in pairs(ensure_installed_list) do
   lspconfig[lserver].setup {
     on_attach = on_attach,
     flags = lsp_flags,
-    capabilities = capabilities,
+    capabilities = cmp_capabilities,
   }
 end
+
+-- flutter setup
+require("flutter-tools").setup {
+  lsp = {
+    on_attach = on_attach,
+    capabilities = cmp_capabilities,
+  }
+}
