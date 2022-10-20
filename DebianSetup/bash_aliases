@@ -19,9 +19,8 @@ alias gpl="git pull"
 # vim and neovim
 # alias vi="/usr/bin/vim"
 alias vim="nvim"
-alias bat="batcat"
 if [ -x "/usr/bin/batcat" ]; then
-    alias cat="batcat"
+    alias bat="batcat"
 fi
 
 alias cdshare="cd /home/share/"
