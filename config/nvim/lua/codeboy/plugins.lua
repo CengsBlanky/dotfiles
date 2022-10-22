@@ -25,7 +25,6 @@ local packerStartup = packer.startup(
     use 'mattn/emmet-vim'
     use 'ap/vim-buftabline'
     use 'christoomey/vim-tmux-navigator'
-    use 'sainnhe/gruvbox-material'
     use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate" }
     use 'ryanoasis/vim-devicons'
     use 'neovim/nvim-lspconfig'
@@ -39,6 +38,10 @@ local packerStartup = packer.startup(
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use 'sbdchd/neoformat'
+    use {
+      "EdenEast/nightfox.nvim",
+      run = ":NightfoxCompile",
+    }
   end,
   config = {
     git = {
@@ -64,8 +67,8 @@ require('gitsigns').setup {
     add          = {hl = 'GitSignsAdd'   , text = '┃', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
     change       = {hl = 'GitSignsChange', text = '┃', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
     delete       = {hl = 'GitSignsDelete', text = '┃', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    topdelete    = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    changedelete = {hl = 'GitSignsChange', text = '*', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
   },
 }
 --- buftabline
@@ -99,13 +102,16 @@ vim.keymap.set('n', '<leader>l', builtin.live_grep, {})
 vim.g.neoformat_only_msg_on_error = 1
 vim.keymap.set('n', '<Space>f', ':Neoformat<CR>', { silent = true, nowait = true })
 --- colorscheme
-vim.g.gruvbox_material_enable_bold=1
-vim.g.gruvbox_material_transparent_background=1
-vim.g.gruvbox_material_better_performance=1
-vim.cmd [[colorscheme gruvbox-material]]
+require("nightfox").setup({
+  options = {
+    transparent = true,
+    dim_inactive = true,
+  }
+})
+vim.cmd [[colorscheme nordfox]]
 --- treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "java", "dart", "go", "javascript", "typescript", "css", "python", "lua", "bash", "html", "toml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "c", "cpp", "java", "dart", "go", "javascript", "typescript", "css", "python", "lua", "bash", "html", "toml", "fish" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
@@ -124,4 +130,3 @@ require'nvim-treesitter.configs'.setup {
 
 -- last line
 return packerStartup
-

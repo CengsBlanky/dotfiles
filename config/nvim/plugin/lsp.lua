@@ -1,15 +1,18 @@
 -- lsp sign icons
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = " ", Warn = " ", Hint = "ﯦ ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+vim.diagnostic.config({
+  virtual_text = false,
+})
+
 local ensure_installed_list = {
   'awk_ls', 'bashls', 'clangd', 'cssls', 'dockerls', 'eslint', 'gopls', 'html', 'jsonls', 'jdtls', 'tsserver',
   'sumneko_lua', 'marksman', 'pyright', 'volar', 'lemminx', 'yamlls'
 }
-
 
 require("mason").setup()
 
@@ -23,7 +26,6 @@ local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<leader>a', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, opts)
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(_, bufnr)
@@ -52,7 +54,7 @@ local lsp_flags = {
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-local cmp_capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 for _, lserver in pairs(ensure_installed_list) do

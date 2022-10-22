@@ -69,6 +69,13 @@ function! SystypeIcon()
   return get(s:systypes, g:os, '')
 endfunction
 
+function! LspStatus() abort
+  if luaeval('#vim.lsp.buf_get_clients() > 0')
+    return luaeval("require('codeboy.lsp-status').status()")
+  endif
+  return ''
+endfunction
+
 hi StatusLine   guifg=#adb5bd guibg=#343a40 gui=bold
 hi StatusLineNC guibg=#343a40 guifg=DarkGray
 hi User1        guibg=none
@@ -82,6 +89,7 @@ set statusline+=%{&modified?'\ ':''}
 set statusline+=\ %2*%1*
 set statusline+=%=
 set statusline+=%2*%*
+set statusline+=%{LspStatus()}
 set statusline+=%2{FileFormatSign()}
 set statusline+=%7.50l/%-7.50L
 set statusline+=%-4.10P

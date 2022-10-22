@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "git@github.com:lewis6991/gitsigns.nvim"
   },
-  ["gruvbox-material"] = {
-    loaded = true,
-    path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/gruvbox-material",
-    url = "git@github.com:sainnhe/gruvbox-material"
-  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -138,6 +133,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/nerdtree",
     url = "git@github.com:preservim/nerdtree"
+  },
+  ["nightfox.nvim"] = {
+    loaded = true,
+    path = "/Users/cengshuai/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    url = "git@github.com:EdenEast/nightfox.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
