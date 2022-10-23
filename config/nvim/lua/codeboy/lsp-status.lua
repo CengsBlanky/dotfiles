@@ -1,8 +1,8 @@
 local icons = {
-    errors = '',
-    warnings = '',
-    hints = 'ﯦ',
-    info = '',
+    errors = ' ',
+    warnings = ' ',
+    hints = 'ﯦ ',
+    info = ' ',
 }
 
 local severity_level = {
@@ -12,42 +12,38 @@ local severity_level = {
   hints = vim.diagnostic.severity.HINT,
 }
 
-local indicator_separator = ' '
-
-local function diagnostic()
-  local diagnostics_list = {}
-  for i, level in pairs(severity_level) do
-    diagnostics_list[i] = #vim.diagnostic.get(0, { severity = level })
-  end
-  return diagnostics_list
-end
+local separator_icon = ' '
 
 local function get_lsp_status()
   local status_parts = {}
-  local buf_diagnostic = diagnostic()
+  local diagnostic_list = {}
 
-  if buf_diagnostic then
-    if buf_diagnostic.errors and buf_diagnostic.errors > 0 then
-      table.insert(status_parts, icons.errors  .. indicator_separator .. buf_diagnostic.errors)
+  for i, level in pairs(severity_level) do
+    diagnostic_list[i] = #vim.diagnostic.get(0, { severity = level })
+  end
+
+  if diagnostic_list then
+    if diagnostic_list.errors and diagnostic_list.errors > 0 then
+      table.insert(status_parts, icons.errors  .. diagnostic_list.errors)
     end
 
-    if buf_diagnostic.warnings and buf_diagnostic.warnings > 0 then
-      table.insert(status_parts, icons.warnings .. indicator_separator .. buf_diagnostic.warnings)
+    if diagnostic_list.warnings and diagnostic_list.warnings > 0 then
+      table.insert(status_parts, icons.warnings .. diagnostic_list.warnings)
     end
 
-    if buf_diagnostic.info and buf_diagnostic.info > 0 then
-      table.insert(status_parts, icons.info .. indicator_separator .. buf_diagnostic.info)
+    if diagnostic_list.info and diagnostic_list.info > 0 then
+      table.insert(status_parts, icons.info .. diagnostic_list.info)
     end
 
-    if buf_diagnostic.hints and buf_diagnostic.hints > 0 then
-      table.insert(status_parts, icons.hints .. indicator_separator .. buf_diagnostic.hints)
+    if diagnostic_list.hints and diagnostic_list.hints > 0 then
+      table.insert(status_parts, icons.hints .. diagnostic_list.hints)
     end
   end
 
   if #status_parts == 0 then
     return ''
   else
-    return ' ' .. table.concat(status_parts, indicator_separator)
+    return ' ' .. table.concat(status_parts, separator_icon)
   end
 end
 
