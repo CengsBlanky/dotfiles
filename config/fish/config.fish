@@ -64,7 +64,7 @@ if status is-interactive
     # ===== abbriviations =====
     abbr --add cls "clear"
     abbr --add note "joplin"
-    abbr --add cdespanso "cd /Users/cengshuai/Library/Application\ Support/espanso"
+    abbr --add cdespanso "cd $ESPANSO_CONFIG"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default

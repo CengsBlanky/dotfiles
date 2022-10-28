@@ -25,7 +25,7 @@ local packerStartup = packer.startup(
     use 'mattn/emmet-vim'
     use 'ap/vim-buftabline'
     use 'christoomey/vim-tmux-navigator'
-    use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate" }
+    use 'nvim-treesitter/nvim-treesitter'
     use 'ryanoasis/vim-devicons'
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/nvim-cmp'
@@ -112,7 +112,7 @@ require("nightfox").setup({
 vim.cmd [[colorscheme nordfox]]
 --- treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "java", "dart", "go", "javascript", "typescript", "css", "python", "lua", "bash", "html", "toml", "markdown", "fish" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "dart", "c", "diff", "dockerfile", "go", "help", "html", "javascript", "json", "lua", "markdown", "python", "rust", "sql", "typescript", "yaml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
