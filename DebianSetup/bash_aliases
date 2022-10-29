@@ -9,6 +9,7 @@ if [ -x "/usr/bin/exa" ]; then
 fi
 alias cls="clear"
 alias ..="cd .."
+alias grep="grep --color=always"
 # git aliaes
 alias gst="git status"
 alias gad="git add"
@@ -19,9 +20,8 @@ alias gpl="git pull"
 # vim and neovim
 # alias vi="/usr/bin/vim"
 alias vim="nvim"
-alias bat="batcat"
 if [ -x "/usr/bin/batcat" ]; then
-    alias cat="batcat"
+    alias bat="batcat"
 fi
 
 alias cdshare="cd /home/share/"
