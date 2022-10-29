@@ -1,10 +1,17 @@
-local status, packer = pcall(require, "packer")
-if (not status) then
-  print("Packer is not installed")
-  return
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'git@github.com:wbthomason/packer.nvim.git', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
 end
 
-local packerStartup = packer.startup(
+local packer_bootstrap = ensure_packer()
+
+local packerStartup = require('packer').startup(
 {
   function(use)
     use 'wbthomason/packer.nvim'
@@ -21,6 +28,7 @@ local packerStartup = packer.startup(
       requires = { {'nvim-lua/plenary.nvim'} }
     }
     use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+    use 'dart-lang/dart-vim-plugin'
     use 'dag/vim-fish'
     use 'mattn/emmet-vim'
     use 'ap/vim-buftabline'
@@ -42,6 +50,9 @@ local packerStartup = packer.startup(
       "EdenEast/nightfox.nvim",
       run = ":NightfoxCompile",
     }
+    if packer_bootstrap then
+      require('packer').sync()
+    end
   end,
   config = {
     git = {
