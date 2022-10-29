@@ -1,24 +1,76 @@
 local status, packer = pcall(require, "packer")
 if (not status) then
-    print("Packer is not installed")
+  print("Packer is not installed")
+  return
 end
 
---- nerdtree
+local packerStartup = packer.startup(
+{
+  function(use)
+    use 'wbthomason/packer.nvim'
+    use 'preservim/nerdtree'
+    use 'tpope/vim-surround'
+    use 'tpope/vim-commentary'
+    use 'justinmk/vim-sneak'
+    use 'lewis6991/gitsigns.nvim'
+    use 'junegunn/vim-easy-align'
+    use 'romainl/vim-cool'
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use {
+      'nvim-telescope/telescope.nvim', tag = '0.1.0',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+    use 'dag/vim-fish'
+    use 'mattn/emmet-vim'
+    use 'ap/vim-buftabline'
+    use 'christoomey/vim-tmux-navigator'
+    use 'nvim-treesitter/nvim-treesitter'
+    use 'ryanoasis/vim-devicons'
+    use 'neovim/nvim-lspconfig'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'L3MON4D3/LuaSnip'
+    use "honza/vim-snippets"
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+    use 'sbdchd/neoformat'
+    use {
+      "EdenEast/nightfox.nvim",
+      run = ":NightfoxCompile",
+    }
+  end,
+  config = {
+    git = {
+      default_url_format = 'git@github.com:%s.git'
+    }
+  }
+})
+
+-- plugin settings
+
+-- nerdtree
 vim.keymap.set('n', '<Tab>', ':NERDTreeToggle<CR>', { silent = true })
 vim.g.NERDTreeStatusline=' '
 vim.g.NERDTreeQuitOnOpen = 3
 vim.g.NERDTreeMinimalUI = 1
 vim.g.NERDTreeIgnore = {
-    '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]',
-    '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
+    '\\.lock$[[file]]', '\\.o$[[file]]', '\\.out$[[file]]', '\\.class$[[file]]', '\\.exe$[[file]]',
+    '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]'
 }
---- gitgutter
-vim.g.gitgutter_sign_priority = 0
-vim.g.gitgutter_sign_allow_clobber = 0
-vim.g.gitgutter_sign_added = '┃'
-vim.g.gitgutter_sign_modified = '┃'
-vim.g.gitgutter_sign_removed = '┃'
-vim.g.gitgutter_sign_modified_removed = '┃'
+-- gitsigns
+require('gitsigns').setup {
+  signs = {
+    add          = {hl = 'GitSignsAdd'   , text = '┃', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    change       = {hl = 'GitSignsChange', text = '┃', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    delete       = {hl = 'GitSignsDelete', text = '┃', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    topdelete    = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    changedelete = {hl = 'GitSignsChange', text = '*', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+  },
+}
 --- buftabline
 vim.g.buftabline_show = 1
 vim.g.buftabline_indicators = 1
@@ -41,18 +93,26 @@ vim.keymap.set('n', '<M-h>', ':TmuxNavigateLeft<CR>', { silent = true })
 vim.keymap.set('n', '<M-j>', ':TmuxNavigateDown<CR>', { silent = true })
 vim.keymap.set('n', '<M-k>', ':TmuxNavigateUp<CR>', { silent = true })
 vim.keymap.set('n', '<M-l>', ':TmuxNavigateRight<CR>', { silent = true })
-vim.keymap.set('n', '<M-\>', ':TmuxNavigatePrevious<CR>', { silent = true })
+vim.keymap.set('n', '<M-\\>', ':TmuxNavigatePrevious<CR>', { silent = true })
 --- telescope
--- TODO config telescope with fzf and ripgrep
-
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>f', builtin.find_files, {})
+vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
+require('telescope').load_extension('fzf')
+-- neoformat
+vim.g.neoformat_only_msg_on_error = 1
+vim.keymap.set('n', '<Space>f', ':Neoformat<CR>', { silent = true, nowait = true })
 --- colorscheme
-vim.g.gruvbox_material_enable_bold=1
-vim.g.gruvbox_material_transparent_background=1
-vim.g.gruvbox_material_better_performance=1
-vim.cmd [[colorscheme gruvbox-material]]
+require("nightfox").setup({
+  options = {
+    transparent = true,
+    dim_inactive = true,
+  }
+})
+vim.cmd [[colorscheme nordfox]]
 --- treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "java", "go", "javascript", "typescript", "css", "python", "lua", "bash", "html", "toml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "dart", "c", "diff", "dockerfile", "go", "help", "html", "javascript", "json", "lua", "markdown", "python", "rust", "sql", "typescript", "yaml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
@@ -68,4 +128,6 @@ require'nvim-treesitter.configs'.setup {
     disable = {},  -- optional, list of language that will be disabled
   }
 }
---- TODO nvim lsp config
+
+-- last line
+return packerStartup
