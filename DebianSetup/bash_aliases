@@ -9,6 +9,7 @@ if [ -x "/usr/bin/exa" ]; then
 fi
 alias cls="clear"
 alias ..="cd .."
+alias grep="grep --color=always"
 # git aliaes
 alias gst="git status"
 alias gad="git add"
