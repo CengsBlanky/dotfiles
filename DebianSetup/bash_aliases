@@ -1,7 +1,7 @@
 alias sorc="source $HOME/.bashrc"
 alias l="ls -lh"
 alias la="ls -lAh"
-if [ -x "/usr/bin/exa" ]; then
+if command -v exa &> /dev/null; then
     unalias l
     unalias la
     alias l="exa --long --links --sort=name --git"
