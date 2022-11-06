@@ -65,6 +65,15 @@ if status is-interactive
     abbr --add cls "clear"
     abbr --add note "joplin"
     abbr --add cdespanso "cd $ESPANSO_CONFIG"
+    # git abbr
+    abbr --add gst "git status"
+    abbr --add gad "git add"
+    abbr --add gcm "git commit"
+    abbr --add gps "git push"
+    abbr --add gpl "git pull"
+    abbr --add gdf "git diff"
+    abbr --add gck "git checkout"
+    abbr --add gbr "git branch"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default

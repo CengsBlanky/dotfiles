@@ -10,7 +10,7 @@ vim.diagnostic.config({
 })
 
 local ensure_installed_list = {
-  'awk_ls', 'bashls', 'clangd', 'cssls', 'dockerls', 'eslint', 'gopls', 'html', 'jsonls', 'jdtls', 'tsserver',
+  'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'cssls', 'dockerls', 'eslint', 'gopls', 'html', 'jsonls', 'jdtls', 'tsserver',
   'sumneko_lua', 'marksman', 'pyright', 'volar', 'lemminx', 'yamlls'
 }
 
