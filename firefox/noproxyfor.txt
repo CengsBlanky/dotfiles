@@ -1,1 +1,1 @@
-.bilibili.com, bilibili.com, .qq.com, qq.com, 192.168.0.0/16, zhihu.com, .zhihu.com, aliyundrive.com, .aliyundrive.com, huaweicloud.com, .huaweicloud.com
+.bilibili.com, bilibili.com, .qq.com, qq.com, 192.168.0.0/16, zhihu.com, .zhihu.com, aliyundrive.com, .aliyundrive.com, huaweicloud.com, .huaweicloud.com, myqcloud.com. .myqcloud.com
