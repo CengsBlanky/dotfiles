@@ -28,7 +28,8 @@ if status is-interactive
     # java
     set -l JAVA8_HOME "/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home"
     set -l JAVA11_HOME "/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home"
-    set -gx JAVA_HOME $JAVA11_HOME
+    set -l JAVA17_HOME "/Library/Java/JavaVirtualMachines/jdk-17.0.5.jdk/Contents/Home"
+    set -gx JAVA_HOME $JAVA17_HOME
     set PATH $PATH "$HOME/.local/bin"
     set PATH $PATH "$HOME/bin"
     set PATH $PATH $JAVA_HOME 
