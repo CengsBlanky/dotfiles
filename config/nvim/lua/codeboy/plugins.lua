@@ -50,6 +50,17 @@ local packerStartup = require('packer').startup(
       "EdenEast/nightfox.nvim",
       run = ":NightfoxCompile",
     }
+    use {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require("todo-comments").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      end
+    }
     if packer_bootstrap then
       require('packer').sync()
     end
@@ -123,7 +134,7 @@ require("nightfox").setup({
 vim.cmd [[colorscheme nordfox]]
 --- treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "dart", "c", "diff", "dockerfile", "go", "java", "help", "html", "javascript", "json", "lua", "markdown", "python", "rust", "sql", "typescript", "yaml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "dart", "c", "diff", "dockerfile", "go", "java", "help", "html", "javascript", "json", "lua", "markdown", "python", "rust", "sql", "typescript", "yaml", "comment" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension

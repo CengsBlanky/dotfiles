@@ -36,3 +36,19 @@ vim.api.nvim_create_autocmd({"BufReadPost"}, {
       vim.keymap.set('n', '<Enter>', '<Enter>', { silent = true })
     end
 })
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+    group = myGroup,
+    pattern = {"markdown"},
+    callback = function()
+        vim.opt.wrap = true
+    end
+})
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+    group = myGroup,
+    pattern = {"java" , "rust"},
+    callback = function()
+      vim.keymap.set('i', ';', '<Esc>A;', { silent = true })
+    end
+})
