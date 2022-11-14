@@ -47,6 +47,14 @@ local packerStartup = require('packer').startup(
     use 'williamboman/mason-lspconfig.nvim'
     use 'sbdchd/neoformat'
     use {
+      "windwp/nvim-autopairs",
+      config = function()
+        require("nvim-autopairs").setup {
+          disable_filetype = { "TelescopePrompt" , "text" },
+        }
+      end
+    }
+    use {
       "EdenEast/nightfox.nvim",
       run = ":NightfoxCompile",
     }
@@ -132,7 +140,7 @@ require("nightfox").setup({
 vim.cmd [[colorscheme nordfox]]
 --- treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "dart", "c", "diff", "dockerfile", "go", "java", "help", "html", "javascript", "json", "lua", "markdown", "python", "rust", "sql", "typescript", "yaml", "comment" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "dart", "c", "diff", "dockerfile", "go", "java", "help", "html", "javascript", "json", "lua", "markdown", "markdown_inline", "python", "rust", "sql", "typescript", "yaml", "comment" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
@@ -148,6 +156,13 @@ require'nvim-treesitter.configs'.setup {
     disable = {},  -- optional, list of language that will be disabled
   }
 }
+--- autopairs
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp = require('cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 
 -- last line
 return packerStartup

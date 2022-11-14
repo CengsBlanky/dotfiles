@@ -20,9 +20,4 @@ keymap.set('n', '<M-j>', '<C-w>j', { silent = true })
 keymap.set('n', '<M-k>', '<C-w>k', { silent = true })
 keymap.set('n', '<M-l>', '<C-w>l', { silent = true })
 
-keymap.set('i', '{<CR>', '{<CR>}<Esc>O')
-keymap.set('i', '(<CR>', '(<CR>)<Esc>O')
-keymap.set('i', '{<Space>', '{<Space><Space>}<Esc>hi')
-keymap.set('i', '[<Space>', '[<Space><Space>]<Esc>hi')
-
 keymap.set('v', '<Space>f', ':\'<,\'>%!jq<CR>', { silent = true })
