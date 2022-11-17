@@ -55,6 +55,9 @@ if status is-interactive
     set PATH $PATH "$ANDROID_CMD/bin"
     # Flutter
     set PATH $PATH "$HOME/tools/flutter/bin"
+    set -gx FLUTTER_GIT_URL "https://mirrors.tuna.tsinghua.edu.cn/git/flutter-sdk.git"
+    set -gx PUB_HOSTED_URL "https://mirrors.tuna.tsinghua.edu.cn/dart-pub"
+    set -gx FLUTTER_STORAGE_BASE_URL "https://mirrors.tuna.tsinghua.edu.cn/flutter"
     # ruby
     set PATH $PATH "/usr/local/opt/ruby/bin"
     set -gx GEM_HOME "$HOME/.gem"
