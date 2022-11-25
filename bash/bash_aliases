@@ -27,3 +27,4 @@ fi
 alias cdshare="cd /home/share/"
 # go to note directory
 alias cdnote="cd $NOTEDIR/$(date +%Y)"
+alias note="joplin"
