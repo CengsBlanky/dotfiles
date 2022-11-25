@@ -20,11 +20,11 @@
         <property name="Y" type="int" value="0"/>
       </property>
     </property>
-    <property name="HDMI-1" type="string" value="BenQ 24&quot;">
+    <property name="HDMI-1" type="string" value="XMI 27&quot;">
       <property name="Active" type="bool" value="true"/>
-      <property name="EDID" type="string" value="1b9ccb655b4eda04a226a536047755da56ad1e37"/>
-      <property name="Resolution" type="string" value="1920x1080"/>
-      <property name="RefreshRate" type="double" value="60.000000"/>
+      <property name="EDID" type="string" value="bb2c4eb3ab5cac8b4d13ed6b4074eab0cd8bc037"/>
+      <property name="Resolution" type="string" value="2880x1620"/>
+      <property name="RefreshRate" type="double" value="59.960258"/>
       <property name="Rotation" type="int" value="0"/>
       <property name="Reflection" type="string" value="0"/>
       <property name="Primary" type="bool" value="true"/>
@@ -90,11 +90,11 @@
         <property name="Y" type="int" value="0"/>
       </property>
     </property>
-    <property name="HDMI-1" type="string" value="BenQ 24&quot;">
+    <property name="HDMI-1" type="string" value="XMI 27&quot;">
       <property name="Active" type="bool" value="true"/>
-      <property name="EDID" type="string" value="1b9ccb655b4eda04a226a536047755da56ad1e37"/>
-      <property name="Resolution" type="string" value="1920x1080"/>
-      <property name="RefreshRate" type="double" value="60.000000"/>
+      <property name="EDID" type="string" value="bb2c4eb3ab5cac8b4d13ed6b4074eab0cd8bc037"/>
+      <property name="Resolution" type="string" value="2880x1620"/>
+      <property name="RefreshRate" type="double" value="59.960258"/>
       <property name="Rotation" type="int" value="0"/>
       <property name="Reflection" type="string" value="0"/>
       <property name="Primary" type="bool" value="true"/>

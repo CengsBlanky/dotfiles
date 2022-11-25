@@ -7,18 +7,18 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'FiraCode NF'
+    family: 'JetBrains Mono NF'
     style: Normal
   bold:
-    family: 'FiraCode NF'
-    style: Medium
+    family: 'JetBrains Mono NF'
+    style: Bold
   italic:
-    family: 'FiraCode NF'
+    family: 'JetBrains Mono NF'
     style: Italic
   bold_italic:
-    family: 'FiraCode NF'
+    family: 'JetBrains Mono NF'
     style: Bold Italic
-  size: 10.0
+  size: 12.0
 colors:
   primary:
     background: '#212529'
