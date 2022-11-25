@@ -53,6 +53,7 @@ if status is-interactive
     abbr --add gcm "git commit -am"
     abbr --add cdnote "cd $HOME/notes/journal"
     abbr --add note "joplin"
+    abbr --add cdshare "cd /home/share/"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default
