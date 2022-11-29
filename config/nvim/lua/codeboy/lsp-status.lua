@@ -1,8 +1,8 @@
 local icons = {
-    errors = ' ',
-    warnings = ' ',
-    hints = 'ﯦ ',
-    info = ' ',
+    errors = '  ',
+    warnings = '  ',
+    hints = ' ﯦ ',
+    info = '  ',
 }
 
 local severity_level = {
@@ -13,6 +13,42 @@ local severity_level = {
 }
 
 local separator_icon = ' '
+
+local function get_err_status()
+  local error_count = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+  if error_count and error_count > 0 then
+    return icons.errors .. error_count
+  else
+    return ''
+  end
+end
+
+local function get_warn_status()
+  local warn_count = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+  if warn_count and warn_count > 0 then
+    return icons.warnings .. warn_count
+  else
+    return ''
+  end
+end
+
+local function get_info_status()
+  local info_count = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
+  if info_count and info_count > 0 then
+    return icons.info .. info_count
+  else
+    return ''
+  end
+end
+
+local function get_hint_status()
+  local hint_count = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
+  if hint_count and hint_count > 0 then
+    return icons.hints .. hint_count
+  else
+    return ''
+  end
+end
 
 local function get_lsp_status()
   local status_parts = {}
@@ -48,5 +84,9 @@ local function get_lsp_status()
 end
 
 return {
-  status = get_lsp_status
+  status = get_lsp_status,
+  get_err_status = get_err_status,
+  get_warn_status = get_warn_status,
+  get_info_status = get_info_status,
+  get_hint_status = get_hint_status,
 }
