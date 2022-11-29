@@ -1,6 +1,6 @@
 local icons = {
     errors = '  ',
-    warnings = '  ',
+    warnings = '  ',
     hints = ' ﯦ ',
     info = '  ',
 }
