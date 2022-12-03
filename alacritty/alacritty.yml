@@ -7,18 +7,18 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'JetBrains Mono NF'
+    family: 'UbuntuMono NF'
     style: Normal
   bold:
-    family: 'JetBrains Mono NF'
+    family: 'UbuntuMono NF'
     style: Bold
   italic:
-    family: 'JetBrains Mono NF'
+    family: 'UbuntuMono NF'
     style: Italic
   bold_italic:
-    family: 'JetBrains Mono NF'
+    family: 'UbuntuMono NF'
     style: Bold Italic
-  size: 12.0
+  size: 13.0
 colors:
   primary:
     background: '#212529'
