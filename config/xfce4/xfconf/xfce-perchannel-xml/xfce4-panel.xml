@@ -45,7 +45,7 @@
     <property name="plugin-8" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="firefox.instance1115;firefox.instance1200;firefox.instance1465;firefox.instance1525;firefox.instance1656;firefox.instance1660;firefox.instance1731;firefox.instance17998;firefox.instance2007;firefox.instance2053;firefox.instance2063;firefox.instance2177;firefox.instance2303;firefox.instance5387;firefox.instance58497;firefox.instance681964;firefox.instance8015"/>
+      <property name="mpris-players" type="string" value="firefox.instance1115;firefox.instance1200;firefox.instance1465;firefox.instance1525;firefox.instance1656;firefox.instance1660;firefox.instance1731;firefox.instance17998;firefox.instance2007;firefox.instance2053;firefox.instance2063;firefox.instance2177;firefox.instance2303;firefox.instance3110;firefox.instance5387;firefox.instance58497;firefox.instance681964;firefox.instance8015"/>
     </property>
     <property name="plugin-11" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
