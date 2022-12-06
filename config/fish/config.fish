@@ -19,7 +19,7 @@ if status is-interactive
     # current location
     set -gx MY_CUR_LOCATION '雨花台'
     # java
-    set -gx JAVA_HOME "/opt/jdk"
+    set -gx JAVA_HOME "/usr/lib/jvm/jdk-17/bin"
     set PATH $PATH $JAVA_HOME 
     # gradle
     set PATH $PATH "/opt/gradle/gradle-7.4.1/bin"
