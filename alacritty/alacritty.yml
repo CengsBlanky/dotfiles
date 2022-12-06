@@ -7,16 +7,16 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'JetBrainsMono NF'
+    family: 'FiraCode NF'
     style: Normal
   bold:
-    family: 'JetBrainsMono NF'
+    family: 'FiraCode NF'
     style: Bold
   italic:
-    family: 'JetBrainsMono NF'
+    family: 'FiraCode NF'
     style: Italic
   bold_italic:
-    family: 'JetBrainsMono NF'
+    family: 'FiraCode NF'
     style: Bold Italic
   size: 11.0
 colors:
