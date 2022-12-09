@@ -7,17 +7,17 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'FiraCode NF'
-    style: Normal
+    family: 'IosevkZeng'
+    style: Medium Extended
   bold:
-    family: 'FiraCode NF'
-    style: Bold
+    family: 'IosevkZeng'
+    style: Bold Extended
   italic:
-    family: 'FiraCode NF'
-    style: Italic
+    family: 'IosevkZeng'
+    style: Italic Extended
   bold_italic:
-    family: 'FiraCode NF'
-    style: Bold Italic
+    family: 'IosevkZeng'
+    style: Bold Italic Extended
   size: 11.0
 colors:
   primary:
