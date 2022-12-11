@@ -30,6 +30,7 @@ local packerStartup = require('packer').startup({function(use)
   use 'dag/vim-fish'
   use 'mattn/emmet-vim'
   use 'ap/vim-buftabline'
+  use 'junegunn/goyo.vim'
   use 'christoomey/vim-tmux-navigator'
   use 'nvim-treesitter/nvim-treesitter'
   use 'ryanoasis/vim-devicons'
