@@ -11,13 +11,13 @@ font:
     style: Medium
   bold:
     family: 'IosevkaZs'
-    style: Bold
+    style: Extrabold
   italic:
     family: 'IosevkaZs'
     style: Italic
   bold_italic:
     family: 'IosevkaZs'
-    style: Bold Italic 
+    style: Extrabold Italic 
   size: 11.0
 colors:
   primary:
