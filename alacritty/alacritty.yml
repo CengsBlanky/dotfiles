@@ -8,7 +8,7 @@ font:
   ligatures: false
   normal:
     family: 'IosevkaZs'
-    style: Regular
+    style: Medium
   bold:
     family: 'IosevkaZs'
     style: Bold
