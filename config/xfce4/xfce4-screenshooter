@@ -1,5 +1,5 @@
 app=ristretto
 last_user=
-screenshot_dir=file:///root/Pictures
-action=2
+screenshot_dir=file:/root/Pictures
+action=1
 

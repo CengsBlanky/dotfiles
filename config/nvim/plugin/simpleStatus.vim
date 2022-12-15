@@ -105,7 +105,7 @@ hi User7        guifg=#a3be8c guibg=#343a40 " hint
 set statusline=%3*%2{FileTypeSign()}%*
 set statusline+=\ %f
 set statusline+=%{&readonly?'\ ':''}
-set statusline+=%{&modified?'\ ':''}
+set statusline+=%{&modified?'\ ':''}
 set statusline+=\ %2*%1*
 set statusline+=%=
 set statusline+=%2*%*

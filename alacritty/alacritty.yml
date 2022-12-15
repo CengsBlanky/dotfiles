@@ -7,16 +7,16 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'IosevkaZs'
+    family: 'IosevkaMy'
     style: Medium
   bold:
-    family: 'IosevkaZs'
+    family: 'IosevkaMy'
     style: Extrabold
   italic:
-    family: 'IosevkaZs'
+    family: 'IosevkaMy'
     style: Italic
   bold_italic:
-    family: 'IosevkaZs'
+    family: 'IosevkaMy'
     style: Extrabold Italic 
   size: 11.0
 colors:
