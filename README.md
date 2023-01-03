@@ -104,3 +104,7 @@ PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for 
 ### AltTab
 
 让mac的应用切换与Windows类似，更好用
+
+### RustDesk
+
+由Rust编程语言实现的远程桌面软件: [](https://rustdesk.com/)
