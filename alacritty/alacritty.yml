@@ -7,16 +7,16 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'IosevkaMy'
+    family: 'OxygenMono NF'
     style: Regular
   bold:
-    family: 'IosevkaMy'
+    family: 'RobotoMono NF'
     style: Bold
   italic:
-    family: 'IosevkaMy'
+    family: 'RobotoMono NF'
     style: Italic
   bold_italic:
-    family: 'IosevkaMy'
+    family: 'RobotoMono NF'
     style: Bold Italic 
   size: 11.0
 colors:

@@ -36,6 +36,7 @@ if status is-interactive
     set PATH $PATH "$HOME/tools/spring-2.6.4/bin"
     # ruby binaries
     set PATH $PATH "$HOME/.local/share/gem/ruby/3.0.0/bin"
+
     # general
     set PATH $PATH "$HOME/.local/bin"
     set PATH $PATH "$HOME/bin"
@@ -54,6 +55,8 @@ if status is-interactive
     abbr --add cdnote "cd $HOME/notes/journal"
     abbr --add note "joplin"
     abbr --add cdshare "cd /home/share/"
+    # django
+    abbr --add pymanage "python manage.py"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default
