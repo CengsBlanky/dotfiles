@@ -10,14 +10,11 @@ font:
     family: 'OxygenMono NF'
     style: Regular
   bold:
-    family: 'RobotoMono NF'
-    style: Bold
+    family: 'OxygenMono NF'
   italic:
-    family: 'RobotoMono NF'
-    style: Italic
+    family: 'OxygenMono NF'
   bold_italic:
-    family: 'RobotoMono NF'
-    style: Bold Italic 
+    family: 'OxygenMono NF'
   size: 11.0
 colors:
   primary:
