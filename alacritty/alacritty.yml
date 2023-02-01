@@ -7,14 +7,14 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'OxygenMono NF'
+    family: 'RobotoMono NF'
     style: Regular
   bold:
-    family: 'OxygenMono NF'
+    family: 'RobotoMono NF'
   italic:
-    family: 'OxygenMono NF'
+    family: 'RobotoMono NF'
   bold_italic:
-    family: 'OxygenMono NF'
+    family: 'RobotoMono NF'
   size: 11.0
 colors:
   primary:
