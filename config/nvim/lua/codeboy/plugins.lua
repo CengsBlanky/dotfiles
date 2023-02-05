@@ -116,6 +116,11 @@ require("nightfox").setup({
   options = {
     transparent = true,
     dim_inactive = true,
+    styles = {
+      comments = "italic",
+      constants = "bold",
+      functions = "bold",
+    },
   }
 })
 vim.cmd [[colorscheme nordfox]]

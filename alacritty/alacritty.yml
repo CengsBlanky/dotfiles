@@ -8,7 +8,6 @@ font:
   ligatures: false
   normal:
     family: 'RobotoMono NF'
-    style: Regular
   bold:
     family: 'RobotoMono NF'
   italic:
