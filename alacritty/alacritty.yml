@@ -7,13 +7,13 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'SFMono NF'
+    family: 'IosevkaZen NF'
   bold:
-    family: 'SFMono NF'
+    family: 'IosevkaZen NF'
   italic:
-    family: 'SFMono NF'
+    family: 'IosevkaZen NF'
   bold_italic:
-    family: 'SFMono NF'
+    family: 'IosevkaZen NF'
   size: 11.0
 colors:
   primary:
