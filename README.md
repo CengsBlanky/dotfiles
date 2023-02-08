@@ -108,3 +108,43 @@ PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for 
 ### RustDesk
 
 由Rust编程语言实现的远程桌面软件: [](https://rustdesk.com/)
+
+### build IosevkaZen from source
+
+```toml
+[buildPlans.iosevka-zen]
+family = "IosevkaZen"
+spacing = "normal"
+serifs = "sans"
+no-cv-ss = true
+export-glyph-names = false
+
+  [buildPlans.iosevka-zen.variants]
+  inherits = "ss05"
+
+    [buildPlans.iosevka-zen.variants.design]
+    capital-c = "serifless"
+    capital-g = "toothless-rounded-inward-serifed-capped"
+    capital-q = "crossing"
+    a = "double-storey-serifless"
+    c = "serifless"
+    g = "double-storey"
+    eszet = "sulzbacher-descending"
+    zero = "slashed-oval"
+    five = "oblique-upper-left-bar"
+    six = "open-contour"
+    seven = "bend-serifless"
+    nine = "straight-bar"
+    brace = "straight"
+    ampersand = "closed"
+    dollar = "interrupted"
+
+[buildPlans.iosevka-zen.widths.normal]
+shape = 600
+menu = 5
+css = "normal"
+```
+
+```bash
+npm run build -- ttf::iosevka-zen
+```
