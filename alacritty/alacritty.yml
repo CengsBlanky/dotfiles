@@ -8,13 +8,13 @@ font:
   ligatures: false
   normal:
     family: 'RobotoMono NF'
-  bold:
-    family: 'RobotoMono NF'
-  italic:
-    family: 'RobotoMono NF'
-  bold_italic:
-    family: 'RobotoMono NF'
-  size: 10.0
+  # bold:
+  #   family: 'Menlo NF'
+  # italic:
+  #   family: 'Menlo NF'
+  # bold_italic:
+  #   family: 'Menlo NF'
+  size: 11.0
 colors:
   primary:
     background: '#212529'
