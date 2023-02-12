@@ -7,9 +7,9 @@ window:
 font:
   ligatures: false
   normal:
+    family: 'OxygenMono NF'
+  bold:
     family: 'RobotoMono NF'
-  # bold:
-  #   family: 'Menlo NF'
   # italic:
   #   family: 'Menlo NF'
   # bold_italic:
