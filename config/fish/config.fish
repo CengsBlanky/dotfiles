@@ -21,6 +21,8 @@ if status is-interactive
     # java
     set -gx JAVA_HOME "/usr/lib/jvm/jdk-17/"
     set PATH $PATH "$JAVA_HOME/bin"
+    set -gx MAVEN_HOME "/opt/apache-maven-3.9.0/"
+    set PATH $PATH "$MAVEN_HOME/bin"
     # gradle
     set PATH $PATH "/opt/gradle/gradle-7.4.1/bin"
     # rust
