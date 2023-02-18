@@ -119,7 +119,6 @@ require("nightfox").setup({
     styles = {
       comments = "italic",
       constants = "bold",
-      functions = "bold",
     },
   }
 })
