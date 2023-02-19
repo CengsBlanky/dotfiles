@@ -7,7 +7,7 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'Iosevka NF'
+    family: 'RobotoMono NF'
   # bold:
     # family: 'SFMono NF'
   # italic:

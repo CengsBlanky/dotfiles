@@ -64,6 +64,12 @@ for _, lserver in pairs(ensure_installed_list) do
     capabilities = cmp_capabilities,
   }
 end
+lspconfig.jdtls.setup{
+  cmd = { 'jdtls' },
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = cmp_capabilities,
+}
 
 -- flutter setup
 require("flutter-tools").setup {

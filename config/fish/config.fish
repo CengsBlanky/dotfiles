@@ -23,6 +23,8 @@ if status is-interactive
     set PATH $PATH "$JAVA_HOME/bin"
     set -gx MAVEN_HOME "/opt/apache-maven-3.9.0/"
     set PATH $PATH "$MAVEN_HOME/bin"
+    # jdtls
+    # set -gx JDTLS_JVM_ARGS "-javaagent:$HOME/.m2/lib/lombok-1.18.24.jar"
     # gradle
     set PATH $PATH "/opt/gradle/gradle-7.4.1/bin"
     # rust
