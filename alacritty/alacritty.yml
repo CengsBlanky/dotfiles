@@ -7,8 +7,10 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'RobotoMono NF'
-  # bold:
+    family: 'Iosevka'
+    style: medium
+  bold:
+    style: Extrabold
     # family: 'SFMono NF'
   # italic:
   #   family: 'Menlo NF'
