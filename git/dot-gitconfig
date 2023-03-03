@@ -7,3 +7,7 @@
 	editor = nvim
 [init]
 	defaultBranch = master
+[safe]
+	directory = /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask
+	directory = /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core
+	directory = /usr/local/Homebrew/Library/Taps/homebrew/homebrew-services

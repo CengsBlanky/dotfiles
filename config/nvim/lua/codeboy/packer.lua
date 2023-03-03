@@ -15,7 +15,6 @@ local packerStartup = require('packer').startup(
 {
   function(use)
     use 'wbthomason/packer.nvim'
-    use 'preservim/nerdtree'
     use 'tpope/vim-surround'
     use 'tpope/vim-commentary'
     use 'justinmk/vim-sneak'
@@ -26,6 +25,10 @@ local packerStartup = require('packer').startup(
     use {
       'nvim-telescope/telescope.nvim', tag = '0.1.0',
       requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    use {
+      "nvim-telescope/telescope-file-browser.nvim",
+      requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     }
     use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
     use 'dart-lang/dart-vim-plugin'
@@ -59,6 +62,10 @@ local packerStartup = require('packer').startup(
       run = ":NightfoxCompile",
     }
     use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
+    use {
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
       config = function ()
@@ -80,15 +87,6 @@ local packerStartup = require('packer').startup(
 
 -- plugin settings
 
--- nerdtree
-vim.keymap.set('n', '<Tab>', ':NERDTreeToggle<CR>', { silent = true })
-vim.g.NERDTreeStatusline=' '
-vim.g.NERDTreeQuitOnOpen = 3
-vim.g.NERDTreeMinimalUI = 1
-vim.g.NERDTreeIgnore = {
-    '\\.lock$[[file]]', '\\.o$[[file]]', '\\.out$[[file]]', '\\.class$[[file]]', '\\.exe$[[file]]',
-    '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]'
-}
 -- gitsigns
 require('gitsigns').setup {
   signs = {
@@ -127,6 +125,13 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, {})
 vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('file_browser')
+vim.api.nvim_set_keymap(
+"n",
+"<tab>",
+":Telescope file_browser<CR>",
+{ noremap = true }
+)
 -- neoformat
 vim.g.neoformat_only_msg_on_error = 1
 vim.keymap.set('n', '<Space>f', ':Neoformat<CR>', { silent = true, nowait = true })
@@ -163,6 +168,67 @@ cmp.event:on(
   'confirm_done',
   cmp_autopairs.on_confirm_done()
 )
+--- lualine
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {
+      {
+        'filename',
+        symbols = {
+          modified = '●',      -- Text to show when the buffer is modified
+          alternate_file = '#', -- Text to show to identify the alternate file
+          directory =  '',     -- Text to show when the buffer is a directory
+        },
+
+      }
+    },
+    lualine_c = {'diagnostics'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {},
+    lualine_z = {'%l/%L'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {
+      {
+        'filename',
+        symbols = {
+          modified = '●',      -- Text to show when the buffer is modified
+          alternate_file = '#', -- Text to show to identify the alternate file
+          directory =  '',     -- Text to show when the buffer is a directory
+        },
+
+      }
+    },
+    lualine_c = {},
+    lualine_x = {''},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
 
 -- last line
 return packerStartup

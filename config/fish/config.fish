@@ -81,6 +81,9 @@ if status is-interactive
 
     # key bind
     bind --mode insert \cr "" --sets-mode default
+
+    # brew
+    set -gx HOMEBREW_BOTTLE_DOMAIN "https://mirrors.ustc.edu.cn/homebrew-bottles"
     
     # startup
     # nvm use --lts > /dev/null
