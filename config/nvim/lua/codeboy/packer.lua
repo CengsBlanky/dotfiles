@@ -21,14 +21,11 @@ local packerStartup = require('packer').startup(
     use 'lewis6991/gitsigns.nvim'
     use 'junegunn/vim-easy-align'
     use 'romainl/vim-cool'
+    use 'preservim/nerdtree'
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use {
       'nvim-telescope/telescope.nvim', tag = '0.1.0',
       requires = { {'nvim-lua/plenary.nvim'} }
-    }
-    use {
-      "nvim-telescope/telescope-file-browser.nvim",
-      requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     }
     use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
     use 'dart-lang/dart-vim-plugin'
@@ -49,14 +46,6 @@ local packerStartup = require('packer').startup(
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use 'sbdchd/neoformat'
-    use {
-      "windwp/nvim-autopairs",
-      config = function()
-        require("nvim-autopairs").setup {
-          disable_filetype = { "TelescopePrompt" , "text" },
-        }
-      end
-    }
     use {
       "EdenEast/nightfox.nvim",
       run = ":NightfoxCompile",
@@ -87,6 +76,15 @@ local packerStartup = require('packer').startup(
 
 -- plugin settings
 
+-- nerdtree
+vim.keymap.set('n', '<Tab>', ':NERDTreeToggle<CR>', { silent = true })
+vim.g.NERDTreeStatusline=' '
+vim.g.NERDTreeQuitOnOpen = 3
+vim.g.NERDTreeMinimalUI = 1
+vim.g.NERDTreeIgnore = {
+    '\\.lock$[[file]]', '\\.o$[[file]]', '\\.out$[[file]]', '\\.class$[[file]]', '\\.exe$[[file]]',
+    '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]'
+}
 -- gitsigns
 require('gitsigns').setup {
   signs = {
@@ -125,13 +123,6 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, {})
 vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
 require('telescope').load_extension('fzf')
-require('telescope').load_extension('file_browser')
-vim.api.nvim_set_keymap(
-"n",
-"<tab>",
-":Telescope file_browser<CR>",
-{ noremap = true }
-)
 -- neoformat
 vim.g.neoformat_only_msg_on_error = 1
 vim.keymap.set('n', '<Space>f', ':Neoformat<CR>', { silent = true, nowait = true })
@@ -161,13 +152,6 @@ require'nvim-treesitter.configs'.setup {
     disable = {},  -- optional, list of language that will be disabled
   }
 }
---- autopairs
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-local cmp = require('cmp')
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
 --- lualine
 require('lualine').setup {
   options = {
@@ -205,24 +189,6 @@ require('lualine').setup {
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {},
     lualine_z = {'%l/%L'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {
-      {
-        'filename',
-        symbols = {
-          modified = '●',      -- Text to show when the buffer is modified
-          alternate_file = '#', -- Text to show to identify the alternate file
-          directory =  '',     -- Text to show when the buffer is a directory
-        },
-
-      }
-    },
-    lualine_c = {},
-    lualine_x = {''},
-    lualine_y = {},
-    lualine_z = {}
   },
   tabline = {},
   winbar = {},
