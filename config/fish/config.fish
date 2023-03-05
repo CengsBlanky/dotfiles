@@ -72,7 +72,7 @@ if status is-interactive
     # git abbr
     abbr --add gst "git status"
     abbr --add gad "git add"
-    abbr --add gcm "git commit"
+    abbr --add gcm "git commit -am"
     abbr --add gps "git push"
     abbr --add gpl "git pull"
     abbr --add gdf "git diff"
