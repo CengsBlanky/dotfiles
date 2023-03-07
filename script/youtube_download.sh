@@ -1,8 +1,8 @@
 #!/bin/bash
 
-youtube-dl $1
+yt-dlp $1
 
 while [ $? -ne 0 ]
 do
-    youtube-dl $1
+    yt-dlp $1
 done
