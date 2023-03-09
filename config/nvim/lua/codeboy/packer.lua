@@ -187,9 +187,9 @@ require('lualine').setup {
     lualine_a = {},
     lualine_b = {},
     lualine_c = {'filename'},
-    lualine_x = {'filetype', '%l/%L'},
+    lualine_x = {},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {'%l/%L'}
   },
   tabline = {},
   winbar = {},
