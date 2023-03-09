@@ -7,7 +7,7 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'MesloLGS NF'
+    family: 'SFMono NF'
       # bold:
     # family: 'SFMono NF'
   # italic:
