@@ -21,5 +21,7 @@ keymap.set('n', '<M-k>', '<C-w>k', { silent = true })
 keymap.set('n', '<M-l>', '<C-w>l', { silent = true })
 keymap.set('n', '<M-f>', '<C-f>', { silent = true })
 keymap.set('n', '<M-b>', '<C-b>', { silent = true })
+keymap.set('n', '<C-j>', '<C-f>', { silent = true })
+keymap.set('n', '<C-k>', '<C-b>', { silent = true })
 
 keymap.set('v', '<Space>f', ':\'<,\'>%!jq<CR>', { silent = true })
