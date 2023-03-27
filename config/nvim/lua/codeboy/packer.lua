@@ -45,6 +45,10 @@ local packerStartup = require('packer').startup({function(use)
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
   use 'sbdchd/neoformat'
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
   use {"EdenEast/nightfox.nvim", run = ":NightfoxCompile",}
   use {
     'nvim-lualine/lualine.nvim',
@@ -113,8 +117,14 @@ vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
 require('telescope').load_extension('fzf')
 -- neoformat
+vim.g.neoformat_basic_format_align = 1
+vim.g.neoformat_basic_format_retab = 1
+vim.g.neoformat_basic_format_trim = 1
 vim.g.neoformat_only_msg_on_error = 1
+vim.g.neoformat_try_formatprg = 1
+
 vim.keymap.set('n', '<Space>f', ':Neoformat<CR>', { silent = true, nowait = true })
+
 --- colorscheme
 require("nightfox").setup({
   options = {
