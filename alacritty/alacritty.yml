@@ -8,6 +8,7 @@ font:
   ligatures: false
   normal:
     family: 'Iosevka'
+    style: Medium
       # bold:
     # family: 'SFMono NF'
   # italic:
