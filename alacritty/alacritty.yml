@@ -7,15 +7,14 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'Iosevka'
-    style: Medium
+    family: 'MesloLGM NF'
       # bold:
     # family: 'SFMono NF'
   # italic:
   #   family: 'Menlo NF'
   # bold_italic:
   #   family: 'Menlo NF'
-  size: 11.0
+  size: 12.0
 colors:
   primary:
     background: '#212529'
