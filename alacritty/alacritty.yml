@@ -7,14 +7,14 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'NotoSansMono NF'
+    family: 'JetBrainsMono NF'
       # bold:
     # family: 'SFMono NF'
   # italic:
   #   family: 'Menlo NF'
   # bold_italic:
   #   family: 'Menlo NF'
-  size: 12.0
+  size: 14.0
 colors:
   primary:
     background: '#212529'
