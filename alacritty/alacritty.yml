@@ -7,8 +7,7 @@ window:
 font:
   ligatures: false
   normal:
-    # family: 'MesloLGM Nerd Font'
-    family: 'Hack Nerd Font'
+    family: 'JetBrainsMono NF'
       # bold:
     # family: 'SFMono NF'
   # italic:
