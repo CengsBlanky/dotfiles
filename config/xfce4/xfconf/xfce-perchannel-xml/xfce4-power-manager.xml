@@ -25,5 +25,8 @@
     <property name="general-notification" type="bool" value="false"/>
     <property name="handle-brightness-keys" type="bool" value="true"/>
     <property name="brightness-exponential" type="bool" value="false"/>
+    <property name="sleep-button-action" type="uint" value="3"/>
+    <property name="hibernate-button-action" type="uint" value="3"/>
+    <property name="battery-button-action" type="uint" value="3"/>
   </property>
 </channel>

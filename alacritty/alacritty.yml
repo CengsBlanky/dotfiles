@@ -8,6 +8,7 @@ font:
   ligatures: false
   normal:
     family: 'JetBrainsMono NF'
+    style: Medium
       # bold:
     # family: 'SFMono NF'
   # italic:
