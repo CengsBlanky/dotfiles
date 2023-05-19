@@ -35,6 +35,7 @@ local packerStartup = require('packer').startup({function(use)
   use 'nvim-treesitter/nvim-treesitter'
   use 'ryanoasis/vim-devicons'
   use 'neovim/nvim-lspconfig'
+  use 'simrat39/rust-tools.nvim'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -160,7 +161,7 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
-    section_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
     component_separators = { left = '', right = '' },
     disabled_filetypes = {
       statusline = {},
