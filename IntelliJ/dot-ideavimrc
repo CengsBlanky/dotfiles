@@ -39,10 +39,9 @@ inoremap jk <esc>
 " quick upper/lower case
 nnoremap <leader>] gUiw
 nnoremap <leader>[ guiw
-" use backspace to scroll up
-nnoremap <BS> <C-b>
-" use space to scroll down
-nnoremap <Space> <C-f>
+" use backspace to scroll up use space to scroll down
+nnoremap <C-j> <C-f>
+nnoremap <C-k> <C-b>
 " trigger write command so that idea truly write file to disk
 nnoremap <Enter> :w<CR>
 " switch between buffers

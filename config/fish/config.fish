@@ -19,7 +19,7 @@ if status is-interactive
     # current location
     set -gx MY_CUR_LOCATION '雨花台'
     # java
-    set -gx JAVA_HOME "/usr/lib/jvm/jdk-17/"
+    set -gx JAVA_HOME "/usr/lib/jvm/java-17-openjdk-amd64"
     set PATH $PATH "$JAVA_HOME/bin"
     set -gx MAVEN_HOME "/opt/apache-maven-3.9.0/"
     set PATH $PATH "$MAVEN_HOME/bin"
@@ -34,8 +34,13 @@ if status is-interactive
     # Flutter
     set -gx PUB_HOSTED_URL "https://pub.flutter-io.cn"
     set -gx FLUTTER_STORAGE_BASE_URL "https://storage.flutter-io.cn"
-    set PATH $PATH "$HOME/snap/flutter/common/flutter/bin"
-    set PATH $PATH "$HOME/tools/android-studio/bin"
+    set -gx ANDROID_HOME "$HOME/Android/Sdk"
+    set PATH $PATH "$HOME/Applications/flutter/bin"
+    set PATH $PATH "$HOME/Applications/android-studio/bin"
+    set PATH $PATH "$ANDROID_HOME/tools"
+    set PATH $PATH "$ANDROID_HOME/tools/bin"
+    set PATH $PATH "$ANDROID_HOME/tools/platform-tools"
+    set PATH $PATH "$ANDROID_HOME/cmdline-tools/latest/bin"
     # spring boot cli
     set PATH $PATH "$HOME/tools/spring-2.6.4/bin"
     # ruby binaries
