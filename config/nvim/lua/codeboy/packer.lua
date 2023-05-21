@@ -14,6 +14,10 @@ local packer_bootstrap = ensure_packer()
 local packerStartup = require('packer').startup({function(use)
   use 'wbthomason/packer.nvim'
   use 'preservim/nerdtree'
+  use {
+    'stevearc/oil.nvim',
+    config = function() require('oil').setup() end
+  }
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
   use 'justinmk/vim-sneak'
@@ -79,6 +83,8 @@ vim.g.NERDTreeIgnore = {
     '\\.lock$[[file]]', '\\.o$[[file]]', '\\.out$[[file]]', '\\.class$[[file]]', '\\.exe$[[file]]',
     '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]'
 }
+-- oil.nvim
+vim.keymap.set('n', '<C-f>', ':Oil .<CR>', { silent = true, nowait = true })
 -- gitsigns
 require('gitsigns').setup {
   signs = {
