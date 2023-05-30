@@ -168,7 +168,7 @@ require('lualine').setup {
     icons_enabled = true,
     theme = 'auto',
     section_separators = { left = '', right = '' },
-    component_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' },
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -183,7 +183,16 @@ require('lualine').setup {
     }
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = {
+      {
+        'filetype',
+        colored = true,
+        icon_only = true,
+      },
+      {
+        'mode',
+      }
+    },
     lualine_b = {
       {
         'filename',
@@ -192,18 +201,28 @@ require('lualine').setup {
           alternate_file = '#', -- Text to show to identify the alternate file
           directory =  '',     -- Text to show when the buffer is a directory
         },
+        style = 'bold'
 
       }
     },
     lualine_c = {'diagnostics'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'%P'},
-    lualine_z = {'%l/%L'}
+    lualine_x = {},
+    lualine_y = {'fileformat', 'encoding'},
+    lualine_z = {'%P', '%l/%L'}
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
+    lualine_b = {
+      {
+        'filetype',
+        colored = true,
+        icon_only = true,
+      },
+      {
+        'filename'
+      },
+    },
+    lualine_c = {},
     lualine_x = {},
     lualine_y = {},
     lualine_z = {'%l/%L'}
