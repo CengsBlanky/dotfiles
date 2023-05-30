@@ -7,7 +7,7 @@ if status is-interactive
 
     # ===== ENV =====
     set -gx LANG "en_US.UTF-8"
-    set -gx EDITOR vim
+    set -gx EDITOR nvim
     set -gx LESS "-RiXF"
     # set -gx MANPAGER most
     # bc scale
@@ -35,6 +35,8 @@ if status is-interactive
     set -gx PUB_HOSTED_URL "https://pub.flutter-io.cn"
     set -gx FLUTTER_STORAGE_BASE_URL "https://storage.flutter-io.cn"
     set -gx ANDROID_HOME "$HOME/Android/Sdk"
+    set -gx ADB "$ANDROID_HOME/platform-tools/adb"
+    set PATH $PATH "$ANDROID_HOME/platform-tools"
     set PATH $PATH "$HOME/Applications/flutter/bin"
     set PATH $PATH "$HOME/Applications/android-studio/bin"
     set PATH $PATH "$ANDROID_HOME/tools"
@@ -66,6 +68,8 @@ if status is-interactive
     abbr --add cdshare "cd /home/share/"
     # django
     abbr --add pymanage "python manage.py"
+    # replace which command
+    abbr --add which "command -s"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default

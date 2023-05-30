@@ -66,6 +66,9 @@
         <value type="string" value="networkmanager applet"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="c32a7490-f7ee-11ed-8bf2-7109ed3d1f3f"/>
+        <value type="string" value="a8e15450-f7ee-11ed-a008-95881d55e53f"/>
+        <value type="string" value="6b07e4f0-f7ee-11ed-9fb1-dba7e9eff20a"/>
         <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="blueman"/>
         <value type="string" value="flameshot"/>
@@ -83,7 +86,7 @@
       <property name="show-frame" type="empty"/>
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="firefox.instance1200;firefox.instance1525;firefox.instance1656;firefox.instance1660;firefox.instance17998;firefox.instance2053;firefox.instance2130;firefox.instance2132;firefox.instance2153;firefox.instance2283;firefox.instance2289;firefox.instance2303;firefox.instance2312;firefox.instance2341;firefox.instance2346;firefox.instance2395;firefox.instance2483;firefox.instance2522;firefox.instance51264;firefox.instance5387;firefox.instance58497;firefox.instance6644;firefox.instance681964;firefox.instance8015"/>
+      <property name="mpris-players" type="string" value="firefox.instance1200;firefox.instance1525;firefox.instance1656;firefox.instance1660;firefox.instance17998;firefox.instance2053;firefox.instance2130;firefox.instance2132;firefox.instance2153;firefox.instance2283;firefox.instance2289;firefox.instance2303;firefox.instance2312;firefox.instance2341;firefox.instance2346;firefox.instance2395;firefox.instance2483;firefox.instance2522;firefox.instance2949;firefox.instance51264;firefox.instance5387;firefox.instance58497;firefox.instance6644;firefox.instance681964;firefox.instance8015"/>
     </property>
     <property name="plugin-9" type="empty"/>
     <property name="plugin-10" type="empty"/>
@@ -95,7 +98,7 @@
       <property name="enable-mpris" type="empty"/>
       <property name="mixer-command" type="empty"/>
       <property name="show-notifications" type="empty"/>
-      <property name="digital-format" type="string" value="%_H:%M"/>
+      <property name="digital-format" type="string" value="%a %_d %b, %R"/>
     </property>
     <property name="plugin-13" type="string" value="separator">
       <property name="digital-format" type="empty"/>

@@ -11,7 +11,7 @@ vim.diagnostic.config({
 
 local ensure_installed_list = {
   'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'tsserver',
-  'lua_ls', 'marksman', 'pyright', 'volar', 'lemminx', 'yamlls'
+  'lua_ls', 'marksman', 'pyright', 'volar', 'lemminx'
 }
 
 require("mason").setup()
