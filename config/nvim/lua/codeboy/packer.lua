@@ -183,17 +183,14 @@ require('lualine').setup {
     }
   },
   sections = {
-    lualine_a = {
+    lualine_a = {'mode'},
+    lualine_b = {
       {
         'filetype',
         colored = true,
         icon_only = true,
+        padding = { left = 1, right = 0 },
       },
-      {
-        'mode',
-      }
-    },
-    lualine_b = {
       {
         'filename',
         symbols = {
@@ -201,8 +198,7 @@ require('lualine').setup {
           alternate_file = '#', -- Text to show to identify the alternate file
           directory =  '',     -- Text to show when the buffer is a directory
         },
-        style = 'bold'
-
+        color = { gui='bold'},
       }
     },
     lualine_c = {'diagnostics'},
