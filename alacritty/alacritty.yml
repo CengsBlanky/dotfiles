@@ -1,3 +1,5 @@
+# get alacritty info
+# curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
 window:
   opacity: 1
   decorations: none
