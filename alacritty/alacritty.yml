@@ -7,15 +7,15 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'ComicShannsMono Nerd Font'
-    style: Medium
+    # family: 'ComicShannsMono Nerd Font'
+    family: 'JetBrainsMono NF'
       # bold:
     # family: 'SFMono NF'
   # italic:
   #   family: 'Menlo NF'
   # bold_italic:
   #   family: 'Menlo NF'
-  size: 16.0
+  size: 14.0
 colors:
   primary:
     background: '#212529'

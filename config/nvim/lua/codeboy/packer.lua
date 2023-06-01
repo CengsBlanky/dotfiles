@@ -204,7 +204,7 @@ require('lualine').setup {
       }
     },
     lualine_c = {'diagnostics'},
-    lualine_x = {"require'lsp-status'.status()"},
+    lualine_x = {},
     lualine_y = {'fileformat', 'encoding'},
     lualine_z = {'%P', '%l/%L'}
   },
