@@ -11,6 +11,8 @@ font:
   normal:
     # family: 'ComicShannsMono Nerd Font'
     family: 'JetBrainsMono NF'
+    # family: 'FiraCode NerdFont'
+      # style: Retina
       # bold:
     # family: 'SFMono NF'
   # italic:
