@@ -12,14 +12,14 @@ font:
     # family: 'ComicShannsMono Nerd Font'
     family: 'JetBrainsMono NF'
     # family: 'FiraCode NerdFont'
-      # style: Retina
+    # style: Retina
       # bold:
     # family: 'SFMono NF'
   # italic:
   #   family: 'Menlo NF'
   # bold_italic:
   #   family: 'Menlo NF'
-  size: 14.0
+  size: 13.0
 colors:
   primary:
     background: '#212529'
