@@ -66,6 +66,8 @@
         <value type="string" value="networkmanager applet"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="39696b80-0540-11ee-b969-29c0269eafca"/>
+        <value type="string" value="6a900a40-053e-11ee-9be5-11e3bb019fdb"/>
         <value type="string" value="c32a7490-f7ee-11ed-8bf2-7109ed3d1f3f"/>
         <value type="string" value="a8e15450-f7ee-11ed-a008-95881d55e53f"/>
         <value type="string" value="6b07e4f0-f7ee-11ed-9fb1-dba7e9eff20a"/>
