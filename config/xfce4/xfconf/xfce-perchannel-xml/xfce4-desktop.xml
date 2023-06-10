@@ -8,7 +8,7 @@
         <property name="color1" type="empty"/>
         <property name="color2" type="empty"/>
         <property name="color-style" type="empty"/>
-        <property name="image-path" type="empty"/>
+        <property name="image-path" type="string" value="/home/zeng/Pictures/Microsoft_Nostalgic_Windows_Wallpaper_4k.jpg"/>
         <property name="image-show" type="empty"/>
         <property name="last-image" type="empty"/>
         <property name="last-single-image" type="empty"/>
@@ -27,6 +27,7 @@
           <property name="image-style" type="int" value="5"/>
           <property name="last-image" type="string" value="/usr/share/xfce4/backdrops/linuxmint.jpg"/>
         </property>
+        <property name="image-style" type="int" value="5"/>
       </property>
       <property name="monitor1" type="empty">
         <property name="brightness" type="empty"/>
@@ -48,7 +49,7 @@
         <property name="workspace0" type="empty">
           <property name="color-style" type="int" value="0"/>
           <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/usr/share/xfce4/backdrops/vanessa_dhoefler_path.jpg"/>
+          <property name="last-image" type="string" value="/home/zeng/Pictures/Microsoft_Nostalgic_Windows_Wallpaper_4k.jpg"/>
         </property>
         <property name="workspace1" type="empty">
           <property name="color-style" type="int" value="0"/>

@@ -16,12 +16,12 @@
         <value type="int" value="3"/>
         <value type="int" value="4"/>
         <value type="int" value="5"/>
-        <value type="int" value="6"/>
         <value type="int" value="8"/>
         <value type="int" value="11"/>
-        <value type="int" value="12"/>
+        <value type="int" value="6"/>
         <value type="int" value="13"/>
         <value type="int" value="7"/>
+        <value type="int" value="12"/>
       </property>
       <property name="disable-struts" type="bool" value="false"/>
     </property>
@@ -52,7 +52,7 @@
     </property>
     <property name="plugin-12" type="string" value="clock">
       <property name="digital-format" type="string" value="%_H:%M"/>
-      <property name="digital-time-format" type="string" value="%_H:%M"/>
+      <property name="digital-time-format" type="string" value="%m-%d %R"/>
       <property name="digital-layout" type="uint" value="3"/>
       <property name="tooltip-format" type="string" value="%x"/>
       <property name="digital-time-font" type="string" value="Sans 13"/>
@@ -61,20 +61,24 @@
     <property name="plugin-13" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
+    <property name="plugin-7" type="string" value="power-manager-plugin"/>
     <property name="plugin-6" type="string" value="systray">
       <property name="known-legacy-items" type="array">
-        <value type="string" value="thunar"/>
-        <value type="string" value="motrix"/>
-        <value type="string" value="task manager"/>
-        <value type="string" value="networkmanager applet"/>
+        <value type="string" value="wi-fi network connection “private” active: private (80%)"/>
       </property>
       <property name="known-items" type="array">
-        <value type="string" value="flameshot"/>
-        <value type="string" value="steam"/>
-        <value type="string" value="SimpleScreenRecorder"/>
+        <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="Fcitx"/>
       </property>
+      <property name="icon-size" type="int" value="0"/>
+      <property name="single-row" type="bool" value="true"/>
+      <property name="hide-new-items" type="bool" value="true"/>
+      <property name="square-icons" type="bool" value="true"/>
+      <property name="hidden-items" type="array">
+        <value type="string" value="chrome_status_icon_1"/>
+      </property>
+      <property name="symbolic-icons" type="bool" value="true"/>
+      <property name="menu-is-primary" type="bool" value="false"/>
     </property>
-    <property name="plugin-7" type="string" value="power-manager-plugin"/>
   </property>
 </channel>
