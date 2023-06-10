@@ -4,15 +4,13 @@
   <property name="configver" type="int" value="2"/>
   <property name="panels" type="array">
     <value type="int" value="1"/>
+    <property name="dark-mode" type="bool" value="true"/>
     <property name="panel-1" type="empty">
       <property name="position" type="string" value="p=6;x=0;y=0"/>
       <property name="length" type="uint" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
+      <property name="icon-size" type="uint" value="0"/>
       <property name="size" type="uint" value="35"/>
-      <property name="background-style" type="empty"/>
-      <property name="background-alpha" type="empty"/>
-      <property name="enter-opacity" type="empty"/>
-      <property name="leave-opacity" type="empty"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="2"/>
         <value type="int" value="3"/>
@@ -21,91 +19,62 @@
         <value type="int" value="6"/>
         <value type="int" value="8"/>
         <value type="int" value="11"/>
-        <value type="int" value="7"/>
         <value type="int" value="12"/>
         <value type="int" value="13"/>
-        <value type="int" value="1"/>
+        <value type="int" value="7"/>
       </property>
-      <property name="icon-size" type="uint" value="0"/>
       <property name="disable-struts" type="bool" value="false"/>
-      <property name="length-adjust" type="bool" value="true"/>
-      <property name="autohide-behavior" type="uint" value="0"/>
     </property>
-    <property name="dark-mode" type="bool" value="true"/>
   </property>
   <property name="plugins" type="empty">
-    <property name="plugin-1" type="string" value="xapp-status-plugin"/>
     <property name="plugin-2" type="string" value="tasklist">
       <property name="grouping" type="uint" value="1"/>
     </property>
     <property name="plugin-3" type="string" value="separator">
-      <property name="items" type="empty"/>
       <property name="expand" type="bool" value="true"/>
       <property name="style" type="uint" value="0"/>
     </property>
     <property name="plugin-4" type="string" value="pager">
-      <property name="items" type="empty"/>
       <property name="rows" type="uint" value="1"/>
       <property name="miniature-view" type="bool" value="false"/>
       <property name="workspace-scrolling" type="bool" value="false"/>
     </property>
     <property name="plugin-5" type="string" value="separator">
-      <property name="items" type="empty"/>
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-8" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+      <property name="show-notifications" type="bool" value="true"/>
+      <property name="mpris-players" type="string" value="firefox.instance1200;firefox.instance1525;firefox.instance1656;firefox.instance1660;firefox.instance17998;firefox.instance2053;firefox.instance2303;firefox.instance5387;firefox.instance58497;firefox.instance681964;firefox.instance8015"/>
+    </property>
+    <property name="plugin-11" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-12" type="string" value="clock">
+      <property name="digital-format" type="string" value="%_H:%M"/>
+      <property name="digital-time-format" type="string" value="%_H:%M"/>
+      <property name="digital-layout" type="uint" value="3"/>
+      <property name="tooltip-format" type="string" value="%x"/>
+      <property name="digital-time-font" type="string" value="Sans 13"/>
+      <property name="digital-date-font" type="string" value="Sans 11"/>
+    </property>
+    <property name="plugin-13" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
     <property name="plugin-6" type="string" value="systray">
-      <property name="show-handle" type="empty"/>
-      <property name="middle-click" type="empty"/>
       <property name="known-legacy-items" type="array">
-        <value type="string" value="xfce4-power-manager"/>
-        <value type="string" value="mintupdate.py"/>
-        <value type="string" value="tray.py"/>
         <value type="string" value="thunar"/>
         <value type="string" value="motrix"/>
         <value type="string" value="task manager"/>
         <value type="string" value="networkmanager applet"/>
       </property>
       <property name="known-items" type="array">
-        <value type="string" value="39696b80-0540-11ee-b969-29c0269eafca"/>
-        <value type="string" value="6a900a40-053e-11ee-9be5-11e3bb019fdb"/>
-        <value type="string" value="c32a7490-f7ee-11ed-8bf2-7109ed3d1f3f"/>
-        <value type="string" value="a8e15450-f7ee-11ed-a008-95881d55e53f"/>
-        <value type="string" value="6b07e4f0-f7ee-11ed-9fb1-dba7e9eff20a"/>
-        <value type="string" value="chrome_status_icon_1"/>
-        <value type="string" value="blueman"/>
         <value type="string" value="flameshot"/>
         <value type="string" value="steam"/>
         <value type="string" value="SimpleScreenRecorder"/>
         <value type="string" value="Fcitx"/>
       </property>
     </property>
-    <property name="plugin-7" type="string" value="power-manager-plugin">
-      <property name="expand" type="empty"/>
-      <property name="style" type="empty"/>
-    </property>
-    <property name="plugin-8" type="string" value="pulseaudio">
-      <property name="names-visible" type="empty"/>
-      <property name="show-frame" type="empty"/>
-      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="show-notifications" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="firefox.instance1200;firefox.instance1525;firefox.instance1656;firefox.instance1660;firefox.instance17998;firefox.instance2053;firefox.instance2130;firefox.instance2132;firefox.instance2153;firefox.instance2283;firefox.instance2289;firefox.instance2303;firefox.instance2312;firefox.instance2341;firefox.instance2346;firefox.instance2395;firefox.instance2483;firefox.instance2522;firefox.instance2949;firefox.instance51264;firefox.instance5387;firefox.instance58497;firefox.instance6644;firefox.instance681964;firefox.instance8015"/>
-    </property>
-    <property name="plugin-9" type="empty"/>
-    <property name="plugin-10" type="empty"/>
-    <property name="plugin-11" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-    </property>
-    <property name="plugin-12" type="string" value="clock">
-      <property name="enable-keyboard-shortcuts" type="empty"/>
-      <property name="enable-mpris" type="empty"/>
-      <property name="mixer-command" type="empty"/>
-      <property name="show-notifications" type="empty"/>
-      <property name="digital-format" type="string" value="%a %_d %b, %R"/>
-    </property>
-    <property name="plugin-13" type="string" value="separator">
-      <property name="digital-format" type="empty"/>
-      <property name="style" type="uint" value="0"/>
-    </property>
-    <property name="plugin-14" type="empty"/>
+    <property name="plugin-7" type="string" value="power-manager-plugin"/>
   </property>
 </channel>

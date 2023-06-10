@@ -19,11 +19,13 @@ font:
   #   family: 'Menlo NF'
   # bold_italic:
   #   family: 'Menlo NF'
-  size: 13.0
+  size: 15.0
 colors:
   primary:
     background: '#212529'
     foreground: '#d8dee9'
+shell:
+  program: /usr/bin/fish
 bell:
   duration: 0
 mouse:

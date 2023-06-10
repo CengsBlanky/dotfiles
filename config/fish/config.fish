@@ -73,5 +73,4 @@ if status is-interactive
 
     # key bind
     bind --mode insert \cr "" --sets-mode default
-
 end
