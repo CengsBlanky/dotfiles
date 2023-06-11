@@ -9,8 +9,9 @@ window:
 font:
   ligatures: false
   normal:
-    # family: 'ComicShannsMono Nerd Font'
-    family: 'JetBrainsMono NF'
+    family: 'ComicShannsMono Nerd Font'
+    # family: 'JetBrainsMono NF'
+    # family: 'OxygenMono Nerd Font'
     # family: 'FiraCode NerdFont'
     # style: Retina
       # bold:

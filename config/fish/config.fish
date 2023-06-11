@@ -36,6 +36,9 @@ if status is-interactive
     set -gx FLUTTER_STORAGE_BASE_URL "https://storage.flutter-io.cn"
     set -gx ANDROID_HOME "$HOME/Android/Sdk"
     set -gx ADB "$ANDROID_HOME/platform-tools/adb"
+    # gradle
+    set -gx GRADLE_HOME "$HOME/.sdkman/candidates/gradle/current"
+    set PATH $PATH "$GRADLE_HOME/bin"
     set PATH $PATH "$ANDROID_HOME/platform-tools"
     set PATH $PATH "$HOME/Applications/flutter/bin"
     set PATH $PATH "$HOME/Applications/android-studio/bin"
