@@ -17,7 +17,7 @@
     <property name="blank-on-ac" type="int" value="0"/>
     <property name="brightness-on-ac" type="uint" value="120"/>
     <property name="lock-screen-suspend-hibernate" type="bool" value="false"/>
-    <property name="inactivity-on-battery" type="uint" value="75"/>
+    <property name="inactivity-on-battery" type="uint" value="14"/>
     <property name="critical-power-action" type="uint" value="3"/>
     <property name="brightness-on-battery" type="uint" value="120"/>
     <property name="blank-on-battery" type="int" value="0"/>
