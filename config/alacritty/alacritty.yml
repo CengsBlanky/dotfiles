@@ -9,18 +9,16 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'ComicShannsMono Nerd Font'
-    # family: 'JetBrainsMono NF'
+    # family: 'Mononoki Nerd Font'
+    # family: 'ComicShannsMonoNerdFont Nerd Font'
+    # family: 'BigBlueTermPlus Nerd Font'
+    # family: 'GohuFont uni14 Nerd Font'
+    family: 'JetBrainsMono NF'
     # family: 'OxygenMono Nerd Font'
     # family: 'FiraCode NerdFont'
-    # style: Retina
-      # bold:
-    # family: 'SFMono NF'
-  # italic:
-  #   family: 'Menlo NF'
-  # bold_italic:
-  #   family: 'Menlo NF'
-  size: 15.0
+    # family: 'FixedsysExcelsior Nerd Font'
+    # family: 'UbuntuMono Nerd Font'
+  size: 14.0
 colors:
   primary:
     background: '#212529'

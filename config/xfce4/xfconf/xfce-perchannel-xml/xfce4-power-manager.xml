@@ -30,5 +30,6 @@
     <property name="battery-button-action" type="uint" value="3"/>
     <property name="show-presentation-indicator" type="bool" value="true"/>
     <property name="presentation-mode" type="bool" value="false"/>
+    <property name="critical-power-level" type="uint" value="20"/>
   </property>
 </channel>

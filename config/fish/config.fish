@@ -32,20 +32,22 @@ if status is-interactive
     # golang
     set PATH $PATH "$HOME/go/bin"
     # Flutter
+    set PATH $PATH "$HOME/Apps/flutter/bin"
     set -gx PUB_HOSTED_URL "https://pub.flutter-io.cn"
     set -gx FLUTTER_STORAGE_BASE_URL "https://storage.flutter-io.cn"
-    set -gx ANDROID_HOME "$HOME/Android/Sdk"
-    set -gx ADB "$ANDROID_HOME/platform-tools/adb"
     # gradle
     set -gx GRADLE_HOME "$HOME/.sdkman/candidates/gradle/current"
     set PATH $PATH "$GRADLE_HOME/bin"
+    # Android
+    set -gx ANDROID_HOME "$HOME/Android/Sdk"
+    set -gx ADB "$ANDROID_HOME/platform-tools/adb"
     set PATH $PATH "$ANDROID_HOME/platform-tools"
-    set PATH $PATH "$HOME/Applications/flutter/bin"
-    set PATH $PATH "$HOME/Applications/android-studio/bin"
     set PATH $PATH "$ANDROID_HOME/tools"
     set PATH $PATH "$ANDROID_HOME/tools/bin"
     set PATH $PATH "$ANDROID_HOME/tools/platform-tools"
     set PATH $PATH "$ANDROID_HOME/cmdline-tools/latest/bin"
+    # npm config
+    set PATH $PATH "$HOME/.local/share/npm/bin"
     # spring boot cli
     set PATH $PATH "$HOME/tools/spring-2.6.4/bin"
     # ruby binaries

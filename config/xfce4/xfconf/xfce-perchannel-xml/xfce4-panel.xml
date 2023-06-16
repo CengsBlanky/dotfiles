@@ -45,7 +45,7 @@
     <property name="plugin-8" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="firefox.instance1200;firefox.instance1525;firefox.instance1656;firefox.instance1660;firefox.instance17998;firefox.instance2053;firefox.instance2303;firefox.instance24478;firefox.instance30426;firefox.instance5387;firefox.instance58497;firefox.instance6499;firefox.instance681964;firefox.instance8015"/>
+      <property name="mpris-players" type="string" value="firefox.instance1200;firefox.instance1525;firefox.instance1656;firefox.instance1660;firefox.instance17998;firefox.instance2053;firefox.instance2218;firefox.instance2303;firefox.instance24478;firefox.instance30426;firefox.instance5387;firefox.instance58497;firefox.instance6499;firefox.instance681964;firefox.instance8015"/>
     </property>
     <property name="plugin-11" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
@@ -68,6 +68,7 @@
         <value type="string" value="wi-fi network connection “private” active: private (80%)"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="blueman"/>
         <value type="string" value="steam"/>
         <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="Fcitx"/>
@@ -79,6 +80,7 @@
       <property name="hidden-items" type="array">
         <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="steam"/>
+        <value type="string" value="blueman"/>
       </property>
       <property name="symbolic-icons" type="bool" value="true"/>
       <property name="menu-is-primary" type="bool" value="false"/>

@@ -160,7 +160,7 @@ require("nightfox").setup({
 vim.cmd [[colorscheme nordfox]]
 --- treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "bash", "dart", "c", "diff", "java", "dockerfile", "go", "html", "javascript", "json", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "yaml", "toml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "bash", "dart", "c", "diff", "java", "kotlin", "dockerfile", "go", "html", "javascript", "json", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "yaml", "toml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
