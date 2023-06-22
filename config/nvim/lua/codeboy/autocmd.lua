@@ -25,7 +25,6 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
     pattern = {"markdown", "text"},
     callback = function() 
-      vim.opt.textwidth=128 
       vim.opt.wrap = true
       vim.opt.linebreak = true
       vim.keymap.set('n', 'j', 'gj', { silent = true })
