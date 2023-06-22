@@ -23,6 +23,18 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
+    pattern = {"markdown", "text"},
+    callback = function() 
+      vim.opt.textwidth=128 
+      vim.opt.wrap = true
+      vim.opt.linebreak = true
+      vim.keymap.set('n', 'j', 'gj', { silent = true })
+      vim.keymap.set('n', 'k', 'gk', { silent = true })
+    end
+})
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+    group = myGroup,
     pattern = {"*"},
     callback = function()
         vim.opt.formatoptions:remove({'o'})

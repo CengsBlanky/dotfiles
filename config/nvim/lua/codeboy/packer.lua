@@ -181,7 +181,7 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
-    section_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
     component_separators = { left = '', right = '' },
     disabled_filetypes = {
       statusline = {},
@@ -197,7 +197,14 @@ require('lualine').setup {
     }
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = {
+      {
+        'mode',
+        fmt = function (modestr)
+          return modestr:sub(1,1)
+        end,
+      }
+    },
     lualine_b = {
       {
         'filetype',
@@ -220,7 +227,7 @@ require('lualine').setup {
     lualine_c = {'diagnostics'},
     lualine_x = {},
     lualine_y = {'fileformat', 'encoding'},
-    lualine_z = {'%P', '%l/%L'}
+    lualine_z = {'%P', '%l:%v/%L'}
   },
   inactive_sections = {
     lualine_a = {},
@@ -244,7 +251,7 @@ require('lualine').setup {
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {'%l/%L'}
+    lualine_z = {'%l:%v/%L'}
   },
   tabline = {},
   winbar = {},
