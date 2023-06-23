@@ -9,15 +9,7 @@ window:
 font:
   ligatures: false
   normal:
-    # family: 'Mononoki Nerd Font'
-    # family: 'ComicShannsMonoNerdFont Nerd Font'
-    # family: 'BigBlueTermPlus Nerd Font'
-    # family: 'GohuFont uni14 Nerd Font'
     family: 'JetBrainsMono NF'
-    # family: 'OxygenMono Nerd Font'
-    # family: 'FiraCode NF'
-    # family: 'FixedsysExcelsior Nerd Font'
-    # family: 'UbuntuMono Nerd Font'
   size: 13.0
 colors:
   primary:
