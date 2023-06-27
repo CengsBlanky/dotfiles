@@ -57,7 +57,9 @@ local packerStartup = require('packer').startup({function(use)
   use {"EdenEast/nightfox.nvim", run = ":NightfoxCompile",}
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    requires = {
+      {'kyazdani42/nvim-web-devicons', opt = true},
+    }
   }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

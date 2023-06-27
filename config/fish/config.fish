@@ -1,6 +1,9 @@
 if status is-interactive
     # ===== vi mode =====
     fish_vi_key_bindings
+    set fish_cursor_default block
+    set fish_cursor_insert line blink
+    set fish_cursor_replace_one underscore
 
     # per dir length
     set -g fish_prompt_pwd_dir_length 0
@@ -18,26 +21,27 @@ if status is-interactive
     end
     # current location
     set -gx MY_CUR_LOCATION '雨花台'
+    # sdkman
+    set -l SDKMAN_CANDIDATES "$HOME/.sdkman/candidates"
     # java
-    set -gx JAVA_HOME "/usr/lib/jvm/java-17-openjdk-amd64"
-    set PATH $PATH "$JAVA_HOME/bin"
-    set -gx MAVEN_HOME "/opt/apache-maven-3.9.0/"
+    set -gx JAVA_HOME "$SDKMAN_CANDIDATES/java/current"
+    set PATH $PATH "$JAVA_HOME/bin" 
+    # maven
+    set -gx MAVEN_HOME "$SDKMAN_CANDIDATES/maven/current"
     set PATH $PATH "$MAVEN_HOME/bin"
+    # gradle
+    set -gx GRADLE_HOME "$SDKMAN_CANDIDATES/gradle/current"
+    set PATH $PATH "$GRADLE_HOME/bin"
     # jdtls
     # set -gx JDTLS_JVM_ARGS "-javaagent:$HOME/.m2/lib/lombok-1.18.24.jar"
-    # gradle
-    set PATH $PATH "/opt/gradle/gradle-7.4.1/bin"
     # rust
     set PATH $PATH "$HOME/.cargo/bin"
     # golang
     set PATH $PATH "$HOME/go/bin"
     # Flutter
     set PATH $PATH "$HOME/Apps/flutter/bin"
-    set -gx PUB_HOSTED_URL "https://pub.flutter-io.cn"
-    set -gx FLUTTER_STORAGE_BASE_URL "https://storage.flutter-io.cn"
-    # gradle
-    set -gx GRADLE_HOME "$HOME/.sdkman/candidates/gradle/current"
-    set PATH $PATH "$GRADLE_HOME/bin"
+    set -gx PUB_HOSTED_URL "https://mirrors.tuna.tsinghua.edu.cn/dart-pub"
+    set -gx FLUTTER_STORAGE_BASE_URL "https://mirrors.tuna.tsinghua.edu.cn/flutter"
     # Android
     set -gx ANDROID_HOME "$HOME/Android/Sdk"
     set -gx ADB "$ANDROID_HOME/platform-tools/adb"
@@ -45,7 +49,6 @@ if status is-interactive
     set PATH $PATH "$ANDROID_HOME/tools"
     set PATH $PATH "$ANDROID_HOME/tools/bin"
     set PATH $PATH "$ANDROID_HOME/tools/platform-tools"
-    set PATH $PATH "$ANDROID_HOME/cmdline-tools/latest/bin"
     # npm config
     set PATH $PATH "$HOME/.local/share/npm/bin"
     # spring boot cli
