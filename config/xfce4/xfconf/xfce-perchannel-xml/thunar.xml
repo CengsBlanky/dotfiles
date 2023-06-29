@@ -5,8 +5,8 @@
   <property name="last-icon-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_100_PERCENT"/>
   <property name="last-window-maximized" type="bool" value="false"/>
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
-  <property name="last-separator-position" type="int" value="170"/>
-  <property name="last-details-view-column-widths" type="string" value="50,156,197,50,3048,50,50,87,843,378,50,117,50,442"/>
+  <property name="last-separator-position" type="int" value="340"/>
+  <property name="last-details-view-column-widths" type="string" value="50,156,197,184,3048,50,50,87,895,378,50,101,50,236"/>
   <property name="last-window-width" type="int" value="1770"/>
   <property name="last-window-height" type="int" value="1095"/>
   <property name="misc-single-click" type="bool" value="false"/>
@@ -14,4 +14,5 @@
   <property name="last-sort-column" type="string" value="THUNAR_COLUMN_DATE_MODIFIED"/>
   <property name="last-sort-order" type="string" value="GTK_SORT_DESCENDING"/>
   <property name="misc-show-delete-action" type="bool" value="true"/>
+  <property name="last-details-view-visible-columns" type="string" value="THUNAR_COLUMN_DATE_MODIFIED,THUNAR_COLUMN_NAME,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_TYPE"/>
 </channel>

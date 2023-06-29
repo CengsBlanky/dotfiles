@@ -34,6 +34,9 @@ if status is-interactive
     set PATH $PATH "$GRADLE_HOME/bin"
     # jdtls
     # set -gx JDTLS_JVM_ARGS "-javaagent:$HOME/.m2/lib/lombok-1.18.24.jar"
+    # kotlin
+    set -gx KOTLIN_HOME "$SDKMAN_CANDIDATES/kotlin/current"
+    set PATH $PATH "$KOTLIN_HOME/bin"
     # rust
     set PATH $PATH "$HOME/.cargo/bin"
     # golang
