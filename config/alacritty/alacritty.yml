@@ -1,7 +1,7 @@
 # get alacritty info
 # curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
 window:
-  opacity: 0.95
+  opacity: 0.9
   decorations: none
   startup_mode: Windowed
   dynamic_title: true
