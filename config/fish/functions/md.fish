@@ -4,5 +4,5 @@ function md
     if test ! -f $mdfile
         pandoc $argv > $mdfile
     end
-    firefox $mdfile
+    xdg-open $mdfile
 end
