@@ -69,6 +69,7 @@
         <value type="string" value="wi-fi network connection “private” active: private (80%)"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="TelegramDesktop"/>
         <value type="string" value="70458980-1108-11ee-8543-3551baeb64cb"/>
         <value type="string" value="blueman"/>
         <value type="string" value="steam"/>
@@ -83,6 +84,7 @@
         <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="steam"/>
         <value type="string" value="blueman"/>
+        <value type="string" value="TelegramDesktop"/>
         <value type="string" value="70458980-1108-11ee-8543-3551baeb64cb"/>
       </property>
       <property name="symbolic-icons" type="bool" value="true"/>
