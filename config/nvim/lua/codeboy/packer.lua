@@ -152,7 +152,7 @@ vim.keymap.set('n', '<Space>f', ':Neoformat<CR>', { silent = true, nowait = true
 require("nightfox").setup({
   options = {
     transparent = true,
-    dim_inactive = true,
+    dim_inactive = false,
     styles = {
       comments = "italic",
       constants = "bold",
