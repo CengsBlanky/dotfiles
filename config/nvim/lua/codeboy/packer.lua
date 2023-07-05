@@ -18,6 +18,7 @@ local packerStartup = require('packer').startup({function(use)
     'stevearc/oil.nvim',
     config = function() require('oil').setup() end
   }
+  use 'leafOfTree/vim-svelte-plugin'
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
   use 'justinmk/vim-sneak'
