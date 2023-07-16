@@ -1,4 +1,6 @@
 --hidden
 --smart-case
--g 'node_modules/'
--g 'target/'
+--glob
+!node_modules/*
+--glob
+!*/target/*
