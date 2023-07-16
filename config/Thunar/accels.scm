@@ -28,7 +28,7 @@
 ; (gtk_accel_path "<Actions>/ThunarStandardView/back-alt" "BackSpace")
 ; (gtk_accel_path "<Actions>/ThunarActionManager/open-in-new-tab" "<Primary><Shift>p")
 ; (gtk_accel_path "<Actions>/ThunarWindow/switch-next-tab" "<Primary>Page_Down")
-(gtk_accel_path "<Actions>/ThunarActionManager/delete" "<Alt>BackSpace")
+(gtk_accel_path "<Actions>/ThunarActionManager/delete" "<Shift>BackSpace")
 ; (gtk_accel_path "<Actions>/ThunarWindow/view-as-compact-list" "<Primary>3")
 ; (gtk_accel_path "<Actions>/ThunarWindow/about" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/open-computer" "")
