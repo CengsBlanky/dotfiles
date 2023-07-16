@@ -1,0 +1,4 @@
+--hidden
+--smart-case
+-g 'node_modules/'
+-g 'target/'
