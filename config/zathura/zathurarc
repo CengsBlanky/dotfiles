@@ -5,8 +5,8 @@ set font "Source Han Sans CN Medium"
 set selection-clipboard clipboard
 
 # Open document in fit-width mode by default
-set window-width 960
-set window-height 1080
+set window-width 1819
+set window-height 2160
 
 # One page per row by default
 set pages-per-row 1
@@ -16,6 +16,7 @@ set scroll-page-aware "true"
 set smooth-scroll "true"
 set scroll-full-overlap 0.01
 set scroll-step 100
+set adjust-open "best-fit"
 
 #zoom settings
 set zoom-min 10
