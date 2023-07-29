@@ -1,0 +1,41 @@
+#!/bin/bash
+
+srcfile=$1
+targetfile=$2
+cmd="tar -cv"
+
+if [[ -z $srcfile && -z $targetfile ]]; then
+    echo "Usage: compress [srcFile] [targetFile](optional, default append .tar.gz as filename)"
+    exit 0
+fi
+
+if [[ ! -e $srcfile ]]; then
+    echo "file not found: $srcfile"
+    exit 1
+fi
+
+# use gz by default
+if [[ -z $targetfile ]]; then
+    cmd=$cmd"zf"
+    echo $srcfile
+    targetfile=$(echo "$srcfile" | sed "s/\(^\/\)//" | sed "s/\(\/$\)//" | sed "s/\//_/g")
+    targetfile=$targetfile".tar.gz"
+else
+    suffix=${targetfile##*.}
+    if [[ ${suffix,,} == "bz2" ]]; then
+        cmd=$cmd"jf"
+    elif [[ ${suffix,,} == "gz" ]]; then
+        cmd=$cmd"zf"
+    elif [[ ${suffix,,} == "zip" ]]; then
+        cmd="zip -r"
+    else
+        echo "unknown compress method"
+        exit 1
+    fi
+fi
+
+cmd=$cmd" $targetfile $srcfile"
+# echo $cmd
+exec $cmd
+
+# todo add zip file support
