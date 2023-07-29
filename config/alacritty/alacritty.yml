@@ -10,7 +10,7 @@ font:
   ligatures: false
   normal:
     # family: 'JetBrainsMono NF'
-    family: 'Hack NF'
+    family: 'Hack NerdFont'
   size: 12.0
 colors:
   primary:
