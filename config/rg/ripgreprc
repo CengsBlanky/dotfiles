@@ -4,3 +4,7 @@
 !node_modules/*
 --glob
 !*/target/*
+--glob
+!.git/*
+--glob
+!Cargo.lock

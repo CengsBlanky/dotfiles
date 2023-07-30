@@ -14,7 +14,7 @@ if status is-interactive
     set -gx LESS "-RiXF"
     # set -gx MANPAGER most
     # bc scale
-    set -gx BC_ENV_ARGS "/home/zengshuai/.bc"
+    set -gx BC_ENV_ARGS "$HOME/.bc"
     # ripgrep 
     set -gx RIPGREP_CONFIG_PATH "$HOME/.config/rg/ripgreprc"
     if command -q rg
