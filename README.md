@@ -84,9 +84,9 @@ branch `Luna` for Linux, branch `Moon` for MacOS
 A simple and modern eBook viewer for Linux desktops
 [](https://johnfactotum.github.io/foliate/)
 
-### Translatium
+### pot-desktop
 
-适用于Linux的本地翻译软件，支持超过100种语言，提供snap包
+方便快捷的划词翻译软件[](https://github.com/pot-app/pot-desktop)
 
 ### testdisk
 
@@ -96,6 +96,11 @@ A simple and modern eBook viewer for Linux desktops
 
 将镜像文件烧录进SD卡与USB设备的工具
 兼容Linux,Mac与Windows操作系统
+
+### Ventoy
+
+Ventoy is an open source tool to create bootable USB drive for ISO/WIM/IMG/VHD(x)/EFI files
+[](https://github.com/ventoy/Ventoy)
 
 ### Sumatra PDF
 
@@ -109,44 +114,3 @@ PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for 
 
 由Rust编程语言实现的远程桌面软件: [](https://rustdesk.com/)
 
-### build IosevkaZen from source
-
-```toml
-[buildPlans.iosevka-zen]
-family = "IosevkaZen"
-spacing = "normal"
-serifs = "sans"
-no-cv-ss = true
-export-glyph-names = false
-
-  [buildPlans.iosevka-zen.variants]
-  inherits = "ss05"
-
-    [buildPlans.iosevka-zen.variants.design]
-    capital-g = "toothless-rounded-serifless-capped"
-    capital-m = "flat-bottom"
-    capital-q = "crossing"
-    capital-w = "straight-flat-top"
-    a = "double-storey-serifless"
-    f = "flat-hook"
-    g = "double-storey"
-    l = "serifed-asymmetric"
-    r = "hookless-serifed"
-    t = "flat-hook"
-    w = "straight-flat-top"
-    eszet = "sulzbacher-descending"
-    zero = "slashed-oval"
-    seven = "bend-serifless"
-    brace = "straight"
-    ampersand = "closed"
-    dollar = "interrupted"
-
-[buildPlans.iosevka-zen.widths.normal]
-shape = 600
-menu = 5
-css = "normal"
-```
-
-```bash
-npm run build -- ttf::iosevka-zen
-```
