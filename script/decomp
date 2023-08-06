@@ -31,4 +31,8 @@ if [[ "zip" == ${suffix,,} ]]; then
     fi
 fi
 
+if [[ "Z" == ${suffix,,} ]];then
+    cmd = "uncompress $srcfile"
+fi
+
 exec $cmd
