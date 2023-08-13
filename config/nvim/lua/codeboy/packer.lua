@@ -53,7 +53,9 @@ local packerStartup = require('packer').startup({function(use)
   use 'sbdchd/neoformat'
   use {
     "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
+    config = function() require("nvim-autopairs").setup {
+      check_ts = true,
+    } end
   }
   use {"EdenEast/nightfox.nvim", run = ":NightfoxCompile",}
   use {
