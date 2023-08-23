@@ -14,6 +14,11 @@ local packer_bootstrap = ensure_packer()
 local packerStartup = require('packer').startup({function(use)
   use 'wbthomason/packer.nvim'
   use 'preservim/nerdtree'
+  use {
+    'stevearc/oil.nvim',
+    config = function() require('oil').setup() end
+  }
+  use 'leafOfTree/vim-svelte-plugin'
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
   use 'justinmk/vim-sneak'
@@ -35,6 +40,7 @@ local packerStartup = require('packer').startup({function(use)
   use 'nvim-treesitter/nvim-treesitter'
   use 'ryanoasis/vim-devicons'
   use 'neovim/nvim-lspconfig'
+  use 'simrat39/rust-tools.nvim'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -47,12 +53,16 @@ local packerStartup = require('packer').startup({function(use)
   use 'sbdchd/neoformat'
   use {
     "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
+    config = function() require("nvim-autopairs").setup {
+      check_ts = true,
+    } end
   }
   use {"EdenEast/nightfox.nvim", run = ":NightfoxCompile",}
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    requires = {
+      {'kyazdani42/nvim-web-devicons', opt = true},
+    }
   }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -78,6 +88,8 @@ vim.g.NERDTreeIgnore = {
     '\\.lock$[[file]]', '\\.o$[[file]]', '\\.out$[[file]]', '\\.class$[[file]]', '\\.exe$[[file]]',
     '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]'
 }
+-- oil.nvim
+vim.keymap.set('n', '<C-f>', ':Oil .<CR>', { silent = true, nowait = true })
 -- gitsigns
 require('gitsigns').setup {
   signs = {
@@ -115,6 +127,20 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, {})
 vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-j>"] = "move_selection_next",
+        ["<C-k>"] = "move_selection_previous",
+      },
+      n = {
+        ["<C-j>"] = "move_selection_next",
+        ["<C-k>"] = "move_selection_previous",
+      },
+    }
+  }
+}
 require('telescope').load_extension('fzf')
 -- neoformat
 vim.g.neoformat_basic_format_align = 1
@@ -129,7 +155,7 @@ vim.keymap.set('n', '<Space>f', ':Neoformat<CR>', { silent = true, nowait = true
 require("nightfox").setup({
   options = {
     transparent = true,
-    dim_inactive = true,
+    dim_inactive = false,
     styles = {
       comments = "italic",
       constants = "bold",
@@ -139,7 +165,7 @@ require("nightfox").setup({
 vim.cmd [[colorscheme nordfox]]
 --- treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "bash", "dart", "c", "diff", "java", "dockerfile", "go", "help", "html", "javascript", "json", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "yaml", "toml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "dockerfile", "go", "html", "css", "javascript", "svelte", "json", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "yaml", "toml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
@@ -148,7 +174,7 @@ require'nvim-treesitter.configs'.setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = true,
+    additional_vim_regex_highlighting = false,
   },
   matchup = {
     enable = true, -- mandatory, false will disable the whole extension
@@ -160,8 +186,8 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    section_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' },
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -176,30 +202,61 @@ require('lualine').setup {
     }
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = {
+      {
+        'mode',
+        fmt = function (modestr)
+          return modestr:sub(1,1)
+        end,
+      }
+    },
     lualine_b = {
+      {
+        'filetype',
+        colored = true,
+        icon_only = true,
+        padding = { left = 1, right = 0 },
+      },
       {
         'filename',
         symbols = {
-          modified = '●',      -- Text to show when the buffer is modified
-          alternate_file = '#', -- Text to show to identify the alternate file
-          directory =  '',     -- Text to show when the buffer is a directory
+          modified = '●',
+          alternate_file = '#',
+          directory =  '',
+          readonly = '',
+          newfile = '󰈔'
         },
-
+        color = { gui='bold'},
       }
     },
     lualine_c = {'diagnostics'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'%P'},
-    lualine_z = {'%l/%L'}
+    lualine_x = {},
+    lualine_y = {'fileformat', 'encoding'},
+    lualine_z = {'%P', '%l:%v/%L'}
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
+    lualine_b = {
+      {
+        'filetype',
+        colored = true,
+        icon_only = true,
+      },
+      {
+        'filename',
+        symbols = {
+          modified = '●',
+          alternate_file = '#',
+          directory =  '',
+          readonly = '',
+          newfile = '󰈔',
+        },
+      },
+    },
+    lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {'%l/%L'}
+    lualine_z = {'%l:%v/%L'}
   },
   tabline = {},
   winbar = {},

@@ -10,8 +10,8 @@ vim.diagnostic.config({
 })
 
 local ensure_installed_list = {
-  'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'tsserver',
-  'lua_ls', 'marksman', 'pyright', 'volar', 'lemminx', 'yamlls'
+  'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'tsserver', 'cssls', 'svelte',
+  'lua_ls', 'marksman', 'pyright', 'volar', 'lemminx'
 }
 
 require("mason").setup()
@@ -23,7 +23,7 @@ require("mason-lspconfig").setup({
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<leader>a', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, opts)
 -- Use an on_attach function to only map the following keys

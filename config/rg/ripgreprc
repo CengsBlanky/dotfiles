@@ -1,0 +1,10 @@
+--hidden
+--smart-case
+--glob
+!node_modules/*
+--glob
+!*/target/*
+--glob
+!.git/*
+--glob
+!Cargo.lock

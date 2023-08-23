@@ -1,41 +1,60 @@
 if status is-interactive
     # ===== vi mode =====
     fish_vi_key_bindings
+    set fish_cursor_default block
+    set fish_cursor_insert line blink
+    set fish_cursor_replace_one underscore
 
     # per dir length
     set -g fish_prompt_pwd_dir_length 0
 
     # ===== ENV =====
     set -gx LANG "en_US.UTF-8"
-    set -gx EDITOR vim
+    set -gx EDITOR nvim
     set -gx LESS "-RiXF"
     # set -gx MANPAGER most
     # bc scale
-    set -gx BC_ENV_ARGS "/home/zengshuai/.bc"
+    set -gx BC_ENV_ARGS "$HOME/.bc"
     # ripgrep 
+    set -gx RIPGREP_CONFIG_PATH "$HOME/.config/rg/ripgreprc"
     if command -q rg
-        set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.config/nvim/ignorefile"
+        set -gx FZF_DEFAULT_COMMAND "rg --files --column --line-number --no-heading --no-ignore"
     end
     # current location
     set -gx MY_CUR_LOCATION '雨花台'
+    # sdkman
+    set -l SDKMAN_CANDIDATES "$HOME/.sdkman/candidates"
     # java
-    set -gx JAVA_HOME "/usr/lib/jvm/jdk-17/"
-    set PATH $PATH "$JAVA_HOME/bin"
-    set -gx MAVEN_HOME "/opt/apache-maven-3.9.0/"
+    set -gx JAVA_HOME "$SDKMAN_CANDIDATES/java/current"
+    set PATH $PATH "$JAVA_HOME/bin" 
+    # maven
+    set -gx MAVEN_HOME "$SDKMAN_CANDIDATES/maven/current"
     set PATH $PATH "$MAVEN_HOME/bin"
+    # gradle
+    set -gx GRADLE_HOME "$SDKMAN_CANDIDATES/gradle/current"
+    set PATH $PATH "$GRADLE_HOME/bin"
     # jdtls
     # set -gx JDTLS_JVM_ARGS "-javaagent:$HOME/.m2/lib/lombok-1.18.24.jar"
-    # gradle
-    set PATH $PATH "/opt/gradle/gradle-7.4.1/bin"
+    # kotlin
+    set -gx KOTLIN_HOME "$SDKMAN_CANDIDATES/kotlin/current"
+    set PATH $PATH "$KOTLIN_HOME/bin"
     # rust
     set PATH $PATH "$HOME/.cargo/bin"
     # golang
     set PATH $PATH "$HOME/go/bin"
     # Flutter
-    set -gx PUB_HOSTED_URL "https://pub.flutter-io.cn"
-    set -gx FLUTTER_STORAGE_BASE_URL "https://storage.flutter-io.cn"
-    set PATH $PATH "$HOME/snap/flutter/common/flutter/bin"
-    set PATH $PATH "$HOME/tools/android-studio/bin"
+    set PATH $PATH "$HOME/Apps/flutter/bin"
+    set -gx PUB_HOSTED_URL "https://mirrors.tuna.tsinghua.edu.cn/dart-pub"
+    set -gx FLUTTER_STORAGE_BASE_URL "https://mirrors.tuna.tsinghua.edu.cn/flutter"
+    # Android
+    set -gx ANDROID_HOME "$HOME/Android/Sdk"
+    set -gx ADB "$ANDROID_HOME/platform-tools/adb"
+    set PATH $PATH "$ANDROID_HOME/platform-tools"
+    set PATH $PATH "$ANDROID_HOME/tools"
+    set PATH $PATH "$ANDROID_HOME/tools/bin"
+    set PATH $PATH "$ANDROID_HOME/tools/platform-tools"
+    # npm config
+    set PATH $PATH "$HOME/.local/share/npm/bin"
     # spring boot cli
     set PATH $PATH "$HOME/tools/spring-2.6.4/bin"
     # ruby binaries
@@ -61,8 +80,9 @@ if status is-interactive
     abbr --add cdshare "cd /home/share/"
     # django
     abbr --add pymanage "python manage.py"
+    # replace which command
+    abbr --add which "command -s"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default
-
 end

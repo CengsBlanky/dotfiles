@@ -1,5 +1,6 @@
-# registry=https://registry.npmmirror.com
+registry=https://registry.npmmirror.com
 init-author-email=zengs1994@gmail.com
 init-author-name=zengshuai
 init-license=MIT
+prefix=/home/zeng/.local/share/npm
 userconfig=~/.npmrc

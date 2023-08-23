@@ -1,0 +1,38 @@
+#!/bin/bash
+
+srcfile=$1
+targetdir=$2
+
+if [[ -z $srcfile && -z $targetDir ]]; then
+    echo "Usage: decompress [srcFile] [targetDir](optional, default to current directory)"
+    exit 0
+fi
+
+cmd="tar -xvf $srcfile"
+
+if [[ ! -f $srcfile ]]; then
+    echo "file not found!"
+    exit 1
+fi
+
+if [[ -d $targetdir ]]; then
+    cmd=$cmd" -C $targetdir"
+elif [[ -n $targetdir ]]; then
+    echo "invalid directory!"
+    exit 1
+fi
+
+# for zip file
+suffix=${srcfile##*.}
+if [[ "zip" == ${suffix,,} ]]; then
+    cmd="unzip $srcfile"
+    if [[ -d $targetdir ]]; then
+        cmd=$cmd"-d $targetdir"
+    fi
+fi
+
+if [[ "Z" == ${suffix,,} ]];then
+    cmd = "uncompress $srcfile"
+fi
+
+exec $cmd
