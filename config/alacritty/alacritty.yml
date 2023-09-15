@@ -9,8 +9,7 @@ window:
 font:
   ligatures: false
   normal:
-    family: 'Hack NerdFont'
-    # family: 'Menlo NerdFont'
+    family: 'JetbrainsMono NF'
   size: 12.0
 colors:
   primary:
