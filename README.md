@@ -35,6 +35,15 @@ branch `Luna` for Linux, branch `Moon` for MacOS
 
 [transmission](https://transmissionbt.com)
 
+### LocalSend
+
+局域网文件互传工具，各个移动平台和操作系统均支持
+
+### sleek
+
+todo.txt的gui管理工具，简洁的界面，易用的快捷键
+[sleek](https://github.com/ransome1/sleek)
+
 ## command line tool
 
 ### todo
