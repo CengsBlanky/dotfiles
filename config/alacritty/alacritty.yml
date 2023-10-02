@@ -10,8 +10,7 @@ font:
   ligatures: false
   normal:
     family: 'JetbrainsMono NF'
-    family: 'UbuntuMono NerdFont'
-  size: 14.0
+  size: 12.0
 colors:
   primary:
     background: '#212529'
