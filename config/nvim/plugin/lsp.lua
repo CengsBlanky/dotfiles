@@ -9,17 +9,6 @@ vim.diagnostic.config({
   virtual_text = false,
 })
 
-local ensure_installed_list = {
-  'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'tsserver', 'cssls', 'svelte',
-  'lua_ls', 'marksman', 'pyright', 'volar', 'lemminx'
-}
-
-require("mason").setup()
-
-require("mason-lspconfig").setup({
-  ensure_installed = ensure_installed_list
-})
-
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -56,6 +45,15 @@ local lsp_flags = {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
+
+local ensure_installed_list = {
+  'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'tsserver', 'cssls', 'svelte',
+  'lua_ls', 'marksman', 'pyright', 'volar', 'lemminx'
+}
+
+require("mason-lspconfig").setup({
+  ensure_installed = ensure_installed_list
+})
 
 for _, lserver in pairs(ensure_installed_list) do
   lspconfig[lserver].setup {
