@@ -59,6 +59,8 @@ if status is-interactive
     set PATH $PATH "$HOME/tools/spring-2.6.4/bin"
     # ruby binaries
     set PATH $PATH "$HOME/.local/share/gem/ruby/3.0.0/bin"
+    # source asdf version manager
+    source ~/.asdf/asdf.fish
 
     # general
     set PATH $PATH "$HOME/.local/bin"

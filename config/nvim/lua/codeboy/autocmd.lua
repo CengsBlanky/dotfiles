@@ -8,22 +8,25 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
-    pattern = { "html", "css", "javascript", "typescript", "vue", "yaml", "sql", "json", "vim", "lua", "dart", "svelte"},
+    pattern = { "html", "xhtml", "css", "scss", "javascript", "typescript", "vue", "yaml", "sql", "json", "vim", "lua", "dart", "svelte"},
     callback = function()
         vim.opt_local.tabstop = 2
         vim.opt_local.shiftwidth = 2
     end
 })
 
-vim.api.nvim_create_autocmd({"FileType"}, {
-    group = myGroup,
-    pattern = {"json"},
-    callback = function() vim.keymap.set('n', '<Space>f', ':%!jq<CR>', { silent = true }) end
+vim.api.nvim_create_autocmd({"BufRead"}, {
+  group = myGroup,
+  pattern = {"*.log"},
+  callback = function ()
+    vim.bo.filetype = "log"
+    vim.opt_local.wrap = true
+  end
 })
 
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
-    pattern = {"markdown", "text"},
+    pattern = {"markdown", "text", "log"},
     callback = function() 
       vim.opt.wrap = true
       vim.opt.linebreak = true

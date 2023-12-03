@@ -48,7 +48,7 @@ local lspconfig = require('lspconfig')
 
 local ensure_installed_list = {
   'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'tsserver', 'cssls', 'svelte',
-  'lua_ls', 'marksman', 'pyright', 'volar', 'lemminx'
+  'lua_ls', 'marksman', 'pyright', 'volar', 'lemminx', 'elixirls'
 }
 
 require("mason-lspconfig").setup({
