@@ -1,0 +1,1 @@
+/home/zeng/.asdf/completions/asdf.fish
