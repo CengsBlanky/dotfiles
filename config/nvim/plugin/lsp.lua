@@ -1,5 +1,5 @@
 -- lsp sign icons
-local signs = { Error = " ", Warn = "", Hint = "ﯧ ", Info = " " }
+local signs = { Error = " ", Warn = "", Hint = "󰌶", Info = "" }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -36,11 +36,6 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<F4>', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
-}
-
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -58,14 +53,12 @@ require("mason-lspconfig").setup({
 for _, lserver in pairs(ensure_installed_list) do
   lspconfig[lserver].setup {
     on_attach = on_attach,
-    flags = lsp_flags,
     capabilities = cmp_capabilities,
   }
 end
 lspconfig.jdtls.setup{
   cmd = { 'jdtls' },
   on_attach = on_attach,
-  flags = lsp_flags,
   capabilities = cmp_capabilities,
 }
 

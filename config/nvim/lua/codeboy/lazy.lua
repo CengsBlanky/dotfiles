@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   {
     'preservim/nerdtree',
+    cmd = "NERDTreeToggle",
     keys = {
       { "<Tab>", "<cmd>NERDTreeToggle<CR>", { silent = true } },
     },
@@ -134,6 +135,7 @@ require("lazy").setup({
   'williamboman/mason-lspconfig.nvim',
   {
     'sbdchd/neoformat',
+    cmd = 'Neoformat',
     keys = {
       { "<Space>f", "<cmd>Neoformat<CR>", { silent = true, nowait = true } },
     },
