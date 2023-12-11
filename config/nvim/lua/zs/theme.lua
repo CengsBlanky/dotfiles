@@ -4,7 +4,7 @@ vim.opt.pumblend = 5
 vim.opt.winblend = 0
 vim.opt.background = 'dark'
 
-vim.api.nvim_set_hl(0, "Comment", { fg = "DarkGray" })
+-- vim.api.nvim_set_hl(0, "Comment", { fg = "DarkGray" })
 vim.api.nvim_set_hl(0, "Visual", { bg = "#495057" })
 vim.api.nvim_set_hl(0, "Search", { bg = "#495057" })
 vim.api.nvim_set_hl(0, "Folded", { fg = "DarkGray" })
