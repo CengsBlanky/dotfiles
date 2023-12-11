@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   {
     'preservim/nerdtree',
-    config = function ()
+    init = function ()
       vim.g.NERDTreeStatusline=' '
       vim.g.NERDTreeQuitOnOpen = 3
       vim.g.NERDTreeMinimalUI = 1
@@ -57,10 +57,15 @@ require("lazy").setup({
   },
   'junegunn/vim-easy-align',
   'romainl/vim-cool',
-  {'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.4',
-    dependencies = { {'nvim-lua/plenary.nvim'} },
+    'nvim-telescope/telescope.nvim', tag = '0.1.5',
+    dependencies = {
+      {'nvim-lua/plenary.nvim'},
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+      }
+    },
     config = function ()
       local builtin = require('telescope.builtin')
       vim.keymap.set('n', '<leader>f', builtin.find_files, {})
@@ -113,6 +118,9 @@ require("lazy").setup({
   'junegunn/goyo.vim',
   {
     'christoomey/vim-tmux-navigator',
+    init = function ()
+      vim.g.tmux_navigator_no_mappings = 1
+    end,
     config = function ()
       vim.g.tmux_navigator_no_mappings = 1
     end,
