@@ -6,15 +6,6 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     callback = function() vim.opt_local.foldmethod = "marker" end
 })
 
-vim.api.nvim_create_autocmd({"FileType"}, {
-    group = myGroup,
-    pattern = { "html", "xhtml", "css", "scss", "javascript", "typescript", "vue", "yaml", "sql", "json", "vim", "lua", "dart", "svelte"},
-    callback = function()
-        vim.opt_local.tabstop = 2
-        vim.opt_local.shiftwidth = 2
-    end
-})
-
 vim.api.nvim_create_autocmd({"BufRead"}, {
   group = myGroup,
   pattern = {"*.log"},
@@ -28,10 +19,19 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
     pattern = {"markdown", "text", "log"},
     callback = function() 
-      vim.opt.wrap = true
-      vim.opt.linebreak = true
+      vim.opt_local.wrap = true
+      vim.opt_local.linebreak = true
       vim.keymap.set('n', 'j', 'gj', { silent = true })
       vim.keymap.set('n', 'k', 'gk', { silent = true })
+    end
+})
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+    group = myGroup,
+    pattern = { "html", "xhtml", "css", "scss", "javascript", "typescript", "vue", "yaml", "sql", "json", "vim", "lua", "dart", "svelte"},
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
     end
 })
 

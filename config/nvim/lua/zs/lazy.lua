@@ -117,22 +117,161 @@ require("lazy").setup({
       }
     end
   },
-  'neovim/nvim-lspconfig',
+  {
+    'neovim/nvim-lspconfig',
+    config = function ()
+      -- lsp sign icons
+      local signs = { Error = " ", Warn = "", Hint = "󰌶", Info = "" }
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+      end
+
+      vim.diagnostic.config({
+        virtual_text = false,
+      })
+
+      -- Mappings.
+      -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+      local opts = { noremap=true, silent=true }
+      vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
+      vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, opts)
+      vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, opts)
+      -- Use an on_attach function to only map the following keys
+      -- after the language server attaches to the current buffer
+      local on_attach = function(_, bufnr)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+        -- Mappings.
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        local bufopts = { noremap=true, silent=true, buffer=bufnr }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+        -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+        vim.keymap.set('n', '<leader>n', vim.lsp.buf.rename, bufopts)
+        vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+        vim.keymap.set('n', '<F4>', function() vim.lsp.buf.format { async = true } end, bufopts)
+      end
+
+      -- Add additional capabilities supported by nvim-cmp
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+      local lspconfig = require('lspconfig')
+
+      local ensure_installed_list = {
+        'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'tsserver', 'cssls', 'svelte',
+        'lua_ls', 'marksman', 'pyright', 'volar', 'lemminx', 'elixirls'
+      }
+
+      require("mason-lspconfig").setup({
+        ensure_installed = ensure_installed_list
+      })
+
+      for _, lserver in pairs(ensure_installed_list) do
+        lspconfig[lserver].setup {
+          on_attach = on_attach,
+          capabilities = cmp_capabilities,
+        }
+      end
+      lspconfig.jdtls.setup{
+        cmd = { 'jdtls' },
+        on_attach = on_attach,
+        capabilities = cmp_capabilities,
+      }
+
+      -- flutter setup
+      require("flutter-tools").setup {
+        lsp = {
+          on_attach = on_attach,
+          capabilities = cmp_capabilities,
+        }
+      }
+    end,
+    dependencies = {
+      {
+        'williamboman/mason.nvim',
+        config = function ()
+          require("mason").setup()
+        end
+      },
+      {
+        'williamboman/mason-lspconfig.nvim',
+      },
+    }
+  },
   'simrat39/rust-tools.nvim',
-  'hrsh7th/nvim-cmp',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'saadparwaiz1/cmp_luasnip',
-  'L3MON4D3/LuaSnip',
-  "honza/vim-snippets",
+  {
+    'hrsh7th/nvim-cmp',
+    config = function ()
+      -- luasnip setup
+      local luasnip = require 'luasnip'
+
+      -- nvim-cmp setup
+      local cmp = require 'cmp'
+      cmp.setup {
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        mapping = cmp.mapping.preset.insert({
+          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<CR>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = false,
+          },
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+          ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+        }),
+        sources = cmp.config.sources {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'buffer' },
+          { name = 'path' },
+        },
+      }
+
+      -- code snippets source
+      require("luasnip.loaders.from_snipmate").lazy_load()
+    end,
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'saadparwaiz1/cmp_luasnip',
+      'L3MON4D3/LuaSnip',
+      "honza/vim-snippets",
+    }
+  },
   {
     'williamboman/mason.nvim',
     config = function ()
       require("mason").setup()
     end
   },
-  'williamboman/mason-lspconfig.nvim',
   {
     'sbdchd/neoformat',
     cmd = 'Neoformat',

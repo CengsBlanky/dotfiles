@@ -11,9 +11,10 @@ font:
   normal:
     # family: 'JetbrainsMono NF'
     # family: 'MesloLGM NerdFont'
-    family: 'MesloLGS NerdFont'
-    # family: 'Hack NerdFont'
-  size: 12.0
+    # family: 'MesloLGS NerdFont'
+    family: 'Hack NerdFont'
+    family: 'UbuntuMono NerdFont'
+  size: 13.0
 colors:
   primary:
     background: '#212529'
