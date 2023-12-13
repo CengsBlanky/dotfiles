@@ -12,8 +12,9 @@ font:
     # family: 'JetbrainsMono NF'
     # family: 'MesloLGM NerdFont'
     # family: 'MesloLGS NerdFont'
-    family: 'Hack NerdFont'
+    # family: 'Hack NerdFont'
     # family: 'UbuntuMono NerdFont'
+    family: 'CommitMono NerdFont'
   size: 12.0
 colors:
   primary:
