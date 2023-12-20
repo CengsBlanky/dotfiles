@@ -13,6 +13,7 @@ vim.opt.swapfile = false
 vim.opt.showcmd = true
 vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
+vim.opt.showmode = false
 vim.opt.scrolloff = 10
 vim.opt.hidden = true
 vim.opt.ignorecase = true

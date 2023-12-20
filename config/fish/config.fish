@@ -84,6 +84,8 @@ if status is-interactive
     abbr --add pymanage "python manage.py"
     # replace which command
     abbr --add which "command -s"
+    # quick to nvim config
+    abbr --add cdnvim "cd $HOME/.config/nvim"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default
