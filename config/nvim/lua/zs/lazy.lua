@@ -58,6 +58,26 @@ require("lazy").setup({
   'junegunn/vim-easy-align',
   'romainl/vim-cool',
   {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/notes",
+              },
+            },
+          },
+        },
+      }
+    end,
+  },
+  {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
     dependencies = {
       {'nvim-lua/plenary.nvim'},
@@ -242,6 +262,7 @@ require("lazy").setup({
     }
   },
   'simrat39/rust-tools.nvim',
+  'elixir-editors/vim-elixir',
   {
     'hrsh7th/nvim-cmp',
     config = function ()
