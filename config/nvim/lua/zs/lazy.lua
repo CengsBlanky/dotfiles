@@ -41,6 +41,12 @@ require("lazy").setup({
   'tpope/vim-commentary',
   'justinmk/vim-sneak',
   {
+    'andymass/vim-matchup',
+    config = function ()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end
+  },
+  {
     'lewis6991/gitsigns.nvim',
     keys = {
       { "]c", '<cmd>Gitsigns next_hunk<CR>', { silent = true, nowait = true } },
@@ -112,7 +118,7 @@ require("lazy").setup({
   'dart-lang/dart-vim-plugin',
   'dag/vim-fish',
   {
-    'mattn/emmet-vim',
+    'git@github.com:mattn/emmet-vim.git',
     config = function ()
       vim.g.user_emmet_mode='a'
     end
