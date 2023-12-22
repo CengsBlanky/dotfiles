@@ -118,7 +118,7 @@ require("lazy").setup({
   'dart-lang/dart-vim-plugin',
   'dag/vim-fish',
   {
-    'git@github.com:mattn/emmet-vim.git',
+    'mattn/emmet-vim',
     config = function ()
       vim.g.user_emmet_mode='a'
     end
