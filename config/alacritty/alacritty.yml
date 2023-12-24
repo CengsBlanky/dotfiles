@@ -10,11 +10,12 @@ font:
   ligatures: false
   normal:
     # family: 'JetbrainsMono NF'
+    # family: 'Hack NerdFont'
+    family: 'HackZeroSlash NerdFont'
     # family: 'MesloLGM NerdFont'
     # family: 'MesloLGS NerdFont'
     # family: 'SFMono NerdFont'
     # family: 'OxygenMono NerdFont'
-    family: 'Hack NerdFont'
     # family: 'UbuntuMono NerdFont'
     # family: 'CommitMono NerdFont'
   size: 12.0
