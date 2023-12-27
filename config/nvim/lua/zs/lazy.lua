@@ -216,7 +216,7 @@ require("lazy").setup({
         -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
         vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
         vim.keymap.set('n', '<leader>n', vim.lsp.buf.rename, bufopts)
-        vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+        vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
         vim.keymap.set('n', '<F4>', function() vim.lsp.buf.format { async = true } end, bufopts)
       end
@@ -254,6 +254,32 @@ require("lazy").setup({
           capabilities = cmp_capabilities,
         }
       }
+      -- rust tools setup
+      local rt = require("rust-tools")
+      rt.setup({
+        server = {
+          on_attach = function(_, bufnr)
+            vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+            local bufopts = { noremap=true, silent=true, buffer=bufnr }
+
+            vim.keymap.set('n', 'K', rt.hover_actions.hover_actions, bufopts)
+            vim.keymap.set('n', '<leader>a', rt.code_action_group.code_action_group, bufopts)
+            -- Mappings.
+            -- See `:help vim.lsp.*` for documentation on any of the below functions
+            local bufopts = { noremap=true, silent=true, buffer=bufnr }
+            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+            vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+            vim.keymap.set('n', '<leader>n', vim.lsp.buf.rename, bufopts)
+            vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+            vim.keymap.set('n', '<F4>', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+          end,
+          capabilities = cmp_capabilities,
+        }
+
+      })
     end,
     dependencies = {
       {
@@ -265,9 +291,11 @@ require("lazy").setup({
       {
         'williamboman/mason-lspconfig.nvim',
       },
+      {
+        'simrat39/rust-tools.nvim',
+      },
     }
   },
-  'simrat39/rust-tools.nvim',
   'elixir-editors/vim-elixir',
   {
     'hrsh7th/nvim-cmp',
