@@ -8,3 +8,5 @@
 !.git/*
 --glob
 !Cargo.lock
+--glob
+!lazy-lock.json

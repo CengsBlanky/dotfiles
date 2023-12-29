@@ -97,18 +97,20 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>f', builtin.find_files, {})
       vim.keymap.set('n', '<leader>b', builtin.buffers, {})
       vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
+      local actions = require("telescope.actions")
       require('telescope').setup{
         defaults = {
           mappings = {
             i = {
               ["<C-j>"] = "move_selection_next",
               ["<C-k>"] = "move_selection_previous",
+              ["esc"] = actions.close
             },
             n = {
               ["<C-j>"] = "move_selection_next",
               ["<C-k>"] = "move_selection_previous",
             },
-          }
+          },
         }
       }
       require('telescope').load_extension('fzf')
@@ -162,7 +164,7 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     config = function ()
       require'nvim-treesitter.configs'.setup {
-        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "dockerfile", "go", "html", "css", "javascript", "svelte", "json", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "yaml", "toml", "elixir" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "dockerfile", "go", "html", "css", "javascript", "svelte", "json", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "yaml", "toml", "elixir", "vimdoc" },
         ignore_install = {}, -- List of parsers to ignore installing
         highlight = {
           enable = true,              -- false will disable the whole extension
