@@ -17,17 +17,6 @@ vim.api.nvim_create_autocmd({"BufRead"}, {
 
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
-    pattern = {"markdown", "text", "log"},
-    callback = function() 
-      vim.opt_local.wrap = true
-      vim.opt_local.linebreak = true
-      vim.keymap.set('n', 'j', 'gj', { silent = true })
-      vim.keymap.set('n', 'k', 'gk', { silent = true })
-    end
-})
-
-vim.api.nvim_create_autocmd({"FileType"}, {
-    group = myGroup,
     pattern = { "html", "xhtml", "css", "scss", "javascript", "typescript", "vue", "yaml", "sql", "json", "vim", "lua", "dart", "svelte"},
     callback = function()
         vim.opt_local.tabstop = 2
