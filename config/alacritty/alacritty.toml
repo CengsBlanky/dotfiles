@@ -1,0 +1,40 @@
+# curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
+[bell]
+duration = 0
+
+[colors]
+transparent_background_colors = true
+draw_bold_text_with_bright_colors = true
+
+[colors.primary]
+background = "#212529"
+foreground = "#d8dee9"
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "HackZeroSlash NerdFont"
+
+[[keyboard.bindings]]
+action = "ScrollLineUp"
+key = "K"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ScrollLineDown"
+key = "J"
+mods = "Control|Shift"
+
+[mouse]
+hide_when_typing = true
+
+[shell]
+program = "/usr/bin/fish"
+
+[window]
+decorations = "none"
+dynamic_title = false
+opacity = 0.99
+startup_mode = "Maximized"
+
