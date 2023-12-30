@@ -77,6 +77,8 @@ if status is-interactive
     abbr --add gpl "git pull"
     abbr --add gad "git add"
     abbr --add gcm "git commit -am"
+    abbr --add glg "git log --author=(git config user.name) --oneline -n 10"
+    abbr --add gsh "git show"
     abbr --add cdnote "cd $HOME/notes/journal"
     abbr --add note "joplin"
     abbr --add cdshare "cd /home/share/"
