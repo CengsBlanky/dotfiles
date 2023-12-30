@@ -48,6 +48,7 @@ require("lazy").setup({
   },
   {
     'lewis6991/gitsigns.nvim',
+    cmd = 'Gitsigns next_hunk',
     keys = {
       { "]c", '<cmd>Gitsigns next_hunk<CR>', { silent = true, nowait = true } },
       { "[c", '<cmd>Gitsigns prev_hunk<CR>', { silent = true, nowait = true } },
