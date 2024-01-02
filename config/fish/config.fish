@@ -1,6 +1,7 @@
 if status is-interactive
     # ===== vi mode =====
     fish_vi_key_bindings
+    bind --mode insert --sets-mode default jk repaint
     set fish_cursor_default block
     set fish_cursor_insert line blink
     set fish_cursor_replace_one underscore
