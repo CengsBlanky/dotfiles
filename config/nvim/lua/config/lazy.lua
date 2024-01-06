@@ -120,8 +120,15 @@ require("lazy").setup({
       require('telescope').load_extension('fzf')
     end
   },
-  {'akinsho/flutter-tools.nvim', dependencies = 'nvim-lua/plenary.nvim'},
-  'dart-lang/dart-vim-plugin',
+  {
+    'akinsho/flutter-tools.nvim',
+    ft = 'dart',
+    dependencies = 'nvim-lua/plenary.nvim'
+  },
+  {
+    'dart-lang/dart-vim-plugin',
+    ft = 'dart',
+  },
   'dag/vim-fish',
   {
     'mattn/emmet-vim',
@@ -297,6 +304,7 @@ require("lazy").setup({
       },
       {
         'simrat39/rust-tools.nvim',
+        ft = 'rust'
       },
     }
   },

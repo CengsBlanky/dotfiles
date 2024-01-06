@@ -78,7 +78,7 @@ if status is-interactive
     abbr --add gps "git push"
     abbr --add gpl "git pull"
     abbr --add gad "git add"
-    abbr --add gcm "git commit"
+    abbr --add gcm "git commit -a"
     abbr --add glg "git log --author=(git config user.name) --oneline -n 10"
     abbr --add gsh "git show"
     abbr --add note "joplin"
