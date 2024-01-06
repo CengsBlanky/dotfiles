@@ -35,6 +35,7 @@ set hlsearch
 set mouse=
 set mousehide
 set signcolumn=yes
+set cursorline
 set nowrap
 set cmdheight=1
 set splitbelow
