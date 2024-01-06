@@ -12,6 +12,7 @@ if status is-interactive
     # ===== ENV =====
     set -gx LANG "en_US.UTF-8"
     set -gx EDITOR nvim
+    set -gx GIT_EDITOR nvim
     set -gx LESS "-RiXF"
     # set -gx MANPAGER most
     # bc scale
@@ -90,6 +91,7 @@ if status is-interactive
     # quick to nvim config
     abbr --add cdnvim "cd $HOME/.config/nvim"
     abbr --add hibernate "sudo pm-hibernate"
+    abbr --add cddot "cd $HOME/.dotfiles"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default

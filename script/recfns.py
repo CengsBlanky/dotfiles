@@ -35,17 +35,36 @@ def get_file_names():
 def rectify_file_names(file_names: list[str]):
     result_map = {}
     for file_name in file_names:
-        new_file_name = re.sub(r'[ ：:%*$^&!#@``！。，=+]',
-                               "",
-                               file_name,
-                               count=len(file_name))
-        new_file_name = new_file_name.replace("（", "(")
-        new_file_name = new_file_name.replace("）", ")")
-        new_file_name = new_file_name.replace("《", "_")
-        new_file_name = new_file_name.replace("》", "_")
-        new_file_name = new_file_name.replace("-", "_")
-        new_file_name = new_file_name.replace("·", "[")
-        new_file_name = new_file_name.replace("「", "]")
+        new_file_name = re.sub(
+            r'[%*$^&#@!！。，]',
+            "",
+            file_name,
+        )
+        new_file_name = re.sub(
+            r'[ -=+·：:]',
+            "_",
+            new_file_name,
+        )
+        new_file_name = re.sub(
+            r'[（《〈{]',
+            "(",
+            new_file_name,
+        )
+        new_file_name = re.sub(
+            r'[）》〉}]',
+            ")",
+            new_file_name,
+        )
+        new_file_name = re.sub(
+            r'[`’‘]',
+            "'",
+            new_file_name,
+        )
+        new_file_name = re.sub(
+            r'[“”]',
+            "\"",
+            new_file_name,
+        )
         result_map[file_name] = new_file_name
     return result_map
 

@@ -13,7 +13,9 @@ foreground = "#d8dee9"
 
 [font.normal]
 # family = "HackZeroSlash NerdFont"
-family = "UbuntuMono NerdFont"
+# family = "UbuntuMono NerdFont"
+family = "BlexMono NerdFont"
+style = "Medium"
 
 [font]
 size = 14.0
