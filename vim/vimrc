@@ -1,7 +1,7 @@
 vim9script
 # variables must add white space between =; but set must not
 set nocompatible
-g:skip_defaults_vim  =  1
+g:skip_defaults_vim = 1
 filetype plugin indent on
 syntax on
 language en_US.UTF-8
@@ -82,12 +82,12 @@ hi SignColumn guibg=NONE
 hi StatusLine guifg=#212529 guibg=#eceff4 gui=bold
 hi StatusLineNC guifg=#2e3440 guibg=DarkGray gui=NONE
 
-set statusline=\ %w%f\ %h%m%r%=%-18y%-20(%l,%c/%L%)%-4P
+set statusline=\ %w%f\ %h%m%r%=%-20y%-20(%l,%c/%L%)%-4P
 
 autocmd VimEnter * set formatoptions-=o
 autocmd FileType vim,javascript,typescript,lua set tabstop=2 shiftwidth=2 softtabstop=2
 autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
-
+# restore cursor position
 autocmd BufReadPost *
     | if line("'\"") >= 1 && line("'\"") <= line("$") && &filetype !~# 'commit' && index(['xxd', 'gitrebase'], &filetype) == -1
     | execute "normal! g`\""
