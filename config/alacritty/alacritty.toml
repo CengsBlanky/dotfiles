@@ -12,10 +12,11 @@ foreground = "#d8dee9"
 
 
 [font.normal]
-family = "HackZeroSlash NerdFont"
+# family = "HackZeroSlash NerdFont"
+family = "UbuntuMono NerdFont"
 
 [font]
-size = 13.0
+size = 14.0
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"

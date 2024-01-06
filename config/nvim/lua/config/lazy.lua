@@ -36,7 +36,10 @@ require("lazy").setup({
     },
     config = function() require('oil').setup() end
   },
-  'leafOfTree/vim-svelte-plugin',
+  {
+    'leafOfTree/vim-svelte-plugin',
+    ft = "svelte",
+  },
   'tpope/vim-surround',
   'tpope/vim-commentary',
   'justinmk/vim-sneak',
@@ -48,7 +51,6 @@ require("lazy").setup({
   },
   {
     'lewis6991/gitsigns.nvim',
-    cmd = 'Gitsigns next_hunk',
     keys = {
       { "]c", '<cmd>Gitsigns next_hunk<CR>', { silent = true, nowait = true } },
       { "[c", '<cmd>Gitsigns prev_hunk<CR>', { silent = true, nowait = true } },
@@ -66,6 +68,7 @@ require("lazy").setup({
   'romainl/vim-cool',
   {
     "nvim-neorg/neorg",
+    ft = "norg",
     build = ":Neorg sync-parsers",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -122,7 +125,7 @@ require("lazy").setup({
   'dag/vim-fish',
   {
     'mattn/emmet-vim',
-    config = function ()
+    init = function ()
       vim.g.user_emmet_mode='a'
     end
   },
@@ -150,9 +153,6 @@ require("lazy").setup({
     init = function ()
       vim.g.tmux_navigator_no_mappings = 1
     end,
-    config = function ()
-      vim.g.tmux_navigator_no_mappings = 1
-    end,
     keys = {
       { "<M-h>", "<cmd>TmuxNavigateLeft<CR>", { silent = true } },
       { "<M-j>", "<cmd>TmuxNavigateDown<CR>", { silent = true } },
@@ -177,7 +177,7 @@ require("lazy").setup({
           additional_vim_regex_highlighting = false,
         },
         matchup = {
-          enable = true, -- mandatory, false will disable the whole extension
+          enable = false, -- mandatory, false will disable the whole extension
           disable = {},  -- optional, list of language that will be disabled
         }
       }
@@ -185,6 +185,7 @@ require("lazy").setup({
   },
   {
     'neovim/nvim-lspconfig',
+    event = "BufReadPost",
     config = function ()
       -- lsp sign icons
       local signs = { Error = " ", Warn = "", Hint = "󰌶", Info = "" }
@@ -299,9 +300,13 @@ require("lazy").setup({
       },
     }
   },
-  'elixir-editors/vim-elixir',
+  {
+    'elixir-editors/vim-elixir',
+    ft = "elixir"
+  },
   {
     'hrsh7th/nvim-cmp',
+    event = "InsertEnter",
     config = function ()
       -- luasnip setup
       local luasnip = require 'luasnip'
@@ -409,6 +414,7 @@ require("lazy").setup({
   },
   {
     'nvim-lualine/lualine.nvim',
+    event ={ "CursorMoved", "CursorMovedI" },
     dependencies = {
       'kyazdani42/nvim-web-devicons',
     },
@@ -453,7 +459,7 @@ require("lazy").setup({
               path = 1,
               shorting_target = 10,
               symbols = {
-                modified = '●',
+                modified = '',
                 alternate_file = '#',
                 directory =  '',
                 readonly = '',
@@ -480,7 +486,7 @@ require("lazy").setup({
               path = 1,
               shorting_target = 10,
               symbols = {
-                modified = '●',
+                modified = '',
                 alternate_file = '#',
                 directory =  '',
                 readonly = '',
@@ -504,9 +510,8 @@ require("lazy").setup({
 {
   git = {
     -- defaults for the `Lazy log` command
-    -- log = { "-10" }, -- show the last 10 commits
-    log = { "-8" }, -- show commits from the last 3 days
-    timeout = 120, -- kill processes that take more than 2 minutes
+    log = { "-10" }, -- show commits from the last 3 days
+    timeout = 240, -- kill processes that take more than 2 minutes
     url_format = "git@github.com:%s.git",
     -- lazy.nvim requires git >=2.19.0. If you really want to use lazy with an older version,
     -- then set the below to false. This should work, but is NOT supported and will

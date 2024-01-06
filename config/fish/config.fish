@@ -89,6 +89,7 @@ if status is-interactive
     abbr --add which "command -s"
     # quick to nvim config
     abbr --add cdnvim "cd $HOME/.config/nvim"
+    abbr --add hibernate "sudo pm-hibernate"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default
