@@ -68,9 +68,9 @@ nnoremap <Esc>j <C-w>j
 nnoremap <Esc>k <C-w>k
 nnoremap <Esc>h <C-w>h
 nnoremap <Esc>l <C-w>l
-nnoremap <Esc>l <C-w>l
 # close window
 nnoremap <Esc>w <C-w>c
+nnoremap <Esc>o <C-w>o
 nnoremap <leader>- <C-w>s
 nnoremap <leader>/ <C-w>v
 
@@ -79,18 +79,17 @@ set background=dark
 colorscheme retrobox
 hi Normal guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE
-hi StatusLine guifg=#2e3440 guibg=#eceff4 gui=bold
+hi StatusLine guifg=#212529 guibg=#eceff4 gui=bold
 hi StatusLineNC guifg=#2e3440 guibg=DarkGray gui=NONE
 
-set statusline=%w\ %f\ %h%m%r%=%y%12l/%L:%-10c%-4P
+set statusline=\ %w%f\ %h%m%r%=%-18y%-20(%l,%c/%L%)%-4P
 
 autocmd VimEnter * set formatoptions-=o
 autocmd FileType vim,javascript,typescript,lua set tabstop=2 shiftwidth=2 softtabstop=2
 autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
 
 autocmd BufReadPost *
-    | var line = line("'\"")
-    | if line >= 1 && line <= line("$") && &filetype !~# 'commit' && index(['xxd', 'gitrebase'], &filetype) == -1
+    | if line("'\"") >= 1 && line("'\"") <= line("$") && &filetype !~# 'commit' && index(['xxd', 'gitrebase'], &filetype) == -1
     | execute "normal! g`\""
     | endif
 
