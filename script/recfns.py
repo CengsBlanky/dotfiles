@@ -46,12 +46,12 @@ def rectify_file_names(file_names: list[str]):
             new_file_name,
         )
         new_file_name = re.sub(
-            r'[（《〈{]',
+            r'[【（《〈{]',
             "(",
             new_file_name,
         )
         new_file_name = re.sub(
-            r'[）》〉}]',
+            r'[】）》〉}]',
             ")",
             new_file_name,
         )
