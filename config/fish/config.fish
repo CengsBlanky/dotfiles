@@ -78,20 +78,21 @@ if status is-interactive
     abbr --add gps "git push"
     abbr --add gpl "git pull"
     abbr --add gad "git add"
-    abbr --add gcm "git commit -am"
+    abbr --add gcm "git commit"
     abbr --add glg "git log --author=(git config user.name) --oneline -n 10"
     abbr --add gsh "git show"
-    abbr --add cdnote "cd $HOME/notes/journal"
     abbr --add note "joplin"
-    abbr --add cdshare "cd /home/share/"
     # django
     abbr --add pymanage "python manage.py"
     # replace which command
     abbr --add which "command -s"
     # quick to nvim config
-    abbr --add cdnvim "cd $HOME/.config/nvim"
-    abbr --add hibernate "sudo pm-hibernate"
     abbr --add cddot "cd $HOME/.dotfiles"
+    abbr --add cdnvim "cd $HOME/.config/nvim"
+    abbr --add cdshare "cd /home/share/"
+    abbr --add cdnote "cd $HOME/notes/journal"
+    # better hibernate
+    abbr --add hibernate "sudo pm-hibernate"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default

@@ -1,0 +1,99 @@
+set nocompatible
+let g:skip_defaults_vim=1
+filetype plugin indent on
+syntax on
+language en_US.UTF-8
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+set encoding=utf-8
+set hidden
+set number
+set relativenumber
+set backspace=2
+set textwidth=0
+set incsearch
+set ignorecase
+set smartcase
+set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
+set softtabstop=4
+set showcmd
+set laststatus=2
+set wildmenu
+set wildoptions=pum,tagfile
+set showmatch
+set autoread
+set autowrite
+set confirm
+set updatetime=100
+set noundofile
+set nobackup
+set clipboard^=unnamed,unnamedplus
+set tags=tags
+set shortmess+=c
+set hlsearch
+set mouse=
+set mousehide
+set signcolumn=yes
+set nowrap
+set cmdheight=1
+set splitbelow
+set splitright
+set scrolloff=15
+" Do not recognize octal numbers for Ctrl-A and Ctrl-X, most users find it  confusing.
+set nrformats-=octal
+
+inoremap jk <esc>
+" quit
+" use <Esc> instead of <M- keybind
+nnoremap <leader>q :x<CR>
+" close current or buffer
+nnoremap <Space>b :bd<CR>
+" yank whole buffer
+nnoremap gy :%y<CR>
+nnoremap gl ^yg_
+" use backspace to scroll up/down
+nnoremap <silent><C-j> <C-f>
+nnoremap <silent><C-k> <C-b>
+" save
+nnoremap <silent><Enter> :w<CR>
+" go next buffer
+nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :bp<CR>
+" window manage
+nnoremap <Esc>j <C-w>j
+nnoremap <Esc>k <C-w>k
+nnoremap <Esc>h <C-w>h
+nnoremap <Esc>l <C-w>l
+nnoremap <Esc>l <C-w>l
+" close window
+nnoremap <Esc>w <C-w>c
+nnoremap <leader>- <C-w>s
+nnoremap <leader>/ <C-w>v
+
+set termguicolors
+set background=dark
+colorscheme retrobox
+hi SignColumn guibg=NONE
+hi StatusLine guifg=#3b4252 guibg=#eceff4 gui=bold
+hi StatusLineNC guifg=#2e3440 guibg=DarkGray gui=NONE
+
+set statusline=%w\ %f\ %h%m%r%=%y%12l/%L:%-10c%-4P
+
+autocmd VimEnter * set formatoptions-=o
+autocmd FileType vim,javascript,typescript,lua set tabstop=2 shiftwidth=2 softtabstop=2
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
+autocmd BufReadPost *
+      \ let line = line("'\"")
+      \ | if line >= 1 && line <= line("$") && &filetype !~# 'commit'
+      \      && index(['xxd', 'gitrebase'], &filetype) == -1
+      \ |   execute "normal! g`\""
+      \ | endif
+
+" tmux-vim navigator plugin
+let g:tmux_navigator_no_mappings = 1
+noremap <silent> <Esc>h :<C-U>TmuxNavigateLeft<cr>
+noremap <silent> <Esc>j :<C-U>TmuxNavigateDown<cr>
+noremap <silent> <Esc>k :<C-U>TmuxNavigateUp<cr>
+noremap <silent> <Esc>l :<C-U>TmuxNavigateRight<cr>
+noremap <silent> <Esc>p :<C-U>TmuxNavigatePrevious<cr>
