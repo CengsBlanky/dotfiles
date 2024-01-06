@@ -74,8 +74,9 @@ nnoremap <leader>/ <C-w>v
 set termguicolors
 set background=dark
 colorscheme retrobox
+hi Normal guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE
-hi StatusLine guifg=#3b4252 guibg=#eceff4 gui=bold
+hi StatusLine guifg=#2e3440 guibg=#eceff4 gui=bold
 hi StatusLineNC guifg=#2e3440 guibg=DarkGray gui=NONE
 
 set statusline=%w\ %f\ %h%m%r%=%y%12l/%L:%-10c%-4P
