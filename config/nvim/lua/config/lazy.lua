@@ -479,7 +479,7 @@ require("lazy").setup({
           lualine_c = {'diagnostics'},
           lualine_x = {},
           lualine_y = {'fileformat', 'encoding'},
-          lualine_z = {'%P', '%l:%v/%L'}
+          lualine_z = {'%P', '%l,%v/%L'}
         },
         inactive_sections = {
           lualine_a = {},
@@ -505,7 +505,7 @@ require("lazy").setup({
           lualine_c = {},
           lualine_x = {},
           lualine_y = {},
-          lualine_z = {'%l:%v/%L'}
+          lualine_z = {'%l,%v/%L'}
         },
         tabline = {},
         winbar = {},
