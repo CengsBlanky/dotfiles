@@ -3,8 +3,6 @@
 	email = zengs1994@gmail.com
 [pull]
 	rebase = false
-[core]
-	editor = nvim
 [init]
 	defaultBranch = master
 [push]

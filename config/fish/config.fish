@@ -11,8 +11,8 @@ if status is-interactive
 
     # ===== ENV =====
     set -gx LANG "en_US.UTF-8"
-    set -gx EDITOR nvim
-    set -gx GIT_EDITOR nvim
+    set -gx EDITOR /usr/local/bin/vim
+    set -gx GIT_EDITOR $EDITOR
     set -gx LESS "-RiXF"
     # set -gx MANPAGER most
     # bc scale
