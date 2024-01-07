@@ -31,7 +31,7 @@ set updatetime=100
 set noundofile
 set nobackup
 set clipboard^=unnamed,unnamedplus
-set tags=tags
+set tags=.tags
 set shortmess+=c
 set hlsearch
 set mouse= 
