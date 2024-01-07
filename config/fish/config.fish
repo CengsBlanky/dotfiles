@@ -7,7 +7,7 @@ if status is-interactive
     set fish_cursor_replace_one underscore
 
     # per dir length
-    set -g fish_prompt_pwd_dir_length 0
+    set -g fish_prompt_pwd_dir_length 3
 
     # ===== ENV =====
     set -gx LANG "en_US.UTF-8"
