@@ -1,7 +1,6 @@
 vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.title = true
@@ -36,3 +35,5 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.backspace = { 'start', 'eol', 'indent' }
 vim.opt.clipboard:append { 'unnamedplus' }
+
+vim.g.python3_host_prog = '/usr/bin/python3'
