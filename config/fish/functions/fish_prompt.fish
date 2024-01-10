@@ -11,7 +11,8 @@ function fish_prompt
         printf ' %s' $last_status
     end
     set_color -o $prompt_icon_color
-    echo -n " 󰁕 "
-    #          󰵵 󰑆 󰒖   󰣥󰥭 󰁕
+    printf '\n'
+    echo -n "  "
+    # 󰁕          󰵵 󰑆 󰒖   󰣥󰥭 󰁕
     set_color normal
 end
