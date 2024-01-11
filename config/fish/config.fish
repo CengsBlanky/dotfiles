@@ -22,6 +22,7 @@ if status is-interactive
     if command -q rg
         set -gx FZF_DEFAULT_COMMAND "rg --files --column --line-number --no-heading --no-ignore"
     end
+    set -gx NOTEDIR '$HOME/notes'
     # current location
     set -gx MY_CUR_LOCATION '雨花台'
     # sdkman
@@ -94,6 +95,8 @@ if status is-interactive
     abbr --add cdnote "cd $HOME/notes/journal"
     # better hibernate
     abbr --add hibernate "sudo pm-hibernate"
+    # take little notes
+    abbr --add nt notenow
 
     # key bind
     bind --mode insert \cr "" --sets-mode default

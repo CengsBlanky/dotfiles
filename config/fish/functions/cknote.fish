@@ -1,4 +1,4 @@
-function noteck
+function cknote
     set -l curyear (date +%Y)
     set -l ckdate (date +%F)
     set -l journalDir $HOME/notes/journal/$curyear 
