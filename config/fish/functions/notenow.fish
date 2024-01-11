@@ -17,10 +17,10 @@ function notenow
     end
 
     if test "$lastminute" = "## $curtime"
-        vim -c "norm Gzzo" \
+        $EDITOR -c "norm Gzzo" \
             -c "startinsert" $journalfilename
     else
-        vim -c "norm G2o" \
+        $EDITOR -c "norm G2o" \
             -c "norm GI## $curtime" \
             -c "norm G2o" \
             -c "norm zz" \
