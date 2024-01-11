@@ -12,7 +12,7 @@ function fish_prompt
     end
     set_color -o $prompt_icon_color
     printf '\n'
-    echo -n "󰁕 "
+    echo -n " "
     # 󰁕          󰵵 󰑆 󰒖   󰣥󰥭 󰁕
     set_color normal
 end
