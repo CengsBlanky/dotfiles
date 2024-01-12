@@ -5,7 +5,7 @@ function fish_mode_prompt
             echo " "
         case insert
             set_color --bold green
-            echo " "
+            echo " "
         case visual
             set_color --bold yellow
             echo " "
