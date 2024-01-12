@@ -14,11 +14,12 @@ foreground = "#d8dee9"
 [font.normal]
 # family = "HackZeroSlash NerdFont"
 family = "UbuntuMono NerdFont"
+# family = "ComicShannsMono NerdFont"
 # family = "MesloLGS NerdFont"
 # family = "BlexMono NerdFont"
 # family = "Jetbrains Mono NF"
 # family = "FiraCode NF"
-style = "Medium"
+# style = "Medium"
 
 [font]
 size = 15.0
