@@ -38,7 +38,8 @@ set mouse=
 set mousehide
 set signcolumn=yes
 set cursorline
-set nowrap
+set wrap
+set linebreak
 set cmdheight=1
 set splitbelow
 set splitright
@@ -83,8 +84,8 @@ set background=dark
 colorscheme retrobox
 hi Normal guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE
-hi StatusLine guifg=#212529 guibg=#eceff4 gui=bold
-hi StatusLineNC guifg=#2e3440 guibg=DarkGray gui=NONE
+hi StatusLine guifg=#303030 guibg=#eceff4 gui=bold
+hi StatusLineNC guifg=#333335 guibg=DarkGray gui=NONE
 set statusline=\ %w%f\ %h%m%r%=%-20y%-20(%l,%c/%L%)%-4P
 
 autocmd VimEnter * set formatoptions-=o textwidth=0
