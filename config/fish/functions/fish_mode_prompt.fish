@@ -1,10 +1,10 @@
 function fish_mode_prompt
     switch $fish_bind_mode
         case default
-            set_color --bold "5f3dc4"
+            set_color --bold "81a1c1"
             echo " "
         case insert
-            set_color --bold green
+            set_color --bold "a3be8c"
             echo " "
         case visual
             set_color --bold yellow
@@ -16,5 +16,9 @@ function fish_mode_prompt
             set_color --bold red
             printf "󰊠 "
     end
+    # set_color --bold "81a1c1"
+    echo "$USER"
+    set_color --bold "d08770"
+    echo "@"
     set_color normal
 end
