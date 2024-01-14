@@ -13,8 +13,8 @@ foreground = "#d8dee9"
 
 [font.normal]
 # family = "HackZeroSlash NerdFont"
-# family = "UbuntuMono NerdFont"
-family = "ComicShannsMono NerdFont"
+family = "UbuntuMono NerdFont"
+# family = "ComicShannsMono NerdFont"
 # family = "MesloLGS NerdFont"
 # family = "BlexMono NerdFont"
 # family = "Jetbrains Mono NF"
@@ -22,7 +22,7 @@ family = "ComicShannsMono NerdFont"
 # style = "Medium"
 
 [font]
-size = 14.0
+size = 15.0
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
