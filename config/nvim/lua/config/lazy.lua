@@ -115,6 +115,7 @@ require("lazy").setup({
               ["<C-k>"] = "move_selection_previous",
             },
           },
+          preview = false,
         }
       }
       require('telescope').load_extension('fzf')
