@@ -43,6 +43,6 @@ program = "/usr/bin/fish"
 [window]
 decorations = "none"
 dynamic_title = false
-opacity = 0.99
+opacity = 1
 startup_mode = "Maximized"
 

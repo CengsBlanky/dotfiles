@@ -36,7 +36,7 @@ def rectify_file_names(file_names: list[str]):
     result_map = {}
     for file_name in file_names:
         new_file_name = re.sub(
-            r'[%*$^&#@!！。，]',
+            r'[…￥%*$^&#@!！。，]',
             "",
             file_name,
         )
