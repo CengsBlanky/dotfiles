@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: undefined-global
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -278,7 +279,6 @@ require("lazy").setup({
             vim.keymap.set('n', '<leader>a', rt.code_action_group.code_action_group, bufopts)
             -- Mappings.
             -- See `:help vim.lsp.*` for documentation on any of the below functions
-            local bufopts = { noremap=true, silent=true, buffer=bufnr }
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
