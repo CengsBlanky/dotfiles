@@ -13,7 +13,7 @@ function fish_mode_prompt
     end
     # set_color --bold "81a1c1"
     echo "$USER"
-    set_color --bold "b48ead"
+    set_color --bold "d08770"
     echo "@"
     set_color normal
 end
