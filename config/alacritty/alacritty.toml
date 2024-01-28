@@ -26,6 +26,10 @@ family = "UbuntuMono NerdFont"
 [font]
 size = 14.0
 
+[font.offset]
+x = 0
+y = 0
+
 [[keyboard.bindings]]
 action = "ScrollLineUp"
 key = "K"
