@@ -24,7 +24,7 @@ family = "UbuntuMono NerdFont"
 # style = "Medium"
 
 [font]
-size = 14.0
+size = 15.0
 
 [font.offset]
 x = 0
@@ -51,4 +51,8 @@ decorations = "none"
 dynamic_title = false
 opacity = 1
 startup_mode = "Maximized"
+
+[window.padding]
+x = 0
+y = 0
 

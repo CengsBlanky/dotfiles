@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 local myGroup = vim.api.nvim_create_augroup("MyGroup", {})
 
 vim.api.nvim_create_autocmd({"FileType"}, {
@@ -44,3 +45,8 @@ vim.api.nvim_create_autocmd({"BufReadPost"}, {
       vim.keymap.set('n', '<Enter>', '<Enter>', { silent = true })
     end
 })
+
+-- restore last cursor position
+vim.cmd[[
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+]]
