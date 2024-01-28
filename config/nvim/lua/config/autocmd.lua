@@ -48,5 +48,5 @@ vim.api.nvim_create_autocmd({"BufReadPost"}, {
 
 -- restore last cursor position
 vim.cmd[[
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") && &filetype !~# 'commit' && index(['xxd', 'gitrebase'], &filetype) == -1 | exe "normal! g'\"" | endif
 ]]
