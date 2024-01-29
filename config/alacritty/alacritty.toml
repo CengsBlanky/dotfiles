@@ -28,7 +28,7 @@ size = 15.0
 
 [font.offset]
 x = 0
-y = 0
+y = -2
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
