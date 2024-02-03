@@ -466,7 +466,7 @@ require("lazy").setup({
             {
               'filename',
               path = 1,
-              shorting_target = 10,
+              shorting_target = 40,
               symbols = {
                 modified = '',
                 alternate_file = '#',
@@ -493,7 +493,7 @@ require("lazy").setup({
             {
               'filename',
               path = 1,
-              shorting_target = 10,
+              shorting_target = 40,
               symbols = {
                 modified = '',
                 alternate_file = '#',
