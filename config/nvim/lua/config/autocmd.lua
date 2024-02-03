@@ -6,10 +6,20 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = {"vim"},
     callback = function() vim.opt_local.foldmethod = "marker" end
 })
+
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
     pattern = {"gitcommit"},
     callback = function() vim.opt_local.textwidth = 0 end
+})
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+    group = myGroup,
+    pattern = {"markdown", "text", "log"},
+    callback = function() 
+      vim.keymap.set('n', 'j', 'gj', { silent = true, nowait = true })
+      vim.keymap.set('n', 'k', 'gk', { silent = true, nowait = true })
+    end
 })
 
 vim.api.nvim_create_autocmd({"BufRead"}, {

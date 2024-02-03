@@ -64,6 +64,8 @@ if status is-interactive
     set PATH $PATH "$HOME/.local/share/gem/ruby/3.0.0/bin"
     # source asdf version manager
     source ~/.asdf/asdf.fish
+    # golang path
+    set PATH $PATH "/usr/local/go/bin"
 
     # general
     set PATH $PATH "$HOME/.local/bin"
