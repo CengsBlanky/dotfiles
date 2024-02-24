@@ -1,9 +1,11 @@
+---@diagnostic disable: undefined-global
 vim.opt.termguicolors = true
 vim.opt.wildoptions = 'pum'
 vim.opt.pumblend = 5
 vim.opt.winblend = 0
 vim.opt.background = 'dark'
 
+vim.api.nvim_set_hl(0, "Normal", { fg = "#ced4da" })
 vim.api.nvim_set_hl(0, "Comment", { fg = "DarkGray", italic = false })
 vim.api.nvim_set_hl(0, "Todo", { fg = "#ebcb8b", italic = false, bold = true })
 vim.api.nvim_set_hl(0, "Visual", { bg = "#495057" })
