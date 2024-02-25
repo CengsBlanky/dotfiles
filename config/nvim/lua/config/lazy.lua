@@ -194,7 +194,6 @@ require("lazy").setup({
   },
   {
     'neovim/nvim-lspconfig',
-    event = "BufReadPost",
     config = function ()
       -- lsp sign icons
       local signs = { Error = " ", Warn = "", Hint = "󰌶", Info = "" }
