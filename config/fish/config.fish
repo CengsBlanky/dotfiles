@@ -36,6 +36,10 @@ if status is-interactive
     # gradle
     set -gx GRADLE_HOME "$SDKMAN_CANDIDATES/gradle/current"
     set PATH $PATH "$GRADLE_HOME/bin"
+    # springboot
+    set -gx SPRING_HOME "$SDKMAN_CANDIDATES/springboot/current"
+    set PATH $PATH "$SPRING_HOME/bin"
+
     # jdtls
     # set -gx JDTLS_JVM_ARGS "-javaagent:$HOME/.m2/lib/lombok-1.18.24.jar"
     # kotlin
