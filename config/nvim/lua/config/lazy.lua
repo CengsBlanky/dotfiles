@@ -472,7 +472,6 @@ require("lazy").setup({
                 readonly = '',
                 newfile = '󰈔'
               },
-              color = { gui='bold'},
             }
           },
           lualine_c = {'diagnostics'},

@@ -14,6 +14,8 @@ foreground = "#d8dee9"
 [font.normal]
 # family = "HackZeroSlash NerdFont"
 family = "UbuntuMono NerdFont"
+# family = "UbuntuKaiMono NerdFont"
+# family = "TWKai_KleeOneMono"
 # family = "Monaco NerdFont"
 # family = "ComicShannsMono NerdFont"
 # family = "MesloLGS NerdFont"

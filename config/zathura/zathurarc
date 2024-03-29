@@ -75,7 +75,6 @@ set scroll-step 50
 
 map <Tab> toggle_index
 map u scroll half-up
-map <Space> scroll half-down
 unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
