@@ -455,7 +455,8 @@ require("lazy").setup({
   },
   {
     'nvim-lualine/lualine.nvim',
-    event ={ "BufNew" },
+    event = { "BufReadPre" },
+    lazy = true,
     dependencies = {
       'kyazdani42/nvim-web-devicons',
     },
