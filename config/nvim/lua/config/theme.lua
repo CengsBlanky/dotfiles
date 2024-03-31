@@ -18,3 +18,6 @@ vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#bf616a", italic = 
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#e1bb80", italic = true })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#88c0d0", italic = true })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#a3be8c", italic = true })
+vim.api.nvim_set_hl(0, "BufferCurrent", { fg = "#d8dee9", bg = "#3b4252", bold = true })
+vim.api.nvim_set_hl(0, "BufferCurrentMod", { fg = "#d8dee9", bg = "#3b4252", bold = true })
+vim.api.nvim_set_hl(0, "BufferCurrentIndex", { fg = "#5e81ac", bg="#3b4252" })

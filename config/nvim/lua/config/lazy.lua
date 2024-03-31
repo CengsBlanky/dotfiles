@@ -139,22 +139,56 @@ require("lazy").setup({
     end
   },
   {
-    'ap/vim-buftabline',
+    'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    },
+    init = function() vim.g.barbar_auto_setup = false end,
     config = function ()
-      vim.g.buftabline_show = 1
-      vim.g.buftabline_indicators = 1
-      vim.g.buftabline_numbers = 2
-      vim.keymap.set('n', '<Space>1', '<Plug>BufTabLine.Go(1)', { silent = true, nowait = true })
-      vim.keymap.set('n', '<Space>2', '<Plug>BufTabLine.Go(2)', { silent = true, nowait = true })
-      vim.keymap.set('n', '<Space>3', '<Plug>BufTabLine.Go(3)', { silent = true, nowait = true })
-      vim.keymap.set('n', '<Space>4', '<Plug>BufTabLine.Go(4)', { silent = true, nowait = true })
-      vim.keymap.set('n', '<Space>5', '<Plug>BufTabLine.Go(5)', { silent = true, nowait = true })
-      vim.keymap.set('n', '<Space>6', '<Plug>BufTabLine.Go(6)', { silent = true, nowait = true })
-      vim.keymap.set('n', '<Space>7', '<Plug>BufTabLine.Go(7)', { silent = true, nowait = true })
-      vim.keymap.set('n', '<Space>8', '<Plug>BufTabLine.Go(8)', { silent = true, nowait = true })
-      vim.keymap.set('n', '<Space>9', '<Plug>BufTabLine.Go(9)', { silent = true, nowait = true })
-      vim.keymap.set('n', '<Space>0', '<Plug>BufTabLine.Go(10)', { silent = true, nowait = true })
+      require('barbar').setup {
+        no_name_title = '',
+        auto_hide = 1,
+        separator_at_end = true,
+        icons = {
+          buffer_index = false,
+          buffer_number = false,
+          button = '',
+        },
+        gitsigns = {
+          added = {enabled = true, icon = '+'},
+          changed = {enabled = true, icon = '*'},
+          deleted = {enabled = true, icon = '-'},
+        },
+      }
+      local map = vim.api.nvim_set_keymap
+      local opts = { noremap = true, silent = true }
+      -- setup keymaps
+      map('n', '<M-[>', '<Cmd>BufferPrevious<CR>', opts)
+      map('n', '<M-]>', '<Cmd>BufferNext<CR>', opts)
+      map('n', '<Space>0', '<Cmd>BufferLast<CR>', opts)
+      map('n', '<Space>1', '<Cmd>BufferGoto 1<CR>', opts)
+      map('n', '<Space>2', '<Cmd>BufferGoto 2<CR>', opts)
+      map('n', '<Space>3', '<Cmd>BufferGoto 3<CR>', opts)
+      map('n', '<Space>4', '<Cmd>BufferGoto 4<CR>', opts)
+      map('n', '<Space>5', '<Cmd>BufferGoto 5<CR>', opts)
+      map('n', '<Space>6', '<Cmd>BufferGoto 6<CR>', opts)
+      map('n', '<Space>7', '<Cmd>BufferGoto 7<CR>', opts)
+      map('n', '<Space>8', '<Cmd>BufferGoto 8<CR>', opts)
+      map('n', '<Space>9', '<Cmd>BufferGoto 9<CR>', opts)
+      map('n', '<Space>b', '<Cmd>BufferClose<CR>', opts)
+      map('n', '<Space>p', '<Cmd>BufferPick<CR>', opts)
+      map('n', '<leader>o', '<Cmd>BufferCloseAllButCurrent<CR>', opts)
     end,
+    opts = {
+      animation = false,
+      clickable = false,
+      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+      -- animation = true,
+      -- insert_at_start = true,
+      -- …etc.
+    },
+    -- version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
   'junegunn/goyo.vim',
   {
