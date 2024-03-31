@@ -455,7 +455,7 @@ require("lazy").setup({
   },
   {
     'nvim-lualine/lualine.nvim',
-    event ={ "CursorMoved", "CursorMovedI" },
+    event ={ "BufNew" },
     dependencies = {
       'kyazdani42/nvim-web-devicons',
     },
@@ -498,7 +498,7 @@ require("lazy").setup({
             {
               'filename',
               path = 1,
-              shorting_target = 40,
+              shorting_target = 42,
               symbols = {
                 modified = '',
                 alternate_file = '#',
@@ -524,7 +524,7 @@ require("lazy").setup({
             {
               'filename',
               path = 1,
-              shorting_target = 40,
+              shorting_target = 20,
               symbols = {
                 modified = '',
                 alternate_file = '#',
