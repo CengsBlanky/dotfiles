@@ -3,7 +3,9 @@ function todo
     set -l cur_time (date +%F\ %H:%M:%S)
     set -l cur_date (date +%F)
     set -l time_header "# "$cur_time
-    set -l todo_file $HOME/tmp/"$cur_date"_todo.md
+    set -l tmp_dir "$HOME/tmp"
+    mkdir -p $tmp_dir
+    set -l todo_file $tmp_dir/"$cur_date"_todo.md
 
     echo $time_header >> $todo_file
 
