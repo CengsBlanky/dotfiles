@@ -94,7 +94,7 @@ autocmd FileType vim,javascript,typescript,lua,log set tabstop=2 shiftwidth=2 so
 autocmd FileType markdown,text,log nnoremap <silent> j gj
 autocmd FileType markdown,text,log nnoremap <silent> k gk
 
-autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 80000 | syntax clear | endif
 # restore cursor position
 autocmd BufReadPost *
     | if line("'\"") >= 1 && line("'\"") <= line("$") && &filetype !~# 'commit' && index(['xxd', 'gitrebase'], &filetype) == -1
