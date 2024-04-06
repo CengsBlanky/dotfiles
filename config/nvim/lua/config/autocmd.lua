@@ -24,12 +24,13 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
-    pattern = { "asm", "make" },
+    pattern = { "asm", "make", "go" },
     callback = function()
       vim.opt_local.list = true
-      vim.opt_local.listchars.lead="·"
+      vim.opt_local.listchars.tab="-"
       vim.opt_local.listchars = {
-        lead = "·"
+        lead = "·",
+        tab = "-->"
       }
     end
 })
