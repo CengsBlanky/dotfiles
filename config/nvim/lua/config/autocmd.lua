@@ -16,9 +16,21 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
     pattern = {"markdown", "text", "log"},
-    callback = function() 
+    callback = function()
       vim.keymap.set('n', 'j', 'gj', { silent = true, nowait = true })
       vim.keymap.set('n', 'k', 'gk', { silent = true, nowait = true })
+    end
+})
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+    group = myGroup,
+    pattern = { "asm", "make" },
+    callback = function()
+      vim.opt_local.list = true
+      vim.opt_local.listchars.lead="·"
+      vim.opt_local.listchars = {
+        lead = "·"
+      }
     end
 })
 

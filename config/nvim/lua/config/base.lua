@@ -29,6 +29,7 @@ vim.opt.mousehide = true
 vim.opt.mouse = ''
 vim.opt.signcolumn = 'yes'
 vim.opt.cursorline = true
+vim.opt.cursorlineopt="number"
 vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.splitright = true
