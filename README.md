@@ -14,9 +14,9 @@ branch `Luna` for Linux, branch `Moon` for MacOS
 
 开源的代码比对软件，支持目录递归比对与合并
 
-### Advanced Rest Client
+### bruno
 
-开源的客户端API请求软件
+比postman更好用的rest客户端，不强制联网同步
 
 ### Motrix
 
@@ -42,7 +42,9 @@ todo.txt的gui管理工具，简洁的界面，易用的快捷键
 
 ## command line tool
 
-### todo
+### joplin
+
+joplin笔记应用，支持主流网盘笔记同步，命令行程序高效简洁
 
 ## Entertainment
 
