@@ -1,5 +1,16 @@
 ---@diagnostic disable: undefined-global
-local myGroup = vim.api.nvim_create_augroup("MyGroup", {})
+local myGroup = vim.api.nvim_create_augroup("ZengShuai", {})
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+    group = myGroup,
+    pattern = {"*"},
+    callback = function()
+        vim.opt.formatoptions:remove({'o'})
+        vim.opt.listchars = {
+          tab = "-->",
+        }
+    end
+})
 
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
@@ -26,11 +37,8 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
     pattern = { "asm", "make", "go" },
     callback = function()
-      vim.opt_local.list = true
-      vim.opt_local.listchars.tab="-"
       vim.opt_local.listchars = {
         lead = "·",
-        tab = "-->"
       }
     end
 })
@@ -50,14 +58,6 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     callback = function()
         vim.opt_local.tabstop = 2
         vim.opt_local.shiftwidth = 2
-    end
-})
-
-vim.api.nvim_create_autocmd({"FileType"}, {
-    group = myGroup,
-    pattern = {"*"},
-    callback = function()
-        vim.opt.formatoptions:remove({'o'})
     end
 })
 

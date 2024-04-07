@@ -37,5 +37,6 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.backspace = { 'start', 'eol', 'indent' }
 vim.opt.clipboard:append { 'unnamedplus' }
+vim.opt.list = true
 
 vim.g.python3_host_prog = '/usr/bin/python3'
