@@ -12,8 +12,8 @@ foreground = "#d8dee9"
 
 
 [font.normal]
-# family = "HackZeroSlash NerdFont"
 family = "UbuntuMono NerdFont"
+# family = "CourierPrimal NerdFont"
 # family = "UbuntuKaiMono NerdFont"
 # family = "TWKai_KleeOneMono"
 # family = "Monaco NerdFont"
@@ -29,8 +29,8 @@ family = "UbuntuMono NerdFont"
 size = 14.0
 
 [font.offset]
-x = 0
-y = 0
+x = -1
+y = -1
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"

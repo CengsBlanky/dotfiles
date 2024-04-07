@@ -150,9 +150,16 @@ require("lazy").setup({
         no_name_title = '',
         auto_hide = 1,
         separator_at_end = true,
+        maximum_padding = 1,
         icons = {
-          buffer_index = false,
+          modified = {
+            button = ''
+          },
+          buffer_index = true,
           buffer_number = false,
+          filetype = {
+            enabled = false,
+          },
           button = '',
         },
         gitsigns = {
@@ -166,6 +173,7 @@ require("lazy").setup({
       -- setup keymaps
       map('n', '<M-[>', '<Cmd>BufferPrevious<CR>', opts)
       map('n', '<M-]>', '<Cmd>BufferNext<CR>', opts)
+      map('n', '<C-n>', '<Cmd>BufferNext<CR>', opts)
       map('n', '<Space>0', '<Cmd>BufferLast<CR>', opts)
       map('n', '<Space>1', '<Cmd>BufferGoto 1<CR>', opts)
       map('n', '<Space>2', '<Cmd>BufferGoto 2<CR>', opts)
@@ -177,11 +185,13 @@ require("lazy").setup({
       map('n', '<Space>8', '<Cmd>BufferGoto 8<CR>', opts)
       map('n', '<Space>9', '<Cmd>BufferGoto 9<CR>', opts)
       map('n', '<Space>b', '<Cmd>BufferClose<CR>', opts)
+      map('n', '<leader>h', '<Cmd>BufferCloseBuffersLeft<CR>', opts)
+      map('n', '<leader>l', '<Cmd>BufferCloseBuffersRight<CR>', opts)
       map('n', '<Space>p', '<Cmd>BufferPick<CR>', opts)
       map('n', '<leader>o', '<Cmd>BufferCloseAllButCurrent<CR>', opts)
     end,
     opts = {
-      animation = false,
+      animation = true,
       clickable = false,
       -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
       -- animation = true,
