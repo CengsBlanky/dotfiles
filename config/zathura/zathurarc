@@ -48,8 +48,10 @@ set render-loading-bg           "#f8f8f2" # Foreground
 #
 # Recolor mode settings
 #
-set recolor-lightcolor          "#282a36" # Background
-set recolor-darkcolor           "#f8f8f2" # Foreground
+# set recolor-lightcolor          "#282a36" # Background
+# set recolor-darkcolor           "#f8f8f2" # Foreground
+set recolor-lightcolor          "#1C1B22" # Background
+set recolor-darkcolor           "#b3aba4" # Foreground
 
 
 # Open document in fit-width mode by default
@@ -65,6 +67,7 @@ set smooth-scroll "true"
 set scroll-full-overlap 0.01
 set scroll-step 100
 set adjust-open "best-fit"
+set adjust_window width
 
 #zoom settings
 set zoom-min 10
