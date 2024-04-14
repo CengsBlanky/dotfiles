@@ -1,0 +1,10 @@
+{
+ :translate-shell "0.9.0"
+ :verbose         true
+ :show-original   true
+ :indent          2
+ :view            true
+ :hl              "en"
+ :tl              ["zh"]
+ :engine          "bing"
+}
