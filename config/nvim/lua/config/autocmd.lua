@@ -35,7 +35,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
-    pattern = { "asm", "make", "go" },
+    pattern = { "asm", "make", },
     callback = function()
       vim.opt_local.listchars:append {
         lead = "·",

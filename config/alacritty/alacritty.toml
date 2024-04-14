@@ -12,7 +12,10 @@ foreground = "#d8dee9"
 
 
 [font.normal]
-family = "UbuntuMono NerdFont"
+# family = "UbuntuMono NerdFont"
+family = "UbuntuSansMono Nerd Font"
+# family = "ZedMono Nerd Font Mono"
+# family = "TWKaiUbuntuMono NerdFont"
 # family = "CourierPrimal NerdFont"
 # family = "UbuntuKaiMono NerdFont"
 # family = "TWKai_KleeOneMono"
@@ -23,14 +26,15 @@ family = "UbuntuMono NerdFont"
 # family = "Jetbrains Mono NF"
 # family = "FiraCode NF"
 # family = "Menlo Nerd Font"
-# style = "Medium"
+# style = "extended"
 
 [font]
-size = 14.0
+size = 13.0
+
 
 [font.offset]
-x = -1
-y = -1
+x = 0
+y = 0
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
