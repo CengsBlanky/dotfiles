@@ -16,9 +16,12 @@ require("lazy").setup({
   {
     'preservim/nerdtree',
     init = function ()
-      vim.g.NERDTreeStatusline=' '
+      vim.g.NERDTreeStatusline=''
       vim.g.NERDTreeQuitOnOpen = 3
       vim.g.NERDTreeMinimalUI = 1
+      vim.g.NERDTreeHighlightCursorline = 1
+      vim.g.NERDTreeMinimalMenu = 1
+      vim.g.NERDTreeAutoDeleteBuffer = 1
       vim.g.NERDTreeIgnore = {
         '\\.lock$[[file]]', '\\.o$[[file]]', '\\.out$[[file]]', '\\.class$[[file]]', '\\.exe$[[file]]',
         '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^__pycache__$[[dir]]'
@@ -452,6 +455,7 @@ require("lazy").setup({
           },
         }
       })
+
       vim.cmd [[colorscheme nordfox]]
     end
   },
@@ -474,12 +478,12 @@ require("lazy").setup({
             winbar = {},
           },
           ignore_focus = {},
-          always_divide_middle = true,
+          always_divide_middle = false,
           globalstatus = false,
           refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
+            statusline = 5000,
+            tabline = 5000,
+            winbar = 5000,
           }
         },
         sections = {
@@ -500,8 +504,8 @@ require("lazy").setup({
             },
             {
               'filename',
+              color = { gui = 'bold' },
               path = 1,
-              shorting_target = 42,
               symbols = {
                 modified = '',
                 alternate_file = '#',
@@ -517,17 +521,18 @@ require("lazy").setup({
           lualine_z = {'%P', '%l,%v/%L'}
         },
         inactive_sections = {
-          lualine_a = {},
-          lualine_b = {
+          lualine_a = {
             {
               'filetype',
-              colored = true,
+              colored = false,
               icon_only = true,
-            },
+              padding = { left = 5, right = 0 },
+            }
+          },
+          lualine_b = {
             {
               'filename',
               path = 1,
-              shorting_target = 20,
               symbols = {
                 modified = '',
                 alternate_file = '#',
@@ -540,12 +545,12 @@ require("lazy").setup({
           lualine_c = {},
           lualine_x = {},
           lualine_y = {},
-          lualine_z = {'%l,%v/%L'}
+          lualine_z = {'%P', '%l,%v/%L'}
         },
         tabline = {},
         winbar = {},
         inactive_winbar = {},
-        extensions = {}
+        extensions = { 'nerdtree' }
       }
     end
   },

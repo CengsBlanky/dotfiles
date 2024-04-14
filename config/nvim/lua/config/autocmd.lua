@@ -43,6 +43,15 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     end
 })
 
+vim.api.nvim_create_autocmd({"FileType"}, {
+    group = myGroup,
+    pattern = { "nerdtree" },
+    callback = function()
+      vim.opt_local.cursorline = true
+      vim.opt_local.cursorlineopt="number,line"
+    end
+})
+
 vim.api.nvim_create_autocmd({"BufRead"}, {
   group = myGroup,
   pattern = {"*.log"},
