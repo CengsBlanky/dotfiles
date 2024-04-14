@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 local keymap = vim.keymap
 
 local opts = { silent = true, nowait = true }
@@ -18,5 +19,7 @@ keymap.set('n', 'gy', ':%y<CR>', opts)
 keymap.set('n', 'gl', '^yg_', opts)
 keymap.set('n', '<C-j>', '<C-f>', opts)
 keymap.set('n', '<C-k>', '<C-b>', opts)
+keymap.set('n', '<leader>`', 'g~iw', opts)
+keymap.set('v', '<leader>`', 'g~', opts)
 keymap.set('v', '<C-j>', '<C-f>', opts)
 keymap.set('v', '<C-k>', '<C-b>', opts)

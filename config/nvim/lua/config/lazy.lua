@@ -158,7 +158,7 @@ require("lazy").setup({
           buffer_index = true,
           buffer_number = false,
           filetype = {
-            enabled = false,
+            enabled = true,
           },
           button = '',
         },
