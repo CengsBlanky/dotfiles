@@ -16,12 +16,15 @@ require("lazy").setup({
   {
     'preservim/nerdtree',
     init = function ()
-      vim.g.NERDTreeStatusline=''
+      vim.g.NERDTreeStatusline='  NERDTree'
       vim.g.NERDTreeQuitOnOpen = 3
       vim.g.NERDTreeMinimalUI = 1
       vim.g.NERDTreeHighlightCursorline = 1
       vim.g.NERDTreeMinimalMenu = 1
       vim.g.NERDTreeAutoDeleteBuffer = 1
+      vim.g.NERDTreeCaseSensitiveFS = 1
+      vim.g.NERDTreeHighlightCursorline = 1
+      vim.g.NERDTreeShowLineNumbers = 1
       vim.g.NERDTreeIgnore = {
         '\\.lock$[[file]]', '\\.o$[[file]]', '\\.out$[[file]]', '\\.class$[[file]]', '\\.exe$[[file]]',
         '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^__pycache__$[[dir]]'
@@ -56,8 +59,8 @@ require("lazy").setup({
   {
     'lewis6991/gitsigns.nvim',
     keys = {
-      { "]c", '<cmd>Gitsigns next_hunk<CR>', { silent = true, nowait = true } },
-      { "[c", '<cmd>Gitsigns prev_hunk<CR>', { silent = true, nowait = true } },
+      { "<M-]>", '<cmd>Gitsigns next_hunk<CR>', { silent = true, nowait = true } },
+      { "<M-[>", '<cmd>Gitsigns prev_hunk<CR>', { silent = true, nowait = true } },
     },
     config = function ()
       require('gitsigns').setup {
@@ -151,7 +154,7 @@ require("lazy").setup({
     config = function ()
       require('barbar').setup {
         no_name_title = '',
-        auto_hide = 1,
+        -- auto_hide = 1,
         separator_at_end = true,
         maximum_padding = 1,
         icons = {
@@ -161,9 +164,13 @@ require("lazy").setup({
           buffer_index = true,
           buffer_number = false,
           filetype = {
-            enabled = true,
+            enabled = false,
           },
           button = '',
+          pinned = {
+            button = '',
+            filename = true
+          }
         },
         gitsigns = {
           added = {enabled = true, icon = '+'},
@@ -174,9 +181,8 @@ require("lazy").setup({
       local map = vim.api.nvim_set_keymap
       local opts = { noremap = true, silent = true }
       -- setup keymaps
-      map('n', '<M-[>', '<Cmd>BufferPrevious<CR>', opts)
-      map('n', '<M-]>', '<Cmd>BufferNext<CR>', opts)
       map('n', '<C-n>', '<Cmd>BufferNext<CR>', opts)
+      map('n', '<C-p>', '<Cmd>b#<CR>', { noremap = true, silent = false })
       map('n', '<Space>0', '<Cmd>BufferLast<CR>', opts)
       map('n', '<Space>1', '<Cmd>BufferGoto 1<CR>', opts)
       map('n', '<Space>2', '<Cmd>BufferGoto 2<CR>', opts)
@@ -190,8 +196,9 @@ require("lazy").setup({
       map('n', '<Space>b', '<Cmd>BufferClose<CR>', opts)
       map('n', '<leader>h', '<Cmd>BufferCloseBuffersLeft<CR>', opts)
       map('n', '<leader>l', '<Cmd>BufferCloseBuffersRight<CR>', opts)
+      map('n', '<leader>p', '<Cmd>BufferPin<CR>', opts)
       map('n', '<Space>p', '<Cmd>BufferPick<CR>', opts)
-      map('n', '<leader>o', '<Cmd>BufferCloseAllButCurrent<CR>', opts)
+      map('n', '<leader>o', '<Cmd>BufferCloseAllButCurrentOrPinned<CR>', opts)
     end,
     opts = {
       animation = true,
@@ -328,7 +335,7 @@ require("lazy").setup({
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
             vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-            vim.keymap.set('n', '<leader>n', vim.lsp.buf.rename, bufopts)
+            vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
             vim.keymap.set('n', '<F4>', function() vim.lsp.buf.format { async = true } end, bufopts)
 
@@ -467,6 +474,9 @@ require("lazy").setup({
       'kyazdani42/nvim-web-devicons',
     },
     config = function ()
+      local function inactive_sep()
+        return [[󰇛󰇛󰇛󰇛󰇛󰇛]]
+      end
       require('lualine').setup {
         options = {
           icons_enabled = true,
@@ -474,7 +484,7 @@ require("lazy").setup({
           section_separators = { left = '', right = ''  },
           component_separators = { left = '', right = '' }, -- 
           disabled_filetypes = {
-            statusline = {},
+            statusline = { 'nerdtree' },
             winbar = {},
           },
           ignore_focus = {},
@@ -521,18 +531,12 @@ require("lazy").setup({
           lualine_z = {'%P', '%l,%v/%L'}
         },
         inactive_sections = {
-          lualine_a = {
-            {
-              'filetype',
-              colored = false,
-              icon_only = true,
-              padding = { left = 5, right = 0 },
-            }
-          },
+          lualine_a = { inactive_sep },
           lualine_b = {
             {
               'filename',
               path = 1,
+              padding = { left = 0, right = 0 },
               symbols = {
                 modified = '',
                 alternate_file = '#',
@@ -542,15 +546,15 @@ require("lazy").setup({
               },
             },
           },
-          lualine_c = {},
+          lualine_c = { inactive_sep },
           lualine_x = {},
           lualine_y = {},
-          lualine_z = {'%P', '%l,%v/%L'}
+          lualine_z = {'%P', '%l,%v/%L'},
         },
         tabline = {},
         winbar = {},
         inactive_winbar = {},
-        extensions = { 'nerdtree' }
+        extensions = {}
       }
     end
   },

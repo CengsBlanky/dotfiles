@@ -67,7 +67,7 @@ nnoremap <silent><C-k> <C-b>
 nnoremap <silent><Enter> :w<CR>
 # go next buffer
 nnoremap <C-n> :bn<CR>
-nnoremap <C-p> :bp<CR>
+nnoremap <C-p> :b#<CR>
 # window manage
 nnoremap <Esc>j <C-w>j
 nnoremap <Esc>k <C-w>k
