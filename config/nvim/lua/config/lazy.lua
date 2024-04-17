@@ -154,10 +154,14 @@ require("lazy").setup({
     config = function ()
       require('barbar').setup {
         no_name_title = '',
-        -- auto_hide = 1,
-        separator_at_end = true,
+        auto_hide = 1,
         maximum_padding = 1,
         icons = {
+          separator_at_end = false,
+          separator = {
+            left = '',
+            right = '',
+          },
           modified = {
             button = ''
           },
@@ -474,9 +478,6 @@ require("lazy").setup({
       'kyazdani42/nvim-web-devicons',
     },
     config = function ()
-      local function inactive_sep()
-        return [[󰇛󰇛󰇛󰇛󰇛󰇛]]
-      end
       require('lualine').setup {
         options = {
           icons_enabled = true,
@@ -489,7 +490,7 @@ require("lazy").setup({
           },
           ignore_focus = {},
           always_divide_middle = false,
-          globalstatus = false,
+          globalstatus = true,
           refresh = {
             statusline = 5000,
             tabline = 5000,
@@ -529,27 +530,6 @@ require("lazy").setup({
           lualine_x = {},
           lualine_y = {'fileformat', 'encoding'},
           lualine_z = {'%P', '%l,%v/%L'}
-        },
-        inactive_sections = {
-          lualine_a = { inactive_sep },
-          lualine_b = {
-            {
-              'filename',
-              path = 1,
-              padding = { left = 0, right = 0 },
-              symbols = {
-                modified = '',
-                alternate_file = '#',
-                directory =  '',
-                readonly = '',
-                newfile = '󰈔',
-              },
-            },
-          },
-          lualine_c = { inactive_sep },
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = {'%P', '%l,%v/%L'},
         },
         tabline = {},
         winbar = {},
