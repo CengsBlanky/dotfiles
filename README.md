@@ -59,6 +59,7 @@ joplin笔记应用，支持主流网盘笔记同步，命令行程序高效简�
 ### mpv
 
 命令行音乐/电影播放器，简洁高效，通过包管理器安装
+[说明书](https://mpv.io/manual/master/)
 
 ### translate-shell
 
