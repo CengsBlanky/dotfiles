@@ -25,6 +25,9 @@ require("lazy").setup({
       vim.g.NERDTreeCaseSensitiveFS = 1
       vim.g.NERDTreeHighlightCursorline = 1
       vim.g.NERDTreeShowLineNumbers = 1
+      vim.g.NERDTreeNodeDelimiter="😀"
+      vim.g.NERDTreeDirArrowExpandable=""
+      vim.g.NERDTreeDirArrowCollapsible="-"
       vim.g.NERDTreeIgnore = {
         '\\.lock$[[file]]', '\\.o$[[file]]', '\\.out$[[file]]', '\\.class$[[file]]', '\\.exe$[[file]]',
         '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^__pycache__$[[dir]]'
@@ -153,8 +156,12 @@ require("lazy").setup({
     init = function() vim.g.barbar_auto_setup = false end,
     config = function ()
       require('barbar').setup {
-        no_name_title = '',
+        animation = false,
+        focus_on_close = 'previous',
+        insert_at_end = true,
         auto_hide = 1,
+        tabpages = false,
+        exclude_ft = { "nerdtree" },
         maximum_padding = 1,
         icons = {
           separator_at_end = false,
