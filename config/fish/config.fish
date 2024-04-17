@@ -103,6 +103,8 @@ if status is-interactive
     abbr --add hibernate "sudo pm-hibernate"
     # take little notes
     abbr --add nt notenow
+    # yt-dlp
+    abbr --add yd --set-cursor "yt-dlp '%'"
 
     # key bind
     bind --mode insert \cr "" --sets-mode default
