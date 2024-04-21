@@ -7,6 +7,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     callback = function()
         vim.opt.formatoptions:remove({'o'})
         vim.opt.listchars = {
+          tab = "  ¦",
         }
     end
 })
@@ -38,17 +39,6 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     callback = function()
       vim.opt_local.listchars:append {
         lead = "·",
-        tab = "  ¦",
-      }
-    end
-})
-
-vim.api.nvim_create_autocmd({"FileType"}, {
-    group = myGroup,
-    pattern = { "go" },
-    callback = function()
-      vim.opt_local.listchars:append {
-        tab = "  ",
       }
     end
 })
