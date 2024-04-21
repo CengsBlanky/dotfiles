@@ -190,6 +190,7 @@ require("lazy").setup({
       map('n', '<Space>8', '<Cmd>BufferLineGoToBuffer 8<CR>', map_opts)
       map('n', '<Space>9', '<Cmd>BufferLineGoToBuffer 9<CR>', map_opts)
       map('n', '<Space>0', '<Cmd>BufferLineGoToBuffer -1<CR>', map_opts)
+      map('n', '<Space>b', '<Cmd>bd<CR>', map_opts)
       map('n', '<Space>p', '<Cmd>BufferLineTogglePin<CR>', map_opts)
       map('n', '<Space>j', '<Cmd>BufferLineCloseLeft<CR>', map_opts)
       map('n', '<Space>k', '<Cmd>BufferLineCloseRight<CR>', map_opts)
