@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = { "nerdtree" },
     callback = function()
       vim.opt_local.cursorline = true
-      vim.opt_local.cursorlineopt="number,line"
+      vim.opt_local.cursorlineopt="number,screenline"
     end
 })
 

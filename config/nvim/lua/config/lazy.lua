@@ -16,7 +16,7 @@ require("lazy").setup({
   {
     'preservim/nerdtree',
     init = function ()
-      vim.g.NERDTreeStatusline='  NERDTree'
+      vim.g.NERDTreeStatusline='%#NerdtreeStatus#  NERDTree'
       vim.g.NERDTreeQuitOnOpen = 3
       vim.g.NERDTreeMinimalUI = 1
       vim.g.NERDTreeHighlightCursorline = 1
@@ -27,7 +27,7 @@ require("lazy").setup({
       vim.g.NERDTreeShowLineNumbers = 1
       vim.g.NERDTreeNodeDelimiter="😀"
       vim.g.NERDTreeDirArrowExpandable=""
-      vim.g.NERDTreeDirArrowCollapsible="-"
+      vim.g.NERDTreeDirArrowCollapsible="~"
       vim.g.NERDTreeIgnore = {
         '\\.lock$[[file]]', '\\.o$[[file]]', '\\.out$[[file]]', '\\.class$[[file]]', '\\.exe$[[file]]',
         '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^__pycache__$[[dir]]'
@@ -148,78 +148,57 @@ require("lazy").setup({
     end
   },
   {
-    'romgrk/barbar.nvim',
-    dependencies = {
-      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-    },
-    init = function() vim.g.barbar_auto_setup = false end,
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons',
     config = function ()
-      require('barbar').setup {
-        animation = false,
-        focus_on_close = 'previous',
-        insert_at_end = true,
-        auto_hide = 1,
-        tabpages = false,
-        exclude_ft = { "nerdtree" },
-        maximum_padding = 1,
-        icons = {
-          separator_at_end = false,
-          separator = {
-            left = '',
-            right = '',
+      local bufferline = require('bufferline')
+      bufferline.setup {
+        options = {
+          mode = "buffers",
+          themable = false,
+          style_preset = bufferline.style_preset.no_italic,
+          modified_icon = '',
+          buffer_close_icon = '',
+          always_show_bufferline = false;
+          show_close_icon = false,
+          show_buffer_icons = false,
+          show_buffer_close_icons = false,
+          show_tab_indicators = false,
+          numbers = "ordinal",
+          tab_size = 0,
+          indicator = {
+            style = 'underline',
           },
-          modified = {
-            button = ''
+          diagnostics = false,
+          separator_style = { '', '' },
+          hover = {
+            enable = false,
           },
-          buffer_index = true,
-          buffer_number = false,
-          filetype = {
-            enabled = false,
-          },
-          button = '',
-          pinned = {
-            button = '',
-            filename = true
-          }
-        },
-        gitsigns = {
-          added = {enabled = true, icon = '+'},
-          changed = {enabled = true, icon = '*'},
-          deleted = {enabled = true, icon = '-'},
-        },
+        }
       }
+      -- keymaps
       local map = vim.api.nvim_set_keymap
-      local opts = { noremap = true, silent = true }
-      -- setup keymaps
-      map('n', '<C-n>', '<Cmd>BufferNext<CR>', opts)
-      map('n', '<C-p>', '<Cmd>b#<CR>', { noremap = true, silent = false })
-      map('n', '<Space>0', '<Cmd>BufferLast<CR>', opts)
-      map('n', '<Space>1', '<Cmd>BufferGoto 1<CR>', opts)
-      map('n', '<Space>2', '<Cmd>BufferGoto 2<CR>', opts)
-      map('n', '<Space>3', '<Cmd>BufferGoto 3<CR>', opts)
-      map('n', '<Space>4', '<Cmd>BufferGoto 4<CR>', opts)
-      map('n', '<Space>5', '<Cmd>BufferGoto 5<CR>', opts)
-      map('n', '<Space>6', '<Cmd>BufferGoto 6<CR>', opts)
-      map('n', '<Space>7', '<Cmd>BufferGoto 7<CR>', opts)
-      map('n', '<Space>8', '<Cmd>BufferGoto 8<CR>', opts)
-      map('n', '<Space>9', '<Cmd>BufferGoto 9<CR>', opts)
-      map('n', '<Space>b', '<Cmd>BufferClose<CR>', opts)
-      map('n', '<leader>h', '<Cmd>BufferCloseBuffersLeft<CR>', opts)
-      map('n', '<leader>l', '<Cmd>BufferCloseBuffersRight<CR>', opts)
-      map('n', '<leader>p', '<Cmd>BufferPin<CR>', opts)
-      map('n', '<Space>p', '<Cmd>BufferPick<CR>', opts)
-      map('n', '<leader>o', '<Cmd>BufferCloseAllButCurrentOrPinned<CR>', opts)
+      local map_opts = { noremap = true, silent = true }
+      map('n', '<Space>1', '<Cmd>BufferLineGoToBuffer 1<CR>', map_opts)
+      map('n', '<Space>2', '<Cmd>BufferLineGoToBuffer 2<CR>', map_opts)
+      map('n', '<Space>3', '<Cmd>BufferLineGoToBuffer 3<CR>', map_opts)
+      map('n', '<Space>4', '<Cmd>BufferLineGoToBuffer 4<CR>', map_opts)
+      map('n', '<Space>5', '<Cmd>BufferLineGoToBuffer 5<CR>', map_opts)
+      map('n', '<Space>6', '<Cmd>BufferLineGoToBuffer 6<CR>', map_opts)
+      map('n', '<Space>7', '<Cmd>BufferLineGoToBuffer 7<CR>', map_opts)
+      map('n', '<Space>8', '<Cmd>BufferLineGoToBuffer 8<CR>', map_opts)
+      map('n', '<Space>9', '<Cmd>BufferLineGoToBuffer 9<CR>', map_opts)
+      map('n', '<Space>0', '<Cmd>BufferLineGoToBuffer -1<CR>', map_opts)
+      map('n', '<Space>p', '<Cmd>BufferLineTogglePin<CR>', map_opts)
+      map('n', '<Space>j', '<Cmd>BufferLineCloseLeft<CR>', map_opts)
+      map('n', '<Space>k', '<Cmd>BufferLineCloseRight<CR>', map_opts)
+      map('n', '<Space>o', '<Cmd>BufferLineCloseOthers<CR>', map_opts)
+      map('n', '<Space>p', '<Cmd>BufferLinePick<CR>', map_opts)
+      map('n', '<Space>D', '<Cmd>BufferLinePickClose<CR>', map_opts)
+      map('n', '<C-n>', '<Cmd>BufferLineCycleNext<CR>', map_opts)
+      map('n', '<C-p>', '<Cmd>b#<CR>', map_opts)
     end,
-    opts = {
-      animation = true,
-      clickable = false,
-      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-      -- animation = true,
-      -- insert_at_start = true,
-      -- …etc.
-    },
-    -- version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
   'junegunn/goyo.vim',
   {
