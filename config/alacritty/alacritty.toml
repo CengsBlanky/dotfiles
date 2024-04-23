@@ -12,20 +12,7 @@ foreground = "#d8dee9"
 
 
 [font.normal]
-# family = "UbuntuMono NerdFont"
 family = "UbuntuSansMono Nerd Font"
-# family = "ZedMono Nerd Font Mono"
-# family = "TWKaiUbuntuMono NerdFont"
-# family = "CourierPrimal NerdFont"
-# family = "UbuntuKaiMono NerdFont"
-# family = "TWKai_KleeOneMono"
-# family = "Monaco NerdFont"
-# family = "ComicShannsMono NerdFont"
-# family = "MesloLGS NerdFont"
-# family = "BlexMono NerdFont"
-# family = "Jetbrains Mono NF"
-# family = "FiraCode NF"
-# family = "Menlo Nerd Font"
 # style = "extended"
 
 [font]
