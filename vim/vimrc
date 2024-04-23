@@ -90,7 +90,7 @@ colorscheme retrobox
 hi Normal guibg=NONE ctermbg=NONE guifg=LightGray gui=NONE
 hi SignColumn guibg=NONE
 hi StatusLineNC guifg=#212529 guibg=Gray gui=NONE
-hi StatusLine guifg=#2b2b2b guibg=Gray gui=NONE
+hi StatusLine guifg=#222222 guibg=Gray gui=NONE
 hi CursorLineNr guifg=#ebcb8b guibg=NONE cterm=bold
 hi VertSplit guibg=NONE guifg=#ebcb8b
 set statusline=\ %w%f\ %h%m%r%=%-y%8P%16(%l,%c/%L%)
