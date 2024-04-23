@@ -459,7 +459,9 @@ require("lazy").setup({
   },
   {
     "folke/noice.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    event = { "CursorMoved", "ModeChanged" },
+    lazy = true,
     opts = {
       -- add any options here
     },
@@ -474,6 +476,9 @@ require("lazy").setup({
           inc_rename = false, -- enables an input dialog for inc-rename.nvim
           lsp_doc_border = false, -- add a border to hover docs and signature help
         },
+        messages = {
+          view_search = false
+        }
       })
   end,
   dependencies = {
@@ -482,7 +487,16 @@ require("lazy").setup({
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
+      {
+        "rcarriga/nvim-notify",
+        config = function ()
+          require("notify").setup({
+            render = "wrapped-compact",
+            stages = "static",
+            timeout = 1000,
+          })
+        end
+      },
     },
   },
   {
@@ -498,7 +512,7 @@ require("lazy").setup({
           icons_enabled = true,
           theme = 'auto',
           section_separators = { left = '', right = ''  },
-          component_separators = { left = '', right = '' }, -- 
+          component_separators = { left = '', right = '' }, -- 
           disabled_filetypes = {
             statusline = { 'nerdtree' },
             winbar = {},
@@ -542,7 +556,20 @@ require("lazy").setup({
             }
           },
           lualine_c = {'diagnostics'},
-          lualine_x = {},
+          lualine_x = {
+            {
+              require("noice").api.status.command.get,
+              cond = require("noice").api.status.command.has,
+              color = { fg = "#81a1c1" },
+              separator = "",
+            },
+            {
+              require("noice").api.status.search.get,
+              cond = require("noice").api.status.search.has,
+              color = { fg = "#a3be8c" },
+              separator = "",
+            },
+          },
           lualine_y = {'fileformat', 'encoding'},
           lualine_z = {'%P', '%l,%v/%L'}
         },
