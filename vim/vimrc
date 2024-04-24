@@ -33,7 +33,7 @@ set nobackup
 set clipboard^=unnamed,unnamedplus
 set shortmess+=c
 set hlsearch
-set mouse= 
+set mouse=n
 set mousehide
 set signcolumn=yes
 set cursorline
@@ -82,14 +82,13 @@ nnoremap [Q :cfirst<CR>
 nnoremap ]Q :clast<CR>
 autocmd FileType tags,qf nnoremap <buffer> <Enter> <Enter>
 
-# todo use rg if possible
-" use rg in vim
+# use rg in vim
 if executable("rg")
     set grepprg=rg\ --vimgrep\ --smart-case\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
+    set grepformat=%f:%l:%c:%m
 endif
-command! -nargs=+ Grep execute 'silent grep <args>' | copen
-nnoremap <leader>f :Grep 
+command! -nargs=+ Grep execute 'silent grep! <args>' | copen
+nnoremap <leader>f :Grep<Space>
 
 set termguicolors
 set background=dark
