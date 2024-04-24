@@ -39,7 +39,7 @@ vim.opt.backspace = { 'start', 'eol', 'indent' }
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.list = true
 vim.opt.listchars = {
-  tab = "  ¦",
+  tab = "  ",
 }
 
 vim.g.python3_host_prog = '/usr/bin/python3'

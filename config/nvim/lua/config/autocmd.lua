@@ -1,27 +1,12 @@
 ---@diagnostic disable: undefined-global
-local myGroup = vim.api.nvim_create_augroup("ZengShuai", {})
+local myGroup = vim.api.nvim_create_augroup("ZS", {})
 
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
     pattern = {"*"},
     callback = function()
         vim.opt.formatoptions:remove({'o'})
-        vim.opt.listchars = {
-          tab = "  ¦",
-        }
     end
-})
-
-vim.api.nvim_create_autocmd({"FileType"}, {
-    group = myGroup,
-    pattern = {"vim"},
-    callback = function() vim.opt_local.foldmethod = "marker" end
-})
-
-vim.api.nvim_create_autocmd({"FileType"}, {
-    group = myGroup,
-    pattern = {"gitcommit"},
-    callback = function() vim.opt_local.textwidth = 0 end
 })
 
 vim.api.nvim_create_autocmd({"FileType"}, {
@@ -57,6 +42,15 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     callback = function()
         vim.opt_local.tabstop = 2
         vim.opt_local.shiftwidth = 2
+    end
+})
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+    group = myGroup,
+    pattern = {"go"},
+    callback = function()
+      -- golang use tab instead of spaces
+      vim.opt_local.expandtab = false
     end
 })
 
