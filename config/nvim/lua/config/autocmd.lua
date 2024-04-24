@@ -35,16 +35,6 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
-    pattern = { "asm", "make", "go" },
-    callback = function()
-      vim.opt_local.listchars:append {
-        lead = "·",
-      }
-    end
-})
-
-vim.api.nvim_create_autocmd({"FileType"}, {
-    group = myGroup,
     pattern = { "nerdtree" },
     callback = function()
       vim.opt_local.cursorline = true
