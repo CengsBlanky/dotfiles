@@ -15,3 +15,7 @@
 !**/lazy-lock.json
 --glob
 !**/venv/*
+--glob
+!tags
+--glob
+!.tags

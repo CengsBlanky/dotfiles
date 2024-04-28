@@ -76,6 +76,8 @@ if status is-interactive
     set PATH $PATH "$HOME/bin"
     # kubectl autocompletion
     # kubectl completion fish | source
+    # fzf
+    set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case"
 
     # ===== abbriviations =====
     abbr --add cls "clear"
