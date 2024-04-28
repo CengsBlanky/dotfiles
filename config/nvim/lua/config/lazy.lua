@@ -328,8 +328,7 @@ require("lazy").setup({
             vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
             vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-            vim.keymap.set('n', '<F4>', function() vim.lsp.buf.format { async = true } end, bufopts)
-
+            -- vim.keymap.set('n', '<Space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
           end,
           capabilities = cmp_capabilities,
         }
@@ -377,7 +376,7 @@ require("lazy").setup({
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<CR>'] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
-            select = false,
+            select = true,
           },
           ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -493,7 +492,7 @@ require("lazy").setup({
           require("notify").setup({
             render = "wrapped-compact",
             stages = "static",
-            timeout = 1000,
+            timeout = 2500,
           })
         end
       },
@@ -570,7 +569,7 @@ require("lazy").setup({
               separator = "",
             },
           },
-          lualine_y = {'fileformat', 'encoding'},
+          lualine_y = { 'fileformat', 'encoding'},
           lualine_z = {'%P', '%l,%v/%L'}
         },
         tabline = {},
