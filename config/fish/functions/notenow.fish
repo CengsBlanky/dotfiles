@@ -1,5 +1,5 @@
 function notenow
-    set -l curdate (date +%F)
+    set -l curdate (date +%Y%m%d)
     set -l curtime (date +%H:%M)
     set -l curyear (date +%Y)
     set -l journalDir $HOME/notes/journal/$curyear 
