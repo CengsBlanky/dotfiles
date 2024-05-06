@@ -88,6 +88,7 @@ if executable("rg")
   set grepformat=%f:%l:%c:%m
   nnoremap <leader>f :FZF<CR>
   nnoremap <leader>g :RG<CR>
+  nnoremap <leader>b :Buffers<CR>
 endif
 
 set termguicolors
