@@ -459,48 +459,6 @@ require("lazy").setup({
     end
   },
   {
-    "folke/noice.nvim",
-    -- event = "VeryLazy",
-    event = { "CursorMoved", "ModeChanged" },
-    lazy = true,
-    opts = {
-      -- add any options here
-    },
-    config = function()
-      require("noice").setup({
-        lsp = {},
-        -- you can enable a preset for easier configuration
-        presets = {
-          bottom_search = true, -- use a classic bottom cmdline for search
-          command_palette = true, -- position the cmdline and popupmenu together
-          long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false, -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false, -- add a border to hover docs and signature help
-        },
-        messages = {
-          view_search = false
-        }
-      })
-  end,
-  dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      {
-        "rcarriga/nvim-notify",
-        config = function ()
-          require("notify").setup({
-            render = "wrapped-compact",
-            stages = "static",
-            timeout = 2500,
-          })
-        end
-      },
-    },
-  },
-  {
     'nvim-lualine/lualine.nvim',
     event = { "CursorMoved", "ModeChanged" },
     lazy = true,
@@ -557,20 +515,7 @@ require("lazy").setup({
             }
           },
           lualine_c = {'diagnostics'},
-          lualine_x = {
-            {
-              require("noice").api.status.command.get,
-              cond = require("noice").api.status.command.has,
-              color = { fg = "#81a1c1" },
-              separator = "",
-            },
-            {
-              require("noice").api.status.search.get,
-              cond = require("noice").api.status.search.has,
-              color = { fg = "#a3be8c" },
-              separator = "",
-            },
-          },
+          lualine_x = {},
           lualine_y = { 'fileformat', 'encoding'},
           lualine_z = {'%P', '%l,%v/%L'}
         },
