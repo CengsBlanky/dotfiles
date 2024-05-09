@@ -514,8 +514,8 @@ require("lazy").setup({
               },
             }
           },
-          lualine_c = {'diagnostics'},
-          lualine_x = {},
+          lualine_c = { 'diagnostics', 'searchcount' },
+          lualine_x = { 'selectioncount', '%S' },
           lualine_y = { 'fileformat', 'encoding'},
           lualine_z = {'%P', '%l,%v/%L'}
         },
