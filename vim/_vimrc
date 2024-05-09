@@ -98,6 +98,7 @@ nnoremap [Q :cfirst<CR>
 " }}}
 " command {{{
 command! Reloadrc source D:/DevTools/gvim/Vim/_vimrc
+command! MakeTags !ctags -R .
 " insert current datetime
 function! OpenExplorer() abort
   " let path = expand("%:p:h")
@@ -164,7 +165,6 @@ Plug 'junegunn/vim-easy-align' " align text easily
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle'}
 Plug 'junegunn/fzf',
 Plug 'junegunn/fzf.vim',
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'romainl/vim-cool' " better hlsearch
 Plug 'Eliot00/auto-pairs'
 Plug 'ap/vim-buftabline'
