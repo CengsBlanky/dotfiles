@@ -1,7 +1,7 @@
 function todo
     set -l todo_thing $argv[1]
     set -l cur_time (date +%F\ %H:%M:%S)
-    set -l cur_date (date +%F)
+    set -l cur_date (date +%Y%m%d)
     set -l time_header "# "$cur_time
     set -l tmp_dir "$HOME/tmp"
     mkdir -p $tmp_dir
