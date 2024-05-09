@@ -83,6 +83,8 @@ sudo apt install translate-shell
 
 ### KDE Connect
 
+现有LocalSend代替
+
 局域网文件传输工具，可通过Test Flight下载Iphone app
 
 ### Calibre

@@ -13,7 +13,6 @@ foreground = "#d8dee9"
 
 [font.normal]
 family = "UbuntuSansMono Nerd Font"
-# style = "extended"
 
 [font]
 size = 13.0
