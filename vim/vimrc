@@ -31,7 +31,7 @@ set updatetime=100
 set noundofile
 set nobackup
 set clipboard^=unnamed,unnamedplus
-set shortmess+=c
+set shortmess-=S
 set hlsearch
 set mouse=n
 set mousehide
