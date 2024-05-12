@@ -18,8 +18,8 @@ alias gcm="git commit -am"
 alias gps="git push"
 alias gpl="git pull"
 # vim and neovim
-# alias vi="/usr/bin/vim"
-alias vim="nvim"
+# alias vi="/usr/local/bin/vim"
+# alias vim="nvim"
 if [ -x "/usr/bin/batcat" ]; then
     alias bat="batcat"
 fi

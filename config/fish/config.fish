@@ -25,6 +25,8 @@ if status is-interactive
     set -gx NOTEDIR '$HOME/notes'
     # current location
     set -gx MY_CUR_LOCATION '雨花台'
+    # add nvim default install path
+    set PATH $PATH "/usr/local/nvim/bin"
     # sdkman
     set -l SDKMAN_CANDIDATES "$HOME/.sdkman/candidates"
     # java
