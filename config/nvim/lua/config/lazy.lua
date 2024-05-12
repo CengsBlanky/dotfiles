@@ -5,7 +5,8 @@ if not vim.loop.fs_stat(lazypath) then
     "git",
     "clone",
     "--filter=blob:none",
-    "git@github.com:folke/lazy.nvim.git",
+    "https://github.com/folke/lazy.nvim",
+    -- "git@github.com:folke/lazy.nvim.git",
     "--branch=stable", -- latest stable release
     lazypath,
   })
@@ -532,7 +533,7 @@ require("lazy").setup({
     -- defaults for the `Lazy log` command
     log = { "-10" }, -- show commits from the last 3 days
     timeout = 240, -- kill processes that take more than 2 minutes
-    url_format = "git@github.com:%s.git",
+    -- url_format = "git@github.com:%s.git",
     -- lazy.nvim requires git >=2.19.0. If you really want to use lazy with an older version,
     -- then set the below to false. This should work, but is NOT supported and will
     -- increase downloads a lot.
