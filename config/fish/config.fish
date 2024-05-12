@@ -66,8 +66,6 @@ if status is-interactive
     set PATH $PATH "$HOME/tools/spring-2.6.4/bin"
     # ruby binaries
     set PATH $PATH "$HOME/.local/share/gem/ruby/3.0.0/bin"
-    # source asdf version manager
-    source ~/.asdf/asdf.fish
     # golang path
     set PATH $PATH "/usr/local/go/bin"
 
@@ -111,6 +109,13 @@ if status is-interactive
     # key bind
     bind --mode insert \cr "" --sets-mode default
 
+    # source asdf version manager
+    set -l asdf_conf "~/.asdf/asdf.fish"
+    if test -f $asdf_conf
+        source $asdf_conf
+    end
     # zoxide config
-    zoxide init fish | source
+    if command -q zoxide
+        zoxide init fish | source
+    end
 end
