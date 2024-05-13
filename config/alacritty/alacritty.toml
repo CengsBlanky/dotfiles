@@ -12,7 +12,8 @@ foreground = "#d8dee9"
 
 
 [font.normal]
-family = "UbuntuSansMono Nerd Font"
+# family = "UbuntuSansMono Nerd Font"
+family = "JetbrainsMono NF"
 
 [font]
 size = 13.0
