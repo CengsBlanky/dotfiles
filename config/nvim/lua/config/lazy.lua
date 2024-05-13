@@ -504,7 +504,6 @@ require("lazy").setup({
             },
             {
               'filename',
-              color = { gui = 'bold' },
               path = 1,
               symbols = {
                 modified = '',
