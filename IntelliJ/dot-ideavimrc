@@ -62,6 +62,7 @@ nnoremap <C-l> :set hlsearch!<CR>
 " close current tab or other tabs
 nnoremap <leader>q :action CloseEditor<CR>
 nnoremap <leader>o :action CloseAllEditorsButActive<CR>
+nnoremap <leader>s :action Run<CR>
 " nnoremap <leader>t :action Test<CR>
 nnoremap <leader>d :action Debug<CR>
 nnoremap <leader>l :action ToggleLineBreakpoint<CR>
@@ -72,6 +73,7 @@ nnoremap <A-l> <C-w>l
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-o> <C-w>o
+nnoremap <A-w> <C-w>c
 
 " code actions
 nnoremap g] :action GotoNextError<CR>
@@ -81,8 +83,6 @@ nnoremap gd :action GotoDeclaration<CR>
 nnoremap gt :action GotoTest<CR>
 nnoremap gb :action Back<CR>
 nnoremap gf :action Forward<CR>
-nnoremap ]c :action JumpToNextChange
-" nnoremap [c :action
 " bookmark actions
 nnoremap <leader>b :action ShowBookmarks<CR>
 nnoremap <space>b :action ToggleBookmark<CR>
