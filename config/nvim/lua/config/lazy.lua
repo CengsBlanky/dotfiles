@@ -18,6 +18,7 @@ require("lazy").setup({
     'preservim/nerdtree',
     init = function ()
       vim.g.NERDTreeStatusline='%#NerdtreeStatus#  NERDTree'
+      vim.g.NERDTreeWinSize =  50
       vim.g.NERDTreeQuitOnOpen = 3
       vim.g.NERDTreeMinimalUI = 1
       vim.g.NERDTreeHighlightCursorline = 1
@@ -43,9 +44,17 @@ require("lazy").setup({
   {
     'stevearc/oil.nvim',
     keys = {
-      { "<C-f>", "<cmd>Oil .<CR>", { silent = true, nowait = true } },
+      { "<leader>f", "<cmd>Oil .<CR>", { silent = true, nowait = true } },
     },
-    config = function() require('oil').setup() end
+    config = function()
+      require('oil').setup({
+        skip_confirm_for_simple_edits = true,
+        cleanup_delay_ms = 1000,
+        view_options = {
+          show_hidden = true,
+        }
+      })
+    end
   },
   {
     'leafOfTree/vim-svelte-plugin',
@@ -63,11 +72,25 @@ require("lazy").setup({
   {
     'lewis6991/gitsigns.nvim',
     keys = {
-      { "<M-]>", '<cmd>Gitsigns next_hunk<CR>', { silent = true, nowait = true } },
-      { "<M-[>", '<cmd>Gitsigns prev_hunk<CR>', { silent = true, nowait = true } },
+      { "<M-[>", function ()
+        require("gitsigns").nav_hunk(
+        "prev",
+        {
+          navigation_message = true,
+        })
+      end, { silent = true, nowait = true } },
+      { "<M-]>", function ()
+        require("gitsigns").nav_hunk(
+        "next",
+        {
+          navigation_message = true,
+        })
+      end, { silent = true, nowait = true } },
+      { "<leader>b", '<cmd>Gitsigns toggle_current_line_blame<CR>', { silent = true, nowait = true } },
     },
     config = function ()
       require('gitsigns').setup {
+        -- gitsigns.nav_hunk()
         signs = {
           topdelete    = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
           changedelete = {hl = 'GitSignsChange', text = '*', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
@@ -109,12 +132,15 @@ require("lazy").setup({
     },
     config = function ()
       local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>f', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>b', builtin.buffers, {})
-      vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
+      vim.keymap.set('n', '<M-f>', builtin.find_files, {})
+      vim.keymap.set('n', '<M-b>', builtin.buffers, {})
+      vim.keymap.set('n', '<M-r>', builtin.live_grep, {})
       local actions = require("telescope.actions")
       require('telescope').setup{
         defaults = {
+          path_display = {
+            "filename_first"
+          },
           mappings = {
             i = {
               ["<C-j>"] = "move_selection_next",
@@ -150,60 +176,61 @@ require("lazy").setup({
       vim.g.user_emmet_expandword_key='<C-e>'
     end
   },
-  {
-    'akinsho/bufferline.nvim',
-    version = "*",
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function ()
-      local bufferline = require('bufferline')
-      bufferline.setup {
-        options = {
-          mode = "buffers",
-          themable = false,
-          style_preset = bufferline.style_preset.no_italic,
-          modified_icon = '',
-          buffer_close_icon = '',
-          always_show_bufferline = false;
-          show_close_icon = false,
-          show_buffer_icons = false,
-          show_buffer_close_icons = false,
-          show_tab_indicators = false,
-          numbers = "ordinal",
-          tab_size = 0,
-          indicator = {
-            style = 'underline',
-          },
-          diagnostics = false,
-          separator_style = { '', '' },
-          hover = {
-            enable = false,
-          },
-        }
-      }
-      -- keymaps
-      local map = vim.api.nvim_set_keymap
-      local map_opts = { noremap = true, silent = true }
-      map('n', '<Space>1', '<Cmd>BufferLineGoToBuffer 1<CR>', map_opts)
-      map('n', '<Space>2', '<Cmd>BufferLineGoToBuffer 2<CR>', map_opts)
-      map('n', '<Space>3', '<Cmd>BufferLineGoToBuffer 3<CR>', map_opts)
-      map('n', '<Space>4', '<Cmd>BufferLineGoToBuffer 4<CR>', map_opts)
-      map('n', '<Space>5', '<Cmd>BufferLineGoToBuffer 5<CR>', map_opts)
-      map('n', '<Space>6', '<Cmd>BufferLineGoToBuffer 6<CR>', map_opts)
-      map('n', '<Space>7', '<Cmd>BufferLineGoToBuffer 7<CR>', map_opts)
-      map('n', '<Space>8', '<Cmd>BufferLineGoToBuffer 8<CR>', map_opts)
-      map('n', '<Space>9', '<Cmd>BufferLineGoToBuffer 9<CR>', map_opts)
-      map('n', '<Space>0', '<Cmd>BufferLineGoToBuffer -1<CR>', map_opts)
-      map('n', '<Space>b', '<Cmd>bd<CR>', map_opts)
-      map('n', '<Space>p', '<Cmd>BufferLineTogglePin<CR>', map_opts)
-      map('n', '<Space>j', '<Cmd>BufferLineCloseLeft<CR>', map_opts)
-      map('n', '<Space>k', '<Cmd>BufferLineCloseRight<CR>', map_opts)
-      map('n', '<Space>o', '<Cmd>BufferLineCloseOthers<CR>', map_opts)
-      map('n', '<Space>p', '<Cmd>BufferLinePick<CR>', map_opts)
-      map('n', '<Space>D', '<Cmd>BufferLinePickClose<CR>', map_opts)
-      map('n', '<C-n>', '<Cmd>BufferLineCycleNext<CR>', map_opts)
-      map('n', '<C-p>', '<Cmd>b#<CR>', map_opts)
-    end,
-  },
+  -- {
+  --   'akinsho/bufferline.nvim',
+  --   version = "4.5.3",
+  --   event = "VeryLazy",
+  --   dependencies = 'nvim-tree/nvim-web-devicons',
+  --   config = function ()
+  --     local bufferline = require('bufferline')
+  --     bufferline.setup {
+  --       options = {
+  --         mode = "buffers",
+  --         themable = true,
+  --         style_preset = bufferline.style_preset.no_italic,
+  --         modified_icon = '',
+  --         buffer_close_icon = '',
+  --         always_show_bufferline = false;
+  --         show_close_icon = false,
+  --         show_buffer_icons = false,
+  --         show_buffer_close_icons = false,
+  --         show_tab_indicators = false,
+  --         numbers = "ordinal",
+  --         tab_size = 0,
+  --         indicator = {
+  --           style = 'underline',
+  --         },
+  --         diagnostics = false,
+  --         separator_style = { '', '' },
+  --         hover = {
+  --           enable = false,
+  --         },
+  --       }
+  --     }
+  --     -- keymaps
+  --     local map = vim.api.nvim_set_keymap
+  --     local map_opts = { noremap = true, silent = true }
+  --     map('n', '<Space>1', '<Cmd>BufferLineGoToBuffer 1<CR>', map_opts)
+  --     map('n', '<Space>2', '<Cmd>BufferLineGoToBuffer 2<CR>', map_opts)
+  --     map('n', '<Space>3', '<Cmd>BufferLineGoToBuffer 3<CR>', map_opts)
+  --     map('n', '<Space>4', '<Cmd>BufferLineGoToBuffer 4<CR>', map_opts)
+  --     map('n', '<Space>5', '<Cmd>BufferLineGoToBuffer 5<CR>', map_opts)
+  --     map('n', '<Space>6', '<Cmd>BufferLineGoToBuffer 6<CR>', map_opts)
+  --     map('n', '<Space>7', '<Cmd>BufferLineGoToBuffer 7<CR>', map_opts)
+  --     map('n', '<Space>8', '<Cmd>BufferLineGoToBuffer 8<CR>', map_opts)
+  --     map('n', '<Space>9', '<Cmd>BufferLineGoToBuffer 9<CR>', map_opts)
+  --     map('n', '<Space>0', '<Cmd>BufferLineGoToBuffer -1<CR>', map_opts)
+  --     map('n', '<Space>b', '<Cmd>bd<CR>', map_opts)
+  --     map('n', '<Space>p', '<Cmd>BufferLineTogglePin<CR>', map_opts)
+  --     map('n', '<Space>j', '<Cmd>BufferLineCloseLeft<CR>', map_opts)
+  --     map('n', '<Space>k', '<Cmd>BufferLineCloseRight<CR>', map_opts)
+  --     map('n', '<Space>o', '<Cmd>BufferLineCloseOthers<CR>', map_opts)
+  --     map('n', '<Space>p', '<Cmd>BufferLinePick<CR>', map_opts)
+  --     map('n', '<Space>D', '<Cmd>BufferLinePickClose<CR>', map_opts)
+  --     map('n', '<C-n>', '<Cmd>BufferLineCycleNext<CR>', map_opts)
+  --     map('n', '<C-p>', '<Cmd>b#<CR>', map_opts)
+  --   end,
+  -- },
   'junegunn/goyo.vim',
   {
     'christoomey/vim-tmux-navigator',
@@ -440,7 +467,12 @@ require("lazy").setup({
       vim.g.neoformat_try_formatprg = 1
     end
   },
-  'jiangmiao/auto-pairs',
+  {
+    'jiangmiao/auto-pairs',
+    config = function ()
+      vim.g.AutoPairsCenterLine = 0
+    end
+  },
   {
     "EdenEast/nightfox.nvim",
     build = ":NightfoxCompile",
@@ -514,15 +546,15 @@ require("lazy").setup({
               },
             }
           },
-          lualine_c = { 'diagnostics', 'searchcount' },
-          lualine_x = { 'selectioncount', '%S' },
+          lualine_c = { 'diagnostics', 'searchcount', '%S' },
+          lualine_x = { 'selectioncount' },
           lualine_y = { 'fileformat', 'encoding'},
           lualine_z = {'%P', '%l,%v/%L'}
         },
         tabline = {},
         winbar = {},
         inactive_winbar = {},
-        extensions = {}
+        extensions = { 'fzf', 'oil', 'mason', 'man', 'quickfix' }
       }
     end
   },

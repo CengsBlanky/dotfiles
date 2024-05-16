@@ -36,7 +36,7 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.opt.backspace = { 'start', 'eol', 'indent' }
+vim.opt.shortmess:remove("S")
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.list = true
 vim.opt.listchars = {

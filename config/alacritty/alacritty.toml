@@ -25,13 +25,18 @@ y = 0
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
-key = "K"
 mods = "Control|Shift"
+key = "K"
 
 [[keyboard.bindings]]
 action = "ScrollLineDown"
-key = "J"
 mods = "Control|Shift"
+key = "J"
+
+[[keyboard.bindings]]
+action = "Paste"
+mods = "Shift"
+key = "Insert"
 
 [mouse]
 hide_when_typing = true
