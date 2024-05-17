@@ -12,8 +12,10 @@ foreground = "#d8dee9"
 
 
 [font.normal]
-family = "MesloLGM Nerd Font"
+# family = "ComicShannsMono Nerd Font"
+family = "ZedMono Nerd Font"
 # family = "JetbrainsMono NF"
+style = "extended"
 
 [font]
 size = 13.0

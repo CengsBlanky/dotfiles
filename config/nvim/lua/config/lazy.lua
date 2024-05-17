@@ -44,7 +44,7 @@ require("lazy").setup({
   {
     'stevearc/oil.nvim',
     keys = {
-      { "<leader>f", "<cmd>Oil .<CR>", { silent = true, nowait = true } },
+      { "<M-f>", "<cmd>Oil .<CR>", { silent = true, nowait = true } },
     },
     config = function()
       require('oil').setup({
@@ -101,27 +101,6 @@ require("lazy").setup({
   'junegunn/vim-easy-align',
   'romainl/vim-cool',
   {
-    "nvim-neorg/neorg",
-    ft = "norg",
-    build = ":Neorg sync-parsers",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("neorg").setup {
-        load = {
-          ["core.defaults"] = {}, -- Loads default behaviour
-          ["core.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.dirman"] = { -- Manages Neorg workspaces
-            config = {
-              workspaces = {
-                notes = "~/notes",
-              },
-            },
-          },
-        },
-      }
-    end,
-  },
-  {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
     dependencies = {
       {'nvim-lua/plenary.nvim'},
@@ -132,9 +111,9 @@ require("lazy").setup({
     },
     config = function ()
       local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<M-f>', builtin.find_files, {})
-      vim.keymap.set('n', '<M-b>', builtin.buffers, {})
-      vim.keymap.set('n', '<M-r>', builtin.live_grep, {})
+      vim.keymap.set('n', '<leader>f', builtin.find_files, {})
+      vim.keymap.set('n', '<leader>b', builtin.buffers, {})
+      vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
       local actions = require("telescope.actions")
       require('telescope').setup{
         defaults = {
@@ -178,7 +157,7 @@ require("lazy").setup({
   },
   -- {
   --   'akinsho/bufferline.nvim',
-  --   version = "4.5.3",
+  --   version = "*",
   --   event = "VeryLazy",
   --   dependencies = 'nvim-tree/nvim-web-devicons',
   --   config = function ()
@@ -474,6 +453,48 @@ require("lazy").setup({
     end
   },
   {
+    "folke/noice.nvim",
+    -- event = "VeryLazy",
+    event = { "CursorMoved", "ModeChanged" },
+    lazy = true,
+    opts = {
+      -- add any options here
+    },
+    config = function()
+      require("noice").setup({
+        lsp = {},
+        -- you can enable a preset for easier configuration
+        presets = {
+          bottom_search = true, -- use a classic bottom cmdline for search
+          command_palette = false, -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = true, -- add a border to hover docs and signature help
+        },
+        messages = {
+          view_search = false
+        }
+      })
+    end,
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      {
+        "rcarriga/nvim-notify",
+        config = function ()
+          require("notify").setup({
+            render = "wrapped-compact",
+            stages = "static",
+            timeout = 6000,
+          })
+        end
+      },
+    },
+  },
+  {
     "EdenEast/nightfox.nvim",
     build = ":NightfoxCompile",
     config = function ()
@@ -513,19 +534,19 @@ require("lazy").setup({
           always_divide_middle = false,
           globalstatus = true,
           refresh = {
-            statusline = 5000,
-            tabline = 5000,
-            winbar = 5000,
+            statusline = 10000,
+            tabline = 10000,
+            winbar = 10000,
           }
         },
         sections = {
           lualine_a = {
-            {
-              'mode',
-              fmt = function (modestr)
-                return modestr:sub(1,1)
-              end,
-            }
+            -- {
+            --   'mode',
+            --   fmt = function (modestr)
+            --     return modestr:sub(1,1)
+            --   end,
+            -- }
           },
           lualine_b = {
             {
@@ -546,15 +567,30 @@ require("lazy").setup({
               },
             }
           },
-          lualine_c = { 'diagnostics', 'searchcount', '%S' },
-          lualine_x = { 'selectioncount' },
+          lualine_c = { 'diagnostics' },
+          lualine_x = {
+            -- '%S',
+            'selectioncount',
+            {
+              require("noice").api.status.command.get,
+              cond = require("noice").api.status.command.has,
+              color = { fg = "#81a1c1" },
+              separator = "",
+            },
+            {
+              require("noice").api.status.search.get,
+              cond = require("noice").api.status.search.has,
+              color = { fg = "#a3be8c" },
+              separator = "",
+            },
+          },
           lualine_y = { 'fileformat', 'encoding'},
-          lualine_z = {'%P', '%l,%v/%L'}
+          lualine_z = { '%P', '%l,%v/%L' }
         },
         tabline = {},
         winbar = {},
         inactive_winbar = {},
-        extensions = { 'fzf', 'oil', 'mason', 'man', 'quickfix' }
+        extensions = { 'oil', 'mason', 'man', 'quickfix' }
       }
     end
   },
