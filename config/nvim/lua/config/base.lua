@@ -11,9 +11,8 @@ vim.opt.hlsearch = true
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.showcmd = true
-vim.opt.cmdheight = 0
-vim.opt.showcmdloc = "statusline"
-vim.opt.laststatus = 2
+vim.opt.cmdheight = 1
+vim.opt.laststatus = 3
 vim.opt.showmode = false
 vim.opt.scrolloff = 10
 vim.opt.hidden = true
@@ -36,8 +35,9 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.opt.shortmess:remove("S")
-vim.opt.clipboard:append { 'unnamedplus' }
+vim.opt.smoothscroll = true
+vim.opt.shortmess:append('W')
+vim.opt.clipboard:append('unnamedplus')
 vim.opt.list = true
 vim.opt.listchars = {
   tab = "  ",
