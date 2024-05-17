@@ -414,6 +414,14 @@ require("lazy").setup({
         },
       }
 
+      cmp.setup.filetype ({ "markdown" }, {
+        sources = cmp.config.sources {
+          { name = 'nvim_lsp' },
+          { name = 'buffer' },
+          { name = 'path' },
+        }
+      })
+
       -- code snippets source
       require("luasnip.loaders.from_snipmate").lazy_load()
     end,
@@ -488,7 +496,7 @@ require("lazy").setup({
           require("notify").setup({
             render = "wrapped-compact",
             stages = "static",
-            timeout = 6000,
+            timeout = 4000,
           })
         end
       },
