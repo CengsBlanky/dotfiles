@@ -24,7 +24,7 @@ set scrolloff=12
 Plug 'vim-surround'
 Plug 'vim-commentary'
 " enable sneak
-" set sneak
+set sneak
 set surround
 " enable commentary
 set commentary

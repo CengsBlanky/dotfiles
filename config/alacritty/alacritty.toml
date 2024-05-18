@@ -13,9 +13,13 @@ foreground = "#d8dee9"
 
 [font.normal]
 # family = "ComicShannsMono Nerd Font"
-family = "ZedMono Nerd Font"
-# family = "JetbrainsMono NF"
-style = "extended"
+# family = "IosevkaTerm Nerd Font"
+# family = "CommitMono Nerd Font"
+family = "CaskaydiaMono Nerd Font"
+style = "Semilight"
+
+[font.bold]
+style = "Semibold"
 
 [font]
 size = 13.0
