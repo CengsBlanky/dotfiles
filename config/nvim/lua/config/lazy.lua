@@ -155,59 +155,60 @@ require("lazy").setup({
       vim.g.user_emmet_expandword_key='<C-e>'
     end
   },
-  -- {
-  --   'akinsho/bufferline.nvim',
-  --   version = "*",
-  --   event = "VeryLazy",
-  --   dependencies = 'nvim-tree/nvim-web-devicons',
-  --   config = function ()
-  --     local bufferline = require('bufferline')
-  --     bufferline.setup {
-  --       options = {
-  --         mode = "buffers",
-  --         themable = true,
-  --         style_preset = bufferline.style_preset.no_italic,
-  --         modified_icon = '',
-  --         buffer_close_icon = '',
-  --         always_show_bufferline = false;
-  --         show_close_icon = false,
-  --         show_buffer_icons = false,
-  --         show_buffer_close_icons = false,
-  --         show_tab_indicators = false,
-  --         numbers = "ordinal",
-  --         tab_size = 0,
-  --         indicator = {
-  --           style = 'underline',
-  --         },
-  --         diagnostics = false,
-  --         separator_style = { '', '' },
-  --         hover = {
-  --           enable = false,
-  --         },
-  --       }
-  --     }
-  --     -- keymaps
-  --     local map = vim.api.nvim_set_keymap
-  --     local map_opts = { noremap = true, silent = true }
-  --     map('n', '<Space>1', '<Cmd>BufferLineGoToBuffer 1<CR>', map_opts)
-  --     map('n', '<Space>2', '<Cmd>BufferLineGoToBuffer 2<CR>', map_opts)
-  --     map('n', '<Space>3', '<Cmd>BufferLineGoToBuffer 3<CR>', map_opts)
-  --     map('n', '<Space>4', '<Cmd>BufferLineGoToBuffer 4<CR>', map_opts)
-  --     map('n', '<Space>5', '<Cmd>BufferLineGoToBuffer 5<CR>', map_opts)
-  --     map('n', '<Space>6', '<Cmd>BufferLineGoToBuffer 6<CR>', map_opts)
-  --     map('n', '<Space>7', '<Cmd>BufferLineGoToBuffer 7<CR>', map_opts)
-  --     map('n', '<Space>8', '<Cmd>BufferLineGoToBuffer 8<CR>', map_opts)
-  --     map('n', '<Space>9', '<Cmd>BufferLineGoToBuffer 9<CR>', map_opts)
-  --     map('n', '<Space>0', '<Cmd>BufferLineGoToBuffer -1<CR>', map_opts)
-  --     map('n', '<Space>p', '<Cmd>BufferLineTogglePin<CR>', map_opts)
-  --     map('n', '<Space>j', '<Cmd>BufferLineCloseLeft<CR>', map_opts)
-  --     map('n', '<Space>k', '<Cmd>BufferLineCloseRight<CR>', map_opts)
-  --     map('n', '<Space>o', '<Cmd>BufferLineCloseOthers<CR>', map_opts)
-  --     map('n', '<Space>p', '<Cmd>BufferLinePick<CR>', map_opts)
-  --     map('n', '<Space>D', '<Cmd>BufferLinePickClose<CR>', map_opts)
-  --     map('n', '<C-n>', '<Cmd>BufferLineCycleNext<CR>', map_opts)
-  --   end,
-  -- },
+  {
+    'akinsho/bufferline.nvim',
+    -- version = "*",
+    branch = "main",
+    event = "VeryLazy",
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    config = function ()
+      local bufferline = require('bufferline')
+      bufferline.setup {
+        options = {
+          mode = "buffers",
+          themable = true,
+          style_preset = bufferline.style_preset.no_italic,
+          modified_icon = '',
+          buffer_close_icon = '',
+          always_show_bufferline = false;
+          show_close_icon = false,
+          show_buffer_icons = false,
+          show_buffer_close_icons = false,
+          show_tab_indicators = false,
+          numbers = "ordinal",
+          tab_size = 0,
+          indicator = {
+            style = 'underline',
+          },
+          diagnostics = false,
+          separator_style = { '', '' },
+          hover = {
+            enable = false,
+          },
+        }
+      }
+      -- keymaps
+      local map = vim.api.nvim_set_keymap
+      local map_opts = { noremap = true, silent = true }
+      map('n', '<Space>1', '<Cmd>BufferLineGoToBuffer 1<CR>', map_opts)
+      map('n', '<Space>2', '<Cmd>BufferLineGoToBuffer 2<CR>', map_opts)
+      map('n', '<Space>3', '<Cmd>BufferLineGoToBuffer 3<CR>', map_opts)
+      map('n', '<Space>4', '<Cmd>BufferLineGoToBuffer 4<CR>', map_opts)
+      map('n', '<Space>5', '<Cmd>BufferLineGoToBuffer 5<CR>', map_opts)
+      map('n', '<Space>6', '<Cmd>BufferLineGoToBuffer 6<CR>', map_opts)
+      map('n', '<Space>7', '<Cmd>BufferLineGoToBuffer 7<CR>', map_opts)
+      map('n', '<Space>8', '<Cmd>BufferLineGoToBuffer 8<CR>', map_opts)
+      map('n', '<Space>9', '<Cmd>BufferLineGoToBuffer 9<CR>', map_opts)
+      map('n', '<Space>0', '<Cmd>BufferLineGoToBuffer -1<CR>', map_opts)
+      map('n', '<Space>p', '<Cmd>BufferLineTogglePin<CR>', map_opts)
+      map('n', '<Space>j', '<Cmd>BufferLineCloseLeft<CR>', map_opts)
+      map('n', '<Space>k', '<Cmd>BufferLineCloseRight<CR>', map_opts)
+      map('n', '<Space>o', '<Cmd>BufferLineCloseOthers<CR>', map_opts)
+      map('n', '<Space>p', '<Cmd>BufferLinePick<CR>', map_opts)
+      map('n', '<Space>D', '<Cmd>BufferLinePickClose<CR>', map_opts)
+      map('n', '<C-n>', '<Cmd>BufferLineCycleNext<CR>', map_opts)
+    end,
+  },
   'junegunn/goyo.vim',
   {
     'christoomey/vim-tmux-navigator',
