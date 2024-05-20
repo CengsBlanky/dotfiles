@@ -167,7 +167,7 @@ require("lazy").setup({
         options = {
           mode = "buffers",
           themable = true,
-          style_preset = bufferline.style_preset.no_italic,
+          style_preset = bufferline.style_preset.minimal,
           modified_icon = '',
           buffer_close_icon = '',
           always_show_bufferline = false;
