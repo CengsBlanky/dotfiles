@@ -1,0 +1,22 @@
+[buildPlans.IosevkaCustom]
+family = "Iosevka Zs"
+spacing = "fixed"
+serifs = "sans"
+noCvSs = true
+exportGlyphNames = false
+
+[buildPlans.IosevkaCustom.variants.design]
+i = "serifed"
+l = "serifed-flat-tailed"
+t = "bent-hook-short-neck"
+seven = "straight-serifless"
+asterisk = "hex-low"
+guillemet = "straight"
+number-sign = "slanted"
+ampersand = "upper-open"
+at = "compact"
+percent = "rings-continuous-slash"
+bar = "force-upright"
+lig-equal-chain = "without-notch"
+
+# npm run build -- ttf::IosevkaCustom
