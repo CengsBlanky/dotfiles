@@ -96,12 +96,12 @@ set background=dark
 colorscheme retrobox
 hi Normal guibg=NONE ctermbg=NONE guifg=LightGray gui=NONE
 hi SignColumn guibg=NONE
-# hi StatusLineNC guifg=#212529 guibg=Gray gui=NONE
 hi StatusLine guifg=DarkGray guibg=#212529 gui=NONE ctermbg=NONE
-hi CursorLineNr guifg=#ebcb8b guibg=NONE cterm=bold
+hi StatusLineNC guifg=#333333 guibg=Gray gui=NONE
+hi CursorLineNr guifg=#ebcb8b guibg=NONE
 hi LineNr guifg=DarkGray
 hi VertSplit guibg=NONE guifg=#ebcb8b
-set statusline=\ %w%f\ %h%m%r%=%-y%8P%16(%l,%c/%L%)
+set statusline=\ %w%f\ %h%m%r%=%-(%{&fileformat}%Y%)%8P%16(%l,%c/%L%)
 
 autocmd VimEnter * set formatoptions-=o textwidth=0
 autocmd VimEnter *.log set filetype=log
