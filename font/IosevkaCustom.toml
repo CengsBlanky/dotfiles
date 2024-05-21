@@ -19,4 +19,5 @@ percent = "rings-continuous-slash"
 bar = "force-upright"
 lig-equal-chain = "without-notch"
 
+# https://github.com/be5invis/Iosevka/blob/main/doc/custom-build.md
 # npm run build -- ttf::IosevkaCustom
