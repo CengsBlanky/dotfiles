@@ -12,16 +12,10 @@ foreground = "#d8dee9"
 
 
 [font.normal]
-# family = "ComicShannsMono Nerd Font"
 family = "IosevkaZs Nerd Font"
-# family = "CommitMono Nerd Font"
-# family = "ZedMono Nerd Font"
-# family = "UbuntuSansMono Nerd Font"
-# family = "JetBrainsMono Nerd Font"
-# style = "extended"
 
 [font]
-size = 13.0
+size = 14.0
 
 [font.offset]
 x = 0
