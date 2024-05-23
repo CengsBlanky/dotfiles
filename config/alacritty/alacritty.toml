@@ -12,10 +12,11 @@ foreground = "#d8dee9"
 
 
 [font.normal]
-family = "IosevkaZs Nerd Font"
+family = "JetBrainsMonoNL Nerd Font"
+style = "light"
 
 [font]
-size = 14.0
+size = 12.0
 
 [font.offset]
 x = 0
