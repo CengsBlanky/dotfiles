@@ -101,6 +101,7 @@ if status is-interactive
     abbr --add cdnvim "cd $HOME/.config/nvim"
     abbr --add cdshare "cd /home/share/"
     abbr --add cdnote "cd $HOME/notes/journal"
+    abbr --add cdtmp "cd $HOME/tmp"
     # better hibernate
     abbr --add hibernate "sudo pm-hibernate"
     # take little notes

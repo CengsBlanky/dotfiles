@@ -36,6 +36,14 @@ vim.api.nvim_create_autocmd({"BufRead"}, {
   end
 })
 
+vim.api.nvim_create_autocmd({"BufRead"}, {
+    group = myGroup,
+    pattern = {"*.hex", "*.xxd"},
+    callback = function()
+      vim.opt_local.filetype = "xxd"
+    end
+})
+
 vim.api.nvim_create_autocmd({"FileType"}, {
     group = myGroup,
     pattern = { "html", "xhtml", "css", "scss", "javascript", "typescript", "vue", "yaml", "sql", "json", "vim", "lua", "dart", "svelte"},
