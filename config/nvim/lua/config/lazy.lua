@@ -226,7 +226,7 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     config = function ()
       require'nvim-treesitter.configs'.setup {
-        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "dockerfile", "go", "html", "css", "javascript", "svelte", "json", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "yaml", "toml", "elixir", "vimdoc", "bash" },
+        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "html", "css", "javascript", "svelte", "json", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "yaml", "toml", "elixir", "vimdoc", "bash" },
         ignore_install = {}, -- List of parsers to ignore installing
         highlight = {
           enable = true,              -- false will disable the whole extension
@@ -291,7 +291,7 @@ require("lazy").setup({
       local lspconfig = require('lspconfig')
 
       local ensure_installed_list = {
-        'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'lemminx', 'elixirls', 'gopls'
+        'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'lemminx', 'elixirls', 'gopls'
       }
 
       require("mason-lspconfig").setup({
