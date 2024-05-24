@@ -10,6 +10,14 @@ branch `Luna` for Linux, branch `Moon` for MacOS
 
 使用Java编写的流程图软件，以jar包发布，使用纯文本表示UML流程并实时预览
 
+### D2
+
+将纯文本转换为流程图的现代化脚本语言，支持各种流程图、时序图、UML、表格
+A modern diagram scripting language that turns text to diagrams. (Writen by Go)
+[](https://github.com/terrastruct/d2)
+D2 icon links:
+[](https://icons.terrastruct.com/)
+
 ### Meld
 
 开源的代码比对软件，支持目录递归比对与合并
