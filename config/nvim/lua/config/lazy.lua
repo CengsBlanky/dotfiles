@@ -422,6 +422,11 @@ require("lazy").setup({
 
       -- code snippets source
       require("luasnip.loaders.from_snipmate").lazy_load()
+
+      -- nvim-autopairs integrate
+      -- If you want insert `(` after select function or method item
+      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
     end,
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
@@ -434,9 +439,7 @@ require("lazy").setup({
   },
   {
     'williamboman/mason.nvim',
-    config = function ()
-      require("mason").setup()
-    end
+    config = true,
   },
   {
     'sbdchd/neoformat',
@@ -453,10 +456,22 @@ require("lazy").setup({
     end
   },
   {
-    'jiangmiao/auto-pairs',
-    config = function ()
-      vim.g.AutoPairsCenterLine = 0
-    end
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true,
+    init = function ()
+      local npairs = require('nvim-autopairs')
+      local Rule = require('nvim-autopairs.rule')
+      npairs.add_rules {
+        -- add spaces between parentheses
+        Rule(' ', ' '):with_pair(function (opts)
+          local pair = opts.line:sub(opts.col - 1, opts.col)
+          return vim.tbl_contains({'()', '[]', '{}'}, pair)
+        end)
+      }
+    end,
+    -- use opts = {} for passing setup options
+    -- this is equalent to setup({}) function
   },
   {
     "EdenEast/nightfox.nvim",
