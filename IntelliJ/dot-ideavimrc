@@ -67,6 +67,9 @@ nnoremap <leader>s :action Run<CR>
 nnoremap <leader>d :action Debug<CR>
 nnoremap <leader>l :action ToggleLineBreakpoint<CR>
 nnoremap <leader>c :action CompileProject<CR>
+" window split
+nnoremap <leader>- <C-w>s
+nnoremap <leader>/ <C-w>v
 " move from split windows
 nnoremap <A-h> <C-w>h
 nnoremap <A-l> <C-w>l
