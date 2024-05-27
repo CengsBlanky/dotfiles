@@ -61,7 +61,14 @@ require("lazy").setup({
     ft = "svelte",
   },
   'tpope/vim-surround',
-  'tpope/vim-commentary',
+  {
+    'numToStr/Comment.nvim',
+    config = true,
+    opts = {
+      -- add any options here
+    },
+    lazy = false,
+  },
   'justinmk/vim-sneak',
   {
     'andymass/vim-matchup',
@@ -442,19 +449,43 @@ require("lazy").setup({
     config = true,
   },
   {
-    'sbdchd/neoformat',
-    cmd = 'Neoformat',
+    'stevearc/conform.nvim',
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
     keys = {
-      { "<Space>f", "<cmd>Neoformat<CR>", { silent = true, nowait = true } },
+      {
+        -- Customize or remove this keymap to your liking
+        "<Space>f",
+        function()
+          require("conform").format({ async = true, lsp_fallback = true })
+        end,
+        mode = "n",
+        desc = "Format buffer",
+      },
     },
-    config = function ()
-      vim.g.neoformat_basic_format_align = 1
-      vim.g.neoformat_basic_format_retab = 1
-      vim.g.neoformat_basic_format_trim = 1
-      vim.g.neoformat_only_msg_on_error = 1
-      vim.g.neoformat_try_formatprg = 1
-    end
+    opts = {
+      format_by_ft = {
+        python = { "ruff" },
+      }
+    },
+    init = function ()
+      vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
   },
+  -- {
+  --   'sbdchd/neoformat',
+  --   cmd = 'Neoformat',
+  --   keys = {
+  --     { "<Space>f", "<cmd>Neoformat<CR>", { silent = true, nowait = true } },
+  --   },
+  --   config = function ()
+  --     vim.g.neoformat_basic_format_align = 1
+  --     vim.g.neoformat_basic_format_retab = 1
+  --     vim.g.neoformat_basic_format_trim = 1
+  --     vim.g.neoformat_only_msg_on_error = 1
+  --     vim.g.neoformat_try_formatprg = 1
+  --   end
+  -- },
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
