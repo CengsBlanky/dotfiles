@@ -96,7 +96,7 @@ set background=dark
 colorscheme retrobox
 hi Normal guibg=NONE ctermbg=NONE guifg=LightGray gui=NONE
 hi SignColumn guibg=NONE
-hi StatusLine guifg=#2a2a2a guibg=DarkGray gui=bold
+hi StatusLine guifg=#2d2d2d guibg=DarkGray gui=bold
 hi StatusLineNC guifg=#252525 guibg=#666666 gui=NONE
 hi CursorLineNr guifg=#ebcb8b guibg=NONE
 hi LineNr guifg=DarkGray
