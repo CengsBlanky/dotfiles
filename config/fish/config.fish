@@ -113,8 +113,8 @@ if status is-interactive
     bind --mode insert \cr "" --sets-mode default
 
     # source asdf version manager
-    set -l asdf_conf "~/.asdf/asdf.fish"
-    if test -f $asdf_conf
+    set -l asdf_conf "$HOME/.asdf/asdf.fish"
+    if test -e $asdf_conf
         source $asdf_conf
     end
     # zoxide config
