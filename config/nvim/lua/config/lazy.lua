@@ -441,7 +441,7 @@ require("lazy").setup({
       'hrsh7th/cmp-path',
       'saadparwaiz1/cmp_luasnip',
       'L3MON4D3/LuaSnip',
-      "honza/vim-snippets",
+      'honza/vim-snippets',
     }
   },
   {
@@ -472,20 +472,6 @@ require("lazy").setup({
       vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
   },
-  -- {
-  --   'sbdchd/neoformat',
-  --   cmd = 'Neoformat',
-  --   keys = {
-  --     { "<Space>f", "<cmd>Neoformat<CR>", { silent = true, nowait = true } },
-  --   },
-  --   config = function ()
-  --     vim.g.neoformat_basic_format_align = 1
-  --     vim.g.neoformat_basic_format_retab = 1
-  --     vim.g.neoformat_basic_format_trim = 1
-  --     vim.g.neoformat_only_msg_on_error = 1
-  --     vim.g.neoformat_try_formatprg = 1
-  --   end
-  -- },
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
