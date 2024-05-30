@@ -538,18 +538,18 @@ require("lazy").setup({
     -- use opts = {} for passing setup options
     -- this is equalent to setup({}) function
   },
-  {
-    "vhyrro/luarocks.nvim",
-    priority = 1000,
-    config = true,
-    opts = {
-      rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" },
-    }
-  },
+  -- {
+  --   "vhyrro/luarocks.nvim",
+  --   priority = 1000,
+  --   config = true,
+  --   opts = {
+  --     rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" },
+  --   }
+  -- },
   {
     "rest-nvim/rest.nvim",
     ft = "http",
-    dependencies = { "luarocks.nvim" },
+    -- dependencies = { "luarocks.nvim" },
     config = function()
       require("rest-nvim").setup({
         keybinds = {
