@@ -126,7 +126,7 @@ g:netrw_usetab = 1
 g:netrw_browse_split = 0
 g:netrw_altv = 1
 g:netrw_liststyle = 3
-nnoremap <Tab> :Lexplore<CR>
+nnoremap <Tab> :Explore<CR>
 
 # tmux-vim navigator plugin
 g:tmux_navigator_no_mappings = 1
