@@ -14,9 +14,6 @@ foreground = "#d8dee9"
 [font.normal]
 family = "HackZeroSlash Nerd Font"
 
-[font.bold]
-style = "SemiBold"
-
 [font]
 size = 11.0
 
