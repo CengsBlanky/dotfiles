@@ -1,25 +1,39 @@
 ---@diagnostic disable: undefined-global
-local myGroup = vim.api.nvim_create_augroup("ZS", {})
-
 vim.api.nvim_create_autocmd({"FileType"}, {
-    group = myGroup,
-    pattern = {"*"},
     callback = function()
         vim.opt.formatoptions:remove({'o'})
+        vim.opt.formatoptions:append({'M'})
+    end
+})
+
+vim.api.nvim_create_autocmd({"BufEnter"}, {
+    callback = function()
+      if not vim.bo.modifiable then
+        vim.keymap.set('n', 'u', '<C-b>', { buffer = true, silent = true, nowait = true })
+        vim.keymap.set('n', '<Space>', '<C-f>', { buffer = true, silent = true, nowait = true })
+        vim.keymap.set('n', 'q', '<C-w>c', { buffer = true, silent = true, nowait = true })
+      end
     end
 })
 
 vim.api.nvim_create_autocmd({"FileType"}, {
-    group = myGroup,
     pattern = {"markdown", "text", "log"},
     callback = function()
       vim.keymap.set('n', 'j', 'gj', { silent = true, nowait = true })
       vim.keymap.set('n', 'k', 'gk', { silent = true, nowait = true })
     end
 })
+-- for markdown readibility
+vim.api.nvim_create_autocmd({"FileType"}, {
+    pattern = { "markdown" },
+    callback = function()
+      vim.opt_local.textwidth = 120;
+      vim.opt_local.formatoptions:remove({'l'})
+      vim.opt_local.formatoptions:append({']'})
+    end
+})
 
 vim.api.nvim_create_autocmd({"FileType"}, {
-    group = myGroup,
     pattern = { "nerdtree" },
     callback = function()
       vim.opt_local.cursorline = true
@@ -27,8 +41,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     end
 })
 
-vim.api.nvim_create_autocmd({"BufRead"}, {
-  group = myGroup,
+vim.api.nvim_create_autocmd({"BufEnter"}, {
   pattern = {"*.log"},
   callback = function ()
     vim.bo.filetype = "log"
@@ -37,7 +50,6 @@ vim.api.nvim_create_autocmd({"BufRead"}, {
 })
 
 vim.api.nvim_create_autocmd({"BufRead"}, {
-    group = myGroup,
     pattern = {"*.hex", "*.xxd"},
     callback = function()
       vim.opt_local.filetype = "xxd"
@@ -45,7 +57,6 @@ vim.api.nvim_create_autocmd({"BufRead"}, {
 })
 
 vim.api.nvim_create_autocmd({"FileType"}, {
-    group = myGroup,
     pattern = { "html", "xhtml", "css", "scss", "javascript", "typescript", "vue", "yaml", "sql", "json", "vim", "lua", "dart", "svelte"},
     callback = function()
         vim.opt_local.tabstop = 2
@@ -54,7 +65,6 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 })
 
 vim.api.nvim_create_autocmd({"FileType"}, {
-    group = myGroup,
     pattern = {"go"},
     callback = function()
       -- golang use tab instead of spaces
@@ -63,7 +73,6 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 })
 
 vim.api.nvim_create_autocmd({"BufReadPost"}, {
-    group = myGroup,
     pattern = {"quickfix"},
     callback = function()
       vim.keymap.set('n', '<Enter>', '<Enter>', { silent = true })
