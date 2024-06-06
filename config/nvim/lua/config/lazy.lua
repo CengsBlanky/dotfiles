@@ -310,7 +310,7 @@ require("lazy").setup({
       end
 
       vim.diagnostic.config({
-        virtual_text = true,
+        virtual_text = false,
         severity_sort = true,
       })
 
