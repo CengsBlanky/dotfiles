@@ -110,7 +110,8 @@ if status is-interactive
     abbr --add yd --set-cursor "yt-dlp '%'"
 
     # key bind
-    bind --mode insert \cr "" --sets-mode default
+    # find and open file
+    bind --mode insert \cr "vim (fzf)"
 
     # source asdf version manager
     set -l asdf_conf "$HOME/.asdf/asdf.fish"

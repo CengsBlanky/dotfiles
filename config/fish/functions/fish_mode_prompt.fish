@@ -1,18 +1,20 @@
 function fish_mode_prompt
+    set -l bg_color '4a4a4a'
+    set_color -b $bg_color
     switch $fish_bind_mode
         case default
-            set_color --bold "81a1c1"
+            set_color --bold "81a1c6"
             echo -n "󰱴 "
         case insert
-            set_color --bold "a3be8c"
-            echo -n "󰅶 "
+            set_color --bold "a3c88c"
+            echo -n " "
         case visual
             set_color --bold yellow
-            echo -n " "
+            echo -n "󰦪 "
         case replace_one
             set_color --bold brmagenta
+            echo -n ' '
         case '*'
             set_color --bold red
     end
-    set_color normal
 end
