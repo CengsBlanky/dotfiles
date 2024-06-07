@@ -1,5 +1,5 @@
 function fish_mode_prompt
-    set -l bg_color '4a4a4a'
+    set -l bg_color '3a3a3a'
     set -l last_status $status
     set -l pwd_color_bare '88c0d0'
     set -l err_color 'c92a2a'
