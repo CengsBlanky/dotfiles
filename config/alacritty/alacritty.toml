@@ -15,7 +15,7 @@ foreground = "#d8dee9"
 family = "HackZeroSlash Nerd Font"
 
 [font]
-size = 11.0
+size = 12.0
 
 [font.offset]
 x = 0
