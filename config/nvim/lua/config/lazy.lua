@@ -375,6 +375,7 @@ require("lazy").setup({
       }
       -- rust tools setup
       local rt = require("rust-tools")
+      vim.api.nvim_set_hl(0, "Hint", { fg = "#86a396" })
       rt.setup({
         server = {
           on_attach = function(_, bufnr)
@@ -394,8 +395,15 @@ require("lazy").setup({
             -- vim.keymap.set('n', '<Space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
           end,
           capabilities = cmp_capabilities,
-        }
-
+        },
+        tools = {
+          inlay_hints = {
+            only_current_line = true,
+            parameter_hints_prefix = " ",
+            other_hints_prefix = " ",
+            highlight = "Hint",
+          },
+        },
       })
     end,
     dependencies = {
@@ -410,7 +418,7 @@ require("lazy").setup({
       },
       {
         'simrat39/rust-tools.nvim',
-        ft = 'rust'
+        ft = 'rust',
       },
     }
   },
