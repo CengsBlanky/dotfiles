@@ -181,7 +181,7 @@ require("lazy").setup({
           buffer_close_icon = '',
           always_show_bufferline = false;
           show_close_icon = false,
-          show_buffer_icons = false,
+          show_buffer_icons = true,
           show_buffer_close_icons = false,
           show_tab_indicators = false,
           numbers = "ordinal",
@@ -375,7 +375,7 @@ require("lazy").setup({
       }
       -- rust tools setup
       local rt = require("rust-tools")
-      vim.api.nvim_set_hl(0, "Hint", { fg = "#86a396" })
+      vim.api.nvim_set_hl(0, "Hint", { fg = "#86a196" })
       rt.setup({
         server = {
           on_attach = function(_, bufnr)
