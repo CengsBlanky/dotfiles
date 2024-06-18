@@ -484,6 +484,16 @@ require("lazy").setup({
         }
       })
 
+      cmp.setup.filetype ({ "sql", "mysql", "plsql" }, {
+        sources = cmp.config.sources {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'buffer' },
+          { name = 'path' },
+          { name = 'vim-dadbod-completion' },
+        }
+      })
+
       -- code snippets source
       require("luasnip.loaders.from_snipmate").lazy_load()
 
@@ -578,10 +588,27 @@ require("lazy").setup({
     end,
   },
   {
-    "tpope/vim-dadbod",
+    'kristijanhusak/vim-dadbod-ui',
     dependencies = {
-      "kristijanhusak/vim-dadbod-ui"
-    }
+      { 'tpope/vim-dadbod', lazy = true },
+      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+    },
+    cmd = {
+      'DBUI',
+      'DBUIToggle',
+      'DBUIAddConnection',
+      'DBUIFindBuffer',
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
+      vim.g.dbs = {
+        {
+          name = "lite",
+          url = "sqlite:~/tmp/sqlite.db",
+        },
+      }
+    end,
   },
   {
     "EdenEast/nightfox.nvim",
