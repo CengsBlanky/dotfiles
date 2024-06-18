@@ -578,6 +578,12 @@ require("lazy").setup({
     end,
   },
   {
+    "tpope/vim-dadbod",
+    dependencies = {
+      "kristijanhusak/vim-dadbod-ui"
+    }
+  },
+  {
     "EdenEast/nightfox.nvim",
     build = ":NightfoxCompile",
     config = function ()
