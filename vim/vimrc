@@ -3,7 +3,7 @@ vim9script
 set nocompatible
 g:skip_defaults_vim = 1
 filetype plugin indent on
-syntax on
+syntax off
 language en_US.UTF-8
 &t_SI = "\<Esc>[6 q"
 &t_SR = "\<Esc>[4 q"
@@ -95,7 +95,7 @@ endif
 
 set termguicolors
 set background=dark
-colorscheme fogbell_lite
+colorscheme retrobox
 hi Normal guibg=NONE ctermbg=NONE guifg=LightGray gui=NONE
 hi SignColumn guibg=NONE
 hi StatusLine guibg=DarkGray guifg=#2d2d2d gui=bold cterm=bold
