@@ -95,10 +95,10 @@ endif
 
 set termguicolors
 set background=dark
-colorscheme retrobox
+colorscheme fogbell_lite
 hi Normal guibg=NONE ctermbg=NONE guifg=LightGray gui=NONE
 hi SignColumn guibg=NONE
-hi StatusLine guifg=#2d2d2d guibg=DarkGray gui=bold
+hi StatusLine guibg=DarkGray guifg=#2d2d2d gui=bold cterm=bold
 hi StatusLineNC guifg=#252525 guibg=#666666 gui=NONE
 hi CursorLineNr guifg=#ebcb8b guibg=NONE
 hi LineNr guifg=DarkGray
