@@ -3,7 +3,7 @@ vim9script
 set nocompatible
 g:skip_defaults_vim = 1
 filetype plugin indent on
-syntax off
+syntax on
 language en_US.UTF-8
 &t_SI = "\<Esc>[6 q"
 &t_SR = "\<Esc>[4 q"
@@ -47,6 +47,8 @@ set showtabline=1
 set scrolloff=10
 # Do not recognize octal numbers for Ctrl-A and Ctrl-X, most users find it  confusing.
 set nrformats-=octal
+set omnifunc=ccomplete#Complete
+set tags=tags,~/.vim/system.tags
 
 inoremap jk <esc>
 # quit
@@ -105,9 +107,21 @@ set statusline=%-5r%f\ %m%=%-10(%{&fileformat}%Y%)%8P%16(%l,%c/%L%)
 
 autocmd VimEnter * set formatoptions-=o textwidth=0
 autocmd VimEnter *.log set filetype=log
+def SetViewKeymap()
+  if !&modifiable || &readonly
+    nnoremap <buffer><nowait><silent> u <C-b>
+    nnoremap <buffer><nowait><silent> <Space> <C-f>
+    nnoremap <buffer><nowait><silent> q :bd<CR>
+  endif
+enddef
+autocmd BufEnter * SetViewKeymap()
+
+def SetVirtualMap()
+  nnoremap <silent> j gj
+  nnoremap <silent> k gk
+enddef
+autocmd FileType markdown,text,log SetVirtualMap()
 autocmd FileType vim,javascript,typescript,lua,log set tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType markdown,text,log nnoremap <silent> j gj
-autocmd FileType markdown,text,log nnoremap <silent> k gk
 
 # restore cursor position
 autocmd BufReadPost *
