@@ -210,8 +210,8 @@ require("lazy").setup({
       map('n', '<Space>9', '<Cmd>BufferLineGoToBuffer 9<CR>', map_opts)
       map('n', '<Space>0', '<Cmd>BufferLineGoToBuffer -1<CR>', map_opts)
       map('n', '<Space>p', '<Cmd>BufferLineTogglePin<CR>', map_opts)
-      map('n', '<Space>j', '<Cmd>BufferLineCloseLeft<CR>', map_opts)
-      map('n', '<Space>k', '<Cmd>BufferLineCloseRight<CR>', map_opts)
+      map('n', '<Space>h', '<Cmd>BufferLineCloseLeft<CR>', map_opts)
+      map('n', '<Space>l', '<Cmd>BufferLineCloseRight<CR>', map_opts)
       map('n', '<Space>o', '<Cmd>BufferLineCloseOthers<CR>', map_opts)
       map('n', '<Space>p', '<Cmd>BufferLinePick<CR>', map_opts)
       map('n', '<Space>D', '<Cmd>BufferLinePickClose<CR>', map_opts)
@@ -316,10 +316,10 @@ require("lazy").setup({
 
       -- Mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-      local opts = { noremap=true, silent=true }
-      vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
-      vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, opts)
-      vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, opts)
+      local opts = { noremap=true, silent=true, nowait=true }
+      vim.keymap.set('n', '<Space>d', vim.diagnostic.open_float, opts)
+      vim.keymap.set('n', '<Space>k', vim.diagnostic.goto_prev, opts)
+      vim.keymap.set('n', '<Space>j', vim.diagnostic.goto_next, opts)
       -- Use an on_attach function to only map the following keys
       -- after the language server attaches to the current buffer
       local on_attach = function(_, bufnr)
@@ -334,7 +334,7 @@ require("lazy").setup({
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
         -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+        vim.keymap.set('n', '<space>t', vim.lsp.buf.type_definition, bufopts)
         vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
         vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
