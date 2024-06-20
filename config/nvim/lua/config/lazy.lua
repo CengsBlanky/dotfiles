@@ -399,8 +399,8 @@ require("lazy").setup({
         tools = {
           inlay_hints = {
             only_current_line = true,
-            parameter_hints_prefix = " ",
-            other_hints_prefix = " ",
+            parameter_hints_prefix = " ",
+            other_hints_prefix = " ",
             highlight = "Hint",
           },
         },
@@ -470,6 +470,7 @@ require("lazy").setup({
         }),
         sources = cmp.config.sources {
           { name = 'nvim_lsp' },
+          { name = 'ctags' },
           { name = 'luasnip' },
           { name = 'buffer' },
           { name = 'path' },
@@ -514,6 +515,7 @@ require("lazy").setup({
         },
       },
       'honza/vim-snippets',
+      'delphinus/cmp-ctags',
     }
   },
   {
