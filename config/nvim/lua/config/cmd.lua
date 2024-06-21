@@ -4,7 +4,7 @@ vim.api.nvim_create_user_command('Reloadrc', 'source ' .. init_file, {})
 -- copy current filename to clipboard
 vim.api.nvim_create_user_command('Pname',
   function(opts)
-    vim.fn.setreg('+', vim.fn.expand('%:p'))
+    vim.fn.setreg('+', vim.fn.expand('%'))
   end, {})
 
 vim.api.nvim_create_user_command('Fname',
