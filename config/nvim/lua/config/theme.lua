@@ -19,6 +19,7 @@ vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#bf616a" })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#e1bb80" })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#88c0d0" })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#a3be8c" })
+vim.api.nvim_set_hl(0, "Whitespace", { bg = "#adb5bd", bold = true })
 -- custome color
 vim.api.nvim_set_hl(0, "NerdtreeStatus", { fg = "#a3be8c", bold = true })
 

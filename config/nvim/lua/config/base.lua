@@ -41,7 +41,7 @@ vim.opt.clipboard:append('unnamedplus')
 vim.opt.list = true
 vim.opt.listchars = {
   tab = "  ·",
-  trail = "·",
+  trail = "_",
 }
 
 vim.g.python3_host_prog = '/usr/bin/python3'
