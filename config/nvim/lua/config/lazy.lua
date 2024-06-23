@@ -527,23 +527,30 @@ require("lazy").setup({
   },
   {
     'stevearc/conform.nvim',
-    event = { "BufWritePre" },
     cmd = { "ConformInfo" },
     keys = {
       {
-        -- Customize or remove this keymap to your liking
         "<Space>f",
         function()
           require("conform").format({ async = true, lsp_fallback = true })
         end,
-        mode = "n",
-        desc = "Format buffer",
+        mode = { "n", "v" },
+        desc = "conform format buffer",
       },
     },
     opts = {
+      formatters = {
+        clang_format = {
+          command = "clang-format",
+          append_args = { "--style", "Microsoft" },
+        },
+      },
       format_by_ft = {
         python = { "ruff" },
-      }
+        c = { "clang_format" },
+        cpp = { "clang_format" },
+        ["*"] = { "trim_whitespace" },
+      },
     },
     init = function ()
       vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
