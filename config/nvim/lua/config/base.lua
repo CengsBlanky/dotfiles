@@ -40,8 +40,8 @@ vim.opt.shortmess:append('W')
 vim.opt.clipboard:append('unnamedplus')
 vim.opt.list = true
 vim.opt.listchars = {
-  tab = "  ·",
-  trail = " ",
+  tab = "  \\u00B7",
+  trail = "\\u00B7",
 }
 
 vim.g.python3_host_prog = '/usr/bin/python3'
