@@ -218,6 +218,20 @@ require("lazy").setup({
       map('n', '<C-n>', '<Cmd>BufferLineCycleNext<CR>', map_opts)
     end,
   },
+  {
+    'stevearc/aerial.nvim',
+    keys = {
+      { "<Space>a", "<cmd>AerialToggle!<CR>", { silent = true, nowait = true } },
+      { "{", "<cmd>AerialPrev<CR>", { silent = true, nowait = true } },
+      { "}", "<cmd>AerialNext<CR>", { silent = true, nowait = true } },
+    },
+    config = true,
+    -- Optional dependencies
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    },
+  },
   'junegunn/goyo.vim',
   {
     'christoomey/vim-tmux-navigator',
