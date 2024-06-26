@@ -585,33 +585,6 @@ require("lazy").setup({
         end)
       }
     end,
-    -- use opts = {} for passing setup options
-    -- this is equalent to setup({}) function
-  },
-  -- {
-  --   "vhyrro/luarocks.nvim",
-  --   priority = 1000,
-  --   config = true,
-  --   opts = {
-  --     rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" },
-  --   }
-  -- },
-  {
-    "rest-nvim/rest.nvim",
-    ft = "http",
-    -- dependencies = { "luarocks.nvim" },
-    config = function()
-      require("rest-nvim").setup({
-        keybinds = {
-          {
-            "<leader>r", "<CMD>Rest run<CR>", "Run request under the cursor",
-          },
-          {
-            "<leader>l", "<CMD>Rest run last<CR>", "Re-run latest request",
-          },
-        },
-      })
-    end,
   },
   {
     'kristijanhusak/vim-dadbod-ui',
