@@ -33,6 +33,9 @@ vim.api.nvim_set_hl(0, "@markup.heading.3", { fg = "#b48ead", bold = true, under
 vim.api.nvim_set_hl(0, "@markup.heading.4", { fg = "#5e81ac", bold = true, underline = true })
 vim.api.nvim_set_hl(0, "@markup.heading.5", { fg = "#8fbcbb", bold = true, underline = true })
 vim.api.nvim_set_hl(0, "@markup.heading.6", { fg = "#a3be8c", bold = true, underline = true })
+vim.api.nvim_set_hl(0, "@markup.raw", { fg = "#81a1c1" })
+vim.api.nvim_set_hl(0, "@markup.raw.block", { fg = "#8fbcbb" })
+vim.api.nvim_set_hl(0, "@tag.delimiter", { fg = "#869c98" })
 -- custome color
 vim.api.nvim_set_hl(0, "NerdtreeStatus", { fg = "#a3be8c", bold = true })
 
