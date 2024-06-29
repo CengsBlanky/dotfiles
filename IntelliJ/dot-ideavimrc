@@ -37,6 +37,9 @@ set ideastrictmode
 
 " -- default keymap --
 inoremap jk <esc>
+inoremap <C-a> <esc>gI
+inoremap <C-s> <esc>I
+inoremap <C-e> <esc>A
 " page up/down
 nnoremap <C-j> <C-f>
 nnoremap <C-k> <C-b>
