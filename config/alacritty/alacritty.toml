@@ -40,7 +40,7 @@ key = "Insert"
 hide_when_typing = true
 
 [shell]
-program = "/usr/bin/fish"
+program = "/usr/bin/tmux"
 
 [window]
 decorations = "none"
