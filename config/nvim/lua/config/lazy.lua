@@ -363,6 +363,7 @@ require("lazy").setup({
       local ensure_installed_list = {
         'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'lemminx', 'elixirls', 'gopls'
       }
+      -- TODO add https://github.com/mfussenegger/nvim-jdtls/tree/master
 
       require("mason-lspconfig").setup({
         ensure_installed = ensure_installed_list
@@ -374,11 +375,6 @@ require("lazy").setup({
           capabilities = cmp_capabilities,
         }
       end
-      lspconfig.jdtls.setup{
-        cmd = { 'jdtls' },
-        on_attach = on_attach,
-        capabilities = cmp_capabilities,
-      }
 
       -- flutter setup
       require("flutter-tools").setup {
