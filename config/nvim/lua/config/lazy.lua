@@ -615,6 +615,7 @@ require("lazy").setup({
         transparent_background = true,
         styles = {
           comments = {},
+          conditionals = {},
         },
         integrations = {
           aerial = true,
