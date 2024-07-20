@@ -385,7 +385,7 @@ require("lazy").setup({
       }
       -- rust tools setup
       local rt = require("rust-tools")
-      vim.api.nvim_set_hl(0, "Hint", { fg = "#86a196" })
+      vim.api.nvim_set_hl(0, "Hint", { fg = "#8fbcbb" })
       rt.setup({
         server = {
           on_attach = function(_, bufnr)
@@ -408,9 +408,10 @@ require("lazy").setup({
         },
         tools = {
           inlay_hints = {
-            only_current_line = true,
-            parameter_hints_prefix = " ",
-            other_hints_prefix = " ",
+            auto = false,
+            only_current_line = false,
+            parameter_hints_prefix = "󰁕 ",
+            other_hints_prefix = "󰁎 ",
             highlight = "Hint",
           },
         },
@@ -613,6 +614,7 @@ require("lazy").setup({
       require("catppuccin").setup({
         flavour = "macchiato",
         transparent_background = true,
+        no_italic = true,
         styles = {
           comments = {},
           conditionals = {},
