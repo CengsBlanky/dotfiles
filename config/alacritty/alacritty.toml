@@ -15,7 +15,7 @@ foreground = "#d8dee9"
 family = "ComicShannsMono Nerd Font"
 
 [font]
-size = 12.0
+size = 20.0
 
 [font.offset]
 x = 0

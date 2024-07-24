@@ -102,8 +102,10 @@ require("lazy").setup({
       require('gitsigns').setup {
         -- gitsigns.nav_hunk()
         signs = {
-          topdelete    = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-          changedelete = {hl = 'GitSignsChange', text = '*', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+          delete = { text = '-' },
+        },
+        current_line_blame_opts = {
+          delay = 200,
         },
       }
     end
@@ -161,8 +163,8 @@ require("lazy").setup({
     'mattn/emmet-vim',
     init = function ()
       vim.g.user_emmet_mode='i'
-      vim.g.user_emmet_expandabbr_key='<C-a>'
-      vim.g.user_emmet_expandword_key='<C-e>'
+      vim.g.user_emmet_expandabbr_key='<C-j>'
+      vim.g.user_emmet_expandword_key='<C-k>'
     end
   },
   {
@@ -574,12 +576,14 @@ require("lazy").setup({
     init = function ()
       local npairs = require('nvim-autopairs')
       local Rule = require('nvim-autopairs.rule')
+      local cond = require('nvim-autopairs.conds')
       npairs.add_rules {
         -- add spaces between parentheses
         Rule(' ', ' '):with_pair(function (opts)
           local pair = opts.line:sub(opts.col - 1, opts.col)
           return vim.tbl_contains({'()', '[]', '{}'}, pair)
-        end)
+        end),
+        Rule('|', '|', "rust"):with_move(cond.done()),
       }
     end,
   },

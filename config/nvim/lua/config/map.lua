@@ -4,6 +4,9 @@ local map = vim.keymap.set
 local opts = { silent = true, nowait = true }
 
 map('i', 'jk', '<Esc>', opts)
+map('i', '<C-e>', '<Esc>A', opts)
+map('i', '<C-a>', '<Esc>I', opts)
+map('i', '<C-s>', '<Esc>gI', opts)
 map('n', '<Enter>', '<Cmd>w<CR>', opts)
 map('n', '<C-s>', '<Cmd>wa<CR>', opts)
 map('n', '<leader>q', '<Cmd>xa<CR>', opts)
