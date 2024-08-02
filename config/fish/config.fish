@@ -108,6 +108,8 @@ if status is-interactive
     abbr --add nt notenow
     # yt-dlp
     abbr --add yd --set-cursor "yt-dlp '%'"
+    # use zoxide for cd
+    abbr --add cd "z"
 
     # key bind
     # find and open file

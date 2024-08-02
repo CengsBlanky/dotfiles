@@ -34,7 +34,7 @@ function _G.lspStatusline()
 end
 
 -- statusline
-vim.opt.statusline = '%r %f%m%{%v:lua.lspStatusline()%}%=%(%{&fileformat}%Y%)%8(%l/%L%)%6P'
+vim.opt.statusline = '%r %f%m%{%v:lua.lspStatusline()%}%=%(%{&fileformat}%Y%)%12(%l/%L%)'
 
 -- todo
 -- show lsp progress

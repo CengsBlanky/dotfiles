@@ -1,4 +1,7 @@
 # curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
+[env]
+TERM="xterm-256color"
+
 [bell]
 duration = 0
 
@@ -10,16 +13,9 @@ draw_bold_text_with_bright_colors = true
 background = "#212529"
 foreground = "#d8dee9"
 
-[font.normal]
-# family = "HackZeroSlash Nerd Font"
-family = "UbuntuSans Mono Nerd Font"
-
 [font]
+normal.family = "UbuntuSans Mono Nerd Font"
 size = 12.0
-
-[font.offset]
-x = 0
-y = 0
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
@@ -47,7 +43,3 @@ decorations = "none"
 dynamic_title = false
 opacity = 1
 startup_mode = "Maximized"
-
-[window.padding]
-x = 0
-y = 0
