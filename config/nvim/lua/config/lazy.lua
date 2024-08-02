@@ -450,7 +450,7 @@ require("lazy").setup({
       local cmp = require 'cmp'
       cmp.setup {
         completion = {
-          autocomplete = false,
+          keyword_length = 3,
         },
         snippet = {
           expand = function(args)

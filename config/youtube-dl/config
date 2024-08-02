@@ -1,7 +1,7 @@
 # only extract audio
 --extract-audio --audio-format mp3 --audio-quality 0
 # proxy
---proxy 192.168.1.89:7890
+--proxy localhost:7897
 # Download best mp4 format no better than 1080p available or any other best if no mp4 available
 # --format bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best+bestvideo[height<=1080]
 # save directory
