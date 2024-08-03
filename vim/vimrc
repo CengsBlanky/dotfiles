@@ -37,7 +37,7 @@ set mouse=n
 set mousehide
 set signcolumn=yes
 set cursorline
-set cursorlineopt=number
+# set cursorlineopt=number
 set wrap
 set linebreak
 set cmdheight=1

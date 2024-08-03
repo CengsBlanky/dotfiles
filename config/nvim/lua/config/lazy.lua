@@ -584,6 +584,11 @@ require("lazy").setup({
           return vim.tbl_contains({'()', '[]', '{}'}, pair)
         end),
         Rule('|', '|', "rust"):with_move(cond.done()),
+        Rule('<', '>')
+          -- :with_move(cond.done())
+          :with_move(cond.not_after_regex("[= ]"))
+          :with_pair(cond.not_after_regex("[= ]"))
+          :with_pair(cond.not_before_regex(" ")),
       }
     end,
   },
