@@ -579,16 +579,16 @@ require("lazy").setup({
       local cond = require('nvim-autopairs.conds')
       npairs.add_rules {
         -- add spaces between parentheses
-        Rule(' ', ' '):with_pair(function (opts)
-          local pair = opts.line:sub(opts.col - 1, opts.col)
-          return vim.tbl_contains({'()', '[]', '{}'}, pair)
-        end),
+        Rule(' ', ' ')
+          :with_pair(function (opts)
+            local pair = opts.line:sub(opts.col - 1, opts.col)
+            return vim.tbl_contains({'()', '[]', '{}'}, pair)
+          end)
+          :with_move(cond.done()),
         Rule('|', '|', "rust"):with_move(cond.done()),
         Rule('<', '>')
-          -- :with_move(cond.done())
-          :with_move(cond.not_after_regex("[= ]"))
-          :with_pair(cond.not_after_regex("[= ]"))
-          :with_pair(cond.not_before_regex(" ")),
+          :with_pair(cond.before_regex("[a-zA-Z]"))
+          :with_move(cond.done()),
       }
     end,
   },
