@@ -96,20 +96,12 @@ if status is-interactive
     abbr --add pymanage "python manage.py"
     # replace which command
     abbr --add which "command -s"
-    # quick to nvim config
-    abbr --add cddot "cd $HOME/.dotfiles"
-    abbr --add cdnvim "cd $HOME/.config/nvim"
-    abbr --add cdshare "cd /home/share/"
-    abbr --add cdnote "cd $HOME/notes/journal"
-    abbr --add cdtmp "cd $HOME/tmp"
     # better hibernate
     abbr --add hibernate "sudo pm-hibernate"
     # take little notes
     abbr --add nt notenow
     # yt-dlp
     abbr --add yd --set-cursor "yt-dlp '%'"
-    # use zoxide for cd
-    abbr --add cd "z"
 
     # key bind
     # find and open file
@@ -122,6 +114,6 @@ if status is-interactive
     end
     # zoxide config
     if command -q zoxide
-        zoxide init fish | source
+        zoxide init --cmd cd fish | source
     end
 end
