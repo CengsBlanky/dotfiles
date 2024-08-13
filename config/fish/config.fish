@@ -70,6 +70,9 @@ if status is-interactive
     set PATH $PATH "$HOME/.local/share/gem/ruby/3.0.0/bin"
     # golang path
     set PATH $PATH "/usr/local/go/bin"
+    # bun setup
+    set --export BUN_INSTALL "$HOME/.bun"
+    set --export PATH $BUN_INSTALL/bin $PATH
 
     # general
     set PATH $PATH "$HOME/.local/bin"
@@ -117,3 +120,4 @@ if status is-interactive
         zoxide init --cmd cd fish | source
     end
 end
+

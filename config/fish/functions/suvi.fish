@@ -1,3 +1,3 @@
 function suvi
-    sudo nvim $argv
+    sudo vim $argv
 end
