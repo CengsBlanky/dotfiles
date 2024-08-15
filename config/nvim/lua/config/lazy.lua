@@ -625,7 +625,7 @@ require("lazy").setup({
         transparent_background = true,
         no_italic = true,
         styles = {
-          comments = {},
+          comments = { "italic" },
           conditionals = {},
         },
         integrations = {
@@ -635,24 +635,6 @@ require("lazy").setup({
         }
       })
       vim.cmd.colorscheme "catppuccin"
-    end
-  },
-  {
-    "EdenEast/nightfox.nvim",
-    build = ":NightfoxCompile",
-    config = function ()
-      require("nightfox").setup({
-        options = {
-          transparent = true,
-          dim_inactive = false,
-          styles = {
-            comments = "italic",
-            constants = "bold",
-          },
-        }
-      })
-
-      -- vim.cmd [[colorscheme nordfox]]
     end
   },
 },

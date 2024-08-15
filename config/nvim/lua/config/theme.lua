@@ -6,7 +6,7 @@ vim.opt.winblend = 0
 vim.opt.background = 'dark'
 
 vim.api.nvim_set_hl(0, "Normal", { fg = "#ced4da" })
-vim.api.nvim_set_hl(0, "Comment", { fg = "DarkGray", italic = false })
+vim.api.nvim_set_hl(0, "Comment", { fg = "DarkGray", italic = true })
 vim.api.nvim_set_hl(0, "Todo", { fg = "#ebcb8b", italic = false, bold = true })
 vim.api.nvim_set_hl(0, "Visual", { bg = "#495057" })
 vim.api.nvim_set_hl(0, "Search", { bg = "#495057" })
