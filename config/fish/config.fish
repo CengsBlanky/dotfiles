@@ -81,6 +81,7 @@ if status is-interactive
     # kubectl completion fish | source
     # fzf
     set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case"
+    bind --mode insert \cr "vim (fzf --preview='batcat --color=always --style=numbers {}')"
 
     # ===== abbriviations =====
     abbr --add cls "clear"
@@ -105,10 +106,9 @@ if status is-interactive
     abbr --add nt notenow
     # yt-dlp
     abbr --add yd --set-cursor "yt-dlp '%'"
+    # find files
+    abbr --add found "fzf --preview='batcat --color=always --style=plain,numbers {}'"
 
-    # key bind
-    # find and open file
-    bind --mode insert \cr "vim (fzf)"
 
     # source asdf version manager
     set -l asdf_conf "$HOME/.asdf/asdf.fish"
