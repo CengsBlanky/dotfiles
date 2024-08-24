@@ -24,8 +24,8 @@ config.window_padding = {
 }
 config.font = wezterm.font_with_fallback {
   "Consolas Nerd Font",
-  "Microsoft YaHei",
   "Noto Color Emoji",
+  "Source Han Serif CN",
 }
 config.font_size = 13
 config.line_height = 0.9
@@ -38,7 +38,7 @@ config.inactive_pane_hsb = {
   brightness = 0.6,
 }
 -- tab bar
-config.hide_tab_bar_if_only_one_tab = false
+config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 -- leader pending indicator
