@@ -17,10 +17,6 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
-config.inactive_pane_hsb = {
-  saturation = 0.9,
-  brightness = 0.8,
-}
 config.font = wezterm.font_with_fallback {
   'Consolas Nerd Font',
   "Microsoft YaHei",
@@ -36,15 +32,20 @@ config.background = {
     source = {
       File = 'D:\\Pictures\\pexels-eberhardgross-1612351.jpg',
     },
-    hsb = { brightness = 0.1 },
+    hsb = { brightness = 0.1, saturation = 1 },
   },
+}
+config.window_background_opacity = 0.1
+config.inactive_pane_hsb = {
+  saturation = 0.8,
+  brightness = 0.2,
 }
 -- tab bar
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = true
 -- leader pending indicator
-wezterm.on("update-right-status", function(window, _) 
+wezterm.on("update-right-status", function(window, _)
   local SOLID_LEFT_ARROW = ""
   local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
   local prefix = ""
@@ -74,6 +75,11 @@ config.keys = {
     action = act.CloseCurrentPane { confirm = false },
   },
   {
+    mods = "CTRL|ALT",
+    key = "w",
+    action = act.CloseCurrentPane { confirm = false },
+  },
+  {
     mods = "LEADER",
     key = "b",
     action = act.ActivateTabRelative(-1),
@@ -82,6 +88,11 @@ config.keys = {
     mods = "LEADER",
     key = "n",
     action = act.ActivateTabRelative(1),
+  },
+  {
+    mods = "LEADER",
+    key = "t",
+    action = act.ShowTabNavigator,
   },
   {
     mods = "ALT",
@@ -136,6 +147,11 @@ config.keys = {
   {
     mods = "CTRL|SHIFT",
     key = "v",
+    action = act.PasteFrom 'Clipboard',
+  },
+  {
+    mods = "SHIFT",
+    key = "Insert",
     action = act.PasteFrom 'Clipboard',
   },
   {
