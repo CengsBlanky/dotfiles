@@ -29,13 +29,15 @@ config.font = wezterm.font_with_fallback {
 }
 config.font_size = 13
 config.line_height = 0.9
+-- config.freetype_load_flags = 'DEFAULT'
+config.freetype_load_target = 'Light'
+-- config.freetype_render_target = 'HorizontalLcd'
 config.default_cursor_style = 'SteadyBar'
 config.adjust_window_size_when_changing_font_size = false
 config.tab_and_split_indices_are_zero_based = false
 config.window_background_opacity = 1
 config.inactive_pane_hsb = {
-  saturation = 0.9,
-  brightness = 0.8,
+  brightness = 0.7,
 }
 -- tab bar
 config.hide_tab_bar_if_only_one_tab = true
