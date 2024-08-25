@@ -41,21 +41,6 @@ config.inactive_pane_hsb = {
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
--- leader pending indicator
-wezterm.on("update-right-status", function(window, _)
-  local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
-  local prefix = ""
-
-  if window:leader_is_active() then
-    prefix = " " .. utf8.char(0x1f30a)
-  end
-
-  window:set_left_status(wezterm.format {
-    { Background = { Color = "#1e2030" } },
-    { Text = prefix },
-    ARROW_FOREGROUND,
-  })
-end)
 -- keybinds
 config.disable_default_key_bindings = true
 config.leader = { key = "q", mods = "CTRL", timeout_milliseconds = 2000 }
