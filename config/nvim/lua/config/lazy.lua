@@ -363,7 +363,7 @@ require("lazy").setup({
       local lspconfig = require('lspconfig')
 
       local ensure_installed_list = {
-        'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'lemminx', 'elixirls', 'gopls'
+        'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'gopls'
       }
       -- TODO add https://github.com/mfussenegger/nvim-jdtls/tree/master
 
