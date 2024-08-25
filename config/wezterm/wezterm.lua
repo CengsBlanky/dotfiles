@@ -9,12 +9,12 @@ config.audible_bell = "Disabled"
 config.scrollback_lines = 9999
 -- appearance
 config.cursor_blink_rate = 0
-local catppuccin = wezterm.color.get_builtin_schemes()['Catppuccin Macchiato']
-catppuccin.background = '#212529'
+local my_theme = wezterm.color.get_builtin_schemes()['catppuccin-macchiato']
+my_theme.background = '#212529'
 config.color_schemes = {
-  ['catppuccin'] = catppuccin,
+  ['my_theme'] = my_theme,
 }
-config.color_scheme = "catppuccin"
+config.color_scheme = "my_theme"
 config.window_decorations = "NONE"
 config.window_padding = {
   left = 0,
@@ -34,8 +34,8 @@ config.adjust_window_size_when_changing_font_size = false
 config.tab_and_split_indices_are_zero_based = false
 config.window_background_opacity = 1
 config.inactive_pane_hsb = {
-  saturation = 0.8,
-  brightness = 0.6,
+  saturation = 0.9,
+  brightness = 0.8,
 }
 -- tab bar
 config.hide_tab_bar_if_only_one_tab = true
