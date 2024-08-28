@@ -354,7 +354,6 @@ require("lazy").setup({
         vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
         vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-        vim.keymap.set('n', '<F4>', function() vim.lsp.buf.format { async = true } end, bufopts)
       end
 
       -- Add additional capabilities supported by nvim-cmp
@@ -363,7 +362,10 @@ require("lazy").setup({
       local lspconfig = require('lspconfig')
 
       local ensure_installed_list = {
-        'awk_ls', 'bashls', 'clangd', 'rust_analyzer', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'gopls'
+        'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls'
+      }
+      local lspconfig_list = {
+        'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'gopls'
       }
       -- TODO add https://github.com/mfussenegger/nvim-jdtls/tree/master
 
@@ -371,7 +373,7 @@ require("lazy").setup({
         ensure_installed = ensure_installed_list
       })
 
-      for _, lserver in pairs(ensure_installed_list) do
+      for _, lserver in pairs(lspconfig_list) do
         lspconfig[lserver].setup {
           on_attach = on_attach,
           capabilities = cmp_capabilities,
@@ -386,38 +388,29 @@ require("lazy").setup({
         }
       }
       -- rust tools setup
-      local rt = require("rust-tools")
-      vim.api.nvim_set_hl(0, "Hint", { fg = "#8fbcbb" })
-      rt.setup({
+      vim.g.rustaceanvim = {
         server = {
-          on_attach = function(_, bufnr)
-            vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-            local bufopts = { noremap=true, silent=true, buffer=bufnr }
-
-            vim.keymap.set('n', 'K', rt.hover_actions.hover_actions, bufopts)
-            vim.keymap.set('n', '<leader>a', rt.code_action_group.code_action_group, bufopts)
-            -- Mappings.
-            -- See `:help vim.lsp.*` for documentation on any of the below functions
+          on_attach = function (_, bufnr)
+            local bufopts = { silent=true, buffer=bufnr }
+            vim.keymap.set('n', 'K', function() vim.cmd.RustLsp { 'hover', 'actions' } end, bufopts)
+            vim.keymap.set('n', '<leader>a', function() vim.cmd.RustLsp('codeAction') end, bufopts)
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
             vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
             vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-            -- vim.keymap.set('n', '<Space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
           end,
           capabilities = cmp_capabilities,
-        },
-        tools = {
-          inlay_hints = {
-            auto = false,
-            only_current_line = false,
-            parameter_hints_prefix = "󰁕 ",
-            other_hints_prefix = "󰁎 ",
-            highlight = "Hint",
+          default_settings = {
+            ['rust-analyzer'] = {
+              cargo = {
+                allFeatures = true,
+              },
+            },
           },
         },
-      })
+      }
     end,
     dependencies = {
       {
@@ -430,8 +423,9 @@ require("lazy").setup({
         'williamboman/mason-lspconfig.nvim',
       },
       {
-        'simrat39/rust-tools.nvim',
-        ft = 'rust',
+        'mrcjkb/rustaceanvim',
+        version = '^5', -- Recommended
+        lazy = false, -- This plugin is already lazy
       },
     }
   },
