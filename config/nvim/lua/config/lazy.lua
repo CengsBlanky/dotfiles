@@ -430,6 +430,18 @@ require("lazy").setup({
     }
   },
   {
+    'saecki/crates.nvim',
+    config = function()
+      require('crates').setup({
+        completion = {
+          cmp = {
+            enabled = true,
+          },
+        },
+      })
+    end,
+  },
+  {
     'elixir-editors/vim-elixir',
     ft = "elixir"
   },
@@ -480,10 +492,11 @@ require("lazy").setup({
         }),
         sources = cmp.config.sources {
           { name = 'nvim_lsp' },
-          { name = 'ctags' },
+          { name = 'crates' },
           { name = 'luasnip' },
           { name = 'buffer' },
           { name = 'path' },
+          { name = 'ctags' },
         },
       }
 
