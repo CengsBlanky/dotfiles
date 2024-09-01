@@ -446,6 +446,13 @@ require("lazy").setup({
     ft = "elixir"
   },
   {
+    'rust-lang/rust.vim',
+    ft = 'rust',
+    init = function ()
+      vim.g.rustfmt_autosave=  1
+    end
+  },
+  {
     'hrsh7th/nvim-cmp',
     event = "InsertEnter",
     config = function ()
