@@ -14,7 +14,8 @@ background = "#212529"
 foreground = "#d8dee9"
 
 [font]
-normal.family = "Consolas Nerd Font"
+# normal.family = "Consolas Nerd Font"
+normal.family = "UbuntuSansMono Nerd Font"
 size = 13.0
 offset.y = 0
 

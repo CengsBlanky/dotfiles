@@ -361,16 +361,17 @@ require("lazy").setup({
       local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
       local lspconfig = require('lspconfig')
 
-      local ensure_installed_list = {
-        'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls'
+      local mason_installed_list = {
+        'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls', 'tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls'
       }
       local lspconfig_list = {
         'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'gopls'
       }
+      -- mason add installed list apart from lsp server
       -- TODO add https://github.com/mfussenegger/nvim-jdtls/tree/master
 
       require("mason-lspconfig").setup({
-        ensure_installed = ensure_installed_list
+        ensure_installed = mason_installed_list
       })
 
       for _, lserver in pairs(lspconfig_list) do
@@ -562,23 +563,29 @@ require("lazy").setup({
           require("conform").format({ async = true, lsp_fallback = true })
         end,
         mode = { "n", "v" },
-        desc = "conform format buffer",
+        desc = "conform done",
       },
     },
-    opts = {
-      formatters = {
-        clang_format = {
-          command = "clang-format",
-          append_args = { "--style", "Microsoft" },
+    config = function ()
+      require("conform").setup({
+        formatters_by_ft = {
+          python = { "ruff" },
+          c = { "c_format" },
+          cpp = { "c_format" },
+          ["*"] = { "trim_whitespace" },
         },
-      },
-      format_by_ft = {
-        python = { "ruff" },
-        c = { "clang_format" },
-        cpp = { "clang_format" },
-        ["*"] = { "trim_whitespace" },
-      },
-    },
+        formatters = {
+          ["c_format"] = {
+            command = "clang-format",
+            append_args = { "--style", "Microsoft" },
+          },
+        },
+        default_format_opts = {
+          lsp_format = "fallback",
+          stop_after_first = true,
+        },
+      })
+    end,
     init = function ()
       vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
