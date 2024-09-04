@@ -567,7 +567,7 @@ require("lazy").setup({
     config = function ()
       require("conform").setup({
         formatters_by_ft = {
-          python = { "ruff" },
+          python = { "py_format", "py_sort"},
           c = { "c_format" },
           cpp = { "c_format" },
           ["*"] = { "trim_whitespace" },
@@ -577,11 +577,31 @@ require("lazy").setup({
             command = "clang-format",
             args = "-style=file:$HOME/.config/formatter/clang-format.yaml",
           },
+          ["py_format"] = {
+            command = "ruff",
+            args = {
+              "format",
+              "--stdin-filename",
+              "$FILENAME",
+            },
+          },
+          ["py_sort"] = {
+            command = "ruff",
+            args = {
+              "check",
+              "--select",
+              "I",
+              "--fix",
+              "--stdin-filename",
+              "$FILENAME",
+            },
+          },
         },
         default_format_opts = {
           lsp_format = "fallback",
-          stop_after_first = true,
+          stop_after_first = false,
         },
+        -- log_level = vim.log.levels.DEBUG,
       })
     end,
     init = function ()
