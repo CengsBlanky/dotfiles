@@ -362,13 +362,11 @@ require("lazy").setup({
       local lspconfig = require('lspconfig')
 
       local mason_installed_list = {
-        'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls', 'tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls'
+        'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls', 'tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls', 'ruff'
       }
       local lspconfig_list = {
         'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'gopls'
       }
-      -- mason add installed list apart from lsp server
-      -- TODO add https://github.com/mfussenegger/nvim-jdtls/tree/master
 
       require("mason-lspconfig").setup({
         ensure_installed = mason_installed_list
