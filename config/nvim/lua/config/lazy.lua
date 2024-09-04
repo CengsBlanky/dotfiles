@@ -575,7 +575,7 @@ require("lazy").setup({
         formatters = {
           ["c_format"] = {
             command = "clang-format",
-            append_args = { "--style", "Microsoft" },
+            args = "-style=file:$HOME/.config/formatter/clang-format.yaml",
           },
         },
         default_format_opts = {
