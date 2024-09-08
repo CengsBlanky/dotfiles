@@ -1,0 +1,251 @@
+/* ==UserStyle==
+@name         weread微信读书网页版优化
+@version      20220313.15.38
+@namespace    userstyles.world/user/zshuai
+@description  优化微信读书网页版在半屏显示时内容过窄问题，控制条置底，集中内容，专心读书
+@author       zshuai
+@license      No License
+==/UserStyle== */
+@-moz-document url-prefix("https://weread.qq.com/web/reader/") {
+
+  .app_content {
+    margin-top: 0px !important;
+  }
+
+  .wr_canvasContainer {
+    background-color: transparent !important;
+  }
+
+  .wr_page_reader,
+  .readerContent .app_content {
+    background-color: #201f1e;
+  }
+
+  .wr_whiteTheme,
+  .wr_whiteTheme .readerContent .app_content {
+    background-color: #f0ece3 !important;
+  }
+
+  .wr_whiteTheme img {
+    filter: invert(0) brightness(95%) !important;
+  }
+
+  .wr_whiteTheme .s-pic2 {
+    top: -2px;
+    filter: invert(0) brightness(95%) !important;
+  }
+
+  .wr_whiteTheme .s-pic {
+    top: -2px;
+    filter: invert(0) brightness(95%) !important;
+    max-width: 0.85em !important;
+    max-height: 0.85em !important;
+  }
+
+  .wr_whiteTheme .h-pic {
+    filter: invert(90%) brightness(95%) !important;
+  }
+
+  img {
+    filter: brightness(60%) !important;
+  }
+
+  .reader_pdf_page {
+    filter: invert(80%) brightness(90%) contrast(120%) sepia(20%);
+  }
+
+  .s-pic2 {
+    top: -2px;
+    filter: invert(90%) brightness(95%) !important;
+  }
+
+  .s-pic {
+    top: 0.03em;
+    max-height: 0.85em !important;
+    max-width: 0.85em !important;
+    filter: invert(100%) brightness(85%) !important;
+  }
+
+  .h-pic {
+    filter: invert(90%) brightness(100%) !important;
+  }
+
+  .readerChapterContent {
+    color: #b3aba4;
+  }
+
+  .readerChapterContent pre.code {
+    color: #adb5bd;
+  }
+
+  .app_content {
+    width: 100% !important;
+    max-width: 1500px !important;
+  }
+
+  body,
+  button,
+  input,
+  select,
+  textarea,
+  .renderTargetContainer *,
+  .readerChapterContent * {
+    font-size: 20px;
+    font-family: 'Tinos Nerd Font Propo', 'UbuntuSans Nerd Font', 'Fira Code', 'TW-Kai', '楷体', 'Source Han Sans VF', 'Source Han Serif CN', Arial, Helvetica, 'Times New Roman' !important;
+    line-height: 1.3 !important;
+  }
+
+  pre,
+  pre>*,
+  .hljs,
+  *[class^=hljs],
+  *[class^=language] {
+    font-family: 'Menlo', 'Noto Sans Mono', 'DejaVu Sans Mono', 'Consolas', 'Ubuntu Mono', 'SF Mono', 'Monaco', 'Hack', 'monospace' !important;
+    font-weight: normal;
+    font-size: 17px;
+    margin: 0;
+    border-radius: 0.5em;
+  }
+
+  pre::-webkit-scrollbar {
+    width: 0;
+    display: none;
+    /* Safari and Chrome */
+  }
+
+  pre {
+    overflow: auto;
+  }
+
+  .readerMemberCardTips,
+  .navBarOffset {
+    display: none !important;
+  }
+
+  .readerTopBar_title {
+    overflow: auto;
+  }
+
+  .readerTopBar {
+    max-width: 100%;
+    position: sticky;
+    margin: 0 auto;
+    padding: 0.1em 0;
+    opacity: 0 !important;
+    transition: opacity 100ms ease-out !important;
+  }
+
+  .readerTopBar:hover {
+    opacity: 1 !important;
+  }
+
+  .readerHeaderButton {
+    z-index: 90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: RGB(216, 222, 233);
+    background-color: transparent;
+    border-radius: 0.5em;
+    opacity: 0.3;
+    width: 20%;
+    text-align: center;
+    margin: 0.2em auto 0;
+    padding: 1em 0;
+    transition: opacity 200ms ease-in !important;
+    font-size: 16px;
+  }
+
+  .readerControls {
+    left: 50% !important;
+    opacity: 0 !important;
+    transition: opacity 200ms ease-out !important;
+  }
+
+  .readerControls:hover {
+    opacity: 1 !important;
+  }
+
+  .readerBottomBar {
+    transform: none;
+    display: flex !important;
+    opacity: 0 !important;
+    transition: opacity 400ms ease-out !important;
+  }
+
+  .readerBottomBar:hover {
+    display: flex !important;
+    opacity: 1 !important;
+  }
+
+  .readerBottomSettingPanel {
+    display: block;
+    top: 88% !important;
+    height: 7% !important;
+  }
+
+  .readerFooter {
+    padding: 10em 0;
+  }
+
+  .wr_whiteTheme .readerFooter_button {
+    background-color: transparent;
+  }
+
+  .wr_whiteTheme .readerHeaderButton:hover {
+    background-color: #f6f7f9;
+    font-weight: bolder;
+  }
+
+  .readerHeaderButton:hover {
+    background-color: RGB(59, 66, 82);
+    opacity: 1;
+  }
+
+  .readerFooter_button {
+    color: RGB(216, 222, 233);
+    background-color: transparent;
+    opacity: 0.3;
+    width: 20%;
+    transition: opacity 100ms ease-in !important;
+  }
+
+  .readerFooter_button:hover {
+    background-color: RGB(59, 66, 82);
+    opacity: 1 !important;
+    font-weight: bolder;
+  }
+
+  .wr_readerImage_opacity {
+    opacity: 1 !important;
+  }
+
+  .wr_decoration {
+    background-color: transparent !important;
+  }
+
+  .reader_footer_note::after {
+    position: absolute;
+    content: "注";
+    right: 3px;
+    top: 1.5px;
+    font-weight: 600;
+    font-size: 0.6em;
+  }
+
+  .reader_footer_note {
+    left: 0;
+    color: #b5b69c !important;
+    border-radius: 0.5em;
+    background-color: #3b4252 !important;
+    background-image: none !important;
+  }
+
+  .reader_footerNote_bubble {
+    overflow: auto;
+  }
+
+  .reader_pdf_tool_content {
+    margin-bottom: 2em;
+  }
+}
