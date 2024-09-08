@@ -365,7 +365,7 @@ require("lazy").setup({
         'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls', 'tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls', 'ruff'
       }
       local lspconfig_list = {
-        'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'gopls'
+        'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','ts_ls', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'gopls'
       }
 
       require("mason-lspconfig").setup({
