@@ -353,6 +353,7 @@ require("lazy").setup({
         vim.keymap.set('n', '<space>t', vim.lsp.buf.type_definition, bufopts)
         vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
         vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
+        vim.keymap.set('n', '<leader>s', function() vim.lsp.codelens.run() end, bufopts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
       end
 
@@ -365,7 +366,7 @@ require("lazy").setup({
         'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls', 'tsserver', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls', 'ruff'
       }
       local lspconfig_list = {
-        'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','ts_ls', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'gopls'
+        'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'groovyls','ts_ls', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'gopls'
       }
 
       require("mason-lspconfig").setup({
@@ -410,6 +411,27 @@ require("lazy").setup({
           },
         },
       }
+
+      -- elixir tools
+      local elixir = require("elixir")
+      local elixirls = require("elixir.elixirls")
+
+      elixir.setup {
+        nextls = {enable = false},
+        elixirls = {
+          cmd = "elixir-ls",
+          enable = true,
+          settings = elixirls.settings {
+            dialyzerEnabled = false,
+            enableTestLenses = true,
+          },
+          on_attach = on_attach,
+          capabilities = cmp_capabilities,
+        },
+        projectionist = {
+          enable = false
+        }
+      }
     end,
     dependencies = {
       {
@@ -425,6 +447,13 @@ require("lazy").setup({
         'mrcjkb/rustaceanvim',
         version = '^5', -- Recommended
         lazy = false, -- This plugin is already lazy
+      },
+      {
+        "elixir-tools/elixir-tools.nvim",
+        version = "*",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+        },
       },
     }
   },
@@ -462,7 +491,7 @@ require("lazy").setup({
       local cmp = require 'cmp'
       cmp.setup {
         completion = {
-          keyword_length = 3,
+          keyword_length = 2,
         },
         snippet = {
           expand = function(args)
