@@ -27,7 +27,6 @@ require("lazy").setup({
       vim.g.NERDTreeCaseSensitiveFS = 1
       vim.g.NERDTreeHighlightCursorline = 1
       vim.g.NERDTreeShowLineNumbers = 1
-      vim.g.NERDTreeNodeDelimiter="😀"
       vim.g.NERDTreeDirArrowExpandable=""
       vim.g.NERDTreeDirArrowCollapsible="~"
       vim.g.NERDTreeIgnore = {
