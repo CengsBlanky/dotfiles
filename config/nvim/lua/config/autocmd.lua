@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd({"BufRead"}, {
 })
 
 vim.api.nvim_create_autocmd({"FileType"}, {
-    pattern = { "html", "xhtml", "css", "scss", "javascript", "typescript", "vue", "yaml", "sql", "json", "vim", "lua", "dart", "svelte"},
+    pattern = { "html", "xhtml", "css", "scss", "javascript", "typescript", "vue", "yaml", "sql", "json", "vim", "lua", "dart", "svelte", "http" },
     callback = function()
         vim.opt_local.tabstop = 2
         vim.opt_local.shiftwidth = 2

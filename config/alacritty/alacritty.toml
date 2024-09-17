@@ -14,8 +14,8 @@ background = "#212529"
 foreground = "#d8dee9"
 
 [font]
-normal.family = "UbuntuSansMono Nerd Font"
-size = 13.0
+normal.family = "JetBrainsMonoNL Nerd Font"
+size = 12.0
 offset.y = 0
 
 [[keyboard.bindings]]

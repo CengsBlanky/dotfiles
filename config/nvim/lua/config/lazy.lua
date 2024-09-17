@@ -113,6 +113,14 @@ require("lazy").setup({
   'junegunn/vim-easy-align',
   'romainl/vim-cool',
   {
+    "rest-nvim/rest.nvim",
+    config = function ()
+      local map = vim.api.nvim_set_keymap
+      local map_opts = { noremap = true, silent = true, nowait = true }
+      map('n', '<Space>r', '<Cmd>Rest run<CR>', map_opts)
+    end
+  },
+  {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
     dependencies = {
       {'nvim-lua/plenary.nvim'},
