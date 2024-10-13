@@ -69,6 +69,9 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     callback = function()
       -- golang use tab instead of spaces
       vim.opt_local.expandtab = false
+      vim.opt_local.listchars = {
+        tab = "  ",
+      }
     end
 })
 

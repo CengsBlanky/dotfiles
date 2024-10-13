@@ -608,6 +608,7 @@ require("lazy").setup({
           python = { "py_format", "py_sort"},
           c = { "c_format" },
           cpp = { "c_format" },
+          go = { "gofmt" },
           ["*"] = { "trim_whitespace" },
         },
         formatters = {
