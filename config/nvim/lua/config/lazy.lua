@@ -248,18 +248,18 @@ require("lazy").setup({
       vim.g.tmux_navigator_no_mappings = 1
     end,
     keys = {
-      { "<M-h>", "<cmd>TmuxNavigateLeft<CR>", { silent = true } },
-      { "<M-j>", "<cmd>TmuxNavigateDown<CR>", { silent = true } },
-      { "<M-k>", "<cmd>TmuxNavigateUp<CR>", { silent = true } },
-      { "<M-l>", "<cmd>TmuxNavigateRight<CR>", { silent = true } },
-      { "<M-\\>", "<cmd>TmuxNavigatePrevious<CR>", { silent = true } },
+      { "<M-h>", "<cmd>TmuxNavigateLeft<CR>", { silent = true, nowait = true } },
+      { "<M-j>", "<cmd>TmuxNavigateDown<CR>", { silent = true, nowait = true } },
+      { "<M-k>", "<cmd>TmuxNavigateUp<CR>", { silent = true, nowait = true } },
+      { "<M-l>", "<cmd>TmuxNavigateRight<CR>", { silent = true, nowait = true } },
+      { "<M-\\>", "<cmd>TmuxNavigatePrevious<CR>", { silent = true, nowait = true } },
     },
   },
   {
     'nvim-treesitter/nvim-treesitter',
     config = function ()
       require'nvim-treesitter.configs'.setup {
-        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "html", "css", "javascript", "svelte", "json", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "yaml", "toml", "elixir", "vimdoc", "bash", "http" },
+        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "json", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "yaml", "toml", "elixir", "vimdoc", "bash", "http" },
         ignore_install = {}, -- List of parsers to ignore installing
         highlight = {
           enable = true,              -- false will disable the whole extension

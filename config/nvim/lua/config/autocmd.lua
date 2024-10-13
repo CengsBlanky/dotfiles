@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 })
 
 vim.api.nvim_create_autocmd({"FileType"}, {
-    pattern = {"go"},
+    pattern = {"go", "gomod"},
     callback = function()
       -- golang use tab instead of spaces
       vim.opt_local.expandtab = false
