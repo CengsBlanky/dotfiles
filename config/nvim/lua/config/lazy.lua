@@ -263,7 +263,9 @@ require("lazy").setup({
         ignore_install = {}, -- List of parsers to ignore installing
         highlight = {
           enable = true,              -- false will disable the whole extension
-          disable = {},  -- list of language that will be disabled
+          disable = function ()
+            return vim.b.large_buf
+          end,  -- list of language that will be disabled
           -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
           -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
           -- Using this option may slow down your editor, and you may see some duplicate highlights.
@@ -608,7 +610,7 @@ require("lazy").setup({
           python = { "py_format", "py_sort"},
           c = { "c_format" },
           cpp = { "c_format" },
-          go = { "gofmt" },
+          go = { "gofmt", "goimports" },
           ["*"] = { "trim_whitespace" },
         },
         formatters = {

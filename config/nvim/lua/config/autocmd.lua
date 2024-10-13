@@ -1,8 +1,18 @@
 ---@diagnostic disable: undefined-global
 vim.api.nvim_create_autocmd({"FileType"}, {
     callback = function()
-        vim.opt.formatoptions:remove({'o'})
-        vim.opt.formatoptions:append({'M'})
+      vim.opt.formatoptions:remove({'o'})
+      vim.opt.formatoptions:append({'M'})
+      local over_lsize = vim.fn.strwidth(vim.fn.getline('.')) > 1000
+      local over_fsize = vim.fn.getfsize(vim.fn.expand('%')) > 1024 * 1024
+      vim.b.large_buf = false
+      if over_lsize or over_fsize then
+        vim.cmd("syntax off")
+        vim.cmd("syntax clear")
+        vim.opt_local.foldmethod = "manual"
+        vim.opt_local.spell = false
+        vim.b.large_buf = true
+      end
     end
 })
 
