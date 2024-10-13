@@ -562,6 +562,8 @@ require("lazy").setup({
 
       -- code snippets source
       require("luasnip.loaders.from_snipmate").lazy_load()
+      -- for quick startuptime
+      require("luasnip.loaders.from_vscode").lazy_load()
 
       -- nvim-autopairs integrate
       -- If you want insert `(` after select function or method item
@@ -689,6 +691,15 @@ require("lazy").setup({
         },
       }
     end,
+  },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,      -- Recommended
+    -- ft = "markdown", -- If you decide to lazy-load anyway
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    }
   },
   {
     "catppuccin/nvim",
