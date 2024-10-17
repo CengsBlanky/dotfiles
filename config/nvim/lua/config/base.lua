@@ -36,6 +36,7 @@ vim.opt.linebreak = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.smoothscroll = true
+vim.opt.synmaxcol = 1000
 vim.opt.shortmess:append('W')
 vim.opt.clipboard:append('unnamedplus')
 vim.opt.list = true

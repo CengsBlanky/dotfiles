@@ -7,7 +7,6 @@ vim.api.nvim_create_autocmd({"FileType"}, {
       local over_fsize = vim.fn.getfsize(vim.fn.expand('%')) > 1024 * 1024
       vim.b.large_buf = false
       if over_lsize or over_fsize then
-        vim.cmd("syntax off")
         vim.cmd("syntax clear")
         vim.opt_local.foldmethod = "manual"
         vim.opt_local.spell = false
