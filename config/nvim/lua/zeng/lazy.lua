@@ -340,7 +340,7 @@ require("lazy").setup({
       })
 
       require("mason-lspconfig").setup({
-        ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'ts_ls', 'denols', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls', 'ruff', 'htmx' },
+        ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'ts_ls', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls', 'ruff', 'htmx' },
       })
     end,
     dependencies = {
@@ -480,6 +480,10 @@ require("lazy").setup({
       'saadparwaiz1/cmp_luasnip',
       {
         'L3MON4D3/LuaSnip',
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp",
         dependencies = {
           "rafamadriz/friendly-snippets"
         },
