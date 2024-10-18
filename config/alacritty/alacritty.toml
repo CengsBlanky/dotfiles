@@ -14,9 +14,8 @@ background = "#212529"
 foreground = "#d8dee9"
 
 [font]
-normal.family = "Cousine Nerd Font"
+normal.family = "HackZeroSlash NerdFont"
 size = 13.0
-offset.y = 0
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
