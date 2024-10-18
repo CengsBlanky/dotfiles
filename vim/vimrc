@@ -3,7 +3,7 @@ vim9script
 set nocompatible
 g:skip_defaults_vim = 1
 filetype plugin indent on
-syntax off
+syntax on
 language en_US.UTF-8
 &t_SI = "\<Esc>[6 q"
 &t_SR = "\<Esc>[4 q"
@@ -53,49 +53,48 @@ set tags=tags,~/.vim/system.tags
 inoremap jk <esc>
 # quit
 # use <Esc> instead of <M- keybind
-nnoremap <leader>q :xa<CR>
-# close current or buffer
-nnoremap <Space>b :bd<CR>
+nnoremap <silent><nowait><leader>q :xa<CR>
 # yank whole buffer
 nnoremap gy :%y<CR>
+# copy line content
 nnoremap gl ^yg_
-# use backspace to scroll up/down
-nnoremap <silent><C-j> <C-f>
-nnoremap <silent><C-k> <C-b>
+# remap page up/down
+nnoremap <silent><nowait><C-j> <C-f>
+nnoremap <silent><nowait><C-k> <C-b>
 # save
-nnoremap <silent><Enter> :w<CR>
-# go next buffer
-nnoremap <C-n> :bn<CR>
-nnoremap <C-p> :b#<CR>
-# window manage
-nnoremap <Esc>j <C-w>j
-nnoremap <Esc>k <C-w>k
-nnoremap <Esc>h <C-w>h
-nnoremap <Esc>l <C-w>l
-# close window
-nnoremap <Esc>w <C-w>c
-nnoremap <Esc>o <C-w>o
-nnoremap <leader>- <C-w>s
-nnoremap <leader>/ <C-w>v
+nnoremap <silent><nowait><Enter> :w<CR>
+# buffer keymaps
+nnoremap <silent><nowait><Space>b :bd<CR>
+nnoremap <silent><nowait><C-n> :bn<CR>
+nnoremap <silent><nowait><C-p> :b#<CR>
+# windows keymaps
+nnoremap <silent><nowait><Esc>j <C-w>j
+nnoremap <silent><nowait><Esc>k <C-w>k
+nnoremap <silent><nowait><Esc>h <C-w>h
+nnoremap <silent><nowait><Esc>l <C-w>l
+nnoremap <silent><nowait><Esc>w <C-w>c
+nnoremap <silent><nowait><Esc>o <C-w>o
+nnoremap <silent><nowait><leader>- <C-w>s
+nnoremap <silent><nowait><leader>/ <C-w>v
 # quickfix list navigation
-nnoremap ]q :cnext<CR>
-nnoremap [q :cprev<CR>
-nnoremap [Q :cfirst<CR>
-nnoremap ]Q :clast<CR>
+nnoremap <silent><nowait>]q :cnext<CR>
+nnoremap <silent><nowait>[q :cprev<CR>
+nnoremap <silent><nowait>[Q :cfirst<CR>
+nnoremap <silent><nowait>]Q :clast<CR>
 autocmd FileType tags,qf nnoremap <buffer> <Enter> <Enter>
 
 # use rg in vim
 if executable("rg")
   set grepprg=rg\ --vimgrep\ --smart-case\ --no-heading
   set grepformat=%f:%l:%c:%m
-  nnoremap <leader>f :FZF<CR>
-  nnoremap <leader>g :RG<CR>
-  nnoremap <leader>b :Buffers<CR>
+  nnoremap <silent><nowait><leader>f :FZF<CR>
+  nnoremap <silent><nowait><leader>g :RG<CR>
+  nnoremap <silent><nowait><leader>b :Buffers<CR>
 endif
 
 set termguicolors
 set background=dark
-colorscheme retrobox
+colorscheme habamax
 hi Normal guibg=NONE ctermbg=NONE guifg=LightGray gui=NONE
 hi SignColumn guibg=NONE
 hi StatusLine guibg=DarkGray guifg=#2d2d2d gui=bold cterm=bold
@@ -117,8 +116,8 @@ enddef
 autocmd BufEnter * SetViewKeymap()
 
 def SetVirtualMap()
-  nnoremap <silent> j gj
-  nnoremap <silent> k gk
+  nnoremap <silent><nowait> j gj
+  nnoremap <silent><nowait> k gk
 enddef
 autocmd FileType markdown,text,log SetVirtualMap()
 autocmd FileType vim,javascript,typescript,lua,log set tabstop=2 shiftwidth=2 softtabstop=2
@@ -144,8 +143,8 @@ nnoremap <Tab> :Explore<CR>
 
 # tmux-vim navigator plugin
 g:tmux_navigator_no_mappings = 1
-noremap <silent><Esc>h :<C-U>TmuxNavigateLeft<cr>
-noremap <silent><Esc>j :<C-U>TmuxNavigateDown<cr>
-noremap <silent><Esc>k :<C-U>TmuxNavigateUp<cr>
-noremap <silent><Esc>l :<C-U>TmuxNavigateRight<cr>
-noremap <silent><Esc>p :<C-U>TmuxNavigatePrevious<cr>
+noremap <nowait><silent><Esc>h :<C-U>TmuxNavigateLeft<cr>
+noremap <nowait><silent><Esc>j :<C-U>TmuxNavigateDown<cr>
+noremap <nowait><silent><Esc>k :<C-U>TmuxNavigateUp<cr>
+noremap <nowait><silent><Esc>l :<C-U>TmuxNavigateRight<cr>
+noremap <nowait><silent><Esc>p :<C-U>TmuxNavigatePrevious<cr>
