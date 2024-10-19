@@ -27,39 +27,49 @@ end
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+-- local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 local general_lsp_list = {
-  'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'gopls', 'htmx',
+  'awk_ls', 'bashls', 'clangd', 'dockerls', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'gopls',
 }
 
 for _, lserver in pairs(general_lsp_list) do
   lspconfig[lserver].setup {
     on_attach = on_attach,
-    capabilities = cmp_capabilities,
+    capabilities = capabilities,
   }
 end
 
 -- nodejs bun deno
 lspconfig.ts_ls.setup {
+  autostart = false,
   on_attach = on_attach,
-  capabilities = cmp_capabilities,
+  capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern("package.json"),
-  single_file_support = false,
+  single_file_support = true,
 }
 
 lspconfig.denols.setup {
+  autostart = true,
   on_attach = on_attach,
-  capabilities = cmp_capabilities,
+  capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+  single_file_support = false,
+}
+
+lspconfig.htmx.setup {
+  autostart = false,
+  on_attach = on_attach,
+  capabilities = capabilities,
+  single_file_support = false,
 }
 
 -- flutter
 require("flutter-tools").setup {
   lsp = {
     on_attach = on_attach,
-    capabilities = cmp_capabilities,
+    capabilities = capabilities,
   }
 }
 
@@ -77,7 +87,7 @@ vim.g.rustaceanvim = {
       vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     end,
-    capabilities = cmp_capabilities,
+    capabilities = capabilities,
     default_settings = {
       ['rust-analyzer'] = {
         cargo = {
@@ -102,7 +112,7 @@ elixir.setup {
       enableTestLenses = true,
     },
     on_attach = on_attach,
-    capabilities = cmp_capabilities,
+    capabilities = capabilities,
   },
   projectionist = {
     enable = false

@@ -170,8 +170,8 @@ require("lazy").setup({
     'mattn/emmet-vim',
     init = function ()
       vim.g.user_emmet_mode='i'
-      vim.g.user_emmet_expandabbr_key='<C-j>'
-      vim.g.user_emmet_expandword_key='<C-k>'
+      vim.g.user_emmet_expandabbr_key='<C-e>'
+      vim.g.user_emmet_expandword_key='<C-a>'
     end
   },
   {
@@ -340,7 +340,7 @@ require("lazy").setup({
       })
 
       require("mason-lspconfig").setup({
-        ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'eslint', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'ts_ls', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls', 'ruff', 'htmx' },
+        ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'jdtls', 'kotlin_language_server', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls', 'ruff', 'html', 'cssls', 'ts_ls', 'jsonls', 'svelte', 'htmx', },
       })
     end,
     dependencies = {
@@ -391,105 +391,44 @@ require("lazy").setup({
     end
   },
   {
-    'hrsh7th/nvim-cmp',
-    event = "InsertEnter",
-    config = function ()
-      -- luasnip setup
-      local luasnip = require 'luasnip'
+    'saghen/blink.cmp',
+    lazy = false, -- lazy loading handled internally
+    -- optional: provides snippets for the snippet source
+    dependencies = 'rafamadriz/friendly-snippets',
 
-      -- nvim-cmp setup
-      local cmp = require 'cmp'
-      cmp.setup {
-        completion = {
-          keyword_length = 2,
-        },
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          },
-          ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-          ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-        }),
-        sources = cmp.config.sources {
-          { name = 'nvim_lsp' },
-          { name = 'crates' },
-          { name = 'luasnip' },
-          { name = 'buffer' },
-          { name = 'path' },
-          { name = 'ctags' },
-        },
-      }
+    -- use a release tag to download pre-built binaries
+    version = 'v0.*',
+    -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+    -- build = 'nix run .#build-plugin',
 
-      cmp.setup.filetype ({ "markdown" }, {
-        sources = cmp.config.sources {
-          { name = 'nvim_lsp' },
-          { name = 'buffer' },
-          { name = 'path' },
-        }
-      })
-
-      cmp.setup.filetype ({ "sql", "mysql", "plsql" }, {
-        sources = cmp.config.sources {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'buffer' },
-          { name = 'path' },
-          { name = 'vim-dadbod-completion' },
-        }
-      })
-
-      -- code snippets source
-      require("luasnip.loaders.from_snipmate").lazy_load()
-      -- for quick startuptime
-      require("luasnip.loaders.from_vscode").lazy_load()
-
-      -- nvim-autopairs integrate
-      -- If you want insert `(` after select function or method item
-      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-    end,
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'saadparwaiz1/cmp_luasnip',
-      {
-        'L3MON4D3/LuaSnip',
-        -- follow latest release.
-        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
-        build = "make install_jsregexp",
-        dependencies = {
-          "rafamadriz/friendly-snippets"
-        },
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      highlight = {
+        -- sets the fallback highlight groups to nvim-cmp's highlight groups
+        -- useful for when your theme doesn't support blink.cmp
+        -- will be removed in a future release, assuming themes add support
+        use_nvim_cmp_as_default = true,
       },
-      'honza/vim-snippets',
-      'delphinus/cmp-ctags',
+      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+      -- adjusts spacing to ensure icons are aligned
+      nerd_font_variant = 'normal',
+
+      -- experimental auto-brackets support
+      accept = { auto_brackets = { enabled = true } },
+
+      -- experimental signature help support
+      trigger = { signature_help = { enabled = true } },
+      keymap = {
+        hide = {},
+        accept = '<Enter>',
+        select_prev = { '<Up>', '<C-p>', '<S-Tab>' },
+        select_next = { '<Down>', '<C-n>', '<Tab>' },
+        snippet_forward = '<C-j>',
+        snippet_backward = '<C-k>',
+      }
     }
   },
   {
