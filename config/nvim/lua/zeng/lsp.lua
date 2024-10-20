@@ -30,11 +30,11 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
-local general_lsp_list = {
+local lserver_list = {
   'awk_ls', 'bashls', 'clangd', 'dockerls', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'gopls',
 }
 
-for _, lserver in pairs(general_lsp_list) do
+for _, lserver in pairs(lserver_list) do
   lspconfig[lserver].setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -103,7 +103,7 @@ local elixir = require("elixir")
 local elixirls = require("elixir.elixirls")
 
 elixir.setup {
-  nextls = {enable = false},
+  nextls = { enable = false },
   elixirls = {
     cmd = "elixir-ls",
     enable = true,
