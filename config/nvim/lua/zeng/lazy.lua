@@ -546,7 +546,10 @@ require("lazy").setup({
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons"
-    }
+    },
+    opts = {
+      initial_state = false,
+    },
   },
   {
     "catppuccin/nvim",
