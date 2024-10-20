@@ -259,7 +259,7 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     config = function ()
       require'nvim-treesitter.configs'.setup {
-        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "json", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "yaml", "toml", "elixir", "vimdoc", "bash", "http" },
+        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "json", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "yaml", "toml", "elixir", "vimdoc", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "jsonc" },
         ignore_install = {}, -- List of parsers to ignore installing
         highlight = {
           enable = true,              -- false will disable the whole extension
