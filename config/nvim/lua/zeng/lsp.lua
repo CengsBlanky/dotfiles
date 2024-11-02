@@ -27,6 +27,7 @@ end
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+local blink_cap = require('blink.cmp').get_lsp_capabilities(capabilities)
 -- local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
@@ -37,7 +38,7 @@ local lserver_list = {
 for _, lserver in pairs(lserver_list) do
   lspconfig[lserver].setup {
     on_attach = on_attach,
-    capabilities = capabilities,
+    capabilities = blink_cap,
   }
 end
 
@@ -45,7 +46,7 @@ end
 lspconfig.ts_ls.setup {
   autostart = false,
   on_attach = on_attach,
-  capabilities = capabilities,
+  capabilities = blink_cap,
   root_dir = lspconfig.util.root_pattern("package.json"),
   single_file_support = true,
 }
@@ -53,7 +54,7 @@ lspconfig.ts_ls.setup {
 lspconfig.denols.setup {
   autostart = true,
   on_attach = on_attach,
-  capabilities = capabilities,
+  capabilities = blink_cap,
   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
   single_file_support = false,
 }
@@ -61,7 +62,7 @@ lspconfig.denols.setup {
 lspconfig.htmx.setup {
   autostart = false,
   on_attach = on_attach,
-  capabilities = capabilities,
+  capabilities = blink_cap,
   single_file_support = false,
 }
 
@@ -69,7 +70,7 @@ lspconfig.htmx.setup {
 require("flutter-tools").setup {
   lsp = {
     on_attach = on_attach,
-    capabilities = capabilities,
+    capabilities = blink_cap,
   }
 }
 
@@ -87,7 +88,7 @@ vim.g.rustaceanvim = {
       vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     end,
-    capabilities = capabilities,
+    capabilities = blink_cap,
     default_settings = {
       ['rust-analyzer'] = {
         cargo = {
@@ -112,7 +113,7 @@ elixir.setup {
       enableTestLenses = true,
     },
     on_attach = on_attach,
-    capabilities = capabilities,
+    capabilities = blink_cap,
   },
   projectionist = {
     enable = false

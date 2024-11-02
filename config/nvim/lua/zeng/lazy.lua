@@ -404,7 +404,6 @@ require("lazy").setup({
     -- build = 'nix run .#build-plugin',
 
     ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
     opts = {
       highlight = {
         -- sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -422,12 +421,15 @@ require("lazy").setup({
       -- experimental signature help support
       trigger = { signature_help = { enabled = true } },
       keymap = {
-        hide = {},
-        accept = '<Enter>',
-        select_prev = { '<Up>', '<C-p>', '<S-Tab>' },
-        select_next = { '<Down>', '<C-n>', '<Tab>' },
-        snippet_forward = '<C-j>',
-        snippet_backward = '<C-k>',
+        ['<CR>'] = { 'accept', 'fallback' },
+        ['<C-p>'] = { 'select_prev', 'fallback' },
+        ['<C-n>'] = { 'select_next', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'fallback' },
+        ['<Tab>'] = { 'select_next', 'fallback' },
+        ['<C-j>'] = { 'snippet_forward', 'fallback' },
+        ['<C-k>'] = { 'snippet_backward', 'fallback' },
+        ['<C-f>'] = { 'scroll_documentation_up', 'fallback' },
+        ['<C-b>'] = { 'scroll_documentation_down', 'fallback' },
       }
     }
   },
