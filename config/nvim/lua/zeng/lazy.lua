@@ -338,9 +338,8 @@ require("lazy").setup({
         virtual_text = true,
         severity_sort = true,
       })
-
       require("mason-lspconfig").setup({
-        ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'jdtls', 'kotlin_language_server', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls', 'ruff', 'html', 'cssls', 'ts_ls', 'jsonls', 'svelte', 'htmx', },
+        ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls', 'ruff', 'html', 'cssls', 'ts_ls', 'jsonls', 'svelte', 'htmx', },
       })
     end,
     dependencies = {

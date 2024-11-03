@@ -32,7 +32,7 @@ local blink_cap = require('blink.cmp').get_lsp_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 local lserver_list = {
-  'awk_ls', 'bashls', 'clangd', 'dockerls', 'html', 'jsonls', 'jdtls', 'kotlin_language_server', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'gopls',
+  'awk_ls', 'bashls', 'clangd', 'dockerls', 'html', 'jsonls', 'kotlin_language_server', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'gopls',
 }
 
 for _, lserver in pairs(lserver_list) do
