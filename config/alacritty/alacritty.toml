@@ -14,9 +14,10 @@ background = "#212529"
 foreground = "#d8dee9"
 
 [font]
-normal.family = "SauceCodePro Nerd Font Propo"
+normal.family = "CaskaydiaMono Nerd Font"
 size = 13.0
 offset.y = 0
+normal.style = "SemiLight"
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
