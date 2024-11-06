@@ -195,6 +195,7 @@ require("lazy").setup({
           show_tab_indicators = false,
           numbers = "ordinal",
           tab_size = 0,
+          max_name_length = 128,
           indicator = {
             style = 'underline',
           },
@@ -208,16 +209,16 @@ require("lazy").setup({
       -- keymaps
       local map = vim.api.nvim_set_keymap
       local map_opts = { noremap = true, silent = true }
-      map('n', '<Space>1', '<Cmd>BufferLineGoToBuffer 1<CR>', map_opts)
-      map('n', '<Space>2', '<Cmd>BufferLineGoToBuffer 2<CR>', map_opts)
-      map('n', '<Space>3', '<Cmd>BufferLineGoToBuffer 3<CR>', map_opts)
-      map('n', '<Space>4', '<Cmd>BufferLineGoToBuffer 4<CR>', map_opts)
-      map('n', '<Space>5', '<Cmd>BufferLineGoToBuffer 5<CR>', map_opts)
-      map('n', '<Space>6', '<Cmd>BufferLineGoToBuffer 6<CR>', map_opts)
-      map('n', '<Space>7', '<Cmd>BufferLineGoToBuffer 7<CR>', map_opts)
-      map('n', '<Space>8', '<Cmd>BufferLineGoToBuffer 8<CR>', map_opts)
-      map('n', '<Space>9', '<Cmd>BufferLineGoToBuffer 9<CR>', map_opts)
-      map('n', '<Space>0', '<Cmd>BufferLineGoToBuffer -1<CR>', map_opts)
+      map('n', '<Space>1', '<Cmd>lua require("bufferline").go_to(1, true)<CR>', map_opts)
+      map('n', '<Space>2', '<Cmd>lua require("bufferline").go_to(2, true)<CR>', map_opts)
+      map('n', '<Space>3', '<Cmd>lua require("bufferline").go_to(3, true)<CR>', map_opts)
+      map('n', '<Space>4', '<Cmd>lua require("bufferline").go_to(4, true)<CR>', map_opts)
+      map('n', '<Space>5', '<Cmd>lua require("bufferline").go_to(5, true)<CR>', map_opts)
+      map('n', '<Space>6', '<Cmd>lua require("bufferline").go_to(6, true)<CR>', map_opts)
+      map('n', '<Space>7', '<Cmd>lua require("bufferline").go_to(7, true)<CR>', map_opts)
+      map('n', '<Space>8', '<Cmd>lua require("bufferline").go_to(8, true)<CR>', map_opts)
+      map('n', '<Space>9', '<Cmd>lua require("bufferline").go_to(9, true)<CR>', map_opts)
+      map('n', '<Space>0', '<Cmd>lua require("bufferline").go_to(-1, true)<CR>', map_opts)
       map('n', '<Space>p', '<Cmd>BufferLineTogglePin<CR>', map_opts)
       map('n', '<Space>h', '<Cmd>BufferLineCloseLeft<CR>', map_opts)
       map('n', '<Space>l', '<Cmd>BufferLineCloseRight<CR>', map_opts)
@@ -259,7 +260,7 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     config = function ()
       require'nvim-treesitter.configs'.setup {
-        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "json", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "yaml", "toml", "elixir", "vimdoc", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "jsonc" },
+        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "vimdoc", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", },
         ignore_install = {}, -- List of parsers to ignore installing
         highlight = {
           enable = true,              -- false will disable the whole extension
