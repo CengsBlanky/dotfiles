@@ -18,9 +18,10 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 vim.api.nvim_create_autocmd({"BufEnter"}, {
     callback = function()
       if not vim.bo.modifiable or vim.bo.readonly then
-        vim.keymap.set('n', 'u', '<C-b>', { buffer = true, silent = true, nowait = true })
-        vim.keymap.set('n', '<Space>', '<C-f>', { buffer = true, silent = true, nowait = true })
-        vim.keymap.set('n', 'q', ':bd<CR>', { buffer = true, silent = true, nowait = true })
+        local opts = { buffer = true, silent = true, nowait = true }
+        vim.keymap.set('n', 'u', '<C-b>', opts)
+        vim.keymap.set('n', '<Space>', '<C-f>', opts)
+        vim.keymap.set('n', 'q', ':bd<CR>', opts)
       end
     end
 })
