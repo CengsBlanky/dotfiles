@@ -14,9 +14,10 @@ background = "#212529"
 foreground = "#d8dee9"
 
 [font]
+normal.family = "UbuntuSansMono Nerd Font"
 # normal.family = "D2CodingLigature Nerd Font"
 # normal.family = "Hasklug Nerd Font"
-normal.family = "UbuntuSansMono Nerd Font"
+# normal.family = "0xProto Nerd Font"
 # normal.family = "SauceCodePro Nerd Font"
 size = 14.0
 offset.y = 0

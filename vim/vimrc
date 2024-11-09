@@ -97,8 +97,8 @@ set background=dark
 colorscheme habamax
 hi Normal guibg=NONE ctermbg=NONE guifg=LightGray gui=NONE
 hi SignColumn guibg=NONE
-hi StatusLine guibg=DarkGray guifg=#2d2d2d gui=bold cterm=bold
-hi StatusLineNC guifg=#252525 guibg=#666666 gui=NONE
+hi StatusLine guibg=NONE guifg=#808f8f gui=bold cterm=bold
+hi StatusLineNC guifg=#666666 guibg=NONE gui=NONE
 hi CursorLineNr guifg=#ebcb8b guibg=NONE
 hi LineNr guifg=DarkGray
 hi VertSplit guibg=NONE guifg=#888888
