@@ -510,7 +510,8 @@ require("lazy").setup({
             local pair = opts.line:sub(opts.col - 1, opts.col)
             return vim.tbl_contains({'()', '[]', '{}'}, pair)
           end)
-          :with_move(cond.none()),
+          :with_move(cond.none())
+          :with_del(cond.none()),
         Rule('|', '|', "rust"):with_move(cond.done()),
         Rule('<', '>')
           :with_pair(cond.before_regex("[a-zA-Z]"))
