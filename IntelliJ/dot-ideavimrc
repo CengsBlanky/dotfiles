@@ -70,9 +70,6 @@ nnoremap <leader>s :action Run<CR>
 nnoremap <leader>d :action Debug<CR>
 nnoremap <leader>l :action ToggleLineBreakpoint<CR>
 nnoremap <leader>c :action CompileProject<CR>
-" window split
-nnoremap <leader>- <C-w>s
-nnoremap <leader>/ <C-w>v
 " move from split windows
 nnoremap <A-h> <C-w>h
 nnoremap <A-l> <C-w>l
@@ -82,8 +79,8 @@ nnoremap <A-o> <C-w>o
 nnoremap <A-w> <C-w>c
 
 " code actions
-nnoremap g] :action GotoNextError<CR>
-nnoremap g[ :action GotoPreviousError<CR>
+nnoremap <space>j :action GotoNextError<CR>
+nnoremap <space>k :action GotoPreviousError<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gt :action GotoTest<CR>
@@ -124,4 +121,7 @@ sethandler <A-w> n-v:vim i:ide
 sethandler <C-f> i-n:ide v:vim
 sethandler <C-j> n-v:vim i:ide
 sethandler <C-k> n-v:vim i:ide
+" cyclic expand word and backward
+sethandler <A-n> i:vim n-v:ide
+sethandler <A-p> i:vim n-v:ide
 " Find more examples here: https://jb.gg/share-ideavimr
