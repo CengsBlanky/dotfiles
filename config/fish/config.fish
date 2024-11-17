@@ -98,6 +98,8 @@ if status is-interactive
     abbr --add glg "git log --author=(git config user.name) --oneline -n 10"
     abbr --add gsh "git show"
     abbr --add note "joplin"
+    # py for python
+    abbr --add py "python"
     # django
     abbr --add pymanage "python manage.py"
     # replace which command
