@@ -16,14 +16,14 @@ foreground = "#d8dee9"
 [font]
 # normal.family = "UbuntuSansMono Nerd Font"
 # normal.family = "Cousine Nerd Font"
-normal.family = "CaskaydiaMono Nerd Font"
-normal.style = "SemiLight"
+# normal.family = "CaskaydiaMono Nerd Font"
+# normal.style = "SemiLight"
 # normal.family = "Hasklug Nerd Font"
 # normal.family = "Roboto Mono Nerd Font"
 # normal.family = "SauceCodePro Nerd Font"
-# normal.family = "MesloLGS Nerd Font"
+normal.family = "MesloLGS Nerd Font"
 # normal.family = "HackZeroSlash Nerd Font"
-size = 13.0
+size = 12.5
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"

@@ -555,6 +555,11 @@ require("lazy").setup({
           comments = { "italic" },
           conditionals = {},
         },
+        color_overrides = {
+          all = {
+            text = "#ced4da"
+          }
+        },
         integrations = {
           aerial = true,
           mason = true,
