@@ -21,8 +21,10 @@ foreground = "#d8dee9"
 # normal.family = "Hasklug Nerd Font"
 # normal.family = "Roboto Mono Nerd Font"
 # normal.family = "SauceCodePro Nerd Font"
-normal.family = "MesloLGS Nerd Font"
+# normal.family = "MesloLGS Nerd Font"
 # normal.family = "HackZeroSlash Nerd Font"
+normal.family = "DejaVuSansM Nerd Font"
+
 size = 12.5
 
 [[keyboard.bindings]]

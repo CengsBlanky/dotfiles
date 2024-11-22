@@ -102,7 +102,7 @@ hi StatusLineNC guifg=#666666 guibg=NONE gui=NONE
 hi CursorLineNr guifg=#ebcb8b guibg=NONE
 hi LineNr guifg=DarkGray
 hi VertSplit guibg=NONE guifg=#888888
-set statusline=%-5r%f\ %m%=%-10(%{&fileformat}%Y%)%16(%l/%L%)
+set statusline=%-5r%f\ %m%=%l/%L%-12(\ \ %{&fileencoding}%)%{&fileformat}%Y
 
 autocmd VimEnter * set formatoptions-=o textwidth=0
 autocmd VimEnter *.log set filetype=log
