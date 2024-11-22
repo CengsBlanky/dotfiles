@@ -25,7 +25,7 @@ foreground = "#d8dee9"
 # normal.family = "HackZeroSlash Nerd Font"
 normal.family = "DejaVuSansM Nerd Font"
 
-size = 12.5
+size = 12
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
