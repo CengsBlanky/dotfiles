@@ -142,3 +142,17 @@ PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for 
 
 由Rust编程语言实现的远程桌面软件: [](https://rustdesk.com/)
 
+### pydoro(https://github.com/JaDogg/pydoro)
+
+番茄时钟🍅
+
+使用pipx安装：
+```
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+
+pipx install pydoro
+pipx inject pydoro pygame
+```
+
+直接在命令行使用番茄钟并获取声音通知
