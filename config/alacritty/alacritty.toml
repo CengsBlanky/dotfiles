@@ -24,8 +24,9 @@ builtin_box_drawing = true
 # normal.family = "SauceCodePro Nerd Font"
 # normal.family = "MesloLGS Nerd Font"
 # normal.family = "HackZeroSlash Nerd Font"
-normal.family = "DejaVuSansM Nerd Font"
-size = 12
+# normal.family = "DejaVuSansM Nerd Font"
+normal.family = "JetBrainsMono Nerd Font"
+size = 13
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
