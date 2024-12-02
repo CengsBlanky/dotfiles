@@ -1,4 +1,5 @@
-  {
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+{
     'hrsh7th/nvim-cmp',
     event = { "InsertEnter", "CmdlineEnter" },
     config = function()
