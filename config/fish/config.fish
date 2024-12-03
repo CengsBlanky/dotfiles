@@ -27,7 +27,7 @@ if status is-interactive
     set -gx MY_CUR_LOCATION '雨花台'
     # add nvim default install path
     set PATH $PATH "/usr/local/nvim/bin"
-    # sdkman
+    # SDKMAN start
     set -l SDKMAN_CANDIDATES "$HOME/.sdkman/candidates"
     # java
     set -gx JAVA_HOME "$SDKMAN_CANDIDATES/java/current"
@@ -41,12 +41,13 @@ if status is-interactive
     # springboot
     set -gx SPRING_HOME "$SDKMAN_CANDIDATES/springboot/current"
     set PATH $PATH "$SPRING_HOME/bin"
-
     # jdtls
     # set -gx JDTLS_JVM_ARGS "-javaagent:$HOME/.m2/lib/lombok-1.18.24.jar"
-    # kotlin
+    # Kotlin
     set -gx KOTLIN_HOME "$SDKMAN_CANDIDATES/kotlin/current"
     set PATH $PATH "$KOTLIN_HOME/bin"
+    # SDKMAN end
+
     # rust
     set PATH $PATH "$HOME/.cargo/bin"
     # golang
