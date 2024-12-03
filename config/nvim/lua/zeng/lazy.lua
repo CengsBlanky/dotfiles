@@ -170,8 +170,8 @@ require("lazy").setup({
     'mattn/emmet-vim',
     init = function ()
       vim.g.user_emmet_mode='i'
-      vim.g.user_emmet_expandabbr_key='<C-e>'
-      vim.g.user_emmet_expandword_key='<C-a>'
+      vim.g.user_emmet_expandabbr_key='<M-j>'
+      vim.g.user_emmet_expandword_key='<M-k>'
     end
   },
   {
