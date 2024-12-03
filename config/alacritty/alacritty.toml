@@ -15,6 +15,7 @@ foreground = "#d8dee9"
 
 [font]
 builtin_box_drawing = true
+normal.family = "IMWritingMono Nerd Font"
 # normal.family = "UbuntuSansMono Nerd Font"
 # normal.family = "Cousine Nerd Font"
 # normal.family = "CaskaydiaMono Nerd Font"
@@ -25,7 +26,7 @@ builtin_box_drawing = true
 # normal.family = "MesloLGS Nerd Font"
 # normal.family = "HackZeroSlash Nerd Font"
 # normal.family = "DejaVuSansM Nerd Font"
-normal.family = "JetBrainsMono Nerd Font"
+# normal.family = "JetBrainsMono Nerd Font"
 size = 13
 
 [[keyboard.bindings]]
