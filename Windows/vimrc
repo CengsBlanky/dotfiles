@@ -1,9 +1,11 @@
-" basic {{{
+vim9script
+# basic {{{
 set nocompatible
+g:skip_defaults_vim = 1
 filetype plugin indent on
 syntax on
-" set encoding=utf-8
-let $LANG='en_US'
+set encoding=utf-8
+$LANG = 'en_US'
 set hidden
 set number
 set relativenumber
@@ -13,9 +15,13 @@ set ignorecase
 set smartcase
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
+set cindent
 set showcmd
 set laststatus=2
+set completeopt+=popup
+set wildmode=list:longest,full
 set wildmenu
+set wildoptions=pum
 set showmatch
 set autoread
 set autowrite
@@ -26,159 +32,260 @@ set nobackup
 set noundofile
 set clipboard=unnamed
 set hlsearch
-set mouse=n
+set mouse=
 set mousehide
-set nocursorline
+set cursorline
 set splitright
 set splitbelow
 set textwidth=0
 set timeoutlen=1000
 set ttimeoutlen=5
-" }}}
-" keymaps {{{
+set shortmess-=S
+set textwidth=0
+set noshowmode
+set novisualbell
+set belloff=all
+set t_vb=
+if has("gui_running")
+  set guicursor+=a:blinkon0
+  set guifont=JetBrainsMonoNL\ NFM\ Light:h13
+  set guioptions-=m
+  set guioptions-=T
+  set guioptions-=L
+  set guioptions-=r
+  # Maximize gvim window (for an alternative on Windows, see simalt below).
+  autocmd GUIEnter * simalt ~x
+else
+  autocmd ColorScheme * hi Normal guibg=NONE ctermbg=NONE
+endif
+# }}}
+# keymaps {{{
 nnoremap <Enter> :w<CR>
 nnoremap <silent><C-s> :wa<CR>
-nnoremap <leader>q :x<CR>
-nnoremap <leader>b :bd<CR>
+nnoremap <leader>` g~iw
+vnoremap <leader>` g~
 nnoremap <silent><C-n> :bn<CR>
-nnoremap <Space> <C-f>
-nnoremap <Backspace> <C-b>
-nnoremap <silent><Tab> :Lexplore<CR>
-nnoremap <leader>- :sp<CR>
-nnoremap <leader>/ :vs<CR>
+nnoremap <nowait><C-p> :b#<CR>
+nnoremap <silent><nowait><leader>q :xa<CR>
+nnoremap <silent><nowait><space>b :bd<CR>
+nnoremap <silent><leader>- :sp<CR>
+nnoremap <silent><leader>/ :vs<CR>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <silent><leader>s :set hlsearch!<CR>
+nnoremap <C-j> <C-f>
+nnoremap <C-k> <C-b>
 nnoremap gy :%y<CR>
-nnoremap gl ^vg_y
-
+nnoremap gl ^yg_
+nnoremap <silent><M-h> <C-w>h
+nnoremap <silent><M-j> <C-w>j
+nnoremap <silent><M-k> <C-w>k
+nnoremap <silent><M-l> <C-w>l
+nnoremap <silent><M-w> <C-w>c
+nnoremap <silent><M-o> <C-w>o
+nnoremap ]q :cnext<CR>
+nnoremap [q :cprev<CR>
+nnoremap ]Q :clast<CR>
+nnoremap [Q :cfirst<CR>
+nnoremap <space>s g<C-]>
+nnoremap g_ ^vg_
+# insert mode keymap
 inoremap jk <ESC>
-inoremap {<CR> {<CR>}<Esc>O
-inoremap (<CR> (<CR>)<Esc>O
-inoremap {<Space> {<Space><Space>}<Esc>hi
-inoremap [<Space> [<Space><Space>]<Esc>hi
+inoremap <C-e> <Esc>A
+inoremap <C-s> <Esc>I
+inoremap <C-a> <Esc>gI
+# delete other buffers {{{
+nnoremap <silent> <space>o :BufOnly<CR>
+command! -nargs=? -complete=buffer -bang BufOnly {
+		g:BufOnly('<args>', '<bang>')
+	}
+def g:BufOnly(b: string, bang: string): void
+	var buffer: number
 
-nnoremap <leader>t :Curtime<CR>
-nnoremap <leader>d :Curdate<CR>
-" }}}
-" command {{{
-command! Editrc execute 'edit $MYVIMRC'
-command! Reloadrc execute 'source $MYVIMRC'
-command! -nargs=+ Grep execute 'silent grep! <args>' | copen
-" insert current datetime
-command! Curtime :put! = strftime('%Y-%m-%d %H:%M:%S')
-command! Curdate :put! = strftime('%Y-%m-%d')
-" }}}
-" plugins {{{
-if !has("gui_running")
-let plugin_path="/d/.vim/plugins"
-let plugin_manager="/d/.vim/plug.vim"
+	if b == ''
+		# No buffer provided, use the current buffer.
+		buffer = bufnr('%')
+	elseif str2nr(b) > 0
+		# A buffer number was provided.
+		buffer = bufnr(str2nr(b))
+	else
+		# A buffer name was provided.
+		buffer = bufnr(b)
+	endif
+
+	if buffer == -1
+		echohl ErrorMsg
+		echomsg 'No matching buffer for ' .. b
+		echohl None
+		return
+	endif
+
+	var last_buffer: number = bufnr('$')
+
+	var delete_count = 0
+
+	for n in range(1, last_buffer)
+		if n != buffer && buflisted(n)
+			if bang == '' && getbufvar(n, '&modified')
+				echohl ErrorMsg
+				echomsg 'No write since last change for buffer ' ..
+							n .. ' (add ! to override)'
+				echohl None
+			else
+				silent exe 'bdel' .. bang .. ' ' .. n
+				if ! buflisted(n)
+					++delete_count
+				endif
+			endif
+		endif
+	endfor
+
+	if delete_count == 1
+		echomsg delete_count .. " buffer deleted"
+	elseif delete_count > 1
+		echomsg delete_count .. " buffers deleted"
+	endif
+
+enddef
+# }}}
+
+# }}}
+# command {{{
+command! Reloadrc source D:/DevTools/gvim/Vim/_vimrc
+command! Editrc edit $HOME/AppData/Local/nvim/_vimrc
+command! MakeTags !ctags -R .
+command! Fname @+ = expand('%:t')
+command! Pname @+ = expand('%:p')
+command! Cname @+ = substitute(expand('%:p:.'), "\\", "/", "g")
+command! -nargs=1 S @/ = <q-args>
+# }}}
+# plugins {{{
+var plugin_path = "D:/vimconf/plugins"
+var plugin_manager = "D:/vimconf/plug.vim"
 execute 'source' plugin_manager
 call plug#begin(fnameescape(plugin_path))
-Plug 'tpope/vim-surround.git'
-Plug 'tpope/vim-commentary.git'
-Plug 'justinmk/vim-sneak.git'
-Plug 'junegunn/fzf.git', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim.git'
-Plug 'junegunn/vim-easy-align.git' " align text easily
-Plug 'preservim/nerdtree.git', { 'on': 'NERDTreeToggle'}
-Plug 'romainl/vim-cool.git' " better hlsearch
-Plug 'mattn/emmet-vim.git' " powerful assert tags
-Plug 'ap/vim-buftabline.git'
-Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'justinmk/vim-sneak'
+Plug 'junegunn/vim-easy-align'
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle'}
+Plug 'junegunn/fzf',
+Plug 'junegunn/fzf.vim',
+Plug 'romainl/vim-cool'
+Plug 'terrastruct/d2-vim'
+Plug 'Eliot00/auto-pairs'
+Plug 'ap/vim-buftabline'
+Plug 'sainnhe/everforest'
 call plug#end()
-
-" NERDTreeToggle {{{
-let NERDTreeMinimalUI=1
-let g:NERDTreeQuitOnOpen=3
-let g:NERDTreeStatusline=''
-let NERDTreeIgnore=[
-      \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]', '\.bin$[[file]]', '\.svg$[[file]]', '\.png$[[file]]', '\.jpg$[[file]]',
-      \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
-      \ ]
+# NERDTreeToggle {{{
+g:NERDTreeMinimalUI = 1
+g:NERDTreeQuitOnOpen = 3
+g:NERDTreeCaseSensitiveFS  =  1
+g:NERDTreeShowLineNumbers = 1
+g:NERDTreeWinSize = 60
+g:NERDTreeIgnore = [
+    '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]', '\.bin$[[file]]', '\.svg$[[file]]', '\.png$[[file]]', '\.jpg$[[file]]',
+    '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
+]
 nnoremap <silent><Tab> :NERDTreeToggle<CR>
-" }}}
-" buftabline {{{
-let g:buftabline_show=1
-let g:buftabline_indicators=1
-let g:buftabline_numbers=2
-nmap <leader>1 <Plug>BufTabLine.Go(1)
-nmap <leader>2 <Plug>BufTabLine.Go(2)
-nmap <leader>3 <Plug>BufTabLine.Go(3)
-nmap <leader>4 <Plug>BufTabLine.Go(4)
-nmap <leader>5 <Plug>BufTabLine.Go(5)
-nmap <leader>6 <Plug>BufTabLine.Go(6)
-nmap <leader>7 <Plug>BufTabLine.Go(7)
-nmap <leader>8 <Plug>BufTabLine.Go(8)
-nmap <leader>9 <Plug>BufTabLine.Go(9)
-nmap <leader>0 <Plug>BufTabLine.Go(10)
-" }}}
-" junegunn/fzf {{{
-" [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
-" [[B]Commits] Customize the options used by 'git log':
-let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-" [Tags] Command to generate tags file
-let g:fzf_tags_command = 'ctags -R'
-
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading  --smart-case -- %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
-
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-nnoremap <C-p> :Files<cr>
-nnoremap <C-l> :RG<cr>
-
-" }}}
-" gruvbox {{{
-colorscheme gruvbox
-let g:gruvbox_transparent_bg=1
-let g:gruvbox_bold=0
-" }}}
-" end plugins load
-endif
-" }}}
-" autocmd {{{
-" disable beep and screen flash both in terminal vim and gvim
-autocmd VimEnter * set vb t_vb=
-autocmd FileType javascript,html,vim set tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType markdown setlocal foldlevel=6
-autocmd FileType vim setlocal foldmethod=marker
-autocmd FileType * set formatoptions-=o
-" code run
-autocmd FileType python nnoremap <leader>r :!python %<CR>
-autocmd FileType go nnoremap <leader>r :!go run %<CR>
-autocmd FileType java inoremap ; <Esc>A;
-" code formatter
-autocmd FileType go nnoremap <leader>f :silent !gofmt -w %<CR>
-autocmd FileType java nnoremap <leader>r :!javac %:t && java %:t:r<CR>
-autocmd FileType json nnoremap <silent><leader>f :%!jq<CR>
-autocmd FileType json vnoremap <silent><leader>f :'<,'>!jq<CR>
-autocmd FileType xml nnoremap <silent><leader>f :%!xmllint --format -<CR>
-autocmd FileType xml vnoremap <silent><leader>f :'<,'>!xmllint --format -<CR>
-autocmd BufRead *.fish setlocal filetype=fish
-autocmd BufRead *.log setlocal filetype=log
-" }}}
-" netrw setting {{{
-let g:netrw_winsize=40
-let g:netrw_usetab=1
-let g:netrw_keepdir=0
-" }}}
-" highlight {{{
+# }}}
+# buftabline {{{
+g:buftabline_show = 1
+g:buftabline_indicators = 1
+g:buftabline_numbers = 2
+nmap <nowait><Space>1 <Plug>BufTabLine.Go(1)
+nmap <nowait><Space>2 <Plug>BufTabLine.Go(2)
+nmap <nowait><Space>3 <Plug>BufTabLine.Go(3)
+nmap <nowait><Space>4 <Plug>BufTabLine.Go(4)
+nmap <nowait><Space>5 <Plug>BufTabLine.Go(5)
+nmap <nowait><Space>6 <Plug>BufTabLine.Go(6)
+nmap <nowait><Space>7 <Plug>BufTabLine.Go(7)
+nmap <nowait><Space>8 <Plug>BufTabLine.Go(8)
+nmap <nowait><Space>9 <Plug>BufTabLine.Go(9)
+nmap <nowait><Space>0 <Plug>BufTabLine.Go(10)
+# }}}
+# auto-pair {{{
+g:AutoPairsCenterLine = 0
+g:AutoPairsShortcutToggle = '<M-}>'
+#}}}
+# fzf {{{
+g:fzf_preview_window = []
+nnoremap <Leader>f :FZF<CR>
+nnoremap <Leader>g :RG<CR>
+nnoremap <Leader>b :Buffers<CR>
+# }}}
+# theme {{{
+set termguicolors
 set background=dark
+g:everforest_transparent_background = 2
+g:everforest_better_performance = 1
+g:everforest_enable_italic = 1
+colorscheme everforest
+# }}}
+# }}}
+# autocmd {{{
+&t_SI = "\<Esc>[6 q"
+&t_SR = "\<Esc>[4 q"
+&t_EI = "\<Esc>[2 q"
+autocmd FileType gitcommit set textwidth=0
+autocmd FileType * set formatoptions-=o
+autocmd FileType javascript,html,vim,json,text,typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType markdown setlocal foldlevel=6
+autocmd FileType xml setlocal nowrap
+autocmd FileType vim setlocal foldmethod=marker
+autocmd FileType json,javascript,java,go,python setlocal nowrap
+autocmd FileType tags,qf nnoremap <buffer> <Enter> <Enter>
+autocmd BufRead *.log setlocal filetype=log
+autocmd BufRead *.painless setlocal filetype=java
+autocmd BufRead *.xxd,*.hex setlocal filetype=xxd
+# formatter
+autocmd FileType json setlocal formatprg=jq
+autocmd BufRead *.json,*.tmp nnoremap <nowait><silent> <Space>f :%!jq<CR>
+# auto insert commit message
+autocmd FileType gitcommit SetCommitMsg()
+def SetCommitMsg()
+  var commit_no = trim(system('git branch --show-current | grep -ioE "(bug|us)[0-9]+"'))
+  if len(commit_no) > 0
+    var commit_msg = "【问题单号 Defect】" .. commit_no .. "【修改说明 Modification】"
+    setline(1, commit_msg)
+  endif
+    exec "norm! A"
+enddef
+
+# Set UTF-8 as the default encoding for commit messages
+autocmd BufReadPre COMMIT_EDITMSG,MERGE_MSG,git-rebase-todo setlocal fileencodings=utf-8
+
+# Remember the positions in files with some git-specific exceptions"
+autocmd BufReadPost *
+  | if line("'\"") > 0 && line("'\"") <= line("$") && expand("%") !~ "ADD_EDIT.patch" && expand("%") !~ "addp-hunk-edit.diff" && index(['xxd', 'gitrebase', 'commit', 'gitcommit'], &filetype) == -1
+  |     execute "normal! g`\""
+  | endif
+
+autocmd BufNewFile,BufRead *.patch set filetype=diff
+
+# clear syntax for file larger than 10000 lines
+autocmd BufWinEnter * if line("$") >= 100000 | syntax clear | endif
+# use less keymap for read-only buffers
+autocmd BufEnter * ReadOnlyKeymap()
+def ReadOnlyKeymap()
+  if !&modifiable || &readonly
+    nnoremap <buffer><nowait><silent>u <C-b>
+    nnoremap <buffer><nowait><silent><Space> <C-f>
+    nnoremap <buffer><nowait><silent>q :bd<CR>
+  endif
+enddef
+
+# }}}
+# statusline {{{
+set statusline=%-5r%f%m%=%{FugitiveStatusline()}%18(%l/%L%)%18(%{&fileformat}%Y%)%9(\ %{&fileencoding}%)
+# }}}
+# highlight {{{
 hi link markdownError Normal
-hi Folded ctermbg=NONE
-hi MatchParen cterm=Bold,Underline ctermfg=NONE ctermbg=NONE gui=Bold,Underline guifg=NONE guibg=NONE
-" }}}
-" statusline {{{
-set statusline=\ %h\ %w
-set statusline=\ %f\ \(%{&ff}\)\ %r
-set statusline+=\ %m
-set statusline+=%=
-set statusline+=%y
-set statusline+=%8.50l/%-8.50L
-set statusline+=%-4.10P
-" }}}
+hi Folded ctermbg=NONE ctermfg=DarkGray
+hi Comment ctermfg=DarkGray guifg=DarkGray cterm=NONE gui=NONE
+hi Statusline cterm=bold gui=bold guifg=#587284 guibg=NONE
+hi StatuslineNC gui=NONE guifg=#4c566a guibg=NONE
+hi BufTabLineCurrent cterm=bold gui=bold guifg=#eceff4 guibg=#5e819a
+hi BufTabLineHidden gui=NONE guifg=#adb5bd guibg=#2e3440
+hi BufTabLineFill guibg=NONE guifg=NONE gui=NONE
+hi TabLineFill guibg=NONE guifg=NONE
+# }}}
