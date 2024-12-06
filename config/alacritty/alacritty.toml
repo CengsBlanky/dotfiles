@@ -15,11 +15,11 @@ foreground = "#d8dee9"
 
 [font]
 builtin_box_drawing = true
-normal.family = "IMWritingMono Nerd Font"
+# normal.family = "IMWritingMono Nerd Font"
 # normal.family = "UbuntuSansMono Nerd Font"
 # normal.family = "Cousine Nerd Font"
-# normal.family = "CaskaydiaMono Nerd Font"
-# normal.style = "SemiLight"
+normal.family = "CaskaydiaMono Nerd Font"
+normal.style = "SemiLight"
 # normal.family = "Hasklug Nerd Font"
 # normal.family = "Roboto Mono Nerd Font"
 # normal.family = "SauceCodePro Nerd Font"
