@@ -44,7 +44,7 @@ end
 
 -- nodejs bun deno
 lspconfig.ts_ls.setup {
-  autostart = false,
+  autostart = true,
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern("package.json"),
@@ -52,7 +52,7 @@ lspconfig.ts_ls.setup {
 }
 
 lspconfig.denols.setup {
-  autostart = true,
+  autostart = false,
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),

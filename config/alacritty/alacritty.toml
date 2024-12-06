@@ -27,7 +27,7 @@ normal.family = "Hasklug Nerd Font"
 # normal.family = "HackZeroSlash Nerd Font"
 # normal.family = "DejaVuSansM Nerd Font"
 # normal.family = "JetBrainsMono Nerd Font"
-size = 13
+size = 12
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
