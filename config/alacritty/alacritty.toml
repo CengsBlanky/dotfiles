@@ -20,14 +20,15 @@ builtin_box_drawing = true
 # normal.family = "Cousine Nerd Font"
 # normal.family = "CaskaydiaMono Nerd Font"
 # normal.style = "SemiLight"
-normal.family = "Hasklug Nerd Font"
-# normal.family = "Roboto Mono Nerd Font"
-# normal.family = "SauceCodePro Nerd Font"
+# normal.family = "Hasklug Nerd Font"
+normal.family = "SauceCodePro Nerd Font"
+normal.style = "medium"
 # normal.family = "MesloLGS Nerd Font"
 # normal.family = "HackZeroSlash Nerd Font"
 # normal.family = "DejaVuSansM Nerd Font"
-# normal.family = "JetBrainsMono Nerd Font"
-size = 12
+# normal.family = "JetBrainsMono NL Nerd Font"
+# normal.family = "IosevkaTerm Nerd Font"
+size = 14
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
