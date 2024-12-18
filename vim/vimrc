@@ -31,6 +31,7 @@ set noswapfile
 set nobackup
 set noundofile
 set clipboard+=unnamed
+set clipboard-=autoselect
 set hlsearch
 set mouse=
 set mousehide
@@ -202,7 +203,6 @@ nmap <nowait><Space>0 <Plug>BufTabLine.Go(10)
 # }}}
 # tmux navigator {{{
 g:tmux_navigator_no_mappings = 1
-
 nnoremap <silent> <M-h> :<C-U>TmuxNavigateLeft<cr>
 nnoremap <silent> <M-j> :<C-U>TmuxNavigateDown<cr>
 nnoremap <silent> <M-k> :<C-U>TmuxNavigateUp<cr>

@@ -162,8 +162,8 @@ require("lazy").setup({
     'mattn/emmet-vim',
     init = function ()
       vim.g.user_emmet_mode='i'
-      vim.g.user_emmet_expandabbr_key='<M-j>'
-      vim.g.user_emmet_expandword_key='<M-k>'
+      vim.g.user_emmet_expandabbr_key='<M-e>'
+      vim.g.user_emmet_expandword_key='<M-m>'
     end
   },
   {
@@ -234,12 +234,8 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons"
     },
   },
-  'junegunn/goyo.vim',
   {
     'christoomey/vim-tmux-navigator',
-    init = function ()
-      vim.g.tmux_navigator_no_mappings = 1
-    end,
     keys = {
       { "<M-h>", "<cmd>TmuxNavigateLeft<CR>", { silent = true, nowait = true } },
       { "<M-j>", "<cmd>TmuxNavigateDown<CR>", { silent = true, nowait = true } },
