@@ -30,8 +30,7 @@ set updatetime=100
 set noswapfile
 set nobackup
 set noundofile
-set clipboard+=unnamed
-set clipboard-=autoselect
+set clipboard=unnamedplus
 set hlsearch
 set mouse=
 set mousehide
