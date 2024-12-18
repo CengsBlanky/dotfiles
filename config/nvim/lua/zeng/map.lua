@@ -27,6 +27,7 @@ map('n', '<M-,>', '<C-w><', opts)
 map('n', '<M-.>', '<C-w>>', opts)
 map('n', '<M-t>', '<C-w>+', opts)
 map('n', '<M-s>', '<C-w>-', opts)
+map('n', 'p', ']p', opts)
 -- buffer ops
 map('n', '<C-p>', '<Cmd>b#<CR>', opts)
 map('n', '<Space>b', '<Cmd>bd<CR>', opts)
