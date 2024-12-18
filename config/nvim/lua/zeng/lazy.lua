@@ -408,6 +408,14 @@ require("lazy").setup({
         ['<C-k>'] = { 'snippet_backward', 'fallback' },
         ['<C-f>'] = { 'scroll_documentation_up', 'fallback' },
         ['<C-b>'] = { 'scroll_documentation_down', 'fallback' },
+      },
+      completion = {
+        keyword = {
+          exclude_from_prefix_regex = '[\\-,;\"\'/=~`]'
+        },
+        trigger = {
+          show_on_insert_on_trigger_character = false,
+        }
       }
     }
   },
