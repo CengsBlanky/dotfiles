@@ -170,7 +170,6 @@ Plug 'junegunn/fzf.vim',
 Plug 'romainl/vim-cool'
 Plug 'terrastruct/d2-vim'
 Plug 'Eliot00/auto-pairs'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'ap/vim-buftabline'
 Plug 'sainnhe/everforest'
 call plug#end()
@@ -200,15 +199,6 @@ nmap <nowait><Space>7 <Plug>BufTabLine.Go(7)
 nmap <nowait><Space>8 <Plug>BufTabLine.Go(8)
 nmap <nowait><Space>9 <Plug>BufTabLine.Go(9)
 nmap <nowait><Space>0 <Plug>BufTabLine.Go(10)
-# }}}
-# tmux navigator {{{
-g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <M-h> :<C-U>TmuxNavigateLeft<cr>
-nnoremap <silent> <M-j> :<C-U>TmuxNavigateDown<cr>
-nnoremap <silent> <M-k> :<C-U>TmuxNavigateUp<cr>
-nnoremap <silent> <M-l> :<C-U>TmuxNavigateRight<cr>
-nnoremap <silent> <M-\> :<C-U>TmuxNavigatePrevious<cr>
-
 # }}}
 # auto-pair {{{
 g:AutoPairsCenterLine = 0

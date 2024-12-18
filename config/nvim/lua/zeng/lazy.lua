@@ -235,16 +235,6 @@ require("lazy").setup({
     },
   },
   {
-    'christoomey/vim-tmux-navigator',
-    keys = {
-      { "<M-h>", "<cmd>TmuxNavigateLeft<CR>", { silent = true, nowait = true } },
-      { "<M-j>", "<cmd>TmuxNavigateDown<CR>", { silent = true, nowait = true } },
-      { "<M-k>", "<cmd>TmuxNavigateUp<CR>", { silent = true, nowait = true } },
-      { "<M-l>", "<cmd>TmuxNavigateRight<CR>", { silent = true, nowait = true } },
-      { "<M-\\>", "<cmd>TmuxNavigatePrevious<CR>", { silent = true, nowait = true } },
-    },
-  },
-  {
     'nvim-treesitter/nvim-treesitter',
     config = function ()
       require'nvim-treesitter.configs'.setup {
