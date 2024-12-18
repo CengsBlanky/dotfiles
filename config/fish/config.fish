@@ -127,7 +127,9 @@ if status is-interactive
         zoxide init --cmd cd fish | source
     end
     # uv autocompletion
-    uv generate-shell-completion fish | source
-    uvx --generate-shell-completion fish | source
+    if command -q uv
+        uv generate-shell-completion fish | source
+        uvx --generate-shell-completion fish | source
+    end
 end
 
