@@ -76,6 +76,8 @@ if status is-interactive
     set --export PATH $BUN_INSTALL/bin $PATH
     # deno
     set PATH $PATH "$HOME/.deno/bin"
+    # ruby
+    fish_add_path --prepend "$HOME/.rubies/ruby-stable/bin"
 
     # general
     set PATH $PATH "$HOME/.local/bin"
