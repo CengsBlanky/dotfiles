@@ -214,7 +214,7 @@ nnoremap <Leader>b :Buffers<CR>
 set termguicolors
 set background=dark
 g:everforest_better_performance = 1
-g:everforest_enable_italic = 1
+g:everforest_enable_italic = 0
 colorscheme everforest
 # }}}
 # }}}
