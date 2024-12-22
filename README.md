@@ -72,7 +72,7 @@ joplin笔记应用，支持主流网盘笔记同步，命令行程序高效简�
 ### translate-shell
 
 命令行翻译工具，支持多种翻译引擎
-[github](https://github.com/soimort/translate-shell)
+[translate-shell github](https://github.com/soimort/translate-shell)
 通过包管理器安装：
 ```
 sudo apt install translate-shell
