@@ -28,7 +28,7 @@ normal.style = "medium"
 # normal.family = "DejaVuSansM Nerd Font"
 # normal.family = "JetBrainsMono NL Nerd Font"
 # normal.family = "IosevkaTerm Nerd Font"
-size = 14
+size = 13
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
