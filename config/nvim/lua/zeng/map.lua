@@ -19,7 +19,7 @@ map('n', '<leader>`', 'g~iw', opts)
 map('v', '<leader>`', 'g~', opts)
 map('v', '<C-j>', '<C-f>', opts)
 map('v', '<C-k>', '<C-b>', opts)
-map('n', 'p', ']p', opts)
+map('n', 'p', '"0]p', opts)
 -- buffer ops
 map('n', '<C-p>', '<Cmd>b#<CR>', opts)
 map('n', '<Space>b', '<Cmd>bd<CR>', opts)
