@@ -75,7 +75,6 @@ nnoremap <C-j> <C-f>
 nnoremap <C-k> <C-b>
 nnoremap gy :%y<CR>
 nnoremap gl ^yg_
-nnoremap p "0]p
 nnoremap <silent><M-w> <C-w>c
 nnoremap <silent><M-o> <C-w>o
 nnoremap ]q :cnext<CR>
