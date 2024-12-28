@@ -427,6 +427,7 @@ require("lazy").setup({
           c = { "c_format" },
           cpp = { "c_format" },
           go = { "gofmt", "goimports" },
+          kotlin = { "ktfmt" },
           ["*"] = { "trim_whitespace" },
         },
         formatters = {
@@ -453,6 +454,12 @@ require("lazy").setup({
               "$FILENAME",
             },
           },
+          ["ktfmt"] = {
+            command = "ktfmt",
+            append_args = {
+              "--kotlinlang-style",
+            }
+          }
         },
         default_format_opts = {
           lsp_format = "fallback",

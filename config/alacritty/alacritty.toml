@@ -21,14 +21,14 @@ builtin_box_drawing = true
 # normal.family = "CaskaydiaMono Nerd Font"
 # normal.style = "SemiLight"
 # normal.family = "Hasklug Nerd Font"
-# normal.family = "SauceCodePro Nerd Font"
-# normal.style = "medium"
+normal.family = "SauceCodePro Nerd Font"
+normal.style = "medium"
 # normal.family = "MesloLGS Nerd Font"
 # normal.family = "HackZeroSlash Nerd Font"
 # normal.family = "DejaVuSansM Nerd Font"
 # normal.family = "JetBrainsMono NL Nerd Font"
 # normal.family = "IosevkaTerm Nerd Font"
-normal.family = "MapleMono"
+# normal.family = "MapleMono"
 size = 13
 
 [[keyboard.bindings]]
