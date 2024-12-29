@@ -32,7 +32,7 @@ local capabilities = require('blink.cmp').get_lsp_capabilities()
 local lspconfig = require('lspconfig')
 
 local lserver_list = {
-  'awk_ls', 'bashls', 'clangd', 'dockerls', 'html', 'jsonls', 'kotlin_language_server', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'gopls',
+  'awk_ls', 'bashls', 'clangd', 'dockerls', 'html', 'jsonls', 'cssls', 'svelte', 'lua_ls', 'marksman', 'pyright', 'volar', 'gopls',
 }
 
 for _, lserver in pairs(lserver_list) do
@@ -41,6 +41,20 @@ for _, lserver in pairs(lserver_list) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.kotlin_language_server.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    kotlin = {
+      compiler = {
+        jvm = {
+          target = "21"
+        }
+      }
+    }
+  }
+}
 
 -- nodejs bun deno
 lspconfig.ts_ls.setup {
