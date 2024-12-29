@@ -42,6 +42,13 @@ for _, lserver in pairs(lserver_list) do
   }
 end
 
+lspconfig.djlsp.setup {
+  cmd = { "djlsp" },
+  root_dir = lspconfig.util.root_pattern("manage.py"),
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 lspconfig.kotlin_language_server.setup {
   on_attach = on_attach,
   capabilities = capabilities,

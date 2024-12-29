@@ -238,7 +238,7 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     config = function ()
       require'nvim-treesitter.configs'.setup {
-        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "vimdoc", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", },
+        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "vimdoc", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", },
         ignore_install = {}, -- List of parsers to ignore installing
         highlight = {
           enable = true,              -- false will disable the whole extension
@@ -314,11 +314,11 @@ require("lazy").setup({
       end
 
       vim.diagnostic.config({
-        virtual_text = true,
+        virtual_text = false,
         severity_sort = true,
       })
       require("mason-lspconfig").setup({
-        ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'pyright', 'volar', 'elixirls', 'rust_analyzer', 'gopls', 'ruff', 'html', 'cssls', 'ts_ls', 'jsonls', 'svelte', 'htmx', },
+        ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'pyright', 'elixirls', 'rust_analyzer', 'gopls', 'ruff', 'html', 'cssls', 'ts_ls', 'jsonls', 'svelte', 'htmx', },
       })
     end,
     dependencies = {
@@ -485,11 +485,12 @@ require("lazy").setup({
         Rule(' ', ' ')
           :with_pair(function (opts)
             local pair = opts.line:sub(opts.col - 1, opts.col)
-            return vim.tbl_contains({'()', '[]', '{}'}, pair)
+            return vim.tbl_contains({'()', '[]', '{}', '%%'}, pair)
           end)
           :with_move(cond.none())
           :with_del(cond.none()),
         Rule('|', '|', "rust"):with_move(cond.done()),
+        Rule('%', '%', "htmldjango"):with_move(cond.done()),
         Rule('<', '>')
           :with_pair(cond.before_regex("[a-zA-Z]"))
           :with_move(cond.done()),
