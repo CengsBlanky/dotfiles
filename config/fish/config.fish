@@ -86,7 +86,7 @@ if status is-interactive
     # kubectl completion fish | source
     # fzf
     set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case"
-    bind --mode insert \cr "vim (fzf --preview='batcat --color=always --style=numbers {}')"
+    bind --mode insert \cf "vim (fzf --preview='batcat --color=always --style=numbers {}')"
 
     # ===== abbriviations =====
     abbr --add cls "clear"
