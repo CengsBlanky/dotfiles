@@ -369,15 +369,33 @@ require("lazy").setup({
     'saghen/blink.cmp',
     lazy = false, -- lazy loading handled internally
     -- optional: provides snippets for the snippet source
-    dependencies = 'rafamadriz/friendly-snippets',
-
+    dependencies = {
+      { 'rafamadriz/friendly-snippets' },
+      {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp"
+      }
+    },
     -- use a release tag to download pre-built binaries
     version = 'v0.*',
     ---@module 'blink.cmp'
     opts = {
+      snippets = {
+        expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
+        active = function(filter)
+          if filter and filter.direction then
+            return require('luasnip').jumpable(filter.direction)
+          end
+          return require('luasnip').in_snippet()
+        end,
+        jump = function(direction) require('luasnip').jump(direction) end,
+      },
       sources = {
         -- Remove 'buffer' if you don't want text completions, by default it's only enabled when LSP returns no items
-        default = { 'lsp', 'buffer', 'snippets',  'path', },
+        default = { 'lsp', 'buffer', 'luasnip', 'snippets',  'path', },
         -- Disable cmdline completions
         cmdline = {},
       },
