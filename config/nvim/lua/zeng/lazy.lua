@@ -442,6 +442,7 @@ require("lazy").setup({
       require("conform").setup({
         formatters_by_ft = {
           python = { "py_format", "py_sort"},
+          htmldjango = { "html_django" },
           c = { "c_format" },
           cpp = { "c_format" },
           go = { "gofmt", "goimports" },
@@ -471,6 +472,14 @@ require("lazy").setup({
               "--stdin-filename",
               "$FILENAME",
             },
+          },
+          ["html_django"] = {
+            command = "prettier",
+            args = {
+              "--tab-width",
+              "2",
+              "$FILENAME",
+            }
           },
           ["ktfmt"] = {
             command = "ktfmt",

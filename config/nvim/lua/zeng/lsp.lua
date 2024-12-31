@@ -42,6 +42,7 @@ for _, lserver in pairs(lserver_list) do
   }
 end
 
+-- django-template-lsp
 lspconfig.djlsp.setup {
   cmd = { "djlsp" },
   root_dir = lspconfig.util.root_pattern("manage.py"),
