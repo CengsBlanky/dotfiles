@@ -422,7 +422,12 @@ require("lazy").setup({
         },
         trigger = {
           show_on_insert_on_trigger_character = false,
-        }
+        },
+        accept = {
+          auto_brackets = {
+            enabled = true,
+          },
+        },
       },
     }
   },
