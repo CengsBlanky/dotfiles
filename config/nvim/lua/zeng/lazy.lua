@@ -607,7 +607,7 @@ require("lazy").setup({
       require("catppuccin").setup({
         flavour = "macchiato",
         transparent_background = true,
-        no_italic = false,
+        no_italic = true,
         styles = {
           comments = {},
           conditionals = {},
