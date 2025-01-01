@@ -400,7 +400,10 @@ require("lazy").setup({
         cmdline = {},
         providers = {
           lsp = {
-            fallbacks = { "buffer", "path" }
+            fallbacks = { "buffer" },
+          },
+          path = {
+            fallbacks = { "buffer", "lsp" },
           }
         }
       },
