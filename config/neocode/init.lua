@@ -1,0 +1,20 @@
+local map = vim.keymap.set
+local opts = { silent = true, nowait = true }
+map('n', '<Enter>', '<Cmd>w<CR>', opts)
+map('n', '<C-s>', '<Cmd>wa<CR>', opts)
+map('n', '<M-w>', '<Cmd>close<CR>', opts)
+map('n', '<M-o>', '<C-w>o', opts)
+map('n', '<leader>-', '<Cmd>split<CR>', opts)
+map('n', '<leader>/', '<Cmd>vsplit<CR>', opts)
+map('n', 'gy', '<Cmd>%y<CR>', opts)
+map('n', 'gl', '^yg_', opts)
+map('n', '<C-j>', '<C-f>', opts)
+map('n', '<C-k>', '<C-b>', opts)
+map('n', '<leader>`', 'g~iw', opts)
+map('v', '<leader>`', 'g~', opts)
+map('v', '<C-j>', '<C-f>', opts)
+map('v', '<C-k>', '<C-b>', opts)
+-- buffer ops
+map('n', '<C-p>', '<Cmd>b#<CR>', opts)
+map('n', '<Space>b', '<Cmd>bd<CR>', opts)
+map('n', '<C-n>', '<Cmd>bn<CR>', opts)
