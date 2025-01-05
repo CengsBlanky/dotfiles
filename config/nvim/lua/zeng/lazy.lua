@@ -398,14 +398,14 @@ require("lazy").setup({
         default = { 'lsp', 'buffer', 'luasnip', 'snippets', 'path', },
         -- Disable cmdline completions
         cmdline = {},
-        providers = {
-          lsp = {
-            fallbacks = { "buffer" },
-          },
-          path = {
-            fallbacks = { "buffer", "lsp" },
-          }
-        }
+        -- providers = {
+        --   lsp = {
+        --     fallbacks = { "buffer" },
+        --   },
+        --   path = {
+        --     fallbacks = { "buffer", "lsp" },
+        --   }
+        -- }
       },
       keymap = {
         ['<CR>'] = { 'accept', 'fallback' },

@@ -86,3 +86,7 @@ map <C-i> recolor
 set adjust-open width
 # set adjust-open "best-fit"
 set recolor true
+
+# simulate smooth scroll
+map j feedkeys "<C-Down>"
+map k feedkeys "<C-Up>"
