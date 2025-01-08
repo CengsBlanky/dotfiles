@@ -395,17 +395,9 @@ require("lazy").setup({
       },
       sources = {
         -- Remove 'buffer' if you don't want text completions, by default it's only enabled when LSP returns no items
-        default = { 'lsp', 'buffer', 'luasnip', 'snippets', 'path', },
+        default = { 'buffer', 'lsp', 'luasnip', 'snippets', 'path', },
         -- Disable cmdline completions
         cmdline = {},
-        -- providers = {
-        --   lsp = {
-        --     fallbacks = { "buffer" },
-        --   },
-        --   path = {
-        --     fallbacks = { "buffer", "lsp" },
-        --   }
-        -- }
       },
       keymap = {
         ['<CR>'] = { 'accept', 'fallback' },
