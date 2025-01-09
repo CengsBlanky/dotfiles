@@ -15,8 +15,6 @@ foreground = "#d8dee9"
 
 [font]
 builtin_box_drawing = true
-# normal.family = "IMWritingMono Nerd Font"
-# normal.family = "UbuntuSansMono Nerd Font"
 # normal.family = "Cousine Nerd Font"
 # normal.family = "CaskaydiaMono Nerd Font"
 # normal.style = "SemiLight"
@@ -28,6 +26,8 @@ builtin_box_drawing = true
 # normal.family = "JetBrainsMono NL Nerd Font"
 # normal.family = "IosevkaTerm Nerd Font"
 # normal.family = "MapleMono"
+# normal.family = "UbuntuSansMono Nerd Font"
+# normal.family = "IMWritingMono Nerd Font"
 normal.family = "SauceCodePro Nerd Font"
 normal.style = "medium"
 size = 15

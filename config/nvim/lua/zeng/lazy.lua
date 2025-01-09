@@ -34,9 +34,10 @@ require("lazy").setup({
         '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^__pycache__$[[dir]]'
       }
     end,
-    cmd = "NERDTreeToggle",
+    cmd = {"NERDTreeToggle", "NERDTreeFind"},
     keys = {
-      { "<Tab>", "<cmd>NERDTreeToggle<CR>", { silent = true } },
+      { "<Tab>", "<cmd>NERDTreeToggle<CR>", { nowait = true, silent = true } },
+      { "<C-s>", "<cmd>NERDTreeFind<CR>", { nowait = true, silent = true } },
     },
     dependencies = 'ryanoasis/vim-devicons',
   },
@@ -371,34 +372,15 @@ require("lazy").setup({
     -- optional: provides snippets for the snippet source
     dependencies = {
       { 'rafamadriz/friendly-snippets' },
-      {
-        "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
-        build = "make install_jsregexp"
-      }
     },
     -- use a release tag to download pre-built binaries
-    version = 'v0.*',
-    ---@module 'blink.cmp'
+    version = '*',
     opts = {
-      snippets = {
-        expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
-        active = function(filter)
-          if filter and filter.direction then
-            return require('luasnip').jumpable(filter.direction)
-          end
-          return require('luasnip').in_snippet()
-        end,
-        jump = function(direction) require('luasnip').jump(direction) end,
-      },
       sources = {
-        -- Remove 'buffer' if you don't want text completions, by default it's only enabled when LSP returns no items
-        default = { 'buffer', 'lsp', 'luasnip', 'snippets', 'path', },
-        -- Disable cmdline completions
+        default = { 'buffer', 'lsp', 'snippets', 'path', },
         cmdline = {},
       },
+      signature = { enabled = true },
       keymap = {
         ['<CR>'] = { 'accept', 'fallback' },
         ['<C-p>'] = { 'select_prev', 'fallback' },
@@ -412,9 +394,6 @@ require("lazy").setup({
       },
       completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 200 },
-        keyword = {
-          exclude_from_prefix_regex = '[\\-,;\"\'/=~`]'
-        },
         trigger = {
           show_on_insert_on_trigger_character = false,
         },
@@ -596,30 +575,53 @@ require("lazy").setup({
     end,
   },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority= 1000,
-    config = function()
-      require("catppuccin").setup({
-        flavour = "macchiato",
-        transparent_background = true,
-        no_italic = true,
-        styles = {
-          comments = {},
-          conditionals = {},
-        },
-        color_overrides = {
-          all = {
-            text = "#ced4da"
+    "rebelot/kanagawa.nvim",
+    config = function ()
+      require('kanagawa').setup({
+        overrides = function(colors)
+          local theme = colors.theme
+
+          return {
+            TelescopeTitle = { fg = theme.ui.special, bold = true },
+            TelescopePromptNormal = { bg = theme.ui.bg_p1 },
+            TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
+            TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+            TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+            TelescopePreviewNormal = { bg = theme.ui.bg_dim },
+            TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+            Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },  -- add `blend = vim.o.pumblend` to enable transparency
+            PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+            PmenuSbar = { bg = theme.ui.bg_m1 },
+            PmenuThumb = { bg = theme.ui.bg_p2 },
+            DiagnosticSignHint  = { fg = "#a3be8c" },
+            DiagnosticSignInfo  = { fg = "#88c0d0" },
+            DiagnosticSignWarn  = { fg = "#e1bb80" },
+            DiagnosticSignError = { fg = "#bf616a" },
+            DiagnosticFloatingHint  = { fg = "#a3be8c" },
+            DiagnosticFloatingInfo  = { fg = "#88c0d0" },
+            DiagnosticFloatingWarn  = { fg = "#e1bb80" },
+            DiagnosticFloatingError = { fg = "#bf616a" },
+          }
+        end,
+        colors = {
+          theme = {
+            all = {
+              ui = {
+                bg_gutter = "none"
+              }
+            }
           }
         },
-        integrations = {
-          aerial = true,
-          mason = true,
-          vim_sneak = true,
-        }
+        compile = true,             -- enable compiling the colorscheme
+        undercurl = true,            -- enable undercurls
+        terminalColors = true,
+        commentStyle = { italic = false },
+        functionStyle = { italic = false },
+        keywordStyle = { italic = false, bold = false },
+        statementStyle = { bold = false },
+        transparent = true,
       })
-      vim.cmd.colorscheme "catppuccin"
+      require("kanagawa").load("dragon")
     end
   },
 },

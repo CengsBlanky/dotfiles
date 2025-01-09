@@ -66,7 +66,7 @@ set scroll-page-aware "true"
 set smooth-scroll true
 set smooth-scroll-fraction 0.1
 set scroll-full-overlap 0.01
-set scroll-step 100
+set scroll-step 30
 set adjust-open "best-fit"
 set adjust_window width
 
@@ -75,7 +75,6 @@ set zoom-min 10
 set guioptions ""
 
 set render-loading "false"
-set scroll-step 50
 
 map <Tab> toggle_index
 map u scroll half-up

@@ -5,7 +5,6 @@ local opts = { silent = true, nowait = true }
 
 map('i', 'jk', '<Esc><Cmd>w<CR>', opts)
 map('n', '<Enter>', '<Cmd>w<CR>', opts)
-map('n', '<C-s>', '<Cmd>wa<CR>', opts)
 map('n', '<leader>q', '<Cmd>xa<CR>', opts)
 map('n', '<M-w>', '<Cmd>close<CR>', opts)
 map('n', '<M-o>', '<C-w>o', opts)

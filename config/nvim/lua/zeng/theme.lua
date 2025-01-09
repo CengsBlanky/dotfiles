@@ -8,7 +8,6 @@ vim.opt.background = 'dark'
 local set_hl = vim.api.nvim_set_hl
 
 set_hl(0, "Normal", { fg = "#ced4da" })
-set_hl(0, "Comment", { fg = "DarkGray", italic = false })
 set_hl(0, "Todo", { fg = "#ebcb8b", italic = false, bold = true })
 set_hl(0, "Visual", { bg = "#495057" })
 set_hl(0, "Search", { bg = "#495057" })
