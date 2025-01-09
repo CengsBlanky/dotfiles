@@ -601,6 +601,8 @@ require("lazy").setup({
             DiagnosticFloatingInfo  = { fg = "#88c0d0" },
             DiagnosticFloatingWarn  = { fg = "#e1bb80" },
             DiagnosticFloatingError = { fg = "#bf616a" },
+            Boolean = { bold = false },
+            ["@variable.builtin"] = { italic = false },
           }
         end,
         colors = {
@@ -618,6 +620,7 @@ require("lazy").setup({
         commentStyle = { italic = false },
         functionStyle = { italic = false },
         keywordStyle = { italic = false, bold = false },
+        builtinStyle = { italic = false },
         statementStyle = { bold = false },
         transparent = true,
       })
