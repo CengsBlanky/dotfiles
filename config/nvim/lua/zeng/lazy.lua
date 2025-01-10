@@ -575,57 +575,20 @@ require("lazy").setup({
     end,
   },
   {
-    "rebelot/kanagawa.nvim",
-    config = function ()
-      require('kanagawa').setup({
-        overrides = function(colors)
-          local theme = colors.theme
-
-          return {
-            TelescopeTitle = { fg = theme.ui.special, bold = true },
-            TelescopePromptNormal = { bg = theme.ui.bg_p1 },
-            TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
-            TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-            TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-            TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-            TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
-            Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },  -- add `blend = vim.o.pumblend` to enable transparency
-            PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-            PmenuSbar = { bg = theme.ui.bg_m1 },
-            PmenuThumb = { bg = theme.ui.bg_p2 },
-            DiagnosticSignHint  = { fg = "#a3be8c" },
-            DiagnosticSignInfo  = { fg = "#88c0d0" },
-            DiagnosticSignWarn  = { fg = "#e1bb80" },
-            DiagnosticSignError = { fg = "#bf616a" },
-            DiagnosticFloatingHint  = { fg = "#a3be8c" },
-            DiagnosticFloatingInfo  = { fg = "#88c0d0" },
-            DiagnosticFloatingWarn  = { fg = "#e1bb80" },
-            DiagnosticFloatingError = { fg = "#bf616a" },
-            Boolean = { bold = false },
-            ["@variable.builtin"] = { italic = false },
-          }
-        end,
-        colors = {
-          theme = {
-            all = {
-              ui = {
-                bg_gutter = "none"
-              }
-            }
-          }
-        },
-        compile = true,             -- enable compiling the colorscheme
-        undercurl = true,            -- enable undercurls
-        terminalColors = true,
-        commentStyle = { italic = false },
-        functionStyle = { italic = false },
-        keywordStyle = { italic = false, bold = false },
-        builtinStyle = { italic = false },
-        statementStyle = { bold = false },
-        transparent = true,
+    "neanias/everforest-nvim",
+    version = false,
+    lazy = false,
+    priority = 1000, -- make sure to load this before all the other start plugins
+    -- Optional; default configuration will be used if setup isn't called.
+    config = function()
+      require("everforest").setup({
+        background = "hard",
+        transparent_background_level = 2,
+        disable_italic_comments = true,
+        show_eob = false,
       })
-      require("kanagawa").load("dragon")
-    end
+      require("everforest").load()
+    end,
   },
 },
 {

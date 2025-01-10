@@ -1,3 +1,5 @@
+---@diagnostic disable: undefined-global
+vim.loader.enable()
 require('zeng.base')
 require('zeng.map')
 require('zeng.cmd')
