@@ -64,6 +64,7 @@ require("lazy").setup({
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
+    keys = { { "ys" }, { "S", mode = "v" }, { "cs" }, { "ds" } },
     config = function()
       require("nvim-surround").setup({
         -- Configuration here, or leave empty to use defaults
@@ -237,6 +238,7 @@ require("lazy").setup({
   },
   {
     'nvim-treesitter/nvim-treesitter',
+    event = "BufReadPost",
     config = function ()
       require'nvim-treesitter.configs'.setup {
         ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "vimdoc", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", },
@@ -306,6 +308,8 @@ require("lazy").setup({
   },
   {
     'neovim/nvim-lspconfig',
+    event = "BufReadPost",
+		cmd = { "Mason" },
     config = function ()
       -- lsp sign icons
       local signs = { Error = " ", Warn = "", Hint = "󰌶", Info = "" }
