@@ -15,7 +15,6 @@ vim.opt.showcmd = true
 vim.opt.cmdheight = 1
 vim.opt.laststatus = 3
 vim.opt.showmode = false
-vim.opt.scrolloff = 10
 vim.opt.hidden = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
