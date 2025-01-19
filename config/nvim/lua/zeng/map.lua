@@ -3,7 +3,7 @@ local map = vim.keymap.set
 
 local opts = { silent = true, nowait = true }
 
-map('i', 'jk', '<Esc><CR>', opts)
+map('i', 'jk', '<Esc>', opts)
 map('n', '<Enter>', '<Cmd>w<CR>', opts)
 map('n', '<leader>q', '<Cmd>xa<CR>', opts)
 map('n', '<M-w>', '<Cmd>close<CR>', opts)
