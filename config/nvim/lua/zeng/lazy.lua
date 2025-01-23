@@ -502,29 +502,43 @@ require("lazy").setup({
       local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' } }
       -- for spaces between brackets
       npairs.add_rules {
-        Rule(' ', ' ')
         -- Pair will only occur if the conditional function returns true
-        :with_pair(function(opts)
-          -- We are checking if we are inserting a space in (), [], or {}
-          local pair = opts.line:sub(opts.col - 1, opts.col)
-          return vim.tbl_contains({
-            brackets[1][1] .. brackets[1][2],
-            brackets[2][1] .. brackets[2][2],
-            brackets[3][1] .. brackets[3][2]
-          }, pair)
-        end)
-        :with_move(cond.none())
-        :with_cr(cond.none())
-        -- We only want to delete the pair of spaces when the cursor is as such: ( | )
-        :with_del(function(opts)
-          local col = vim.api.nvim_win_get_cursor(0)[2]
-          local context = opts.line:sub(col - 1, col + 2)
-          return vim.tbl_contains({
-            brackets[1][1] .. '  ' .. brackets[1][2],
-            brackets[2][1] .. '  ' .. brackets[2][2],
-            brackets[3][1] .. '  ' .. brackets[3][2]
-          }, context)
-        end)
+        Rule(' ', ' ')
+          :with_pair(function(opts)
+            -- We are checking if we are inserting a space in (), [], or {}
+            local pair = opts.line:sub(opts.col - 1, opts.col)
+            return vim.tbl_contains({
+              brackets[1][1] .. brackets[1][2],
+              brackets[2][1] .. brackets[2][2],
+              brackets[3][1] .. brackets[3][2]
+            }, pair)
+          end)
+          :with_move(cond.none())
+          :with_cr(cond.none())
+          -- We only want to delete the pair of spaces when the cursor is as such: ( | )
+          :with_del(function(opts)
+            local col = vim.api.nvim_win_get_cursor(0)[2]
+            local context = opts.line:sub(col - 1, col + 2)
+            return vim.tbl_contains({
+              brackets[1][1] .. '  ' .. brackets[1][2],
+              brackets[2][1] .. '  ' .. brackets[2][2],
+              brackets[3][1] .. '  ' .. brackets[3][2]
+            }, context)
+          end),
+        Rule('<', '>')
+          :with_pair(cond.before_regex("[a-zA-Z]"))
+          :with_move(cond.done()),
+        -- allow " in go json annotation
+        Rule('"', '"', { 'go' })
+          :with_pair(function (opts)
+            if string.find(opts.line, '`') or cond.after_text(":") then
+              return true
+            end
+            return false
+          end)
+          :with_move(cond.none())
+          :with_del(cond.none()),
+        Rule('|', '|', "rust"):with_move(cond.done()),
       }
       -- For each pair of brackets we will add another rule
       for _, bracket in pairs(brackets) do
@@ -539,19 +553,6 @@ require("lazy").setup({
           :replace_map_cr(function(_) return '<C-c>2xi<CR><C-c>O' end)
         }
       end
-      -- allow " in go json annotation
-      npairs.add_rules {
-        Rule('"', '"', { 'go' })
-          :with_pair(function (opts)
-            if string.find(opts.line, '`') or cond.after_text(":") then
-              return true
-            end
-            return false
-          end)
-          :with_move(cond.none())
-          :with_del(cond.none())
-      }
-
     end,
   },
   {
