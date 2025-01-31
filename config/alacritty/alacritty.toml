@@ -28,10 +28,10 @@ builtin_box_drawing = true
 # normal.family = "MapleMono"
 # normal.family = "IMWritingMono Nerd Font"
 # normal.family = "RobotoMono Nerd Font"
-# normal.family = "UbuntuSansMono Nerd Font"
-normal.family = "SauceCodePro Nerd Font"
+normal.family = "UbuntuSansMono Nerd Font"
+# normal.family = "SauceCodePro Nerd Font"
 # normal.family = "ComicShannsMono Nerd Font"
-normal.style = "medium"
+# normal.style = "medium"
 size = 13
 
 [[keyboard.bindings]]
