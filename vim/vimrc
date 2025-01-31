@@ -255,7 +255,7 @@ enddef
 
 # }}}
 # statusline {{{
-set statusline=%-5r%f%m%=%{FugitiveStatusline()}%18(%l/%L%)%18(%{&fileformat}%Y%)%9(\ %{&fileencoding}%)
+set statusline=%-5r%f%m%=%18(%l/%L%)%18(%{&fileformat}%Y%)%9(\ %{&fileencoding}%)
 # }}}
 # highlight {{{
 hi link markdownError Normal

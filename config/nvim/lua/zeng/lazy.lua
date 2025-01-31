@@ -479,10 +479,10 @@ require("lazy").setup({
           lsp_format = "fallback",
           stop_after_first = false,
         },
-        format_on_save = {
-          lsp_format = "fallback",
-          timeout_ms = 300,
-        },
+        -- format_on_save = {
+        --   lsp_format = "fallback",
+        --   timeout_ms = 300,
+        -- },
         -- log_level = vim.log.levels.DEBUG,
       })
     end,
