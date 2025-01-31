@@ -181,7 +181,8 @@ g:NERDTreeIgnore = [
     '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]', '\.bin$[[file]]', '\.svg$[[file]]', '\.png$[[file]]', '\.jpg$[[file]]',
     '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
 ]
-nnoremap <silent><Tab> :NERDTreeToggle<CR>
+nnoremap <silent><nowait><Tab> :NERDTreeToggle<CR>
+nnoremap <silent><nowait><C-s> :NERDTreeFind<CR>
 # }}}
 # buftabline {{{
 g:buftabline_show = 1

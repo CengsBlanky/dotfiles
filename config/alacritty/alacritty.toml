@@ -32,7 +32,7 @@ builtin_box_drawing = true
 normal.family = "SauceCodePro Nerd Font"
 # normal.family = "ComicShannsMono Nerd Font"
 normal.style = "medium"
-size = 14
+size = 13
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
