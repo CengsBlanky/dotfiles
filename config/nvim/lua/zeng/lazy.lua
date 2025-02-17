@@ -82,15 +82,16 @@ require("lazy").setup({
   'justinmk/vim-sneak',
   {
     'lewis6991/gitsigns.nvim',
+    event = { "BufWritePost" },
     keys = {
-      { "<M-[>", function ()
+      { "[b", function ()
         require("gitsigns").nav_hunk(
         "prev",
         {
           navigation_message = true,
         })
       end, { silent = true, nowait = true } },
-      { "<M-]>", function ()
+      { "]b", function ()
         require("gitsigns").nav_hunk(
         "next",
         {
@@ -381,7 +382,9 @@ require("lazy").setup({
     opts = {
       sources = {
         default = { 'buffer', 'lsp', 'snippets', 'path', },
-        cmdline = {},
+      },
+      cmdline = {
+        enabled = false,
       },
       signature = { enabled = true },
       keymap = {
