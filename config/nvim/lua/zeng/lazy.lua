@@ -84,14 +84,14 @@ require("lazy").setup({
     'lewis6991/gitsigns.nvim',
     event = { "BufWritePost" },
     keys = {
-      { "[b", function ()
+      { "[c", function ()
         require("gitsigns").nav_hunk(
         "prev",
         {
           navigation_message = true,
         })
       end, { silent = true, nowait = true } },
-      { "]b", function ()
+      { "]c", function ()
         require("gitsigns").nav_hunk(
         "next",
         {
@@ -437,6 +437,7 @@ require("lazy").setup({
           cpp = { "c_format" },
           go = { "gofmt", "goimports" },
           kotlin = { "ktfmt" },
+          xml = { "xq_format" },
           ["*"] = { "trim_whitespace" },
         },
         formatters = {
@@ -476,7 +477,10 @@ require("lazy").setup({
             append_args = {
               "--kotlinlang-style",
             }
-          }
+          },
+          ["xq_format"] = {
+            command = "xq",
+          },
         },
         default_format_opts = {
           lsp_format = "fallback",
