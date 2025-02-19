@@ -98,7 +98,7 @@ require("lazy").setup({
           navigation_message = true,
         })
       end, { silent = true, nowait = true } },
-      { "<leader>b", '<cmd>Gitsigns toggle_current_line_blame<CR>', { silent = true, nowait = true } },
+      { "]b", '<cmd>Gitsigns toggle_current_line_blame<CR>', { silent = true, nowait = true } },
     },
     config = function ()
       require('gitsigns').setup {
@@ -123,11 +123,24 @@ require("lazy").setup({
         build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
       }
     },
+    keys = {
+      {
+        "<leader>f", function ()
+          require("telescope.builtin").find_files()
+        end, { silent = true, nowait = true }
+      },
+      {
+        "<leader>g", function ()
+          require("telescope.builtin").live_grep()
+        end, { silent = true, nowait = true }
+      },
+      {
+        "<leader>b", function ()
+          require("telescope.builtin").buffers()
+        end, { silent = true, nowait = true }
+      },
+    },
     config = function ()
-      local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>f', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>b', builtin.buffers, {})
-      vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
       local actions = require("telescope.actions")
       require('telescope').setup{
         defaults = {
