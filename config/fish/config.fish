@@ -1,7 +1,7 @@
 if status is-interactive
     # ===== vi mode =====
-    fish_vi_key_bindings
-    bind --mode insert --sets-mode default jk repaint
+    # fish_vi_key_bindings
+    # bind --mode insert --sets-mode default jk repaint
     set fish_cursor_default block
     set fish_cursor_insert line
     set fish_cursor_replace_one underscore
@@ -78,6 +78,8 @@ if status is-interactive
     set PATH $PATH "$HOME/.deno/bin"
     # ruby
     fish_add_path --prepend "$HOME/.rubies/ruby-stable/bin"
+    # zig
+    set PATH $PATH "$HOME/Apps/zig-linux-x86_64-0.13.0/"
 
     # general
     set PATH $PATH "$HOME/.local/bin"
