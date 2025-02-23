@@ -27,12 +27,12 @@ builtin_box_drawing = true
 # normal.family = "MapleMono"
 # normal.family = "IMWritingMono Nerd Font"
 # normal.family = "RobotoMono Nerd Font"
-# normal.family = "UbuntuSansMono Nerd Font"
+normal.family = "UbuntuSansMono Nerd Font"
 # normal.family = "SauceCodePro Nerd Font"
 # normal.family = "Source Code Pro"
 # normal.family = "DejaVuSansM Nerd Font"
 # normal.family = "ComicShannsMono Nerd Font"
-normal.family = "SourceCodePro"
+# normal.family = "SourceCodePro"
 # normal.style = "medium"
 size = 12
 
