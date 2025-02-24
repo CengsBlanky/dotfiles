@@ -5,11 +5,11 @@ from pathlib import Path
 origin_files = []
 new_files = []
 
-file_dict = dict()
+file_dict: dict[str, str] = dict()
 
 fonts_file = "./sourcecodepro.txt"
 
-def runcmd(cmd):
+def runcmd(cmd: list[str]):
     rsp = subprocess.run(cmd, capture_output=True, text=True)
     print("return code:", rsp.returncode)
     print(rsp.stdout)
@@ -25,9 +25,6 @@ with open(fonts_file, "r", encoding="utf-8") as f:
         suffix = font_file.suffix
 
         dir = Path(fonts_file).stem
-        if not Path(dir).exists:
-            print(f"save to dir: {dir}")
-
         Path(dir).mkdir(exist_ok=True)
         file_name = os.sep.join([Path(dir).stem, stem_name + suffix])
 
