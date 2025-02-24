@@ -599,20 +599,24 @@ require("lazy").setup({
     end,
   },
   {
-    "neanias/everforest-nvim",
-    version = false,
-    lazy = false,
-    priority = 1000, -- make sure to load this before all the other start plugins
-    -- Optional; default configuration will be used if setup isn't called.
-    config = function()
-      require("everforest").setup({
-        background = "hard",
-        transparent_background_level = 2,
-        disable_italic_comments = true,
-        show_eob = false,
+    "rebelot/kanagawa.nvim",
+    config = function ()
+      require('kanagawa').setup({
+        colors = {
+          palette = {
+            waveRed = "#d08770",
+            peachRed = "#bf616a",
+          },
+        },
+        compile = true,
+        commentStyle = { italic = false },
+        keywordStyle = { italic = false },
+        statementStyle = { bold = false },
+        transparent = true,
+        theme = "wave",
       })
-      require("everforest").load()
-    end,
+      require("kanagawa").load("wave")
+    end
   },
 },
 {
