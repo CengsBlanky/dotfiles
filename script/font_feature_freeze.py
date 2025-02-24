@@ -1,4 +1,5 @@
 import os
+import subprocess
 from pathlib import Path
 
 origin_files = []
@@ -6,7 +7,13 @@ new_files = []
 
 file_dict = dict()
 
-fonts_file = "jetbrains.txt"
+fonts_file = "./sourcecodepro.txt"
+
+def runcmd(cmd):
+    rsp = subprocess.run(cmd, capture_output=True, text=True)
+    print("return code:", rsp.returncode)
+    print(rsp.stdout)
+    print(rsp.stderr)
 
 with open(fonts_file, "r", encoding="utf-8") as f:
     origin_files = f.readlines()
@@ -18,7 +25,9 @@ with open(fonts_file, "r", encoding="utf-8") as f:
         suffix = font_file.suffix
 
         dir = Path(fonts_file).stem
-        print(f"save to dir: {dir}")
+        if not Path(dir).exists:
+            print(f"save to dir: {dir}")
+
         Path(dir).mkdir(exist_ok=True)
         file_name = os.sep.join([Path(dir).stem, stem_name + suffix])
 
@@ -26,4 +35,7 @@ with open(fonts_file, "r", encoding="utf-8") as f:
 
 for origin, target in file_dict.items():
     print(f"{origin} -> {target}")
-    os.system(f"pyftfeatfreeze -f 'zero' {origin} {target}")
+    syscmd = f"pyftfeatfreeze -f 'zero' {origin} {target}"
+    syscmd = ["pyftfeatfreeze", "-f", "zero", origin, target]
+    runcmd(syscmd)
+
