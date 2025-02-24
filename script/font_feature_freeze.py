@@ -35,7 +35,5 @@ with open(fonts_file, "r", encoding="utf-8") as f:
 
 for origin, target in file_dict.items():
     print(f"{origin} -> {target}")
-    syscmd = f"pyftfeatfreeze -f 'zero' {origin} {target}"
     syscmd = ["pyftfeatfreeze", "-f", "zero", origin, target]
     runcmd(syscmd)
-
