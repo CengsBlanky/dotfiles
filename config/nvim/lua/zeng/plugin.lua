@@ -607,6 +607,13 @@ require("lazy").setup({
             waveRed = "#d08770",
             peachRed = "#bf616a",
           },
+          theme = {
+            all = {
+              ui = {
+                bg_gutter = "none",
+              },
+            },
+          },
         },
         compile = true,
         commentStyle = { italic = false },
