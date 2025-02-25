@@ -29,9 +29,9 @@ builtin_box_drawing = true
 # normal.family = "SauceCodePro Nerd Font"
 # normal.family = "DejaVuSansM Nerd Font"
 # normal.family = "ComicShannsMono Nerd Font"
-# normal.family = "UbuntuSansMono Nerd Font"
-normal.family = "JetBrainsMono Nerd Font"
-normal.style = "light"
+normal.family = "UbuntuSansMono Nerd Font"
+# normal.family = "JetBrainsMono Nerd Font"
+# normal.style = "light"
 size = 12
 
 
