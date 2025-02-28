@@ -610,6 +610,9 @@ require("lazy").setup({
           theme = {
             all = {
               ui = {
+                float = {
+                  bg = "none",
+                },
                 bg_gutter = "none",
               },
             },
