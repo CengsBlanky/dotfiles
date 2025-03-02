@@ -1,53 +1,56 @@
 ---@diagnostic disable: undefined-global
-vim.o.shada = "!,'50,<50,s4,h"
+local opt = vim.opt
+local g = vim.g
 vim.scriptencoding = 'utf-8'
-vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.scrolloff = 5
-vim.opt.title = true
-vim.opt.wildmenu = true
-vim.opt.showmatch = true
-vim.opt.hlsearch = true
-vim.opt.backup = false
-vim.opt.swapfile = false
-vim.opt.showcmd = true
-vim.opt.cmdheight = 1
-vim.opt.laststatus = 3
-vim.opt.showmode = false
-vim.opt.hidden = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.cindent = true
-vim.opt.expandtab = true
-vim.opt.shiftround = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
-vim.opt.mousehide = true
-vim.opt.mouse = ''
-vim.opt.signcolumn = 'yes'
-vim.opt.cursorline = true
-vim.opt.cursorlineopt="number"
-vim.opt.wrap = true
-vim.opt.linebreak = true
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.smoothscroll = true
-vim.opt.synmaxcol = 1000
-vim.opt.shortmess:append('W')
-vim.opt.clipboard:append('unnamedplus')
-vim.opt.list = true
-vim.opt.listchars = {
+opt.encoding = 'utf-8'
+opt.fileencoding = 'utf-8'
+opt.number = true
+opt.relativenumber = true
+opt.scrolloff = 5
+opt.title = true
+opt.wildmenu = true
+opt.showmatch = true
+opt.hlsearch = true
+opt.backup = false
+opt.swapfile = false
+opt.showcmd = true
+opt.cmdheight = 1
+opt.laststatus = 3
+opt.showmode = false
+opt.hidden = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.autoindent = true
+opt.smartindent = true
+opt.cindent = true
+opt.expandtab = true
+opt.shiftround = true
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.softtabstop = 4
+opt.mousehide = true
+opt.mouse = ''
+opt.signcolumn = 'yes'
+opt.cursorline = true
+opt.cursorlineopt="number"
+opt.wrap = true
+opt.linebreak = true
+opt.splitright = true
+opt.splitbelow = true
+opt.smoothscroll = true
+opt.synmaxcol = 1000
+opt.shortmess:append('W')
+opt.clipboard:append('unnamedplus')
+opt.list = true
+opt.listchars = {
   tab = "  \\u00B7",
   trail = "\\u00B7",
 }
+opt.shada = "!,'50,<50,s4,h"
+opt.shell = "/bin/bash"
 
-vim.g.python3_host_prog = '/usr/bin/python3'
-vim.g.markdown_fenced_languages = {
+g.python3_host_prog = '/usr/bin/python3'
+g.markdown_fenced_languages = {
   "ts=typescript"
 }
 vim.filetype.add({

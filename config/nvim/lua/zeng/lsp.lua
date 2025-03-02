@@ -88,56 +88,53 @@ lspconfig.htmx.setup {
   single_file_support = false,
 }
 
--- flutter
-require("flutter-tools").setup {
-  lsp = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-}
-
 -- rust
-vim.g.rustaceanvim = {
-  server = {
-    on_attach = function (_, bufnr)
-      local bufopts = { silent=true, buffer=bufnr }
-      vim.keymap.set('n', 'K', function() vim.cmd.RustLsp { 'hover', 'actions' } end, bufopts)
-      vim.keymap.set('n', '<leader>a', function() vim.cmd.RustLsp('codeAction') end, bufopts)
-      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-      vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-      vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
-      vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    end,
-    capabilities = capabilities,
-    default_settings = {
-      ['rust-analyzer'] = {
-        cargo = {
-          allFeatures = true,
+if vim.bo.filetype == "rust" then
+  vim.g.rustaceanvim = {
+    server = {
+      on_attach = function (_, bufnr)
+        local bufopts = { silent=true, buffer=bufnr }
+        vim.keymap.set('n', 'K', function() vim.cmd.RustLsp { 'hover', 'actions' } end, bufopts)
+        vim.keymap.set('n', '<leader>a', function() vim.cmd.RustLsp('codeAction') end, bufopts)
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+        vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+      end,
+      capabilities = capabilities,
+      default_settings = {
+        ['rust-analyzer'] = {
+          cargo = {
+            allFeatures = true,
+          },
         },
       },
     },
-  },
-}
+  }
+end
 
 -- elixir
-local elixir = require("elixir")
-local elixirls = require("elixir.elixirls")
+if vim.bo.filetype == "elixir" then
+  message "elixir lsp config..."
+  local elixir = require("elixir")
+  local elixirls = require("elixir.elixirls")
 
-elixir.setup {
-  nextls = { enable = false },
-  elixirls = {
-    cmd = "elixir-ls",
-    enable = true,
-    settings = elixirls.settings {
-      dialyzerEnabled = false,
-      enableTestLenses = true,
+  elixir.setup {
+    nextls = { enable = false },
+    elixirls = {
+      cmd = "elixir-ls",
+      enable = true,
+      settings = elixirls.settings {
+        dialyzerEnabled = false,
+        enableTestLenses = true,
+      },
+      on_attach = on_attach,
+      capabilities = capabilities,
     },
-    on_attach = on_attach,
-    capabilities = capabilities,
-  },
-  projectionist = {
-    enable = false
+    projectionist = {
+      enable = false
+    }
   }
-}
+end

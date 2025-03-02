@@ -1,5 +1,6 @@
 ---@diagnostic disable: undefined-global
-vim.api.nvim_create_autocmd({"FileType"}, {
+local autocmd = vim.api.nvim_create_autocmd
+autocmd({"FileType"}, {
     callback = function()
       vim.opt.formatoptions:remove({'o'})
       vim.opt.formatoptions:append({'M'})
@@ -15,7 +16,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     end
 })
 
-vim.api.nvim_create_autocmd({"BufEnter"}, {
+autocmd({"BufEnter"}, {
     callback = function()
       if (not vim.bo.modifiable or vim.bo.readonly) and vim.bo.filetype ~= "nerdtree" then
         local opts = { buffer = true, silent = true, nowait = true }
@@ -26,7 +27,7 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
     end
 })
 
-vim.api.nvim_create_autocmd({"FileType"}, {
+autocmd({"FileType"}, {
     pattern = {"markdown", "text", "log"},
     callback = function()
       vim.keymap.set('n', 'j', 'gj', { silent = true, nowait = true })
@@ -34,7 +35,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     end
 })
 -- for markdown readibility
-vim.api.nvim_create_autocmd({"FileType"}, {
+autocmd({"FileType"}, {
     pattern = { "markdown" },
     callback = function()
       vim.opt_local.textwidth = 120;
@@ -43,7 +44,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     end
 })
 
-vim.api.nvim_create_autocmd({"FileType"}, {
+autocmd({"FileType"}, {
     pattern = { "nerdtree" },
     callback = function()
       vim.opt_local.cursorline = true
@@ -51,7 +52,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     end
 })
 
-vim.api.nvim_create_autocmd({"BufEnter"}, {
+autocmd({"BufEnter"}, {
   pattern = {"*.log"},
   callback = function ()
     vim.bo.filetype = "log"
@@ -59,14 +60,14 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
   end
 })
 
-vim.api.nvim_create_autocmd({"BufRead"}, {
+autocmd({"BufRead"}, {
     pattern = {"*.hex", "*.xxd"},
     callback = function()
       vim.opt_local.filetype = "xxd"
     end
 })
 
-vim.api.nvim_create_autocmd({"FileType"}, {
+autocmd({"FileType"}, {
     pattern = { "html", "xhtml", "htmldjango", "css", "scss", "javascript", "typescript", "vue", "yaml", "sql", "json", "vim", "lua", "dart", "svelte", "http" },
     callback = function()
         vim.opt_local.tabstop = 2
@@ -74,7 +75,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     end
 })
 
-vim.api.nvim_create_autocmd({"FileType"}, {
+autocmd({"FileType"}, {
     pattern = {"go", "gomod"},
     callback = function()
       -- golang use tab instead of spaces
@@ -85,7 +86,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     end
 })
 
-vim.api.nvim_create_autocmd({"BufReadPost"}, {
+autocmd({"BufReadPost"}, {
     pattern = {"quickfix"},
     callback = function()
       vim.keymap.set('n', '<Enter>', '<Enter>', { silent = true })
