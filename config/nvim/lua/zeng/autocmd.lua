@@ -18,10 +18,8 @@ autocmd({"FileType"}, {
 
 autocmd({"BufEnter"}, {
     callback = function()
-      if (not vim.bo.modifiable or vim.bo.readonly) and vim.bo.filetype ~= "nerdtree" then
+      if not vim.bo.modifiable or vim.bo.readonly then
         local opts = { buffer = true, silent = true, nowait = true }
-        vim.keymap.set('n', 'u', '<C-b>', opts)
-        vim.keymap.set('n', '<Space>', '<C-f>', opts)
         vim.keymap.set('n', 'q', ':bd<CR>', opts)
       end
     end
