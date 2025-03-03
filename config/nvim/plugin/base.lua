@@ -40,7 +40,7 @@ opt.splitbelow = true
 opt.smoothscroll = true
 opt.synmaxcol = 1000
 opt.shortmess:append('W')
-opt.clipboard:append('unnamedplus')
+opt.clipboard:append("unnamedplus")
 opt.list = true
 opt.listchars = {
   tab = "  \\u00B7",

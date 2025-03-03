@@ -176,7 +176,7 @@ g:NERDTreeMinimalUI = 1
 g:NERDTreeQuitOnOpen = 3
 g:NERDTreeCaseSensitiveFS  =  1
 g:NERDTreeShowLineNumbers = 1
-g:NERDTreeWinSize = 60
+g:NERDTreeWinSize = 40
 g:NERDTreeIgnore = [
     '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]', '\.exe$[[file]]', '\.bin$[[file]]', '\.svg$[[file]]', '\.png$[[file]]', '\.jpg$[[file]]',
     '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^lib$[[dir]]'
