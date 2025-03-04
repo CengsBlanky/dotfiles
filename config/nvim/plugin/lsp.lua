@@ -1,9 +1,11 @@
 ---@diagnostic disable: undefined-global
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true, nowait=true }
-vim.keymap.set('n', '<Space>d', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '<Space>k', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', '<Space>j', vim.diagnostic.goto_next, opts)
+local setnmap = function (key, action, provide_opts)
+  local default_opts = { noremap=true, silent=true, nowait=true }
+  vim.keymap.set('n', key, action, provide_opts or default_opts)
+end
+setnmap('<Space>d', vim.diagnostic.open_float, opts)
+setnmap('<Space>k', vim.diagnostic.goto_prev, opts)
+setnmap('<Space>j', vim.diagnostic.goto_next, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(_, bufnr)
@@ -13,16 +15,16 @@ local on_attach = function(_, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>t', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', '<leader>s', function() vim.lsp.codelens.run() end, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  setnmap('gD', vim.lsp.buf.declaration, bufopts)
+  setnmap('gd', vim.lsp.buf.definition, bufopts)
+  setnmap('K', vim.lsp.buf.hover, bufopts)
+  setnmap('gi', vim.lsp.buf.implementation, bufopts)
+  -- setnmap('<C-k>', vim.lsp.buf.signature_help, bufopts)
+  setnmap('<space>t', vim.lsp.buf.type_definition, bufopts)
+  setnmap('<leader>r', vim.lsp.buf.rename, bufopts)
+  setnmap('<leader>a', vim.lsp.buf.code_action, bufopts)
+  setnmap('<leader>s', function() vim.lsp.codelens.run() end, bufopts)
+  setnmap('gr', vim.lsp.buf.references, bufopts)
 end
 
 -- Add additional capabilities supported by nvim-cmp
@@ -89,52 +91,47 @@ lspconfig.htmx.setup {
 }
 
 -- rust
-if vim.bo.filetype == "rust" then
-  vim.g.rustaceanvim = {
-    server = {
-      on_attach = function (_, bufnr)
-        local bufopts = { silent=true, buffer=bufnr }
-        vim.keymap.set('n', 'K', function() vim.cmd.RustLsp { 'hover', 'actions' } end, bufopts)
-        vim.keymap.set('n', '<leader>a', function() vim.cmd.RustLsp('codeAction') end, bufopts)
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-        vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-      end,
-      capabilities = capabilities,
-      default_settings = {
-        ['rust-analyzer'] = {
-          cargo = {
-            allFeatures = true,
-          },
+vim.g.rustaceanvim = {
+  server = {
+    on_attach = function (_, bufnr)
+      local bufopts = { silent=true, buffer=bufnr }
+      setnmap('K', function() vim.cmd.RustLsp { 'hover', 'actions' } end, bufopts)
+      setnmap('<leader>a', function() vim.cmd.RustLsp('codeAction') end, bufopts)
+      setnmap('gD', vim.lsp.buf.declaration, bufopts)
+      setnmap('gd', vim.lsp.buf.definition, bufopts)
+      setnmap('gi', vim.lsp.buf.implementation, bufopts)
+      setnmap('<space>D', vim.lsp.buf.type_definition, bufopts)
+      setnmap('<leader>r', vim.lsp.buf.rename, bufopts)
+      setnmap('gr', vim.lsp.buf.references, bufopts)
+    end,
+    capabilities = capabilities,
+    default_settings = {
+      ['rust-analyzer'] = {
+        cargo = {
+          allFeatures = true,
         },
       },
     },
-  }
-end
+  },
+}
 
 -- elixir
-if vim.bo.filetype == "elixir" then
-  message "elixir lsp config..."
-  local elixir = require("elixir")
-  local elixirls = require("elixir.elixirls")
+local elixir = require("elixir")
+local elixirls = require("elixir.elixirls")
 
-  elixir.setup {
-    nextls = { enable = false },
-    elixirls = {
-      cmd = "elixir-ls",
-      enable = true,
-      settings = elixirls.settings {
-        dialyzerEnabled = false,
-        enableTestLenses = true,
-      },
-      on_attach = on_attach,
-      capabilities = capabilities,
+elixir.setup {
+  nextls = { enable = false },
+  elixirls = {
+    cmd = "elixir-ls",
+    enable = true,
+    settings = elixirls.settings {
+      dialyzerEnabled = false,
+      enableTestLenses = true,
     },
-    projectionist = {
-      enable = false
-    }
+    on_attach = on_attach,
+    capabilities = capabilities,
+  },
+  projectionist = {
+    enable = false
   }
-end
+}

@@ -1,24 +1,24 @@
 ---@diagnostic disable: undefined-global
-local map = vim.keymap.set
+local setmap = function (mode, key, action)
+  local opts = { silent = true, nowait = true }
+  vim.keymap.set(mode, key, action, opts)
+end
 
-local opts = { silent = true, nowait = true }
-
-map('i', 'jk', '<Esc>', opts)
-map('n', '<Enter>', '<Cmd>w<CR>', opts)
-map('n', '<leader>q', '<Cmd>xa<CR>', opts)
-map('n', '<M-w>', '<Cmd>close<CR>', opts)
-map('n', '<M-o>', '<C-w>o', opts)
-map('n', '<leader>-', '<Cmd>split<CR>', opts)
-map('n', '<leader>/', '<Cmd>vsplit<CR>', opts)
-map('n', 'gy', '<Cmd>%y<CR>', opts)
-map('n', 'gl', '^yg_', opts)
-map('n', '<C-j>', '<C-f>', opts)
-map('n', '<C-k>', '<C-b>', opts)
-map('n', '<leader>`', 'g~iw', opts)
-map('v', '<leader>`', 'g~', opts)
-map('v', '<C-j>', '<C-f>', opts)
-map('v', '<C-k>', '<C-b>', opts)
--- buffer ops
-map('n', '<C-p>', '<Cmd>b#<CR>', opts)
-map('n', '<Space>b', '<Cmd>bd<CR>', opts)
-map('n', '<C-n>', '<Cmd>bn<CR>', opts)
+setmap('i', 'jk', '<Esc>')
+setmap('n', '<Enter>', '<Cmd>w<CR>')
+setmap('n', '<leader>q', '<Cmd>xa<CR>')
+setmap('n', '<M-w>', '<Cmd>close<CR>')
+setmap('n', '<M-o>', '<C-w>o')
+setmap('n', '<leader>-', '<Cmd>split<CR>')
+setmap('n', '<leader>/', '<Cmd>vsplit<CR>')
+setmap('n', 'gy', '<Cmd>%y<CR>')
+setmap('n', 'gl', '^yg_')
+setmap('n', '<C-j>', '<C-f>')
+setmap('n', '<C-k>', '<C-b>')
+setmap('n', '<leader>`', 'g~iw')
+setmap('n', '<C-p>', '<Cmd>b#<CR>')
+setmap('n', '<Space>b', '<Cmd>bd<CR>')
+setmap('n', '<C-n>', '<Cmd>bn<CR>')
+setmap('v', '<leader>`', 'g~')
+setmap('v', '<C-j>', '<C-f>')
+setmap('v', '<C-k>', '<C-b>')

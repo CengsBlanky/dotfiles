@@ -1,9 +1,9 @@
 ---@diagnostic disable: undefined-global
 vim.loader.enable()
-vim.opt.shadafile = "NONE"
+local opt = vim.opt
 local g = vim.g
 -- disable built-in plugins
-local disable_plugins = {
+for _, load_plugin in pairs({
   "netrw",
   "netrwPlugin",
   "netrwSettings",
@@ -22,11 +22,10 @@ local disable_plugins = {
   "rrhelper",
   "spellfile_plugin",
   "matchit"
-}
-
-for _, displugin in pairs(disable_plugins) do
-  g["loaded_" .. displugin] = 1
+}) do
+  g["loaded_" .. load_plugin] = 1
 end
+opt.shadafile = "NONE"
 
 g.clipboard = {
     name = "xsel",
@@ -41,7 +40,6 @@ g.clipboard = {
     cache_enabled = true,
 }
 
----@diagnostic disable: undefined-global
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -53,7 +51,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
-vim.opt.rtp:prepend(lazypath)
+opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   checker = { enabled = false },
@@ -61,7 +59,7 @@ require("lazy").setup({
     'preservim/nerdtree',
     init = function ()
       g.NERDTreeStatusline='%#NerdtreeStatus#  NERDTree'
-      g.NERDTreeWinSize =  50
+      g.NERDTreeWinSize = 36
       g.NERDTreeQuitOnOpen = 3
       g.NERDTreeMinimalUI = 1
       g.NERDTreeHighlightCursorline = 1
@@ -108,11 +106,7 @@ require("lazy").setup({
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     keys = { { "ys" }, { "S", mode = "v" }, { "cs" }, { "ds" } },
-    opts = function()
-      require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
-    end
+    opts = {}
   },
   {
     'numToStr/Comment.nvim',
@@ -291,7 +285,7 @@ require("lazy").setup({
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    event = "BufReadPost",
+    event = "BufEnter",
     opts = function ()
       require'nvim-treesitter.configs'.setup {
         ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "vimdoc", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", },
@@ -547,7 +541,7 @@ require("lazy").setup({
       })
     end,
     init = function ()
-      vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
+      opt.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
   },
   {
@@ -627,7 +621,7 @@ require("lazy").setup({
       'DBUIAddConnection',
       'DBUIFindBuffer',
     },
-    init = function()
+    opts = function()
       -- Your DBUI configuration
       g.db_ui_use_nerd_fonts = 1
       g.dbs = {
@@ -678,14 +672,9 @@ require("lazy").setup({
 },
 {
   git = {
-    -- defaults for the `Lazy log` command
-    log = { "-10" }, -- show commits from the last 3 days
-    timeout = 240, -- kill processes that take more than 2 minutes
-    -- url_format = "git@github.com:%s.git",
-    -- lazy.nvim requires git >=2.19.0. If you really want to use lazy with an older version,
-    -- then set the below to false. This should work, but is NOT supported and will
-    -- increase downloads a lot.
+    log = { "-10" }, -- show commits from the last 10 days
+    timeout = 240, -- kill processes that take more than 4 minutes
     filter = true,
   },
 })
-vim.opt.shadafile = ""
+opt.shadafile = ""
