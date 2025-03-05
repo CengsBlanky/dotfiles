@@ -40,8 +40,6 @@ glob_hl("@markup.link.url", { fg = "#8fbcbb", italic = false, underline = true }
 glob_hl("@markup.raw", { fg = "#81a1c1" })
 glob_hl("@markup.raw.block", { fg = "#8fbcbb" })
 glob_hl("@tag.delimiter", { fg = "#869c98" })
--- custome color
-glob_hl("NerdtreeStatus", { fg = "#a3be8c", bold = true })
 
 function _G.lspStatusline()
   local count = {}

@@ -58,7 +58,7 @@ require("lazy").setup({
   {
     'preservim/nerdtree',
     init = function ()
-      g.NERDTreeStatusline='%#NerdtreeStatus#  NERDTree'
+      g.NERDTreeStatusline='  NERDTree'
       g.NERDTreeWinSize = 36
       g.NERDTreeQuitOnOpen = 3
       g.NERDTreeMinimalUI = 1
