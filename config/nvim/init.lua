@@ -632,26 +632,26 @@ require("lazy").setup({
       }
     end,
   },
-        {
-      'mistweaverco/kulala.nvim',
-      ft = { "http", "rest" },
-      keys = {
-        { "<Space>r", function () require("kulala").run() end, mode = { 'n' }, desc = "Send request",  },
-        { "<Space>e", function () require("kulala").set_selected_env() end, mode = { 'n' }, desc = "Select environment" },
-        { "<Space>c", function () require('kulala').copy() end, mode = { 'n' }, desc = "Copy as cURL" },
-        { "<Space>j", function() require('kulala').jump_next() end, mode = { 'n' }, desc = "Jump to next request" },
-        { "<Space>k", function() require('kulala').jump_prev() end, mode = { 'n' }, desc = "Jump to previous request" },
-      },
-      opts = {
-        additional_curl_options = { "--insecure" },
-        request_timeout = 10000, -- milliseconds
-        default_env = "green",
-        ui = {
-          default_winbar_panes = { "body", "headers", "headers_body", "script_output" },
-        },
-        global_keymaps = false,
-      }
+  {
+    'mistweaverco/kulala.nvim',
+    ft = { "http", "rest" },
+    keys = {
+      { "<Space>r", function () require("kulala").run() end, mode = { 'n' }, desc = "Send request",  },
+      { "<Space>e", function () require("kulala").set_selected_env() end, mode = { 'n' }, desc = "Select environment" },
+      { "<Space>c", function () require('kulala').copy() end, mode = { 'n' }, desc = "Copy as cURL" },
+      { "<Space>j", function() require('kulala').jump_next() end, mode = { 'n' }, desc = "Jump to next request" },
+      { "<Space>k", function() require('kulala').jump_prev() end, mode = { 'n' }, desc = "Jump to previous request" },
     },
+    opts = {
+      additional_curl_options = { "--insecure" },
+      request_timeout = 10000, -- milliseconds
+      default_env = "dev",
+      ui = {
+        default_winbar_panes = { "body", "headers", "headers_body", "script_output" },
+      },
+      global_keymaps = false,
+    }
+  },
   {
     "rebelot/kanagawa.nvim",
     opts = function ()
