@@ -56,5 +56,8 @@ g.markdown_fenced_languages = {
 vim.filetype.add({
   pattern = {
     ['.*/templates/.*/*.html'] = 'htmldjango',
-  }
+  },
+  extension = {
+    ['http'] = 'http',
+  },
 })
