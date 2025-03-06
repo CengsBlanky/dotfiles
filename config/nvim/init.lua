@@ -285,17 +285,18 @@ require("lazy").setup({
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    event = "BufEnter",
+    -- event = "BufEnter",
+    event = "VeryLazy",
     opts = function ()
       require'nvim-treesitter.configs'.setup {
-        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "vimdoc", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", },
+        ensure_installed = { "dart", "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc" },
         auto_install = false,
         ignore_install = {}, -- List of parsers to ignore installing
         highlight = {
           enable = true,              -- false will disable the whole extension
           disable = function ()
             return vim.b.large_buf
-          end,  -- list of language that will be disabled
+          end,
           -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
           -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
           -- Using this option may slow down your editor, and you may see some duplicate highlights.
