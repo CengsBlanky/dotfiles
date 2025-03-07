@@ -16,15 +16,6 @@ autocmd({"FileType"}, {
     end
 })
 
-autocmd({"BufEnter"}, {
-    callback = function()
-      if not vim.bo.modifiable or vim.bo.readonly then
-        local opts = { buffer = true, silent = true, nowait = true }
-        vim.keymap.set('n', 'q', ':bd<CR>', opts)
-      end
-    end
-})
-
 autocmd({"FileType"}, {
     pattern = {"markdown", "text", "log"},
     callback = function()
