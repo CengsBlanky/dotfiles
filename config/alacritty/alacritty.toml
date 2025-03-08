@@ -18,7 +18,6 @@ builtin_box_drawing = true
 # normal.family = "Cousine Nerd Font"
 # normal.family = "CaskaydiaMono Nerd Font"
 # normal.style = "SemiLight"
-# normal.family = "Hasklug Nerd Font"
 # normal.family = "MapleMono"
 # normal.family = "MesloLGS Nerd Font"
 # normal.family = "HackZeroSlash Nerd Font"
