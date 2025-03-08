@@ -2,43 +2,7 @@
 vim.loader.enable()
 local opt = vim.opt
 local g = vim.g
--- disable built-in plugins
-for _, load_plugin in pairs({
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "gzip",
-  "zip",
-  "zipPlugin",
-  "tar",
-  "tarPlugin",
-  "getscript",
-  "getscriptPlugin",
-  "vimball",
-  "vimballPlugin",
-  "2html_plugin",
-  "logipat",
-  "rrhelper",
-  "spellfile_plugin",
-  "matchit"
-}) do
-  g["loaded_" .. load_plugin] = 1
-end
 opt.shadafile = "NONE"
-
-g.clipboard = {
-    name = "xsel",
-    copy = {
-        ["+"] = "xsel --nodetach -ib",
-        ["*"] = "xsel --nodetach -ip"
-    },
-    paste = {
-        ["+"] = "xsel -ob",
-        ["*"] = "xsel -op"
-    },
-    cache_enabled = true,
-}
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
