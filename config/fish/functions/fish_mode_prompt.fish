@@ -18,13 +18,13 @@ function fish_mode_prompt
             echo -n " "
         case default
             set_color --bold "81a1c6"
-            echo -n " 󰒲"
+            echo -n " "
         case visual
             set_color --bold yellow
             echo -n " 󰦪"
         case replace_one
             set_color --bold brmagenta
-            echo -n ' '
+            echo -n ' 󰜉'
         case '*'
             set_color --bold red
             echo -n ' '
