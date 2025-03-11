@@ -135,3 +135,20 @@ elixir.setup {
     enable = false
   }
 }
+
+-- java
+lspconfig.jdtls.setup({
+  settings = {
+    java = {
+      configuration = {
+        runtimes = {
+          {
+            name = "JavaSE-Default",
+            path = "/home/zeng/.sdkman/candidates/java/current/bin/java",
+            default = true,
+          }
+        }
+      }
+    }
+  }
+})

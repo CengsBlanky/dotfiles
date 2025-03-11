@@ -32,7 +32,7 @@ builtin_box_drawing = true
 # normal.family = "Consolas Nerd Font"
 # normal.family = "NotoSansMono NF"
 normal.family = "IosevkaTerm Nerd Font"
-normal.style = "medium"
+# normal.style = "medium"
 size = 13
 
 

@@ -223,7 +223,7 @@ colorscheme everforest
 &t_EI = "\<Esc>[2 q"
 autocmd FileType gitcommit set textwidth=0
 autocmd FileType * set formatoptions-=o
-autocmd FileType javascript,html,vim,json,text,typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType javascript,html,vim,json,text,typescript,lua setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType markdown setlocal foldlevel=6
 autocmd FileType xml setlocal nowrap
 autocmd FileType vim setlocal foldmethod=marker

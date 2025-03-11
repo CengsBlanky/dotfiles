@@ -361,6 +361,36 @@ require("lazy").setup({
           "nvim-lua/plenary.nvim",
         },
       },
+      {
+        'nvim-java/nvim-java',
+        ft = { "java" },
+        opts = {
+          root_markers = {
+            'settings.gradle',
+            'settings.gradle.kts',
+            'pom.xml',
+            'build.gradle',
+            'mvnw',
+            'gradlew',
+            'build.gradle',
+            'build.gradle.kts',
+          },
+          jdk = {
+            auto_install = false,
+          },
+          jdtls = {
+            version = 'v1.45.0',
+          },
+          java_test = {
+            enable = true,
+            version = "0.43.0",
+          },
+          spring_boot_tools = {
+            enable = true,
+            version = '1.60.0',
+          },
+        },
+      },
     }
   },
   {
