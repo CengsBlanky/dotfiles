@@ -30,7 +30,6 @@ builtin_box_drawing = true
 # normal.family = "JetBrainsMono Nerd Font"
 # normal.style = "light"
 # normal.family = "Consolas Nerd Font"
-# normal.family = "NotoSansMono NF"
 normal.family = "IosevkaTerm Nerd Font"
 # normal.style = "medium"
 size = 13
