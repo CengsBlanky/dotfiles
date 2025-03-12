@@ -378,9 +378,6 @@ require("lazy").setup({
           jdk = {
             auto_install = false,
           },
-          jdtls = {
-            version = 'v1.45.0',
-          },
           java_test = {
             enable = true,
             version = "0.43.0",
