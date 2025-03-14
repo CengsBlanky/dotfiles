@@ -138,13 +138,15 @@ elixir.setup {
 
 -- java
 lspconfig.jdtls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     java = {
       configuration = {
         runtimes = {
           {
-            name = "JavaSE-Default",
-            path = "/home/zeng/.sdkman/candidates/java/current/bin/java",
+            name = "JavaSE-21",
+            path = vim.fn.expand('$HOME/.sdkman/candidates/java/current/bin/java'),
             default = true,
           }
         }

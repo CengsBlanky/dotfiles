@@ -363,32 +363,9 @@ require("lazy").setup({
       },
       {
         'nvim-java/nvim-java',
-        ft = { "java" },
-        opts = {
-          root_markers = {
-            'settings.gradle',
-            'settings.gradle.kts',
-            'pom.xml',
-            'build.gradle',
-            'mvnw',
-            'gradlew',
-            'build.gradle',
-            'build.gradle.kts',
-          },
-          jdk = {
-            auto_install = false,
-          },
-          java_test = {
-            enable = true,
-            version = "0.43.0",
-          },
-          spring_boot_tools = {
-            enable = true,
-            version = '1.60.0',
-          },
-        },
+        opts = {},
       },
-    }
+    },
   },
   {
     'saecki/crates.nvim',
