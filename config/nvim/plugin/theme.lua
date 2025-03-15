@@ -10,10 +10,8 @@ local glob_hl = function (name, option)
   vim.api.nvim_set_hl(0, name, option)
 end
 
-glob_hl("Normal", { fg = "#ced4da" })
 glob_hl("Todo", { fg = "#ebcb8b", italic = false, bold = true })
 glob_hl("Visual", { bg = "#495057" })
-glob_hl("Search", { bg = "#495057" })
 glob_hl("Folded", { fg = "DarkGray" })
 glob_hl("WinSeparator", { fg = "#88c0d0" })
 glob_hl("StatusLine", { fg = "#587284", bold = true })
@@ -32,14 +30,8 @@ glob_hl("@markup.heading.3.markdown", { fg = "#eed49f", bold = true, })
 glob_hl("@markup.heading.4.markdown", { fg = "#a6da95", bold = true, })
 glob_hl("@markup.heading.5.markdown", { fg = "#7dc4e4", bold = true, })
 glob_hl("@markup.heading.6.markdown", { fg = "#b7bdf8", bold = true, })
-glob_hl("@markup.strong", { fg = "#ffffff", bold = true })
-glob_hl("@markup.italic", { italic = true })
-glob_hl("@markup.underline", { underline = true })
 glob_hl("@markup.link", { fg = "#8fbebb" })
 glob_hl("@markup.link.url", { fg = "#8fbcbb", italic = false, underline = true })
-glob_hl("@markup.raw", { fg = "#81a1c1" })
-glob_hl("@markup.raw.block", { fg = "#8fbcbb" })
-glob_hl("@tag.delimiter", { fg = "#869c98" })
 
 function _G.lspStatusline()
   local count = {}
@@ -77,6 +69,3 @@ end
 
 -- statusline
 vim.opt.statusline = '%r %f%m%{%v:lua.lspStatusline()%}%=%18(%l/%L%)%18(%{&fileformat}%Y%)%9( %{&fileencoding}%)'
-
--- todo
--- show lsp progress
