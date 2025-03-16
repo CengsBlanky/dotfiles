@@ -167,3 +167,17 @@ sudo apt install taskwarrior
 # or install bugwarrior for bug track
 sudo apt install bugwarrior
 ```
+
+### AutoCorrect
+
+auto format CKJ content program written by Rust: https://github.com/huacnlee/autocorrect
+
+install:
+```sh
+curl -sSL https://git.io/JcGER | sh
+```
+
+update:
+```sh
+autocorrect update
+```
