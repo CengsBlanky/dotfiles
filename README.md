@@ -156,3 +156,14 @@ pipx inject pydoro pygame
 ```
 
 直接在命令行使用番茄钟并获取声音通知
+
+### Taskwarrior
+
+[website](https://taskwarrior.org/docs/start/)
+
+install from package manager:
+```sh
+sudo apt install taskwarrior
+# or install bugwarrior for bug track
+sudo apt install bugwarrior
+```
