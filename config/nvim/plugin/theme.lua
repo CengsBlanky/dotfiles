@@ -68,4 +68,4 @@ function _G.lspStatusline()
 end
 
 -- statusline
-vim.opt.statusline = '%r %f%m%{%v:lua.lspStatusline()%}%=%18(%l/%L%)%18(%{&fileformat}%Y%)%9( %{&fileencoding}%)'
+vim.opt.statusline = '%r %f%m%{%v:lua.lspStatusline()%}%=%18(%l/%L%)%24(%{&fileformat}%Y%)%9( %{&fileencoding}%)'
