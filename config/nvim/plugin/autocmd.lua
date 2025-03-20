@@ -82,7 +82,14 @@ autocmd({"BufReadPost"}, {
     end
 })
 
--- restore last cursor position
-vim.cmd[[
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") && &filetype !~# 'commit' && index(['xxd', 'gitrebase'], &filetype) == -1 | exe "normal! g'\"" | endif
-]]
+autocmd({"BufReadPost"}, {
+  pattern = {"*"},
+  callback = function ()
+    local last_line = vim.fn.line("'\"")
+    local filetype = vim.bo.filetype
+    if last_line > 1 and last_line <= vim.fn.line("$") and
+      filetype ~= "commit" and not vim.tbl_contains({"xxd", "gitrebase"}, filetype) then
+      vim.cmd("normal! g'\"")
+    end
+  end
+})
