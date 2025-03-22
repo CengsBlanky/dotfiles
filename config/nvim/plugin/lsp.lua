@@ -138,6 +138,7 @@ elixir.setup {
 
 -- java
 lspconfig.jdtls.setup({
+  autostart = false,
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
