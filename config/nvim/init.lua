@@ -416,6 +416,9 @@ require("lazy").setup({
       },
       completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 200 },
+        ghost_text = {
+          enabled = true,
+        },
         trigger = {
           show_on_insert_on_trigger_character = false,
         },
