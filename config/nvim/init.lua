@@ -2,6 +2,7 @@
 vim.loader.enable()
 local opt = vim.opt
 local g = vim.g
+local map_opts = { silent = true, nowait = true }
 opt.shadafile = "NONE"
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -98,17 +99,15 @@ require("lazy").setup({
       end, { silent = true, nowait = true } },
       { "]b", '<cmd>Gitsigns toggle_current_line_blame<CR>', { silent = true, nowait = true } },
     },
-    opts = function ()
-      require('gitsigns').setup {
-        -- gitsigns.nav_hunk()
-        signs = {
-          delete = { text = '-' },
-        },
-        current_line_blame_opts = {
-          delay = 200,
-        },
-      }
-    end
+    opts = {
+      -- gitsigns.nav_hunk()
+      signs = {
+        delete = { text = '-' },
+      },
+      current_line_blame_opts = {
+        delay = 200,
+      },
+    },
   },
   'junegunn/vim-easy-align',
   'romainl/vim-cool',
@@ -183,6 +182,25 @@ require("lazy").setup({
     'akinsho/bufferline.nvim',
     version = "*",
     event = "VeryLazy",
+    keys = {
+      { '<Space>1', '<Cmd>lua require("bufferline").go_to(1, true)<CR>', map_opts },
+      { '<Space>2', '<Cmd>lua require("bufferline").go_to(2, true)<CR>', map_opts },
+      { '<Space>3', '<Cmd>lua require("bufferline").go_to(3, true)<CR>', map_opts },
+      { '<Space>4', '<Cmd>lua require("bufferline").go_to(4, true)<CR>', map_opts },
+      { '<Space>5', '<Cmd>lua require("bufferline").go_to(5, true)<CR>', map_opts },
+      { '<Space>6', '<Cmd>lua require("bufferline").go_to(6, true)<CR>', map_opts },
+      { '<Space>7', '<Cmd>lua require("bufferline").go_to(7, true)<CR>', map_opts },
+      { '<Space>8', '<Cmd>lua require("bufferline").go_to(8, true)<CR>', map_opts },
+      { '<Space>9', '<Cmd>lua require("bufferline").go_to(9, true)<CR>', map_opts },
+      { '<Space>0', '<Cmd>lua require("bufferline").go_to(-1, true)<CR>', map_opts },
+      { '<Space>p', '<Cmd>BufferLineTogglePin<CR>', map_opts },
+      { '<Space>h', '<Cmd>BufferLineCloseLeft<CR>', map_opts },
+      { '<Space>l', '<Cmd>BufferLineCloseRight<CR>', map_opts },
+      { '<Space>o', '<Cmd>BufferLineCloseOthers<CR>', map_opts },
+      { '<Space>p', '<Cmd>BufferLinePick<CR>', map_opts },
+      { '<Space>D', '<Cmd>BufferLinePickClose<CR>', map_opts },
+      { '<C-n>', '<Cmd>BufferLineCycleNext<CR>', map_opts },
+    },
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function ()
       local bufferline = require('bufferline')
@@ -211,37 +229,16 @@ require("lazy").setup({
           },
         }
       }
-      -- keymaps
-      local map = vim.api.nvim_set_keymap
-      local map_opts = { noremap = true, silent = true }
-      map('n', '<Space>1', '<Cmd>lua require("bufferline").go_to(1, true)<CR>', map_opts)
-      map('n', '<Space>2', '<Cmd>lua require("bufferline").go_to(2, true)<CR>', map_opts)
-      map('n', '<Space>3', '<Cmd>lua require("bufferline").go_to(3, true)<CR>', map_opts)
-      map('n', '<Space>4', '<Cmd>lua require("bufferline").go_to(4, true)<CR>', map_opts)
-      map('n', '<Space>5', '<Cmd>lua require("bufferline").go_to(5, true)<CR>', map_opts)
-      map('n', '<Space>6', '<Cmd>lua require("bufferline").go_to(6, true)<CR>', map_opts)
-      map('n', '<Space>7', '<Cmd>lua require("bufferline").go_to(7, true)<CR>', map_opts)
-      map('n', '<Space>8', '<Cmd>lua require("bufferline").go_to(8, true)<CR>', map_opts)
-      map('n', '<Space>9', '<Cmd>lua require("bufferline").go_to(9, true)<CR>', map_opts)
-      map('n', '<Space>0', '<Cmd>lua require("bufferline").go_to(-1, true)<CR>', map_opts)
-      map('n', '<Space>p', '<Cmd>BufferLineTogglePin<CR>', map_opts)
-      map('n', '<Space>h', '<Cmd>BufferLineCloseLeft<CR>', map_opts)
-      map('n', '<Space>l', '<Cmd>BufferLineCloseRight<CR>', map_opts)
-      map('n', '<Space>o', '<Cmd>BufferLineCloseOthers<CR>', map_opts)
-      map('n', '<Space>p', '<Cmd>BufferLinePick<CR>', map_opts)
-      map('n', '<Space>D', '<Cmd>BufferLinePickClose<CR>', map_opts)
-      map('n', '<C-n>', '<Cmd>BufferLineCycleNext<CR>', map_opts)
     end,
   },
   {
     'stevearc/aerial.nvim',
     keys = {
-      { "<Space>a", "<cmd>AerialToggle!<CR>", { silent = true, nowait = true } },
-      { "{", "<cmd>AerialPrev<CR>", { silent = true, nowait = true } },
-      { "}", "<cmd>AerialNext<CR>", { silent = true, nowait = true } },
+      { "<Space>a", "<cmd>AerialToggle!<CR>", map_opts},
+      { "{", "<cmd>AerialPrev<CR>", map_opts},
+      { "}", "<cmd>AerialNext<CR>", map_opts},
     },
     opts = {},
-    -- Optional dependencies
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons"
@@ -334,19 +331,17 @@ require("lazy").setup({
         virtual_text = false,
         severity_sort = true,
       })
-      require("mason-lspconfig").setup({
-        ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'basedpyright', 'elixirls', 'rust_analyzer', 'gopls', 'ruff', 'html', 'cssls', 'ts_ls', 'denols', 'jsonls', 'svelte', 'htmx', },
-      })
     end,
     dependencies = {
       {
         'williamboman/mason.nvim',
-        opts = function ()
-          require("mason").setup()
-        end
+        opts = {},
       },
       {
         'williamboman/mason-lspconfig.nvim',
+        opts= {
+          ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'basedpyright', 'elixirls', 'rust_analyzer', 'gopls', 'ruff', 'html', 'cssls', 'ts_ls', 'denols', 'jsonls', 'svelte', 'htmx', },
+        },
       },
       {
         'mrcjkb/rustaceanvim',
@@ -371,9 +366,7 @@ require("lazy").setup({
     'saecki/crates.nvim',
     tag = 'stable',
     event = { "BufRead Cargo.toml" },
-    opts = function()
-      require('crates').setup()
-    end,
+    opts = {},
   },
   {
     'elixir-editors/vim-elixir',
@@ -447,71 +440,69 @@ require("lazy").setup({
         desc = "conform done",
       },
     },
-    opts = function ()
-      require("conform").setup({
-        formatters_by_ft = {
-          python = { "py_format", "py_sort"},
-          htmldjango = { "html_django" },
-          c = { "c_format" },
-          cpp = { "c_format" },
-          go = { "gofmt", "goimports" },
-          kotlin = { "ktfmt" },
-          xml = { "xq_format" },
-          ["*"] = { "trim_whitespace" },
+    opts = {
+      formatters_by_ft = {
+        python = { "py_format", "py_sort"},
+        htmldjango = { "html_django" },
+        c = { "c_format" },
+        cpp = { "c_format" },
+        go = { "gofmt", "goimports" },
+        kotlin = { "ktfmt" },
+        xml = { "xq_format" },
+        ["*"] = { "trim_whitespace" },
+      },
+      formatters = {
+        ["c_format"] = {
+          command = "clang-format",
+          args = "-style=file:$HOME/.config/formatter/clang-format.yaml",
         },
-        formatters = {
-          ["c_format"] = {
-            command = "clang-format",
-            args = "-style=file:$HOME/.config/formatter/clang-format.yaml",
-          },
-          ["py_format"] = {
-            command = "ruff",
-            args = {
-              "format",
-              "--stdin-filename",
-              "$FILENAME",
-            },
-          },
-          ["py_sort"] = {
-            command = "ruff",
-            args = {
-              "check",
-              "--select",
-              "I",
-              "--fix",
-              "--stdin-filename",
-              "$FILENAME",
-            },
-          },
-          ["html_django"] = {
-            command = "prettier",
-            args = {
-              "--tab-width",
-              "2",
-              "$FILENAME",
-            }
-          },
-          ["ktfmt"] = {
-            command = "ktfmt",
-            append_args = {
-              "--kotlinlang-style",
-            }
-          },
-          ["xq_format"] = {
-            command = "xq",
+        ["py_format"] = {
+          command = "ruff",
+          args = {
+            "format",
+            "--stdin-filename",
+            "$FILENAME",
           },
         },
-        default_format_opts = {
-          lsp_format = "fallback",
-          stop_after_first = false,
+        ["py_sort"] = {
+          command = "ruff",
+          args = {
+            "check",
+            "--select",
+            "I",
+            "--fix",
+            "--stdin-filename",
+            "$FILENAME",
+          },
         },
-        -- format_on_save = {
+        ["html_django"] = {
+          command = "prettier",
+          args = {
+            "--tab-width",
+            "2",
+            "$FILENAME",
+          }
+        },
+        ["ktfmt"] = {
+          command = "ktfmt",
+          append_args = {
+            "--kotlinlang-style",
+          }
+        },
+        ["xq_format"] = {
+          command = "xq",
+        },
+      },
+      default_format_opts = {
+        lsp_format = "fallback",
+        stop_after_first = false,
+      },
+      -- format_on_save = {
         --   lsp_format = "fallback",
         --   timeout_ms = 300,
         -- },
         -- log_level = vim.log.levels.DEBUG,
-      })
-    end,
+      },
     init = function ()
       opt.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
@@ -626,40 +617,37 @@ require("lazy").setup({
   },
   {
     "rebelot/kanagawa.nvim",
-    opts = function ()
-      require('kanagawa').setup({
-        colors = {
-          palette = {
-            waveRed = "#d08770",
-            peachRed = "#bf616a",
-          },
-          theme = {
-            all = {
-              ui = {
-                float = {
-                  bg = "none",
-                },
-                bg_gutter = "none",
+    opts = {
+      colors = {
+        palette = {
+          waveRed = "#d08770",
+          peachRed = "#bf616a",
+        },
+        theme = {
+          all = {
+            ui = {
+              float = {
+                bg = "none",
               },
+              bg_gutter = "none",
             },
           },
         },
-        overrides = function()
-          return {
-            Boolean = { bold = false },
-            ["@variable.builtin"] = { italic = false },
-          }
-        end,
-        compile = true,
-        commentStyle = { italic = false },
-        keywordStyle = { italic = false },
-        statementStyle = { italic = false, bold = false },
-        typeStyle = { italic = false, bold = false },
-        transparent = true,
-        theme = "wave",
-      })
-      require("kanagawa").load("wave")
-    end
+      },
+      overrides = function()
+        return {
+          Boolean = { bold = false },
+          ["@variable.builtin"] = { italic = false },
+        }
+      end,
+      compile = true,
+      commentStyle = { italic = false },
+      keywordStyle = { italic = false },
+      statementStyle = { italic = false, bold = false },
+      typeStyle = { italic = false, bold = false },
+      transparent = true,
+      theme = "wave",
+    },
   },
 },
 {

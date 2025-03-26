@@ -1,4 +1,5 @@
 ---@diagnostic disable: undefined-global
+vim.cmd("colorscheme kanagawa")
 local opt = vim.opt
 opt.termguicolors = true
 opt.wildoptions = 'pum'
