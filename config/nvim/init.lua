@@ -343,30 +343,23 @@ require("lazy").setup({
           ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'basedpyright', 'elixirls', 'rust_analyzer', 'gopls', 'ruff', 'html', 'cssls', 'ts_ls', 'denols', 'jsonls', 'svelte', 'htmx', },
         },
       },
-      {
-        'mrcjkb/rustaceanvim',
-        ft = { "rust" },
-        version = '^5', -- Recommended
-        lazy = false, -- This plugin is already lazy
-      },
-      {
-        "elixir-tools/elixir-tools.nvim",
-        version = "*",
-        dependencies = {
-          "nvim-lua/plenary.nvim",
-        },
-      },
-      {
-        'nvim-java/nvim-java',
-        opts = {},
-      },
     },
+  },
+  {
+    'mrcjkb/rustaceanvim',
+    ft = { "rust" },
+    version = '^5',
   },
   {
     'saecki/crates.nvim',
     tag = 'stable',
     event = { "BufRead Cargo.toml" },
     opts = {},
+  },
+  {
+    "elixir-tools/elixir-tools.nvim",
+    ft = { "elixir" },
+    version = "*",
   },
   {
     'elixir-editors/vim-elixir',

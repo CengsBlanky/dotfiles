@@ -116,42 +116,24 @@ vim.g.rustaceanvim = {
 }
 
 -- elixir
-local elixir = require("elixir")
-local elixirls = require("elixir.elixirls")
+if vim.bo.filetype == "elixir" then
+  local elixir = require("elixir")
+  local elixirls = require("elixir.elixirls")
 
-elixir.setup {
-  nextls = { enable = false },
-  elixirls = {
-    cmd = "elixir-ls",
-    enable = true,
-    settings = elixirls.settings {
-      dialyzerEnabled = false,
-      enableTestLenses = true,
+  elixir.setup {
+    nextls = { enable = false },
+    elixirls = {
+      cmd = "elixir-ls",
+      enable = true,
+      settings = elixirls.settings {
+        dialyzerEnabled = false,
+        enableTestLenses = true,
+      },
+      on_attach = on_attach,
+      capabilities = capabilities,
     },
-    on_attach = on_attach,
-    capabilities = capabilities,
-  },
-  projectionist = {
-    enable = false
-  }
-}
-
--- java
-lspconfig.jdtls.setup({
-  autostart = false,
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    java = {
-      configuration = {
-        runtimes = {
-          {
-            name = "JavaSE-21",
-            path = vim.fn.expand('$HOME/.sdkman/candidates/java/current/bin/java'),
-            default = true,
-          }
-        }
-      }
+    projectionist = {
+      enable = false
     }
   }
-})
+end
