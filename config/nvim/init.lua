@@ -246,7 +246,6 @@ require("lazy").setup({
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    -- event = "BufEnter",
     event = "VeryLazy",
     opts = function ()
       require'nvim-treesitter.configs'.setup {
