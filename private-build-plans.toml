@@ -1,0 +1,37 @@
+[buildPlans.IosevkaZeng]
+family = "IosevkaZeng"
+spacing = "normal"
+serifs = "sans"
+noCvSs = true
+exportGlyphNames = false
+noLigation = true
+
+[buildPlans.IosevkaZeng.variants.design]
+one = "no-base"
+seven = "straight-serifless"
+capital-g = "toothed-serifless-hooked"
+capital-j = "serifed"
+capital-m = "hanging-serifless"
+capital-q = "crossing"
+capital-w = "straight-almost-flat-top-serifless"
+f = "serifless"
+i = "serifed-asymmetric"
+k = "straight-serifless"
+l = "serifed"
+r = "serifless"
+y = "straight-turn-serifless"
+lower-lambda = "straight-turn"
+cyrl-capital-er = "open-serifless"
+cyrl-er = "earless-rounded-serifless"
+tilde = "low"
+asterisk = "hex-low"
+underscore = "high"
+caret = "medium"
+brace = "curly"
+number-sign = "slanted"
+at = "compact"
+dollar = "interrupted"
+percent = "rings-continuous-slash"
+bar = "force-upright"
+lig-ltgteq = "slanted"
+lig-double-arrow-bar = "without-notch"
