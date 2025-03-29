@@ -594,6 +594,7 @@ require("lazy").setup({
       additional_curl_options = { "--insecure" },
       -- 10 seconds timeout
       request_timeout = 10000,
+      urlencode = "skipencoded",
       default_env = "dev",
       ui = {
         default_winbar_panes = { "body", "headers", "headers_body", "script_output" },
