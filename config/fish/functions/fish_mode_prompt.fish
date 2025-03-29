@@ -1,5 +1,5 @@
 function fish_mode_prompt
-    set -l bg_color '3a3a3a'
+    set -l bg_color '2f2f2f'
     set -l last_status $status
     set -l pwd_color_bare '88c0d0'
     set -l err_color 'c92a2a'
@@ -30,7 +30,7 @@ function fish_mode_prompt
             echo -n ' 󰎂 '
     end
     set_color -b normal
-    set_color --bold $bg_color
+    set_color $bg_color
     echo -n ''
     set_color normal
 end
