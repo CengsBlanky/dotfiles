@@ -320,7 +320,7 @@ require("lazy").setup({
     event = "BufReadPost",
     config = function ()
       -- lsp sign icons
-      local signs = { Error = " ", Warn = "", Hint = "󰌶", Info = "" }
+      local signs = { Error = "󰅙 ", Warn = "", Hint = "󰌵", Info = "󰋼" }
       for type, icon in pairs(signs) do
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -643,7 +643,24 @@ require("lazy").setup({
       },
       overrides = function()
         return {
-          Boolean = { bold = false },
+          Boolean = { bold = false, },
+          Todo = { fg = "#ebcb8b", italic = false, bold = true, },
+          Visual = { bg = "#495359", },
+          Folded = { fg = "DarkGray", bg = "none", },
+          WinSeparator = { fg = "#88c0d0", bg = "none", },
+          StatusLine = { fg = "#587284", bg = "none", bold = true, },
+          ["@comment.note"] = { fg = "#a3be8c", bg = "none", bold = true, italic = false, underline = true, },
+          ["@comment.todo"] = { fg = "#ebcb8b", bg = "none", bold = true, italic = true, underline = true, },
+          ["@comment.warning"] = { fg = "#000000", bg = "#ffb300", bold = true, italic = true, underline = true, },
+          ["@comment.error"] = { fg = "#cf616a", bg = "black", bold = true, italic = true, underline = true, },
+          ["@markup.heading.1.markdown"] = { fg = "#ee99a0", bg = "none", bold = true, },
+          ["@markup.heading.2.markdown"] = { fg = "#f5a97f", bg = "none", bold = true, },
+          ["@markup.heading.3.markdown"] = { fg = "#eed49f", bg = "none", bold = true, },
+          ["@markup.heading.4.markdown"] = { fg = "#a6da95", bg = "none", bold = true, },
+          ["@markup.heading.5.markdown"] = { fg = "#7dc4e4", bg = "none", bold = true, },
+          ["@markup.heading.6.markdown"] = { fg = "#b7bdf8", bg = "none", bold = true, },
+          ["@markup.link"] = { fg = "#8fbebb", bg = "none" },
+          ["@markup.link.url"] = { fg = "#8fbcbb", bg = "none", italic = false, underline = true },
           ["@variable.builtin"] = { italic = false },
         }
       end,
