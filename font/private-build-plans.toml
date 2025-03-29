@@ -1,6 +1,11 @@
+# 1. clone Iosevka repo:`git clone --depth 1 https://github.com/be5invis/Iosevka.git`
+# 2. go to repo run `npm install`
+# 3. create file private-build-plans.toml and copy content below
+# 4. compile with ttf `npm run build -- ttf-unhinted::IosevkaZeng`
+# 5. run `npm run build -- ttf::IosevkaZeng` with hinted font
 [buildPlans.IosevkaZeng]
 family = "IosevkaZeng"
-spacing = "normal"
+spacing = "term"
 serifs = "sans"
 noCvSs = true
 exportGlyphNames = false
@@ -8,17 +13,23 @@ noLigation = true
 
 [buildPlans.IosevkaZeng.variants.design]
 one = "no-base"
+two = "straight-neck-serifless"
+five = "oblique-arched-serifless"
 seven = "straight-serifless"
-capital-g = "toothed-serifless-hooked"
+nine = "open-contour"
+capital-g = "toothless-corner-inward-serifed-hooked"
 capital-j = "serifed"
 capital-m = "hanging-serifless"
 capital-q = "crossing"
-capital-w = "straight-almost-flat-top-serifless"
+capital-w = "straight-flat-top-serifless"
 f = "serifless"
-i = "serifed-asymmetric"
+g = "single-storey-top-cut"
+i = "serifed-diagonal-tailed"
 k = "straight-serifless"
 l = "serifed"
 r = "serifless"
+t = "bent-hook-short-neck"
+w = "straight-flat-top-serifless"
 y = "straight-turn-serifless"
 lower-lambda = "straight-turn"
 cyrl-capital-er = "open-serifless"
@@ -28,10 +39,12 @@ asterisk = "hex-low"
 underscore = "high"
 caret = "medium"
 brace = "curly"
+guillemet = "straight"
 number-sign = "slanted"
 at = "compact"
-dollar = "interrupted"
+dollar = "through-cap"
 percent = "rings-continuous-slash"
 bar = "force-upright"
 lig-ltgteq = "slanted"
 lig-double-arrow-bar = "without-notch"
+lig-single-arrow-bar = "without-notch"
