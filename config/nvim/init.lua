@@ -590,21 +590,35 @@ require("lazy").setup({
   {
     'mistweaverco/kulala.nvim',
     ft = { "http", "rest" },
-    keys = {
-      { "<Space>r", function () require("kulala").run() end, mode = { 'n' }, desc = "Send request",  },
-      { "<Space>e", function () require("kulala").set_selected_env() end, mode = { 'n' }, desc = "Select environment" },
-      { "<Space>c", function () require('kulala').copy() end, mode = { 'n' }, desc = "Copy as cURL" },
-      { "<Space>j", function() require('kulala').jump_next() end, mode = { 'n' }, desc = "Jump to next request" },
-      { "<Space>k", function() require('kulala').jump_prev() end, mode = { 'n' }, desc = "Jump to previous request" },
-    },
     opts = {
       additional_curl_options = { "--insecure" },
-      request_timeout = 10000, -- milliseconds
+      -- 10 seconds timeout
+      request_timeout = 10000,
       default_env = "dev",
       ui = {
         default_winbar_panes = { "body", "headers", "headers_body", "script_output" },
       },
-      global_keymaps = false,
+      global_keymaps = {
+        ["Send request"] = { "<Space>r", function() require("kulala").run() end, mode = { "n" }, ft = { "http", "rest" } },
+        ["Select environment"] = { "<Space>e", function() require("kulala").set_selected_env() end, mode = { "n" }, ft = { "http", "rest" } },
+        ["Copy as cURL"] = { "<Space>c", function() require("kulala").copy() end, mode = { "n" }, ft = { "http", "rest" } },
+        ["Paste from curl"] = { "<Space>p", function() require("kulala").from_curl() end, mode = { "n" }, ft = { "http", "rest" }, },
+        ["Jump to next request"] = { "<Space>j", function() require("kulala").jump_next() end, mode = { "n" }, ft = { "http", "rest" }, },
+        ["Jump to previous request"] = { "<Space>k", function() require("kulala").jump_prev() end, mode = { "n" }, ft = { "http", "rest" }, },
+        ["Open scratchpad"] = false,
+        ["Open kulala"] = false,
+        ["Toggle headers/body"] = false,
+        ["Show stats"] = false,
+        ["Close window"] = false,
+        ["Send request <cr>"] = false,
+        ["Send all requests"] = false,
+        ["Inspect current request"] = false,
+        ["Replay the last request"] = false,
+        ["Find request"] = false,
+        ["Download GraphQL schema"] = false,
+        ["Clear globals"] = false,
+        ["Clear cached files"] = false,
+      },
     }
   },
   {
