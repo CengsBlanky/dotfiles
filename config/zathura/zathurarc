@@ -75,15 +75,20 @@ set guioptions ""
 set render-loading "false"
 
 map <Tab> toggle_index
+map [fullscreen] <Tab> toggle_index
 map u scroll full-up
+map [fullscreen] u scroll full-up
 unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
 map <C-i> recolor
+map [fullscreen] <C-i> recolor
 set adjust-open width
 # set adjust-open "best-fit"
 set recolor true
 
 # simulate smooth scroll
 map j feedkeys "<C-Down>"
+map [fullscreen] j feedkeys "<C-Down>"
 map k feedkeys "<C-Up>"
+map [fullscreen] k feedkeys "<C-Up>"
