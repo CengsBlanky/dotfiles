@@ -31,6 +31,8 @@ function compress
             tar -cJf $output $input
         case zip
             zip -r $output $input
+        case 7z
+            7z a -mx=9 $output $input
         case '*'
             echo "Error: Unsupported format '$format'."
             return 1

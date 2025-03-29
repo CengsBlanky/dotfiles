@@ -20,6 +20,8 @@ function decompress
             tar -xJf $archive
         case '*.zip'
             unzip $archive
+        case '*.7z'
+            7z x $archive
         case '*'
             echo "Error: Unsupported archive format for '$archive'."
             return 1
