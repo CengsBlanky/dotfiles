@@ -62,9 +62,9 @@ set window-height 2160
 set pages-per-row 1
 
 # stop at page boundries
-set scroll-page-aware "true"
-set scroll-full-overlap 0.01
-set scroll-step 30
+set scroll-page-aware "false"
+set scroll-full-overlap 0.08
+set scroll-step 100
 set adjust-open "best-fit"
 set adjust_window width
 
@@ -75,7 +75,7 @@ set guioptions ""
 set render-loading "false"
 
 map <Tab> toggle_index
-map u scroll half-up
+map u scroll full-up
 unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
