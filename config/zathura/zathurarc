@@ -61,10 +61,8 @@ set window-height 2160
 # One page per row by default
 set pages-per-row 1
 
-#stop at page boundries
+# stop at page boundries
 set scroll-page-aware "true"
-set smooth-scroll true
-set smooth-scroll-fraction 0.1
 set scroll-full-overlap 0.01
 set scroll-step 30
 set adjust-open "best-fit"
