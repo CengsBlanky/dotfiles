@@ -24,7 +24,7 @@ for font_file in $font_files
         echo "$font_file patch failed! check error log: $err_log for details"
     else
         rm $err_log
-        echo "$font_file patched finished."
+        echo "$font_file patched finished. \($patched_count/$font_count\)"
         set patched_count (math $patched_count + 1)
     end
 end
