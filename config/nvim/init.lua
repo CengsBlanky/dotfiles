@@ -311,16 +311,17 @@ require("lazy").setup({
     'neovim/nvim-lspconfig',
     event = "BufReadPost",
     config = function ()
-      -- lsp sign icons
-      local signs = { Error = "󰅙 ", Warn = "", Hint = "󰌵", Info = "󰋼" }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
-
       vim.diagnostic.config({
         virtual_text = false,
         severity_sort = true,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = '󰅙',
+            [vim.diagnostic.severity.WARN] = '',
+            [vim.diagnostic.severity.INFO] = '󰌵',
+            [vim.diagnostic.severity.HINT] = '󰋼',
+          },
+        },
       })
     end,
     dependencies = {
@@ -641,6 +642,10 @@ require("lazy").setup({
           Folded = { fg = "DarkGray", bg = "none", },
           WinSeparator = { fg = "#88c0d0", bg = "none", },
           StatusLine = { fg = "#587284", bg = "none", bold = true, },
+          DiagnosticError = { fg = "#ef616a", bg = "none", bold = true },
+          DiagnosticSignError = { fg = "#ef616a", bg = "none", bold = true },
+          DiagnosticVirtualTextError = { fg = "#ef616a", bg = "none", bold = true },
+          DiagnosticFloatingError = { fg = "#ef616a", bg = "none", bold = true },
           ["@comment.note"] = { fg = "#a3be8c", bg = "none", bold = true, italic = false, underline = true, },
           ["@comment.todo"] = { fg = "#ebcb8b", bg = "none", bold = true, italic = true, underline = true, },
           ["@comment.warning"] = { fg = "#000000", bg = "#ffb300", bold = true, italic = true, underline = true, },
