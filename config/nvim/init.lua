@@ -21,6 +21,7 @@ opt.rtp:prepend(lazypath)
 require("lazy").setup({
   {
     'preservim/nerdtree',
+    cmd = {"NERDTreeToggle", "NERDTreeFind"},
     init = function ()
       g.NERDTreeStatusline='  NERDTree'
       g.NERDTreeWinSize = 36
@@ -39,7 +40,6 @@ require("lazy").setup({
         '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^__pycache__$[[dir]]'
       }
     end,
-    cmd = {"NERDTreeToggle", "NERDTreeFind"},
     keys = {
       { "<Tab>", "<cmd>NERDTreeToggle<CR>", { nowait = true, silent = true } },
       { "<C-s>", "<cmd>NERDTreeFind<CR>", { nowait = true, silent = true } },
@@ -49,17 +49,17 @@ require("lazy").setup({
   {
     'stevearc/oil.nvim',
     keys = {
-      { "<M-f>", "<cmd>Oil .<CR>", { silent = true, nowait = true } },
+      -- open oil at current file dir
+      { "<M-f>", "<cmd>Oil %:h<CR>", { silent = true, nowait = true } },
     },
-    opts = function()
-      require('oil').setup({
-        skip_confirm_for_simple_edits = true,
-        cleanup_delay_ms = 1000,
-        view_options = {
-          show_hidden = true,
-        }
-      })
-    end
+    opts = {
+      skip_confirm_for_simple_edits = true,
+      cleanup_delay_ms = 1000,
+      view_options = {
+        show_hidden = true,
+      },
+      watch_for_changes = true,
+    },
   },
   {
     'leafOfTree/vim-svelte-plugin',
@@ -370,7 +370,7 @@ require("lazy").setup({
   },
   {
     'saghen/blink.cmp',
-    lazy = false, -- lazy loading handled internally
+    lazy = true, -- lazy loading handled internally
     -- optional: provides snippets for the snippet source
     dependencies = {
       { 'rafamadriz/friendly-snippets' },
