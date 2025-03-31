@@ -19,7 +19,6 @@ end
 opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  checker = { enabled = false },
   {
     'preservim/nerdtree',
     init = function ()
@@ -112,7 +111,7 @@ require("lazy").setup({
   'junegunn/vim-easy-align',
   'romainl/vim-cool',
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.5',
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
     dependencies = {
       {'nvim-lua/plenary.nvim'},
       {
@@ -646,6 +645,7 @@ require("lazy").setup({
           DiagnosticSignError = { fg = "#ef616a", bg = "none", bold = true },
           DiagnosticVirtualTextError = { fg = "#ef616a", bg = "none", bold = true },
           DiagnosticFloatingError = { fg = "#ef616a", bg = "none", bold = true },
+          TabLineFill = { bg = "none" },
           ["@comment.note"] = { fg = "#a3be8c", bg = "none", bold = true, italic = false, underline = true, },
           ["@comment.todo"] = { fg = "#ebcb8b", bg = "none", bold = true, italic = true, underline = true, },
           ["@comment.warning"] = { fg = "#000000", bg = "#ffb300", bold = true, italic = true, underline = true, },
@@ -676,6 +676,35 @@ require("lazy").setup({
     log = { "-10" }, -- show commits from the last 10 days
     timeout = 240, -- kill processes that take more than 4 minutes
     filter = true,
+  },
+  checker = { enabled = false },
+  change_detection = { enabled = false, },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "netrw",
+        "netrwPlugin",
+        "netrwSettings",
+        "netrwFileHandlers",
+        "gzip",
+        "zip",
+        "zipPlugin",
+        "tar",
+        "tarPlugin",
+        "getscript",
+        "getscriptPlugin",
+        "vimball",
+        "vimballPlugin",
+        "tohtml",
+        "2html_plugin",
+        "logipat",
+        "rrhelper",
+        "spellfile_plugin",
+        "matchit",
+        "matchparen",
+        "tutor",
+      },
+    },
   },
 })
 opt.shadafile = ""
