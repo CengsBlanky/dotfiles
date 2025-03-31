@@ -123,17 +123,22 @@ require("lazy").setup({
       {
         "<leader>f", function ()
           require("telescope.builtin").find_files()
-        end, { silent = true, nowait = true }
+        end, map_opts
       },
       {
         "<leader>g", function ()
           require("telescope.builtin").live_grep()
-        end, { silent = true, nowait = true }
+        end, map_opts
       },
       {
         "<leader>b", function ()
           require("telescope.builtin").buffers()
-        end, { silent = true, nowait = true }
+        end, map_opts
+      },
+      {
+        "<leader>s", function ()
+          require("telescope.builtin").lsp_references()
+        end, map_opts
       },
     },
     opts = function ()

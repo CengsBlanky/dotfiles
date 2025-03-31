@@ -14,17 +14,16 @@ local on_attach = function(_, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, nowait = true, buffer = bufnr }
   setnmap('gD', vim.lsp.buf.declaration, bufopts)
   setnmap('gd', vim.lsp.buf.definition, bufopts)
-  setnmap('K', vim.lsp.buf.hover, bufopts)
   setnmap('gi', vim.lsp.buf.implementation, bufopts)
-  -- setnmap('<C-k>', vim.lsp.buf.signature_help, bufopts)
+  setnmap('gr', vim.lsp.buf.references, bufopts)
+  setnmap('K', vim.lsp.buf.hover, bufopts)
   setnmap('<space>t', vim.lsp.buf.type_definition, bufopts)
   setnmap('<leader>r', vim.lsp.buf.rename, bufopts)
   setnmap('<leader>a', vim.lsp.buf.code_action, bufopts)
-  setnmap('<leader>s', function() vim.lsp.codelens.run() end, bufopts)
-  setnmap('gr', vim.lsp.buf.references, bufopts)
+  setnmap('<leader>c', function() vim.lsp.codelens.run() end, bufopts)
 end
 
 -- Add additional capabilities supported by nvim-cmp
