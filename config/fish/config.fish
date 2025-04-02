@@ -14,8 +14,6 @@ if status is-interactive
     set -gx EDITOR /usr/local/bin/vim
     set -gx GIT_EDITOR $EDITOR
     set -gx LESS "-RiXF"
-    # set -gx MANPAGER most
-    set -gx TERM "alacritty"
     # bc scale
     set -gx BC_ENV_ARGS "$HOME/.bc"
     # ripgrep 
