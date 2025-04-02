@@ -165,7 +165,6 @@ require("lazy").setup({
       require('telescope').load_extension('fzf')
     end
   },
-  'dag/vim-fish',
   {
     'mattn/emmet-vim',
     init = function ()
@@ -646,7 +645,7 @@ require("lazy").setup({
         return {
           Boolean = { bold = false, },
           Todo = { fg = "#ebcb8b", italic = false, bold = true, },
-          Visual = { bg = "#495359", },
+          Visual = { bg = "#495359", bold = true, },
           Folded = { fg = "DarkGray", bg = "none", },
           WinSeparator = { fg = "#88c0d0", bg = "none", },
           StatusLine = { fg = "#587284", bg = "none", bold = true, },
