@@ -4,6 +4,7 @@ local opt = vim.opt
 local g = vim.g
 local map_opts = { silent = true, nowait = true }
 opt.shadafile = "NONE"
+opt.termguicolors = true
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
