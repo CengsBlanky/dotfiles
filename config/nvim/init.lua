@@ -228,19 +228,6 @@ require("lazy").setup({
     end,
   },
   {
-    'stevearc/aerial.nvim',
-    keys = {
-      { "<Space>a", "<cmd>AerialToggle!<CR>", map_opts},
-      { "{", "<cmd>AerialPrev<CR>", map_opts},
-      { "}", "<cmd>AerialNext<CR>", map_opts},
-    },
-    opts = {},
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
-    },
-  },
-  {
     'nvim-treesitter/nvim-treesitter',
     event = "VeryLazy",
     opts = function ()
@@ -248,6 +235,9 @@ require("lazy").setup({
         ensure_installed = { "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", },
         auto_install = false,
         ignore_install = {}, -- List of parsers to ignore installing
+        indent = {
+          enable = true,
+        },
         highlight = {
           enable = true,              -- false will disable the whole extension
           disable = function ()
@@ -310,6 +300,16 @@ require("lazy").setup({
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects"
     },
+  },
+  {
+    'stevearc/aerial.nvim',
+    keys = {
+      { "<Space>a", "<cmd>AerialToggle!<CR>", map_opts},
+      { "{", "<cmd>AerialPrev<CR>", map_opts},
+      { "}", "<cmd>AerialNext<CR>", map_opts},
+    },
+    opts = {},
+    dependencies = {},
   },
   {
     'neovim/nvim-lspconfig',
