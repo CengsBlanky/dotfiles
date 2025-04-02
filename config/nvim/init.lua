@@ -438,6 +438,10 @@ require("lazy").setup({
         go = { "gofmt", "goimports" },
         kotlin = { "ktfmt" },
         xml = { "xq_format" },
+        javascript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
         ["*"] = { "trim_whitespace" },
       },
       formatters = {
