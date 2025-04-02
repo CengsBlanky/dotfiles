@@ -14,8 +14,10 @@ function compress
         return 1
     end
 
+    set extension (string split -r -m1 . $output)[2]
+    # get suffix as format
     if test -z "$format"
-        set format "gz"
+        set format $extension
     end
 
     if test -z "$output"
