@@ -26,16 +26,16 @@ function _G.lspStatusline()
   local info = ""
 
   if count["errors"] ~= 0 then
-    errors = " %#DiagnosticVirtualTextError#󰅙 " .. count["errors"]
+    errors = " %#DiagnosticError# " .. count["errors"]
   end
   if count["warnings"] ~= 0 then
-    warnings = " %#DiagnosticVirtualTextWarn# " .. count["warnings"]
-  end
-  if count["hints"] ~= 0 then
-    hints = " %#DiagnosticVirtualTextHint#󰌵 " .. count["hints"]
+    warnings = " %#DiagnosticWarn# " .. count["warnings"]
   end
   if count["info"] ~= 0 then
-    info = " %#DiagnosticVirtualTextInfo#󰋼 " .. count["info"]
+    info = " %#DiagnosticInfo# " .. count["info"]
+  end
+  if count["hints"] ~= 0 then
+    hints = " %#DiagnosticHint#󰌶 " .. count["hints"]
   end
 
   return errors .. warnings .. hints .. info .. "%0*"
