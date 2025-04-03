@@ -316,14 +316,18 @@ require("lazy").setup({
     event = "BufReadPost",
     config = function ()
       vim.diagnostic.config({
-        virtual_text = false,
         severity_sort = true,
+        virtual_text = {
+          severity = {
+            min = vim.diagnostic.severity.WARN
+          },
+        },
         signs = {
           text = {
-            [vim.diagnostic.severity.ERROR] = '󰅙',
-            [vim.diagnostic.severity.WARN] = '',
-            [vim.diagnostic.severity.INFO] = '󰌵',
-            [vim.diagnostic.severity.HINT] = '󰋼',
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN] = '',
+            [vim.diagnostic.severity.INFO] = '',
+            [vim.diagnostic.severity.HINT] = '󰌶',
           },
         },
       })
