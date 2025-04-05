@@ -250,7 +250,7 @@ require("lazy").setup({
           additional_vim_regex_highlighting = false,
         },
         matchup = {
-          enable = false, -- mandatory, false will disable the whole extension
+          enable = true, -- mandatory, false will disable the whole extension
           disable = {},  -- optional, list of language that will be disabled
         },
         textobjects = {
@@ -298,7 +298,8 @@ require("lazy").setup({
       }
     end,
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects"
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      "andymass/vim-matchup",
     },
   },
   {
