@@ -13,7 +13,25 @@ autocmd({"FileType"}, {
         vim.opt_local.spell = false
         vim.b.large_buf = true
       end
+      -- set readonly map
+      local lmap_opts = { nowait = true, silent = true, buffer = true }
+      if not vim.bo.modifiable or vim.bo.readonly then
+        vim.keymap.set('n', 'q', '<Cmd>bd<CR>', lmap_opts)
+        vim.keymap.set('n', '<Space>', '<C-f>', lmap_opts)
+        vim.keymap.set('n', 'u', '<C-b>', lmap_opts)
+      end
     end
+})
+
+autocmd({"BufReadPost"}, {
+  callback = function ()
+    local last_line = vim.fn.line("'\"")
+    local filetype = vim.bo.filetype
+    if last_line > 1 and last_line <= vim.fn.line("$") and
+      filetype ~= "commit" and not vim.tbl_contains({"xxd", "gitrebase"}, filetype) then
+      vim.cmd("normal! g'\"")
+    end
+  end
 })
 
 autocmd({"FileType"}, {
@@ -82,14 +100,3 @@ autocmd({"BufReadPost"}, {
     end
 })
 
-autocmd({"BufReadPost"}, {
-  pattern = {"*"},
-  callback = function ()
-    local last_line = vim.fn.line("'\"")
-    local filetype = vim.bo.filetype
-    if last_line > 1 and last_line <= vim.fn.line("$") and
-      filetype ~= "commit" and not vim.tbl_contains({"xxd", "gitrebase"}, filetype) then
-      vim.cmd("normal! g'\"")
-    end
-  end
-})
