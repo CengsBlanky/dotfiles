@@ -1,0 +1,15 @@
+{
+  "class with main function": {
+    "isFileTemplate": true,
+    "prefix": ["mainclass"],
+    "body": ["public class $TM_FILENAME_BASE {", "", "\tpublic static void main() {", "\t\t$0", "\t}", "}"]
+  },
+  "system println": {
+    "prefix": ["sout"],
+    "body": ["System.out.println($0);"]
+  },
+  "system printf": {
+    "prefix": ["souf"],
+    "body": ["System.out.printf($0);"]
+  }
+}
