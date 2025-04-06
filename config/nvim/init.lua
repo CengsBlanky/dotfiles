@@ -228,10 +228,19 @@ require("lazy").setup({
     end,
   },
   {
+    "andymass/vim-matchup",
+    init = function ()
+      g.matchup_delim_start_plaintext = 0
+      g.matchup_matchparen_offscreen = {
+        method = 'popup',
+      }
+    end
+  },
+  {
     'nvim-treesitter/nvim-treesitter',
     event = "VeryLazy",
-    opts = function ()
-      require'nvim-treesitter.configs'.setup {
+    config = function ()
+      require("nvim-treesitter.configs").setup({
         ensure_installed = { "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", },
         auto_install = false,
         ignore_install = {}, -- List of parsers to ignore installing
@@ -248,10 +257,6 @@ require("lazy").setup({
           -- Using this option may slow down your editor, and you may see some duplicate highlights.
           -- Instead of true it can also be a list of languages
           additional_vim_regex_highlighting = false,
-        },
-        matchup = {
-          enable = true, -- mandatory, false will disable the whole extension
-          disable = {},  -- optional, list of language that will be disabled
         },
         textobjects = {
           select = {
@@ -295,11 +300,14 @@ require("lazy").setup({
             include_surrounding_whitespace = false,
           },
         },
-      }
+        matchup = {
+          enable = true, -- mandatory, false will disable the whole extension
+          disable = {},  -- optional, list of language that will be disabled
+        },
+      })
     end,
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "andymass/vim-matchup",
     },
   },
   {
