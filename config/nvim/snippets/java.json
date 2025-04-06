@@ -2,7 +2,7 @@
   "class with main function": {
     "isFileTemplate": true,
     "prefix": ["mainclass"],
-    "body": ["public class $TM_FILENAME_BASE {", "", "\tpublic static void main() {", "\t\t$0", "\t}", "}"]
+    "body": ["public class $TM_FILENAME_BASE {", "", "\tpublic static void main(String[] args) {", "\t\t$0", "\t}", "}"]
   },
   "system println": {
     "prefix": ["sout"],

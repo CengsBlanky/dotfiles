@@ -341,7 +341,7 @@ require("lazy").setup({
       {
         'williamboman/mason-lspconfig.nvim',
         opts= {
-          ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'basedpyright', 'elixirls', 'rust_analyzer', 'gopls', 'ruff', 'html', 'cssls', 'ts_ls', 'denols', 'jsonls', 'svelte', 'htmx', },
+          ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'basedpyright', 'elixirls', 'rust_analyzer', 'gopls', 'jdtls', 'ruff', 'html', 'cssls', 'ts_ls', 'denols', 'jsonls', 'svelte', 'htmx', },
         },
       },
     },
