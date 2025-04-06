@@ -228,18 +228,9 @@ require("lazy").setup({
     end,
   },
   {
-    "andymass/vim-matchup",
-    init = function ()
-      g.matchup_delim_start_plaintext = 0
-      g.matchup_matchparen_offscreen = {
-        method = 'popup',
-      }
-    end
-  },
-  {
     'nvim-treesitter/nvim-treesitter',
     event = "VeryLazy",
-    config = function ()
+    opts = function ()
       require("nvim-treesitter.configs").setup({
         ensure_installed = { "c", "cpp", "diff", "java", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", },
         auto_install = false,
@@ -301,8 +292,9 @@ require("lazy").setup({
           },
         },
         matchup = {
-          enable = true, -- mandatory, false will disable the whole extension
-          disable = {},  -- optional, list of language that will be disabled
+          enable = true,
+          disable = {},
+          include_match_words = true,
         },
       })
     end,
@@ -723,7 +715,6 @@ require("lazy").setup({
         "logipat",
         "rrhelper",
         "spellfile_plugin",
-        "matchit",
         "matchparen",
         "tutor",
       },
