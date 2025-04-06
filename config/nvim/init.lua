@@ -42,8 +42,8 @@ require("lazy").setup({
       }
     end,
     keys = {
-      { "<Tab>", "<cmd>NERDTreeToggle<CR>", { nowait = true, silent = true } },
-      { "<C-s>", "<cmd>NERDTreeFind<CR>", { nowait = true, silent = true } },
+      { "<Tab>", "<cmd>NERDTreeToggle<CR>", map_opts },
+      { "<C-s>", "<cmd>NERDTreeFind<CR>", map_opts },
     },
     dependencies = 'ryanoasis/vim-devicons',
   },
@@ -51,7 +51,7 @@ require("lazy").setup({
     'stevearc/oil.nvim',
     keys = {
       -- open oil at current file dir
-      { "<M-f>", "<cmd>Oil %:p:h<CR>", { silent = true, nowait = true } },
+      { "<M-f>", "<cmd>Oil %:p:h<CR>", map_opts },
     },
     opts = {
       skip_confirm_for_simple_edits = true,
@@ -89,7 +89,7 @@ require("lazy").setup({
         {
           navigation_message = true,
         })
-      end, { silent = true, nowait = true } },
+      end, map_opts },
       { "]c", function ()
         require("gitsigns").nav_hunk(
         "next",
@@ -97,7 +97,7 @@ require("lazy").setup({
           navigation_message = true,
         })
       end, { silent = true, nowait = true } },
-      { "]b", '<cmd>Gitsigns toggle_current_line_blame<CR>', { silent = true, nowait = true } },
+      { "]b", '<cmd>Gitsigns toggle_current_line_blame<CR>', map_opts },
     },
     opts = {
       -- gitsigns.nav_hunk()
