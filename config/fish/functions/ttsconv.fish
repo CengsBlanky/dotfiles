@@ -36,7 +36,7 @@ function ttsconv
         if test -z "$voice"
             set voice "zh-CN-YunyangNeural"
         end
-        echo "convert $file to $mp3_file start -> "(math "100 * $nth_count / $split_file_count")"%"
+        echo "convert $file to $mp3_file start -> "(math --scale=0 "100 * $nth_count / $split_file_count")"%"
         edge-tts -f $file -v $voice --write-media $mp3_file
         while test $status -ne 0; edge-tts -f $file -v $voice --write-media $mp3_file; end
         echo "file '$mp3_file'" >> $concatfile
