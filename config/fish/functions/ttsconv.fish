@@ -36,10 +36,10 @@ function ttsconv
         if test -z "$voice"
             set voice "zh-CN-YunyangNeural"
         end
-        echo "convert $file to $mp3_file start -> "(math --scale=0 "100 * $nth_count / $split_file_count")"%"
         edge-tts -f $file -v $voice --write-media $mp3_file
         while test $status -ne 0; edge-tts -f $file -v $voice --write-media $mp3_file; end
         echo "file '$mp3_file'" >> $concatfile
+        echo "convert $file to $mp3_file -> "(math --scale=0 "100 * $nth_count / $split_file_count")"%"
         set nth_count (math $nth_count + 1)
     end
     ffmpeg -f concat -safe 0 -i $concatfile -c:a copy $audio_book
@@ -47,5 +47,7 @@ function ttsconv
         echo "remove temp files..."
         rm tmp_*.mp3 $split_files $text_book
         echo "audio file save to "(realpath $audio_book)
+    else
+        echo "ffmpeg combine failed!"
     end
 end
