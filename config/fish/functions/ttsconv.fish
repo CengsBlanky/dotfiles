@@ -39,7 +39,7 @@ function ttsconv
         edge-tts -f $file -v $voice --write-media $mp3_file
         while test $status -ne 0; edge-tts -f $file -v $voice --write-media $mp3_file; end
         echo "file '$mp3_file'" >> $concatfile
-        echo "convert $file to $mp3_file -> "(math --scale=0 "100 * $nth_count / $split_file_count")"%"
+        echo "convert $file to $mp3_file -> "(math --scale=2 "100 * $nth_count / $split_file_count")"%"
         set nth_count (math $nth_count + 1)
     end
     ffmpeg -f concat -safe 0 -i $concatfile -c:a copy $audio_book
