@@ -45,7 +45,7 @@ function ttsconv
     ffmpeg -f concat -safe 0 -i $concatfile -c:a copy $audio_book
     if test $status -eq 0
         echo "remove temp files..."
-        rm tmp_*.mp3 $split_files $text_book $concatfile
+        rm tmp_*.mp3 $split_files $text_book
         echo "audio file save to "(realpath $audio_book)
     end
 end
