@@ -118,7 +118,6 @@ if status is-interactive
     # find files
     abbr --add found "fzf --preview='batcat --color=always --style=plain,numbers {}'"
 
-
     # source asdf version manager
     set -l asdf_conf "$HOME/.asdf/asdf.fish"
     if test -e $asdf_conf
