@@ -1,14 +1,17 @@
 [user]
-	name = zengshuai
-	email = zengs1994@gmail.com
+    name = zengshuai
+    email = zengs1994@gmail.com
 [pull]
-	rebase = false
+    rebase = false
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [push]
-	default = simple
+    default = simple
 [color]
-	status = always
-	diff = always
-	branch = always
-	interactive = always
+    status = always
+    diff = always
+    branch = always
+    interactive = always
+[grep]
+    lineNumber = true
+    patternType = perl
