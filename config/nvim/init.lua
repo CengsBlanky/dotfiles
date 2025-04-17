@@ -153,7 +153,7 @@ require("lazy").setup({
             i = {
               ["<C-j>"] = "move_selection_next",
               ["<C-k>"] = "move_selection_previous",
-              ["esc"] = actions.close
+              ["<Esc>"] = actions.close
             },
             n = {
               ["<C-j>"] = "move_selection_next",
