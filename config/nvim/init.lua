@@ -148,6 +148,17 @@ require("lazy").setup({
       },
     },
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function ()
+      require('fzf-lua').setup({
+        'max-perf',
+        previewers = {
+          bat = {
+            cmd = "bat",
+            args = "--color=always --theme=Nord --style=numbers,changes",
+          },
+        },
+      })
+    end,
     opts = {}
   },
   {
