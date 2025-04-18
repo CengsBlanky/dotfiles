@@ -89,15 +89,20 @@ sudo apt install translate-shell
 
 由GNU发行的开源图像编辑器
 
-### KDE Connect
+### LocalSend
 
-现有LocalSend代替
-
-局域网文件传输工具，可通过Test Flight下载Iphone app
+局域网文件传输工具
+下载地址： [LocalSend](https://localsend.org/)
 
 ### Calibre
 
 跨平台书籍管理软件，支持多种格式转换
+附带的二进制电子书格式转换工具很好用
+下载地址：[calibre-ebook](https://main.calibre-ebook.com/download)
+Linux下载安装：
+```sh
+sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
+```
 
 ### MarkText
 
@@ -109,6 +114,7 @@ sudo apt install translate-shell
 
 ### Foliate
 
+目前为止体验最好的电子书阅读器
 A simple and modern eBook viewer for Linux desktops
 [](https://johnfactotum.github.io/foliate/)
 
@@ -181,3 +187,9 @@ update:
 ```sh
 autocorrect update
 ```
+
+### trans
+
+trans  -  Command-line  translator using Google Translate, Bing Translator, Yan‐
+       dex.Translate, etc.
+命令行翻译工具，默认使用google翻译
