@@ -112,59 +112,43 @@ require("lazy").setup({
   'junegunn/vim-easy-align',
   'romainl/vim-cool',
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
-    dependencies = {
-      {'nvim-lua/plenary.nvim'},
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-      }
-    },
+    "ibhagwan/fzf-lua",
     keys = {
       {
         "<leader>f", function ()
-          require("telescope.builtin").find_files()
+          require('fzf-lua').files({
+            previewer = false,
+          })
         end, map_opts
       },
       {
         "<leader>g", function ()
-          require("telescope.builtin").live_grep()
+          require("fzf-lua").grep()
+        end, map_opts
+      },
+      {
+        "<leader>l", function ()
+          require("fzf-lua").live_grep()
         end, map_opts
       },
       {
         "<leader>b", function ()
-          require("telescope.builtin").buffers()
+          require("fzf-lua").buffers()
         end, map_opts
       },
       {
         "<leader>s", function ()
-          require("telescope.builtin").lsp_references()
+          require("fzf-lua").lsp_references()
+        end, map_opts
+      },
+      {
+        "<leader>i", function ()
+          require("fzf-lua").lsp_implementations()
         end, map_opts
       },
     },
-    opts = function ()
-      local actions = require("telescope.actions")
-      require('telescope').setup{
-        defaults = {
-          path_display = {
-            "filename_first"
-          },
-          mappings = {
-            i = {
-              ["<C-j>"] = "move_selection_next",
-              ["<C-k>"] = "move_selection_previous",
-              ["<Esc>"] = actions.close
-            },
-            n = {
-              ["<C-j>"] = "move_selection_next",
-              ["<C-k>"] = "move_selection_previous",
-            },
-          },
-          preview = false,
-        }
-      }
-      require('telescope').load_extension('fzf')
-    end
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {}
   },
   {
     'mattn/emmet-vim',
