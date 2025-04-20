@@ -16,11 +16,13 @@ if status is-interactive
     set -gx LESS "-RiXF"
     # bc scale
     set -gx BC_ENV_ARGS "$HOME/.bc"
-    # ripgrep 
-    set -gx RIPGREP_CONFIG_PATH "$HOME/.config/rg/ripgreprc"
+    # ripgrep
     if command -q rg
-        set -gx FZF_DEFAULT_COMMAND "rg --files --column --line-number --no-heading --no-ignore"
+        set -gx RIPGREP_CONFIG_PATH "$HOME/.config/rg/ripgreprc"
+        set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case"
     end
+    # fzf find files
+    abbr --add found "fzf --preview='batcat --color=always --style=plain,numbers {}'"
     set -gx NOTEDIR '$HOME/notes'
     # current location
     set -gx MY_CUR_LOCATION '雨花台'
@@ -85,8 +87,6 @@ if status is-interactive
     set PATH $PATH "$HOME/bin"
     # kubectl autocompletion
     # kubectl completion fish | source
-    # fzf
-    set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case"
     bind --mode insert \cf "vim (fzf --preview='batcat --color=always --style=numbers {}')"
 
     # ===== abbriviations =====
@@ -117,8 +117,6 @@ if status is-interactive
     abbr --add cddot cd ~/.dotfiles
     # yt-dlp
     abbr --add yd --set-cursor "yt-dlp '%'"
-    # find files
-    abbr --add found "fzf --preview='batcat --color=always --style=plain,numbers {}'"
 
     # source asdf version manager
     set -l asdf_conf "$HOME/.asdf/asdf.fish"
