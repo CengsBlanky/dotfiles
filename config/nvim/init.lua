@@ -440,6 +440,7 @@ require("lazy").setup({
         xml = { "xq_format" },
         javascript = { "prettier" },
         javascriptreact = { "prettier" },
+        json = { "jq" },
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
         ["*"] = { "trim_whitespace" },

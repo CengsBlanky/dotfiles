@@ -1,7 +1,23 @@
 {
   "function": {
-    "prefix": ["func"],
-    "body": ["function $1($2) {", "\t$0", "}"],
+    "prefix": [
+      "func"
+    ],
+    "body": [
+      "function $1($2) {",
+      "\t$0",
+      "}"
+    ],
     "description": "shorten function declaration"
+  },
+  "empty angle bracket": {
+    "prefix": [
+      "eb"
+    ],
+    "body": [
+      "<>",
+      "\t$0",
+      "</>"
+    ]
   }
 }
