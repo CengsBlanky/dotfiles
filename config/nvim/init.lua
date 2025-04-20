@@ -235,7 +235,7 @@ require("lazy").setup({
         },
         highlight = {
           enable = true,
-          is_supported = function ()
+          disable = function ()
             return vim.b.large_buf
           end,
           -- Instead of true it can also be a list of languages
