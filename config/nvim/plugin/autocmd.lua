@@ -1,44 +1,46 @@
 ---@diagnostic disable: undefined-global
 local autocmd = vim.api.nvim_create_autocmd
-autocmd({"FileType"}, {
-    callback = function()
-      vim.opt.formatoptions:remove({'o'})
-      vim.opt.formatoptions:append({'M'})
-      local over_lsize = vim.fn.strwidth(vim.fn.getline('.')) > 1000
-      local over_fsize = vim.fn.getfsize(vim.fn.expand('%')) > 1024 * 1024
-      vim.b.large_buf = false
-      if over_lsize or over_fsize then
-        vim.cmd("syntax clear")
-        vim.opt_local.foldmethod = "manual"
-        vim.opt_local.spell = false
-        vim.b.large_buf = true
-      end
-      -- set readonly map
-      local lmap_opts = { nowait = true, silent = true, buffer = true }
-      if not vim.bo.modifiable or vim.bo.readonly then
-        vim.keymap.set('n', 'q', '<Cmd>bd<CR>', lmap_opts)
-        vim.keymap.set('n', '<Space>', '<C-f>', lmap_opts)
-        vim.keymap.set('n', 'u', '<C-b>', lmap_opts)
-      end
-    end
-})
+local map_opts = { nowait = true, silent = true, buffer = true }
 
-autocmd({"BufReadPost"}, {
-  callback = function ()
-    local last_line = vim.fn.line("'\"")
-    local filetype = vim.bo.filetype
-    if last_line > 1 and last_line <= vim.fn.line("$") and
-      filetype ~= "commit" and not vim.tbl_contains({"xxd", "gitrebase"}, filetype) then
-      vim.cmd("normal! g'\"")
-    end
+autocmd({"BufReadPre"}, { callback = function()
+  local max_fsize = 1024 * 1024
+  local max_lsize = 1000
+  local top_lsize = #(vim.api.nvim_buf_get_lines(0, 0, 1, false)[1])
+  local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(0))
+  print(ok, stats.size, top_lsize)
+  vim.b.large_buf = false
+  if ok and stats and (top_lsize > max_lsize or stats.size > max_fsize) then
+    vim.cmd[[syntax clear]]
+    vim.cmd[[syntax off]]
+    vim.opt_local.foldmethod = "manual"
+    vim.opt_local.spell = false
+    vim.b.large_buf = true
   end
-})
+end})
+
+autocmd({"FileType"}, { callback = function()
+  vim.opt.formatoptions:remove({'o'})
+  vim.opt.formatoptions:append({'M'})
+  -- set readonly map
+  if not vim.bo.modifiable or vim.bo.readonly then
+    vim.keymap.set('n', 'q', '<Cmd>bd<CR>', map_opts)
+    vim.keymap.set('n', '<Space>', '<C-f>', map_opts)
+    vim.keymap.set('n', 'u', '<C-b>', map_opts)
+  end
+  -- restore last postion
+  local last_line = vim.fn.line("'\"")
+  local filetype = vim.bo.filetype
+  if last_line > 1 and last_line <= vim.fn.line("$") and
+    filetype ~= "commit" and not vim.tbl_contains({"xxd", "gitrebase"}, filetype) then
+    vim.cmd("normal! g'\"")
+  end
+end })
 
 autocmd({"FileType"}, {
     pattern = {"markdown", "text", "log"},
     callback = function()
-      vim.keymap.set('n', 'j', 'gj', { silent = true, nowait = true })
-      vim.keymap.set('n', 'k', 'gk', { silent = true, nowait = true })
+      vim.keymap.set('n', 'j', 'gj', map_opts)
+      vim.keymap.set('n', 'k', 'gk', map_opts)
     end
 })
 -- for markdown readibility
@@ -96,7 +98,7 @@ autocmd({"FileType"}, {
 autocmd({"BufReadPost"}, {
     pattern = {"quickfix"},
     callback = function()
-      vim.keymap.set('n', '<Enter>', '<Enter>', { silent = true })
+      vim.keymap.set('n', '<Enter>', '<Enter>', map_opts)
     end
 })
 
