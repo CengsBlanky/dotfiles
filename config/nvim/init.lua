@@ -163,10 +163,14 @@ require("lazy").setup({
   {
     'mattn/emmet-vim',
     init = function ()
-      g.user_emmet_mode='i'
+      g.user_emmet_mode='iv'
       g.user_emmet_expandabbr_key='<M-e>'
       g.user_emmet_expandword_key='<M-m>'
     end
+  },
+  {
+    'windwp/nvim-ts-autotag',
+    opts = {},
   },
   {
     'akinsho/bufferline.nvim',
