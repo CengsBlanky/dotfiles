@@ -147,7 +147,6 @@ require("lazy").setup({
         end, map_opts
       },
     },
-    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function ()
       require('fzf-lua').setup({
         'max-perf',
@@ -235,9 +234,7 @@ require("lazy").setup({
         },
         highlight = {
           enable = true,
-          disable = function ()
-            return vim.b.large_buf
-          end,
+          disable = {},
           -- Instead of true it can also be a list of languages
           additional_vim_regex_highlighting = false,
         },

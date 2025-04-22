@@ -18,27 +18,7 @@ autocmd({"FileType"}, { callback = function()
     filetype ~= "commit" and not vim.tbl_contains({"xxd", "gitrebase"}, filetype) then
     vim.cmd("normal! g'\"")
   end
-  -- disbale syntax for large file
-  local max_fsize = 1024 * 1024
-  local max_lsize = 1000
-  local top_lsize = #(vim.api.nvim_buf_get_lines(0, 0, 1, false)[1])
-  local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(0))
-  vim.b.large_buf = false
-  if ok and stats and (top_lsize > max_lsize or stats.size > max_fsize) then
-    vim.cmd[[syntax off]]
-    vim.opt_local.foldmethod = "manual"
-    vim.opt_local.spell = false
-    vim.b.large_buf = true
-  end
 end})
-
-autocmd({"LspAttach"}, {
-  callback = function ()
-    if vim.b.large_buf then
-      vim.lsp.stop_client(vim.lsp.get_clients())
-    end
-  end
-})
 
 autocmd({"FileType"}, {
     pattern = {"markdown", "text", "log"},
