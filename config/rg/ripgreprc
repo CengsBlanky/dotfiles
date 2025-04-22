@@ -1,6 +1,5 @@
 --hidden
 --smart-case
-
 --glob
 !**/node_modules/*
 --glob
