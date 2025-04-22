@@ -14,7 +14,8 @@ function fish_mode_prompt
     end
     switch $fish_bind_mode
         case insert
-            set_color --bold "a3be8c"
+            # set_color --bold "a3be8c"
+            set_color --bold "66c0d0"
             echo -n "  "
         case default
             set_color --bold "868e96"
