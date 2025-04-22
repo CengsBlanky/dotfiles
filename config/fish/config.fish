@@ -27,64 +27,64 @@ if status is-interactive
     # current location
     set -gx MY_CUR_LOCATION '雨花台'
     # add nvim default install path
-    set PATH $PATH "/usr/local/nvim/bin"
+    fish_add_path --path --append "/usr/local/nvim/bin"
     # SDKMAN start
     set -l SDKMAN_CANDIDATES "$HOME/.sdkman/candidates"
     # java
     set -gx JAVA_HOME "$SDKMAN_CANDIDATES/java/current"
-    set PATH $PATH "$JAVA_HOME/bin" 
+    fish_add_path --path --append "$JAVA_HOME/bin"
     # maven
     set -gx MAVEN_HOME "$SDKMAN_CANDIDATES/maven/current"
-    set PATH $PATH "$MAVEN_HOME/bin"
+    fish_add_path --path --append "$MAVEN_HOME/bin"
     # gradle
     set -gx GRADLE_HOME "$SDKMAN_CANDIDATES/gradle/current"
-    set PATH $PATH "$GRADLE_HOME/bin"
+    fish_add_path --path --append "$GRADLE_HOME/bin"
     # springboot
     set -gx SPRING_HOME "$SDKMAN_CANDIDATES/springboot/current"
-    set PATH $PATH "$SPRING_HOME/bin"
+    fish_add_path --path --append "$SPRING_HOME/bin"
     # jdtls
     # set -gx JDTLS_JVM_ARGS "-javaagent:$HOME/.m2/lib/lombok-1.18.24.jar"
     # Kotlin
     set -gx KOTLIN_HOME "$SDKMAN_CANDIDATES/kotlin/current"
-    set PATH $PATH "$KOTLIN_HOME/bin"
+    fish_add_path --path --append "$KOTLIN_HOME/bin"
     # SDKMAN end
 
     # rust
-    set PATH $PATH "$HOME/.cargo/bin"
+    fish_add_path --path --append "$HOME/.cargo/bin"
     # golang
-    set PATH $PATH "$HOME/go/bin"
+    fish_add_path --path --append "$HOME/go/bin"
     # Flutter
-    set PATH $PATH "$HOME/Apps/flutter/bin"
+    fish_add_path --path --append "$HOME/Apps/flutter/bin"
     set -gx PUB_HOSTED_URL "https://mirrors.tuna.tsinghua.edu.cn/dart-pub"
     set -gx FLUTTER_STORAGE_BASE_URL "https://mirrors.tuna.tsinghua.edu.cn/flutter"
     # Android
     set -gx ANDROID_HOME "$HOME/Android/Sdk"
     set -gx ADB "$ANDROID_HOME/platform-tools/adb"
-    set PATH $PATH "$ANDROID_HOME/platform-tools"
-    set PATH $PATH "$ANDROID_HOME/tools"
-    set PATH $PATH "$ANDROID_HOME/tools/bin"
-    set PATH $PATH "$ANDROID_HOME/tools/platform-tools"
+    fish_add_path --path --append "$ANDROID_HOME/platform-tools"
+    fish_add_path --path --append "$ANDROID_HOME/tools"
+    fish_add_path --path --append "$ANDROID_HOME/tools/bin"
+    fish_add_path --path --append "$ANDROID_HOME/tools/platform-tools"
     # npm config
-    set PATH $PATH "$HOME/.local/share/npm/bin"
+    fish_add_path --path --append "$HOME/.local/share/npm/bin"
     # spring boot cli
-    set PATH $PATH "$HOME/tools/spring-2.6.4/bin"
+    fish_add_path --path --append "$HOME/tools/spring-2.6.4/bin"
     # ruby binaries
-    set PATH $PATH "$HOME/.local/share/gem/ruby/3.0.0/bin"
+    fish_add_path --path --append "$HOME/.local/share/gem/ruby/3.0.0/bin"
     # golang path
-    set PATH $PATH "/usr/local/go/bin"
+    fish_add_path --path --append "/usr/local/go/bin"
     # bun setup
-    set --export BUN_INSTALL "$HOME/.bun"
-    set --export PATH $BUN_INSTALL/bin $PATH
+    set -gx BUN_INSTALL "$HOME/.bun"
+    fish_add_path --path --append "$BUN_INSTALL/bin"
     # deno
-    set PATH $PATH "$HOME/.deno/bin"
+    fish_add_path --path --append "$HOME/.deno/bin"
     # ruby
-    fish_add_path --prepend "$HOME/.rubies/ruby-stable/bin"
+    fish_add_path --path "$HOME/.rubies/ruby-stable/bin"
     # zig
-    set PATH $PATH "$HOME/Apps/zig-linux-x86_64-0.13.0/"
+    fish_add_path --path --append "$HOME/Apps/zig-linux-x86_64-0.13.0/"
 
     # general
-    set PATH $PATH "$HOME/.local/bin"
-    set PATH $PATH "$HOME/bin"
+    fish_add_path --path --append "$HOME/.local/bin"
+    fish_add_path --path --append "$HOME/bin"
     # kubectl autocompletion
     # kubectl completion fish | source
     bind --mode insert \cf "vim (fzf --preview='batcat --color=always --style=numbers {}')"
