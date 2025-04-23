@@ -17,10 +17,8 @@ if status is-interactive
     # bc scale
     set -gx BC_ENV_ARGS "$HOME/.bc"
     # ripgrep
-    if command -q rg
-        set -gx RIPGREP_CONFIG_PATH "$HOME/.config/rg/ripgreprc"
-        set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case"
-    end
+    set -gx RIPGREP_CONFIG_PATH "$HOME/.config/rg/ripgreprc"
+    set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case"
     # fzf find files
     abbr --add found "fzf --preview='batcat --color=always --style=plain,numbers {}'"
     set -gx NOTEDIR '$HOME/notes'
