@@ -195,7 +195,6 @@ require("lazy").setup({
       { '<Space>D', '<Cmd>BufferLinePickClose<CR>', map_opts },
       { '<C-n>', '<Cmd>BufferLineCycleNext<CR>', map_opts },
     },
-    dependencies = 'nvim-tree/nvim-web-devicons',
     config = function ()
       local bufferline = require('bufferline')
       bufferline.setup {
