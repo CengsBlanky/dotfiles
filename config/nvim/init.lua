@@ -76,9 +76,12 @@ require("lazy").setup({
   {
     'numToStr/Comment.nvim',
     opts = {},
-    lazy = false,
+    event = "VeryLazy",
   },
-  'justinmk/vim-sneak',
+  {
+    'justinmk/vim-sneak',
+    event = "VeryLazy",
+  },
   {
     'lewis6991/gitsigns.nvim',
     event = { "BufWritePost" },
@@ -109,8 +112,10 @@ require("lazy").setup({
       },
     },
   },
-  'junegunn/vim-easy-align',
-  'romainl/vim-cool',
+  {
+    'romainl/vim-cool',
+    event = "VeryLazy",
+  },
   {
     "ibhagwan/fzf-lua",
     keys = {
@@ -162,6 +167,7 @@ require("lazy").setup({
   },
   {
     'mattn/emmet-vim',
+    event = "VeryLazy",
     init = function ()
       g.user_emmet_mode='iv'
       g.user_emmet_expandabbr_key='<M-e>'
@@ -306,7 +312,7 @@ require("lazy").setup({
   },
   {
     'neovim/nvim-lspconfig',
-    event = "BufReadPost",
+    event = "VeryLazy",
     config = function ()
       vim.diagnostic.config({
         severity_sort = true,
@@ -411,6 +417,7 @@ require("lazy").setup({
   },
   {
     'williamboman/mason.nvim',
+    event = "VeryLazy",
     opts = {},
   },
   {
@@ -638,6 +645,7 @@ require("lazy").setup({
   },
   {
     "rebelot/kanagawa.nvim",
+    event = "VeryLazy",
     opts = {
       colors = {
         palette = {

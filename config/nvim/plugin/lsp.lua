@@ -26,10 +26,8 @@ local on_attach = function(_, bufnr)
   setnmap('<leader>c', function() vim.lsp.codelens.run() end, bufopts)
 end
 
--- Add additional capabilities supported by nvim-cmp
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- set blink.cmp capabilities
 local capabilities = require('blink.cmp').get_lsp_capabilities()
--- local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 local lserver_list = {
