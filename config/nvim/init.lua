@@ -51,7 +51,7 @@ require("lazy").setup({
     'stevearc/oil.nvim',
     keys = {
       -- open oil at current file dir
-      { "<M-f>", "<cmd>Oil %:p:h<CR>", map_opts },
+      { "<C-f>", "<cmd>Oil %:p:h<CR>", map_opts },
     },
     opts = {
       skip_confirm_for_simple_edits = true,

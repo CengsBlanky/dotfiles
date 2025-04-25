@@ -85,7 +85,7 @@ if status is-interactive
     fish_add_path --path --append "$HOME/bin"
     # kubectl autocompletion
     # kubectl completion fish | source
-    bind --mode insert \cf "vim (fzf --preview='batcat --color=always --style=numbers {}')"
+    bind --mode insert \cs "vim (fzf --preview='bat --color=always --theme=Nord --style=numbers {}')"
 
     # ===== abbriviations =====
     abbr --add cls "clear"
