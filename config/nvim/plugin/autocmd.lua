@@ -1,15 +1,17 @@
 ---@diagnostic disable: undefined-global
 local autocmd = vim.api.nvim_create_autocmd
-local map_opts = { nowait = true, silent = true, buffer = true }
+local setnmap = function (action, cmd)
+  vim.keymap.set('n', action, cmd, { nowait = true, silent = true, buffer = true })
+end
 
 autocmd({"FileType"}, { callback = function()
   vim.opt.formatoptions:remove({'o'})
   vim.opt.formatoptions:append({'M'})
   -- set readonly map
   if not vim.bo.modifiable or vim.bo.readonly then
-    vim.keymap.set('n', 'q', '<Cmd>bd<CR>', map_opts)
-    vim.keymap.set('n', '<Space>', '<C-f>', map_opts)
-    vim.keymap.set('n', 'u', '<C-b>', map_opts)
+    setnmap('q', '<Cmd>bd<CR>')
+    setnmap('<Space>', '<C-f>')
+    setnmap('u', '<C-b>')
   end
   -- restore last postion
   local last_line = vim.fn.line("'\"")
@@ -21,10 +23,12 @@ autocmd({"FileType"}, { callback = function()
 end})
 
 autocmd({"FileType"}, {
-    pattern = {"markdown", "text", "log"},
+    pattern = {"markdown", "text", "log", "http", "rest"},
     callback = function()
-      vim.keymap.set('n', 'j', 'gj', map_opts)
-      vim.keymap.set('n', 'k', 'gk', map_opts)
+      setnmap('j', 'gj')
+      setnmap('k', 'gk')
+      setnmap('0', 'g0')
+      setnmap('$', 'g$')
     end
 })
 -- for markdown readibility
@@ -82,7 +86,7 @@ autocmd({"FileType"}, {
 autocmd({"BufReadPost"}, {
     pattern = {"quickfix"},
     callback = function()
-      vim.keymap.set('n', '<Enter>', '<Enter>', map_opts)
+      setnmap('<Enter>', '<Enter>')
     end
 })
 
