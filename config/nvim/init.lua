@@ -68,7 +68,7 @@ require("lazy").setup({
   },
   {
     "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*",
     event = "VeryLazy",
     keys = { { "ys" }, { "S", mode = "v" }, { "cs" }, { "ds" } },
     opts = {}
@@ -244,7 +244,6 @@ require("lazy").setup({
         highlight = {
           enable = true,
           disable = {},
-          -- Instead of true it can also be a list of languages
           additional_vim_regex_highlighting = false,
         },
         textobjects = {
