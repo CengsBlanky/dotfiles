@@ -166,7 +166,6 @@ Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle'}
 Plug 'junegunn/fzf',
 Plug 'junegunn/fzf.vim',
 Plug 'romainl/vim-cool'
-Plug 'terrastruct/d2-vim'
 Plug 'Eliot00/auto-pairs'
 Plug 'ap/vim-buftabline'
 Plug 'sainnhe/everforest'
