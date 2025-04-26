@@ -31,7 +31,7 @@ local capabilities = require('blink.cmp').get_lsp_capabilities()
 local lspconfig = require('lspconfig')
 
 local lserver_list = {
-  'awk_ls', 'bashls', 'clangd', 'dockerls', 'html', 'jsonls', 'cssls', 'svelte', 'lua_ls', 'marksman', 'basedpyright', 'volar', 'gopls', 'jdtls', 'emmet_language_server'
+  'awk_ls', 'bashls', 'clangd', 'dockerls', 'html', 'jsonls', 'cssls', 'svelte', 'lua_ls', 'marksman', 'basedpyright', 'volar', 'gopls', 'jdtls',
 }
 
 for _, lserver in pairs(lserver_list) do
@@ -40,6 +40,12 @@ for _, lserver in pairs(lserver_list) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.emmet_language_server.setup {
+  filetypes = { "html", "htmx", "css", "scss", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 -- django-template-lsp
 lspconfig.djlsp.setup {
