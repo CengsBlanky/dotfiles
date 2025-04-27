@@ -146,9 +146,9 @@ enddef
 # command {{{
 command! Reloadrc source ~/.vimrc
 command! Editrc edit ~/.vimrc
-command! Tname @+ = expand('%:t')
-command! Fname @+ = expand('%:p')
-command! Rname @+ = expand('%:p:.')
+command! Fname echomsg expand('%:p') | setreg('+', expand('%:p'))
+command! Rname echomsg expand('%') | setreg('+', expand('%'))
+command! Tname echomsg expand('%:t') | setreg('+', expand('%:t'))
 command! -nargs=1 S @/ = <q-args>
 # }}}
 # plugins {{{

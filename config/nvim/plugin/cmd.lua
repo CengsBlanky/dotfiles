@@ -1,31 +1,20 @@
 ---@diagnostic disable: undefined-global
-local init_file = "~/.config/nvim/init.lua"
 local command = vim.api.nvim_create_user_command
-command('Reloadrc', 'source ' .. init_file, {})
--- copy current filename to clipboard
+local to_sysreg = function (modifier)
+  local filename = vim.fn.expand(modifier)
+  vim.fn.setreg('+', filename)
+  print(filename)
+end
+-- write filename to buffer
 command('Rname',
-  function()
-    vim.fn.setreg('+', vim.fn.expand('%'))
-  end,
-  {
-    desc = "relative filename",
-  }
+  function() to_sysreg('%') end,
+  { desc = "relative file name", }
 )
-
 command('Tname',
-  function()
-    vim.fn.setreg('+', vim.fn.expand('%:t'))
-  end,
-  {
-    desc = "only filename without path"
-  }
+  function() to_sysreg('%:t') end,
+  { desc = "tail of the file name" }
 )
-
 command('Fname',
-  function()
-    vim.fn.setreg('+', vim.fn.expand('%:p'))
-  end,
-  {
-    desc = "full path filename"
-  }
+  function() to_sysreg('%:p') end,
+  { desc = "full path file name" }
 )
