@@ -597,8 +597,8 @@ require("lazy").setup({
     ft = { "http", "rest" },
     opts = {
       additional_curl_options = { "--insecure" },
-      -- 10 seconds timeout
-      request_timeout = 10000,
+      -- 1 minute timeout
+      request_timeout = 60000,
       urlencode = "skipencoded",
       default_env = "dev",
       ui = {
@@ -631,10 +631,10 @@ require("lazy").setup({
         ["Show headers and body"] = { "A", function() require("kulala.ui").show_headers_body() end, },
         ["Show verbose"] = { "P", function() require("kulala.ui").show_verbose() end, },
         ["Show script output"] = { "O", function() require("kulala.ui").show_script_output() end, },
-        ["Show stats"] = { "S", function() require("kulala.ui").show_stats() end, },
+        ["Show stats"] = { "L", function() require("kulala.ui").show_stats() end, },
         ["Show report"] = { "R", function() require("kulala.ui").show_report() end, },
-        ["Next response"] = { "]", function() require("kulala.ui").show_next() end, },
-        ["Previous response"] = { "[", function() require("kulala.ui").show_previous() end, },
+        ["Next response"] = { "<leader>]", function() require("kulala.ui").show_next() end, },
+        ["Previous response"] = { "<leader>[", function() require("kulala.ui").show_previous() end, },
         ["Jump to response"] = { "<CR>", function() require("kulala.ui").jump_to_response() end, },
         ["Clear responses history"] = { "X", function() require("kulala.ui").clear_responses_history() end, },
         ["Show help"] = { "?", function() require("kulala.ui").show_help() end, },
