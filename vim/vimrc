@@ -146,10 +146,9 @@ enddef
 # command {{{
 command! Reloadrc source ~/.vimrc
 command! Editrc edit ~/.vimrc
-command! MakeTags !ctags -R .
-command! Fname @+ = expand('%:t')
-command! Pname @+ = expand('%:p')
-command! Cname @+ = substitute(expand('%:p:.'), "\\", "/", "g")
+command! Tname @+ = expand('%:t')
+command! Fname @+ = expand('%:p')
+command! Rname @+ = expand('%:p:.')
 command! -nargs=1 S @/ = <q-args>
 # }}}
 # plugins {{{
