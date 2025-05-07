@@ -49,7 +49,7 @@ regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:
 hide_when_typing = true
 
 [terminal.shell]
-program = "/usr/bin/tmux"
+program = "/usr/local/bin/tmux"
 
 [window]
 decorations = "None"
