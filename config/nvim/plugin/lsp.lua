@@ -42,7 +42,7 @@ for _, lserver in pairs(lserver_list) do
 end
 
 lspconfig.emmet_language_server.setup {
-  filetypes = { "html", "htmx", "css", "scss", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+  filetypes = { "html", "htmx", "css", "scss", "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
   on_attach = on_attach,
   capabilities = capabilities,
 }
