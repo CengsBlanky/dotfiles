@@ -344,7 +344,7 @@ require("lazy").setup({
   {
     'mrcjkb/rustaceanvim',
     ft = { "rust" },
-    version = '^5',
+    version = '^6',
   },
   {
     'saecki/crates.nvim',
