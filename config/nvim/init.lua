@@ -667,7 +667,7 @@ require("lazy").setup({
           ["@markup.heading.5.markdown"] = { fg = "#7dc4e4", bg = "none", bold = true, },
           ["@markup.heading.6.markdown"] = { fg = "#b7bdf8", bg = "none", bold = true, },
           ["@markup.link"] = { fg = "#8fbebb", bg = "none" },
-          ["@markup.link.url"] = { fg = "#8fbcbb", bg = "none", italic = false, underline = true },
+          ["@markup.link.url"] = { fg = "#8fbfcf", bg = "none", italic = false, underline = true },
           ["@string.special.url"] = { fg = "#8fbcb9", underdotted = true, },
           ["@variable.builtin"] = { italic = false },
         }
