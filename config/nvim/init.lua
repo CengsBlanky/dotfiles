@@ -25,7 +25,7 @@ require("lazy").setup({
     cmd = {"NERDTreeToggle", "NERDTreeFind"},
     init = function ()
       g.NERDTreeStatusline='  NERDTree'
-      g.NERDTreeWinSize = 36
+      g.NERDTreeWinSize = 40
       g.NERDTreeQuitOnOpen = 3
       g.NERDTreeMinimalUI = 1
       g.NERDTreeHighlightCursorline = 1
@@ -34,8 +34,6 @@ require("lazy").setup({
       g.NERDTreeCaseSensitiveFS = 1
       g.NERDTreeHighlightCursorline = 1
       g.NERDTreeShowLineNumbers = 1
-      g.NERDTreeDirArrowExpandable=""
-      g.NERDTreeDirArrowCollapsible="~"
       g.NERDTreeIgnore = {
         '\\.lock$[[file]]', '\\.o$[[file]]', '\\.out$[[file]]', '\\.class$[[file]]', '\\.exe$[[file]]',
         '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]', '^target$[[dir]]', '^__pycache__$[[dir]]'
@@ -45,7 +43,6 @@ require("lazy").setup({
       { "<Tab>", "<cmd>NERDTreeToggle<CR>", map_opts },
       { "<C-s>", "<cmd>NERDTreeFind<CR>", map_opts },
     },
-    dependencies = 'ryanoasis/vim-devicons',
   },
   {
     'stevearc/oil.nvim',
