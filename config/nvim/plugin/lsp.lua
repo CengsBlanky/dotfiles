@@ -1,4 +1,20 @@
 ---@diagnostic disable: undefined-global
+vim.diagnostic.config({
+  severity_sort = true,
+  virtual_text = {
+    severity = {
+      min = vim.diagnostic.severity.WARN
+    },
+  },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.INFO] = '',
+      [vim.diagnostic.severity.HINT] = '󰌶',
+    },
+  },
+})
 local setnmap = function (key, action, provide_opts)
   local default_opts = { noremap=true, silent=true, nowait=true }
   vim.keymap.set('n', key, action, provide_opts or default_opts)

@@ -309,24 +309,7 @@ require("lazy").setup({
   {
     'neovim/nvim-lspconfig',
     event = "VeryLazy",
-    config = function ()
-      vim.diagnostic.config({
-        severity_sort = true,
-        virtual_text = {
-          severity = {
-            min = vim.diagnostic.severity.WARN
-          },
-        },
-        signs = {
-          text = {
-            [vim.diagnostic.severity.ERROR] = '',
-            [vim.diagnostic.severity.WARN] = '',
-            [vim.diagnostic.severity.INFO] = '',
-            [vim.diagnostic.severity.HINT] = '󰌶',
-          },
-        },
-      })
-    end,
+    config = function () end,
     dependencies = {
       {
         'williamboman/mason.nvim',
