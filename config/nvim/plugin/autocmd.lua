@@ -47,6 +47,8 @@ autocmd({"FileType"}, {
       vim.opt_local.cursorline = true
       vim.opt_local.cursorlineopt="number,line"
       vim.opt_local.wrap = true
+      setnmap('<C-j>', '<C-f>')
+      setnmap('<C-k>', '<C-b>')
     end
 })
 

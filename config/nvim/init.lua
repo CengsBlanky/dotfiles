@@ -422,6 +422,7 @@ require("lazy").setup({
         go = { "gofmt", "goimports" },
         kotlin = { "ktfmt" },
         xml = { "xq_format" },
+        html = { "prettier" },
         javascript = { "prettier" },
         javascriptreact = { "prettier" },
         json = { "jq" },
