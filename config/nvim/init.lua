@@ -656,7 +656,7 @@ require("lazy").setup({
           DiagnosticVirtualTextError = { fg = "#ef616a", bg = "none", bold = false },
           DiagnosticFloatingError = { fg = "#ef616a", bg = "none", bold = false },
           TabLineFill = { bg = "none" },
-          ["@comment.note"] = { fg = "#a3be8c", bg = "none", bold = true, italic = false, underline = true, },
+          ["@comment.note"] = { fg = "#a3be8c", bg = "none", bold = true, italic = false, underline = false, },
           ["@comment.todo"] = { fg = "#ebcb8b", bg = "none", bold = true, italic = true, underline = true, },
           ["@comment.warning"] = { fg = "#000000", bg = "#ffb300", bold = true, italic = true, underline = true, },
           ["@comment.error"] = { fg = "#cf616a", bg = "black", bold = true, italic = true, underline = true, },
