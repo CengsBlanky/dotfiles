@@ -9,7 +9,12 @@ config.audible_bell = "Disabled"
 config.scrollback_lines = 9999
 -- appearance
 config.cursor_blink_rate = 0
-config.color_scheme = "Catppuccin Macchiato"
+local my_theme = wezterm.color.get_builtin_schemes()['catppuccin-macchiato']
+my_theme.background = '#212529'
+config.color_schemes = {
+  ['my_theme'] = my_theme,
+}
+config.color_scheme = "my_theme"
 config.window_decorations = "RESIZE"
 config.window_padding = {
   left = 0,
@@ -17,49 +22,31 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
+config.harfbuzz_features = {
+  'calt=0', 'clig=0', 'liga=0'
+}
+config.freetype_load_flags = 'NO_HINTING'
 config.font = wezterm.font_with_fallback {
-  'Consolas Nerd Font',
-  "Microsoft YaHei",
+  "IosevkaZeng Nerd Font",
+  "LXGW Wenkai",
   "Noto Color Emoji",
 }
+-- config.underline_position = -2
 config.font_size = 13
-config.line_height = 0.9
+config.line_height = 1
 config.default_cursor_style = 'SteadyBar'
 config.adjust_window_size_when_changing_font_size = false
 config.tab_and_split_indices_are_zero_based = false
-config.background = {
-  {
-    source = {
-      File = 'D:\\Pictures\\pexels-eberhardgross-1612351.jpg',
-    },
-    hsb = { brightness = 0.1, saturation = 1 },
-  },
-}
-config.window_background_opacity = 0.1
+config.window_background_opacity = 1
 config.inactive_pane_hsb = {
   saturation = 0.8,
-  brightness = 0.2,
+  brightness = 0.8,
 }
+config.selection_word_boundary = " \t\n{}[]()\"'`.,;:/\\="
 -- tab bar
 config.hide_tab_bar_if_only_one_tab = false
-config.tab_bar_at_bottom = true
+config.tab_bar_at_bottom = false
 config.use_fancy_tab_bar = true
--- leader pending indicator
-wezterm.on("update-right-status", function(window, _)
-  local SOLID_LEFT_ARROW = ""
-  local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
-  local prefix = ""
-
-  if window:leader_is_active() then
-    prefix = " " .. utf8.char(0x1f30a)
-  end
-
-  window:set_left_status(wezterm.format {
-    { Background = { Color = "#1e2030" } },
-    { Text = prefix },
-    ARROW_FOREGROUND,
-  })
-end)
 -- keybinds
 config.disable_default_key_bindings = true
 config.leader = { key = "q", mods = "CTRL", timeout_milliseconds = 2000 }
@@ -70,9 +57,24 @@ config.keys = {
     action = act.SpawnTab "CurrentPaneDomain",
   },
   {
+    mods = "CTRL|SHIFT",
+    key = "t",
+    action = act.SpawnTab "CurrentPaneDomain",
+  },
+  {
+    mods = "CTRL",
+    key = "Tab",
+    action = act.ActivateLastTab,
+  },
+  {
     mods = "LEADER",
     key = "x",
     action = act.CloseCurrentPane { confirm = false },
+  },
+  {
+    mods = "LEADER",
+    key = "k",
+    action = act.CloseCurrentTab { confirm = false },
   },
   {
     mods = "CTRL|ALT",
@@ -95,14 +97,26 @@ config.keys = {
     action = act.ShowTabNavigator,
   },
   {
+    mods = "LEADER",
+    key = ",",
+    action = act.PromptInputLine {
+      description = 'Enter new name for tab',
+      action = wezterm.action_callback(function(window, pane, line)
+        if line then
+          window:active_tab():set_title(line)
+        end
+      end),
+    },
+  },
+  {
     mods = "ALT",
     key = "-",
-    action = act.SplitVertical { domain = "CurrentPaneDomain" },
+    action = act.SplitVertical,
   },
   {
     mods = "ALT",
     key = "=",
-    action = act.SplitHorizontal { domain = "CurrentPaneDomain" },
+    action = act.SplitHorizontal,
   },
   {
     mods = "ALT",
@@ -125,22 +139,22 @@ config.keys = {
     action = act.ActivatePaneDirection "Up",
   },
   {
-    mods = "LEADER",
+    mods = "ALT",
     key = "LeftArrow",
     action = act.AdjustPaneSize { "Left", 5 },
   },
   {
-    mods = "LEADER",
+    mods = "ALT",
     key = "RightArrow",
     action = act.AdjustPaneSize { "Right", 5 },
   },
   {
-    mods = "LEADER",
+    mods = "ALT",
     key = "DownArrow",
     action = act.AdjustPaneSize { "Down", 5 },
   },
   {
-    mods = "LEADER",
+    mods = "ALT",
     key = "UpArrow",
     action = act.AdjustPaneSize { "Up", 5 },
   },
@@ -153,11 +167,6 @@ config.keys = {
     mods = "SHIFT",
     key = "Insert",
     action = act.PasteFrom 'Clipboard',
-  },
-  {
-    mods = "LEADER",
-    key = "k",
-    action = act.CloseCurrentTab { confirm = false },
   },
   {
     mods = "LEADER",
@@ -180,7 +189,7 @@ config.keys = {
     action = act.PasteFrom 'Clipboard',
   },
   {
-    mods = "CTRL|ALT",
+    mods = "CTRL|SHIFT",
     key = "l",
     action = act.ClearScrollback 'ScrollbackAndViewport',
   },
@@ -217,7 +226,7 @@ config.keys = {
   {
     mods = "CTRL|SHIFT",
     key = "f",
-    action = act.Search { CaseInSensitiveString = "" },
+    action = act.Search { CaseInSensitiveString = '' },
   }
 }
 
@@ -228,5 +237,29 @@ for i = 1, 9 do
     action = act.ActivateTab(i - 1),
   })
 end
+
+config.mouse_bindings = {
+  -- Change the default click behavior so that it only selects
+  -- text and doesn't open hyperlinks
+  {
+    event={Up={streak=1, button="Left"}},
+    mods="NONE",
+    action=act.CompleteSelection("PrimarySelection"),
+  },
+
+  -- and make CTRL-Click open hyperlinks
+  {
+    event={Up={streak=1, button="Left"}},
+    mods="CTRL",
+    action=act.OpenLinkAtMouseCursor,
+  },
+
+  -- Disable the 'Down' event of CTRL-Click to avoid weird program behaviors
+  {
+    event = { Down = { streak = 1, button = 'Left' } },
+    mods = 'CTRL',
+    action = act.Nop,
+  }
+}
 
 return config
