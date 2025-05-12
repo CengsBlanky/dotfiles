@@ -28,7 +28,7 @@ config.harfbuzz_features = {
 config.freetype_load_flags = 'NO_HINTING'
 config.font = wezterm.font_with_fallback {
   "IosevkaZeng Nerd Font",
-  "LXGW Wenkai",
+  "LXGW WenKai Mono",
   "Noto Color Emoji",
 }
 -- config.underline_position = -2
