@@ -115,6 +115,8 @@ if status is-interactive
     abbr --add cddot cd ~/.dotfiles
     # yt-dlp
     abbr --add yd --set-cursor "yt-dlp '%'"
+    # minikube
+    abbr --add kubectl "minikube kubectl --"
 
     # source asdf version manager
     set -l asdf_conf "$HOME/.asdf/asdf.fish"
