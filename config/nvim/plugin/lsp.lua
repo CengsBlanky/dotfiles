@@ -46,34 +46,22 @@ end
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 local lspconfig = require('lspconfig')
 
-local lserver_list = {
-  'awk_ls', 'bashls', 'clangd', 'dockerls', 'html', 'jsonls', 'cssls', 'svelte', 'lua_ls', 'marksman', 'basedpyright', 'volar', 'gopls', 'jdtls',
-}
-
-for _, lserver in pairs(lserver_list) do
-  lspconfig[lserver].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
+vim.lsp.config('*', {
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
 
 lspconfig.emmet_language_server.setup {
   filetypes = { "html", "htmx", "css", "scss", "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
-  on_attach = on_attach,
-  capabilities = capabilities,
 }
 
 -- django-template-lsp
 lspconfig.djlsp.setup {
   cmd = { "djlsp" },
   root_dir = lspconfig.util.root_pattern("manage.py"),
-  on_attach = on_attach,
-  capabilities = capabilities,
 }
 
 lspconfig.kotlin_language_server.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
   settings = {
     kotlin = {
       compiler = {
@@ -88,24 +76,18 @@ lspconfig.kotlin_language_server.setup {
 -- nodejs bun deno
 lspconfig.ts_ls.setup {
   autostart = true,
-  on_attach = on_attach,
-  capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern("package.json"),
   single_file_support = true,
 }
 
 lspconfig.denols.setup {
   autostart = false,
-  on_attach = on_attach,
-  capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
   single_file_support = false,
 }
 
 lspconfig.htmx.setup {
   autostart = false,
-  on_attach = on_attach,
-  capabilities = capabilities,
   single_file_support = false,
 }
 
@@ -123,7 +105,6 @@ vim.g.rustaceanvim = {
       setnmap('<leader>r', vim.lsp.buf.rename, bufopts)
       setnmap('gr', vim.lsp.buf.references, bufopts)
     end,
-    capabilities = capabilities,
     default_settings = {
       ['rust-analyzer'] = {
         cargo = {
@@ -148,8 +129,6 @@ if vim.bo.filetype == "elixir" then
         dialyzerEnabled = false,
         enableTestLenses = true,
       },
-      on_attach = on_attach,
-      capabilities = capabilities,
     },
     projectionist = {
       enable = false
