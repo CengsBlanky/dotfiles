@@ -1,4 +1,7 @@
 ---@diagnostic disable: undefined-global
+local setnmap = function (key, action, provide_opts)
+  vim.keymap.set('n', key, action, provide_opts)
+end
 vim.diagnostic.config({
   severity_sort = true,
   virtual_text = {
@@ -15,32 +18,27 @@ vim.diagnostic.config({
     },
   },
 })
-local setnmap = function (key, action, provide_opts)
-  local default_opts = { noremap=true, silent=true, nowait=true }
-  vim.keymap.set('n', key, action, provide_opts or default_opts)
-end
-setnmap('<Space>d', vim.diagnostic.open_float, opts)
-setnmap('<Space>k', vim.diagnostic.goto_prev, opts)
-setnmap('<Space>j', vim.diagnostic.goto_next, opts)
--- Use an on_attach function to only map the following keys
+-- Use an LspAttach event to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(_, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap = true, silent = true, nowait = true, buffer = bufnr }
-  setnmap('gD', vim.lsp.buf.declaration, bufopts)
-  setnmap('gd', vim.lsp.buf.definition, bufopts)
-  setnmap('gi', vim.lsp.buf.implementation, bufopts)
-  setnmap('gr', vim.lsp.buf.references, bufopts)
-  setnmap('K', vim.lsp.buf.hover, bufopts)
-  setnmap('<leader>t', vim.lsp.buf.type_definition, bufopts)
-  setnmap('<leader>r', vim.lsp.buf.rename, bufopts)
-  setnmap('<leader>a', vim.lsp.buf.code_action, bufopts)
-  setnmap('<leader>c', function() vim.lsp.codelens.run() end, bufopts)
-end
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local bufnr = args.buf
+    local bufopts = { noremap = true, silent = true, nowait = true, buffer = bufnr }
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    setnmap('gD', vim.lsp.buf.declaration, bufopts)
+    setnmap('gd', vim.lsp.buf.definition, bufopts)
+    setnmap('gi', vim.lsp.buf.implementation, bufopts)
+    setnmap('gr', vim.lsp.buf.references, bufopts)
+    setnmap('K', vim.lsp.buf.hover, bufopts)
+    setnmap('<leader>t', vim.lsp.buf.type_definition, bufopts)
+    setnmap('<leader>r', vim.lsp.buf.rename, bufopts)
+    setnmap('<leader>a', vim.lsp.buf.code_action, bufopts)
+    setnmap('<leader>c', function() vim.lsp.codelens.run() end, bufopts)
+    setnmap('<Space>d', vim.diagnostic.open_float, opts)
+    setnmap('<Space>k', vim.diagnostic.goto_prev, opts)
+    setnmap('<Space>j', vim.diagnostic.goto_next, opts)
+  end,
+})
 
 -- set blink.cmp capabilities
 local capabilities = require('blink.cmp').get_lsp_capabilities()
@@ -48,7 +46,6 @@ local lspconfig = require('lspconfig')
 
 vim.lsp.config('*', {
   capabilities = capabilities,
-  on_attach = on_attach,
 })
 
 lspconfig.emmet_language_server.setup {
