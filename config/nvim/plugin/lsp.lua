@@ -48,6 +48,12 @@ vim.lsp.config('*', {
   capabilities = capabilities,
 })
 
+lspconfig.groovyls.setup {
+  cmd = {
+    "java" , "-jar" , vim.fn.stdpath("data") .. "/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar"
+  },
+}
+
 lspconfig.emmet_language_server.setup {
   filetypes = { "html", "htmx", "css", "scss", "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
 }
