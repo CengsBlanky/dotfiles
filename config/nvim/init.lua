@@ -223,6 +223,11 @@ require("lazy").setup({
           hover = {
             enable = false,
           },
+          custom_filter = function(buf_number, buf_numbers)
+            if vim.bo[buf_number].filetype ~= "html.kulala_ui" then
+              return true
+            end
+          end,
         }
       }
     end,
