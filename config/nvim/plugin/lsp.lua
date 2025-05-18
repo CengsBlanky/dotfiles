@@ -49,6 +49,7 @@ vim.lsp.config('*', {
 })
 
 lspconfig.groovyls.setup {
+  single_file_support = true,
   cmd = {
     "java" , "-jar" , vim.fn.stdpath("data") .. "/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar"
   },
