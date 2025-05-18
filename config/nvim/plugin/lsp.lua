@@ -48,6 +48,10 @@ vim.lsp.config('*', {
   capabilities = capabilities,
 })
 
+lspconfig.jdtls.setup {
+  single_file_support = true,
+}
+
 lspconfig.groovyls.setup {
   single_file_support = true,
   cmd = {
