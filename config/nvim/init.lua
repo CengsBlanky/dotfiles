@@ -316,22 +316,21 @@ require("lazy").setup({
     dependencies = {},
   },
   {
-    'neovim/nvim-lspconfig',
-    event = "VeryLazy",
-    config = function () end,
+    'williamboman/mason-lspconfig.nvim',
+    opts= {
+      automatic_enable = false,
+      ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'basedpyright', 'elixirls', 'rust_analyzer', 'gopls', 'jdtls', 'ruff', 'html', 'cssls', 'ts_ls', 'denols', 'jsonls', 'svelte', 'htmx', 'emmet_language_server', "groovyls", },
+    },
     dependencies = {
       {
         'williamboman/mason.nvim',
         opts = {},
       },
       {
-        'williamboman/mason-lspconfig.nvim',
-        opts= {
-          automatic_enable = false,
-          ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'basedpyright', 'elixirls', 'rust_analyzer', 'gopls', 'jdtls', 'ruff', 'html', 'cssls', 'ts_ls', 'denols', 'jsonls', 'svelte', 'htmx', 'emmet_language_server', "groovyls" },
-        },
+        'neovim/nvim-lspconfig',
+        config = function () end,
       },
-    },
+    }
   },
   {
     'mrcjkb/rustaceanvim',

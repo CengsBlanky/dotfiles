@@ -40,27 +40,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- set blink.cmp capabilities
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 local lspconfig = require('lspconfig')
-
-vim.lsp.config('*', {
-  capabilities = capabilities,
-})
-
-lspconfig.jdtls.setup {
-  single_file_support = true,
-}
+local installed_servers = require('mason-lspconfig').get_installed_servers()
+for _, lsp_server in ipairs(installed_servers) do
+  lspconfig[lsp_server].setup {
+    capabilities = capabilities,
+  }
+end
 
 lspconfig.groovyls.setup {
   single_file_support = true,
   cmd = {
     "java" , "-jar" , vim.fn.stdpath("data") .. "/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar"
   },
-}
-
-lspconfig.emmet_language_server.setup {
-  filetypes = { "html", "htmx", "css", "scss", "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
 }
 
 -- django-template-lsp
@@ -85,7 +78,6 @@ lspconfig.kotlin_language_server.setup {
 lspconfig.ts_ls.setup {
   autostart = true,
   root_dir = lspconfig.util.root_pattern("package.json"),
-  single_file_support = true,
 }
 
 lspconfig.denols.setup {
