@@ -223,11 +223,9 @@ require("lazy").setup({
           hover = {
             enable = false,
           },
-          custom_filter = function(buf_number, buf_numbers)
-            if vim.bo[buf_number].filetype == "html.kulala_ui" then
-              return false
-            end
-            if vim.bo[buf_number].filetype == "json.kulala_ui" then
+          custom_filter = function(buf_number, _)
+            local ignore_suffix = "kulala_ui"
+            if vim.bo[buf_number].filetype:sub(-#ignore_suffix) == ignore_suffix then
               return false
             end
             return true
