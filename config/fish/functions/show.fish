@@ -1,8 +1,8 @@
 function show
     if command -q bat
-        bat --tabs 0 --number $argv
+        bat --tabs 0 --number --theme=Nord $argv
     else if command -q batcat
-        batcat --tabs 0 --number $argv
+        batcat --tabs 0 --number --theme=Nord $argv
     else
         /usr/bin/cat $argv
     end
