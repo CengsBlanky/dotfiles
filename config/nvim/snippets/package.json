@@ -2,7 +2,7 @@
   "name": "zs-snippets",
   "contributes": {
     "snippets": [
-      { "language": ["java", "groovy"], "path": "./java.json" },
+      { "language": "java", "path": "./java.json" },
       { "language": ["javascript", "javascriptreact"], "path": "./javascript.json" },
       { "language": "all", "path": "./all.json" }
     ]
