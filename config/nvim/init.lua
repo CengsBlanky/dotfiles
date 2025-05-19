@@ -1,5 +1,5 @@
 ---@diagnostic disable: undefined-global
-vim.loader.enable()
+vim.loader.enable({enable = true})
 local opt = vim.opt
 local g = vim.g
 local map_opts = { silent = true, nowait = true }
