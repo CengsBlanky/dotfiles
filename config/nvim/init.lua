@@ -331,11 +331,6 @@ require("lazy").setup({
     }
   },
   {
-    'mrcjkb/rustaceanvim',
-    ft = { "rust" },
-    version = '^6',
-  },
-  {
     'saecki/crates.nvim',
     tag = 'stable',
     event = { "BufRead Cargo.toml" },

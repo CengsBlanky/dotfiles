@@ -91,30 +91,6 @@ lspconfig.htmx.setup {
   single_file_support = false,
 }
 
--- rust
-vim.g.rustaceanvim = {
-  server = {
-    on_attach = function (_, bufnr)
-      local bufopts = { silent=true, buffer=bufnr }
-      setnmap('K', function() vim.cmd.RustLsp { 'hover', 'actions' } end, bufopts)
-      setnmap('<leader>a', function() vim.cmd.RustLsp('codeAction') end, bufopts)
-      setnmap('gD', vim.lsp.buf.declaration, bufopts)
-      setnmap('gd', vim.lsp.buf.definition, bufopts)
-      setnmap('gi', vim.lsp.buf.implementation, bufopts)
-      setnmap('<space>D', vim.lsp.buf.type_definition, bufopts)
-      setnmap('<leader>r', vim.lsp.buf.rename, bufopts)
-      setnmap('gr', vim.lsp.buf.references, bufopts)
-    end,
-    default_settings = {
-      ['rust-analyzer'] = {
-        cargo = {
-          allFeatures = true,
-        },
-      },
-    },
-  },
-}
-
 -- elixir
 if vim.bo.filetype == "elixir" then
   local elixir = require("elixir")
