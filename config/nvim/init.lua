@@ -317,7 +317,7 @@ require("lazy").setup({
     'williamboman/mason-lspconfig.nvim',
     opts= {
       automatic_enable = false,
-      ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'basedpyright', 'elixirls', 'rust_analyzer', 'gopls', 'jdtls', 'ruff', 'html', 'cssls', 'ts_ls', 'denols', 'jsonls', 'svelte', 'htmx', 'emmet_language_server', "groovyls", },
+      ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'basedpyright', 'rust_analyzer', 'gopls', 'jdtls', 'ruff', 'html', 'cssls', 'vtsls', 'jsonls', 'svelte', 'htmx', 'emmet_language_server', },
     },
     dependencies = {
       {
@@ -395,11 +395,6 @@ require("lazy").setup({
         },
       },
     }
-  },
-  {
-    'williamboman/mason.nvim',
-    event = "VeryLazy",
-    opts = {},
   },
   {
     'stevearc/conform.nvim',
@@ -490,7 +485,7 @@ require("lazy").setup({
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
-    opts = {},
+    config = true,
     init = function ()
       local npairs = require('nvim-autopairs')
       local Rule = require('nvim-autopairs.rule')

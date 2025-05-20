@@ -49,13 +49,6 @@ for _, lsp_server in ipairs(installed_servers) do
   }
 end
 
-lspconfig.groovyls.setup {
-  single_file_support = true,
-  cmd = {
-    "java" , "-jar" , vim.fn.stdpath("data") .. "/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar"
-  },
-}
-
 -- django-template-lsp
 lspconfig.djlsp.setup {
   cmd = { "djlsp" },
@@ -72,12 +65,6 @@ lspconfig.kotlin_language_server.setup {
       }
     }
   }
-}
-
--- nodejs bun deno
-lspconfig.ts_ls.setup {
-  autostart = true,
-  root_dir = lspconfig.util.root_pattern("package.json"),
 }
 
 lspconfig.denols.setup {
