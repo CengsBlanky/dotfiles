@@ -161,7 +161,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/vim-easy-align'
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle'}
+Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind']}
 Plug 'junegunn/fzf',
 Plug 'junegunn/fzf.vim',
 Plug 'romainl/vim-cool'
