@@ -9,23 +9,24 @@ set fish_cursor_replace_one underscore
 set -g fish_prompt_pwd_dir_length 0
 
 # ===== ENV =====
+# general
+fish_add_path "$HOME/.local/bin"
+fish_add_path "$HOME/bin"
 set -gx LANG "en_US.UTF-8"
 set -gx EDITOR /usr/local/bin/vim
 set -gx GIT_EDITOR $EDITOR
 set -gx LESS "-RiXF"
-# bc scale
+# bc config file
 set -gx BC_ENV_ARGS "$HOME/.bc"
 # ripgrep
 set -gx RIPGREP_CONFIG_PATH "$HOME/.config/rg/ripgreprc"
 set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case"
-# fzf find files
-abbr --add found "fzf --preview='batcat --color=always --style=plain,numbers {}'"
 set -gx NOTEDIR '$HOME/notes'
 # current location
 set -gx MY_CUR_LOCATION '雨花台'
 # add nvim default install path
 fish_add_path "/usr/local/nvim/bin"
-# SDKMAN start
+# === SDKMAN start ===
 set -l SDKMAN_CANDIDATES "$HOME/.sdkman/candidates"
 # java
 set -gx JAVA_HOME "$SDKMAN_CANDIDATES/java/current"
@@ -44,7 +45,7 @@ fish_add_path "$SPRING_HOME/bin"
 # Kotlin
 set -gx KOTLIN_HOME "$SDKMAN_CANDIDATES/kotlin/current"
 fish_add_path "$KOTLIN_HOME/bin"
-# SDKMAN end
+# === SDKMAN end ===
 
 # rust
 fish_add_path "$HOME/.cargo/bin"
@@ -79,9 +80,6 @@ fish_add_path --path "$HOME/.rubies/ruby-stable/bin"
 # zig
 fish_add_path "$HOME/Apps/zig-linux-x86_64-0.13.0/"
 
-# general
-fish_add_path "$HOME/.local/bin"
-fish_add_path "$HOME/bin"
 # kubectl autocompletion
 # kubectl completion fish | source
 bind --mode insert \cs "vim (fzf --preview='bat --color=always --theme=Nord --style=numbers {}')"
@@ -114,6 +112,8 @@ abbr --add nt notenow
 abbr --add cddot cd ~/.dotfiles
 # yt-dlp
 abbr --add yd --set-cursor "yt-dlp '%'"
+# fzf find files
+abbr --add found "fzf --preview='batcat --color=always --style=plain,numbers {}'"
 
 # source asdf version manager
 set -l asdf_conf "$HOME/.asdf/asdf.fish"
@@ -124,12 +124,6 @@ end
 if command -q zoxide
     zoxide init --cmd cd fish | source
 end
-# uv autocompletion
-set -l uv_cmp $HOME/.config/fish/completions/uv.fish
-set -l uvx_cmp $HOME/.config/fish/completions/uvx.fish
-if not test -e $uv_cmp; or not test -e $uvx_cmp
-    if command -q uv
-        uv generate-shell-completion fish > $uv_cmp
-        uvx --generate-shell-completion fish > $uvx_cmp
-    end
-end
+# generate uv autocompletion
+# uv generate-shell-completion fish > $uv_cmp
+# uvx --generate-shell-completion fish > $uvx_cmp
