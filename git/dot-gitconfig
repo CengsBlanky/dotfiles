@@ -15,3 +15,5 @@
 [grep]
     lineNumber = true
     patternType = perl
+[branch]
+    sort = -committerdate
