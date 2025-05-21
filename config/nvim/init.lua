@@ -575,6 +575,7 @@ require("lazy").setup({
     ft = { "http", "rest" },
     opts = {
       additional_curl_options = { "--insecure" },
+      disable_script_print_output = true,
       -- 1 minute timeout
       request_timeout = 60000,
       urlencode = "skipencoded",
