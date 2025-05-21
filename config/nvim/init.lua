@@ -363,6 +363,17 @@ require("lazy").setup({
     version = '*',
     opts = {
       sources = {
+        providers = {
+          buffer = {
+            opts = {
+              get_bufnrs = function()
+                return vim.tbl_filter(function(bufnr)
+                  return vim.bo[bufnr].buftype == ''
+                end, vim.api.nvim_list_bufs())
+              end,
+            },
+          },
+        },
         default = { 'buffer', 'lsp', 'snippets', 'path', },
       },
       cmdline = {
@@ -373,15 +384,18 @@ require("lazy").setup({
         ['<CR>'] = { 'accept', 'fallback' },
         ['<C-p>'] = { 'select_prev', 'fallback' },
         ['<C-n>'] = { 'select_next', 'fallback' },
-        ['<S-Tab>'] = { 'select_prev', 'fallback' },
-        ['<Tab>'] = { 'select_next', 'fallback' },
-        ['<C-j>'] = { 'snippet_forward', 'fallback' },
-        ['<C-k>'] = { 'snippet_backward', 'fallback' },
-        ['<C-f>'] = { 'scroll_documentation_up', 'fallback' },
-        ['<C-b>'] = { 'scroll_documentation_down', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+        ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+        ['<C-]>'] = { 'scroll_documentation_up', 'fallback' },
+        ['<C-[>'] = { 'scroll_documentation_down', 'fallback' },
       },
       completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 200 },
+        list = {
+          selection = {
+            preselect = false,
+          },
+        },
         ghost_text = {
           enabled = false,
         },
