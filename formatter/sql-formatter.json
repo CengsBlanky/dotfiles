@@ -1,0 +1,19 @@
+{
+  "language": "sql",
+  "tabWidth": 2,
+  "expressionWidth": 66,
+  "functionCase": "upper",
+  "dataTypeCase": "upper",
+  "keywordCase": "upper",
+  "linesBetweenQueries": 2,
+  "paramTypes": {
+    "custom": [
+      {
+        "regex": "\\$\\{[a-zA-Z0-9-_.]+\\}"
+      },
+      {
+        "regex": "\\{[a-zA-Z0-9-_.]+\\}"
+      }
+    ]
+  }
+}
