@@ -16,6 +16,12 @@ set -gx LANG "en_US.UTF-8"
 set -gx EDITOR /usr/local/bin/vim
 set -gx GIT_EDITOR $EDITOR
 set -gx LESS "-RiXF"
+# set nvim as pager
+if command -q nvim
+    set -gx MANPAGER "nvim +Man!"
+else
+    set -gx MANPAGER "less --incsearch"
+end
 # bc config file
 set -gx BC_ENV_ARGS "$HOME/.bc"
 # ripgrep
