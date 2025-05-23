@@ -18,3 +18,5 @@ command('Fname',
   function() to_sysreg('%:p') end,
   { desc = "full path file name" }
 )
+
+-- TODO use diagon as ascii translator in visual mode
