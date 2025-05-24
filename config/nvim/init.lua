@@ -433,6 +433,7 @@ require("lazy").setup({
         kotlin = { "ktfmt" },
         xml = { "xq_format" },
         html = { "prettier" },
+        java = { "java_format", lsp_format = "never" },
         javascript = { "prettier" },
         javascriptreact = { "prettier" },
         json = { "jq" },
@@ -445,6 +446,10 @@ require("lazy").setup({
         ["c_format"] = {
           command = "clang-format",
           args = "-style=file:$HOME/.config/formatter/clang-format.yaml",
+        },
+        ["java_format"] = {
+          command = "clang-format",
+          args = "-style=file:$HOME/.config/formatter/java-format.yaml",
         },
         ["py_format"] = {
           command = "ruff",
@@ -491,7 +496,7 @@ require("lazy").setup({
         },
       },
       default_format_opts = {
-        lsp_format = "fallback",
+        lsp_format = "last",
         stop_after_first = false,
       },
       -- format_on_save = {
