@@ -438,6 +438,7 @@ require("lazy").setup({
         json = { "jq" },
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
+        yaml = { "prettier" },
         sql = { "sql_format" },
         ["*"] = { "trim_whitespace" },
       },
@@ -491,14 +492,14 @@ require("lazy").setup({
         },
       },
       default_format_opts = {
-        lsp_format = "last",
+        lsp_format = "fallback",
         stop_after_first = false,
       },
       -- format_on_save = {
         --   lsp_format = "fallback",
         --   timeout_ms = 300,
         -- },
-        -- log_level = vim.log.levels.DEBUG,
+        log_level = vim.log.levels.DEBUG,
       },
     init = function ()
       opt.formatexpr = "v:lua.require'conform'.formatexpr()"

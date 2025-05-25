@@ -1,0 +1,11 @@
+---
+BasedOnStyle: WebKit
+AccessModifierOffset: 0
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ContinuationIndentWidth: 2
+ColumnLimit: 120
+SortJavaStaticImport: After
+BreakAfterJavaFieldAnnotations: true
+---
