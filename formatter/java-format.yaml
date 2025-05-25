@@ -1,5 +1,6 @@
 ---
-BasedOnStyle: WebKit
+BasedOnStyle: Google
+JavaImportGroups: ["*", "com", "org", "java"]
 AccessModifierOffset: 0
 IndentWidth: 4
 TabWidth: 4
