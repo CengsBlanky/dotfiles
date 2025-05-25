@@ -701,6 +701,12 @@ require("lazy").setup({
       theme = "wave",
     },
   },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
+  },
 },
 {
   git = {
