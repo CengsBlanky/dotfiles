@@ -120,6 +120,8 @@ abbr --add cddot cd ~/.dotfiles
 abbr --add yd --set-cursor "yt-dlp '%'"
 # fzf find files
 abbr --add found "fzf --preview='batcat --color=always --style=plain,numbers {}'"
+# dwm
+abbr --add mkdwm "cd ~/github/dwm/;sudo make clean install;cd -"
 
 # source asdf version manager
 set -l asdf_conf "$HOME/.asdf/asdf.fish"
