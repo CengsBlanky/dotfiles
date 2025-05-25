@@ -2,7 +2,7 @@
   "main class template": {
     "isFileTemplate": true,
     "prefix": [
-      "mainclass"
+      "main"
     ],
     "body": [
       "public class $TM_FILENAME_BASE {",
