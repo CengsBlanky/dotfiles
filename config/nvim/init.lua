@@ -453,7 +453,7 @@ require("lazy").setup({
         ["java_format"] = {
           command = "clang-format",
           args = {
-            "-style=file:$HOME/.config/formatter/java-format.yaml",
+            "-style=file:" .. vim.fn.expand("$HOME/.config/formatter/java-format.yaml"),
             "$FILENAME",
           },
         },
