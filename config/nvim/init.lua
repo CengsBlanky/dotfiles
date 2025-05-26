@@ -317,6 +317,8 @@ require("lazy").setup({
     'williamboman/mason-lspconfig.nvim',
     opts= {
       automatic_enable = false,
+
+      -- TODO follow kotlin_lsp
       ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'basedpyright', 'rust_analyzer', 'gopls', 'jdtls', 'ruff', 'html', 'cssls', 'vtsls', 'jsonls', 'svelte', 'htmx', 'emmet_language_server', },
     },
     dependencies = {
