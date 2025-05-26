@@ -450,7 +450,10 @@ require("lazy").setup({
         },
         ["java_format"] = {
           command = "clang-format",
-          args = "-style=file:$HOME/.config/formatter/java-format.yaml --assume-filename=main.java",
+          args = {
+            "-style=file:$HOME/.config/formatter/java-format.yaml",
+            "$FILENAME",
+          },
         },
         ["py_format"] = {
           command = "ruff",
