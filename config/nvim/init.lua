@@ -172,10 +172,6 @@ require("lazy").setup({
     end
   },
   {
-    'windwp/nvim-ts-autotag',
-    opts = {},
-  },
-  {
     'akinsho/bufferline.nvim',
     version = "*",
     event = "VeryLazy",
@@ -236,72 +232,56 @@ require("lazy").setup({
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    event = "VeryLazy",
+    lazy = false,
+    branch = "main",
+    build = ":TSUpdate",
     opts = function ()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = { "c", "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "asm", "mermaid", },
-        auto_install = false,
-        ignore_install = {},
-        indent = {
-          enable = true,
-        },
-        highlight = {
-          enable = true,
-          disable = {},
-          additional_vim_regex_highlighting = false,
-        },
-        textobjects = {
-          select = {
-            enable = true,
-            -- Automatically jump forward to textobj, similar to targets.vim
-            lookahead = true,
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              ["ab"] = "@block.outer",
-              ["ib"] = "@block.inner",
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              -- You can optionally set descriptions to the mappings (used in the desc parameter of
-              -- nvim_buf_set_keymap) which plugins like which-key display
-              ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-              -- You can also use captures from other query groups like `locals.scm`
-              ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-            },
-            -- You can choose the select mode (default is charwise 'v')
-            --
-            -- Can also be a function which gets passed a table with the keys
-            -- * query_string: eg '@function.inner'
-            -- * method: eg 'v' or 'o'
-            -- and should return the mode ('v', 'V', or '<c-v>') or a table
-            -- mapping query_strings to modes.
-            selection_modes = {
-              ['@parameter.outer'] = 'v', -- charwise
-              ['@function.outer'] = 'V', -- linewise
-              ['@class.outer'] = '<c-v>', -- blockwise
-            },
-            -- If you set this to `true` (default is `false`) then any textobject is
-            -- extended to include preceding or succeeding whitespace. Succeeding
-            -- whitespace has priority in order to act similarly to eg the built-in
-            -- `ap`.
-            --
-            -- Can also be a function which gets passed a table with the keys
-            -- * query_string: eg '@function.inner'
-            -- * selection_mode: eg 'v'
-            -- and should return true or false
-            include_surrounding_whitespace = false,
-          },
-        },
-        matchup = {
-          enable = true,
-          disable = {},
-          include_match_words = true,
-        },
+      local parser_installed = { "c", "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "asm", "mermaid", }
+      require("nvim-treesitter").install(parser_installed)
+      local ft_list = {}
+      local ft_set = {}
+      for _, parser in ipairs(parser_installed) do
+        local fts = vim.treesitter.language.get_filetypes(parser)
+        for _, ft in ipairs(fts) do
+          ft_set[ft] = true
+        end
+      end
+      for filetype in pairs(ft_set) do
+        table.insert(ft_list, filetype)
+      end
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = ft_list,
+        callback = function()
+          vim.treesitter.start()
+          vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
       })
     end,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-    },
+  },
+  -- TODO wait for update to main
+  -- {
+  --   "nvim-treesitter/nvim-treesitter-textobjects",
+  --   branch = "main",
+  --   opts = function ()
+  --     local map = function(key, func)
+  --       vim.keymap.set({ "x", "o" }, key, func)
+  --     end
+  --     local ts_select = function (obj)
+  --       require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects")
+  --     end
+  --     map("af", ts_select("@function.outer"))
+  --     map("if", ts_select("@function.inner"))
+  --     map("ac", ts_select("@class.outer"))
+  --     map("ic", ts_select("@class.inner"))
+  --     map("ab", ts_select("@block.outer"))
+  --     map("ib", ts_select("@block.inner"))
+  --   end
+  -- },
+  {
+    'windwp/nvim-ts-autotag',
+    branch = "main",
+    opts = {},
   },
   {
     'stevearc/aerial.nvim',
