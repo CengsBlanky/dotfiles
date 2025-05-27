@@ -6,7 +6,9 @@ local map_opts = { silent = true, nowait = true }
 opt.shadafile = "NONE"
 opt.termguicolors = true
 
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local parser_installed = { "c", "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "asm", "mermaid", }
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -234,10 +236,11 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
     branch = "main",
-    build = ":TSUpdate",
-    opts = function ()
-      local parser_installed = { "c", "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "asm", "mermaid", }
-      require("nvim-treesitter").install(parser_installed)
+    build = {
+      function() require("nvim-treesitter").install(parser_installed) end,
+      ":TSUpdate",
+    },
+    init = function ()
       local ft_list = {}
       local ft_set = {}
       for _, parser in ipairs(parser_installed) do
