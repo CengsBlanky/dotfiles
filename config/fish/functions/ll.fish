@@ -1,6 +1,6 @@
 function ll
     if command -q exa
-        exa -l --color always -a -s type --git $argv
+        exa --long --color always -all --sort type --git $argv
     else
         ls -lAh $argv
     end
