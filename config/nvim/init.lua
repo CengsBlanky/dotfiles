@@ -672,8 +672,8 @@ require("lazy").setup({
           ["@markup.heading.4.markdown"] = { fg = "#a6da95", bg = "none", bold = true, },
           ["@markup.heading.5.markdown"] = { fg = "#7dc4e4", bg = "none", bold = true, },
           ["@markup.heading.6.markdown"] = { fg = "#b7bdf8", bg = "none", bold = true, },
-          ["@markup.link"] = { fg = "#79c0e0", bg = "none" },
-          ["@markup.link.url"] = { fg = "#8fbfcf", bg = "none", italic = false, underline = true },
+          ["@markup.link"] = { fg = "#8fbfcf", bg = "none" },
+          ["@markup.link.url"] = { fg = "#79c0e0", bg = "none", italic = false, underline = true },
           ["@string.special.url"] = { fg = "#8fbcb9", underdotted = true, },
           ["@variable.builtin"] = { italic = false },
         }
