@@ -60,23 +60,22 @@ else
 endif
 # }}}
 # keymaps {{{
-nnoremap <Enter> :w<CR>
-nnoremap <silent><C-s> :wa<CR>
-nnoremap <leader>` g~iw
-vnoremap <leader>` g~
-nnoremap <silent><C-n> :bn<CR>
-nnoremap <nowait><C-p> :b#<CR>
+nnoremap <silent><nowait><Enter> :w<CR>
+nnoremap <silent><nowait><leader>` g~iw
+vnoremap <silent><nowait><leader>` g~
+nnoremap <silent><nowait><C-n> :bn<CR>
+nnoremap <silent><nowait><C-p> :b#<CR>
 nnoremap <silent><nowait><leader>q :xa<CR>
 nnoremap <silent><nowait><space>b :bd<CR>
 nnoremap <silent><leader>- :sp<CR>
 nnoremap <silent><leader>/ :vs<CR>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <C-j> <C-f>
-nnoremap <C-k> <C-b>
-nnoremap gy :%y<CR>
-nnoremap gl ^yg_
-nnoremap <silent><M-w> <C-w>c
-nnoremap <silent><M-o> <C-w>o
+nnoremap <silent><nowait><C-j> <C-f>
+nnoremap <silent><nowait><C-k> <C-b>
+nnoremap <silent><nowait>gy :%y<CR>
+nnoremap <silent><nowait>gl ^yg_
+nnoremap <silent><nowait><M-w> <C-w>c
+nnoremap <silent><nowait><M-o> <C-w>o
 nnoremap ]q :cnext<CR>
 nnoremap [q :cprev<CR>
 nnoremap ]Q :clast<CR>
@@ -85,11 +84,8 @@ nnoremap <space>s g<C-]>
 nnoremap g_ ^vg_
 # insert mode keymap
 inoremap jk <ESC>
-inoremap <C-e> <Esc>A
-inoremap <C-s> <Esc>I
-inoremap <C-a> <Esc>gI
 # delete other buffers {{{
-nnoremap <silent> <space>o :BufOnly<CR>
+nnoremap <silent><nowait><space>o :BufOnly<CR>
 command! -nargs=? -complete=buffer -bang BufOnly {
   g:BufOnly('<args>', '<bang>')
 }
