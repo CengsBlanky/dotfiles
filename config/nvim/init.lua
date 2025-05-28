@@ -8,7 +8,6 @@ opt.termguicolors = true
 
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-local parser_installed = { "c", "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "asm", "mermaid", }
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -236,51 +235,45 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
     branch = "main",
-    build = {
-      function() require("nvim-treesitter").install(parser_installed) end,
-      ":TSUpdate",
-    },
+    build = function()
+      local parser_installed = { "c", "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "asm", "mermaid", }
+      require("nvim-treesitter").install(parser_installed)
+      require("nvim-treesitter").update()
+    end,
     init = function ()
-      local ft_list = {}
-      local ft_set = {}
-      for _, parser in ipairs(parser_installed) do
-        local fts = vim.treesitter.language.get_filetypes(parser)
-        for _, ft in ipairs(fts) do
-          ft_set[ft] = true
-        end
-      end
-      for filetype in pairs(ft_set) do
-        table.insert(ft_list, filetype)
-      end
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = ft_list,
-        callback = function()
-          vim.treesitter.start()
-          vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        callback = function(args)
+          local filetype = args.match
+          local lang = vim.treesitter.language.get_lang(filetype)
+          if vim.treesitter.language.add(lang) then
+            vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            vim.treesitter.start()
+            -- textobjects config
+            local map = function(key, func)
+              vim.keymap.set({ 'x', 'o' }, key, func, { nowait = true, silent = true })
+            end
+            local ts_select = function (obj)
+              require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects")
+            end
+            map("af", function() ts_select("@function.outer") end)
+            map("if", function() ts_select("@function.inner") end)
+            map("ac", function() ts_select("@class.outer") end)
+            map("ic", function() ts_select("@class.inner") end)
+            map("ab", function() ts_select("@block.outer") end)
+            map("ib", function() ts_select("@block.inner") end)
+          end
         end
       })
     end,
+    dependencies = {
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "main",
+        opts = {},
+      },
+    },
   },
-  -- TODO wait for update to main
-  -- {
-  --   "nvim-treesitter/nvim-treesitter-textobjects",
-  --   branch = "main",
-  --   opts = function ()
-  --     local map = function(key, func)
-  --       vim.keymap.set({ "x", "o" }, key, func)
-  --     end
-  --     local ts_select = function (obj)
-  --       require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects")
-  --     end
-  --     map("af", ts_select("@function.outer"))
-  --     map("if", ts_select("@function.inner"))
-  --     map("ac", ts_select("@class.outer"))
-  --     map("ic", ts_select("@class.inner"))
-  --     map("ab", ts_select("@block.outer"))
-  --     map("ib", ts_select("@block.inner"))
-  --   end
-  -- },
   {
     'windwp/nvim-ts-autotag',
     branch = "main",
