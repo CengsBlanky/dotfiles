@@ -236,33 +236,32 @@ require("lazy").setup({
     lazy = false,
     branch = "main",
     build = function()
-      local parser_installed = { "c", "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "css", "javascript", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "htmldjango", "rust", "sql", "typescript", "tsx", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "asm", "mermaid", }
+      local parser_installed = { "c", "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "go", "gomod", "gosum", "html", "html_tags", "htmldjango", "css", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "javascript", "jsx", "typescript", "tsx", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "asm", "mermaid", }
       require("nvim-treesitter").install(parser_installed)
       require("nvim-treesitter").update()
     end,
     init = function ()
+      local installed_lang = require("nvim-treesitter").get_installed()
+      table.insert(installed_lang, "javascriptreact")
       vim.api.nvim_create_autocmd("FileType", {
-        callback = function(args)
-          local filetype = args.match
-          local lang = vim.treesitter.language.get_lang(filetype)
-          if vim.treesitter.language.add(lang) then
-            vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-            vim.treesitter.start()
-            -- textobjects config
-            local map = function(key, func)
-              vim.keymap.set({ 'x', 'o' }, key, func, { nowait = true, silent = true })
-            end
-            local ts_select = function (obj)
-              require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects")
-            end
-            map("af", function() ts_select("@function.outer") end)
-            map("if", function() ts_select("@function.inner") end)
-            map("ac", function() ts_select("@class.outer") end)
-            map("ic", function() ts_select("@class.inner") end)
-            map("ab", function() ts_select("@block.outer") end)
-            map("ib", function() ts_select("@block.inner") end)
+        pattern = installed_lang,
+        callback = function()
+          vim.treesitter.start()
+          vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          -- textobjects config
+          local map = function(key, func)
+            vim.keymap.set({ 'x', 'o' }, key, func, { nowait = true, silent = true })
           end
+          local ts_select = function (obj)
+            require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects")
+          end
+          map("af", function() ts_select("@function.outer") end)
+          map("if", function() ts_select("@function.inner") end)
+          map("ac", function() ts_select("@class.outer") end)
+          map("ic", function() ts_select("@class.inner") end)
+          map("ab", function() ts_select("@block.outer") end)
+          map("ib", function() ts_select("@block.inner") end)
         end
       })
     end,
@@ -287,7 +286,6 @@ require("lazy").setup({
       { "}", "<cmd>AerialNext<CR>", map_opts},
     },
     opts = {},
-    dependencies = {},
   },
   {
     'williamboman/mason-lspconfig.nvim',
