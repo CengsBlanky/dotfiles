@@ -242,6 +242,7 @@ require("lazy").setup({
     end,
     init = function ()
       local installed_lang = require("nvim-treesitter").get_installed()
+      -- maybe because of node version??
       table.insert(installed_lang, "javascriptreact")
       vim.api.nvim_create_autocmd("FileType", {
         pattern = installed_lang,
