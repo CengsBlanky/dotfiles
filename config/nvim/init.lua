@@ -242,7 +242,7 @@ require("lazy").setup({
     end,
     init = function ()
       vim.api.nvim_create_autocmd("FileType", {
-        callback = function()
+        callback = function(args)
           local lang = vim.treesitter.language.get_lang(args.match)
           if vim.treesitter.language.add(lang) then
             vim.treesitter.start()
