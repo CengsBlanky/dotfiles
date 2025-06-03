@@ -241,28 +241,26 @@ require("lazy").setup({
       require("nvim-treesitter").update()
     end,
     init = function ()
-      local installed_lang = require("nvim-treesitter").get_installed()
-      -- maybe because of node version??
-      table.insert(installed_lang, "javascriptreact")
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = installed_lang,
         callback = function()
-          vim.treesitter.start()
-          vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-          -- textobjects config
-          local map = function(key, func)
-            vim.keymap.set({ 'x', 'o' }, key, func, { nowait = true, silent = true })
+          local lang = vim.treesitter.language.get_lang(args.match)
+          if vim.treesitter.language.add(lang) then
+            vim.treesitter.start()
+            vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            local map = function(key, func)
+              vim.keymap.set({ 'x', 'o' }, key, func, { nowait = true, silent = true })
+            end
+            local ts_select = function (obj)
+              require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects")
+            end
+            map("af", function() ts_select("@function.outer") end)
+            map("if", function() ts_select("@function.inner") end)
+            map("ac", function() ts_select("@class.outer") end)
+            map("ic", function() ts_select("@class.inner") end)
+            map("ab", function() ts_select("@block.outer") end)
+            map("ib", function() ts_select("@block.inner") end)
           end
-          local ts_select = function (obj)
-            require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects")
-          end
-          map("af", function() ts_select("@function.outer") end)
-          map("if", function() ts_select("@function.inner") end)
-          map("ac", function() ts_select("@class.outer") end)
-          map("ic", function() ts_select("@class.inner") end)
-          map("ab", function() ts_select("@block.outer") end)
-          map("ib", function() ts_select("@block.inner") end)
         end
       })
     end,
