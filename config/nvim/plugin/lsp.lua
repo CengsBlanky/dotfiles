@@ -1,7 +1,4 @@
 ---@diagnostic disable: undefined-global
-local setnmap = function (key, action, provide_opts)
-  vim.keymap.set('n', key, action, provide_opts)
-end
 vim.diagnostic.config({
   severity_sort = true,
   virtual_text = {
@@ -20,6 +17,9 @@ vim.diagnostic.config({
 })
 -- Use an LspAttach event to only map the following keys
 -- after the language server attaches to the current buffer
+local setnmap = function (key, action, provide_opts)
+  vim.keymap.set('n', key, action, provide_opts)
+end
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local bufnr = args.buf
@@ -34,9 +34,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     setnmap('<leader>r', vim.lsp.buf.rename, bufopts)
     setnmap('<leader>a', vim.lsp.buf.code_action, bufopts)
     setnmap('<leader>c', function() vim.lsp.codelens.run() end, bufopts)
-    setnmap('<Space>d', vim.diagnostic.open_float, opts)
-    setnmap('<Space>k', vim.diagnostic.goto_prev, opts)
-    setnmap('<Space>j', vim.diagnostic.goto_next, opts)
+    setnmap('<Space>d', vim.diagnostic.open_float, bufopts)
+    setnmap('<Space>k', vim.diagnostic.goto_prev, bufopts)
+    setnmap('<Space>j', vim.diagnostic.goto_next, bufopts)
   end,
 })
 
