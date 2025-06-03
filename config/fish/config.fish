@@ -103,6 +103,7 @@ abbr --add gad "git add"
 abbr --add gcm "git commit -a"
 abbr --add glg "git log --author=(git config user.name) --oneline -n 10"
 abbr --add gsh "git show"
+abbr --add gcp --set-cursor "git commit -am '%' && git push"
 abbr --add note "joplin"
 # py for python
 abbr --add py "python"
@@ -122,8 +123,6 @@ abbr --add yd --set-cursor "yt-dlp '%'"
 abbr --add found "fzf --preview='batcat --color=always --style=plain,numbers {}'"
 # dwm
 abbr --add mkdwm "cd ~/github/dwm/;sudo make clean install;cd -"
-# git commit and push
-abbr --add gcp --set-cursor "git commit -am '%' && git push"
 
 # source asdf version manager
 set -l asdf_conf "$HOME/.asdf/asdf.fish"
