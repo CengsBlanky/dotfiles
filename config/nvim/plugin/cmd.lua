@@ -18,39 +18,28 @@ command('Fname',
   function() to_sysreg('%:p') end,
   { desc = "full path file name" }
 )
+
 -- trim lines of selected or entire buffer
-local trim_all = function(opts)
-  local range = opts.range
-  -- visual selection
-  if range == 2 then
-    vim.cmd(string.format('%d,%ds/^\\s\\+\\|\\s\\+$//ge', opts.line1, opts.line2))
-  else
-    vim.cmd('%s/^\\s\\+\\|\\s\\+$//ge')
+local function trim_all(opts)
+  local start_line = opts.line1
+  local end_line = opts.line2
+  if opts.range == 0 then
+    start_line = 1
+    end_line = vim.fn.line('$')
   end
+  local buf = vim.api.nvim_get_current_buf()
+  local lines = vim.api.nvim_buf_get_lines(buf, start_line - 1, end_line, false)
+  local new_lines = {}
+  for i, line in ipairs(lines) do
+    new_lines[i] = line:gsub("^%s+", ""):gsub("%s+$", "")
+  end
+  vim.api.nvim_buf_set_lines(buf, start_line - 1, end_line, false, new_lines)
 end
 command('Trim', trim_all, {
-    range = true,
-    desc = "trim lines",
-  })
-
-command('Tsort', function(opts)
-  trim_all(opts)
-  if opts.range == 2 then
-    vim.cmd(string.format('%d,%dsort u', opts.line1, opts.line2))
-  else
-    vim.cmd('%sort u')
-  end
-end, {
-    range = true,
-    desc = "trim lines and sort unique",
-  })
-
-local setmap = function (mode, key, action)
-  local opts = { silent = true, nowait = true }
-  vim.keymap.set(mode, key, action, opts)
-end
-setmap('n', '<leader>t', '<cmd>Trim<CR>')
-setmap('v', '<leader>t', '<cmd>Trim<CR>')
-setmap('n', '<leader>u', '<cmd>Tsort<CR>')
-setmap('v', '<leader>u', '<cmd>Tsort<CR>')
+  nargs = '?',
+  range = '%',
+  addr = 'lines',
+  desc = "trim lines",
+})
+vim.keymap.set({ 'n', 'v' }, '<leader>t', '<cmd>Trim<CR>', { silent = true, nowait = true })
 -- TODO use diagon as ascii translator in visual mode
