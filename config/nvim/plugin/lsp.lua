@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     setnmap('gi', vim.lsp.buf.implementation, bufopts)
     setnmap('gr', vim.lsp.buf.references, bufopts)
     setnmap('K', vim.lsp.buf.hover, bufopts)
-    setnmap('<leader>t', vim.lsp.buf.type_definition, bufopts)
+    setnmap('<leader>d', vim.lsp.buf.type_definition, bufopts)
     setnmap('<leader>r', vim.lsp.buf.rename, bufopts)
     setnmap('<leader>a', vim.lsp.buf.code_action, bufopts)
     setnmap('<leader>c', function() vim.lsp.codelens.run() end, bufopts)
