@@ -55,18 +55,6 @@ lspconfig.djlsp.setup {
   root_dir = lspconfig.util.root_pattern("manage.py"),
 }
 
-lspconfig.kotlin_language_server.setup {
-  settings = {
-    kotlin = {
-      compiler = {
-        jvm = {
-          target = "21"
-        }
-      }
-    }
-  }
-}
-
 lspconfig.denols.setup {
   autostart = false,
   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),

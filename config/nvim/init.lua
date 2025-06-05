@@ -291,7 +291,7 @@ require("lazy").setup({
     opts= {
       automatic_enable = false,
       -- TODO follow kotlin_lsp
-      ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'kotlin_language_server', 'lua_ls', 'marksman', 'pyright', 'rust_analyzer', 'gopls', 'jdtls', 'ruff', 'html', 'cssls', 'vtsls', 'jsonls', 'svelte', 'htmx', 'emmet_language_server', },
+      ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'pyright', 'rust_analyzer', 'gopls', 'jdtls', 'ruff', 'html', 'cssls', 'vtsls', 'jsonls', 'svelte', 'htmx', 'emmet_language_server', },
     },
     dependencies = {
       {
@@ -358,8 +358,10 @@ require("lazy").setup({
         ['<CR>'] = { 'accept', 'fallback' },
         ['<C-p>'] = { 'select_prev', 'fallback' },
         ['<C-n>'] = { 'select_next', 'fallback' },
-        ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
-        ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'fallback' },
+        ['<Tab>'] = { 'select_next', 'fallback' },
+        ['<C-j>'] = { 'snippet_forward', 'fallback' },
+        ['<C-k>'] = { 'snippet_backward', 'fallback' },
         ['<C-]>'] = { 'scroll_documentation_up', 'fallback' },
         ['<C-[>'] = { 'scroll_documentation_down', 'fallback' },
       },
