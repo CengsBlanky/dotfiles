@@ -41,5 +41,41 @@ command('Trim', trim_all, {
   addr = 'lines',
   desc = "trim lines",
 })
-vim.keymap.set({ 'n', 'v' }, '<leader>t', '<cmd>Trim<CR>', { silent = true, nowait = true })
+
+command('Squeeze', function(opts)
+  local start_line = opts.line1
+  local end_line = opts.line2
+  if opts.range == 0 then
+    start_line = 1
+    end_line = vim.fn.line('$')
+  end
+  vim.cmd(string.format('%d,%dg/^\\s*$/d', start_line, end_line))
+end, {
+  nargs = '?',
+  range = '%',
+  addr = 'lines',
+  desc = "delete empty lines",
+})
+
+command('Usort', function(opts)
+  local start_line = opts.line1
+  local end_line = opts.line2
+  if opts.range == 0 then
+    start_line = 1
+    end_line = vim.fn.line('$')
+  end
+  vim.cmd(string.format('%d,%ds/^\\s\\+\\|\\s\\+$//ge', start_line, end_line))
+  vim.cmd(string.format('%d,%dsort u', start_line, end_line))
+end, {
+  nargs = '?',
+  range = '%',
+  addr = 'lines',
+  desc = "delete empty lines",
+})
+
+local setmap = function (mode, key, action)
+  local opts = { silent = true, nowait = true }
+  vim.keymap.set(mode, key, action, opts)
+end
+setmap('n', '<leader>t', '<cmd>Trim<CR>')
 -- TODO use diagon as ascii translator in visual mode
