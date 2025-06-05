@@ -70,7 +70,7 @@ end, {
   nargs = '?',
   range = '%',
   addr = 'lines',
-  desc = "delete empty lines",
+  desc = "trim and sort",
 })
 
 local setmap = function (mode, key, action)
