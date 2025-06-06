@@ -22,3 +22,12 @@ setmap('n', '<C-n>', '<Cmd>bn<CR>')
 setmap('v', '<leader>`', 'g~')
 setmap('v', '<C-j>', '<C-f>')
 setmap('v', '<C-k>', '<C-b>')
+-- trim lines both end
+setmap('n', '<leader>t', '<cmd>%s/^\\s\\+\\|\\s\\+$//ge<CR>')
+setmap('v', '<leader>t', ":s/^\\s\\+\\|\\s\\+$//ge<CR>")
+-- trim and delete empty lines
+setmap('n', '<leader>e', '<cmd>%s/^\\s\\+\\|\\s\\+$//ge|:silent! %g/^\\s*$/d<CR>')
+setmap('v', '<leader>e', ":s/^\\s\\+\\|\\s\\+$//ge|:silent! '<,'>g/^\\s*$/d<CR>")
+-- trim delete and sort
+setmap('n', '<leader>u', '<cmd>%s/^\\s\\+\\|\\s\\+$//ge|%sort u|:silent! %g/^\\s*$/d<CR>')
+setmap('v', '<leader>u', ":s/^\\s\\+\\|\\s\\+$//ge|'<,'>sort u|:silent! '<,'>g/^\\s*$/d<CR>")
