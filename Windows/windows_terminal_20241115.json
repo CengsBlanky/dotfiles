@@ -599,16 +599,19 @@
     "tabSwitcherMode": "mru",
     "tabWidthMode": "equal",
     "theme": "custom",
-    "themes": 
-    [
+    "themes": [
         {
             "name": "custom",
             "tab": 
             {
-                "background": "#233240",
+                "background": "#212228",
                 "iconStyle": "default",
                 "showCloseButton": "never",
-                "unfocusedBackground": "#2E2E2EFF"
+                "unfocusedBackground": "#273642"
+            },
+            "tabRow": {
+              "background": "#273642",
+              "unfocusedBackground": "#1d2932"
             },
             "window": 
             {
