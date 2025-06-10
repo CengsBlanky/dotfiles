@@ -7,7 +7,7 @@ opt.pumblend = 5
 opt.winblend = 0
 opt.background = 'dark'
 
-function _G.myLspStatusline()
+function LspStatusLine()
   local count = {}
   local levels = {
     errors = "Error",
@@ -42,4 +42,4 @@ function _G.myLspStatusline()
 end
 
 -- statusline
-vim.opt.statusline = '%r %f%m%{%v:lua.myLspStatusline()%}%=%18(%l,%v/%L%)%24(%{&fileformat}%Y%)%9( %{&fileencoding}%)'
+vim.opt.statusline = '%r %f%m%{%v:lua.LspStatusLine()%}%=%18(%l,%v/%L%)%24(%{&fileformat}%Y%)%9( %{&fileencoding}%)'
