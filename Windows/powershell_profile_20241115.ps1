@@ -2,10 +2,6 @@ function Cd-D {
     cd D:\
 }
 
-function Cd-Home {
-    cd $HOME
-}
-
 function Cd-Code {
     cd D:\code
 }
@@ -38,6 +34,10 @@ function Clean-Tmpfiles {
     Remove-Item "D:\tmp\*" -Recurse -Force
 }
 
+function Clean-Download {
+    Remove-Item "C:\users\z30034089\downloads\*" -Recurse -Force
+}
+
 function Open-Download {
     Open-Item "C:\users\z30034089\downloads"
 }
@@ -48,10 +48,6 @@ function Cd-Learn {
 
 function Cd-Music {
     cd D:\music
-}
-
-function Cd-Http {
-    cd D:\DevTools\http
 }
 
 function Open-Item {
@@ -68,6 +64,13 @@ function Force-Mkdir {
     New-Item -ItemType Directory -Force -Path $path
 }
 
+function Go-Mkdir {
+    param([string]$path)
+
+    Force-Mkdir $path
+    cd $path
+}
+
 function Find-Files {
     param([string]$file_name)
 
@@ -75,11 +78,62 @@ function Find-Files {
 }
 
 function Vi-Fzf {
-    vi (fzf)
+    vim (fzf)
 }
 
 function Copy-Cwd {
     Set-Clipboard -Value $PWD
+}
+
+function todo {
+    param(
+        [string]$Something = "",
+        [switch]$Read
+    )
+
+    $todo_file = "D:\notes\todo.md"
+    if ($Read) {
+        vi $todo_file
+        return
+    }
+    $todo_time = Get-Date -Format 'yyyy-MM-dd HH:mm:ss ddd'
+    $newline = "`r`n"
+
+    if (Test-Path $todo_file -PathType Leaf) {
+        Write-Output $newline >> $todo_file
+    }
+    Write-Output "## $todo_time" >> $todo_file
+    Add-Content -Path $todo_file -Value "$newline- [] $Something"
+    vi -c "norm GzzA" $todo_file
+}
+
+function note {
+    param(
+        [PSDefaultValue(Help="days before or after now")]
+        [double]$days = 0.0
+    )
+
+    $target_date = (Get-Date).AddDays($days)
+
+    $current_year = Get-Date $target_date -Format 'yyyy'
+    $current_date = (Get-Date $target_date -Format 'yyyyMMdd')
+    $current_time = Get-Date $target_date -Format 'HH:mm:ss'
+    $weekday = Get-Date $target_date -UFormat "%A"
+    $note_dir = "D:\notes\$current_year"
+    $note_filename = "$current_date.md"
+    $note_file = "$note_dir\$note_filename"
+    $newline = "`r`n"
+
+    if (-not (Test-Path $note_dir)) {
+        New-Item -Type Directory -Force -Path $note_dir
+    }
+
+    if (-not (Test-Path $note_file -PathType Leaf)) {
+        Write-Output "# Note for $current_date $weekday" > $note_file
+    }
+    Add-Content -Path $note_file -Value "$newline## $current_time$newline"
+
+    vi -c "norm Gzzo" $note_file
 }
 
 function Check-Note {
@@ -105,7 +159,7 @@ function Search-Note {
     )
     $current_year = Get-Date $target_date -Format 'yyyy'
     $note_dir = "D:\notes\$current_year"
-    rg $content $note_dir
+    rg -i $content $note_dir
 }
 
 function Analyze-Bug {
@@ -117,37 +171,6 @@ function Analyze-Bug {
     vi $bug_file
 }
 
-function To-Do {
-    param(
-        [string]$name
-    )
-    if ([string]::IsNullOrEmpty($name)) {
-        cd "D:\todo"
-        return
-    }
-    $todo_file = "D:\todo\$name.md"
-
-    $current_time = (Get-Date -Format 'yyyy-MM-dd HH:mm:ss')
-    if (-not (Test-Path $todo_file -PathType Leaf)) {
-        Write-Output "# Todo from $current_time" > $todo_file
-    } else {
-        Write-Output "## $current_time" >> $todo_file
-    }
-    vi -c "norm Gzz" $todo_file
-}
-
-function Ssh-Blue {
-    ssh blue_betam_hc
-}
-function Ssh-Blue-Hk {
-    ssh blue_betam_hk
-}
-function Ssh-Green {
-    ssh green_betam_hc
-}
-function Ssh-Green-Hk {
-    ssh green_betam_hk
-}
 function Ssh-Master {
     ssh master_alpha
 }
@@ -164,46 +187,55 @@ function Ssh-Transtation {
     ssh trans
 }
 
-function Go-Db {
-    param(
-        [string]$dbname = "marketingcampaigndb"
-    )
-    mycli -h 172.20.23.199 -u root --pass 8HD5agiwfJrx0ptc@ECS -D $dbname
-}
-
-function Go-Hkdb {
-    param(
-        [string]$dbname = "marketingcampaigndb"
-    )
-    mycli -h 172.20.64.100 -u root --pass 8HD5agiwfJrx0ptc@ECS  -D $dbname
-}
-
-function Go-Campdb {
-    Go-Db
-}
-
-function Go-Campdbhk {
-    Go-Hkdb
-}
-
 function Up-Folder {
     Set-Location ..
+}
+
+function Remove-Dir {
+    param([string]$path)
+    Remove-Item -Force -Recurse $path
 }
 
 function Make-Tags {
     rg --files | ctags -R --links=no -L -
 }
 
-function Switch-Jdk8 {
-    [Environment]::SetEnvironmentVariable("JAVA_HOME", "D:\DevTools\huaweiJDK8", [EnvironmentVariableTarget]::Machine)
-    [Environment]::SetEnvironmentVariable("MAVEN_HOME", "D:\DevTools\apache-maven-3.8.1", [EnvironmentVariableTarget]::Machine)
+function Switch-Jdk17 {
+    [Environment]::SetEnvironmentVariable("JAVA_HOME", "D:\DevTools\oracleJDK17", [EnvironmentVariableTarget]::Machine)
+    [Environment]::SetEnvironmentVariable("MAVEN_HOME", "D:\DevTools\apache-maven-3.8.8", [EnvironmentVariableTarget]::Machine)
     Refresh-EnvironmentVariables
 }
 
-function Switch-Jdk17 {
-    [Environment]::SetEnvironmentVariable("JAVA_HOME", "D:\DevTools\oracleJDK17", [EnvironmentVariableTarget]::Machine)
+function Switch-Jdk21 {
+    [Environment]::SetEnvironmentVariable("JAVA_HOME", "D:\DevTools\jdk21", [EnvironmentVariableTarget]::Machine)
     [Environment]::SetEnvironmentVariable("MAVEN_HOME", "D:\DevTools\apache-maven-3.9.9", [EnvironmentVariableTarget]::Machine)
     Refresh-EnvironmentVariables
+}
+
+function Invoke-Chrome {
+    param([string]$group)
+    $chrome = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+    $arg = "--user-data-dir=$group"
+    & $chrome $arg
+}
+
+function Beta-Chrome {
+    Invoke-Chrome -group "D:\appData\chrome_beta"
+}
+
+function Dev-Chrome {
+    Invoke-Chrome -group "D:\appData\chrome_dev"
+}
+
+function Service-Chrome {
+    Invoke-Chrome -group "D:\appData\chrome_service"
+}
+
+function Cors-Chrome {
+    $chrome = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+    $userDir = "D:\appData\chrome_cors"
+    $arg = "--user-data-dir=$userDir"
+    & $chrome $arg --disable-web-security
 }
 
 Set-Alias cdd Cd-D
@@ -211,7 +243,6 @@ Set-Alias cdcode Cd-Code
 Set-Alias cdtmp Cd-Tmp
 Set-Alias cdproject Cd-Project
 Set-Alias cdnote Cd-Note
-Set-Alias cdhome Cd-Home
 Set-Alias cdespanso Cd-Espanso
 Set-Alias cdnvim Cd-Nvim
 Set-Alias cdlearn Cd-Learn
@@ -219,22 +250,20 @@ Set-Alias cdmusic Cd-Music
 Set-Alias cknote Check-Note
 Set-Alias rgnote Search-Note
 Set-Alias bug Analyze-Bug
-Set-Alias todo To-Do
 Set-Alias cwd Copy-Cwd
+Set-Alias mkin Go-Mkdir
+Set-Alias rmdir Remove-Dir
 
 Set-Alias open Open-Item
 
 Set-Alias l dir
 Set-Alias vim D:\DevTools\neovim\bin\nvim
 Set-Alias vi D:\DevTools\gvim\Vim\vim91\vim.exe
-Set-Alias rg D:\tools\ripgrep\rg.exe
+Set-Alias rg D:\DevTools\ripgrep\rg.exe
 Set-Alias .. Up-Folder
-Set-Alias cdhttp Cd-Http
-Set-Alias campdb Go-Campdb
-Set-Alias campdbhk Go-Campdbhk
 
 # Elixir command alias
-Set-Alias ielx iex.bat
+Set-Alias elx iex.bat
 
 Import-Module -Name Terminal-Icons
 oh-my-posh --init --shell pwsh --config C:/Code/amro.json | Invoke-Expression
@@ -251,10 +280,11 @@ $env:LESSCHARSET='utf-8'
 $env:POWERSHELL_UPDATECHECK = 'Off'
 $env:NODE_PATH = "D:\npm_lib"
 $env:RIPGREP_CONFIG_PATH = "$HOME\ripgreprc"
-# $env:HTTP_PROXY = "http://proxyhk.huawei.com:8080"
-# $env:HTTPS_PROXY = "http://proxyhk.huawei.com:8080"
+$env:PYTHONUTF8 = 1
+$env:HTTP_PROXY = 'http://user:password@proxy.com:8080'
+$env:HTTPS_PROXY = 'http://user:password@proxy.com:8080'
 Set-PSReadLineKeyHandler -Chord Ctrl+r -ScriptBlock {
-    [Microsoft.PowerShell.PSConsoleReadLine]::Insert('vi (fzf)')
+    [Microsoft.PowerShell.PSConsoleReadLine]::Insert('vim (fzf)')
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
 }
 Set-PSReadLineKeyHandler -Chord Ctrl+u -Function BackwardKillLine
