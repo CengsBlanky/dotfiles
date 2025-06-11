@@ -138,16 +138,6 @@ require("lazy").setup({
           require("fzf-lua").buffers()
         end, map_opts
       },
-      {
-        "<leader>s", function ()
-          require("fzf-lua").lsp_references()
-        end, map_opts
-      },
-      {
-        "<leader>i", function ()
-          require("fzf-lua").lsp_implementations()
-        end, map_opts
-      },
     },
     config = function ()
       require('fzf-lua').setup({
