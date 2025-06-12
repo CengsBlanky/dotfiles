@@ -681,6 +681,29 @@ require("lazy").setup({
       require("colorizer").setup()
     end,
   },
+  {
+    "kndndrj/nvim-dbee",
+    cmd = "Dbee",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    build = function()
+      require("dbee").install("go")
+    end,
+    config = function()
+      require("dbee").setup({
+        sources = {
+          require("dbee.sources").FileSource:new("$HOME/.config/dbee/connections.json")
+        },
+        editor = {
+          mappings = {
+            { key = "<space>r", mode = "v", action = "run_selection" },
+            { key = "<space>r", mode = "n", action = "run_file" },
+          },
+        },
+      })
+    end,
+  },
 },
 {
   git = {
