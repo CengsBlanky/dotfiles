@@ -229,7 +229,7 @@ require("lazy").setup({
       require("nvim-treesitter").install(parser_installed)
       require("nvim-treesitter").update()
     end,
-    init = function ()
+    opts = function ()
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
           local lang = vim.treesitter.language.get_lang(args.match)
