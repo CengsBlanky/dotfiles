@@ -544,29 +544,6 @@ require("lazy").setup({
     end,
   },
   {
-    'kristijanhusak/vim-dadbod-ui',
-    dependencies = {
-      { 'tpope/vim-dadbod', lazy = true },
-      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
-    },
-    cmd = {
-      'DBUI',
-      'DBUIToggle',
-      'DBUIAddConnection',
-      'DBUIFindBuffer',
-    },
-    opts = function()
-      -- Your DBUI configuration
-      g.db_ui_use_nerd_fonts = 1
-      g.dbs = {
-        {
-          name = "lite",
-          url = "sqlite:~/tmp/sqlite.db",
-        },
-      }
-    end,
-  },
-  {
     'mistweaverco/kulala.nvim',
     ft = { "http", "rest" },
     opts = {
@@ -677,8 +654,32 @@ require("lazy").setup({
   },
   {
     "norcalli/nvim-colorizer.lua",
+    ft = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "tmux", "lua", "vim", "toml", "yaml" },
     config = function()
       require("colorizer").setup()
+    end,
+  },
+  {
+    'kristijanhusak/vim-dadbod-ui',
+    dependencies = {
+      { 'tpope/vim-dadbod', lazy = true },
+      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+    },
+    cmd = {
+      'DBUI',
+      'DBUIToggle',
+      'DBUIAddConnection',
+      'DBUIFindBuffer',
+    },
+    opts = function()
+      -- Your DBUI configuration
+      g.db_ui_use_nerd_fonts = 1
+      g.dbs = {
+        {
+          name = "lite",
+          url = "sqlite:~/tmp/sqlite.db",
+        },
+      }
     end,
   },
   {
@@ -697,7 +698,7 @@ require("lazy").setup({
         },
         editor = {
           mappings = {
-            { key = "<space>r", mode = "v", action = "run_selection" },
+            { key = "s", mode = "v", action = "run_selection" },
             { key = "<space>r", mode = "n", action = "run_file" },
           },
         },
