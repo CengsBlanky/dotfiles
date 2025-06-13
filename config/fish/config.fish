@@ -13,8 +13,8 @@ set -g fish_prompt_pwd_dir_length 0
 fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/bin"
 set -gx LANG "en_US.UTF-8"
-set -gx EDITOR /usr/local/bin/vim
-set -gx GIT_EDITOR $EDITOR
+set -gx EDITOR vim
+set -gx GIT_EDITOR /usr/local/bin/vim
 set -gx LESS "-RiXF"
 # set nvim as pager
 if command -q nvim
