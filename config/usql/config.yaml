@@ -1,3 +1,5 @@
 init: |
   \set EDITOR nvim
 
+queries:
+  user: select * from users
