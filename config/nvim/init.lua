@@ -699,7 +699,7 @@ require("lazy").setup({
         editor = {
           mappings = {
             { key = "s", mode = "v", action = "run_selection" },
-            { key = "<space>r", mode = "n", action = "run_file" },
+            { key = "<space>r", mode = "n", action = "run_under_cursor" },
           },
         },
       })

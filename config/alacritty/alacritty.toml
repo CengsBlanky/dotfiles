@@ -16,8 +16,8 @@ foreground = "#d8dee9"
 
 [font]
 builtin_box_drawing = true
-normal.family = "IosevkaZeng"
-normal.style = "light"
+normal.family = "ComicShannsMono Nerd Font"
+normal.style = "normal"
 size = 13
 
 [[keyboard.bindings]]
