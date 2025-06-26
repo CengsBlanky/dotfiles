@@ -1,8 +1,9 @@
 ---@diagnostic disable: undefined-global
-function RunCurrentBuffer()
+local function codewin(opts)
   -- Get the current buffer content
   local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
   local filetype = vim.bo.filetype
+  local filename = vim.fn.expand('%:t')
   local ft_cmd = {
     python = "python3",
     java = "java",
@@ -38,12 +39,17 @@ function RunCurrentBuffer()
   os.remove(tempfile)
 
   -- Create a scratch buffer for the output
-  local buf = vim.api.nvim_create_buf(false, true)
+  local buf = nil
+  if opts and vim.api.nvim_buf_is_valid(opts.buf) then
+    buf = opts.buf
+  else
+    buf = vim.api.nvim_create_buf(false, true)
+  end
 
   -- Create a floating window
   local width = math.floor(vim.o.columns * 0.8)
   local height = math.floor(vim.o.lines * 0.8)
-  local opts = {
+  local win_opts = {
     relative = 'editor',
     width = width,
     height = height,
@@ -51,13 +57,13 @@ function RunCurrentBuffer()
     row = (vim.o.lines - height) / 2,
     style = 'minimal',
     border = 'rounded',
-    title = " " .. cmd .. " output",
+    title = " " .. cmd .. " " .. filename .. " ",
     title_pos = "center",
   }
   -- Split result into lines and put in buffer
   local output_lines = vim.split(result:gsub('\r', ''), '\n')
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, output_lines)
-  local win = vim.api.nvim_open_win(buf, true, opts)
+  local win = vim.api.nvim_open_win(buf, true, win_opts)
 
   -- Set buffer and window options
   vim.api.nvim_buf_set_option(buf, 'filetype', 'output')
@@ -65,14 +71,37 @@ function RunCurrentBuffer()
   vim.api.nvim_buf_set_option(buf, 'modifiable', false)
   vim.api.nvim_buf_set_option(buf, 'bufhidden', 'wipe')
   vim.api.nvim_win_set_option(win, 'number', true)
-  vim.api.nvim_win_set_option(win, 'relativenumber', false)
+  vim.api.nvim_win_set_option(win, 'relativenumber', true)
   vim.api.nvim_win_set_option(win, 'wrap', true)
 
   -- Add keymaps to close window
   local close_win = function() vim.api.nvim_win_close(win, true) end
   vim.keymap.set('n', 'q', close_win, { buffer = buf })
   vim.keymap.set('n', '<Esc>', close_win, { buffer = buf })
+  return { buf = buf, win = win }
 end
 
--- Set a key mapping (e.g., <leader>r)
-vim.api.nvim_set_keymap('n', '<Space>r', ':lua RunCurrentBuffer()<CR>', { noremap = true, silent = true, nowait = true })
+local state = {
+  floating = {
+    buf = -1,
+    win = -1,
+  }
+}
+
+vim.api.nvim_create_user_command("ToggleShowResult", function ()
+  if vim.api.nvim_win_is_valid(state.floating.win) then
+    vim.api.nvim_win_hide(state.floating.win)
+  else
+    state.floating = codewin { buf = state.floating.buf }
+  end
+end, {})
+
+vim.api.nvim_create_user_command("CodeWin", function ()
+  if vim.api.nvim_win_is_valid(state.floating.win) then
+    vim.api.nvim_win_hide(state.floating.win)
+  else
+    state.floating = codewin { buf = state.floating.buf }
+  end
+end, {})
+vim.api.nvim_set_keymap('n', '<Space>r', '<cmd>CodeWin<CR>', { noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap('n', '<Space>t', '<cmd>ToggleShowResult<CR>', { noremap = true, silent = true, nowait = true })
