@@ -1,4 +1,12 @@
 ---@diagnostic disable: undefined-global
+local ft_cmd = {
+  python = "python3",
+  java = "java",
+  javascript = "node",
+  typescript = "bun",
+  lua = "lua",
+  go = "go run",
+}
 local function codewin(opts)
   opts = opts or {}
   -- Get the current buffer content
@@ -10,14 +18,6 @@ local function codewin(opts)
     local filename = vim.fn.expand('%:t')
     local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
     local filetype = vim.bo.filetype
-    local ft_cmd = {
-      python = "python3",
-      java = "java",
-      javascript = "node",
-      typescript = "bun",
-      lua = "lua",
-      go = "go run",
-    }
     local cmd = ft_cmd[filetype]
     if not cmd then
       vim.notify("Unsupported filetype: " .. filetype, vim.log.levels.WARN)
