@@ -6,3 +6,5 @@ functions/_nvm*
 functions/nvm.fish
 functions/fisher.fish
 fish_plugins
+# fzf
+functions/fish_user_key_bindings.fish
