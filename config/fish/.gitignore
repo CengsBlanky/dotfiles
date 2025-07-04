@@ -1,3 +1,8 @@
 fish_variables
 conf.d/
 completions/
+# fisher and its plugins
+functions/_nvm*
+functions/nvm.fish
+functions/fisher.fish
+fish_plugins

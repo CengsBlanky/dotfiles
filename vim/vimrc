@@ -149,7 +149,7 @@ command! -nargs=1 S @/ = <q-args>
 # }}}
 # plugins {{{
 var plugin_path = "~/.vim/plugins"
-var plugin_manager = "~/.vim/plug.vim"
+var plugin_manager = "~/.vim/autoload/plug.vim"
 execute 'source' plugin_manager
 call plug#begin(fnameescape(plugin_path))
 Plug 'tpope/vim-surround'
