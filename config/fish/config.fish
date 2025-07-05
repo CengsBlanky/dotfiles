@@ -68,8 +68,8 @@ fish_add_path "$ANDROID_HOME/platform-tools"
 fish_add_path "$ANDROID_HOME/tools"
 fish_add_path "$ANDROID_HOME/tools/bin"
 fish_add_path "$ANDROID_HOME/tools/platform-tools"
-# npm config
-fish_add_path "$HOME/.local/share/npm/bin"
+# nvm bin config
+fish_add_path "$HOME/.local/share/nvm/current/bin"
 # spring boot cli
 fish_add_path "$HOME/tools/spring-2.6.4/bin"
 # ruby binaries
@@ -111,8 +111,6 @@ abbr --add py "python"
 abbr --add pymanage "python manage.py"
 # replace which command
 abbr --add which "command -s"
-# better hibernate
-abbr --add hibernate "sudo pm-hibernate"
 # take little notes
 abbr --add nt notenow
 # goto dotfiles
