@@ -16,7 +16,6 @@ set -gx LANG "en_US.UTF-8"
 set -gx EDITOR vim
 set -gx GIT_EDITOR /usr/local/bin/vim
 set -gx LESS "-RiXF"
-set -gx TERM "alacritty"
 # set nvim as pager
 if command -q nvim
     set -gx MANPAGER "nvim +Man!"
