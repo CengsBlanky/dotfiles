@@ -1,2 +1,3 @@
 picom --backend glx --vsync &
-exec dwm
+feh --bg-file ~/Pictures/wallpaper/pexels-eberhardgross-1612351.jpg
+exec dbus-launch dwm

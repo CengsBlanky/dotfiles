@@ -9,7 +9,10 @@
 window.addEventListener("scroll", event => {
   document.body.style.cursor = "none";
 });
-
 window.addEventListener("mousemove", event => {
   document.body.style.cursor = "default";
 });
+window.setTimeout(() => {
+  document.body.style.cursor = "none";
+}, 2000);
+

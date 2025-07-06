@@ -57,6 +57,8 @@ fish_add_path "$KOTLIN_HOME/bin"
 fish_add_path "$HOME/.cargo/bin"
 # golang
 fish_add_path "$HOME/go/bin"
+# flatpak app path
+fish_add_path "$HOME/.local/share/flatpak/exports/bin"
 # Flutter
 fish_add_path "$HOME/Apps/flutter/bin"
 set -gx PUB_HOSTED_URL "https://mirrors.tuna.tsinghua.edu.cn/dart-pub"
