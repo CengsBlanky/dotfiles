@@ -1,0 +1,2 @@
+picom --backend glx --vsync &
+exec dwm
