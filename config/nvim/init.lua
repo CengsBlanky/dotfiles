@@ -666,7 +666,9 @@ require("lazy").setup({
     "norcalli/nvim-colorizer.lua",
     ft = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "tmux", "lua", "vim", "toml", },
     config = function()
-      require("colorizer").setup()
+      require("colorizer").setup({ "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "tmux", "lua", "vim", "toml", },
+      { mode = "foreground" }
+)
     end,
   },
   {
@@ -721,6 +723,9 @@ require("lazy").setup({
     log = { "-10" }, -- show commits from the last 10 days
     timeout = 240, -- kill processes that take more than 4 minutes
     filter = true,
+  },
+  rocks = {
+    enabled = false,
   },
   checker = { enabled = false },
   change_detection = { enabled = false, },
