@@ -14,6 +14,7 @@ autocmd({"FileType"}, { callback = function()
     setnmap('u', '<C-b>')
   end
   -- restore last postion
+  -- deprecated
   local last_line = vim.fn.line("'\"")
   local filetype = vim.bo.filetype
   if last_line > 1 and last_line <= vim.fn.line("$") and
@@ -21,6 +22,18 @@ autocmd({"FileType"}, { callback = function()
     vim.cmd("normal! g'\"")
   end
 end})
+
+-- Return to last edit position when opening files
+vim.api.nvim_create_autocmd("BufReadPost", {
+  group = augroup,
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
 
 autocmd({"FileType"}, {
     pattern = {"markdown", "text", "log", "http", "rest"},
