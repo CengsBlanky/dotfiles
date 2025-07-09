@@ -406,6 +406,7 @@ require("lazy").setup({
         typescriptreact = { "prettier" },
         yaml = { "prettier" },
         sql = { "sql_format" },
+        sh = {"shfmt"},
         ["*"] = { "trim_whitespace" },
       },
       formatters = {

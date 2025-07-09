@@ -1,29 +1,27 @@
 #!/bin/bash
 xset -b # disable bell
-eval `/usr/bin/ssh-agent`
+eval $(/usr/bin/ssh-agent)
 xmodmap ~/.Xmodmap
 # set wallpaper
 picom --backend glx --vsync &
 feh --bg-fill ~/Pictures/wallpaper/pexels-eberhardgross-1612351.jpg &
 # set status bar
-while true
-do
+while true; do
     LOCATION=$(cat ~/.location)
-    curl -s "http://wttr.in/$LOCATION?format=%c%t" 2> /dev/null > ~/.weather
+    curl -s "http://wttr.in/$LOCATION?format=%c%t" 2>/dev/null >~/.weather
     sleep 30m
 done &
-while true
-do
-	LOCALTIME=$(date '+%Y-%m-%d %H:%M')
+while true; do
+    LOCALTIME=$(date '+%Y-%m-%d %H:%M')
     STATUS=$(cat /sys/class/power_supply/BAT1/status)
     BAT=""
     if [ "$STATUS" = "Discharging" ]; then
         BAT_PERCENT=$(cat /sys/class/power_supply/BAT1/capacity)
         BAT="🔋$BAT_PERCENT%"
     fi
-    WEATHER=$(cat ~/.weather 2> /dev/null)
+    WEATHER=$(cat ~/.weather 2>/dev/null)
     xsetroot -name "$WEATHER $BAT 🗓 $LOCALTIME"
-	sleep 30s
+    sleep 30s
 done &
 # fcitx5
 export GTK_IM_MODULE=fcitx
