@@ -1,7 +1,7 @@
 #!/bin/bash
 xset -b # disable bell
 eval `/usr/bin/ssh-agent`
-# xmodmap ~/.Xmodmap
+xmodmap ~/.Xmodmap
 # set wallpaper
 picom --backend glx --vsync &
 feh --bg-fill ~/Pictures/wallpaper/pexels-eberhardgross-1612351.jpg &
@@ -25,4 +25,9 @@ do
     xsetroot -name "$WEATHER $BAT 🗓 $LOCALTIME"
 	sleep 30s
 done &
+# fcitx5
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+fcitx5 &
 exec dwm

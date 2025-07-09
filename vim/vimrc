@@ -260,8 +260,5 @@ hi Folded ctermbg=NONE ctermfg=DarkGray
 hi Comment ctermfg=DarkGray guifg=DarkGray cterm=NONE gui=NONE
 hi Statusline cterm=bold gui=bold guifg=#587284 guibg=NONE
 hi StatuslineNC gui=NONE guifg=#4c566a guibg=NONE
-hi BufTabLineCurrent cterm=bold gui=bold guifg=lightgray guibg=#434c5e
-hi BufTabLineHidden gui=NONE guifg=gray guibg=#2e3440
-hi BufTabLineFill guibg=NONE guifg=NONE gui=NONE
 hi TabLineFill guibg=NONE guifg=NONE
 # }}}
