@@ -8,6 +8,12 @@ feh --bg-fill ~/Pictures/wallpaper/pexels-eberhardgross-1612351.jpg &
 # set status bar
 while true
 do
+    LOCATION=$(cat ~/.location)
+    curl -s "http://wttr.in/$LOCATION?format=%c%t" 2> /dev/null > ~/.weather
+    sleep 30m
+done &
+while true
+do
 	LOCALTIME=$(date '+%Y-%m-%d %H:%M')
     STATUS=$(cat /sys/class/power_supply/BAT1/status)
     BAT=""
@@ -15,7 +21,8 @@ do
         BAT_PERCENT=$(cat /sys/class/power_supply/BAT1/capacity)
         BAT="🔋$BAT_PERCENT%"
     fi
-    xsetroot -name "$BAT 🗓 $LOCALTIME"
+    WEATHER=$(cat ~/.weather 2> /dev/null)
+    xsetroot -name "$WEATHER $BAT 🗓 $LOCALTIME"
 	sleep 30s
 done &
 exec dwm
