@@ -4,7 +4,7 @@ eval $(/usr/bin/ssh-agent)
 xmodmap ~/.Xmodmap
 # set wallpaper
 picom --backend glx --vsync &
-feh --bg-fill ~/Pictures/wallpaper/pexels-eberhardgross-1612351.jpg &
+feh --bg-fill ~/Pictures/wallpaper/LandscapeAtLesPatis.jpg &
 # set status bar
 while true; do
     LOCATION=$(cat ~/.location)
