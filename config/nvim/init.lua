@@ -405,7 +405,7 @@ require("lazy").setup({
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
         yaml = { "prettier" },
-        sql = { "sql_format" },
+        sql = { "sqlfluff" },
         sh = {"shfmt"},
         ["*"] = { "trim_whitespace" },
       },
@@ -456,13 +456,6 @@ require("lazy").setup({
         },
         ["xq_format"] = {
           command = "xq",
-        },
-        ["sql_format"] = {
-          command = "sql-formatter",
-          args = {
-            "--config",
-            vim.fn.expand("$HOME/.config/formatter/sql-formatter.json"),
-          },
         },
       },
       default_format_opts = {
