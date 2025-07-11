@@ -7,26 +7,18 @@ end
 autocmd({"FileType"}, { callback = function()
   vim.opt.formatoptions:remove({'o'})
   vim.opt.formatoptions:append({'M'})
-  -- set readonly map
-  if not vim.bo.modifiable or vim.bo.readonly then
-    setnmap('q', '<Cmd>bd<CR>')
-    setnmap('<Space>', '<C-f>')
-    setnmap('u', '<C-b>')
-  end
-  -- restore last postion
-  -- deprecated
-  local last_line = vim.fn.line("'\"")
-  local filetype = vim.bo.filetype
-  if last_line > 1 and last_line <= vim.fn.line("$") and
-    filetype ~= "commit" and not vim.tbl_contains({"xxd", "gitrebase"}, filetype) then
-    vim.cmd("normal! g'\"")
-  end
 end})
 
--- Return to last edit position when opening files
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = augroup,
   callback = function()
+    -- set readonly map
+    if not vim.bo.modifiable or vim.bo.readonly then
+      setnmap('q', '<Cmd>bd<CR>')
+      setnmap('<Space>', '<C-f>')
+      setnmap('u', '<C-b>')
+    end
+    -- Return to last edit position when opening files
     local mark = vim.api.nvim_buf_get_mark(0, '"')
     local lcount = vim.api.nvim_buf_line_count(0)
     if mark[1] > 0 and mark[1] <= lcount then

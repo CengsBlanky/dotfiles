@@ -665,11 +665,11 @@ require("lazy").setup({
   },
   {
     "norcalli/nvim-colorizer.lua",
-    ft = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "tmux", "lua", "vim", "toml", },
     config = function()
-      require("colorizer").setup({ "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "tmux", "lua", "vim", "toml", },
-      { mode = "foreground" }
-)
+      require("colorizer").setup(
+        { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "tmux", "lua", "vim", "toml", "cpp" },
+        { mode = "background" }
+      )
     end,
   },
   {

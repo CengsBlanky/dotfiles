@@ -29,5 +29,5 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 fcitx5 &
 # start clash proxy
-~/.local/bin/clash/clash -d ~/.local/bin/clash/ &
+~/.local/bin/clash -d ~/.config/clash &
 exec dwm
