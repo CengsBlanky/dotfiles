@@ -9,7 +9,7 @@ feh --bg-fill ~/Pictures/wallpaper/LandscapeAtLesPatis.jpg &
 while true; do
     LOCATION=$(cat ~/.location)
     curl -s "http://wttr.in/$LOCATION?format=%c%t" 2>/dev/null >~/.weather
-    sleep 30m
+    sleep 10m
 done &
 while true; do
     LOCALTIME=$(date '+%Y-%m-%d %H:%M')
