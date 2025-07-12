@@ -101,7 +101,9 @@ sudo apt install translate-shell
 下载地址：[calibre-ebook](https://main.calibre-ebook.com/download)
 Linux下载安装：
 ```sh
-sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
+sudo apt install libxcb-cursor0
+# use proxy add -E
+sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo -E sh /dev/stdin
 ```
 
 ### MarkText
