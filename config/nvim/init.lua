@@ -399,6 +399,7 @@ require("lazy").setup({
         xml = { "xq_format" },
         html = { "prettier" },
         java = { "java_format" },
+        -- TODO use biome instead of prettier
         javascript = { "prettier" },
         javascriptreact = { "prettier" },
         json = { "jq" },
