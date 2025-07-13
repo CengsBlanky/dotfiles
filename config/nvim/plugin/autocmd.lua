@@ -7,17 +7,17 @@ end
 autocmd({"FileType"}, { callback = function()
   vim.opt.formatoptions:remove({'o'})
   vim.opt.formatoptions:append({'M'})
+  -- set readonly map
+  if not vim.bo.modifiable or vim.bo.readonly then
+    setnmap('q', '<Cmd>bd<CR>')
+    setnmap('<Space>', '<C-f>')
+    setnmap('u', '<C-b>')
+  end
 end})
 
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = augroup,
   callback = function()
-    -- set readonly map
-    if not vim.bo.modifiable or vim.bo.readonly then
-      setnmap('q', '<Cmd>bd<CR>')
-      setnmap('<Space>', '<C-f>')
-      setnmap('u', '<C-b>')
-    end
     -- Return to last edit position when opening files
     local mark = vim.api.nvim_buf_get_mark(0, '"')
     local lcount = vim.api.nvim_buf_line_count(0)

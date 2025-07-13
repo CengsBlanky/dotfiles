@@ -30,4 +30,9 @@ export XMODIFIERS=@im=fcitx
 fcitx5 &
 # start clash proxy
 ~/.local/bin/clash -d ~/.config/clash &
+# disable DPMS-Display Power Management Signaling
+xset -dpms
+xset s off
+# notification manager
+dunst &
 exec dwm
