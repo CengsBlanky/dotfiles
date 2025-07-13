@@ -20,4 +20,6 @@ xset -dpms
 xset s off
 # notification manager
 dunst &
+# setup dpi
+xrdb -merge ~/.Xresources
 exec dwm
