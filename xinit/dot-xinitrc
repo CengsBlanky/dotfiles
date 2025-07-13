@@ -4,7 +4,7 @@ eval $(/usr/bin/ssh-agent)
 xmodmap ~/.Xmodmap
 # set windows compositor and wallpaper
 picom --backend glx --vsync &
-feh --bg-fill ~/Pictures/wallpaper/LandscapeAtLesPatis.jpg &
+feh --bg-fill ~/Pictures/wallpaper/Dresden.jpg &
 # set status bar
 weather.sh &
 status_right.sh &
