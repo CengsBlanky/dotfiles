@@ -12,7 +12,7 @@ while true; do
     sleep 10m
 done &
 while true; do
-    LOCALTIME=$(date '+%Y-%m-%d %H:%M')
+    LOCALTIME=$(date '+%Y-%m-%d %H:%M %a')
     STATUS=$(cat /sys/class/power_supply/BAT1/status)
     BAT=""
     if [ "$STATUS" = "Discharging" ]; then
