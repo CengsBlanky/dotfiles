@@ -1,2 +1,2 @@
 #!/bin/bash
-notify-send "SystemInfo" "<span>$(sysinfo.sh)</span>"
+notify-send "SystemInfo" "$(sysinfo.sh ' ')"

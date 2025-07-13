@@ -2,34 +2,19 @@
 xset -b # disable bell
 eval $(/usr/bin/ssh-agent)
 xmodmap ~/.Xmodmap
-# set wallpaper
+# set windows compositor and wallpaper
 picom --backend glx --vsync &
 feh --bg-fill ~/Pictures/wallpaper/LandscapeAtLesPatis.jpg &
 # set status bar
-while true; do
-    LOCATION=$(cat ~/.location)
-    curl -s "http://wttr.in/$LOCATION?format=%c%t" 2>/dev/null >~/.weather
-    sleep 10m
-done &
-while true; do
-    LOCALTIME=$(date '+%Y-%m-%d %H:%M %a')
-    STATUS=$(cat /sys/class/power_supply/BAT1/status)
-    BAT=""
-    if [ "$STATUS" = "Discharging" ]; then
-        BAT_PERCENT=$(cat /sys/class/power_supply/BAT1/capacity)
-        BAT="🔋$BAT_PERCENT%"
-    fi
-    WEATHER=$(cat ~/.weather 2>/dev/null)
-    xsetroot -name "$WEATHER $BAT 🗓 $LOCALTIME"
-    sleep 30s
-done &
+weather.sh &
+status_right.sh &
 # fcitx5
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 fcitx5 &
 # start clash proxy
-~/.local/bin/clash -d ~/.config/clash &
+clash -d ~/.config/clash &
 # disable DPMS-Display Power Management Signaling
 xset -dpms
 xset s off

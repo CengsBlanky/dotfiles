@@ -45,13 +45,16 @@ get_network() {
     echo -e $(nmcli connection show --active | awk '$4 != "lo" && NR>1 {printf "%s[%s]: %s\t", $3, $4, $1}')
 }
 
-spaces="\u00A0\u00A0"
+SPACES=" "
+if [[ -n "$1" ]]; then
+    SPACES=$1
+fi
 # Output all stats line by line
-echo -e "󰻠${spaces}CPU Usage: $(get_cpu_usage)"
-echo -e "${spaces}CPU temp: $(get_cpu_temp)"
-echo -e "󰍛${spaces}RAM Usage: $(get_ram_info)"
-echo -e "󰋊${spaces}Disk Usage: $(get_disk_info)"
-echo -e "󱡛${spaces}Threads: $(get_thread_count)"
-echo -e "${spaces}$(get_sound_volumn)"
-echo -e "󰖨${spaces}$(get_brightness)"
-echo -e "${spaces}$(get_network)"
+echo " ${SPACES}CPU Usage: $(get_cpu_usage)"
+echo " ${SPACES}CPU temp: $(get_cpu_temp)"
+echo " ${SPACES}RAM Usage: $(get_ram_info)"
+echo "󰋊 ${SPACES}Disk Usage: $(get_disk_info)"
+echo "󱡛 ${SPACES}Threads: $(get_thread_count)"
+echo " ${SPACES}$(get_sound_volumn)"
+echo "󰖨 ${SPACES}$(get_brightness)"
+echo " ${SPACES}$(get_network)"
