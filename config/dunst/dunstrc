@@ -27,7 +27,9 @@
     ignore_newline = no
     stack_duplicates = true
     hide_duplicate_count = false
-    show_indicators = yes
+    show_indicators = no
+    icon_position = off
+    icon_path = ""
     mouse_left_click = close_current
     mouse_right_click = close_all
 
@@ -41,8 +43,8 @@
 [urgency_normal]
     background = "#2E3440"
     foreground = "#dee2e6"
-    frame_color = "#dee2e6"
-    highlight = "#dee2e6"
+    frame_color = "#bbbbbb"
+    highlight = "#d8dee9"
     timeout = 10
 
 [urgency_critical]
