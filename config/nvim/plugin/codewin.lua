@@ -23,6 +23,7 @@ local function codewin(opts)
       vim.notify("Unsupported filetype: " .. filetype, vim.log.levels.WARN)
       return
     end
+    -- TODO add execution time
     title = " " .. cmd .. " " .. filename .. " "
     title_pos = "left"
     -- Create a temporary file with a proper extension
