@@ -256,6 +256,7 @@ enddef
 set statusline=\ %-5r%f%m%=%18(%l/%L%)%18(%{&fileformat}%Y%)%9(\ %{&fileencoding}%)
 # }}}
 # highlight {{{
+hi Normal guifg=#c1bda7
 hi link markdownError Normal
 hi Folded ctermbg=NONE ctermfg=DarkGray
 hi Comment ctermfg=DarkGray guifg=DarkGray cterm=NONE gui=NONE
