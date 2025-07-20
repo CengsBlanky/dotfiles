@@ -66,6 +66,8 @@ set -gx FLUTTER_STORAGE_BASE_URL "https://mirrors.tuna.tsinghua.edu.cn/flutter"
 # Android
 set -gx ANDROID_HOME "$HOME/Android/Sdk"
 set -gx ADB "$ANDROID_HOME/platform-tools/adb"
+# for google gemini-cli
+set -gx GOOGLE_CLOUD_PROJECT "initialz-250717"
 fish_add_path "$ANDROID_HOME/platform-tools"
 fish_add_path "$ANDROID_HOME/tools"
 fish_add_path "$ANDROID_HOME/tools/bin"
@@ -87,6 +89,7 @@ fish_add_path "$HOME/.deno/bin"
 fish_add_path --path "$HOME/.rubies/ruby-stable/bin"
 # zig
 fish_add_path "$HOME/Apps/zig-linux-x86_64-0.13.0/"
+
 
 # kubectl autocompletion
 # kubectl completion fish | source
