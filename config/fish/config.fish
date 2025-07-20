@@ -87,8 +87,8 @@ fish_add_path "$BUN_INSTALL/bin"
 fish_add_path "$HOME/.deno/bin"
 # ruby
 fish_add_path --path "$HOME/.rubies/ruby-stable/bin"
-# zig
-fish_add_path "$HOME/Apps/zig-linux-x86_64-0.13.0/"
+# zig 0.14.0
+fish_add_path "$HOME/.local/share/zig0140"
 
 
 # kubectl autocompletion
