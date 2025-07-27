@@ -40,7 +40,6 @@ autocmd({"FileType"}, {
 autocmd({"FileType"}, {
     pattern = { "markdown" },
     callback = function()
-      vim.opt_local.textwidth = 120;
       vim.opt_local.formatoptions:remove({'l'})
       vim.opt_local.formatoptions:append({']'})
     end
