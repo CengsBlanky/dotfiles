@@ -6,7 +6,6 @@ xmodmap ~/.Xmodmap
 picom --backend glx --vsync &
 feh --bg-fill ~/Pictures/wallpaper/Dresden.jpg &
 # set status bar
-weather.sh &
 status_right.sh &
 # fcitx5
 export GTK_IM_MODULE=fcitx
