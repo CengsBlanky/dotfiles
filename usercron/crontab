@@ -1,0 +1,2 @@
+# get weather condition every 20 min
+*/20 * * * * ~/.local/bin/weather.sh
