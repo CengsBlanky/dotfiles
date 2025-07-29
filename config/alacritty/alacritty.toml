@@ -18,7 +18,7 @@ foreground = "#d8dee9"
 builtin_box_drawing = true
 normal.family = "IosevkaZeng"
 normal.style = "semi-light"
-size = 13.5
+size = 14
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
