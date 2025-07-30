@@ -50,6 +50,8 @@ hide_when_typing = true
 
 [terminal.shell]
 program = "/usr/local/bin/tmux"
+# force tmux assume terminal supports 256 colours
+args = ["-2"]
 
 [window]
 decorations = "None"
