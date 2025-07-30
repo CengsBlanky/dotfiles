@@ -1,4 +1,6 @@
 #!/bin/bash
+# setup dpi
+xrdb -merge ~/.Xresources
 xset -b # disable bell
 eval $(/usr/bin/ssh-agent)
 xmodmap ~/.Xmodmap
@@ -12,13 +14,11 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 fcitx5 &
-# start clash proxy
-clash -d ~/.config/clash &
 # disable DPMS-Display Power Management Signaling
 xset -dpms
 xset s off
 # notification manager
 dunst &
-# setup dpi
-xrdb -merge ~/.Xresources
+# start clash proxy
+clash -d ~/.config/clash &
 exec dwm
