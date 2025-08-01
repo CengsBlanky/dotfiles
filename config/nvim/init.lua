@@ -232,11 +232,14 @@ require("lazy").setup({
     opts = function ()
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
+          local indent_excluded = { ["bash"] = true }
           local lang = vim.treesitter.language.get_lang(args.match)
           if vim.treesitter.language.add(lang) then
             vim.treesitter.start()
+            if not indent_excluded[lang] then
+                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end
             vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
             local map = function(key, func)
               vim.keymap.set({ 'x', 'o' }, key, func, { nowait = true, silent = true })
             end
@@ -646,6 +649,7 @@ require("lazy").setup({
           ["@markup.link.url"] = { fg = "#79c0e0", bg = "none", italic = false, underline = true },
           ["@string.special.url"] = { fg = "#8fbcb9", underdotted = true, },
           ["@variable.builtin"] = { italic = false },
+          ["@function.builtin"] = { fg = "#5e81ac", undercurl = false, underdotted = false },
         }
       end,
       compile = true,
