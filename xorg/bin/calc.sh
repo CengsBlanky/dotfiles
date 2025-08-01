@@ -12,6 +12,5 @@ expression=$(echo "" | $DMENU_COMMAND)
 if [ -n "$expression" ]; then
     # Perform the calculation using bc with 2 decimal places scale
     result=$(echo "scale=2; $expression" | bc -l 2>&1)
-
     notify-send "Calculate:" "$expression = $result"
 fi
