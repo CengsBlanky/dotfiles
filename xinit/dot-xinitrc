@@ -7,6 +7,8 @@ xmodmap ~/.Xmodmap
 # set windows compositor and wallpaper
 picom --backend glx --vsync &
 feh --bg-fill ~/Pictures/wallpaper/Dresden.jpg &
+# get weather
+weather.sh &
 # set status bar
 status_right.sh &
 # fcitx5
