@@ -5,7 +5,7 @@
     width = 600
     height = 9000
     corner_radius = 9
-    offset = 0x30
+    offset = 0x23
     notification_limit = 60
     shrink = no
     transparency = 10
