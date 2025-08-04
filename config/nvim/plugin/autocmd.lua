@@ -10,7 +10,6 @@ autocmd({"FileType"}, { callback = function()
   -- set readonly map
   if not vim.bo.modifiable or vim.bo.readonly then
     setnmap('q', '<Cmd>bd<CR>')
-    setnmap('<Space>', '<C-f>')
     setnmap('u', '<C-b>')
   end
 end})
