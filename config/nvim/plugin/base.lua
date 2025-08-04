@@ -33,6 +33,7 @@ opt.mouse = ''
 opt.signcolumn = 'yes'
 opt.cursorline = true
 opt.cursorlineopt="number"
+opt.winborder = "rounded"
 opt.linebreak = true
 opt.splitright = true
 opt.splitbelow = true
