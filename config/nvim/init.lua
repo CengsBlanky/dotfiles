@@ -232,7 +232,10 @@ require("lazy").setup({
     opts = function ()
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
-          local indent_excluded = { ["bash"] = true }
+          local indent_excluded = {
+            bash = true,
+            kotlin = true,
+          }
           local lang = vim.treesitter.language.get_lang(args.match)
           if vim.treesitter.language.add(lang) then
             vim.treesitter.start()
@@ -393,7 +396,7 @@ require("lazy").setup({
     },
     opts = {
       formatters_by_ft = {
-        python = { "py_format", "py_sort"},
+        python = { "py_sort", "py_format" },
         htmldjango = { "html_django" },
         c = { "c_format" },
         cpp = { "c_format" },
