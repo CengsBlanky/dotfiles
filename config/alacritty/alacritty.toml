@@ -16,8 +16,8 @@ foreground = "#d8dee9"
 
 [font]
 builtin_box_drawing = true
-normal.family = "IosevkaZeng"
-normal.style = "semi-light"
+normal.family = "UbuntuSansMono Nerd Font"
+# normal.style = "semi-light"
 size = 13
 
 [[keyboard.bindings]]

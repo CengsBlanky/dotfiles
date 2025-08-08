@@ -648,7 +648,7 @@ require("lazy").setup({
           ["@markup.heading.4.markdown"] = { fg = "#a6da95", bg = "none", bold = true, },
           ["@markup.heading.5.markdown"] = { fg = "#7dc4e4", bg = "none", bold = true, },
           ["@markup.heading.6.markdown"] = { fg = "#b7bdf8", bg = "none", bold = true, },
-          ["@markup.link"] = { fg = "#8fbfcf", bg = "none" },
+          ["@markup.link"] = { fg = "#8fb0ff", bg = "none" },
           ["@markup.link.url"] = { fg = "#79c0e0", bg = "none", italic = false, underline = true },
           ["@string.special.url"] = { fg = "#8fbcb9", underdotted = true, },
           ["@variable.builtin"] = { italic = false },
@@ -671,29 +671,6 @@ require("lazy").setup({
         { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "tmux", "lua", "vim", "toml", "cpp", "conf" },
         { mode = "background" }
       )
-    end,
-  },
-  {
-    'kristijanhusak/vim-dadbod-ui',
-    dependencies = {
-      { 'tpope/vim-dadbod', lazy = true },
-      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
-    },
-    cmd = {
-      'DBUI',
-      'DBUIToggle',
-      'DBUIAddConnection',
-      'DBUIFindBuffer',
-    },
-    opts = function()
-      -- Your DBUI configuration
-      g.db_ui_use_nerd_fonts = 1
-      g.dbs = {
-        {
-          name = "lite",
-          url = "sqlite:~/tmp/sqlite.db",
-        },
-      }
     end,
   },
   {
