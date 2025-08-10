@@ -15,7 +15,7 @@ status_right.sh &
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-fcitx5 &
+fcitx5 -d --verbose 3 &
 # disable DPMS-Display Power Management Signaling
 xset -dpms
 xset s off
