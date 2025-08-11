@@ -17,8 +17,6 @@ bitmask_map["128"]=8
 bitmask_map["256"]=9
 
 # Loop through each client ID and get its information.
-
-# Loop through each client ID and get its information.
 for id in $client_ids; do
     # Get client details from dwm-msg.
     client_data=$(dwm-msg get_dwm_client $id)
@@ -35,7 +33,8 @@ for id in $client_ids; do
 done
 
 # Pipe the client information to dmenu and get the user's choice.
-selected_choice=$(printf "%s\n" "${!client_map[@]}" | sort -n | dmenu)
+# only get one starting tag with awk
+selected_choice=$(printf "%s\n" "${!client_map[@]}" | awk '!seen[$1]++' | sort -n | dmenu)
 
 # If the user made a selection, switch to that client.
 if [ -n "$selected_choice" ]; then
