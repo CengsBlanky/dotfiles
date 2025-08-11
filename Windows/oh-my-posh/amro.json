@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "pwd": "osc99",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none",
+            "folder_separator_icon": "\\",
+            "style": "folder"
+          },
+          "trailing_diamond": "\ue0b4",
+          "template": "<b>{{ .Path }} \uee41 ",
+          "foreground": "#5e81ac",
+          "background": "#3b4648",
+          "type": "path",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "branch_icon": "\udb80\udea2 ",
+            "cache_duration": "none",
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "trailing_diamond": "\ue0b4",
+          "template": "{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
+          "foreground": "#8fbcbb",
+          "background": "#495057",
+          "type": "git",
+          "style": "diamond"
+        }
+      ]
+    }
+  ],
+  "version": 3
+}
