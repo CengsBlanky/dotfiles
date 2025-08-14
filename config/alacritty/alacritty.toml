@@ -20,6 +20,9 @@ normal.family = "IosevkaZeng"
 normal.style = "semi-light"
 size = 14
 
+[font.offset]
+y = -1
+
 [[keyboard.bindings]]
 action = "ScrollLineUp"
 mods = "Control|Shift"
