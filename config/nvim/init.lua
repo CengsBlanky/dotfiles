@@ -662,7 +662,7 @@ require("lazy").setup({
           Todo = { fg = "#ebcb8b", italic = false, bold = true, },
           Visual = { bg = "#495359", bold = true, },
           Folded = { fg = "DarkGray", bg = "none", },
-          WinSeparator = { fg = "#88c0d0", bg = "none", },
+          WinSeparator = { fg = "#4c566a", bg = "none", },
           StatusLine = { fg = "#587284", bg = "none", bold = true, },
           DiagnosticError = { fg = "#ef616a", bg = "none", },
           DiagnosticSignError = { fg = "#ef616a", bg = "none", bold = true },
