@@ -37,11 +37,11 @@ set statusbar-fg                "#f8f8f2" # Foreground
 set highlight-color             "#ffb86c" # Orange
 set highlight-active-color      "#ff79c6" # Pink
 
-set default-bg                  "#282a36" # Background
+set default-bg                  "#282a26" # Background
 set default-fg                  "#f8f8f2" # Foreground
 
 set render-loading              true
-set render-loading-fg           "#282a36" # Background
+set render-loading-fg           "#282a26" # Background
 set render-loading-bg           "#f8f8f2" # Foreground
 
 #
@@ -49,7 +49,7 @@ set render-loading-bg           "#f8f8f2" # Foreground
 #
 # set recolor-lightcolor          "#282a36" # Background
 # set recolor-darkcolor           "#f8f8f2" # Foreground
-set recolor-lightcolor          "#1C1B22" # Background
+set recolor-lightcolor          "#1C1B1C" # Background
 set recolor-darkcolor           "#b3aba4" # Foreground
 
 # Open document in fit-width mode by default
