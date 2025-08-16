@@ -67,7 +67,7 @@ set adjust-open "best-fit"
 
 #zoom settings
 set zoom-min 10
-set guioptions ""
+set guioptions "s"
 
 set render-loading "false"
 
