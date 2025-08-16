@@ -1,13 +1,16 @@
 #!/bin/bash
 
-books=$(fd . ~/Documents/ebook/ -t file -c never)
+book_path="$HOME/Documents/ebook/"
 declare -A book_loc_map
 
-for book in $books; do
-    base_bookname=$(basename $book)
-    printf "%s: %s" $base_bookname $book
-    book_loc_map["$base_bookname"]=$book
-done
+count=1
+while IFS= read -r book; do
+    base_bookname=$(basename "$book")
+    # Map base name to full path
+    choose_names="$count: $base_bookname"
+    book_loc_map["$choose_names"]="$book"
+    count=$(($count+1))
+done < <(fd . "$book_path" -t file -c never)
 
 selected_choice=$(printf "%s\n" "${!book_loc_map[@]}" | sort -u | dmenu)
 
