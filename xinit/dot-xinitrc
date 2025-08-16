@@ -21,6 +21,8 @@ xset -dpms
 xset s off
 # notification manager
 dunst &
+# auto hide cursor
+unclutter --ignore-buttons 4,5,6,7 --hide-on-touch --timeout 2 &
 # start clash proxy
 clash -d ~/.config/clash &
 exec dwm
