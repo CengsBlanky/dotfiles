@@ -1,4 +1,6 @@
 ---@diagnostic disable: undefined-global
+-- TODO implement function to run code dynamically
+-- for project or single file
 local ft_cmd = {
   python = "python3",
   java = "java",
