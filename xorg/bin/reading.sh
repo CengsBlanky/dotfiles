@@ -12,7 +12,7 @@ while IFS= read -r book; do
     count=$(($count+1))
 done < <(fd . "$book_path" -t file -c never)
 
-selected_choice=$(printf "%s\n" "${!book_loc_map[@]}" | sort -u | dmenu)
+selected_choice=$(printf "%s\n" "${!book_loc_map[@]}" | sort -gu | dmenu)
 
 if [ -n "$selected_choice" ]; then
     bookname=${book_loc_map["$selected_choice"]}
