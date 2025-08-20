@@ -22,7 +22,7 @@ normal.family = "SauceCodePro Nerd Font"
 size = 13
 
 [font.offset]
-y = 0
+y = -1
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
