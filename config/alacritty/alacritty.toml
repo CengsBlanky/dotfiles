@@ -17,12 +17,12 @@ foreground = "#d8dee9"
 [font]
 builtin_box_drawing = true
 # normal.family = "CaskaydiaMono Nerd Font"
-# normal.style = "semi-light"
-normal.family = "SauceCodePro Nerd Font"
-size = 13
+normal.style = "light"
+normal.family = "ComicShannsMono Nerd Font"
+size = 13.5
 
 [font.offset]
-y = -1
+y = 0
 
 [[keyboard.bindings]]
 action = "ScrollLineUp"
