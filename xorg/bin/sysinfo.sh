@@ -45,6 +45,10 @@ get_network() {
     echo -e $(nmcli connection show --active | awk '$4 != "lo" && NR>1 {printf "%s[%s]: %s\t", $3, $4, $1}')
 }
 
+get_battery() {
+    echo $(cat /sys/class/power_supply/BAT1/capacity)
+}
+
 SPACES=" "
 if [[ -n "$1" ]]; then
     SPACES=$1
@@ -57,4 +61,5 @@ echo "󰋊 ${SPACES}Disk Usage: $(get_disk_info)"
 echo "󱡛 ${SPACES}Threads: $(get_thread_count)"
 echo " ${SPACES}$(get_sound_volumn)"
 echo "󰖨 ${SPACES}$(get_brightness)"
+echo "󰂄 ${SPACES}Battery: $(get_battery)%"
 echo " ${SPACES}$(get_network)"
