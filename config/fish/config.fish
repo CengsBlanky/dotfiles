@@ -29,7 +29,7 @@ set -gx RIPGREP_CONFIG_PATH "$HOME/.config/rg/ripgreprc"
 set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case"
 set -gx NOTEDIR '$HOME/notes'
 # current location
-set -gx MY_CUR_LOCATION '雨花台'
+set -gx MY_CUR_LOCATION '江宁区'
 # add nvim default install path
 fish_add_path "/usr/local/nvim/bin"
 # === SDKMAN start ===
