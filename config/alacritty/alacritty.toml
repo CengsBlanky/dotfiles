@@ -59,7 +59,7 @@ args = ["-2"]
 [window]
 decorations = "None"
 dynamic_title = false
-opacity = 0.95
+opacity = 0.97
 startup_mode = "Maximized"
 dynamic_padding = true
 
