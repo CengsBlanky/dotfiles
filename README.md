@@ -190,8 +190,3 @@ update:
 autocorrect update
 ```
 
-### trans
-
-trans  -  Command-line  translator using Google Translate, Bing Translator, Yan‐
-       dex.Translate, etc.
-命令行翻译工具，默认使用google翻译
