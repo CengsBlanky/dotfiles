@@ -91,6 +91,8 @@ fish_add_path --path "$HOME/.rubies/ruby-stable/bin"
 fish_add_path "$HOME/.local/share/zig0140"
 # doom emacs
 fish_add_path "$HOME/.config/emacs/bin"
+# exa
+set -gx EXA_COLORS "*.mp3=38;2;227;138;174"
 
 
 # kubectl autocompletion
