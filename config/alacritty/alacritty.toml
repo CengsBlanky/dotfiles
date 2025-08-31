@@ -16,8 +16,8 @@ foreground = "#d8dee9"
 
 [font]
 builtin_box_drawing = true
-normal.family = "UbuntuSansMono Nerd Font"
-# normal.style = "light"
+normal.family = "FiraCode Nerd Font"
+normal.style = "Retina"
 size = 13
 
 [font.offset]
