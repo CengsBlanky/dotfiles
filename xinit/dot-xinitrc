@@ -1,7 +1,11 @@
 #!/bin/bash
 # setup dpi
 xrdb -merge ~/.Xresources
-xset -b # disable bell
+# disable bell
+xset -b
+# disable DPMS-Display Power Management Signaling
+xset -dpms
+xset s off
 eval $(/usr/bin/ssh-agent)
 xmodmap ~/.Xmodmap
 # set windows compositor and wallpaper
@@ -16,9 +20,6 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 fcitx5 -d --verbose 3 &
-# disable DPMS-Display Power Management Signaling
-xset -dpms
-xset s off
 # notification manager
 dunst &
 # auto hide cursor
