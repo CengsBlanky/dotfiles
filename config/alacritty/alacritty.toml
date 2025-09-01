@@ -16,9 +16,10 @@ foreground = "#d8dee9"
 
 [font]
 builtin_box_drawing = true
-normal.family = "FiraCode Nerd Font"
-normal.style = "Retina"
-size = 13
+normal.family = "CaskaydiaMono Nerd Font"
+normal.style = "light"
+bold.style = "SemiBold"
+size = 12
 
 [font.offset]
 y = 0
