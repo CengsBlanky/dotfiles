@@ -548,7 +548,7 @@ require("lazy").setup({
             }, context)
           end),
         Rule('<', '>')
-          :with_pair(cond.before_regex("[a-zA-Z]"))
+          :with_pair(cond.before_regex("[a-zA-Z'\"]"))
           :with_move(cond.done()),
         -- allow " in go json annotation
         Rule('"', '"', { 'go' })
