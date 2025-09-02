@@ -17,7 +17,7 @@
     separator_color = frame
     sort = yes
     idle_threshold = 120
-    font = "MesloLGS Nerd Font 12"
+    font = "Arimo Nerd Font 13"
     markup = full
     format = "<b>%s</b>\n%b"
     alignment = left
