@@ -49,6 +49,16 @@ for _, lsp_server in ipairs(installed_servers) do
   }
 end
 
+lspconfig.basedpyright.setup {
+  settings = {
+    basedpyright = {
+      analysis = {
+        typeCheckingMode = "standard",
+      }
+    }
+  }
+}
+
 -- django-template-lsp
 lspconfig.djlsp.setup {
   cmd = { "djlsp" },
