@@ -519,18 +519,19 @@ require("lazy").setup({
       local Rule = require('nvim-autopairs.rule')
       local cond = require('nvim-autopairs.conds')
 
-      local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' } }
+      local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' }, { '%', '%' }, }
       -- for spaces between brackets
       npairs.add_rules {
         -- Pair will only occur if the conditional function returns true
         Rule(' ', ' ')
           :with_pair(function(opts)
-            -- We are checking if we are inserting a space in (), [], or {}
+            -- We are checking if we are inserting a space in (), [], {}, %%
             local pair = opts.line:sub(opts.col - 1, opts.col)
             return vim.tbl_contains({
               brackets[1][1] .. brackets[1][2],
               brackets[2][1] .. brackets[2][2],
-              brackets[3][1] .. brackets[3][2]
+              brackets[3][1] .. brackets[3][2],
+              brackets[4][1] .. brackets[4][2],
             }, pair)
           end)
           :with_move(cond.none())
@@ -542,7 +543,8 @@ require("lazy").setup({
             return vim.tbl_contains({
               brackets[1][1] .. '  ' .. brackets[1][2],
               brackets[2][1] .. '  ' .. brackets[2][2],
-              brackets[3][1] .. '  ' .. brackets[3][2]
+              brackets[3][1] .. '  ' .. brackets[3][2],
+              brackets[4][1] .. '  ' .. brackets[4][2],
             }, context)
           end),
         Rule('<', '>')
@@ -559,6 +561,12 @@ require("lazy").setup({
           :with_move(cond.none())
           :with_del(cond.none()),
         Rule('|', '|', "rust"):with_move(cond.done()),
+        Rule('%', '%', "htmldjango"):with_pair(function ()
+          if cond.after_text("{") then
+            return true
+          end
+          return false
+        end),
       }
       -- For each pair of brackets we will add another rule
       for _, bracket in pairs(brackets) do
