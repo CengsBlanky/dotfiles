@@ -60,10 +60,13 @@ lspconfig.basedpyright.setup {
 }
 
 -- django-template-lsp
-lspconfig.djlsp.setup {
+vim.lsp.config('djlsp', {
   cmd = { "djlsp" },
-  root_dir = lspconfig.util.root_pattern("manage.py"),
-}
+  filetypes = { 'htmldjango' },
+  root_markers = { 'manage.py' },
+  capabilities = capabilities,
+})
+vim.lsp.enable('djlsp')
 
 lspconfig.denols.setup {
   autostart = false,

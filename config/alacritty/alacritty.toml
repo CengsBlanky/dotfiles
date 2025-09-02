@@ -16,7 +16,7 @@ foreground = "#d8dee9"
 
 [font]
 builtin_box_drawing = true
-normal.family = "SauceCodePro Nerd Font"
+normal.family = "UbuntuSansMono Nerd Font"
 # normal.style = "light"
 # bold.style = "SemiBold"
 size = 13
