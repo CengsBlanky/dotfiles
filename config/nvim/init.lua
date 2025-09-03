@@ -428,7 +428,7 @@ require("lazy").setup({
     opts = {
       formatters_by_ft = {
         python = { "py_sort", "py_format" },
-        htmldjango = { "html_django" },
+        htmldjango = { "djhtml_format" },
         c = { "c_format" },
         cpp = { "c_format" },
         go = { "gofmt", "goimports" },
@@ -478,13 +478,14 @@ require("lazy").setup({
             "$FILENAME",
           },
         },
-        ["html_django"] = {
-          command = "prettier",
+        ["djhtml_format"] = {
+          command = "djlint",
           args = {
-            "--tab-width",
-            "2",
-            "$FILENAME",
-          }
+            "--reformat",
+            "--profile=django",
+            "--indent=2",
+            "-",
+          },
         },
         ["ktfmt"] = {
           command = "ktfmt",
