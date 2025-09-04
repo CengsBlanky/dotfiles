@@ -160,7 +160,7 @@ PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for 
 番茄时钟🍅
 
 使用pipx安装：
-```
+```sh
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 
