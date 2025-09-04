@@ -114,10 +114,6 @@ abbr --add glg "git log --author=(git config user.name) --oneline -n 10"
 abbr --add gsh "git show"
 abbr --add gcp --set-cursor "git commit -am '%' && git push"
 abbr --add note "joplin"
-# py for python
-abbr --add py "python"
-# django
-abbr --add pymanage "python manage.py"
 # replace which command
 abbr --add which "command -s"
 # take little notes
@@ -128,8 +124,12 @@ abbr --add cddot cd ~/.dotfiles
 abbr --add yd --set-cursor "yt-dlp '%'"
 # fzf find files
 abbr --add found "fzf --preview='batcat --color=always --style=plain,numbers {}'"
-# dwm
-abbr --add mkdwm "cd ~/github/dwm/;sudo make clean install;cd -"
+# py for python
+abbr --add py "python"
+# django
+abbr --add pymanage "python manage.py"
+# activate python venv
+abbr --add pyactive "source .venv/bin/activate.fish"
 
 # source asdf version manager
 set -l asdf_conf "$HOME/.asdf/asdf.fish"

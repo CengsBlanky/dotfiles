@@ -317,7 +317,7 @@ require("lazy").setup({
     opts= {
       automatic_enable = false,
       -- TODO follow kotlin_lsp
-      ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'basedpyright', 'zls', 'gopls', 'jdtls', 'html', 'cssls', 'vtsls', 'jsonls', 'svelte', 'htmx', 'emmet_language_server', },
+      ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'ruff', 'basedpyright', 'zls', 'gopls', 'jdtls', 'html', 'cssls', 'vtsls', 'jsonls', 'svelte', 'htmx', 'emmet_language_server', },
     },
     dependencies = {
       {
