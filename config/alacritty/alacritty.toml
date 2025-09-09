@@ -18,7 +18,6 @@ foreground = "#d8dee9"
 builtin_box_drawing = true
 normal.family = "JetBrains"
 normal.style = "light"
-# bold.style = "SemiBold"
 size = 13
 
 [font.offset]
