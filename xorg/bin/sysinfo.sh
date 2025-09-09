@@ -34,11 +34,11 @@ get_thread_count() {
 }
 
 get_sound_volumn() {
-    echo $(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+    printf "%.0f%%" $(echo "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE '[0-9]+\.[0-9]+') * 100" | bc)
 }
 
 get_brightness() {
-    echo $(brightnessctl info | sed -n '2p')
+    brightnessctl info -m | cut -d',' -f4
 }
 
 get_network() {
@@ -59,7 +59,7 @@ echo " ${SPACES}CPU temp: $(get_cpu_temp)"
 echo " ${SPACES}RAM Usage: $(get_ram_info)"
 echo "󰋊 ${SPACES}Disk Usage: $(get_disk_info)"
 echo "󱡛 ${SPACES}Threads: $(get_thread_count)"
-echo " ${SPACES}$(get_sound_volumn)"
-echo "󰖨 ${SPACES}$(get_brightness)"
+echo " ${SPACES}Sound Volumn: $(get_sound_volumn)"
+echo "󰖨 ${SPACES}Backlight: $(get_brightness)"
 echo "󰂄 ${SPACES}Battery: $(get_battery)%"
 echo " ${SPACES}$(get_network)"

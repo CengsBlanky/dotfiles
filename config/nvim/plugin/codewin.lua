@@ -8,6 +8,7 @@ local ft_cmd = {
   typescript = "bun",
   lua = "lua",
   go = "go run",
+  sh = "bash"
 }
 local function codewin(opts)
   opts = opts or {}
