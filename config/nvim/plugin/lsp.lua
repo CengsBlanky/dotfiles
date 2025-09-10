@@ -49,10 +49,6 @@ for _, lsp_server in ipairs(installed_servers) do
   }
 end
 
-lspconfig.emmet_language_server.setup {
-  filetypes = { '*' },
-}
-
 lspconfig.basedpyright.setup {
   settings = {
     basedpyright = {
