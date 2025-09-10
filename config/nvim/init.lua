@@ -159,7 +159,7 @@ require("lazy").setup({
       g.user_emmet_mode='iv'
       -- g.user_emmet_expandabbr_key='<M-e>'
       -- g.user_emmet_expandword_key='<M-m>'
-    end
+    end,
   },
   {
     'akinsho/bufferline.nvim',
