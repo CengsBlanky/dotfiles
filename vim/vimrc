@@ -164,6 +164,7 @@ Plug 'romainl/vim-cool'
 Plug 'Eliot00/auto-pairs'
 Plug 'ap/vim-buftabline'
 Plug 'terrastruct/d2-vim'
+Plug 'mattn/emmet-vim'
 Plug 'sainnhe/everforest'
 Plug 'sheerun/vim-polyglot'
 call plug#end()

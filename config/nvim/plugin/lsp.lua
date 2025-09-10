@@ -74,11 +74,6 @@ lspconfig.denols.setup {
   single_file_support = false,
 }
 
-lspconfig.htmx.setup {
-  autostart = false,
-  single_file_support = false,
-}
-
 -- elixir
 if vim.bo.filetype == "elixir" then
   local elixir = require("elixir")
