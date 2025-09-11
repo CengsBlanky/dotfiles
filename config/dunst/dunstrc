@@ -3,9 +3,9 @@
     follow = keyboard
     indicate_hidden = yes
     width = 600
-    height = 9000
+    height = (0, 9000)
     corner_radius = 9
-    offset = 0x22
+    offset = (0,22)
     notification_limit = 60
     shrink = no
     transparency = 10
@@ -17,7 +17,7 @@
     separator_color = frame
     sort = yes
     idle_threshold = 120
-    font = "Arimo Nerd Font 13"
+    font = "Maple Mono Normal NL NF CN 13"
     markup = full
     format = "<b>%s</b>\n%b"
     alignment = left
