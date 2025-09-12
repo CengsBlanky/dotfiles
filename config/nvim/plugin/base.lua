@@ -47,6 +47,7 @@ opt.listchars = {
 }
 opt.shada = "!,'50,<50,s4,h"
 opt.shell = "/bin/bash"
+opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,t:ver25-blinkon0-TermCursor"
 
 g.clipboard = {
     name = "xsel",
