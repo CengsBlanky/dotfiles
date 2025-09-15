@@ -68,10 +68,6 @@ set -gx ANDROID_HOME "$HOME/Android/Sdk"
 set -gx ADB "$ANDROID_HOME/platform-tools/adb"
 # for google gemini-cli
 set -gx GOOGLE_CLOUD_PROJECT "initialz-250717"
-fish_add_path "$ANDROID_HOME/platform-tools"
-fish_add_path "$ANDROID_HOME/tools"
-fish_add_path "$ANDROID_HOME/tools/bin"
-fish_add_path "$ANDROID_HOME/tools/platform-tools"
 # nvm bin config
 fish_add_path "$HOME/.local/share/nvm/current/bin"
 # spring boot cli
@@ -87,13 +83,12 @@ fish_add_path "$BUN_INSTALL/bin"
 fish_add_path "$HOME/.deno/bin"
 # ruby
 fish_add_path --path "$HOME/.rubies/ruby-stable/bin"
-# zig 0.14.0
+# zig binary
 fish_add_path "$HOME/.local/share/zig0151/"
 # doom emacs
 fish_add_path "$HOME/.config/emacs/bin"
-# exa
+# exa config
 set -gx EXA_COLORS "*.mp3=38;2;227;138;174"
-
 
 # kubectl autocompletion
 # kubectl completion fish | source
