@@ -10,7 +10,7 @@ eval $(/usr/bin/ssh-agent)
 xmodmap ~/.Xmodmap
 # set windows compositor and wallpaper
 picom --backend glx --vsync &
-feh --bg-fill ~/Pictures/wallpaper/Dresden.jpg &
+feh --bg-fill ~/Pictures/wallpaper/Landscape_by_the_Lez_River.jpg &
 # get weather
 weather.sh &
 # set status bar

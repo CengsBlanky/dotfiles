@@ -3,9 +3,9 @@
 while true; do
     LOCALTIME=$(date '+%Y-%m-%d %H:%M %a')
     STATUS=$(cat /sys/class/power_supply/BAT1/status)
+    BAT_PERCENT=$(cat /sys/class/power_supply/BAT1/capacity)
     BAT=""
-    if [ "$STATUS" = "Discharging" ]; then
-        BAT_PERCENT=$(cat /sys/class/power_supply/BAT1/capacity)
+    if [[ "$STATUS" = "Discharging" && $BAT_PERCENT -le 70 ]]; then
         BAT="🔋$BAT_PERCENT%"
     fi
     WEATHER=$(cat "$XDG_RUNTIME_DIR/weather.info" 2>/dev/null)
