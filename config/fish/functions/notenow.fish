@@ -11,7 +11,9 @@ function notenow
     end
 
     if test ! -f $journalfilename
-        echo -n "# Note for $curdate" > $journalfilename
+        set -l title (date '+%Y-%m-%d %A')
+        set -l weather (cat "$XDG_RUNTIME_DIR/weather.info" 2>/dev/null)
+        echo -n "# $title $weather" > $journalfilename
     else
         set lastminute (cat $journalfilename | grep -e '^#\{2\}\ [0-2][0-9]:[0-6][0-9]$' | tail -n 1)
     end

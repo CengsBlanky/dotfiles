@@ -1,7 +1,7 @@
 function cknote
     set -l curyear (date +%Y)
-    set -l ckdate (date +%F)
-    set -l journalDir $HOME/notes/journal/$curyear 
+    set -l ckdate (date +%Y%m%d)
+    set -l journalDir $HOME/notes/journal/$curyear
     set -l dayago $argv[1]
 
     if test -n "$dayago"; and test $dayago -ge 1
