@@ -144,12 +144,12 @@ require("lazy").setup({
         'max-perf',
         fzf_colors = true,
         fzf_opts = {
-          ["--layout"]         = false,
-          ["--ansi"]           = true,
-          ["--info"]           = "inline-right", -- fzf < v0.42 = "inline"
-          ["--height"]         = "100%",
-          ["--border"]         = "none",
-          ["--highlight-line"] = true,           -- fzf >= v0.53
+          ["--layout"] = false,
+          ["--ansi"] = true,
+          ["--info"] = "inline-right",
+          ["--height"] = "100%",
+          ["--border"] = "none",
+          ["--highlight-line"] = true,
         },
         previewers = {
           bat = {
