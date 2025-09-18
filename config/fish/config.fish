@@ -68,6 +68,8 @@ set -gx ANDROID_HOME "$HOME/Android/Sdk"
 set -gx ADB "$ANDROID_HOME/platform-tools/adb"
 # for google gemini-cli
 set -gx GOOGLE_CLOUD_PROJECT "initialz-250717"
+# for uv mirror
+set -gx UV_DEFAULT_INDEX "https://pypi.tuna.tsinghua.edu.cn/simple"
 # nvm bin config
 fish_add_path "$HOME/.local/share/nvm/current/bin"
 # spring boot cli
