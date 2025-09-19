@@ -1,15 +1,37 @@
 ---@diagnostic disable: undefined-global
 -- TODO implement function to run code dynamically
 -- for project or single file
+local direct_run = function (command, filename)
+  return command .. ' ' .. filename
+end
 local ft_cmd = {
-  python = "python3",
-  java = "java",
-  javascript = "node",
-  typescript = "bun",
-  lua = "lua",
-  go = "go run",
-  sh = "bash",
+  py = function (filename)
+    return direct_run("python3", filename)
+  end,
+  java = function (filename)
+    return direct_run("java", filename)
+  end,
+  js = function (filename)
+    return direct_run("node", filename)
+  end,
+  ts = function (filename)
+    return direct_run("bun", filename)
+  end,
+  lua = function (filename)
+    return direct_run("lua", filename)
+  end,
+  go = function (filename)
+    return direct_run("go run", filename)
+  end,
+  sh = function (filename)
+    return direct_run("bash", filename)
+  end,
+  kt = function (tmpfile, realname)
+    local no_ext_name = realname:match("(.+)%.") or realname
+    return string.format("kotlinc %s -include-runtime -d %s.jar && java -jar %s.jar", tmpfile, no_ext_name, no_ext_name)
+  end,
 }
+
 local function codewin(opts)
   opts = opts or {}
   -- Get the current buffer content
@@ -19,30 +41,32 @@ local function codewin(opts)
   local title_pos = "center"
   if not vim.api.nvim_buf_is_valid(buf) then
     local filename = vim.fn.expand('%:t')
-    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+    local ext = vim.fn.expand('%:e')
     local filetype = vim.bo.filetype
-    local cmd = ft_cmd[filetype]
-    if not cmd then
+    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+    local cmd = ft_cmd[ext]
+    if cmd == nil then
       vim.notify("Unsupported filetype: " .. filetype, vim.log.levels.WARN)
       return
     end
+    title = title or filetype .. " " .. filename
     -- TODO add execution time
-    title = " " .. cmd .. " " .. filename .. " "
     title_pos = "left"
     -- Create a temporary file with a proper extension
-    local tempfile = os.tmpname() .. '.' .. filetype
+    local tempfile = os.tmpname() .. '.' .. ext
     local f = io.open(tempfile, 'w')
     if f == nil then
-      vim.notify("can not create tmpfile")
+      vim.notify("can not create tmpfile for run")
       return
     end
     f:write(table.concat(lines, '\n'))
     f:close()
 
     -- Execute command and capture output
-    local handle = io.popen(cmd .. ' ' .. vim.fn.shellescape(tempfile) .. ' 2>&1')
+    local tmpf = vim.fn.shellescape(tempfile)
+    local handle = io.popen(cmd(tmpf, filename) .. ' 2>&1')
     if handle == nil then
-      vim.notify("can not execute tmpfile")
+      vim.notify("execution failed")
       return
     end
     local result = handle:read('*a')
