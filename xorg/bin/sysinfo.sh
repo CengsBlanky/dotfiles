@@ -42,7 +42,7 @@ get_brightness() {
 }
 
 get_network() {
-    echo -e $(nmcli connection show --active | awk '$4 != "lo" && NR>1 {printf "%s[%s]: %s\t", $3, $4, $1}')
+    echo -e $(nmcli connection show --active | awk '$3 == "wifi" {printf "%s[%s]: %s\t", $3, $4, $1}')
 }
 
 get_battery() {
@@ -62,4 +62,4 @@ echo "󱡛 ${SPACES}Threads: $(get_thread_count)"
 echo " ${SPACES}Sound Volumn: $(get_sound_volumn)"
 echo "󰖨 ${SPACES}Backlight: $(get_brightness)"
 echo "󰂄 ${SPACES}Battery: $(get_battery)%"
-echo " ${SPACES}$(get_network)"
+echo "󰖩 ${SPACES}$(get_network)"
