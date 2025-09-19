@@ -41,15 +41,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 local capabilities = require('blink.cmp').get_lsp_capabilities()
-local lspconfig = require('lspconfig')
+-- local lspconfig = require('lspconfig')
+local lspconfig = vim.lsp.config
 local installed_servers = require('mason-lspconfig').get_installed_servers()
-for _, lsp_server in ipairs(installed_servers) do
-  lspconfig[lsp_server].setup {
-    capabilities = capabilities,
-  }
-end
+lspconfig('*', {
+  capabilities = capabilities,
+})
+vim.lsp.enable(installed_servers)
 
-lspconfig.basedpyright.setup {
+lspconfig('basedpyright', {
   settings = {
     basedpyright = {
       analysis = {
@@ -57,22 +57,16 @@ lspconfig.basedpyright.setup {
       }
     }
   }
-}
+})
 
 -- django-template-lsp
-vim.lsp.config('djlsp', {
+lspconfig('djlsp', {
   cmd = { "djlsp" },
   filetypes = { 'htmldjango' },
   root_markers = { 'manage.py' },
   capabilities = capabilities,
 })
 vim.lsp.enable('djlsp')
-
-lspconfig.denols.setup {
-  autostart = false,
-  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-  single_file_support = false,
-}
 
 -- elixir
 if vim.bo.filetype == "elixir" then
