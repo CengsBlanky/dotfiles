@@ -28,7 +28,7 @@ local ft_cmd = {
   end,
   kt = function (tmpfile, realname)
     local no_ext_name = realname:match("(.+)%.") or realname
-    return string.format("kotlinc %s -include-runtime -d %s.jar && java -jar %s.jar", tmpfile, no_ext_name, no_ext_name)
+    return string.format("kotlinc %s -include-runtime -d %s.jar 2>&1 && java -jar %s.jar", tmpfile, no_ext_name, no_ext_name)
   end,
 }
 
