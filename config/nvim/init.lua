@@ -656,6 +656,17 @@ require("lazy").setup({
     end,
   },
   {
+    'numToStr/Navigator.nvim',
+    config = true,
+    keys = {
+      { '<A-h>', '<cmd>NavigatorLeft<CR>', map_opts },
+      { '<A-j>', '<cmd>NavigatorDown<CR>', map_opts },
+      { '<A-k>', '<cmd>NavigatorUp<CR>', map_opts },
+      { '<A-l>', '<cmd>NavigatorRight<CR>', map_opts },
+      { '<A-\\>', '<cmd>NavigatorPrevious<CR>', map_opts },
+    }
+  },
+  {
     "rebelot/kanagawa.nvim",
     event = "VeryLazy",
     opts = {
