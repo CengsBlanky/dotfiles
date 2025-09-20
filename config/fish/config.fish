@@ -125,6 +125,7 @@ abbr --add found "fzf --preview='batcat --color=always --style=plain,numbers {}'
 abbr --add py "python"
 # django
 abbr --add pymanage "python manage.py"
+abbr --add manage "python manage.py"
 # activate python venv
 abbr --add pyactive "source .venv/bin/activate.fish"
 
