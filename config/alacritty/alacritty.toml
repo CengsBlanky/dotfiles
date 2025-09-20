@@ -16,8 +16,9 @@ foreground = "#d8dee9"
 
 [font]
 builtin_box_drawing = true
-normal.family = "SauceCodePro Nerd Font"
-size = 12.5
+normal.family = "JetBrains"
+normal.style = "Light"
+size = 12
 
 [font.offset]
 y = 0
