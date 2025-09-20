@@ -10,5 +10,5 @@ while true; do
     fi
     WEATHER=$(cat "$XDG_RUNTIME_DIR/weather.info" 2>/dev/null)
     xsetroot -name "$WEATHER $BAT 🗓 $LOCALTIME"
-    sleep 30s
+    sleep 25s
 done
