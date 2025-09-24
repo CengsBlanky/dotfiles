@@ -50,16 +50,16 @@ opt.shell = "/bin/bash"
 opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,t:ver25-blinkon0-TermCursor"
 
 g.clipboard = {
-    name = "xsel",
-    copy = {
-        ["+"] = "xsel --nodetach -ib",
-        ["*"] = "xsel --nodetach -ip"
-    },
-    paste = {
-        ["+"] = "xsel -ob",
-        ["*"] = "xsel -op"
-    },
-    cache_enabled = true,
+  name = "xsel",
+  copy = {
+    ["+"] = "xsel --nodetach -ib",
+    ["*"] = "xsel --nodetach -ip"
+  },
+  paste = {
+    ["+"] = "xsel -ob",
+    ["*"] = "xsel -op"
+  },
+  cache_enabled = true,
 }
 g.python3_host_prog = '/usr/bin/python3'
 g.markdown_fenced_languages = {
