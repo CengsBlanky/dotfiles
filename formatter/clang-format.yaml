@@ -43,4 +43,5 @@ SpacesBeforeTrailingComments: 2
 DerivePointerAlignment: false
 PointerAlignment: Right
 SpaceBeforeParens: ControlStatements
+WrapNamespaceBodyWithEmptyLines: Always
 ---
