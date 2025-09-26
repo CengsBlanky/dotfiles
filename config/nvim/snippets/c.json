@@ -1,0 +1,11 @@
+{
+  "fmain": {
+    "prefix": "fmain",
+    "body": [
+      "int main(int argc, char *argv[]) {",
+      "\t$0",
+      "}"
+    ]
+  }
+}
+

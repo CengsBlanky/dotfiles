@@ -26,9 +26,13 @@ local ft_cmd = {
   sh = function (filename)
     return direct_run("bash", filename)
   end,
-  kt = function (tmpfile, realname)
-    local no_ext_name = realname:match("(.+)%.") or realname
+  kt = function (tmpfile)
+    local no_ext_name = vim.fn.expand("%:p:r")
     return string.format("kotlinc %s -include-runtime -d %s.jar 2>&1 && java -jar %s.jar", tmpfile, no_ext_name, no_ext_name)
+  end,
+  c = function (tmpfile)
+    local base_name = vim.fn.expand("%:t:r")
+    return string.format("gcc -Wall %s -o %s 2>&1 && ./%s", tmpfile, base_name, base_name)
   end,
 }
 
