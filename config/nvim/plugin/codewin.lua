@@ -5,34 +5,33 @@ local direct_run = function (command, filename)
   return command .. ' ' .. filename
 end
 local ft_cmd = {
-  py = function (filename)
-    return direct_run("python3", filename)
+  py = function (tmpname)
+    return direct_run("python3", tmpname)
   end,
-  java = function (filename)
-    return direct_run("java", filename)
+  java = function (tmpname)
+    return direct_run("java", tmpname)
   end,
-  js = function (filename)
-    return direct_run("node", filename)
+  js = function (tmpname)
+    return direct_run("node", tmpname)
   end,
-  ts = function (filename)
-    return direct_run("bun", filename)
+  ts = function (tmpname)
+    return direct_run("bun", tmpname)
   end,
-  lua = function (filename)
-    return direct_run("lua", filename)
+  lua = function (tmpname)
+    return direct_run("lua", tmpname)
   end,
-  go = function (filename)
-    return direct_run("go run", filename)
+  go = function (tmpname)
+    return direct_run("go run", tmpname)
   end,
-  sh = function (filename)
-    return direct_run("bash", filename)
+  sh = function (tmpname)
+    return direct_run("bash", tmpname)
   end,
-  kt = function (tmpfile)
+  kt = function (tmpname)
     local no_ext_name = vim.fn.expand("%:p:r")
-    return string.format("kotlinc %s -include-runtime -d %s.jar 2>&1 && java -jar %s.jar", tmpfile, no_ext_name, no_ext_name)
+    return string.format("kotlinc %s -include-runtime -d %s.jar 2>&1 && java -jar %s.jar", tmpname, no_ext_name, no_ext_name)
   end,
-  c = function (tmpfile)
-    local base_name = vim.fn.expand("%:t:r")
-    return string.format("gcc -Wall %s -o %s 2>&1 && ./%s", tmpfile, base_name, base_name)
+  c = function (tmpname)
+    return string.format("gcc -Wall %s -o a.out 2>&1 && ./a.out", tmpname)
   end,
 }
 
@@ -68,7 +67,7 @@ local function codewin(opts)
 
     -- Execute command and capture output
     local tmpf = vim.fn.shellescape(tempfile)
-    local handle = io.popen(cmd(tmpf, filename) .. ' 2>&1')
+    local handle = io.popen(cmd(tmpf) .. ' 2>&1')
     if handle == nil then
       vim.notify("execution failed")
       return
