@@ -58,6 +58,7 @@ if has("gui_running")
 else
   g:everforest_transparent_background = 2
 endif
+g:java_ignore_markdown = 1
 # }}}
 # keymaps {{{
 nnoremap <silent><nowait><Enter> :w<CR>
