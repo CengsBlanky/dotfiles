@@ -14,7 +14,7 @@ fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/bin"
 set -gx LANG "en_US.UTF-8"
 set -gx EDITOR vim
-set -gx GIT_EDITOR /usr/bin/vim
+set -gx GIT_EDITOR /usr/local/bin/vim
 set -gx LESS "-RiXF"
 # set nvim as pager
 if command -q nvim
@@ -76,6 +76,7 @@ fish_add_path "$HOME/tools/spring-2.6.4/bin"
 fish_add_path "$HOME/.local/share/gem/ruby/3.0.0/bin"
 # golang path
 fish_add_path "/usr/local/go/bin"
+fish_add_path "$HOME/go/bin"
 # bun setup
 set -gx BUN_INSTALL "$HOME/.bun"
 fish_add_path "$BUN_INSTALL/bin"
