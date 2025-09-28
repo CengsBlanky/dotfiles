@@ -2,8 +2,8 @@
 
 while true; do
     LOCALTIME=$(date '+%Y-%m-%d %H:%M %a')
-    STATUS=$(cat /sys/class/power_supply/BAT1/status)
-    BAT_PERCENT=$(cat /sys/class/power_supply/BAT1/capacity)
+    STATUS=$(cat /sys/class/power_supply/BAT0/status)
+    BAT_PERCENT=$(cat /sys/class/power_supply/BAT0/capacity)
     BAT=""
     if [[ "$STATUS" = "Discharging" && $BAT_PERCENT -le 70 ]]; then
         BAT="🔋$BAT_PERCENT%"

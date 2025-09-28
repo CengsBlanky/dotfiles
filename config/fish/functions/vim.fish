@@ -1,5 +1,5 @@
 function vim
-    set -l nvim_bin /usr/local/nvim/bin/nvim
+    set -l nvim_bin /usr/bin/nvim
     set -l vim_bin /usr/local/bin/vim
     if command -q $nvim_bin
         $nvim_bin $argv

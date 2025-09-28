@@ -14,7 +14,7 @@ fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/bin"
 set -gx LANG "en_US.UTF-8"
 set -gx EDITOR vim
-set -gx GIT_EDITOR /usr/local/bin/vim
+set -gx GIT_EDITOR /usr/bin/vim
 set -gx LESS "-RiXF"
 # set nvim as pager
 if command -q nvim
@@ -30,8 +30,6 @@ set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case"
 set -gx NOTEDIR '$HOME/notes'
 # current location
 set -gx MY_CUR_LOCATION '江宁区'
-# add nvim default install path
-fish_add_path "/usr/local/nvim/bin"
 # === SDKMAN start ===
 set -l SDKMAN_CANDIDATES "$HOME/.sdkman/candidates"
 # java
