@@ -600,8 +600,8 @@ require("lazy").setup({
     opts = {
       additional_curl_options = { "--insecure" },
       disable_script_print_output = true,
-      -- 3 minute timeout
-      request_timeout = 180000,
+      -- 15 seconds timeout
+      request_timeout = 15000,
       urlencode = "skipencoded",
       default_env = "dev",
       ui = {
