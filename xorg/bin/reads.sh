@@ -1,6 +1,6 @@
 #!/bin/bash
 
-book_path="$HOME/Documents/ebook/"
+book_path="$HOME/Book/"
 declare -A book_loc_map
 
 count=1
