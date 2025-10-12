@@ -16,5 +16,5 @@ selected_choice=$(printf "%s\n" "${!book_loc_map[@]}" | sort -gu | dmenu -l 60)
 
 if [ -n "$selected_choice" ]; then
     bookname=${book_loc_map["$selected_choice"]}
-    open "$bookname"
+    xdg-open "$bookname"
 fi

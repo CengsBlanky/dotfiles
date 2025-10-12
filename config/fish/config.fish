@@ -119,7 +119,7 @@ abbr --add cddot cd ~/.dotfiles
 # yt-dlp
 abbr --add yd --set-cursor "yt-dlp '%'"
 # fzf find files
-abbr --add found "fzf --preview='batcat --color=always --style=plain,numbers {}'"
+abbr --add found "fzf --preview='bat --color=always --style=plain,numbers {}'"
 # py for python
 abbr --add py "python"
 # django

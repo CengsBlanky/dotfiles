@@ -151,6 +151,9 @@ require("lazy").setup({
           ["--border"] = "none",
           ["--highlight-line"] = true,
         },
+        grep = {
+          follow = true,
+        },
         previewers = {
           bat = {
             cmd = "bat",
