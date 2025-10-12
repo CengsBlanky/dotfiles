@@ -59,7 +59,6 @@ autocmd({"FileType"}, {
 autocmd({"BufEnter"}, {
   pattern = {"*.log"},
   callback = function ()
-    vim.bo.filetype = "log"
     vim.opt_local.wrap = true
   end
 })
@@ -96,4 +95,3 @@ autocmd({"BufReadPost"}, {
       setnmap('<Enter>', '<Enter>')
     end
 })
-

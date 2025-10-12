@@ -70,6 +70,6 @@ vim.filetype.add({
     ['.*/templates/.*/*.html'] = 'htmldjango',
   },
   extension = {
-    ['http'] = 'http',
+    ['log'] = 'log',
   },
 })
