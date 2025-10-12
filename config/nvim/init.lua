@@ -438,7 +438,7 @@ require("lazy").setup({
     },
     opts = {
       formatters_by_ft = {
-        python = { "py_sort", "py_format" },
+        python = { "py_organize", "py_sort", "py_format" },
         htmldjango = { "djhtml_format" },
         c = { "c_format" },
         cpp = { "c_format" },
@@ -469,10 +469,11 @@ require("lazy").setup({
             "$FILENAME",
           },
         },
-        ["py_format"] = {
+        ["py_organize"] = {
           command = "ruff",
           args = {
-            "format",
+            "check",
+            "--fix",
             "--stdin-filename",
             "$FILENAME",
           },
@@ -481,9 +482,17 @@ require("lazy").setup({
           command = "ruff",
           args = {
             "check",
+            "--fix",
             "--select",
             "I",
-            "--fix",
+            "--stdin-filename",
+            "$FILENAME",
+          },
+        },
+        ["py_format"] = {
+          command = "ruff",
+          args = {
+            "format",
             "--stdin-filename",
             "$FILENAME",
           },
