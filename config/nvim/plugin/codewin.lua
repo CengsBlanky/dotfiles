@@ -84,7 +84,7 @@ local function codewin(opts)
 
   -- Create a floating window
   local width = math.floor(vim.o.columns * 0.8)
-  local height = math.floor(vim.o.lines * 0.6)
+  local height = math.floor(vim.o.lines * 0.8)
   local win_opts = {
     relative = 'editor',
     width = width,
