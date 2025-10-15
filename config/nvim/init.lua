@@ -331,7 +331,7 @@ require("lazy").setup({
     opts= {
       automatic_enable = false,
       -- TODO kotlin_lsp too much slower
-      ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'ruff', 'basedpyright', 'zls', 'gopls', 'jdtls', 'html', 'cssls', 'vtsls', 'jsonls', 'svelte', 'emmet_language_server', },
+      ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'ruff', 'basedpyright', 'zls', 'gopls', 'jdtls', 'html', 'cssls', 'vue_ls', 'vtsls', 'jsonls', 'svelte', 'emmet_language_server', },
     },
     dependencies = {
       {
