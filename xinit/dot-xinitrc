@@ -1,29 +1,23 @@
 #!/bin/bash
-# setup dpi
-xrdb -merge ~/.Xresources
-# disable bell
-xset -b
-# disable DPMS-Display Power Management Signaling
+set -b
 xset -dpms
 xset s off
-eval $(/usr/bin/ssh-agent)
+xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
-# set windows compositor and wallpaper
-picom --backend glx --vsync &
-feh --bg-fill ~/Pictures/wallpaper/Landscape_by_the_Lez_River.jpg &
-# get weather
-weather.sh &
-# set status bar
-status_right.sh &
+# custom bin path
+export PATH="$HOME/.local/share/flatpak/exports/bin:$PATH"
+export PATH="$HOME/.local/share/jetbrains_toolbox/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 # fcitx5
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-fcitx5 -d --verbose 3 &
-# notification manager
+fcitx5 -d --verbose 3
+weather.sh &
+status_right.sh &
 dunst &
-# auto hide cursor
-unclutter --ignore-buttons 4,5,6,7 &
-# start clash proxy
 clash -d ~/.config/clash &
+feh --bg-fill ~/Pictures/wallpaper/defaultwall.jpg &
+picom &
+unclutter --ignore-buttons 4,5,6,7 --fork
 exec dwm
