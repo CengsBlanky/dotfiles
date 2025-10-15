@@ -16,7 +16,7 @@ foreground = "#d8dee9"
 
 [font]
 builtin_box_drawing = true
-normal.family = "UbuntuSans"
+normal.family = "Consolas Nerd Font"
 size = 14
 
 [font.offset]
