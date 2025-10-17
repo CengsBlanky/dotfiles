@@ -17,7 +17,7 @@ foreground = "#d8dee9"
 [font]
 builtin_box_drawing = true
 normal.family = "SauceCodePro"
-size = 13
+size = 13.5
 
 [font.offset]
 y = 0
