@@ -16,8 +16,8 @@ foreground = "#d8dee9"
 
 [font]
 builtin_box_drawing = true
-normal.family = "UbuntuSans"
-size = 14
+normal.family = "SauceCodePro"
+size = 13
 
 [font.offset]
 y = 0
