@@ -16,8 +16,13 @@ foreground = "#d8dee9"
 
 [font]
 builtin_box_drawing = true
-normal.family = "SauceCodePro"
-size = 13.5
+# IosevkaZeng
+# normal.family = "IosevkaZeng"
+# normal.style = "light"
+# CaskaydiaMono
+normal.family = "CaskaydiaMono"
+normal.style = "light"
+size = 13
 
 [font.offset]
 y = 0
