@@ -1,4 +1,5 @@
 function sysupdate
-    sudo pacman -Sy
-    sudo pacman -Syu && yay -Sua && sudo pacman -Sc && yay -Sc
+    sudo pacman -Syu && sudo pacman -Sc --noconfirm
+    uproxy
+    yay -Sua && yay -Sc
 end
