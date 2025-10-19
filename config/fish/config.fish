@@ -1,6 +1,7 @@
 # ===== vi mode =====
 fish_vi_key_bindings
 bind --mode insert --sets-mode default jk repaint
+bind --mode insert \ce edit_command_buffer
 set fish_cursor_default block
 set fish_cursor_insert line
 set fish_cursor_replace_one underscore
