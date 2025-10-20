@@ -15,10 +15,10 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 fcitx5 -d --verbose 3
 weather.sh &
-status_right.sh &
 dunst &
 flameshot &
 clash -d ~/.config/clash &
 feh --bg-fill ~/Pictures/wallpaper/defaultwall.jpg &
 unclutter --ignore-buttons 4,5,6,7 --fork
+status_right.sh &
 exec dwm
