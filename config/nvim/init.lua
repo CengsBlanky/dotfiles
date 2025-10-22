@@ -770,7 +770,7 @@ require("lazy").setup({
     config = function()
       require("dbee").setup({
         sources = {
-          require("dbee.sources").FileSource:new("$HOME/.config/dbee/connections.json")
+          require("dbee.sources").FileSource:new(vim.fn.expand("$HOME/.config/dbee/conns.json")),
         },
         editor = {
           mappings = {
