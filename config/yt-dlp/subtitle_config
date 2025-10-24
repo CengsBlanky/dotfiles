@@ -1,0 +1,5 @@
+--proxy localhost:7890
+--write-subs
+--write-auto-subs
+--skip-download
+-o ~/Documents/subtitles/%(title)s.%(ext)s

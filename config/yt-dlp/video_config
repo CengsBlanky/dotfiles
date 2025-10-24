@@ -1,0 +1,6 @@
+--proxy localhost:7890
+--format bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best+bestvideo[height<=1080]
+--write-subs
+--write-auto-subs
+--embed-subs
+-o ~/Videos/download/%(title)s.%(ext)s
