@@ -23,7 +23,7 @@ builtin_box_drawing = true
 # normal.family = "CaskaydiaMono"
 # normal.style = "light"
 # SauceCodePro
-normal.family = "UbuntuSans"
+normal.family = "SauceCodePro"
 size = 13.5
 
 [font.offset]
