@@ -772,6 +772,9 @@ require("lazy").setup({
         sources = {
           require("dbee.sources").FileSource:new(vim.fn.expand("$HOME/.config/dbee/conns.json")),
         },
+        result = {
+          focus_result = false,
+        },
         editor = {
           mappings = {
             { key = "<space>r", mode = "v", action = "run_selection" },
