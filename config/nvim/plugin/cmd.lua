@@ -22,3 +22,13 @@ command('LspOff',
   function() vim.cmd('LspStop!') end,
   { desc = "turn off lsp server once and for all" }
 )
+-- adjust file line width to specific width or 80
+command('Format',
+  function (opts)
+    local width = opts.args ~= "" and opts.args or 80
+    width = width + 1
+    vim.cmd(':%!fmt --width=' .. width .. ' --goal=' .. width)
+    vim.wo.colorcolumn = tostring(width)
+  end,
+  { nargs = '?', desc = "format text width to specific length or default to 80" }
+)
