@@ -18,3 +18,7 @@ command('Fname',
   function() to_sysreg('%:p') end,
   { desc = "full path file name" }
 )
+command('LspOff',
+  function() vim.cmd('LspStop!') end,
+  { desc = "turn off lsp server once and for all" }
+)
