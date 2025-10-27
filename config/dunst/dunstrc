@@ -5,7 +5,7 @@
     width = 600
     height = (0, 9000)
     corner_radius = 9
-    offset = (0,22)
+    offset = (0,21)
     notification_limit = 60
     shrink = no
     transparency = 10
@@ -17,7 +17,7 @@
     separator_color = frame
     sort = yes
     idle_threshold = 120
-    font = "SauceCodePro Nerd Font 12"
+    font = "NotoSansDWM 12"
     markup = full
     format = "<b>%s</b>\n%b"
     alignment = left
