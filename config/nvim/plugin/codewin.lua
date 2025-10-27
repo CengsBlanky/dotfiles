@@ -1,5 +1,4 @@
 ---@diagnostic disable: undefined-global
--- TODO implement function to run code dynamically
 -- for project or single file
 local direct_run = function (command, filename)
   return command .. ' ' .. filename
