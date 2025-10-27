@@ -20,11 +20,11 @@ builtin_box_drawing = true
 # normal.family = "IosevkaZeng"
 # normal.style = "light"
 # CaskaydiaMono
-# normal.family = "CaskaydiaMono"
-# normal.style = "light"
+normal.family = "CaskaydiaMono"
+normal.style = "SemiLight"
 # SauceCodePro
-normal.family = "SauceCodePro"
-size = 13.5
+# normal.family = "Consolas"
+size = 14
 
 [font.offset]
 y = 0
