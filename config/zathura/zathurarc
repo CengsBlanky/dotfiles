@@ -62,7 +62,7 @@ set pages-per-row 1
 # stop at page boundries
 set scroll-page-aware "false"
 set scroll-full-overlap 0.08
-set scroll-step 100
+set scroll-step 400
 set adjust-open "best-fit"
 
 #zoom settings
