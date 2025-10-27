@@ -25,10 +25,15 @@ command('LspOff',
 -- adjust file line width to specific width or 80
 command('Format',
   function (opts)
-    local width = opts.args ~= "" and opts.args or 80
-    width = width + 1
-    vim.cmd(':%!fmt --width=' .. width .. ' --goal=' .. width)
-    vim.wo.colorcolumn = tostring(width)
+    local fmt = ':%!fmt'
+    if opts.args and opts.args ~= "" then
+      local width = opts.args + 1
+      fmt = ':%!fmt --width=' .. width .. ' --goal=' .. width
+      vim.wo.colorcolumn = tostring(width)
+    else
+      vim.wo.colorcolumn = ""
+    end
+    vim.cmd(fmt)
   end,
-  { nargs = '?', desc = "format text width to specific length or default to 80" }
+  { nargs = '?', desc = "format text width to specific length or default to fmt" }
 )
