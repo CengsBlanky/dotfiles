@@ -457,6 +457,7 @@ require("lazy").setup({
         typescript = { "biome-format" },
         typescriptreact = { "biome-format" },
         yaml = { "prettier" },
+        toml = { "taplo" },
         sql = { "sqlfluff" },
         sh = {"shfmt"},
         ["*"] = { "trim_whitespace" },
