@@ -8,7 +8,7 @@ while true; do
     if [[ "$STATUS" = "Discharging" && $BAT_PERCENT -le 70 ]]; then
         BAT="🔋$BAT_PERCENT%"
     fi
-    WEATHER=$(cat "$XDG_RUNTIME_DIR/weather.info" 2>/dev/null)
+    WEATHER=$(sed -n '2p' "$HOME/.local/share/weather.info" 2>/dev/null)
     xsetroot -name "$WEATHER $BAT 🗓 $LOCALTIME"
     sleep 25s
 done

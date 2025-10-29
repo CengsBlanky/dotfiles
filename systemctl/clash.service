@@ -1,0 +1,13 @@
+[Unit]
+Decription=network proxy server
+After=network.target
+
+[Service]
+Type=simple
+User=zeng
+Group=zeng
+WorkingDirectory=/etc/clash
+ExecStart=/usr/local/bin/clash
+
+[Install]
+WantedBy=multi-user.target
