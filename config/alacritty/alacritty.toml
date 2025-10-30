@@ -31,8 +31,8 @@ builtin_box_drawing = true
 # normal.family = "SauceCodePro"
 # size = 13.5
 # ubuntu
-normal.family = "UbuntuSansMono"
-size = 13.5
+normal.family = "Meslo"
+size = 13
 
 [font.offset]
 y = 0
