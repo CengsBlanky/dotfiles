@@ -23,16 +23,17 @@ builtin_box_drawing = true
 # CaskaydiaMono
 # normal.family = "CaskaydiaMono"
 # normal.style = "SemiLight"
-# size = 14
+# bold.style = "SemiBold"
+# size = 13.5
 # SauceCodePro
 # normal.family = "Consolas"
 # normal.family = "RobotoMono Nerd Font"
 # size = 12.5
-# normal.family = "SauceCodePro"
-# size = 13.5
+normal.family = "SauceCodePro"
+size = 13.5
 # ubuntu
-normal.family = "Meslo"
-size = 13
+# normal.family = "Meslo"
+# size = 13
 
 [font.offset]
 y = 0
