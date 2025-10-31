@@ -1,3 +1,3 @@
 function syncpass
-    rclone sync $HOME/rclone/onedrive/keepass/ onedrive:keepass/
+    rclone bisync $HOME/rclone/onedrive/keepass/ onedrive:keepass/ --progress
 end
