@@ -152,7 +152,7 @@ require("lazy").setup({
           ["--highlight-line"] = true,
         },
         grep = {
-          follow = true,
+          RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
         },
         previewers = {
           bat = {
