@@ -9,7 +9,7 @@ autocmd({"FileType"}, { callback = function()
   vim.opt.formatoptions:append({'M'})
   -- set readonly map
   if not vim.bo.modifiable or vim.bo.readonly then
-    setnmap('q', '<Cmd>q<CR>')
+    setnmap('q', '<Cmd>Quit<CR>')
     setnmap('u', '<C-b>')
     setnmap('<space>', '<C-f>')
   end

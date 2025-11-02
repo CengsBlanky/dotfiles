@@ -37,3 +37,15 @@ command('Format',
   end,
   { nargs = '?', desc = "format text width to specific length or default to fmt" }
 )
+
+command('Quit',
+  function()
+    local count = vim.api.nvim_get_current_buf()
+    if count == 1 then
+      vim.cmd('q')
+    else
+      vim.cmd('bd')
+    end
+  end,
+  { desc = "close buffer or quit when only one buffer exists" }
+)
