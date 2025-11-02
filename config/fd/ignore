@@ -1,1 +1,11 @@
+**/.git/
 **/node_modules/
+**/target/
+**/venv/
+**/dist/
+**/packages/
+**/__pycache__/
+**/*.lock
+**/*.png
+**/*.jpeg
+**/*.jpg
