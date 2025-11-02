@@ -116,7 +116,7 @@ abbr --add which "command -s"
 # take little notes
 abbr --add nt notenow
 # goto dotfiles
-abbr --add cddot cd ~/.dotfiles
+abbr --add dot cd ~/.dotfiles
 # yt-dlp
 abbr --add yd --set-cursor "yt-dlp '%'"
 # fzf find files
