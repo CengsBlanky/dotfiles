@@ -17,9 +17,10 @@ foreground = "#d8dee9"
 [font]
 builtin_box_drawing = true
 # IosevkaZeng
-# normal.family = "IosevkaZeng"
-# normal.style = "light"
-# size = 13.5
+# normal.family = "IosevkaZs Semi-Condensed"
+normal.family = "IosevkaZs"
+# normal.style = "semi-light"
+size = 13.5
 # CaskaydiaMono
 # normal.family = "CaskaydiaMono"
 # normal.style = "SemiLight"
@@ -35,8 +36,8 @@ builtin_box_drawing = true
 # normal.family = "Meslo"
 # size = 13
 # hack
-normal.family = "HackZero"
-size = 14
+# normal.family = "HackZero"
+# size = 14
 
 [font.offset]
 y = 0
