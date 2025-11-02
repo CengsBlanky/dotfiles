@@ -18,7 +18,7 @@ function fish_mode_prompt
             set_color --bold "66c0d0"
             echo -n "  "
         case default
-            set_color --bold "b48ead"
+            set_color --bold "5e81ac"
             echo -n "  "
         case visual
             set_color --bold "ebcb8b" 
