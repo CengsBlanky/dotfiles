@@ -16,6 +16,10 @@
 --glob
 !**/venv/*
 --glob
+!**/dist/*
+--glob
+!**/packages/*
+--glob
 !tags
 --glob
 !.tags
