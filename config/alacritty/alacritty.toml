@@ -29,14 +29,14 @@ builtin_box_drawing = true
 # normal.family = "Consolas"
 # normal.family = "RobotoMono Nerd Font"
 # size = 12.5
-# normal.family = "SauceCodePro"
-# size = 13.5
+normal.family = "SauceCodePro"
+size = 13.5
 # ubuntu
 # normal.family = "Meslo"
 # size = 13
 # hack
-normal.family = "HackZero"
-size = 14
+# normal.family = "HackZero"
+# size = 14
 
 [font.offset]
 y = 0
