@@ -1,0 +1,26 @@
+[1mdiff --git a/src/Makefile b/src/Makefile[m
+[1mindex 6fb1eb95e..25c88be0c 100644[m
+[1m--- a/src/Makefile[m
+[1m+++ b/src/Makefile[m
+[36m@@ -318,7 +318,7 @@[m [mCClink = $(CC)[m
+ # Uncomment this line when you don't want to get the GUI version, although you[m
+ # have GTK and/or Motif.  Also use --without-x if you don't want X11[m
+ # at all.[m
+[31m-#CONF_OPT_GUI = --disable-gui[m
+[32m+[m[32mCONF_OPT_GUI = --disable-gui[m
+ [m
+ # Uncomment one of these lines if you have that GUI but don't want to use it.[m
+ # The automatic check will use another one that can be found.[m
+[36m@@ -534,10 +534,10 @@[m [mCClink = $(CC)[m
+ # The default is "huge" for most systems.[m
+ #CONF_OPT_FEAT = --with-features=tiny[m
+ #CONF_OPT_FEAT = --with-features=normal[m
+[31m-#CONF_OPT_FEAT = --with-features=huge[m
+[32m+[m[32mCONF_OPT_FEAT = --with-features=huge[m
+ [m
+ # COMPILED BY - For including a specific e-mail address for ":version".[m
+[31m-#CONF_OPT_COMPBY = "--with-compiledby=John Doe <JohnDoe@yahoo.com>"[m
+[32m+[m[32mCONF_OPT_COMPBY = "--with-compiledby=zeng<zengs1994@gmail.com>"[m
+ [m
+ # X WINDOWS DISABLE - For creating a plain Vim without any X11 related fancies[m
+ # (otherwise Vim configure will try to include xterm titlebar access)[m
