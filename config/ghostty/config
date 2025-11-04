@@ -1,8 +1,12 @@
-font-family=UbuntuSansMono Nerd Font
+font-family="SauceCodePro Nerd Font"
+font-family=TsangerJinKai05
+font-style=SemiLight
 font-size=14
+# adjust-cell-width=-8%
+# adjust-cell-height=-15%
 font-feature=zero
-adjust-underline-position=15%
-theme=nord
+adjust-underline-position=10%
+# theme=Kanagawa Dragon
 cursor-style=bar
 cursor-style-blink=false
 mouse-hide-while-typing=true
@@ -18,10 +22,12 @@ clipboard-trim-trailing-spaces=true
 copy-on-select=clipboard
 quick-terminal-position=center
 shell-integration=fish
-split-divider-color=ADB5BD
+split-divider-color=008C8C
 app-notifications=no-clipboard-copy
-gtk-tabs-location=bottom
 adw-toolbar-style=flat
+gtk-tabs-location=bottom
+gtk-wide-tabs=false
+window-theme=ghostty
 
 keybind = alt+equal=new_split:right
 keybind = alt+minus=new_split:down
@@ -36,11 +42,12 @@ keybind = ctrl+shift+h=scroll_to_top
 keybind = ctrl+shift+l=scroll_to_bottom
 keybind = ctrl+shift+t=new_tab
 keybind = ctrl+q>t=new_tab
-keybind = ctrl+q>p=previous_tab
+keybind = ctrl+q>c=new_tab
+keybind = ctrl+q>l=previous_tab
 keybind = alt+up=resize_split:up,128
 keybind = alt+down=resize_split:down,128
 keybind = alt+left=resize_split:left,128
 keybind = alt+right=resize_split:right,128
 keybind = ctrl+alt+w=close_surface
-keybind = ctrl+q>k=close_tab
+keybind = ctrl+q>x=close_tab
 keybind = ctrl+alt+t=toggle_quick_terminal
