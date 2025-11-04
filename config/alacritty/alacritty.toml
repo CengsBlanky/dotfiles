@@ -29,8 +29,8 @@ builtin_box_drawing = true
 # normal.family = "Consolas"
 # normal.family = "RobotoMono Nerd Font"
 # size = 12.5
-normal.family = "SauceCodePro"
-size = 13.5
+# normal.family = "SauceCodePro"
+# size = 13.5
 # meslo
 # normal.family = "Meslo"
 # size = 13
@@ -39,6 +39,8 @@ size = 13.5
 # size = 14
 # normal.family = "FiraCode Nerd Font"
 # size = 12
+normal.family = "UbuntuSansMono"
+size = 13.5
 
 [font.offset]
 y = 0
