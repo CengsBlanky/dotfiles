@@ -82,7 +82,6 @@ nnoremap [q :cprev<CR>
 nnoremap ]Q :clast<CR>
 nnoremap [Q :cfirst<CR>
 nnoremap <space>s g<C-]>
-nnoremap g_ ^vg_
 # insert mode keymap
 inoremap jk <ESC>
 # delete other buffers {{{
@@ -203,9 +202,9 @@ g:AutoPairsShortcutToggle = '<M-}>'
 #}}}
 # fzf {{{
 g:fzf_preview_window = []
-nnoremap <Leader>f :FZF<CR>
-nnoremap <Leader>g :RG<CR>
-nnoremap <Leader>b :Buffers<CR>
+nnoremap <silent><nowait><Leader>f :FZF<CR>
+nnoremap <silent><nowait><Leader>g :RG<CR>
+nnoremap <silent><nowait><Leader>b :Buffers<CR>
 # }}}
 # theme {{{
 set termguicolors
