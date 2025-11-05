@@ -465,7 +465,7 @@ require("lazy").setup({
       formatters = {
         ["c_format"] = {
           command = "clang-format",
-          args = "-style=file:$HOME/.config/formatter/clang-format.yaml",
+          args = "-style=file:" .. vim.fn.expand("$HOME/.config/formatter/clang-format.yaml"),
         },
         ["java_format"] = {
           command = "clang-format",
