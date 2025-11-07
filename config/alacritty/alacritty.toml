@@ -39,12 +39,12 @@ builtin_box_drawing = true
 # size = 13.5
 # normal.family = "FiraCode Nerd Font"
 # size = 12
-# normal.family = "UbuntuSansMono"
-# size = 13.5
+normal.family = "UbuntuSansMono"
+size = 13.5
 # normal.family = "ComicMono"
 # size = 13.5
-normal.family = "UbuntuNF"
-size = 15
+# normal.family = "UbuntuNF"
+# size = 15
 
 [font.offset]
 y = 0
