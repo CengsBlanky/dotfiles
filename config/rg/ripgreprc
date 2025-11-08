@@ -20,6 +20,16 @@
 --glob
 !**/packages/*
 --glob
+!**/build/*
+--glob
+!**/.gradle/*
+--glob
 !tags
 --glob
 !.tags
+--glob
+!**/*.jar
+--glob
+!**/*.war
+--glob
+!**/*.bin
