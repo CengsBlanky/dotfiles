@@ -3,6 +3,13 @@
     "indentStyle": "space", // default is `tab`
     "lineWidth": 100 // default is `80`
   },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
   "javascript": {
     "formatter": {
       "quoteStyle": "double", // default is `double`
@@ -10,7 +17,7 @@
       "arrowParentheses": "asNeeded"
     },
     "linter": {
-      "enabled": true
+      "enabled": false
     }
   },
   "json": {

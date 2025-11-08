@@ -1,0 +1,7 @@
+indent_type = "Spaces"
+indent_width = 2
+collapse_simple_statement = "Always"
+space_after_function_names = "Definitions"
+block_newline_gaps = "Preserve"
+[sort_requires]
+enabled = true

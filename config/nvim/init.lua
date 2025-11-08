@@ -441,21 +441,22 @@ require("lazy").setup({
     },
     opts = {
       formatters_by_ft = {
-        python = { "py_organize", "py_sort", "py_format" },
-        htmldjango = { "djhtml_format" },
-        c = { "c_format" },
-        cpp = { "c_format" },
+        python = { "py_organize", "py_sort", "ruff" },
+        htmldjango = { "djlint" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        lua = { "stylua" },
         go = { "gofmt", "goimports" },
         kotlin = { "ktfmt" },
         xml = { "xq_format" },
         html = { "prettier" },
         java = { "java_format" },
-        javascript = { "biome-format" },
-        javascriptreact = { "biome-format" },
+        javascript = { "biome" },
+        javascriptreact = { "biome" },
         json = { "jq" },
-        jsonc = { "biome-format" },
-        typescript = { "biome-format" },
-        typescriptreact = { "biome-format" },
+        jsonc = { "biome" },
+        typescript = { "biome" },
+        typescriptreact = { "biome", "biome-organize-imports", },
         yaml = { "prettier" },
         toml = { "taplo" },
         sql = { "sqlfluff" },
@@ -463,9 +464,19 @@ require("lazy").setup({
         ["*"] = { "trim_whitespace" },
       },
       formatters = {
-        ["c_format"] = {
+        ["clang-format"] = {
           command = "clang-format",
           args = "-style=file:" .. vim.fn.expand("$HOME/.config/formatter/clang-format.yaml"),
+        },
+        ["stylua"] = {
+          command = "stylua",
+          args = {
+            "--config-path",
+            vim.fn.expand("$HOME/.config/formatter/stylua.toml"),
+            "--stdin-filepath",
+            "$FILENAME",
+            "-",
+          },
         },
         ["java_format"] = {
           command = "clang-format",
@@ -474,7 +485,7 @@ require("lazy").setup({
             "$FILENAME",
           },
         },
-        ["biome-format"] = {
+        ["biome"] = {
           command = "biome",
           args = {
             "format",
@@ -505,7 +516,7 @@ require("lazy").setup({
             "$FILENAME",
           },
         },
-        ["py_format"] = {
+        ["ruff"] = {
           command = "ruff",
           args = {
             "format",
@@ -513,7 +524,7 @@ require("lazy").setup({
             "$FILENAME",
           },
         },
-        ["djhtml_format"] = {
+        ["djlint"] = {
           command = "djlint",
           args = {
             "--reformat",
