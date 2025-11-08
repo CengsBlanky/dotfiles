@@ -32,6 +32,9 @@ local ft_cmd = {
   c = function (tmpname)
     return string.format("gcc -Wall %s -o a.out 2>&1 && ./a.out", tmpname)
   end,
+  fish = function (tmpname)
+    return string.format("fish %s", tmpname)
+  end,
 }
 
 local function codewin(opts)
