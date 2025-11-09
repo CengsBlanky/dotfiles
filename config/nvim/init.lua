@@ -345,6 +345,10 @@ require("lazy").setup({
     }
   },
   {
+    'sheerun/vim-polyglot',
+    config = function () end,
+  },
+  {
     'saecki/crates.nvim',
     tag = 'stable',
     event = { "BufRead Cargo.toml" },
