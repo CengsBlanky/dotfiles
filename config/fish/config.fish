@@ -112,31 +112,13 @@ function __notify_current_command
         commandline -f repaint
         return 0
     end
-
     # Clear current line so you can keep typing
     commandline ""
 
-    # Run in background, capture PID
-    set -l tmpfile (mktemp --suffix=fish)
-    eval $cmd >$tmpfile 2>&1 &
-    set -l pid $last_pid
-
-    # Background job: wait → capture output → notify
-    begin
-        wait $pid 2>/dev/null
-        set -l cmd_status $status
-
-        set -l icon "dialog-information"
-        set -l urgency "normal"
-        if test $cmd_status -ne 0
-            set icon "dialog-error"
-            set urgency "critical"
-        end
-
-        set -l output (cat $tmpfile | string collect)
-        rm $tmpfile
-        notify-send -i $icon -u $urgency $output
-    end &
+    $HOME/.config/fish/script/cmd_notify.fish "$cmd" &
+    # cmd_notify $cmd &
+    set -l job_pid $last_pid
+    disown $job_pid 2>/dev/null
     exit
 end
 
