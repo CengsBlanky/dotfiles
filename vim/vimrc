@@ -230,6 +230,7 @@ autocmd FileType tags,qf nnoremap <buffer> <Enter> <Enter>
 autocmd BufRead *.log setlocal filetype=log
 autocmd BufRead *.painless setlocal filetype=java
 autocmd BufRead *.xxd,*.hex setlocal filetype=xxd
+autocmd BufRead *.s,*.S setlocal filetype=asm
 # formatter
 autocmd FileType json setlocal formatprg=jq
 autocmd BufRead *.json,*.tmp nnoremap <nowait><silent> <Space>f :%!jq<CR>

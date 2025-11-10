@@ -70,6 +70,13 @@ autocmd({"BufRead"}, {
     end
 })
 
+autocmd({"BufRead"}, {
+    pattern = {"*.s", ".S"},
+    callback = function()
+      vim.opt_local.filetype = "asm"
+    end
+})
+
 autocmd({"FileType"}, {
     pattern = { "html", "xhtml", "htmldjango", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "yaml", "sql", "json", "jsonc", "vim", "lua", "dart", "svelte", "http", "xml", "go" },
     callback = function()
