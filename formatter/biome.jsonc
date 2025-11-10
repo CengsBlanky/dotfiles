@@ -1,7 +1,7 @@
 {
   "formatter": {
     "indentStyle": "space", // default is `tab`
-    "lineWidth": 100 // default is `80`
+    "lineWidth": 80 // default is `80`
   },
   "assist": {
     "actions": {
@@ -13,7 +13,7 @@
   "javascript": {
     "formatter": {
       "quoteStyle": "double", // default is `double`
-      "lineWidth": 100, // override `formatter.lineWidth`
+      "lineWidth": 80, // override `formatter.lineWidth`
       "arrowParentheses": "asNeeded"
     },
     "linter": {
