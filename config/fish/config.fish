@@ -105,6 +105,43 @@ end
 bind --mode insert \cs "__fzf_vim"
 # edit current command
 bind --mode insert \ce edit_command_buffer
+# notify command output
+function __notify_current_command
+    set -l cmd (commandline -b | string trim)
+    if test -z "$cmd"
+        commandline -f repaint
+        return 0
+    end
+
+    # Clear current line so you can keep typing
+    commandline ""
+
+    # Run in background, capture PID
+    set -l tmpfile (mktemp --suffix=fish)
+    eval $cmd >$tmpfile 2>&1 &
+    set -l pid $last_pid
+
+    # Background job: wait → capture output → notify
+    begin
+        wait $pid 2>/dev/null
+        set -l cmd_status $status
+
+        set -l icon "dialog-information"
+        set -l urgency "normal"
+        if test $cmd_status -ne 0
+            set icon "dialog-error"
+            set urgency "critical"
+        end
+
+        notify-send -i $icon -u $urgency (cat $tmpfile)
+    end &
+
+    rm $tmpfile
+    exit $status
+end
+
+# Bind to Ctrl-Enter
+bind --mode insert ctrl-x "__notify_current_command"
 
 # ===== abbriviations =====
 abbr --add cls "clear"
