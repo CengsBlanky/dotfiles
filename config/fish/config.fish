@@ -1,7 +1,6 @@
 # ===== vi mode =====
 fish_vi_key_bindings
 bind --mode insert --sets-mode default jk repaint
-bind --mode insert \ce edit_command_buffer
 set fish_cursor_default block
 set fish_cursor_insert line
 set fish_cursor_replace_one underscore
@@ -94,7 +93,18 @@ set -gx EXA_COLORS "*.mp3=38;2;227;138;174"
 
 # kubectl autocompletion
 # kubectl completion fish | source
-bind --mode insert \cs "vim (fzf --preview='bat --color=always --theme=Nord --style=numbers {}')"
+
+# fzf search with vim
+function __fzf_vim
+    set -l fzf_cmd "fzf --preview='bat --color=always --theme=Nord --style=numbers'"
+    set -l selected (eval $fzf_cmd)
+    if test $status -eq 0
+        vim $selected
+    end
+end
+bind --mode insert \cs "__fzf_vim"
+# edit current command
+bind --mode insert \ce edit_command_buffer
 
 # ===== abbriviations =====
 abbr --add cls "clear"
