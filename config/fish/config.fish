@@ -115,6 +115,7 @@ function __notify_current_command
     # Clear current line so you can keep typing
     commandline ""
 
+    # must execute as script
     $HOME/.config/fish/script/cmd_notify.fish "$cmd" &
     # cmd_notify $cmd &
     set -l job_pid $last_pid

@@ -2,7 +2,7 @@
 set -l cmd $argv
 set -l tmpfile (mktemp --suffix=fish_notify)
 eval $cmd >$tmpfile 2>&1
-wait $pid 2>/dev/null
+# wait $pid 2>/dev/null
 set -l cmd_status $status
 
 set -l icon "dialog-information"
