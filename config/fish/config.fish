@@ -133,11 +133,11 @@ function __notify_current_command
             set urgency "critical"
         end
 
-        notify-send -i $icon -u $urgency (cat $tmpfile)
+        set -l output (cat $tmpfile | string collect)
+        rm $tmpfile
+        notify-send -i $icon -u $urgency $output
     end &
-
-    rm $tmpfile
-    exit $status
+    exit
 end
 
 # Bind to Ctrl-Enter
