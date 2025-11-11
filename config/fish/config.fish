@@ -112,8 +112,6 @@ function __notify_current_command
         commandline -f repaint
         return 0
     end
-    # Clear current line so you can keep typing
-    commandline ""
 
     # must execute as script
     $HOME/.config/fish/script/cmd_notify.fish "$cmd" &
