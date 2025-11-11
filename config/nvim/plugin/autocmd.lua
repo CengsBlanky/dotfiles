@@ -102,3 +102,40 @@ autocmd({"BufReadPost"}, {
       setnmap('<Enter>', '<Enter>')
     end
 })
+
+autocmd({"FileType"}, {
+  pattern = {"help"},
+  command = "wincmd =",
+})
+
+autocmd({"VimResized"}, {
+  command = "wincmd =",
+})
+
+autocmd({"CursorMoved"}, {
+  desc = "highlight current word by lsp",
+  callback = function ()
+    if vim.fn.mode() == "n" then
+      local clients = vim.lsp.get_clients({ bufnr=0 })
+      local support_hl = false
+      for _, client in ipairs(clients) do
+        if client.server_capabilities.documentHighlightProvider then
+          support_hl = true
+          break
+        end
+      end
+
+      if support_hl then
+        vim.lsp.buf.clear_references()
+        vim.lsp.buf.document_highlight()
+      end
+    end
+  end,
+})
+
+autocmd({"CursorMovedI"}, {
+  desc = "clear highlight after insert",
+  callback = function ()
+    vim.lsp.buf.clear_references()
+  end,
+})

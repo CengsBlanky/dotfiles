@@ -346,6 +346,9 @@ require("lazy").setup({
   },
   {
     'sheerun/vim-polyglot',
+    init  = function ()
+      g.polyglot_disabled = {'ftdetect'}
+    end,
     config = function () end,
   },
   {
@@ -644,8 +647,12 @@ require("lazy").setup({
       request_timeout = 15000,
       urlencode = "skipencoded",
       default_env = "dev",
+      halt_on_error = false,
       ui = {
         default_winbar_panes = { "body", "headers", "headers_body", "script_output" },
+        win_opts = {
+          wo = { foldmethod = "manual" }, -- window options
+        },
       },
       global_keymaps = {
         ["Send request"] = { "<Space>r", function() require("kulala").run() end, mode = { "n" }, ft = { "http", "rest" } },
@@ -679,6 +686,7 @@ require("lazy").setup({
         ["Next response"] = { "<leader>]", function() require("kulala.ui").show_next() end, },
         ["Previous response"] = { "<leader>[", function() require("kulala.ui").show_previous() end, },
         ["Jump to response"] = { "<CR>", function() require("kulala.ui").jump_to_response() end, },
+        ["Interrupt requests"] = { "<C-c>", function() require("kulala.cmd.websocket").close() end, desc = "also: CLose WS connection" },
         ["Clear responses history"] = { "X", function() require("kulala.ui").clear_responses_history() end, },
         ["Show help"] = { "?", function() require("kulala.ui").show_help() end, },
         ["Close"] = { "q", function() require("kulala.ui").close_kulala_buffer() end, },
