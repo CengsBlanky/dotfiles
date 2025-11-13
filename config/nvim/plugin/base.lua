@@ -65,6 +65,7 @@ g.python3_host_prog = '/usr/bin/python3'
 g.markdown_fenced_languages = {
   "ts=typescript"
 }
+g.java_ignore_markdown = 1
 vim.filetype.add({
   pattern = {
     ['.*/templates/.*/*.html'] = 'htmldjango',
