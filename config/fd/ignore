@@ -10,6 +10,7 @@
 **/__pycache__/
 **/*.lock
 **/*.jar
+**/*.class
 **/*.war
 gradlew
 gradlew.bat
