@@ -345,13 +345,6 @@ require("lazy").setup({
     }
   },
   {
-    'sheerun/vim-polyglot',
-    init  = function ()
-      g.polyglot_disabled = {'ftdetect'}
-    end,
-    config = function () end,
-  },
-  {
     'saecki/crates.nvim',
     tag = 'stable',
     event = { "BufRead Cargo.toml" },
