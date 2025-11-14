@@ -445,6 +445,7 @@ require("lazy").setup({
         htmldjango = { "djlint" },
         c = { "clang-format" },
         cpp = { "clang-format" },
+        zig = { "zigfmt" },
         lua = { "stylua" },
         go = { "gofmt", "goimports" },
         kotlin = { "ktfmt" },
