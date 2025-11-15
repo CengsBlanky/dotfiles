@@ -154,6 +154,8 @@ abbr --add py "python"
 abbr --add pynage "python manage.py"
 # activate python venv
 abbr --add pyactive "source .venv/bin/activate.fish"
+# add aria2c abbr
+abbr --add download "aria2c"
 
 # source asdf version manager
 set -l asdf_conf "$HOME/.asdf/asdf.fish"
