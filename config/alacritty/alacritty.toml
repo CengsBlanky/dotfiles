@@ -26,9 +26,9 @@ builtin_box_drawing = true
 # bold.style = "SemiBold"
 # size = 13.5
 # SauceCodePro
-normal.family = "Consolas"
+normal.family = "ConsolasNF"
 # normal.family = "RobotoMono Nerd Font"
-size = 14.5
+size = 14
 # normal.family = "SauceCodePro"
 # size = 13.5
 # meslo
