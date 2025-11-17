@@ -768,7 +768,7 @@ require("lazy").setup({
           ["@markup.link"] = { fg = "#8fb0ff", bg = "none" },
           ["@markup.link.url"] = { fg = "#79c0e0", bg = "none", italic = false, underline = true },
           ["@string.special.url"] = { fg = "#8fbcb9", underdotted = true, },
-          ["@variable.builtin"] = { italic = true },
+          ["@variable.builtin"] = { italic = false },
           ["@function.builtin"] = { fg = "#5e81ac" },
         }
       end,
