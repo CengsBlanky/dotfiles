@@ -26,9 +26,9 @@ builtin_box_drawing = true
 # bold.style = "SemiBold"
 # size = 13.5
 # SauceCodePro
-# normal.family = "ConsolasNF"
+normal.family = "ConsolasNF"
 # normal.family = "RobotoMono Nerd Font"
-# size = 14
+size = 14
 # normal.family = "SauceCodePro"
 # size = 13.5
 # meslo
@@ -41,8 +41,8 @@ builtin_box_drawing = true
 # size = 12
 # normal.family = "UbuntuSansMono"
 # size = 13.5
-normal.family = "ComicMono"
-size = 13.5
+# normal.family = "ComicMono"
+# size = 13.5
 # normal.family = "UbuntuNF"
 # size = 15
 
