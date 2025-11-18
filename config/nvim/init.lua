@@ -464,7 +464,7 @@ require("lazy").setup({
         go = { "gofmt", "goimports" },
         kotlin = { "ktfmt" },
         xml = { "xq_format" },
-        html = { "prettier" },
+        html = { "biome" },
         java = { "java_format" },
         javascript = { "biome" },
         javascriptreact = { "biome" },

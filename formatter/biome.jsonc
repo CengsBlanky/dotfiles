@@ -24,5 +24,13 @@
     "formatter": {
       "enabled": true
     }
+  },
+  "html": {
+    "formatter": {
+      "enabled": true,
+      "indentStyle": "space",
+      "indentScriptAndStyle": true,
+      "bracketSameLine": true
+    }
   }
 }
