@@ -1,0 +1,13 @@
+{
+  "function": {
+    "prefix": [
+      "func"
+    ],
+    "body": [
+      "function $1($2) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "shorten function declaration"
+  }
+}
