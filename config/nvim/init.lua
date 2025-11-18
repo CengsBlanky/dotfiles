@@ -82,8 +82,6 @@ require("lazy").setup({
   {
     'stevearc/quicker.nvim',
     ft = "qf",
-    ---@module "quicker"
-    ---@type quicker.SetupOptions
     opts = {
       keys = {
         { ">", "<cmd>lua require('quicker').toggle_expand()<CR>", desc = "Expand quickfix content" },
