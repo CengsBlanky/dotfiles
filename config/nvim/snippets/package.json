@@ -4,6 +4,7 @@
     "snippets": [
       { "language": "java", "path": "./java.json" },
       { "language": ["javascript", "javascriptreact"], "path": "./javascript.json" },
+      { "language": ["typescript", "typescriptreact"], "path": "./typescript.json" },
       { "language": "c", "path": "./c.json" },
       { "language": "all", "path": "./all.json" }
     ]

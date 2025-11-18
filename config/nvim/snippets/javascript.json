@@ -9,15 +9,5 @@
       "}"
     ],
     "description": "shorten function declaration"
-  },
-  "empty angle bracket": {
-    "prefix": [
-      "eb"
-    ],
-    "body": [
-      "<>",
-      "\t$0",
-      "</>"
-    ]
   }
 }
