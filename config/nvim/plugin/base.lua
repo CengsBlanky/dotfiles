@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 local opt = vim.opt
 local g = vim.g
 vim.scriptencoding = 'utf-8'

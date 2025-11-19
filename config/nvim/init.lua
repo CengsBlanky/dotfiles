@@ -1,5 +1,4 @@
----@diagnostic disable: undefined-global
-vim.loader.enable({enable = true})
+vim.loader.enable(true)
 local opt = vim.opt
 local g = vim.g
 local map_opts = { silent = true, nowait = true }
@@ -7,15 +6,18 @@ opt.shadafile = "NONE"
 opt.termguicolors = true
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim",
-    "--branch=stable",
-    lazypath,
-  })
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 opt.rtp:prepend(lazypath)
 
@@ -294,7 +296,7 @@ require("lazy").setup({
             xresources = true,
           }
           local lang = vim.treesitter.language.get_lang(args.match)
-          if vim.treesitter.language.add(lang) then
+          if vim.treesitter.language.add(lang or "") then
             vim.treesitter.start()
             if not indent_excluded[lang] then
                 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
@@ -343,7 +345,7 @@ require("lazy").setup({
     opts= {
       automatic_enable = false,
       -- TODO kotlin_lsp too much slower
-      ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'ruff', 'basedpyright', 'zls', 'gopls', 'jdtls', 'html', 'cssls', 'vue_ls', 'vtsls', 'jsonls', 'svelte', 'emmet_language_server', },
+      ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'ruff', 'basedpyright', 'zls', 'gopls', 'jdtls', 'html', 'cssls', 'vue_ls', 'vtsls', 'jsonls', 'svelte', 'emmet_language_server', 'expert' },
     },
     dependencies = {
       {
