@@ -2,7 +2,7 @@
 
 location=$(cat "$HOME/.local/share/location")
 if [[ -z "$location" ]]; then
-    location="南京"
+    location=$(curl -X 'GET' -s 'http://ip-api.com/json/?lang=zh-CN' | jq -r '.city')
 fi
 save_file="$HOME/.local/share/weather.info"
 weather=$(curl -s "http://wttr.in/$location?format=%c%t" 2>/dev/null)
