@@ -44,3 +44,11 @@ vim.lsp.config("*", {
 })
 vim.lsp.enable(installed_servers)
 vim.lsp.enable("djlsp")
+
+-- override default filetypes
+vim.lsp.config("djlsp", {
+  cmd = { "djlsp" },
+  filetypes = {"htmldjango"},
+  root_markers = { "manage.py" },
+  settings = {},
+})
