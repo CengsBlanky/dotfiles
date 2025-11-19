@@ -365,11 +365,6 @@ require("lazy").setup({
     opts = {},
   },
   {
-    "elixir-tools/elixir-tools.nvim",
-    ft = { "elixir" },
-    version = "*",
-  },
-  {
     'elixir-editors/vim-elixir',
     ft = "elixir"
   },
