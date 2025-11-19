@@ -1,7 +1,8 @@
 {
   "formatter": {
     "indentStyle": "space", // default is `tab`
-    "lineWidth": 80 // default is `80`
+    "lineWidth": 80, // default is `80`
+    "formatWithErrors": true
   },
   "assist": {
     "actions": {
