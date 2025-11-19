@@ -43,7 +43,6 @@ vim.lsp.config("*", {
   capabilities = capabilities,
 })
 vim.lsp.enable(installed_servers)
-vim.lsp.enable("djlsp")
 
 -- override default filetypes
 vim.lsp.config("djlsp", {
