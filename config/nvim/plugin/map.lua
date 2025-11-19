@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 local setmap = function (mode, key, action)
   local opts = { silent = true, nowait = true }
   vim.keymap.set(mode, key, action, opts)

@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 local command = vim.api.nvim_create_user_command
 local to_sysreg = function (modifier)
   local filename = vim.fn.expand(modifier)

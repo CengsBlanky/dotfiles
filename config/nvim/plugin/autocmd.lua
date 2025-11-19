@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 local autocmd = vim.api.nvim_create_autocmd
 local setnmap = function (action, cmd)
   vim.keymap.set('n', action, cmd, { nowait = true, silent = true, buffer = true })
@@ -16,7 +15,6 @@ autocmd({"FileType"}, { callback = function()
 end})
 
 vim.api.nvim_create_autocmd("BufReadPost", {
-  group = augroup,
   callback = function()
     -- Return to last edit position when opening files
     local mark = vim.api.nvim_buf_get_mark(0, '"')

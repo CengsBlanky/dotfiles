@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 -- for project or single file
 local direct_run = function (command, filename)
   return command .. ' ' .. filename
@@ -101,12 +100,12 @@ local function codewin(opts)
   local win = vim.api.nvim_open_win(buf, true, win_opts)
 
   -- Set buffer and window options
-  vim.api.nvim_buf_set_option(buf, 'filetype', 'output')
-  vim.api.nvim_buf_set_option(buf, 'modifiable', false)
-  vim.api.nvim_buf_set_option(buf, 'bufhidden', 'hide')
-  vim.api.nvim_win_set_option(win, 'number', true)
-  vim.api.nvim_win_set_option(win, 'relativenumber', true)
-  vim.api.nvim_win_set_option(win, 'wrap', true)
+  vim.bo[buf].filetype = "output"
+  vim.bo[buf].modifiable = false
+  vim.bo[buf].bufhidden = "hide"
+  vim.wo[win].number = true
+  vim.wo[win].relativenumber = true
+  vim.wo[win].wrap = true
 
   -- Add keymaps to close window
   local hide_win = function() vim.api.nvim_win_hide(win) end
