@@ -29,3 +29,14 @@ cmd zip ${{
     zip -r $1.zip $1
     rm -rf $1
 }}
+# open dir or file with xdg-open
+cmd open ${{
+    if [ -d "$f" ]; then
+        lf -remote "send $id cd \"$f\""
+    else
+        xdg-open "$f" >/dev/null 2>&1 &
+    fi
+}}
+
+map <enter> open
+map o open
