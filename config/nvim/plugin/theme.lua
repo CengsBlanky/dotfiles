@@ -46,7 +46,7 @@ function RelativeFname()
     return "[No Name]"
   end
   -- Convert to relative path from current working directory
-  local relpath = vim.fn.fnamemodify(bufname, ":.")
+  local relpath = vim.fn.fnamemodify(bufname, ":~:.")
   return relpath
 end
 
