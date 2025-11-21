@@ -368,8 +368,10 @@ require("lazy").setup({
           end
           vim.notify("[Mason]: start install missing packages...")
           local install_cmd = "MasonInstall " .. table.concat(pkgs_to_install, " ")
-          vim.cmd(install_cmd)
-          vim.notify("[Mason]: packages installation end")
+          mason_registry.refresh(function ()
+            vim.cmd(install_cmd)
+            vim.notify("[Mason]: packages installation end")
+          end)
         end,
         opts = {},
       },
