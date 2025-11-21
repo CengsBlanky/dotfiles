@@ -460,6 +460,7 @@ require("lazy").setup({
         kotlin = { "ktfmt" },
         xml = { "xq_format" },
         html = { "prettier" },
+        css = { "biome" },
         java = { "java_format" },
         javascript = { "biome" },
         javascriptreact = { "biome" },
