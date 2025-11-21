@@ -6,7 +6,7 @@ local vue_plugin = {
   languages = { "vue" },
   configNamespace = "typescript",
 }
-return {
+vim.lsp.config("vtsls", {
   settings = {
     vtsls = {
       tsserver = {
@@ -16,7 +16,5 @@ return {
       },
     },
   },
-  filetypes = {
-    "vue",
-  },
-}
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+})
