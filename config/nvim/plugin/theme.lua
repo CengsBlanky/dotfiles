@@ -40,5 +40,15 @@ function LspStatusLine()
   return errors .. warnings .. hints .. info .. "%0*"
 end
 
+function RelativeFname()
+  local bufname = vim.api.nvim_buf_get_name(0)
+  if bufname == "" then
+    return "[No Name]"
+  end
+  -- Convert to relative path from current working directory
+  local relpath = vim.fn.fnamemodify(bufname, ":.")
+  return relpath
+end
+
 -- statusline
-vim.opt.statusline = '%r %f%m%{%v:lua.LspStatusLine()%}%=%18(%l,%v/%L%)%24(%{&fileformat}%Y%)%9( %{&fileencoding}%) '
+vim.opt.statusline = '%r %{%v:lua.RelativeFname()%}%m%{%v:lua.LspStatusLine()%}%=%18(%l,%v/%L%)%24(%{&fileformat}%Y%)%9( %{&fileencoding}%) '
