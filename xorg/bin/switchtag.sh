@@ -34,7 +34,7 @@ done
 
 # Pipe the client information to dmenu and get the user's choice.
 # only get one starting tag with awk
-selected_choice=$(printf "%s\n" "${!client_map[@]}" | awk '!seen[$1]++' | sort -n | dmenu)
+selected_choice=$(printf "%s\n" "${!client_map[@]}" | awk '!seen[$1]++' | sort -n | dmenu -i)
 
 # If the user made a selection, switch to that client.
 if [ -n "$selected_choice" ]; then
