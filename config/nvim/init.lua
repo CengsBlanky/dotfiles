@@ -350,6 +350,27 @@ require("lazy").setup({
     dependencies = {
       {
         'williamboman/mason.nvim',
+        build = function()
+          local ensure_installed = {
+            "biome", "clang-format", "djlint", "ktfmt", "prettier", "shfmt", "sqlfluff", "stylua", "taplo", "nginx-config-formatter",
+          }
+          local mason_registry = require("mason-registry")
+          local pkgs_to_install = {}
+          for _, pkg in ipairs(ensure_installed) do
+            if not mason_registry.is_installed(pkg) then
+              vim.notify("[Mason]: package: " .. pkg .. " not install")
+              table.insert(pkgs_to_install, pkg)
+            end
+          end
+          if #pkgs_to_install == 0 then
+            vim.notify("[Mason]: all packages installed")
+            return
+          end
+          vim.notify("[Mason]: start install missing packages...")
+          local install_cmd = "MasonInstall " .. table.concat(pkgs_to_install, " ")
+          vim.cmd(install_cmd)
+          vim.notify("[Mason]: packages installation end")
+        end,
         opts = {},
       },
       {
