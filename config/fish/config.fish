@@ -159,6 +159,8 @@ abbr --add pyactive "source .venv/bin/activate.fish"
 # add aria2c abbr
 abbr --add download "aria2c"
 
+abbr --add clock "tty-clock"
+
 # source asdf version manager
 set -l asdf_conf "$HOME/.asdf/asdf.fish"
 if test -e $asdf_conf
