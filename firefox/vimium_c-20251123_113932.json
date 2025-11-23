@@ -1,0 +1,38 @@
+{
+	"name": "Vimium C",
+	"@time": "11/23/2025, 11:39:32 AM",
+	"time": 1763869172449,
+	"environment": {
+		"extension": "2.12.3",
+		"platform": "linux",
+		"firefox": 145
+	},
+	"exclusionRules": [
+		{
+			"passKeys": "",
+			"pattern": ":https://mail.google.com/"
+		},
+		{
+			"passKeys": "/ ",
+			"pattern": ":https://github.com/"
+		}
+	],
+	"keyLayout": 2,
+	"keyMappings": [
+		"#!no-check",
+		"map <s-space> scrollFullPageDown",
+		"map <c-s-h> closeTabsOnLeft",
+		"map <c-s-l> closeTabsOnRight",
+		"map <c-s-o> closeOtherTabs",
+		"map u scrollFullPageUp",
+		"map <c-j> goNext",
+		"map <c-k> goPrevious",
+		"map <a-l> visitPreviousTab",
+		""
+	],
+	"nextPatterns": "下一篇,下一封,下页,下一页,下一章,后一页,下一张,next,more,newer,>,›,→",
+	"previousPatterns": "上一篇,上一封,上页,上一页,上一章,前一页,上一张,prev,previous,back,older,<,‹,←",
+	"scrollStepSize": 200,
+	"searchUrl": "https://duckduckgo.com/?q=$s DuckDuckGo",
+	"vimSync": true
+}
