@@ -1,4 +1,8 @@
-map D delete
+### USAGE ###
+# copy (default y) command copies the current file or selections
+# cut (default d) command cuts the current file or selections
+# paste (default p) command pastes the copied or cut files to the current directory
+# clear (default c) command clears copied or cut files
 
 # extract the current file with the right command
 # (xkcd link: https://xkcd.com/1168/)
@@ -38,5 +42,8 @@ cmd open ${{
     fi
 }}
 
+map D delete
 map <enter> open
 map o open
+# watch file system change
+set watch true
