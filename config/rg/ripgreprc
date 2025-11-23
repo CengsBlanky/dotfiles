@@ -24,6 +24,8 @@
 --glob
 !**/.gradle/*
 --glob
+!**/_build/*
+--glob
 !tags
 --glob
 !.tags

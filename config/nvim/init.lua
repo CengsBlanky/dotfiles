@@ -253,7 +253,7 @@ require("lazy").setup({
     lazy = false,
     branch = "main",
     build = function()
-      local parser_installed = { "c", "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "zig", "go", "gomod", "gosum", "html", "html_tags", "htmldjango", "css", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "javascript", "jsx", "typescript", "tsx", "embedded_template", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "mermaid", }
+      local parser_installed = { "c", "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "zig", "go", "gomod", "gosum", "html", "html_tags", "htmldjango", "css", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "javascript", "jsx", "typescript", "tsx", "embedded_template", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "mermaid", "ocaml", "ocaml_interface", "ocamllex", }
       require("nvim-treesitter").install(parser_installed)
       require("nvim-treesitter").update()
     end,
@@ -345,14 +345,14 @@ require("lazy").setup({
     opts= {
       automatic_enable = false,
       -- TODO kotlin_lsp too much slower
-      ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'ruff', 'basedpyright', 'djlsp', 'zls', 'gopls', 'jdtls', 'html', 'cssls', 'vtsls', 'vue_ls', 'jsonls', 'svelte', 'emmet_language_server', 'expert', },
+      ensure_installed = { 'awk_ls', 'bashls', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'ruff', 'basedpyright', 'djlsp', 'zls', 'gopls', 'jdtls', 'html', 'cssls', 'vtsls', 'vue_ls', 'jsonls', 'svelte', 'emmet_language_server', 'expert', 'ocamllsp', },
     },
     dependencies = {
       {
         'williamboman/mason.nvim',
         build = function()
           local ensure_installed = {
-            "biome", "clang-format", "djlint", "ktfmt", "prettier", "shfmt", "sqlfluff", "stylua", "taplo", "nginx-config-formatter",
+            "biome", "clang-format", "djlint", "ktfmt", "prettier", "shfmt", "sqlfluff", "stylua", "taplo", "nginx-config-formatter", "ocamlformat"
           }
           local mason_registry = require("mason-registry")
           local pkgs_to_install = {}
@@ -481,6 +481,7 @@ require("lazy").setup({
         lua = { "stylua" },
         go = { "gofmt", "goimports" },
         kotlin = { "ktfmt" },
+        ocaml = { "ocamlformat" },
         xml = { "xq_format" },
         html = { "prettier" },
         css = { "biome" },
