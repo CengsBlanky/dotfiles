@@ -5,6 +5,11 @@ function fish_mode_prompt
     set -l err_color 'c92a2a'
     set -l prompt_icon_color 'a3be8c'
 
+    set -l insert_color '66c0d0'
+    if test -n "$HTTPS_PROXY"
+        set insert_color '8686bf'
+    end
+
     set_color -b $bg_color
     set_color -o $pwd_color_bare
     echo -n (basename (prompt_pwd))
@@ -15,7 +20,7 @@ function fish_mode_prompt
     switch $fish_bind_mode
         case insert
             # set_color --bold "a3be8c"
-            set_color --bold "66c0d0"
+            set_color --bold $insert_color
             echo -n "  "
         case default
             set_color --bold "5e81ac"
