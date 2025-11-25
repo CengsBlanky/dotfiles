@@ -1,14 +1,19 @@
 #!/bin/bash
 
+battery {
+    batlink=$(find /sys/class/power_supply/ -name "BAT[0-9]" | tail -1)
+    bat_status=$(cat $batlink/status)
+    percent=$(cat $batlink/capacity)
+    bat=""
+    if [[ "$bat_status" = "Discharging" && $percent -le 70 ]]; then
+        bat="🔋$percent%"
+    fi
+    return $bat
+}
+
 while true; do
     LOCALTIME=$(date '+%Y-%m-%d %H:%M %a')
-    STATUS=$(cat /sys/class/power_supply/BAT0/status)
-    BAT_PERCENT=$(cat /sys/class/power_supply/BAT0/capacity)
-    BAT=""
-    if [[ "$STATUS" = "Discharging" && $BAT_PERCENT -le 70 ]]; then
-        BAT="🔋$BAT_PERCENT%"
-    fi
     WEATHER=$(sed -n '2p' "$HOME/.local/share/weather.info" 2>/dev/null)
-    xsetroot -name "$WEATHER $BAT 🗓 $LOCALTIME"
+    xsetroot -name "$WEATHER $(battery) 🗓 $LOCALTIME"
     sleep 25s
 done
