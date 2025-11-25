@@ -26,6 +26,6 @@ while true; do
     sleep 2s
     LOCALTIME=$(date '+%Y-%m-%d %H:%M %a')
     WEATHER=$(sed -n '2p' "$HOME/.local/share/weather.info" 2>/dev/null)
-    xsetroot -name "$(volume)$(brightness) $WEATHER $(battery) 🗓 $LOCALTIME"
+    xsetroot -name "$(volume)$(brightness)  $WEATHER $(battery) 🗓 $LOCALTIME"
     sleep 25s
 done
