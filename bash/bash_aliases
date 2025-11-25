@@ -1,30 +1,4 @@
-alias sorc="source $HOME/.bashrc"
-alias l="ls -lh"
-alias la="ls -lAh"
-if [ -x $(command -v exa) ]; then
-    unalias l
-    unalias la
-    alias l="exa --long --links --sort=name --git"
-    alias la="exa -l --color always --icons --git -a -s type"
-fi
+alias l="ls -lAh"
 alias cls="clear"
 alias ..="cd .."
 alias grep="grep --color=always"
-# git aliaes
-alias gst="git status"
-alias gad="git add"
-alias gdf="git diff"
-alias gcm="git commit -am"
-alias gps="git push"
-alias gpl="git pull"
-# vim and neovim
-# alias vi="/usr/local/bin/vim"
-# alias vim="nvim"
-if [ -x "/usr/bin/batcat" ]; then
-    alias bat="batcat"
-fi
-
-alias cdshare="cd /home/share/"
-# go to note directory
-alias cdnote="cd $NOTEDIR/$(date +%Y)"
-alias note="joplin"
