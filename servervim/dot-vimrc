@@ -19,6 +19,7 @@ nnoremap <C-k> <C-b>
 nnoremap <Enter> :w<CR>
 nnoremap <leader>q :x<CR>
 nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :b#<CR>
 nnoremap <silent><leader>/ :vsplit<CR>
 nnoremap <silent><leader>- :split<CR>
 nnoremap <Esc>w <C-w>c
