@@ -17,8 +17,8 @@ battery() {
     batlink=$(find /sys/class/power_supply/ -name "BAT[0-9]" | tail -1)
     bat_status=$(cat $batlink/status)
     percent=$(cat $batlink/capacity)
-    if [[ "Not charging" == "$bat_status" && $percent -lt 80 ]]; then
-        printf " 🔋 %s%%" "$percent"
+    if [[ "Discharging" == "$bat_status" && $percent -lt 80 ]]; then
+        printf "🔋$percent%%"
     fi
 }
 
@@ -32,7 +32,7 @@ weather() {
 }
 
 status() {
-    xsetroot -name "$(volume)$(brightness)  $(weather) $(localtime)$(battery)"
+    xsetroot -name "$(volume)$(brightness) $(battery) $(weather) $(localtime)"
 }
 
 # wait for preparation
