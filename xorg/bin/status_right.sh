@@ -20,7 +20,7 @@ battery() {
     if [[ "Discharging" == "$bat_status" && $percent -lt 80 ]]; then
         printf "🔋$percent%%"
     elif [[ "Charging" == "$bat_status" && $percent -lt 100 ]]; then
-        printf "🔌$percent%%"
+        printf "⚡$percent%%"
     fi
 }
 
