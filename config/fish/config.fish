@@ -158,8 +158,8 @@ abbr --add pynage "python manage.py"
 abbr --add pyactive "source .venv/bin/activate.fish"
 # add aria2c abbr
 abbr --add download "aria2c"
-
 abbr --add clock "tty-clock -c -C 4 -S"
+abbr --add qianwen --set-cursor "qwen '%' | glow -"
 
 # source asdf version manager
 set -l asdf_conf "$HOME/.asdf/asdf.fish"
