@@ -50,5 +50,13 @@ function RelativeFname()
   return relpath
 end
 
+function WordCount()
+  local ft = vim.bo.filetype
+  if ft == "text" then
+    return "  " .. vim.fn.wordcount().words
+  end
+  return ""
+end
+
 -- statusline
-vim.opt.statusline = '%r %{%v:lua.RelativeFname()%}%m%{%v:lua.LspStatusLine()%}%=%18(%l,%v/%L%)%24(%{&fileformat}%Y%)%9( %{&fileencoding}%) '
+vim.opt.statusline = '%r %{%v:lua.RelativeFname()%}%m%{%v:lua.LspStatusLine()%}%=%18(%l,%v/%L%-{%v:lua.WordCount()%}%)%24(%{&fileformat}%Y%)%9( %{&fileencoding}%) '
