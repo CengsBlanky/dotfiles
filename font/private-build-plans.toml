@@ -5,49 +5,53 @@
 # 5. run `npm run build -- ttf::IosevkaZeng` with hinted font
 [buildPlans.IosevkaZeng]
 family = "IosevkaZeng"
-spacing = "term"
+spacing = "fontconfig-mono"
 serifs = "sans"
 noCvSs = true
 exportGlyphNames = false
+noLigation = true
 
 [buildPlans.IosevkaZeng.variants.design]
-one = "no-base"
 two = "straight-neck-serifless"
-five = "oblique-arched-serifless"
-seven = "straight-serifless"
 eight = "two-circles"
-nine = "straight-bar"
-capital-c = "serifless"
+zero = "slashed"
 capital-d = "standard-serifless"
-capital-g = "toothless-corner-inward-serifed-hooked"
-capital-j = "serifed"
-capital-m = "hanging-serifless"
+capital-g = "toothless-rounded-serifless-hooked"
 capital-q = "crossing"
-capital-r = "straight-serifless"
-capital-w = "straight-flat-top-serifless"
-f = "serifless"
-g = "single-storey-serifless"
-i = "serifed-diagonal-tailed"
-k = "straight-serifless"
-l = "serifed"
-r = "serifless"
-t = "bent-hook-short-neck"
-w = "straight-flat-top-serifless"
-y = "straight-serifless"
-lower-lambda = "straight-turn"
-cyrl-capital-er = "open-serifless"
-cyrl-er = "earless-rounded-serifless"
-tilde = "low"
-asterisk = "hex-low"
-underscore = "high"
-caret = "medium"
-brace = "curly"
-guillemet = "straight"
+capital-w = "straight-almost-flat-top-serifless"
+w = "straight-almost-flat-top-serifless"
+asterisk = "hex-mid"
 number-sign = "slanted"
 at = "compact"
 dollar = "through-cap"
 percent = "rings-continuous-slash"
-bar = "force-upright"
-lig-ltgteq = "slanted"
-lig-double-arrow-bar = "without-notch"
-lig-single-arrow-bar = "without-notch"
+
+[buildPlans.IosevkaZeng.weights.Regular]
+shape = 400
+menu = 400
+css = 400
+
+[buildPlans.IosevkaZeng.weights.Bold]
+shape = 700
+menu = 700
+css = 700
+
+[buildPlans.IosevkaZeng.weights.Medium]
+shape = 500
+menu = 500
+css = 500
+
+[buildPlans.IosevkaZeng.widths.Normal]
+shape = 500
+menu = 5
+css = "normal"
+
+[buildPlans.IosevkaZeng.widths.Extended]
+shape = 600
+menu = 7
+css = "expanded"
+
+[buildPlans.IosevkaZeng.widths.SemiExtended]
+shape = 548
+menu = 6
+css = "semi-expanded"
