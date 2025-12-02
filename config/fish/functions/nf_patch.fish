@@ -11,7 +11,7 @@ function nf_patch
     set -l target_dir $argv[2]
     # in case target directory is not yet created
     mkdir -p $target_dir
-    set -l font_files (find $src_dir -maxdepth 1 -name "*.ttf" -type f )
+    set -l font_files (find $src_dir -maxdepth 1 \( -name "*.ttf" -o -name "*.otf" \) -type f)
     set -l font_count (count $font_files)
     echo found $font_count font file\(s\) to patch...
     echo "patched font file will save to $target_dir"

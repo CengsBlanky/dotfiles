@@ -17,8 +17,8 @@ foreground = "#d8dee9"
 [font]
 builtin_box_drawing = true
 # IosevkaSoft
-normal.family = "IosevkaZeng"
-size = 13.5
+# normal.family = "IosevkaZeng"
+# size = 13.5
 # CaskaydiaMono
 # normal.family = "CaskaydiaMono"
 # normal.style = "SemiLight"
@@ -42,8 +42,10 @@ size = 13.5
 # size = 13.3
 # normal.family = "ComicMono"
 # size = 13.5
-# normal.family = "UbuntuNF"
-# size = 15
+normal.family = "UbuntuNF"
+size = 15
+# normal.family = "Myna Nerd Font"
+# size = 14
 
 [font.offset]
 y = 0
