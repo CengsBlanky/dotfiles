@@ -20,10 +20,10 @@ builtin_box_drawing = true
 # normal.family = "IosevkaZeng"
 # size = 13.5
 # CaskaydiaMono
-# normal.family = "CaskaydiaMono"
-# normal.style = "SemiLight"
-# bold.style = "SemiBold"
-# size = 13.5
+normal.family = "CaskaydiaMono"
+normal.style = "SemiLight"
+bold.style = "SemiBold"
+size = 13.5
 # SauceCodePro
 # normal.family = "ConsolasNF"
 # normal.family = "RobotoMono Nerd Font"
@@ -42,8 +42,8 @@ builtin_box_drawing = true
 # size = 13.3
 # normal.family = "ComicMono"
 # size = 13.5
-normal.family = "UbuntuNF"
-size = 15
+# normal.family = "UbuntuNF"
+# size = 15
 # normal.family = "Myna Nerd Font"
 # size = 14
 
