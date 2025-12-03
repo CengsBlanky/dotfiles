@@ -18,12 +18,12 @@ foreground = "#d8dee9"
 builtin_box_drawing = true
 # IosevkaSoft
 # normal.family = "IosevkaZeng"
-# size = 13.5
+# size = 13
 # CaskaydiaMono
 normal.family = "CaskaydiaMono"
 normal.style = "SemiLight"
 bold.style = "SemiBold"
-size = 13.5
+size = 12
 # SauceCodePro
 # normal.family = "ConsolasNF"
 # normal.family = "RobotoMono Nerd Font"
@@ -39,7 +39,7 @@ size = 13.5
 # normal.family = "FiraCode Nerd Font"
 # size = 12
 # normal.family = "UbuntuSansMono"
-# size = 13.3
+# size = 12
 # normal.family = "ComicMono"
 # size = 13.5
 # normal.family = "UbuntuNF"

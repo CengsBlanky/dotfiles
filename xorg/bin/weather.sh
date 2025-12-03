@@ -1,7 +1,7 @@
 #!/bin/bash
 
 while true; do
-    location=$(cat "$HOME/.local/share/location")
+    location=$(cat "$HOME/.local/share/location" 2>/dev/null)
     if [[ -z "$location" ]]; then
         location="南京"
     fi

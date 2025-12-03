@@ -1,0 +1,59 @@
+{
+  "layer": "top", // Layer (top, bottom, etc.)
+  "position": "top", // Bar position
+  "spacing": 4, // Space between modules
+  "margin": "0 0 0 0",
+  "modules-left": ["sway/workspaces", "sway/mode", "sway/window"], // Optional: Add workspaces for Sway
+  "modules-center": [],
+  "modules-right": ["tray", "pulseaudio", "backlight", "custom/weather", "clock"],
+  // Clock module (updates every minute)
+  "clock": {
+    "interval": 60, // Update every 60 seconds (to the minute)
+    "format": "{:%F %H:%M %a}" // 24-hour time (e.g., 14:30)
+  },
+  // Volume (PipeWire via pulseaudio module)
+  "pulseaudio": {
+    "format": "{volume}% {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-bluetooth-muted": " {icon}",
+    "format-icons": {
+      "muted": "", // Muted icon
+      "default": ["", ""] // Low/high volume icons
+    },
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "on-click": "pavucontrol", // Open volume mixer
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+", // Scroll up: +5%
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-", // Scroll down: -5%
+    "scroll-step": 5,
+    "tooltip": true,
+    "tooltip-format-source": "Microphone Volume: {volume}%"
+  },
+
+  // Brightness
+  "backlight": {
+    "device": "intel_backlight", // Change to your device (run `brightnessctl -l` to list)
+    "format": "{percent}% {icon}",
+    "format-icons": ["", "", "", "", "", "", ""], // Icons for 0-100%
+    "on-scroll-up": "brightnessctl set +5%", // Scroll up: +5%
+    "on-scroll-down": "brightnessctl set 5%-", // Scroll down: -5%
+    "on-click-right": "brightnessctl set 100%", // Right-click: max
+    "tooltip": true,
+    "states": {
+      "0": 0,
+      "1": 25,
+      "2": 50,
+      "3": 75,
+      "4": 100
+    }
+  },
+
+  // Custom Weather (using wttr.in)
+  "custom/weather": {
+    "tooltip": true,
+    "interval": 1800, // Update every 30 min
+    "format": "{}", // Display temp/condition
+    "exec": "~/.config/waybar/scripts/weather.sh", // Script below
+    "return-type": "json" // Output JSON for Waybar
+  }
+}

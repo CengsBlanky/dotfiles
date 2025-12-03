@@ -3,14 +3,14 @@
 volume() {
     vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
     if grep -q '[MUTED]' <<<"$vol"; then
-        printf "  "
+        printf "   "
     else
-        printf "  %.0f%%" $(echo "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE '[0-9]+\.[0-9]+') * 100" | bc)
+        printf "    %.0f%%" $(echo "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE '[0-9]+\.[0-9]+') * 100" | bc)
     fi
 }
 
 brightness() {
-    printf " 󰖨 %s" $(brightnessctl info -m | cut -d',' -f4)
+    printf " 󰖨  %s" $(brightnessctl info -m | cut -d',' -f4)
 }
 
 battery() {
@@ -38,8 +38,7 @@ status() {
 }
 
 # wait for preparation
-while true
-do
+while true; do
     status
     read -t 29 -r event || true
 done < <(

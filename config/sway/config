@@ -8,6 +8,7 @@ default_border none
 workspace_layout tabbed
 hide_edge_borders --i3 smart
 smart_gaps on
+seat * hide_cursor 6000
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -21,36 +22,22 @@ set $right l
 set $term alacritty
 # Your preferred application launcher
 set $menu fuzzel
+set $browser firefox
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-# output * bg @datadir@/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-#   input type:keyboard {
-#       xkb_layout "eu"
-#   }
-#
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
+input type:touchpad {
+    dwt enabled
+    tap disabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+input type:keyboard {
+    xkb_layout "eu"
+    xkb_options caps:ctrl_modifier
+}
 
+output * bg ~/Pictures/wallpaper/defaultwall.jpg fill
 ### Key bindings
 #
 # Basics:
@@ -58,9 +45,14 @@ set $menu fuzzel
 # Start a terminal
 bindsym $mod+Return exec $term
 # Kill focused window
-bindsym $mod+q kill
+bindsym $mod+Alt+k kill
+# start browser
+bindsym $mod+b exec $browser
 # Start your launcher
 bindsym $mod+s exec $menu
+# Special key to take a screenshot with grim
+bindsym Print exec flameshot gui
+bindsym $mod+c exec flameshot gui
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
@@ -94,16 +86,16 @@ bindsym $mod+n focus next
 bindsym Alt+Shift+Tab focus prev
 bindsym $mod+p focus prev
 # set workspace name
-set $ws1 "1:"
+set $ws1 "1:"
 set $ws2 "2:󰖟"
 set $ws3 "3:󱓳"
 set $ws4 "4:󱉟"
-set $ws5 " "
-set $ws6 " "
-set $ws7 " "
-set $ws8 " "
-set $ws9 " "
-set $ws10 " "
+set $ws5 "5:󰭻"
+set $ws6 "6:󰈮"
+set $ws7 "7:"
+set $ws8 "8:󰦝"
+set $ws9 "9:"
+set $ws10 "10:"
 workspace_auto_back_and_forth yes
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -128,9 +120,9 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-for_window [app_id="Alacritty"] move to workspace $ws1; focus
-for_window [app_id="firefox"] move to workspace $ws2; focus
-for_window [app_id="org.pwmt.zathura"] move to workspace $ws4; focus
+for_window [app_id="Alacritty"] move to workspace $ws1, focus
+for_window [app_id="firefox"] move to workspace $ws2, focus
+for_window [app_id="org.pwmt.zathura"] move to workspace $ws4, focus
 
 # Make the current focus fullscreen
 bindsym $mod+Space fullscreen toggle
@@ -138,49 +130,20 @@ bindsym $mod+Space fullscreen toggle
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+f floating toggle
 
-# Swap focus between the tiling area and the floating area
-# bindsym $mod+m focus mode_toggle
-
-# Move focus to the parent container
-# bindsym $mod+a focus parent
-#
-# Scratchpad:
-#
-# Sway has a "scratchpad", which is a bag of holding for windows.
-# You can send windows there and get them back later.
-
-# Move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-#
 # Utilities:
-#
 # Special keys to adjust volume via wpctl
 # wpctl set-volume \@DEFAULT_AUDIO_SINK@ 10%+
 bindsym --locked XF86AudioMute exec wpctl set-mute \@DEFAULT_AUDIO_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec wpctl set-volume \@DEFAULT_AUDIO_SINK@ 10%-
+bindsym --locked $mod+F3 exec wpctl set-volume \@DEFAULT_AUDIO_SINK@ 10%-
 bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume \@DEFAULT_AUDIO_SINK@ 10%+
+bindsym --locked $mod+F4 exec wpctl set-volume \@DEFAULT_AUDIO_SINK@ 10%+
 bindsym --locked XF86AudioMicMute exec wpctl set-mute \@DEFAULT_AUDIO_SOURCE@ toggle
-
+# Special keys to adjust brightness via brightnessctl
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked $mod+F1 exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym --locked $mod+F2 exec brightnessctl set 5%+
 # Special keys to control media via playerctl
 bindsym --locked XF86AudioPlay exec playerctl play-pause
 bindsym --locked XF86AudioPause exec playerctl play-pause
@@ -188,17 +151,9 @@ bindsym --locked XF86AudioPrev exec playerctl previous
 bindsym --locked XF86AudioNext exec playerctl next
 bindsym --locked XF86AudioStop exec playerctl stop
 
-# Special keys to adjust brightness via brightnessctl
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-
-# Special key to take a screenshot with grim
-bindsym Print exec grim
-
-# hide cursor after 6 seconds for all
-seat * hide_cursor 6000
-
 exec_always ~/.local/bin/weather.sh &
+exec_always fcitx5 -d
+exec_always flameshot &
 # Status Bar:
 # Read `man 5 sway-bar` for more information about this section.
 bar {
@@ -207,14 +162,14 @@ bar {
     gaps 0
     status_padding 0
     pango_markup enabled
-    font pango:JetBrainsMono Nerd Font 8.5
+    font pango: Noto Sans,Noto Color Emoji,Arimo Nerd Font 9,Noto Sans SC 9
     colors {
-        background #2E3440
-        statusline #D8DEE9
+        background #212529
+        statusline #868e94
         separator #4C566A
         # bg border text
-        focused_workspace #5E81AC #5E81AC #ECEFF4
-        active_workspace #81A1C1 #81A1C1 #ECEFF4
+        focused_workspace #1c1b1e #1c1b1e #81A1C1
+        active_workspace #1c1b1e #81A1C1 #ECEFF4
         inactive_workspace #2E3440 #2E3440 #D8DEE9
         urgent_workspace #BF616A #BF616A #ECEFF4
         binding_mode #88C0D0 #88C0D0 #2E3440
