@@ -1,5 +1,38 @@
 #!/bin/bash
 
+mpd_status() {
+    # TODO add reactive update
+    # Get the current MPD status using mpc
+    status=$(mpc status | awk 'NR==2')
+    song=$(mpc current)
+
+    # Extract state: playing, paused, stopped
+    state=$(echo "$status" | grep -oP '\[\K[^]]+' | head -1)
+
+    # Format output based on state
+    case "$state" in
+    playing)
+        icon=" "
+        ;;
+    paused)
+        icon="󰐎 "
+        ;;
+    *)
+        icon=""
+        song=""
+        ;;
+    esac
+
+    # Truncate long song names
+    max_len=10
+    if [ ${#song} -gt $max_len ]; then
+        song="${song:0:$((max_len - 3))}..."
+    fi
+
+    # Final output
+    echo "${icon}${song} "
+}
+
 volume() {
     vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
     if grep -q '[MUTED]' <<<"$vol"; then
@@ -34,7 +67,7 @@ weather() {
 }
 
 status() {
-    xsetroot -name "$(volume)$(brightness) $(battery) $(weather) $(localtime)"
+    xsetroot -name "$(mpd_status)$(volume)$(brightness) $(battery) $(weather) $(localtime)"
 }
 
 # wait for preparation
