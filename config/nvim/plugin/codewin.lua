@@ -4,6 +4,9 @@ local direct_run = function (command, filename)
 end
 local ft_cmd = {
   py = function (tmpname)
+    if (vim.uv or vim.loop).fs_stat("pyproject.toml") then
+      return direct_run("uv run", tmpname)
+    end
     return direct_run("python3", tmpname)
   end,
   java = function (tmpname)
