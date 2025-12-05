@@ -15,7 +15,7 @@ mpd_status() {
         icon=" "
         ;;
     paused)
-        icon="󰐎 "
+        icon="󰏤 "
         ;;
     *)
         icon=""
@@ -72,6 +72,7 @@ status() {
 
 # wait for preparation
 sleep 1s
+mpd_status.sh &
 while true; do
     $(status)
     sleep 25s
