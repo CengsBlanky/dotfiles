@@ -16,20 +16,19 @@ foreground = "#d8dee9"
 
 [font]
 builtin_box_drawing = true
-# IosevkaSoft
 # normal.family = "IosevkaZeng"
-# size = 13
+# size = 12.5
 # CaskaydiaMono
 # normal.family = "CaskaydiaMono"
 # normal.style = "SemiLight"
 # bold.style = "SemiBold"
 # size = 12
 # SauceCodePro
-# normal.family = "ConsolasNF"
+normal.family = "ConsolasNF"
 # normal.family = "RobotoMono Nerd Font"
-# size = 12
-normal.family = "SauceCodePro"
-size = 11.5
+size = 12
+# normal.family = "SauceCodePro"
+# size = 11.5
 # meslo
 # normal.family = "Meslo"
 # size = 13
