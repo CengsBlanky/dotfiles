@@ -137,3 +137,11 @@ autocmd({"CursorMovedI"}, {
     vim.lsp.buf.clear_references()
   end,
 })
+
+autocmd({"BufEnter"}, {
+  desc = "disable auto completion for certain filetypes",
+  pattern = "*.typr",
+  callback = function ()
+    vim.b.completion = false
+  end,
+})
