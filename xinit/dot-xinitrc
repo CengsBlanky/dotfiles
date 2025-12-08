@@ -14,8 +14,9 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export SDL_IM_MODULE=fcitx
+# for dunst running by user systemd
+systemctl --user import-environment DISPLAY XAUTHORITY
 fcitx5 -d --verbose 3
-dunst &
 flameshot &
 feh --bg-fill ~/Pictures/wallpaper/defaultwall.jpg &
 unclutter --ignore-buttons 4,5,6,7 --fork

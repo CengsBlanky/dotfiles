@@ -2,7 +2,7 @@
 
 # Function to get CPU temperature (assumes /sys/class/thermal/thermal_zone0/temp exists)
 get_cpu_temp() {
-    echo $(sensors | grep 'CPU' | awk '{print $2}')
+    echo $(sensors 2>/dev/null | grep 'CPU' | awk '{print $2}')
 }
 
 # Function to get CPU usage percentage

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 mpd_status() {
-    # TODO add reactive update
     # Get the current MPD status using mpc
     status=$(mpc status | awk 'NR==2')
     song=$(mpc current)
@@ -24,7 +23,7 @@ mpd_status() {
     esac
 
     # Truncate long song names
-    max_len=10
+    max_len=20
     if [ ${#song} -gt $max_len ]; then
         song="${song:0:$((max_len - 3))}..."
     fi
@@ -72,7 +71,14 @@ status() {
 
 # wait for preparation
 sleep 1s
-mpd_status.sh &
+while true; do
+    # Wait for player event, but catch failures
+    if ! mpc idle player >/dev/null 2>&1; then
+        sleep 1
+        continue
+    fi
+    $(status)
+done &
 while true; do
     $(status)
     sleep 25s
