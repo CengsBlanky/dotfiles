@@ -41,10 +41,10 @@ normal.family = "UbuntuSansMono"
 size = 12
 # normal.family = "ComicMono"
 # size = 12.5
-# normal.family = "UbuntuNF"
-# size = 15
 # normal.family = "Myna Nerd Font"
 # size = 14
+# normal.family = "Gohu"
+# size = 13
 
 [font.offset]
 y = 0
