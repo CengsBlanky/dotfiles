@@ -1,6 +1,5 @@
 #!/bin/bash
 
-location=$(cat "$HOME/.local/share/location")
 baidu_location=$(curl --noproxy -X 'GET' -s --insecure 'https://api.map.baidu.com/location/ip?coor=bd09ll&ak=nGMOlIE09UWDVhflZaN0Vz5hqIEl0bjj')
 point_info=$(echo $baidu_location | jq -r '.content.point.y + "," + .content.point.x')
 address_info=$(echo $baidu_location | jq -r '.address')
