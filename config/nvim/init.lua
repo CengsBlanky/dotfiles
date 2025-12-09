@@ -178,15 +178,12 @@ require("lazy").setup({
     end,
     opts = {}
   },
+  -- use patched version of emmet-vim as long it's broken for treesitter
   {
-    'mattn/emmet-vim',
-    -- avoid treesitter related error
-    commit = '3fb2f63799e1922f7647ed9ff3b32154031a76ee',
+    'CengsBlanky/emmet-vim',
     event = "VeryLazy",
     init = function ()
       g.user_emmet_mode='iv'
-      -- g.user_emmet_expandabbr_key='<M-e>'
-      -- g.user_emmet_expandword_key='<M-m>'
     end,
   },
   {
