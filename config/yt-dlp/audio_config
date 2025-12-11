@@ -1,4 +1,4 @@
 --proxy localhost:7890
 --remote-components ejs:npm
---extract-audio --audio-format m4a --audio-quality 0
+--extract-audio --audio-format best --audio-quality 0
 -o ~/Music/download/%(title)s.%(ext)s
