@@ -3,7 +3,12 @@ set watch true
 set number true
 set relativenumber true
 set incsearch true
-set timefmt "2006-01-02 15:04:05 Monday"
+set timefmt "2006-01-02 15:04:05 Mon"
+set icons true
+map <c-j> page-down
+map <c-k> page-up
+map a :push %mkdir<space>
+nmap <space> :toggle
 
 ### USAGE ###
 # copy (default y) command copies the current file or selections
@@ -81,6 +86,27 @@ cmd eliminate %{{
     lf -remote "send $id :visual-discard"
 }}
 
+cmd cutselect %{{
+    set -- $fv
+    count=$#
+
+    if [ $count -eq 0 ]; then
+        exit 0
+    fi
+    for file in $@
+    do
+        lf -remote "send $id :toggle $file"
+    done
+    lf -remote "send $id :cut"
+    if [ $count -eq 1 ]; then
+        echo "cut file: $1"
+    else
+        echo "cut $count files"
+    fi
+    lf -remote "send $id :visual-discard"
+}}
+
 map D eliminate
 map <enter> open
 map o open
+vmap d cutselect
