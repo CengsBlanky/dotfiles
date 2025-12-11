@@ -1,3 +1,3 @@
 #!/bin/bash
-brightnessctl set 10%+
+brightnessctl set 5%+
 refbar.sh
