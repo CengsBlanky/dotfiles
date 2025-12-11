@@ -1,3 +1,10 @@
+# global config
+set watch true
+set number true
+set relativenumber true
+set incsearch true
+set timefmt "2006-01-02 15:04:05 Monday"
+
 ### USAGE ###
 # copy (default y) command copies the current file or selections
 # cut (default d) command cuts the current file or selections
@@ -42,8 +49,38 @@ cmd open ${{
     fi
 }}
 
-map D delete
+cmd eliminate %{{
+    set -- $fv
+    count=$#
+
+    if [ $count -eq 0 ]; then
+        set -- $fx
+        count=$#
+    fi
+
+    echo "selected files: $count"
+    prompt=""
+    if [ $count -eq 1 ]; then
+        target="$1"
+        echo "Delete file $target? (y/N): "
+    else
+        echo "Delete $count files? (y/N): "
+    fi
+
+    read -r confirm
+
+    case "$confirm" in
+        [yY]|[yY][eE][sS])
+            # Use rm -rf for safety with directories; adjust flags if needed
+            rm -rf -- "$@"
+            ;;
+        *)
+            echo "Aborted." >&2
+            ;;
+    esac
+    lf -remote "send $id :visual-discard"
+}}
+
+map D eliminate
 map <enter> open
 map o open
-# watch file system change
-set watch true
