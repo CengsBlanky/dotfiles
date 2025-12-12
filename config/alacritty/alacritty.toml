@@ -29,7 +29,7 @@ builtin_box_drawing = true
 # jetbrains
 normal.family = "JetBrains"
 size = 11
-normal.style = "Light"
+# normal.style = "Light"
 # SauceCodePro
 # normal.family = "ConsolasNF"
 # normal.family = "RobotoMono Nerd Font"
