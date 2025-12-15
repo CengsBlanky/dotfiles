@@ -1,7 +1,9 @@
 #!/bin/bash
 set -b
-xset -dpms
-xset s off
+# xset -dpms
+# xset s off
+# never standby suspend of off screen
+xset dpms 0 0 0
 xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
 picom --daemon

@@ -24,11 +24,11 @@ builtin_box_drawing = true
 # bold.style = "SemiBold"
 # size = 12
 # UbuntuSansMono
-# normal.family = "UbuntuSansMono"
-# size = 12
+normal.family = "UbuntuSansMono"
+size = 12
 # jetbrains
-normal.family = "JetBrains"
-size = 11
+# normal.family = "JetBrains"
+# size = 11
 # normal.style = "Light"
 # SauceCodePro
 # normal.family = "ConsolasNF"
