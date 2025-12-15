@@ -8,7 +8,9 @@ set icons true
 map <c-j> page-down
 map <c-k> page-up
 map a :push %mkdir<space>
+map w :push %touch<space>
 nmap <space> :toggle
+set ifs "\n"
 
 ### USAGE ###
 # copy (default y) command copies the current file or selections
@@ -46,12 +48,15 @@ cmd zip ${{
     rm -rf $1
 }}
 # open dir or file with xdg-open
-cmd open ${{
-    if [ -d "$f" ]; then
-        lf -remote "send $id cd \"$f\""
-    else
-        xdg-open "$f" >/dev/null 2>&1 &
-    fi
+cmd open &{{
+    case $(file --mime-type -Lb "$f") in
+        text/*|inode/x-empty)
+            lf -remote "send $id \$$EDITOR \$fx"
+            ;;
+        *)
+            for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done
+            ;;
+    esac
 }}
 
 cmd eliminate %{{
@@ -63,8 +68,6 @@ cmd eliminate %{{
         count=$#
     fi
 
-    echo "selected files: $count"
-    prompt=""
     if [ $count -eq 1 ]; then
         target="$1"
         echo "Delete file $target? (y/N): "
@@ -91,11 +94,11 @@ cmd cutselect %{{
     count=$#
 
     if [ $count -eq 0 ]; then
+        echo "no file selected"
         exit 0
     fi
-    for file in $@
-    do
-        lf -remote "send $id :toggle $file"
+    for file in $@; do
+        lf -remote "send $id :toggle \"$file\""
     done
     lf -remote "send $id :cut"
     if [ $count -eq 1 ]; then
@@ -109,4 +112,5 @@ cmd cutselect %{{
 map D eliminate
 map <enter> open
 map o open
+map l open
 vmap d cutselect
