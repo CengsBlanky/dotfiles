@@ -1,9 +1,8 @@
 #!/bin/bash
 set -b
-# xset -dpms
-# xset s off
-# never standby suspend of off screen
+# set timeout to 0(never) and disable screen saver
 xset dpms 0 0 0
+xset s off
 xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
 picom --daemon
