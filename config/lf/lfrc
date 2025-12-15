@@ -7,8 +7,6 @@ set timefmt "󱫙 2006-01-02 15:04 Mon"
 set icons true
 map <c-j> page-down
 map <c-k> page-up
-map a :push %mkdir<space>
-map w :push %touch<space>
 nmap <space> :toggle
 set ifs "\n"
 
@@ -59,6 +57,13 @@ cmd open &{{
     esac
 }}
 
+# batch create and edit files
+cmd touch %{{
+    IFS=" "
+    touch -- "$@"
+}}
+
+# remove all visual or selected files
 cmd eliminate %{{
     set -- $fv
     count=$#
@@ -89,6 +94,7 @@ cmd eliminate %{{
     lf -remote "send $id :visual-discard"
 }}
 
+# cut all visually covered files
 cmd cutselect %{{
     set -- $fv
     count=$#
@@ -109,8 +115,47 @@ cmd cutselect %{{
     lf -remote "send $id :visual-discard"
 }}
 
+cmd bulk-rename ${{
+    old="$(mktemp)"
+    new="$(mktemp)"
+    if [ -n "$fs" ]; then
+        fs="$(basename -a -- $fs)"
+    elif [ -n "$fv" ]; then
+        fs="$(basename -a -- $fv)"
+    else
+        fs="$(ls)"
+    fi
+    printf '%s\n' "$fs" > "$old"
+    printf '%s\n' "$fs" > "$new"
+    $EDITOR "$new"
+    [ "$(wc -l < "$new")" -ne "$(wc -l < "$old")" ] && exit
+    paste "$old" "$new" | while IFS= read -r names; do
+        src="$(printf '%s' "$names" | cut -f1)"
+        dst="$(printf '%s' "$names" | cut -f2)"
+        if [ "$src" = "$dst" ] || [ -e "$dst" ]; then
+            continue
+        fi
+        mv -- "$src" "$dst"
+    done
+    rm -- "$old" "$new"
+    lf -remote "send $id unselect"
+    lf -remote "send $id visual-discard"
+}}
+
+cmd visual-toggle &{{
+    while read -r file; do
+        lf -remote "send $id toggle \"$file\""
+    done <<< "$fv"
+    lf -remote "send $id visual-discard"
+}}
+
 map D eliminate
+map R bulk-rename
 map <enter> open
 map o open
 map l open
+map w push :touch<space>
+map a :push %mkdir<space>
+map R bulk-rename
+vmap <space> visual-toggle
 vmap d cutselect
