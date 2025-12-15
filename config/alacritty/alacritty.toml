@@ -17,7 +17,8 @@ foreground = "#d8dee9"
 [font]
 builtin_box_drawing = true
 # normal.family = "IosevkaZeng"
-# size = 12.5
+# normal.style = "Light"
+# size = 13
 # CaskaydiaMono
 # normal.family = "CaskaydiaMono"
 # normal.style = "SemiLight"
