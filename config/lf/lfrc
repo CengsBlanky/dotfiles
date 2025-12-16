@@ -5,7 +5,7 @@ set relativenumber true
 set incsearch true
 set timefmt "󱫙 2006-01-02 15:04 Mon"
 set icons true
-set truncatechar ""
+set truncatechar "*"
 map <c-j> page-down
 map <c-k> page-up
 nmap <space> :toggle
