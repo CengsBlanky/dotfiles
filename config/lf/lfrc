@@ -160,3 +160,5 @@ map a :push %mkdir<space>
 map R bulk-rename
 vmap <space> visual-toggle
 vmap d cutselect
+set previewer ~/.config/lf/previewer
+set cleaner ~/.config/lf/cleaner
