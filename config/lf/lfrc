@@ -10,6 +10,8 @@ map <c-j> page-down
 map <c-k> page-up
 nmap <space> :toggle
 set ifs "\n"
+set previewer ~/.config/lf/previewer
+set cleaner ~/.config/lf/cleaner
 
 ### USAGE ###
 # copy (default y) command copies the current file or selections
@@ -151,7 +153,6 @@ cmd visual-toggle &{{
 }}
 
 map D eliminate
-map R bulk-rename
 map <enter> open
 map o open
 map l open
@@ -160,5 +161,4 @@ map a :push %mkdir<space>
 map R bulk-rename
 vmap <space> visual-toggle
 vmap d cutselect
-set previewer ~/.config/lf/previewer
-set cleaner ~/.config/lf/cleaner
+vmap c cutselect
