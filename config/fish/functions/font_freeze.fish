@@ -1,4 +1,8 @@
 function font_freeze
+    if not command -q pyftfeatfreeze
+        echo "install font freeze util: pyftfeatfreeze"
+        pipx install opentype-feature-freezer
+    end
     set -l argc (count $argv)
     if test $argc -lt 1
         echo "usage: font_freeze [source] [target](default to current dir)"
