@@ -1,4 +1,5 @@
 function font_freeze
+    # TODO add -f flag to assign features separated by comma
     if not command -q pyftfeatfreeze
         echo "install font freeze util: pyftfeatfreeze"
         pipx install opentype-feature-freezer
