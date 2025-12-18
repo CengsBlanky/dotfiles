@@ -25,8 +25,8 @@ builtin_box_drawing = true
 # bold.style = "SemiBold"
 # size = 12
 # UbuntuSansMono
-normal.family = "UbuntuSansMono"
-size = 12
+# normal.family = "UbuntuSansMono"
+# size = 12
 # jetbrains
 # normal.family = "JetBrains"
 # size = 11
@@ -37,20 +37,10 @@ size = 12
 # size = 12
 # normal.family = "SauceCodePro"
 # size = 11.5
-# meslo
-# normal.family = "Meslo"
-# size = 13
-# hack
-# normal.family = "HackZero"
-# size = 11
-# normal.family = "FiraCode Nerd Font"
-# size = 12
 # normal.family = "ComicMono"
 # size = 12.5
-# normal.family = "Myna Nerd Font"
-# size = 14
-# normal.family = "Gohu"
-# size = 13
+normal.family = "LilexNF"
+size = 11
 
 [font.offset]
 y = 0
