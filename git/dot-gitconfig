@@ -9,7 +9,7 @@
     default = simple
 [color]
     status = always
-    diff = always
+    diff = auto
     branch = always
     interactive = always
 [grep]
