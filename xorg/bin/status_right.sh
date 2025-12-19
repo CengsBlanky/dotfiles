@@ -50,9 +50,9 @@ battery() {
     bat_status=$(cat $batlink/status)
     percent=$(cat $batlink/capacity)
     if [[ "Discharging" == "$bat_status" && $percent -lt 80 ]]; then
-        printf "🔋$percent%%"
+        printf " $percent%%"
     elif [[ "Charging" == "$bat_status" && $percent -lt 100 ]]; then
-        printf "⚡$percent%%"
+        printf "󰂄 $percent%%"
     fi
 }
 
