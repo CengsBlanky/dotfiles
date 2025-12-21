@@ -66,7 +66,7 @@ weather() {
 }
 
 status() {
-    xsetroot -name "$(mpd_status)$(volume)$(brightness) $(battery) $(weather) $(localtime)"
+    xsetroot -name "$(mpd_status)$(volume)$(brightness)$(battery)  $(weather) $(localtime)"
 }
 
 # wait for preparation
