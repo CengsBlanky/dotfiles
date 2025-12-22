@@ -3,7 +3,7 @@
 mpd_status() {
     # Get the current MPD status using mpc
     state=$(mpc status 2>/dev/null | awk 'NR==2' | grep -oP '\[\K[^]]+' | tr -d '\n\t')
-    music_info=$(mpc --quiet current --format '[%title%[ - %artist%]]|[%file%]')
+    music_info=$(mpc --quiet current --format '[%title%[ - %artist%][ - %album%][ - %albumartist%]]|[%file%]')
     # Format output based on state
     case "$state" in
     playing)
