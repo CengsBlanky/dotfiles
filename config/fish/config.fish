@@ -28,8 +28,6 @@ set -gx BC_ENV_ARGS "$HOME/.bc"
 set -gx RIPGREP_CONFIG_PATH "$HOME/.config/rg/ripgreprc"
 set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case"
 set -gx NOTEDIR '$HOME/notes'
-# current location
-set -gx MY_CUR_LOCATION '江宁区'
 # === SDKMAN start ===
 set -l SDKMAN_CANDIDATES "$HOME/.sdkman/candidates"
 # java
@@ -160,6 +158,8 @@ abbr --add pyactive "source .venv/bin/activate.fish"
 abbr --add download "aria2c"
 abbr --add clock "tty-clock -c -C 4 -S"
 abbr --add qianwen --set-cursor "qwen '%' | glow -"
+# play music
+abbr --add music "ncmpcpp"
 
 # source asdf version manager
 set -l asdf_conf "$HOME/.asdf/asdf.fish"

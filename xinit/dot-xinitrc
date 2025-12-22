@@ -15,6 +15,8 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export SDL_IM_MODULE=fcitx
+# ensure mpc or ncmpcpp get correct socket
+export MPD_HOST="$HOME/.config/mpd/socket"
 # for dunst running by user systemd
 systemctl --user import-environment DISPLAY XAUTHORITY
 fcitx5 -d --verbose 3
