@@ -12,7 +12,7 @@ def_key "h"
 def_key "l"
   next
 def_key "L"
-  toggle_repeat
+  toggle_single
 def_key "ctrl-j"
   page_down
 def_key "ctrl-k"
