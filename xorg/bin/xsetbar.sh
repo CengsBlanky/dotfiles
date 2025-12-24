@@ -33,12 +33,12 @@ volume() {
     if grep -q '[MUTED]' <<<"$vol"; then
         printf "  "
     else
-        printf "  %.0f%%" $(echo "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE '[0-9]+\.[0-9]+') * 100" | bc)
+        printf "  %.0f%% " $(echo "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE '[0-9]+\.[0-9]+') * 100" | bc)
     fi
 }
 
 brightness() {
-    printf " 󰖨 %s" $(brightnessctl info -m | cut -d',' -f4)
+    printf " 󰖨 %s " $(brightnessctl info -m | cut -d',' -f4)
 }
 
 battery() {
@@ -46,9 +46,9 @@ battery() {
     bat_status=$(cat $batlink/status)
     percent=$(cat $batlink/capacity)
     if [[ "Discharging" == "$bat_status" && $percent -lt 80 ]]; then
-        printf " $percent%%"
+        printf " $percent%% "
     elif [[ "Charging" == "$bat_status" && $percent -lt 100 ]]; then
-        printf "󰂄 $percent%%"
+        printf "󰂄 $percent%% "
     fi
 }
 
@@ -61,4 +61,4 @@ weather() {
     printf "$info"
 }
 
-xsetroot -name "$(mpd_status)$(volume)$(brightness)$(battery)  $(weather) $(localtime)"
+xsetroot -name "$(mpd_status)$(volume)$(brightness)$(battery) $(weather) $(localtime)"
