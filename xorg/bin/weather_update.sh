@@ -9,7 +9,4 @@ weather=$(curl -s "http://wttr.in/$coordinate?format=%c%t" 2>/dev/null)
 if [[ -n "$weather" ]]; then
     echo "$address_info update at $(date --rfc-3339=seconds)" >$save_file
     echo $weather >>$save_file
-else
-    # can not get weather info mostly because of internet connection error
-    echo "" >$save_file
 fi
