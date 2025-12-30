@@ -1,7 +1,7 @@
 # Zathura configuration file
 # See man `man zathurarc'
 
-set font "Source Han Sans CN Medium"
+set font "NotoSansMix"
 set selection-clipboard clipboard
 
 # Dracula color theme for Zathura
@@ -57,7 +57,7 @@ set pages-per-row 1
 # stop at page boundries
 set scroll-page-aware "false"
 set scroll-full-overlap 0.08
-set scroll-step 400
+set scroll-step 600
 set adjust-open "best-fit"
 
 #zoom settings
@@ -78,9 +78,3 @@ map [fullscreen] <C-i> recolor
 set adjust-open width
 # set adjust-open "best-fit"
 set recolor true
-
-# simulate smooth scroll
-map j feedkeys "<C-Down>"
-map [fullscreen] j feedkeys "<C-Down>"
-map k feedkeys "<C-Up>"
-map [fullscreen] k feedkeys "<C-Up>"
