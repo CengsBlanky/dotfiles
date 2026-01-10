@@ -1,5 +1,6 @@
 fish_variables
 conf.d/
+!conf.d/fish_frozen_theme.fish
 completions/
 # fisher and its plugins
 functions/_nvm*
