@@ -19,7 +19,7 @@ set --global fish_color_host normal
 set --global fish_color_host_remote yellow
 set --global fish_color_normal normal
 set --global fish_color_operator brcyan
-set --global fish_color_param 5e81ac
+set --global fish_color_param 81a1c1
 set --global fish_color_quote a3be8c
 set --global fish_color_redirection cyan --bold
 set --global fish_color_search_match white --bold --background=brblack
