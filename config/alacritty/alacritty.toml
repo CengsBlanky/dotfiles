@@ -41,8 +41,6 @@ builtin_box_drawing = true
 # size = 12.5
 normal.family = "LilexNF"
 size = 11
-# normal.family = "Meslo"
-# italic.family = "LilexNF"
 
 [font.offset]
 y = 0
