@@ -804,7 +804,7 @@ require("lazy").setup({
         }
       end,
       compile = true,
-      commentStyle = { italic = true },
+      commentStyle = { italic = false },
       keywordStyle = { italic = false },
       statementStyle = { italic = false, bold = false },
       typeStyle = { italic = false, bold = false },
