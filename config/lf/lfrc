@@ -101,21 +101,28 @@ cmd eliminate %{{
 cmd cutselect %{{
     set -- $fv
     count=$#
-
     if [ $count -eq 0 ]; then
-        echo "no file selected"
-        exit 0
+        set -- $fx
+        count=$#
+    else
+        declare -A fs_items
+        for item in "${fs[@]}"; do
+            fs_items["$item"]=1
+        done
+        while read -r file; do
+            if [[ -z "${fs_items["$file"]}" ]]; then
+                lf -remote "send $id toggle \"$file\""
+            fi
+        done <<< "$fv"
+        lf -remote "send $id :visual-discard"
     fi
-    for file in $@; do
-        lf -remote "send $id :toggle \"$file\""
-    done
+
     lf -remote "send $id :cut"
     if [ $count -eq 1 ]; then
         echo "cut file: $1"
     else
         echo "cut $count files"
     fi
-    lf -remote "send $id :visual-discard"
 }}
 
 cmd bulk-rename ${{
@@ -161,4 +168,5 @@ map a :push %mkdir<space>
 map R bulk-rename
 vmap <space> visual-toggle
 vmap d cutselect
+map c cutselect
 vmap c cutselect
