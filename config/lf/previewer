@@ -43,7 +43,7 @@ image/*)
 video/*)
     if [ -p "$FIFO_UEBERZUG" ]; then
         hash "$file"
-        cache ffmpegthumbnailer -i "$file" -o "$cache" -s 0 -q 6 -t 20%
+        cache ffmpegthumbnailer -i "$file" -o "$cache" -s 0 -q 6 -t 10%
     fi
     ;;
 text/*)
