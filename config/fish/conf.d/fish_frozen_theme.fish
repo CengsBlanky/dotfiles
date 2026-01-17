@@ -26,7 +26,7 @@ set --global fish_color_search_match white --bold --background=brblack
 set --global fish_color_selection white --bold --background=brblack
 set --global fish_color_status red
 set --global fish_color_user brgreen
-set --global fish_color_valid_path --underline=single
+set --global fish_color_valid_path --bold
 set --global fish_pager_color_description yellow --italics
 set --global fish_pager_color_prefix normal --bold --underline=single
 set --global fish_pager_color_progress brwhite --bold --background=cyan
