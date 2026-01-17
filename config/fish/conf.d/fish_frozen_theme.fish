@@ -21,9 +21,9 @@ set --global fish_color_normal normal
 set --global fish_color_operator brcyan
 set --global fish_color_param 81a1c1
 set --global fish_color_quote a3be8c
-set --global fish_color_redirection cyan --bold
-set --global fish_color_search_match white --bold --background=brblack
-set --global fish_color_selection white --bold --background=brblack
+set --global fish_color_redirection cyan
+set --global fish_color_search_match ebcb8b --bold --background=brblack
+set --global fish_color_selection ebcb8b --bold --background=brblack
 set --global fish_color_status red
 set --global fish_color_user brgreen
 set --global fish_color_valid_path --bold
