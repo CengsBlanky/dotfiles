@@ -10,8 +10,8 @@ function fish_mode_prompt
         set insert_color '8686bf'
     end
 
-    set_color -b $bg_color
     set_color -o $pwd_color_bare
+    set_color -b $bg_color
     echo -n (basename (prompt_pwd))
     if not test $last_status -eq 0
         set_color -o $err_color
@@ -38,5 +38,4 @@ function fish_mode_prompt
     set_color -b normal
     set_color $bg_color
     echo -n ''
-    set_color normal
 end
