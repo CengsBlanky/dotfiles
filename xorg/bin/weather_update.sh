@@ -24,7 +24,7 @@ else
     fi
 fi
 
-if [[ -f "$tmp_err_file" ]]; then
+if [[ -s "$tmp_err_file" ]]; then
     error_log="$HOME/.local/share/weatherUpdateErr.log"
     echo "$(date --rfc-3339=seconds) [ERROR]:" >$error_log
     cat "$tmp_err_file" >>$error_log
