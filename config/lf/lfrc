@@ -107,7 +107,9 @@ cmd cutselect %{{
     else
         declare -A fs_items
         for item in "${fs[@]}"; do
-            fs_items["$item"]=1
+            if [[ -n "$item" ]]; then
+                fs_items["$item"]=1
+            fi
         done
         while read -r file; do
             if [[ -z "${fs_items["$file"]}" ]]; then
