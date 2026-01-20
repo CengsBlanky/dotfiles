@@ -14,7 +14,7 @@ set --global fish_color_cwd_root red
 set --global fish_color_end green
 set --global fish_color_error brred
 set --global fish_color_escape brcyan
-set --global fish_color_history_current --bold
+set --global fish_color_history_current b48ead
 set --global fish_color_host normal
 set --global fish_color_host_remote yellow
 set --global fish_color_normal normal
