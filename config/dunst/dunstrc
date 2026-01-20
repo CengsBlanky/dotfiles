@@ -30,22 +30,22 @@
     icon_path = ""
     mouse_left_click = close_current
     mouse_right_click = close_all
-    frame_color = "#89b4fa"
+    frame_color = "#2e3440"
     separator_color= frame
     highlight = "#89b4fa"
     timeout = 10
 
 [urgency_low]
-    background = "#1e1e2e"
+    background = "#2e3440"
     foreground = "#cdd6f4"
     timeout = 6
 
 [urgency_normal]
-    background = "#1e1e2e"
+    background = "#2e3440"
     foreground = "#cdd6f4"
 
 [urgency_critical]
-    background = "#1e1e2e"
+    background = "#2e3440"
     foreground = "#cdd6f4"
     frame_color = "#fab387"
     timeout = 30
