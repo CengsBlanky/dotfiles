@@ -35,12 +35,12 @@ builtin_box_drawing = true
 # normal.family = "ConsolasNF"
 # normal.family = "RobotoMono Nerd Font"
 # size = 12
-# normal.family = "SauceCodePro"
-# size = 11.5
+normal.family = "SauceCodePro"
+size = 11.5
 # normal.family = "ComicMono"
 # size = 12.5
-normal.family = "LilexNF"
-size = 11
+# normal.family = "LilexNF"
+# size = 11
 
 # [font.offset]
 # y = 0
