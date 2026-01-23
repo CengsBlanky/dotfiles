@@ -23,10 +23,10 @@ builtin_box_drawing = true
 # normal.family = "CaskaydiaMono"
 # normal.style = "SemiLight"
 # bold.style = "SemiBold"
-# size = 12
+# size = 11
 # UbuntuSansMono
-normal.family = "UbuntuSansMono"
-size = 12
+# normal.family = "UbuntuSansMono"
+# size = 12
 # jetbrains
 # normal.family = "JetBrains"
 # size = 11
@@ -35,8 +35,8 @@ size = 12
 # normal.family = "ConsolasNF"
 # normal.family = "RobotoMono Nerd Font"
 # size = 12
-# normal.family = "SauceCodePro"
-# size = 11.5
+normal.family = "SauceCodePro"
+size = 11.5
 # normal.family = "ComicMono"
 # size = 11.5
 # normal.family = "LilexNF"
