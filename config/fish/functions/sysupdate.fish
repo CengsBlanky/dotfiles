@@ -1,6 +1,8 @@
 function sysupdate
     onproxy
     paru && paru -Sc --noconfirm
+    echo " npm global update:"
+    npm update -g
     echo " bun self upgrade and update global cli tools:"
     bun upgrade && bun update -g
     echo " pipx update global cli tools:"
