@@ -4,8 +4,8 @@
     indicate_hidden = yes
     width = 600
     height = (0, 9000)
-    corner_radius = 9
-    offset = (0,21)
+    corner_radius = 2
+    offset = (0,19)
     notification_limit = 60
     shrink = no
     transparency = 10
