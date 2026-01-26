@@ -25,17 +25,17 @@ builtin_box_drawing = true
 # bold.style = "SemiBold"
 # size = 11
 # UbuntuSansMono
-# normal.family = "UbuntuSansMono"
-# size = 12
+normal.family = "UbuntuSansMono"
+size = 12
 # jetbrains
-normal.family = "JetBrains"
+# normal.family = "JetBrains"
 # size = 11
-normal.style = "Light"
+# normal.style = "Light"
 # SauceCodePro
 # normal.family = "ConsolasNF"
 # normal.family = "RobotoMono Nerd Font"
 # size = 12
-# normalfamily = "SauceCodePro"
+# normal.family = "SauceCodePro"
 # size = 11.5
 # normal.family = "ComicMono"
 # size = 11.5
@@ -81,7 +81,7 @@ args = ["-2"]
 [window]
 decorations = "None"
 dynamic_title = false
-opacity = 0.92
+opacity = 1
 startup_mode = "Maximized"
 dynamic_padding = true
 
