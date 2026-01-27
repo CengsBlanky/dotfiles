@@ -24,9 +24,16 @@ builtin_box_drawing = true
 # normal.style = "SemiLight"
 # bold.style = "SemiBold"
 # size = 11
+# CaskaydiaMono PingFang
+normal.family = "CaskaydiaPingFang"
+normal.style = "SemiLight"
+bold.style = "SemiBold"
 # UbuntuSansMono
-normal.family = "UbuntuSansMono"
-size = 12
+# normal.family = "UbuntuSansMono"
+# size = 12
+# UbuntuSans PingFang
+# normal.family = "UbuntuSansPingFang"
+# size = 12
 # jetbrains
 # normal.family = "JetBrains"
 # size = 11
