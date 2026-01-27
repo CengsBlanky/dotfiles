@@ -351,7 +351,7 @@ require("lazy").setup({
         'williamboman/mason.nvim',
         build = function()
           local ensure_installed = {
-            "biome", "clang-format", "ruff", "djlint", "ktfmt", "prettier", "shfmt", "sqlfluff", "stylua", "taplo", "nginx-config-formatter", "ocamlformat",
+            "biome", "clang-format", "ruff", "djlint", "ktfmt", "prettier", "shfmt", "sqlfluff", "stylua", "taplo", "nginx-config-formatter", "ocamlformat", "kulala-fmt"
           }
           local mason_registry = require("mason-registry")
           local pkgs_to_install = {}
@@ -486,6 +486,8 @@ require("lazy").setup({
         css = { "biome" },
         java = { "java_format" },
         javascript = { "biome" },
+        http = { "kulala-fmt" },
+        rest = { "kulala-fmt" },
         javascriptreact = { "biome" },
         json = { "jq" },
         jsonc = { "biome" },
@@ -688,6 +690,13 @@ require("lazy").setup({
         default_winbar_panes = { "body", "headers", "headers_body", "script_output" },
         win_opts = {
           wo = { foldmethod = "manual" }, -- window options
+        },
+      },
+      contenttypes = {
+        ["application/javascript"] = {
+          ft = "javascript",
+          formatter = vim.fn.executable("biome") == 1 and { "biome", "format", "--write", "--stdin-file-path", "file.js" },
+          pathresolver = nil,
         },
       },
       global_keymaps = {
