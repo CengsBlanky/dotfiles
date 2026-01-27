@@ -32,17 +32,16 @@ builtin_box_drawing = true
 # normal.family = "UbuntuSansMono"
 # size = 12
 # UbuntuSans PingFang
-normal.family = "UbuntuSansPingFang"
-normal.style = "Light"
-size = 12
+# normal.family = "UbuntuSansPingFang"
+# normal.style = "Light"
+# size = 12
 # jetbrains
 # normal.family = "JetBrains"
 # size = 11
 # normal.style = "Light"
-# SauceCodePro
-# normal.family = "ConsolasNF"
-# normal.family = "RobotoMono Nerd Font"
-# size = 12
+# Consolas
+normal.family = "ConsolasApple"
+size = 12
 # normal.family = "SauceCodePro"
 # size = 11.5
 # normal.family = "ComicMono"
