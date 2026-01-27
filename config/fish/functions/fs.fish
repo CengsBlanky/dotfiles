@@ -1,4 +1,4 @@
-function files
+function fs
     if command -q exa
         exa --only-files --show-symlinks --color=auto --long --sort=Extension --git $argv
     else
