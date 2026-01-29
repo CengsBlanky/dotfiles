@@ -36,9 +36,9 @@ builtin_box_drawing = true
 # normal.style = "Light"
 # size = 12
 # jetbrains
-# normal.family = "JetBrains"
-# normal.style = "Light"
-# size = 11
+normal.family = "JetBrains"
+normal.style = "Light"
+size = 11
 # Consolas
 # normal.family = "ConsolasApple"
 # normal.style = "Light"
@@ -48,7 +48,7 @@ builtin_box_drawing = true
 # size = 11.5
 # normal.family = "ComicMono"
 # size = 11.5
-normal.family = "LilexPingFang"
+# normal.family = "LilexPingFang"
 # size = 11
 
 # [font.offset]
