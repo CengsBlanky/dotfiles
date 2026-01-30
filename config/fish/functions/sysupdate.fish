@@ -7,5 +7,7 @@ function sysupdate
     bun upgrade && bun update -g
     echo " pipx update global cli tools:"
     pipx upgrade-all; or pipx reinstall-all
+    echo " uv self update:"
+    uv self update
     offproxy
 end
