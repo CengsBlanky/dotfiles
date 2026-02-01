@@ -3,16 +3,6 @@ def_key "j"
   scroll_down
 def_key "k"
   scroll_up
-def_key "0"
-  volume_down
-def_key "9"
-  volume_up
-def_key "h"
-  previous
-def_key "l"
-  next
-def_key "L"
-  toggle_single
 def_key "ctrl-j"
   page_down
 def_key "ctrl-k"

@@ -383,7 +383,7 @@ execute_on_player_state_change = "~/.local/bin/xsetbar.sh"
 ## Note: You can specify third character which will be used to build 'empty'
 ## part of progressbar.
 ##
-#progressbar_look = =>
+progressbar_look = ->
 #
 ## Available values: database, playlist.
 ##
@@ -414,19 +414,19 @@ execute_on_player_state_change = "~/.local/bin/xsetbar.sh"
 #statusbar_visibility = yes
 #
 ## Show the "Connected to ..." message on startup
-#connected_message_on_startup = yes
+connected_message_on_startup = no
 #
 #titles_visibility = yes
 #
 #header_text_scrolling = yes
 #
-#cyclic_scrolling = no
+cyclic_scrolling = yes
 #
 #lyrics_fetchers = tags, genius, tekstowo, plyrics, justsomelyrics, jahlyrics, zeneszoveg, internet
 #
 #follow_now_playing_lyrics = no
 #
-#fetch_lyrics_for_current_song_in_background = no
+# fetch_lyrics_for_current_song_in_background = no
 #
 #store_lyrics_in_song_dir = no
 #
@@ -457,7 +457,7 @@ execute_on_player_state_change = "~/.local/bin/xsetbar.sh"
 ## media_library, playlist_editor, tag_editor, outputs, visualizer, clock,
 ## lyrics, last_fm.
 ##
-#screen_switcher_mode = playlist, browser
+#screen_switcher_mode = playlist, browser, lyrics
 #
 ##
 ## Note: You can define startup screen by choosing screen from the list above.
