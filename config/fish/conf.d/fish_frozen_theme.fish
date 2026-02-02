@@ -7,7 +7,7 @@
 
 set --global fish_color_autosuggestion brblack
 set --global fish_color_cancel --reverse
-set --global fish_color_command dadada
+set --global fish_color_command DCD7BA
 set --global fish_color_comment 767676
 set --global fish_color_cwd green
 set --global fish_color_cwd_root red
