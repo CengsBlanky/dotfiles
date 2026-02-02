@@ -38,4 +38,5 @@ function fish_mode_prompt
     set_color -b normal
     set_color $bg_color
     echo -n ''
+    set_color normal
 end
