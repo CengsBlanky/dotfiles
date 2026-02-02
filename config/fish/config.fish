@@ -151,7 +151,7 @@ abbr --add py "python"
 # django
 abbr --add pynage "python manage.py"
 # activate python venv
-abbr --add pyactive "source .venv/bin/activate.fish"
+abbr --add venv "source .venv/bin/activate.fish"
 # add aria2c abbr
 abbr --add download "aria2c"
 abbr --add clock "tty-clock -c -C 4 -S"
