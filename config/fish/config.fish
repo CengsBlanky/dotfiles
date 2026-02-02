@@ -68,8 +68,6 @@ set -gx GOOGLE_CLOUD_PROJECT "initialz-250717"
 set -gx UV_DEFAULT_INDEX "https://pypi.tuna.tsinghua.edu.cn/simple"
 # npm global bin
 fish_add_path "$HOME/.node_modules/bin"
-# nvm bin config
-fish_add_path "$HOME/.local/share/nvm/current/bin"
 # spring boot cli
 fish_add_path "$HOME/tools/spring-2.6.4/bin"
 # ruby binaries
@@ -85,7 +83,7 @@ fish_add_path "$HOME/.deno/bin"
 # ruby
 fish_add_path --path "$HOME/.rubies/ruby-stable/bin"
 # zig binary
-fish_add_path "$HOME/.local/zig_dev"
+# fish_add_path "$HOME/.local/zig_dev"
 # doom emacs
 fish_add_path "$HOME/.config/emacs/bin"
 # exa config
