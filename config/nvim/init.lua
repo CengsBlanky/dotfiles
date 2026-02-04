@@ -351,7 +351,7 @@ require("lazy").setup({
         'williamboman/mason.nvim',
         build = function()
           local ensure_installed = {
-            "biome", "clang-format", "ruff", "djlint", "ktfmt", "prettier", "shfmt", "sqlfluff", "stylua", "taplo", "nginx-config-formatter", "ocamlformat", "kulala-fmt"
+            "biome", "clang-format", "ruff", "djlint", "ktfmt", "prettier", "shfmt", "sqruff", "stylua", "taplo", "nginx-config-formatter", "ocamlformat", "kulala-fmt"
           }
           local mason_registry = require("mason-registry")
           local pkgs_to_install = {}
@@ -496,7 +496,7 @@ require("lazy").setup({
         vue = { "prettier" },
         yaml = { "prettier" },
         toml = { "taplo" },
-        sql = { "sqlfluff" },
+        sql = { "sqruff" },
         sh = { "shfmt" },
         ["*"] = { "trim_whitespace" },
       },
