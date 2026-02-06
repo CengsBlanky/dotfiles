@@ -4,6 +4,11 @@ local to_sysreg = function (modifier)
   vim.fn.setreg("+", filename)
   print(filename)
 end
+command("E", "edit <args>", {
+  nargs = "?", -- 0 or 1 argument (just like :e)
+  complete = "file", -- tab-completion like :e (files & directories)
+  desc = "Just like :edit / :e",
+})
 -- write filename to buffer
 command("Rname", function () to_sysreg("%") end, { desc = "relative file name" })
 command("Tname", function () to_sysreg("%:t") end, { desc = "tail of the file name" })
