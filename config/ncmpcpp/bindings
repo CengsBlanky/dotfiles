@@ -1,4 +1,4 @@
-# SEE /usr/share/doc/ncmpcpp/bindings
+# less /usr/share/doc/ncmpcpp/bindings
 # vim-like navigation
 def_key "j"
   scroll_down
