@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     setnmap("<leader>a", vim.lsp.buf.code_action, bufopts)
     setnmap("<leader>c", function () vim.lsp.codelens.run() end, bufopts)
     setnmap("<Space>d", vim.diagnostic.open_float, bufopts)
-    setnmap("<Space>k", function () vim.diagnostic.jump({ count = -1, float = true, }) end, bufopts)
+    setnmap("<Space>k", function () vim.diagnostic.jump({ count = -1, float = true }) end, bufopts)
     setnmap("<Space>j", function () vim.diagnostic.jump({ count = 1, float = true }) end, bufopts)
   end,
 })
@@ -43,3 +43,4 @@ vim.lsp.config("*", {
   capabilities = capabilities,
 })
 vim.lsp.enable(installed_servers)
+vim.lsp.enable("zls")

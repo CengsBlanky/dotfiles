@@ -83,7 +83,7 @@ fish_add_path "$HOME/.deno/bin"
 # ruby
 fish_add_path --path "$HOME/.rubies/ruby-stable/bin"
 # zig binary
-# fish_add_path "$HOME/.local/zig_dev"
+fish_add_path "$HOME/.local/share/zig_dev"
 # doom emacs
 fish_add_path "$HOME/.config/emacs/bin"
 # exa config
