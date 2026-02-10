@@ -1,4 +1,4 @@
---proxy localhost:7890
+--proxy localhost:7897
 --remote-components ejs:npm
 --write-subs
 --write-auto-subs
