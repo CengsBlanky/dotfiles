@@ -351,7 +351,7 @@ require("lazy").setup({
         'williamboman/mason.nvim',
         build = function()
           local ensure_installed = {
-            "biome", "clang-format", "ruff", "djlint", "ktfmt", "prettier", "shfmt", "sqruff", "stylua", "taplo", "nginx-config-formatter", "ocamlformat", "kulala-fmt"
+            "biome", "clang-format", "ruff", "djlint", "ktfmt", "prettierd", "shfmt", "sqruff", "stylua", "taplo", "nginx-config-formatter", "ocamlformat", "kulala-fmt"
           }
           local mason_registry = require("mason-registry")
           local pkgs_to_install = {}
@@ -482,7 +482,7 @@ require("lazy").setup({
         kotlin = { "ktfmt" },
         ocaml = { "ocamlformat" },
         xml = { "xq_format" },
-        html = { "prettier" },
+        html = { "prettierd" },
         css = { "biome" },
         java = { "java_format" },
         javascript = { "biome" },
@@ -493,8 +493,8 @@ require("lazy").setup({
         jsonc = { "biome" },
         typescript = { "biome" },
         typescriptreact = { "biome", "biome-organize-imports", },
-        vue = { "prettier" },
-        yaml = { "prettier" },
+        vue = { "prettierd" },
+        yaml = { "prettierd" },
         toml = { "taplo" },
         sql = { "sqruff" },
         sh = { "shfmt" },
