@@ -48,6 +48,10 @@ fish_add_path "$SPRING_HOME/bin"
 set -gx KOTLIN_HOME "$SDKMAN_CANDIDATES/kotlin/current"
 fish_add_path "$KOTLIN_HOME/bin"
 # === SDKMAN end ===
+# anthropic claude code config
+set -gx ANTHROPIC_BASE_URL "https://dashscope.aliyuncs.com/apps/anthropic"
+set -gx ANTHROPIC_API_KEY (cat $HOME/.secrets/anthropic_api_key | tr -d '\n')
+set -gx ANTHROPIC_MODEL "qwen3.5-plus"
 
 # rust
 fish_add_path "$HOME/.cargo/bin"
