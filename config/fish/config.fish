@@ -186,3 +186,6 @@ end
 # This section can be safely removed at any time if needed.
 test -r '/home/zeng/.opam/opam-init/init.fish' && source '/home/zeng/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
 # END opam configuration
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/zeng/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/home/zeng/Downloads/google-cloud-sdk/path.fish.inc'; end
