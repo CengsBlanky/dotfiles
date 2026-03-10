@@ -82,18 +82,6 @@ require("lazy").setup({
     event = "VeryLazy",
   },
   {
-    'stevearc/quicker.nvim',
-    ft = "qf",
-    opts = {
-      keys = {
-        { ">", "<cmd>lua require('quicker').toggle_expand()<CR>", desc = "Expand quickfix content" },
-      },
-    },
-    keys = {
-      { "<Space>q", function() require("quicker").toggle() end, map_opts },
-    }
-  },
-  {
     'lewis6991/gitsigns.nvim',
     event = { "BufWritePost" },
     keys = {
