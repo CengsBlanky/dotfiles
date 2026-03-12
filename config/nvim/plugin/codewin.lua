@@ -129,7 +129,7 @@ vim.api.nvim_create_user_command("ToggleWin", function ()
   if vim.api.nvim_win_is_valid(state.floating.win) then
     vim.api.nvim_win_hide(state.floating.win)
   else
-    state.floating = codewin{ buf = state.floating.buf, win = state.floating.win, title = state.floating.title }
+    state.floating = codewin{ buf = state.floating.buf, win = state.floating.win, title = state.floating.title .. ' (prev)' }
   end
 end, {})
 vim.api.nvim_create_user_command("CodeWin", function ()
