@@ -8,7 +8,7 @@ save_file="$HOME/.local/share/weather.info"
 tmp_err_file=$(mktemp)
 weather=$(curl -s "http://wttr.in/$coordinate?format=%c%t" 2>$tmp_err_file)
 echo "$address_info update at $(date --rfc-3339=seconds)" >$save_file
-if [[ -n "$weather" ]]; then
+if [[ -n "$weather" && ${#weather} -lt 10 ]]; then
     echo $weather >>$save_file
 else
     # use baidu weather as fallback
