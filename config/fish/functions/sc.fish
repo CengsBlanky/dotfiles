@@ -59,15 +59,15 @@ function sc -d "Compresses a file with a specified format"
     # Compress the file based on the format
     switch $format
         case gz
-            tar -czf "$output_file" "$source_file"
+            7z a -tgzip "$output_file" "$source_file"
         case xz
-            tar -cJf "$output_file" "$source_file"
+            7z a -txz "$output_file" "$source_file"
         case bz2
-            tar -cjf "$output_file" "$source_file"
+            7z a -tbzip2 "$output_file" "$source_file"
         case 7z
             7z a "$output_file" "$source_file"
         case zip
-            zip -r "$output_file" "$source_file"
+            7z a -tzip "$output_file" "$source_file"
         case '*'
             echo "Error: Unsupported format '$format'."
             rm -f "$output_file" # Clean up if we created an empty file

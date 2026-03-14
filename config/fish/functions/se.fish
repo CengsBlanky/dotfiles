@@ -86,19 +86,19 @@ function se --description "Safely extract archive into its own folder"
 
         case '*.gz'
             echo "$GREEN Extracting$NC $FILE (gz) ..."
-            gunzip -c "$FILE" > "$FOLDERNAME/"(string replace -r '\.gz$' '' (basename "$FILE"))
+            7z x "$FILE" -so > "$FOLDERNAME/"(string replace -r '\.gz$' '' (basename "$FILE"))
 
         case '*.zip'
             echo "$GREEN Extracting$NC $FILE (zip) ..."
-            unzip -q "$FILE" -d "$FOLDERNAME"
+            7z x "$FILE" -o"$FOLDERNAME" >/dev/null
 
         case '*.bz2'
             echo "$GREEN Extracting$NC $FILE (bz2) ..."
-            bunzip2 -c "$FILE" > "$FOLDERNAME/"(string replace -r '\.bz2$' '' (basename "$FILE"))
+            7z x "$FILE" -so > "$FOLDERNAME/"(string replace -r '\.bz2$' '' (basename "$FILE"))
 
         case '*.xz'
             echo "$GREEN Extracting$NC $FILE (xz) ..."
-            unxz -c "$FILE" > "$FOLDERNAME/"(string replace -r '\.xz$' '' (basename "$FILE"))
+            7z x "$FILE" -so > "$FOLDERNAME/"(string replace -r '\.xz$' '' (basename "$FILE"))
 
         case '*'
             echo "$RED Error:$NC Unsupported file format: $FILE"
