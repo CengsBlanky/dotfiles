@@ -80,7 +80,7 @@ sudo apt install translate-shell
 sudo apt install -y gawk
 # put trans to PATH
 wget git.io/trans
-chmox +x trans
+chmod +x trans
 ```
 配置文件： `~/.config/translate-shell/init.trans`
 
