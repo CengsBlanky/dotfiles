@@ -479,6 +479,7 @@ require("lazy").setup({
         typescriptreact = { "oxfmt", "biome-organize-imports", },
         jsonc = { "oxfmt" },
         vue = { "oxfmt" },
+        markdown = { "oxfmt" },
         http = { "kulala-fmt" },
         rest = { "kulala-fmt" },
         json = { "jq" },
