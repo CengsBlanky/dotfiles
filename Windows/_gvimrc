@@ -1,0 +1,122 @@
+vim9script
+set nocompatible
+filetype plugin indent on
+set encoding=utf-8
+$LANG = 'en_US'
+set guioptions-=m
+set guioptions-=T
+set guioptions-=L
+set guioptions-=r
+set guicursor+=a:blinkon0
+set guifont=Consolas:h13
+set number
+set relativenumber
+set laststatus=2
+set clipboard=unnamed
+set hidden
+set number
+set relativenumber
+set backspace=2
+set incsearch
+set ignorecase
+set smartcase
+set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
+set softtabstop=4
+set cindent
+set showcmd
+set laststatus=2
+set completeopt+=popup
+set wildmode=list:longest,full
+set wildmenu
+set wildoptions=pum
+set showmatch
+set autoread
+set autowrite
+set confirm
+set updatetime=100
+set noswapfile
+set nobackup
+set noundofile
+set hlsearch
+set mouse=
+set mousehide
+set cursorline
+set splitright
+set splitbelow
+set textwidth=0
+set timeoutlen=1000
+set ttimeoutlen=5
+set shortmess-=S
+set textwidth=0
+set noshowmode
+set novisualbell
+set belloff=all
+set t_vb=
+# keymap
+nnoremap <silent><nowait><Enter> :w<CR>
+nnoremap <silent><nowait><leader>` g~iw
+vnoremap <silent><nowait><leader>` g~
+nnoremap <silent><nowait><C-n> :bn<CR>
+nnoremap <silent><nowait><C-p> :b#<CR>
+nnoremap <silent><nowait><leader>q :xa<CR>
+nnoremap <silent><nowait><space>b :bd<CR>
+nnoremap <silent><leader>- :sp<CR>
+nnoremap <silent><leader>/ :vs<CR>
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <silent><nowait><C-j> <C-f>
+nnoremap <silent><nowait><C-k> <C-b>
+nnoremap <silent><nowait>gy :%y<CR>
+nnoremap <silent><nowait>gl ^yg_
+nnoremap <silent><nowait><M-w> <C-w>c
+nnoremap <silent><nowait><M-o> <C-w>o
+nnoremap ]q :cnext<CR>
+nnoremap [q :cprev<CR>
+nnoremap ]Q :clast<CR>
+nnoremap [Q :cfirst<CR>
+nnoremap <space>s g<C-]>
+inoremap jk <ESC>
+# command
+command! Editrc edit ~\_gvimrc
+command! Reloadrc source ~\_gvimrc
+command! Fname echomsg expand('%:p') | setreg('+', expand('%:p'))
+command! Rname echomsg expand('%') | setreg('+', expand('%'))
+command! Tname echomsg expand('%:t') | setreg('+', expand('%:t'))
+command! -nargs=1 S @/ = <q-args>
+# autocmd
+autocmd FileType gitcommit set textwidth=0
+autocmd FileType * set formatoptions-=o
+autocmd FileType javascript,html,vim,json,text,typescript,lua setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType markdown setlocal foldlevel=6
+autocmd FileType xml setlocal nowrap
+autocmd FileType vim setlocal foldmethod=marker
+autocmd FileType json,javascript,java,go,python setlocal nowrap
+autocmd FileType nerdtree setlocal wrap
+autocmd FileType tags,qf nnoremap <buffer> <Enter> <Enter>
+autocmd BufRead *.log setlocal filetype=log
+autocmd BufRead *.painless setlocal filetype=java
+# Remember the positions in files with some git-specific exceptions"
+autocmd BufReadPost *
+| if line("'\"") > 0 && line("'\"") <= line("$") && expand("%") !~ "ADD_EDIT.patch" && expand("%") !~ "addp-hunk-edit.diff" && index(['xxd', 'gitrebase', 'commit', 'gitcommit'], &filetype) == -1
+  |     execute "normal! g`\""
+  | endif
+
+# clear syntax for file larger than 10000 lines
+autocmd BufWinEnter * if line("$") >= 100000 | syntax clear | endif
+# use less keymap for read-only buffers
+autocmd BufEnter * ReadOnlyKeymap()
+def ReadOnlyKeymap()
+  if !&modifiable || &readonly
+    nnoremap <buffer><nowait><silent>u <C-b>
+    nnoremap <buffer><nowait><silent><Space> <C-f>
+    nnoremap <buffer><nowait><silent>q :bd<CR>
+  endif
+enddef
+# colors
+hi Normal guifg=#c1bda7
+hi link markdownError Normal
+hi Folded ctermbg=NONE ctermfg=DarkGray
+# hi Comment ctermfg=DarkGray guifg=DarkGray cterm=NONE gui=NONE
+hi Statusline cterm=bold gui=bold guifg=#587284 guibg=NONE
+hi StatuslineNC gui=NONE guifg=#4c566a guibg=NONE
+hi TabLineFill guibg=NONE guifg=NONE
+colorscheme retrobox
