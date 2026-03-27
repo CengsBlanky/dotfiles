@@ -4,7 +4,7 @@ function sysupdate
     echo " npm global update:"
     npm update -g
     echo " bun self upgrade and update global cli tools:"
-    bun upgrade && bun update -g
+    bun upgrade && bun update --global --latest
     echo " pipx update global cli tools:"
     pipx upgrade-all; or pipx reinstall-all
     echo " uv self update and tool upgrade:"
