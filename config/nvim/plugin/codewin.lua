@@ -37,6 +37,9 @@ local ft_cmd = {
   fish = function (tmpname)
     return direct_run("fish", tmpname)
   end,
+  exs = function (tmpname)
+    return direct_run("elixir", tmpname)
+  end,
 }
 
 local function codewin(opts)
