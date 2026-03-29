@@ -44,12 +44,12 @@ builtin_box_drawing = true
 # normal.style = "Light"
 # normal.family = "ConsolasNF"
 # size = 12
-normal.family = "SauceCodePro"
-size = 11.5
+# normal.family = "SauceCodePro"
+# size = 11.5
 # normal.family = "ComicMono"
 # size = 11.5
-# normal.family = "LilexPingFang"
-# size = 11
+normal.family = "LilexPingFang"
+size = 11
 
 # [font.offset]
 # y = 0
