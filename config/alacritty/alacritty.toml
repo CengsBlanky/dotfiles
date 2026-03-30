@@ -20,10 +20,10 @@ builtin_box_drawing = true
 # normal.style = "Light"
 # size = 13
 # CaskaydiaMono
-normal.family = "CaskaydiaMono"
-normal.style = "SemiLight"
-bold.style = "SemiBold"
-size = 11
+# normal.family = "CaskaydiaMono"
+# normal.style = "SemiLight"
+# bold.style = "SemiBold"
+# size = 11
 # CaskaydiaMono PingFang
 # normal.family = "CaskaydiaPingFang"
 # normal.style = "Light"
@@ -44,8 +44,8 @@ size = 11
 # normal.style = "Light"
 # normal.family = "ConsolasNF"
 # size = 12
-# normal.family = "SauceCodePro"
-# size = 11.5
+normal.family = "SauceCodePro"
+size = 11.5
 # normal.family = "ComicMono"
 # size = 11.5
 # normal.family = "LilexPingFang"
