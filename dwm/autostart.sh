@@ -1,6 +1,7 @@
 #!/bin/bash
 
-keepassxc &
+/usr/bin/keepassxc --keyfile ~/.local/share/secret/system.key ~/.local/share/keyrings/system.kdbx &
 $HOME/.local/bin/eudic.AppImage &
-firefox &
-alacritty &
+/usr/bin/firefox &
+/usr/bin/alacritty &
+/usr/bin/clash-verge &
