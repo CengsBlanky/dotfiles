@@ -4,4 +4,4 @@
 $HOME/.local/bin/eudic.AppImage &
 /usr/bin/firefox &
 /usr/bin/alacritty &
-/usr/bin/clash-verge &
+# /usr/bin/clash-verge &

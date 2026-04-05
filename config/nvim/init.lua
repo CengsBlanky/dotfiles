@@ -425,7 +425,10 @@ require("lazy").setup({
         ['<C-[>'] = { 'scroll_documentation_down', 'fallback' },
       },
       completion = {
-        documentation = { auto_show = true, auto_show_delay_ms = 200 },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
+        },
         list = {
           selection = {
             preselect = false,

@@ -6,6 +6,9 @@ opt.pumblend = 5
 opt.winblend = 0
 opt.background = 'dark'
 
+vim.api.nvim_set_hl(0, "SnippetTabstop", {})
+vim.api.nvim_set_hl(0, "SnippetTabstopActive", {})
+
 function LspStatusLine()
   local count = {}
   local levels = {
