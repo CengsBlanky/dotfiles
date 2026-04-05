@@ -78,7 +78,9 @@ cmd eliminate %{{
 
     if [ $count -eq 1 ]; then
         target="$1"
-        echo "Delete file $target? (y/N): "
+        # todo get filename without path prefix
+        target_fn=$(basename "$target")
+        echo "Delete $target_fn? (y/N): "
     else
         echo "Delete $count files? (y/N): "
     fi
@@ -91,7 +93,7 @@ cmd eliminate %{{
             rm -rf -- "$@"
             ;;
         *)
-            echo "Aborted." >&2
+            echo "Cancel deletion." >&2
             ;;
     esac
     lf -remote "send $id :visual-discard"
