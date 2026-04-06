@@ -818,6 +818,7 @@ require("lazy").setup({
     config = function()
       require("colorizer").setup(
         { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "tmux", "lua", "vim", "toml", "cpp", "conf", "zathurarc" },
+        { css = true; },
         { mode = "background" }
       )
     end,
