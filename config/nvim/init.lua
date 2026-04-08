@@ -2,6 +2,7 @@ vim.loader.enable(true)
 local opt = vim.opt
 local g = vim.g
 local map_opts = { silent = true, nowait = true }
+g.loaded_perl_provider = 0
 opt.shadafile = "NONE"
 opt.termguicolors = true
 
