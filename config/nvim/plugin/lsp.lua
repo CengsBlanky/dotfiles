@@ -43,11 +43,11 @@ vim.lsp.config("*", {
   capabilities = capabilities,
 })
 
-local vue_language_server_path = vim.fn.stdpath("data")
+local vue_lsp = vim.fn.stdpath("data")
   .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 local vue_plugin = {
   name = "@vue/typescript-plugin",
-  location = vue_language_server_path,
+  location = vue_lsp,
   languages = { "vue" },
   configNamespace = "typescript",
 }
