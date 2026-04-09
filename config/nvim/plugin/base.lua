@@ -60,7 +60,6 @@ g.clipboard = {
   },
   cache_enabled = true,
 }
-g.python3_host_prog = '/usr/bin/python3'
 g.markdown_fenced_languages = {
   "ts=typescript"
 }
