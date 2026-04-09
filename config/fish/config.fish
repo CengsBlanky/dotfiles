@@ -48,6 +48,9 @@ fish_add_path "$SPRING_HOME/bin"
 set -gx KOTLIN_HOME "$SDKMAN_CANDIDATES/kotlin/current"
 fish_add_path "$KOTLIN_HOME/bin"
 # === SDKMAN end ===
+# pnpm
+set -gx PNPM_HOME "/home/zeng/.local/share/pnpm"
+fish_add_path "$PNPM_HOME"
 # anthropic claude code config
 set -gx ANTHROPIC_BASE_URL "https://dashscope.aliyuncs.com/apps/anthropic"
 set -gx ANTHROPIC_API_KEY (cat $HOME/.secrets/anthropic_api_key | tr -d '\n')
