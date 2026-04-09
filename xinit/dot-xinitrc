@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -b
 # set timeout to 0(never) and disable screen saver
 xset dpms 0 0 0
@@ -6,6 +7,11 @@ xset s off
 xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
 picom --daemon
+# start ssh agent
+eval $(ssh-agent -s)
+# auto-add my key(s)
+ssh-add "$HOME/.ssh/id_ed25519"
+ssh-add "$HOME/.ssh/id_ed25519_local"
 # custom bin path
 export PATH="$HOME/.local/share/flatpak/exports/bin:$PATH"
 export PATH="$HOME/.local/share/jetbrains_toolbox/bin:$PATH"
