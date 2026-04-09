@@ -55,16 +55,6 @@ size = 11.5
 # y = 0
 
 [[keyboard.bindings]]
-action = "ScrollLineUp"
-mods = "Control|Shift"
-key = "K"
-
-[[keyboard.bindings]]
-action = "ScrollLineDown"
-mods = "Control|Shift"
-key = "J"
-
-[[keyboard.bindings]]
 action = "Paste"
 mods = "Shift"
 key = "Insert"
@@ -84,8 +74,6 @@ hide_when_typing = true
 
 [terminal.shell]
 program = "tmux"
-# force tmux assume terminal supports 256 colours
-args = ["-2"]
 
 [window]
 decorations = "None"
