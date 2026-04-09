@@ -11,7 +11,7 @@ while IFS=' ' read -r win_id desktop host window_name; do
     ((index++))
 done <<<"$windows"
 
-selected=$(printf "%s\n" "${menu_items[@]}" | dmenu -i)
+selected=$(printf "%s\n" "${menu_items[@]}" | dmenu -i -l 64)
 
 [ -z "$selected" ] && exit 0
 
