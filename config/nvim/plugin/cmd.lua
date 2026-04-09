@@ -13,7 +13,7 @@ command("E", "edit <args>", {
 command("Rname", function () to_sysreg("%") end, { desc = "relative file name" })
 command("Tname", function () to_sysreg("%:t") end, { desc = "tail of the file name" })
 command("Fname", function () to_sysreg("%:p") end, { desc = "full path file name" })
-command("LspOff", function () vim.cmd("LspStop!") end, { desc = "turn off lsp server once and for all" })
+command("LspOff", function () vim.cmd("lsp disable") end, { desc = "turn off lsp server once and for all" })
 -- adjust file line width to specific width or 80
 command("Format", function (opts)
   local fmt = ":%!fmt"
