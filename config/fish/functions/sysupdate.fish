@@ -1,13 +1,15 @@
 function sysupdate
     onproxy
     paru && paru -Sc --noconfirm
-    echo " npm global update:"
+    echo " npm update:"
     npm update -g
-    echo " bun self upgrade and update global cli tools:"
+    echo " bun update:"
     bun upgrade && bun update --global --latest
-    echo " pipx update global cli tools:"
+    echo " pnpm update:"
+    pnpm self-update && pnpm update --global
+    echo " pipx update:"
     pipx upgrade-all; or pipx reinstall-all
-    echo " uv self update and tool upgrade:"
+    echo " uv update:"
     uv self update && uv tool upgrade --all
     offproxy
 end
