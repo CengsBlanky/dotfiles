@@ -8,7 +8,8 @@ set guioptions-=T
 set guioptions-=L
 set guioptions-=r
 set guicursor+=a:blinkon0
-set guifont=Consolas:h13
+set guifont=SauceCodePro\ NF:h12
+set guifontwide=KaiTi:h12
 set number
 set relativenumber
 set laststatus=2
@@ -19,6 +20,7 @@ set relativenumber
 set backspace=2
 set incsearch
 set ignorecase
+set linebreak
 set smartcase
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent shiftround
 set softtabstop=4
@@ -101,7 +103,7 @@ autocmd BufReadPost *
   | endif
 
 # clear syntax for file larger than 10000 lines
-autocmd BufWinEnter * if line("$") >= 100000 | syntax clear | endif
+autocmd BufWinEnter * if line("$") >= 10000 | syntax clear | endif
 # use less keymap for read-only buffers
 autocmd BufEnter * ReadOnlyKeymap()
 def ReadOnlyKeymap()
@@ -112,11 +114,11 @@ def ReadOnlyKeymap()
   endif
 enddef
 # colors
-hi Normal guifg=#c1bda7
+colorscheme retrobox
+# hi Normal guifg=#c1bda7
 hi link markdownError Normal
 hi Folded ctermbg=NONE ctermfg=DarkGray
 # hi Comment ctermfg=DarkGray guifg=DarkGray cterm=NONE gui=NONE
 hi Statusline cterm=bold gui=bold guifg=#587284 guibg=NONE
 hi StatuslineNC gui=NONE guifg=#4c566a guibg=NONE
 hi TabLineFill guibg=NONE guifg=NONE
-colorscheme retrobox
