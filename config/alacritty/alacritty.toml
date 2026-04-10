@@ -1,7 +1,7 @@
 # curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
 [env]
 # for underdotted and undercurl
-TERM="alacritty"
+TERM = "alacritty"
 
 [bell]
 duration = 0
@@ -54,10 +54,12 @@ size = 11.5
 # [font.offset]
 # y = 0
 
-[[keyboard.bindings]]
-action = "Paste"
-mods = "Shift"
-key = "Insert"
+[keyboard]
+bindings = [
+  { key = "Insert", mods = "Shift", action = "Paste" },
+  # 禁用 Vi mode 切换键（精确覆盖默认的 Ctrl+Shift+Space）
+  { key = "Space", mods = "Control|Shift", action = "None" },
+]
 
 [[hints.enabled]]
 command = "xdg-open"
