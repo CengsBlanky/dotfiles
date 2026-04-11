@@ -1,5 +1,6 @@
 # ===== vi mode =====
 fish_vi_key_bindings
+fzf_key_bindings
 bind --mode insert --sets-mode default jk repaint
 set fish_cursor_default block
 set fish_cursor_insert line
