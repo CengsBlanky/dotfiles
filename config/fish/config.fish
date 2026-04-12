@@ -178,10 +178,6 @@ end
 if command -q zoxide
     zoxide init --cmd cd fish | source
 end
-# generate uv autocompletion
-# uv generate-shell-completion fish > $uv_cmp
-# uvx --generate-shell-completion fish > $uvx_cmp
-
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
