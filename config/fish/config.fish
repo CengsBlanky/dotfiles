@@ -16,7 +16,7 @@ fish_add_path "$HOME/bin"
 set -gx LANG "en_US.UTF-8"
 set -gx EDITOR vim
 set -gx GIT_EDITOR /usr/local/bin/vim
-set -gx LESS "-RiXF"
+set -gx LESS "-RiXFx1,3"
 # set nvim as pager
 if command -q nvim
     set -gx MANPAGER "nvim +Man!"
