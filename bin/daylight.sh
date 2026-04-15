@@ -1,4 +1,4 @@
 #!/bin/bash
 
-brightnessctl set 80%
+brightnessctl set 60%
 refbar.sh
