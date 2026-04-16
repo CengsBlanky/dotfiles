@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+# tmux-fzf-session: fuzzy switch/kill/create tmux sessions with preview
+
+# If not in tmux and no other sessions exist, prompt to create a new one.
+if ! tmux has-session 2>/dev/null && [ -z "$TMUX" ]; then
+    read -rp "New session name: " name
+    tmux new -s "${name:-default}"
+    exit 0
+fi
+
+while true; do
+    current=$(tmux display-message -p '#S' 2>/dev/null)
+    sessions=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | grep -v "^${current}$" | grep -v '^$')
+
+    # FZF with preview and custom key bindings handled via --expect
+    # This is a more robust way to handle interactive commands.
+    output=$(echo "$sessions" | fzf \
+        --reverse \
+        --border \
+        --height 60% \
+        --prompt="tmux session> " \
+        --header="Enter: switch | Ctrl-x: kill | Ctrl-n: new" \
+        --preview="tmux capture-pane -ep -t {} | head -30" \
+        --expect=ctrl-n,ctrl-x)
+
+    # Exit if fzf was cancelled (e.g., by pressing Esc)
+    if [ -z "$output" ]; then
+        exit 0
+    fi
+
+    key=$(head -n1 <<<"$output")
+    selection=$(tail -n +2 <<<"$output")
+
+    case "$key" in
+    ctrl-n)
+        # Prompt for a new session name using the shell's read command
+        read -ep "New session name: " name
+        if [ -n "$name" ]; then
+            # Create the session in the background
+            tmux new-session -d -s "$name"
+            # Attach to the newly created session
+            if [ -n "$TMUX" ]; then
+                tmux switch-client -t "$name"
+            else
+                tmux attach-session -t "$name"
+            fi
+            exit 0 # Exit after successful creation and attachment
+        fi
+        # If no name was given, loop to show fzf again
+        ;;
+    ctrl-x)
+        # Ensure a session was actually selected before trying to kill
+        if [ -n "$selection" ]; then
+            tmux kill-session -t "$selection"
+        fi
+        # Loop will continue, effectively reloading fzf
+        ;;
+    "") # This is the case for the 'enter' key
+        if [ -n "$selection" ]; then
+            if [ -n "$TMUX" ]; then
+                # Inside tmux, switch client, but not to the same session
+                if [ "$selection" != "$current" ]; then
+                    tmux switch-client -t "$selection"
+                fi
+            else
+                # Outside tmux, attach to session
+                tmux attach-session -t "$selection"
+            fi
+            exit 0 # Exit after successful action
+        else
+            # User pressed enter on an empty selection, just exit
+            exit 0
+        fi
+        ;;
+    esac
+done
