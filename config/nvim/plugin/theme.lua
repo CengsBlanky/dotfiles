@@ -62,4 +62,4 @@ function WordCount()
 end
 
 -- statusline
-vim.opt.statusline = '%r %{%v:lua.RelativeFname()%}%m%{%v:lua.LspStatusLine()%}%=%18(%l,%v/%L%-{%v:lua.WordCount()%}%)%24(%{&fileformat}%Y%)%9( %{&fileencoding}%) '
+vim.opt.statusline = '%-5r%{%v:lua.RelativeFname()%}%m%{%v:lua.LspStatusLine()%}%=%18(%l,%v/%L%-{%v:lua.WordCount()%}%)%24(%{&fileformat}%Y%)%9( %{&fileencoding}%)'
