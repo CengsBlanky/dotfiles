@@ -31,9 +31,3 @@ setmap("v", "<leader>u", ":s/^\\s\\+\\|\\s\\+$//ge|'<,'>sort u|:silent! '<,'>g/^
 -- go half page to left or right
 setmap("n", "<Right>", "zL")
 setmap("n", "<Left>", "zH")
--- restart with session
-setmap("n", "<leader>R", function ()
-  local session = vim.fn.stdpath("state") .. "/restart_session.vim"
-  vim.cmd("mksession! " .. vim.fn.fnameescape(session))
-  vim.cmd("restart source " .. vim.fn.fnameescape(session))
-end)
