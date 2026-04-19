@@ -4,3 +4,4 @@ helix/runtime
 **/*.swp
 config/fish/completions/*
 config/nvim/lazy-lock.json
+TODO.md
