@@ -18,6 +18,7 @@ function listen
             yt-dlp -q --no-warnings \
             --proxy "$proxy_addr" \
             --format "worstaudio" \
+            --remote-components ejs:npm \
             -o - "$url" |
             mpv --no-video \
             --script=/etc/mpv/scripts/sponsorblock_minimal.lua \
@@ -41,6 +42,7 @@ function listen
 
     yt-dlp -q --no-warnings \
     --proxy "$proxy_addr" \
+    --remote-components ejs:npm \
     --format "worstaudio" \
     -o - "$argv" |
     mpv --no-video \
