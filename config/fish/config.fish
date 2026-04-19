@@ -108,7 +108,7 @@ function __fzf_vim
         vim $selected
     end
 end
-bind --mode insert \cs "__fzf_vim"
+bind --mode insert \cf "__fzf_vim"
 # edit current command
 bind --mode insert \ce edit_command_buffer
 # notify command output

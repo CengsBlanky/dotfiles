@@ -8,8 +8,10 @@ if ! tmux has-session 2>/dev/null && [ -z "$TMUX" ]; then
     exit 0
 fi
 
+help=$(printf "Enter: attach\nC-r: rename\nC-n: new\nC-x: kill")
+
 while true; do
-    current=$(tmux display-message -p '#S' 2>/dev/null)
+    current=$(tmux display-message -p -F '#S' 2>/dev/null)
     sessions=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | grep -v "^${current}$" | grep -v '^$')
 
     # FZF with preview and custom key bindings handled via --expect
@@ -17,11 +19,11 @@ while true; do
     output=$(echo "$sessions" | fzf \
         --reverse \
         --border \
-        --height 60% \
-        --prompt="tmux session> " \
-        --header="Enter: switch | Ctrl-x: kill | Ctrl-n: new" \
+        --height 30% \
+        --prompt="[${current}]> " \
+        --footer="$help" \
         --preview="tmux capture-pane -ep -t {} | head -30" \
-        --expect=ctrl-n,ctrl-x)
+        --expect=ctrl-r,ctrl-n,ctrl-x)
 
     # Exit if fzf was cancelled (e.g., by pressing Esc)
     if [ -z "$output" ]; then
@@ -32,19 +34,26 @@ while true; do
     selection=$(tail -n +2 <<<"$output")
 
     case "$key" in
+    ctrl-r)
+        if [ -n "$selection" ]; then
+            read -ep "rename $selection to: " newName
+            if [ -n "$newName" ]; then
+                tmux rename-session -t "$selection" "$newName"
+            fi
+        fi
+        ;;
     ctrl-n)
         # Prompt for a new session name using the shell's read command
-        read -ep "New session name: " name
-        if [ -n "$name" ]; then
+        read -ep "New session name: " createName
+        if [ -n "$createName" ]; then
             # Create the session in the background
-            tmux new-session -d -s "$name"
-            # Attach to the newly created session
+            tmux new-session -d -s "$createName"
             if [ -n "$TMUX" ]; then
                 tmux switch-client -t "$name"
             else
                 tmux attach-session -t "$name"
             fi
-            exit 0 # Exit after successful creation and attachment
+            exit 0
         fi
         # If no name was given, loop to show fzf again
         ;;
