@@ -46,11 +46,13 @@ function listen
     --format "worstaudio" \
     -o - "$argv" |
     mpv --no-video \
+    --msg-level=ffmpeg=error \
     --script=/etc/mpv/scripts/sponsorblock_minimal.lua \
     --term-playing-msg="$title" \
-    --cache-secs=20 \
-    --demuxer-max-bytes=12MiB \
-    --demuxer-max-back-bytes=6MiB \
+    --cache=yes \
+    --cache-secs=300 \
+    --demuxer-max-bytes=32MiB \
+    --demuxer-max-back-bytes=16MiB \
     --force-seekable=yes \
     -
 end
