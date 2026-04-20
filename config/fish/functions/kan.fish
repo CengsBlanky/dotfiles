@@ -1,6 +1,6 @@
 function kan
     # watch online stream
-    read -l proxy_addr < $HOME/.local/share/proxy.info
+    set -l proxy_addr (grep -m 1 -e "^socks" $HOME/.local/share/proxy.info | tr -d "\n")
     set -l metajson (yt-dlp --proxy="$proxy_addr" -j "$argv" 2>/dev/null)
     if test -z "$metajson"
         echo "Failed to fetch metadata"

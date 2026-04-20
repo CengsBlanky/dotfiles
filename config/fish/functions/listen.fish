@@ -1,58 +1,40 @@
 function listen
-    read -l proxy_addr < $HOME/.local/share/proxy.info
-
+    set -l proxy_addr (grep -m 1 -e "^socks" $HOME/.local/share/proxy.info | tr -d "\n")
     if test -f "$argv[1]"
         for url in (cat "$argv[1]")
-            if test -z "$url"
-                continue
-            end
-
-            set -l metajson (yt-dlp --proxy="$proxy_addr" -j "$url" 2>/dev/null)
-            if test -z "$metajson"
-                echo "Failed to fetch metadata: $url"
-                continue
-            end
-
-            set -l title (echo "$metajson" | jq -r '"\(.title) - \(.uploader)"')
-
-            yt-dlp -q --no-warnings \
-            --proxy "$proxy_addr" \
-            --format "worstaudio" \
-            --remote-components ejs:npm \
-            -o - "$url" |
-            mpv --no-video \
-            --script=/etc/mpv/scripts/sponsorblock_minimal.lua \
-            --term-playing-msg="$title" \
-            --cache-secs=20 \
-            --demuxer-max-bytes=12MiB \
-            --demuxer-max-back-bytes=6MiB \
-            --force-seekable=yes \
-            -
+            yplay $url $proxy_addr
         end
         return
     end
+    yplay $argv $proxy_addr
+end
 
-    set -l metajson (yt-dlp --proxy="$proxy_addr" -j "$argv" 2>/dev/null)
+function yplay
+    set -l url $argv[1]
+    set -l proxy $argv[2]
+    if test -z "$url"
+        return
+    end
+
+    set -l metajson (yt-dlp --proxy="$proxy" -j "$url" 2>/dev/null)
     if test -z "$metajson"
-        echo "Failed to fetch metadata"
-        return 1
+        echo "Failed to fetch metadata: $url"
+        return
     end
 
     set -l title (echo "$metajson" | jq -r '"\(.title) - \(.uploader)"')
 
     yt-dlp -q --no-warnings \
-    --proxy "$proxy_addr" \
-    --remote-components ejs:npm \
+    --proxy "$proxy" \
     --format "worstaudio" \
-    -o - "$argv" |
+    --remote-components ejs:npm \
+    -o - "$url" |
     mpv --no-video \
-    --msg-level=ffmpeg=error \
     --script=/etc/mpv/scripts/sponsorblock_minimal.lua \
     --term-playing-msg="$title" \
-    --cache=yes \
-    --cache-secs=300 \
-    --demuxer-max-bytes=32MiB \
-    --demuxer-max-back-bytes=16MiB \
+    --cache-secs=20 \
+    --demuxer-max-bytes=12MiB \
+    --demuxer-max-back-bytes=6MiB \
     --force-seekable=yes \
     -
 end
