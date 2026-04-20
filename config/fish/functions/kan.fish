@@ -13,11 +13,10 @@ function kan
     --proxy "$proxy_addr" \
     --format "bestvideo[height<=720]+bestaudio/best[height<=720]" \
     --remote-components ejs:npm \
-    --write-subs \
-    --write-auto-subs \
     --embed-subs \
     -o - "$argv" |
     mpv \
+    --cache-secs=120 \
     --script=/etc/mpv/scripts/sponsorblock_minimal.lua \
     --force-media-title="$title" \
     --force-seekable=yes \
