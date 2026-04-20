@@ -16,7 +16,6 @@ function kan
     --embed-subs \
     -o - "$argv" |
     mpv \
-    --cache-secs=120 \
     --script=/etc/mpv/scripts/sponsorblock_minimal.lua \
     --force-media-title="$title" \
     --force-seekable=yes \
