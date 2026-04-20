@@ -221,7 +221,7 @@ require("lazy").setup({
           tab_size = 0,
           max_name_length = 128,
           indicator = {
-            style = 'underline',
+            style = 'icon',
           },
           diagnostics = false,
           separator_style = { '', '' },
@@ -231,6 +231,10 @@ require("lazy").setup({
           custom_filter = function(buf_number, _)
             local ignore_suffix = "kulala_ui"
             if vim.bo[buf_number].filetype:sub(-#ignore_suffix) == ignore_suffix then
+              return false
+            end
+            local ignore_ft = { qf = true, }
+            if ignore_ft[vim.bo[buf_number].filetype] then
               return false
             end
             return true

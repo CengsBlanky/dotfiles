@@ -14,6 +14,13 @@ autocmd({ "FileType" }, {
   end,
 })
 
+autocmd({ "FileType" }, {
+  pattern = { "qf", },
+  callback = function ()
+    setnmap("q", "<Cmd>Quit<CR>")
+  end,
+})
+
 vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function ()
     -- Return to last edit position when opening files
