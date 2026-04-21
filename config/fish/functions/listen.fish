@@ -32,9 +32,9 @@ function yplay
     mpv --no-video \
     --script=/etc/mpv/scripts/sponsorblock_minimal.lua \
     --term-playing-msg="$title" \
-    --cache-secs=20 \
-    --demuxer-max-bytes=12MiB \
-    --demuxer-max-back-bytes=6MiB \
+    --cache-secs=300 \
+    --demuxer-max-bytes=64MiB \
+    --demuxer-max-back-bytes=32MiB \
     --force-seekable=yes \
     -
 end
