@@ -1,4 +1,3 @@
---proxy localhost:7897
 --format bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best+bestvideo[height<=1080]
 --remote-components ejs:npm
 --write-subs
