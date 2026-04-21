@@ -15,7 +15,7 @@ autocmd({ "FileType" }, {
 })
 
 autocmd({ "FileType" }, {
-  pattern = { "qf", },
+  pattern = { "qf" },
   callback = function ()
     setnmap("q", "<Cmd>Quit<CR>")
   end,
@@ -163,4 +163,13 @@ autocmd({ "BufEnter" }, {
   desc = "disable auto completion for certain filetypes",
   pattern = "*.typr",
   callback = function () vim.b.completion = false end,
+})
+
+autocmd("BufLeave", {
+  desc = "auto save buffer before leaving",
+  callback = function ()
+    if vim.bo.modified then
+      vim.cmd("write")
+    end
+  end,
 })

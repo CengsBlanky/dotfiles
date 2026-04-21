@@ -13,6 +13,7 @@ opt.hlsearch = true
 opt.backup = false
 opt.swapfile = false
 opt.showcmd = true
+opt.autowriteall = true
 opt.cmdheight = 1
 opt.laststatus = 3
 opt.showmode = false
@@ -44,7 +45,7 @@ opt.listchars = {
   tab = "  \\u00B7",
   trail = "\\u00B7",
 }
-opt.shada = "!,'50,<50,s4,h"
+opt.shada = "'100,<50,s10,h,r/tmp,r/run,r/media"
 opt.shell = "/bin/bash"
 opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,t:ver25-blinkon0-TermCursor"
 

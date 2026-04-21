@@ -24,7 +24,7 @@ set wildmenu
 set wildoptions=pum
 set showmatch
 set autoread
-set autowrite
+set autowriteall
 set confirm
 set updatetime=100
 set noswapfile
@@ -252,6 +252,8 @@ def ReadOnlyKeymap()
     nnoremap <buffer><nowait><silent>q :bd<CR>
   endif
 enddef
+# auto write buffer when switching
+autocmd BufLeave * if &modified | write | endif
 
 # }}}
 # statusline {{{

@@ -3,7 +3,6 @@ local opt = vim.opt
 local g = vim.g
 local map_opts = { silent = true, nowait = true }
 g.loaded_perl_provider = 0
-opt.shada = "'100,<50,s10,h,r/tmp,r/run,r/media"
 opt.termguicolors = true
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
