@@ -864,6 +864,9 @@ require("lazy").setup({
     opts = {},
     cmd = { "Typr", "TyprStats" },
   },
+  {
+    "tpope/vim-obsession",
+  },
 },
 {
   git = {
