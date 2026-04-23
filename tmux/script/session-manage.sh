@@ -46,11 +46,11 @@ while true; do
         read -ep "New session name: " createName
         if [ -n "$createName" ]; then
             # Create the session in the background
-            tmux new-session -d -s "$createName"
+            tmux new-session -c $HOME -d -s "$createName"
             if [ -n "$TMUX" ]; then
-                tmux switch-client -t "$name"
+                tmux switch-client -t "$createName"
             else
-                tmux attach-session -t "$name"
+                tmux attach-session -t "$createName"
             fi
             exit 0
         fi
