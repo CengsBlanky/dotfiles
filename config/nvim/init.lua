@@ -499,6 +499,7 @@ require("lazy").setup({
         toml = { "taplo" },
         sql = { "sqruff" },
         sh = { "shfmt" },
+        fish = { "fish_indent" },
         ["*"] = { "trim_whitespace" },
       },
       formatters = {

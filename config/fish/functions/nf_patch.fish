@@ -19,7 +19,7 @@ function nf_patch
 
     for font_file in $font_files
         set -l err_log "$font_file.err"
-        fontforge --script $HOME/App/FontPatcher/font-patcher --no-progressbars --adjust-line-height --careful --complete $font_file --out $target_dir &> $err_log
+        fontforge --script $HOME/App/FontPatcher/font-patcher --no-progressbars --adjust-line-height --careful --complete $font_file --out $target_dir &>$err_log
         # check patch result
         if not test $status -eq 0
             echo "$font_file patch failed! check error log: $err_log for details"

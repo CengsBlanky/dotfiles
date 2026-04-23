@@ -8,20 +8,20 @@ function sdk -d "Manage SDKs"
                 read -l -P "$argv[1] [y/N] " confirm
 
                 switch $confirm
-                case Y y
-                    return 0
-                case '' N n
-                    return 1
+                    case Y y
+                        return 0
+                    case '' N n
+                        return 1
                 end
             end
         end
 
         if read_confirm "You don't seem to have SDKMAN! installed. Install now?"
-            if not which curl > /dev/null
+            if not which curl >/dev/null
                 echo "curl required"
                 return 1
             end
-            if not which bash > /dev/null
+            if not which bash >/dev/null
                 echo "bash required"
                 return 1
             end

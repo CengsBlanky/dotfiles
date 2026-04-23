@@ -18,5 +18,5 @@ function hex
         return 1
     end
 
-    $cmd $argv > $argv.hex
+    $cmd $argv >$argv.hex
 end

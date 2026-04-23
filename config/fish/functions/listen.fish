@@ -25,16 +25,16 @@ function yplay
     set -l title (echo "$metajson" | jq -r '"\(.title) - \(.uploader)"')
 
     yt-dlp -q --no-warnings \
-    --proxy "$proxy" \
-    --format "worstaudio" \
-    --remote-components ejs:npm \
-    -o - "$url" |
-    mpv --no-video \
-    --script=/etc/mpv/scripts/sponsorblock_minimal.lua \
-    --term-playing-msg="$title" \
-    --cache-secs=300 \
-    --demuxer-max-bytes=64MiB \
-    --demuxer-max-back-bytes=32MiB \
-    --force-seekable=yes \
-    -
+        --proxy "$proxy" \
+        --format worstaudio \
+        --remote-components ejs:npm \
+        -o - "$url" |
+        mpv --no-video \
+            --script=/etc/mpv/scripts/sponsorblock_minimal.lua \
+            --term-playing-msg="$title" \
+            --cache-secs=300 \
+            --demuxer-max-bytes=64MiB \
+            --demuxer-max-back-bytes=32MiB \
+            --force-seekable=yes \
+            -
 end

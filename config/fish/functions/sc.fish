@@ -12,7 +12,7 @@ function sc -d "Compresses a file with a specified format"
 
     # Set the default format to 7z if not provided
     if test -z "$format"
-        set format "7z"
+        set format 7z
     end
 
     set -l source_file ""

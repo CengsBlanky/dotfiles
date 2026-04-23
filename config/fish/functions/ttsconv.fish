@@ -34,11 +34,13 @@ function ttsconv
     for file in $split_files
         set -l mp3_file (string join "" "tmp_" (path change-extension mp3 $file))
         if test -z "$voice"
-            set voice "zh-CN-YunyangNeural"
+            set voice zh-CN-YunyangNeural
         end
         edge-tts -f $file -v $voice --write-media $mp3_file
-        while test $status -ne 0; edge-tts -f $file -v $voice --write-media $mp3_file; end
-        echo "file '$mp3_file'" >> $concatfile
+        while test $status -ne 0
+            edge-tts -f $file -v $voice --write-media $mp3_file
+        end
+        echo "file '$mp3_file'" >>$concatfile
         echo "convert $file to $mp3_file -> "(math --scale=2 "100 * $nth_count / $split_file_count")"% ($nth_count/$split_file_count)"
         set nth_count (math $nth_count + 1)
     end

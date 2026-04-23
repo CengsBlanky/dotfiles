@@ -23,7 +23,7 @@ function kan
         if test -n "$choosen_fmt"
             set video_format "$choosen_fmt"
         else
-            set video_format "best"
+            set video_format best
         end
     end
     set -l metajson (yt-dlp --proxy="$proxy_addr" -j "$url" 2>/dev/null)
@@ -34,15 +34,15 @@ function kan
     set -l title (echo "$metajson" | jq -r '"\(.title) - \(.uploader)"')
 
     yt-dlp -q --no-warnings \
-    --proxy "$proxy_addr" \
-    --cookies-from-browser firefox \
-    --remote-components ejs:npm \
-    --format "$video_format" \
-    --embed-subs \
-    -o - "$url" |
-    mpv \
-    --script=/etc/mpv/scripts/sponsorblock_minimal.lua \
-    --force-media-title="$title" \
-    --force-seekable=yes \
-    -
+        --proxy "$proxy_addr" \
+        --cookies-from-browser firefox \
+        --remote-components ejs:npm \
+        --format "$video_format" \
+        --embed-subs \
+        -o - "$url" |
+        mpv \
+            --script=/etc/mpv/scripts/sponsorblock_minimal.lua \
+            --force-media-title="$title" \
+            --force-seekable=yes \
+            -
 end
