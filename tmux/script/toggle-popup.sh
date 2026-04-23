@@ -1,6 +1,6 @@
 #!/bin/bash
 
-session_name='persist-popup'
+session_name='popup'
 current_dir='#{pane_current_path}'
 
 tmux has-session -t "$session_name" 2>/dev/null || tmux new-session -d -s "$session_name" -c "$current_dir"
