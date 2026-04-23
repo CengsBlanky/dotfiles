@@ -17,9 +17,8 @@ while true; do
     # FZF with preview and custom key bindings handled via --expect
     # This is a more robust way to handle interactive commands.
     output=$(echo "$sessions" | fzf \
+        --style "full" \
         --reverse \
-        --border \
-        --height 30% \
         --prompt="[${current}]> " \
         --footer="$help" \
         --preview="tmux capture-pane -ep -t {} | head -30" \
