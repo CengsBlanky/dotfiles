@@ -62,11 +62,6 @@ require("lazy").setup({
     },
   },
   {
-    "nosduco/remote-sshfs.nvim",
-    dependencies = { "ibhagwan/fzf-lua", "nvim-lua/plenary.nvim" },
-    opts = { ui = { picker = "fzf-lua" } },
-  },
-  {
     'leafOfTree/vim-svelte-plugin',
     ft = "svelte",
   },
@@ -220,7 +215,7 @@ require("lazy").setup({
           tab_size = 0,
           max_name_length = 128,
           indicator = {
-            style = 'icon',
+            style = 'underline',
           },
           diagnostics = false,
           separator_style = { '', '' },
