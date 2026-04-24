@@ -53,9 +53,9 @@ fish_add_path "$KOTLIN_HOME/bin"
 set -gx PNPM_HOME "/home/zeng/.local/share/pnpm"
 fish_add_path "$PNPM_HOME"
 # anthropic claude code config
-set -gx ANTHROPIC_BASE_URL "https://dashscope.aliyuncs.com/apps/anthropic"
+set -gx ANTHROPIC_BASE_URL "https://api.deepseek.com/anthropic"
 set -gx ANTHROPIC_API_KEY (cat $HOME/.secrets/anthropic_api_key | tr -d '\n')
-set -gx ANTHROPIC_MODEL "qwen3.6-plus"
+set -gx ANTHROPIC_MODEL "deepseek-v4-flash"
 
 # rust
 fish_add_path "$HOME/.cargo/bin"
@@ -188,4 +188,4 @@ test -r '/home/zeng/.opam/opam-init/init.fish' && source '/home/zeng/.opam/opam-
 # END opam configuration
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/zeng/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/home/zeng/Downloads/google-cloud-sdk/path.fish.inc'; end
+if [ -f '/home/zeng/Downloads/google-cloud-sdk/path.fish.inc' ]; source '/home/zeng/Downloads/google-cloud-sdk/path.fish.inc'; end
