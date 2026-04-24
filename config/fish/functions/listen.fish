@@ -26,6 +26,7 @@ function yplay
 
     yt-dlp -q --no-warnings \
         --proxy "$proxy" \
+        --cookies-from-browser firefox \
         --format worstaudio \
         --remote-components ejs:npm \
         -o - "$url" |
