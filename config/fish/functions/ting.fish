@@ -15,6 +15,13 @@ function yplay
     if test -z "$url"
         return
     end
+    set noproxy_sites (string trim (string split , (cat $HOME/.local/share/noproxy.txt)))
+    for site in $noproxy_sites
+        if string match -q "*$site*" "$url"
+            mpv "$url"
+            return
+        end
+    end
 
     set -l metajson (yt-dlp --proxy="$proxy" -j "$url" 2>/dev/null)
     if test -z "$metajson"

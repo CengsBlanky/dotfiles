@@ -5,9 +5,8 @@ function kan
     end
     set -l url $argv[1]
     set -l proxy_addr ""
-    set -l noproxy_site "bilibili.com" "bilivideo.com" "bilivideo.cn" "douyin.com"
-    set -l video_format "best[height<=720]/best[height<=480]/best[height<=1080]/best"
-    for site in $noproxy_site
+    set noproxy_sites (string trim (string split , (cat $HOME/.local/share/noproxy.txt)))
+    for site in $noproxy_sites
         if string match -q "*$site*" "$url"
             mpv "$url"
             return
@@ -22,6 +21,7 @@ function kan
     end
     set -l title (echo "$metajson" | jq -r '"\(.title) - \(.uploader)"')
 
+    set -l video_format "best[height<=720]/best[height<=480]/best[height<=1080]/best"
     yt-dlp -q --no-warnings \
         --proxy "$proxy_addr" \
         --cookies-from-browser firefox \
