@@ -55,7 +55,7 @@ fish_add_path "$PNPM_HOME"
 # anthropic claude code config
 set -gx ANTHROPIC_BASE_URL "https://api.deepseek.com/anthropic"
 set -gx ANTHROPIC_API_KEY (cat $HOME/.secrets/anthropic_api_key | tr -d '\n')
-set -gx ANTHROPIC_MODEL "deepseek-v4-flash"
+set -gx ANTHROPIC_MODEL "deepseek-v4-flash[1M]"
 
 # rust
 fish_add_path "$HOME/.cargo/bin"
