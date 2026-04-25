@@ -1,4 +1,4 @@
---format bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best+bestvideo[height<=1080]
+--cookies-from-browser firefox
 --remote-components ejs:npm
 --write-subs
 --write-auto-subs

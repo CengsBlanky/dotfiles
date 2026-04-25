@@ -1,3 +1,5 @@
+--cookies-from-browser firefox
 --remote-components ejs:npm
---extract-audio --audio-format best --audio-quality 0
+--format bestaudio
+--remote-components ejs:npm
 -o ~/Music/download/%(title)s.%(ext)s
