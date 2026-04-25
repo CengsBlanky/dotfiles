@@ -59,8 +59,8 @@ autocmd({ "FileType" }, {
   end,
 })
 
-autocmd({ "BufEnter" }, {
-  pattern = { "*.log" },
+autocmd({ "FileType" }, {
+  pattern = { "log" },
   callback = function ()
     vim.opt_local.wrap = true
     vim.opt_local.tabstop = 1
