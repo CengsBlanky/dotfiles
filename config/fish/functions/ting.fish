@@ -23,6 +23,7 @@ function yplay
         end
     end
 
+    echo "using proxy: $proxy"
     set -l metajson (yt-dlp --proxy="$proxy" -j "$url" 2>/dev/null)
     if test -z "$metajson"
         echo "Failed to fetch metadata: $url"
