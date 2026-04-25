@@ -1,4 +1,4 @@
-function listen
+function ting
     set -l proxy_addr (grep -m 1 -e "^socks" $HOME/.local/share/proxy.info | tr -d "\n")
     if test -f "$argv[1]"
         for url in (cat "$argv[1]")
