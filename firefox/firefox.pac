@@ -8,6 +8,8 @@ function FindProxyForURL(url, host) {
     "bilivideo.cn",
     "hdslb.com",
     "tencent.com",
+    "tencentcs.com",
+    "qcloudimg.com",
     "qq.com",
     "tencent-cloud.com",
     "zhihu.com",
