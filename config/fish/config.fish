@@ -160,8 +160,6 @@ abbr --add py "python"
 abbr --add pynage "python manage.py"
 # activate python venv
 abbr --add venv "source .venv/bin/activate.fish"
-# add aria2c abbr
-abbr --add get --set-cursor "aria2c --enable-rpc=false '%'"
 abbr --add clock "tty-clock -c -C 4 -S"
 abbr --add qianwen --set-cursor "qwen '%' | glow -"
 # play music
