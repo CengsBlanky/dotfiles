@@ -50,8 +50,9 @@ set -gx KOTLIN_HOME "$SDKMAN_CANDIDATES/kotlin/current"
 fish_add_path "$KOTLIN_HOME/bin"
 # === SDKMAN end ===
 # pnpm
-set -gx PNPM_HOME "/home/zeng/.local/share/pnpm"
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 fish_add_path "$PNPM_HOME"
+fish_add_path "$PNPM_HOME/bin"
 # anthropic claude code config
 set -gx ANTHROPIC_BASE_URL "https://api.deepseek.com/anthropic"
 set -gx ANTHROPIC_API_KEY (cat $HOME/.secrets/anthropic_api_key | tr -d '\n')
