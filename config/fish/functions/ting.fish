@@ -2,14 +2,14 @@ function ting
     set -l proxy_addr (grep -m 1 -e "^socks" $HOME/.local/share/proxy.info | tr -d "\n")
     if test -f "$argv[1]"
         for url in (cat "$argv[1]")
-            yplay $url $proxy_addr
+            ylisten $url $proxy_addr
         end
         return
     end
-    yplay $argv $proxy_addr
+    ylisten $argv $proxy_addr
 end
 
-function yplay
+function ylisten
     set -l url $argv[1]
     set -l proxy $argv[2]
     if test -z "$url"
@@ -18,7 +18,7 @@ function yplay
     set noproxy_sites (string trim (string split , (cat $HOME/.local/share/noproxy.txt)))
     for site in $noproxy_sites
         if string match -q "*$site*" "$url"
-            mpv "$url"
+            mpv --no-video "$url"
             return
         end
     end
