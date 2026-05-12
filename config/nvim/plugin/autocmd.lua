@@ -16,9 +16,7 @@ autocmd({ "FileType" }, {
 
 autocmd({ "FileType" }, {
   pattern = { "qf" },
-  callback = function ()
-    setnmap("q", "<Cmd>Quit<CR>")
-  end,
+  callback = function () setnmap("q", "<Cmd>Quit<CR>") end,
 })
 
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -168,8 +166,13 @@ autocmd({ "BufEnter" }, {
 autocmd("BufLeave", {
   desc = "auto save buffer before leaving",
   callback = function ()
-    if vim.bo.modified then
-      vim.cmd("write")
-    end
+    if vim.bo.modified then vim.cmd("write") end
+  end,
+})
+
+autocmd({ "UIEnter" }, {
+  callback = function ()
+    local client = vim.api.nvim_get_chan_info(vim.v.event.chan).client
+    if client ~= nil and client.name == "Firenvim" then vim.o.laststatus = 0 end
   end,
 })

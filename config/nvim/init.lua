@@ -863,6 +863,10 @@ require("lazy").setup({
   {
     "tpope/vim-obsession",
   },
+  {
+    'glacambre/firenvim',
+    build = ":call firenvim#install(0)",
+  },
 },
 {
   git = {
