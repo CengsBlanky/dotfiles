@@ -6,7 +6,7 @@ coordinate=$(echo $baidu_location | jq -r '.content.point.y + "," + .content.poi
 address_info=$(echo $baidu_location | jq -r '.address')
 save_file="$HOME/.local/share/weather.info"
 tmp_err_file=$(mktemp)
-weather=$(curl -s "http://wttr.in/$coordinate?format=%c%t" 2>$tmp_err_file)
+weather=$(curl -s "http://wttr.in/$coordinate?m&format=%c%t" 2>$tmp_err_file)
 echo "$address_info update at $(date --rfc-3339=seconds)" >$save_file
 if [[ -n "$weather" && ${#weather} -lt 10 ]]; then
     echo $weather >>$save_file
