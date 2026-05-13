@@ -1,3 +1,4 @@
+--cookies-from-browser firefox
 --remote-components ejs:npm
 --write-subs
 --write-auto-subs

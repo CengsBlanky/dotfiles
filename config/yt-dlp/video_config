@@ -1,6 +1,4 @@
 --cookies-from-browser firefox
 --remote-components ejs:npm
---write-subs
---write-auto-subs
 --embed-subs
 -o ~/Videos/download/%(title)s.%(ext)s
