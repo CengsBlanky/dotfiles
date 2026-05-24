@@ -689,13 +689,6 @@ require("lazy").setup({
           wo = { foldmethod = "manual" }, -- window options
         },
       },
-      contenttypes = {
-        ["application/javascript"] = {
-          ft = "javascript",
-          formatter = vim.fn.executable("biome") == 1 and { "biome", "format", "--write", "--stdin-file-path", "file.js" },
-          pathresolver = nil,
-        },
-      },
       global_keymaps = {
         ["Send request"] = { "<Space>r", function() require("kulala").run() end, mode = { "n" }, ft = { "http", "rest" } },
         ["Select environment"] = { "<Space>e", function() require("kulala").set_selected_env() end, mode = { "n" }, ft = { "http", "rest" } },
