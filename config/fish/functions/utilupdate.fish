@@ -4,10 +4,9 @@ function utilupdate
     end
     echob " npm update:"
     npm update -g
+    pnpm completion fish >~/.config/fish/completions/pnpm.fish
     echob " bun update:"
     bun upgrade && bun completions && bun update --global --latest
-    echob " pnpm update:"
-    pnpm update --global && pnpm completion fish >~/.config/fish/completions/pnpm.fish
     echob " pipx update:"
     pipx upgrade-all; or pipx reinstall-all
     register-python-argcomplete --shell fish pipx >~/.config/fish/completions/pipx.fish
