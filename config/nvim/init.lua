@@ -676,10 +676,12 @@ require("lazy").setup({
     'mistweaverco/kulala.nvim',
     ft = { "http", "rest" },
     opts = {
+      debug = false,
       additional_curl_options = { "--insecure" },
       disable_script_print_output = true,
       -- 10 seconds timeout
       request_timeout = 10000,
+      generate_bug_report = false,
       urlencode = "skipencoded",
       default_env = "dev",
       halt_on_error = false,

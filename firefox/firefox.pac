@@ -15,6 +15,7 @@ function FindProxyForURL(url, host) {
     "zhihu.com",
     "qianwen.com",
     "aliyundrive.com",
+    "aliyundrive.net",
     "alicdn.com",
     "huaweicloud.com",
     "qqmail.com",
@@ -36,6 +37,9 @@ function FindProxyForURL(url, host) {
     "geekbang.org",
     "zhipin.com",
     "163.com",
+    "gtimg.com",
+    "gtimg.cn",
+    "vfsglobal.com",
   ];
 
   // List of IP ranges that should bypass the proxy (connect directly)
