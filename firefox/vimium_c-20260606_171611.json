@@ -38,8 +38,8 @@
 		"map <a-l> visitPreviousTab",
 		""
 	],
-	"nextPatterns": "下一篇,下一封,下页,下一页,下一章,后一页,下一张,next,more,newer,>,›,→,»",
-	"previousPatterns": "上一篇,上一封,上页,上一页,上一章,前一页,上一张,prev,previous,back,older,<,‹,←,«",
+	"nextPatterns": "下一篇,下一封,下页,下一页,下一章,后一页,下一张,next,Next,more,newer,>,›,→,»",
+	"previousPatterns": "上一篇,上一封,上页,上一页,上一章,前一页,上一张,prev,Previous,previous,back,older,<,‹,←,«",
 	"searchUrl": "https://duckduckgo.com/?q=$s DuckDuckGo",
 	"vimSync": true
 }
