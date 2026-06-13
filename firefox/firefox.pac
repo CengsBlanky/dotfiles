@@ -41,6 +41,8 @@ function FindProxyForURL(url, host) {
     "gtimg.cn",
     "vfsglobal.com",
     "douban.com",
+    "zhipin.com",
+    "liepin.com",
   ];
 
   // List of IP ranges that should bypass the proxy (connect directly)
