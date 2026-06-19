@@ -92,7 +92,7 @@ fish_add_path "$HOME/.local/share/zig_dev"
 # doom emacs
 fish_add_path "$HOME/.config/emacs/bin"
 # exa config
-set -gx EXA_COLORS "*.mp3=38;2;227;138;174"
+set -gx EXA_COLORS "*.mp3=38;2;227;138;174:*.webm=38;2;129;161;193"
 
 # kubectl autocompletion
 # kubectl completion fish | source
