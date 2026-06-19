@@ -9,8 +9,10 @@ local ft_cmd = {
     end
     return direct_run("python3", tmpname)
   end,
-  java = function (tmpname)
-    return direct_run("java", tmpname)
+  java = function (_)
+    local fname = vim.fn.expand('%:p')
+    vim.notify(fname)
+    return direct_run("java", fname)
   end,
   js = function (tmpname)
     return direct_run("node", tmpname)
