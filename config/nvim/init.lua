@@ -390,6 +390,13 @@ require("lazy").setup({
     end
   },
   {
+    'nvim-java/nvim-java',
+    config = function()
+      require('java').setup()
+      vim.lsp.enable('jdtls')
+    end,
+  },
+  {
     'saghen/blink.cmp',
     lazy = true, -- lazy loading handled internally
     -- optional: provides snippets for the snippet source
