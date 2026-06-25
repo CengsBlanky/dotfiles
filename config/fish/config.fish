@@ -92,7 +92,7 @@ fish_add_path "$HOME/.local/share/zig_dev"
 # doom emacs
 fish_add_path "$HOME/.config/emacs/bin"
 # exa config
-set -gx EXA_COLORS "*.mp3=38;2;227;138;174:*.webm=38;2;129;161;193"
+set -gx EXA_COLORS "*.mp3=38;2;227;138;174:*.webm=38;2;129;161;193:*.mp3=38;2;129;161;193:*.flac=38;2;143;188;187"
 
 # kubectl autocompletion
 # kubectl completion fish | source
@@ -140,7 +140,6 @@ abbr --add gcm "git commit -a"
 abbr --add glg "git log --author=(git config user.name) --oneline -n 10"
 abbr --add gsh "git show"
 abbr --add gcp --set-cursor "git commit -am '%' && git push"
-abbr --add note "joplin"
 # replace which command
 abbr --add which "command -s"
 # take little notes

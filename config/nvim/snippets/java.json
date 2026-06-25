@@ -6,7 +6,6 @@
     ],
     "body": [
       "public class $TM_FILENAME_BASE {",
-      "",
       "\tpublic static void main(String[] args) {",
       "\t\t$0",
       "\t}",
