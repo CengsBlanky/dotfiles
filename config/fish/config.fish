@@ -160,8 +160,6 @@ abbr --add clock "tty-clock -c -C 4 -S"
 abbr --add qianwen --set-cursor "qwen '%' | glow -"
 # play music
 abbr --add music "ncmpcpp"
-# force delete
-abbr --add frm "sudo rm -rf"
 
 # source asdf version manager
 set -l asdf_conf "$HOME/.asdf/asdf.fish"
