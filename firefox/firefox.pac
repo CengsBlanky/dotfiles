@@ -45,6 +45,8 @@ function FindProxyForURL(url, host) {
     "liepin.com",
     "chatglm.cn",
     "aliyuncs.com",
+    "fbstatic.cn",
+    "fenbi.com",
   ];
 
   // List of IP ranges that should bypass the proxy (connect directly)
