@@ -238,84 +238,41 @@ require("lazy").setup({
     end,
   },
   {
-    'nvim-treesitter/nvim-treesitter',
-    lazy = false,
-    branch = "main",
-    build = function()
-      local parser_installed = { "c", "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "zig", "go", "gomod", "gosum", "html", "html_tags", "htmldjango", "css", "svelte", "lua", "markdown", "markdown_inline", "comment", "python", "rust", "sql", "javascript", "jsx", "typescript", "tsx", "embedded_template", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "jsonc", "json5", "printf", "vim", "vimdoc", "query", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "mermaid", "ocaml", "ocaml_interface", "ocamllex", }
-      require("nvim-treesitter").install(parser_installed)
-      require("nvim-treesitter").update()
-    end,
-    opts = function ()
-      vim.api.nvim_create_autocmd("FileType", {
-        callback = function(args)
-          local indent_excluded = {
-            asm = true,
-            awk = true,
-            bash = true,
-            comment = true,
-            csb = true,
-            diff = true,
-            dockerfile = true,
-            dtd = true,
-            embedded_template = true,
-            func = true,
-            gomod = true,
-            gosum = true,
-            gotmpl = true,
-            http = true,
-            ini = true,
-            jq = true,
-            jsdoc = true,
-            json5 = true,
-            kotlin = true,
-            luadoc = true,
-            make = true,
-            markdown_inline = true,
-            nginx = true,
-            ocamllex = true,
-            printf = true,
-            regex = true,
-            requirements = true,
-            strace = true,
-            templ = true,
-            tmux = true,
-            todotxt = true,
-            tsv = true,
-            vim = true,
-            vimdoc = true,
-            xresources = true,
-          }
-          local lang = vim.treesitter.language.get_lang(args.match)
-          if vim.treesitter.language.add(lang or "") then
-            vim.treesitter.start()
-            if not indent_excluded[lang] then
-                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-            end
-            vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-            local map = function(key, func)
-              vim.keymap.set({ 'x', 'o' }, key, func, { nowait = true, silent = true })
-            end
-            local ts_select = function (obj)
-              require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects")
-            end
-            map("af", function() ts_select("@function.outer") end)
-            map("if", function() ts_select("@function.inner") end)
-            map("ac", function() ts_select("@class.outer") end)
-            map("ic", function() ts_select("@class.inner") end)
-            map("ab", function() ts_select("@block.outer") end)
-            map("ib", function() ts_select("@block.inner") end)
-          end
-        end
+    "romus204/tree-sitter-manager.nvim",
+    dependencies = {}, -- tree-sitter CLI must be installed system-wide
+    config = function()
+      require("tree-sitter-manager").setup({
+        ensure_installed = {
+          "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "zig", "go", "gomod", "gosum", "html", "html_tags", "htmldjango", "css", "svelte", "comment", "python", "rust", "sql", "javascript", "jsx", "typescript", "tsx", "embedded_template", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "json5", "printf", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "mermaid", "ocaml", "ocaml_interface", "ocamllex",
+        },
+        noauto_install = {
+          "c", "lua", "markdown", "markdown_inline", "query", "vim", "vimdoc"
+        },
       })
     end,
-    dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        branch = "main",
-        opts = {},
-      },
-    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    init = function()
+      -- Disable entire built-in ftplugin mappings to avoid conflicts.
+      -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+      vim.g.no_plugin_maps = true
+    end,
+    config = function()
+      local map = function(key, func)
+        vim.keymap.set({ 'x', 'o' }, key, func, { nowait = true, silent = true })
+      end
+      local ts_select = function (obj)
+        require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects")
+      end
+      map("af", function() ts_select("@function.outer") end)
+      map("if", function() ts_select("@function.inner") end)
+      map("ac", function() ts_select("@class.outer") end)
+      map("ic", function() ts_select("@class.inner") end)
+      map("ab", function() ts_select("@block.outer") end)
+      map("ib", function() ts_select("@block.inner") end)
+    end,
   },
   {
     'windwp/nvim-ts-autotag',
