@@ -441,7 +441,8 @@ require("lazy").setup({
         kotlin = { "ktfmt" },
         ocaml = { "ocamlformat" },
         xml = { "xq_format" },
-        java = { "java_format" },
+        -- download from https://repo1.maven.org/maven2/com/palantir/javaformat/palantir-java-format-native/$VERSION/
+        java = { "palantir-java-format" },
         html = { "oxfmt" },
         css = { "oxfmt" },
         javascript = { "oxfmt" },
