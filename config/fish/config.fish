@@ -52,7 +52,8 @@ fish_add_path "$KOTLIN_HOME/bin"
 # anthropic claude code config
 set -gx ANTHROPIC_BASE_URL "https://api.deepseek.com/anthropic"
 set -gx ANTHROPIC_API_KEY (cat $HOME/.secrets/anthropic_api_key | tr -d '\n')
-set -gx ANTHROPIC_MODEL "deepseek-v4-pro"
+set -gx ANTHROPIC_MODEL "deepseek-v4-pro[1M]"
+# set -gx ANTHROPIC_MODEL "deepseek-v4-flash"
 
 # rust
 fish_add_path "$HOME/.cargo/bin"

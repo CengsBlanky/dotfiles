@@ -460,6 +460,7 @@ require("lazy").setup({
         sql = { "sqruff" },
         sh = { "shfmt" },
         fish = { "fish_indent" },
+        nginx = { "nginxfmt" },
         ["*"] = { "trim_whitespace" },
       },
       formatters = {

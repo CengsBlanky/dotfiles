@@ -14,7 +14,7 @@ function kan
     end
     set proxy_addr (grep -m 1 -e "^socks" $HOME/.local/share/proxy.info | tr -d "\n")
     echo "using proxy: $proxy_addr"
-    set -l metajson (yt-dlp --proxy="$proxy_addr" -j "$url" 2>/dev/null)
+    set -l metajson (yt-dlp --proxy="$proxy" --remote-components ejs:npm --cookies-from-browser firefox -j "$url" 2>/dev/null)
     if test -z "$metajson"
         echo "Failed to fetch metadata"
         return 1

@@ -24,7 +24,7 @@ function ylisten
     end
 
     echo "using proxy: $proxy"
-    set -l metajson (yt-dlp --proxy="$proxy" -j "$url" 2>/dev/null)
+    set -l metajson (yt-dlp --proxy="$proxy" --remote-components ejs:npm --cookies-from-browser firefox -j "$url" 2>/dev/null)
     if test -z "$metajson"
         echo "Failed to fetch metadata: $url"
         return

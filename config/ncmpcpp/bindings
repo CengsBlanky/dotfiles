@@ -1,6 +1,6 @@
 # less /usr/share/doc/ncmpcpp/bindings
 # vim-like navigation
-# s: stop playing
+# s: stop playing and quit
 def_key "j"
   scroll_down
 def_key "k"
