@@ -243,7 +243,7 @@ require("lazy").setup({
     config = function()
       require("tree-sitter-manager").setup({
         ensure_installed = {
-          "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "zig", "go", "gomod", "gosum", "html", "html_tags", "htmldjango", "css", "svelte", "comment", "python", "rust", "sql", "javascript", "jsx", "typescript", "tsx", "embedded_template", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "json5", "printf", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "mermaid", "ocaml", "ocaml_interface", "ocamllex",
+          "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "zig", "go", "gomod", "gosum", "html", "html_tags", "htmldjango", "css", "svelte", "comment", "python", "rust", "sql", "javascript", "jsx", "typescript", "tsx", "embedded_template", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "json5", "printf", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "mermaid",
         },
         noauto_install = {
           "c", "lua", "markdown", "markdown_inline", "query", "vim", "vimdoc"
@@ -293,14 +293,14 @@ require("lazy").setup({
     opts= {
       automatic_enable = false,
       -- TODO kotlin_lsp too much slower
-      ensure_installed = { 'awk_ls', 'bashls', 'fish_lsp', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'basedpyright', 'djlsp', 'gopls', 'jdtls', 'html', 'cssls', 'vtsls', 'vue_ls', 'jsonls', 'svelte', 'emmet_language_server', 'expert', 'ocamllsp', 'systemd_lsp', 'oxfmt',},
+      ensure_installed = { 'awk_ls', 'bashls', 'fish_lsp', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'basedpyright', 'djlsp', 'gopls', 'jdtls', 'html', 'cssls', 'vtsls', 'vue_ls', 'jsonls', 'svelte', 'emmet_language_server', 'expert', 'systemd_lsp', 'oxfmt',},
     },
     dependencies = {
       {
         'williamboman/mason.nvim',
         build = function()
           local ensure_installed = {
-            "biome", "clang-format", "ruff", "djlint", "ktfmt", "prettierd", "shfmt", "sqruff", "stylua", "taplo", "nginx-config-formatter", "ocamlformat", "kulala-fmt"
+            "biome", "clang-format", "ruff", "djlint", "ktfmt", "prettierd", "shfmt", "sqruff", "stylua", "taplo", "nginx-config-formatter", "kulala-fmt"
           }
           local mason_registry = require("mason-registry")
           local pkgs_to_install = {}
@@ -439,7 +439,6 @@ require("lazy").setup({
         lua = { "stylua" },
         go = { "gofmt", "goimports" },
         kotlin = { "ktfmt" },
-        ocaml = { "ocamlformat" },
         xml = { "xq_format" },
         -- download from https://repo1.maven.org/maven2/com/palantir/javaformat/palantir-java-format-native/$VERSION/
         java = { "palantir-java-format" },
