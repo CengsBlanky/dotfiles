@@ -50,7 +50,7 @@ if status is-interactive
     abbr --add gpl "git pull --rebase"
     abbr --add gad "git add"
     abbr --add gcm "git commit -a"
-    abbr --add glg "git log --author=(git config user.name) --oneline -n 10"
+    abbr --add glg "git log --oneline -n 10"
     abbr --add gsh "git show"
     abbr --add gcp --set-cursor "git commit -am '%' && git push"
     # replace which command
