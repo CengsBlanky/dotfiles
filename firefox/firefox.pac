@@ -49,6 +49,7 @@ function FindProxyForURL(url, host) {
     "fenbi.com",
     "codefather.cn",
     "cloudflare.com",
+    "edu.cn",
   ];
 
   // List of IP ranges that should bypass the proxy (connect directly)
