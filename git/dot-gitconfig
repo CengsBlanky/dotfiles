@@ -17,12 +17,6 @@
     patternType = perl
 [branch]
     sort = -committerdate
-[credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
