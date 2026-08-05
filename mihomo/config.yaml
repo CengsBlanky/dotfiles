@@ -1,0 +1,40 @@
+port: 7890
+socks-port: 7891
+mixed-port: 7897
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: 127.0.0.1:9090
+proxy-providers:
+  baoma:
+    type: http
+    url: ""
+    interval: 7200
+    path: /etc/mihomo/profiles/baoma.yaml
+    health-check:
+      enable: true
+      url: "https://cp.cloudflare.com/generate_204"
+      interval: 600
+# Proxy Groups
+proxy-groups:
+  - name: "Baoma"
+    type: select
+    use:
+      - baoma
+    proxies:
+      - Auto
+      - DIRECT
+
+  - name: "Auto"
+    type: url-test
+    use:
+      - baoma
+    url: https://www.gstatic.com/generate_204
+    interval: 600
+    tolerance: 50
+
+# Rules
+rules:
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,Proxy
