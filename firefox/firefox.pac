@@ -50,6 +50,8 @@ function FindProxyForURL(url, host) {
     "codefather.cn",
     "cloudflare.com",
     "edu.cn",
+    "deepseek.com",
+    "volces.com",
   ];
 
   // List of IP ranges that should bypass the proxy (connect directly)
