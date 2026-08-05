@@ -182,3 +182,5 @@ fish_add_path "$HOME/.local/share/zig_dev"
 fish_add_path "$HOME/.config/emacs/bin"
 # exa config
 set -gx EXA_COLORS "*.mp3=38;2;227;138;174:*.webm=38;2;129;161;193:*.mp3=38;2;129;161;193:*.flac=38;2;143;188;187"
+
+$HOME/.local/bin/mise activate fish | source # added by https://mise.run/fish

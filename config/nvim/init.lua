@@ -293,7 +293,7 @@ require("lazy").setup({
     opts= {
       automatic_enable = false,
       -- TODO kotlin_lsp too much slower
-      ensure_installed = { 'awk_ls', 'bashls', 'fish_lsp', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'basedpyright', 'djlsp', 'gopls', 'jdtls', 'html', 'cssls', 'vtsls', 'vue_ls', 'jsonls', 'svelte', 'emmet_language_server', 'expert', 'systemd_lsp', 'oxfmt',},
+      ensure_installed = { 'awk_ls', 'bashls', 'fish_lsp', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'basedpyright', 'djlsp', 'gopls', 'html', 'cssls', 'vtsls', 'vue_ls', 'jsonls', 'svelte', 'emmet_language_server', 'expert', 'systemd_lsp', 'oxfmt',},
     },
     dependencies = {
       {
@@ -345,13 +345,6 @@ require("lazy").setup({
     init = function ()
       g.rustfmt_autosave=  1
     end
-  },
-  {
-    'nvim-java/nvim-java',
-    config = function()
-      require('java').setup()
-      vim.lsp.enable('jdtls')
-    end,
   },
   {
     'saghen/blink.cmp',
