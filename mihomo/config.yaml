@@ -9,7 +9,7 @@ external-controller: 127.0.0.1:9090
 # DNS 配置（重要，确保能正确解析域名）
 dns:
   enable: true
-  listen: 0.0.0.0:53
+  listen: 0.0.0.0:1053
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   nameserver:
@@ -73,4 +73,4 @@ proxy-groups:
 rules:
   - IP-CIDR,127.0.0.0/8,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,Baoma # 注意：这里改为Baoma组，因为您的组名是Baoma
+  - MATCH,Auto # 注意：这里改为Baoma组，因为您的组名是Baoma
