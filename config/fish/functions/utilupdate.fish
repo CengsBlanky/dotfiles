@@ -11,7 +11,9 @@ function utilupdate
     pipx upgrade-all; or pipx reinstall-all
     register-python-argcomplete --shell fish pipx >~/.config/fish/completions/pipx.fish
     echob " uv update:"
-    uv self update && uv tool upgrade --all
+    uv tool upgrade --all
     uv generate-shell-completion fish >~/.config/fish/completions/uv.fish
     uvx --generate-shell-completion fish >~/.config/fish/completions/uvx.fish
+    echob "󰍿 mise upgrade:"
+    mise upgrade
 end
