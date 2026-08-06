@@ -5,6 +5,24 @@ allow-lan: true
 mode: Rule
 log-level: info
 external-controller: 127.0.0.1:9090
+
+# DNS 配置（重要，确保能正确解析域名）
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  fallback:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+
+# 代理提供者配置
 proxy-providers:
   baoma:
     type: http
@@ -14,10 +32,13 @@ proxy-providers:
     health-check:
       enable: true
       url: "https://cp.cloudflare.com/generate_204"
-      interval: 600
-# Proxy Groups
+      interval: 3000
+      timeout: 5000
+      lazy: true
+
 proxy-groups:
-  - name: "Baoma"
+  # 1. 手动选择组：包含所有节点和DIRECT
+  - name: "Manual"
     type: select
     use:
       - baoma
@@ -25,16 +46,31 @@ proxy-groups:
       - Auto
       - DIRECT
 
+  # 2. 自动测速组：核心实现自动切换到延迟最低节点
   - name: "Auto"
     type: url-test
     use:
       - baoma
+    # exclude-filter 同样可以在这里使用，确保AI节点不参与自动选择
+    exclude-filter: "AI|AI专用"
     url: https://www.gstatic.com/generate_204
+    interval: 300 # 测速间隔，建议5分钟，平衡性能与实时性
+    tolerance: 50 # 延迟差值超过50ms才切换，避免频繁抖动
+    lazy: true # 懒加载，只有在使用时才进行测速，节省资源
+    timeout: 5000 # 测速超时时间
+
+  # 3. 可选：故障转移组，用于特定重要业务
+  - name: "Fallback"
+    type: fallback
+    use:
+      - baoma
+    exclude-filter: "AI|AI专用"
+    url: https://cp.cloudflare.com/generate_204
     interval: 600
     tolerance: 50
 
-# Rules
+# 规则配置
 rules:
   - IP-CIDR,127.0.0.0/8,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,Proxy
+  - MATCH,Baoma # 注意：这里改为Baoma组，因为您的组名是Baoma
