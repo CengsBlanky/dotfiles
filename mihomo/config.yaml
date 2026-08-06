@@ -6,21 +6,44 @@ mode: Rule
 log-level: info
 external-controller: 127.0.0.1:9090
 
-# DNS 配置（重要，确保能正确解析域名）
 dns:
   enable: true
   listen: 0.0.0.0:1053
+  use-hosts: true
+  use-system-hosts: true
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.local'
+    - '+.msftncsi.com'
+    - '+.pool.ntp.org'
   nameserver:
     - 223.5.5.5
     - 119.29.29.29
+    - tls://dns.alidns.com
   fallback:
     - https://1.1.1.1/dns-query
-    - https://8.8.8.8/dns-query
+    - https://dns.google/dns-query
+    - tls://1.1.1.1
   fallback-filter:
     geoip: true
     geoip-code: CN
+    domain:
+      - '+.google.com'
+      - '+.youtube.com'
+      - '+.github.com'
+      - '+.cloudflare.com'
+      - '+.facebook.com'
+      - '+.twitter.com'
+      - '+.whatsapp.com'
+      - '+.telegram.org'
+    ipcidr:
+      - 0.0.0.0/32
+      - 100.64.0.0/10
 
 # 代理提供者配置
 proxy-providers:
