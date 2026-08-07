@@ -14,6 +14,8 @@ function utilupdate
     uv tool upgrade --all
     uv generate-shell-completion fish >~/.config/fish/completions/uv.fish
     uvx --generate-shell-completion fish >~/.config/fish/completions/uvx.fish
-    echob "󰍿 mise upgrade:"
-    mise upgrade
+    if command -q mise
+        echob "󰍿 mise upgrade:"
+        mise upgrade
+    end
 end
