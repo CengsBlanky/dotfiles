@@ -633,6 +633,7 @@ require("lazy").setup({
   {
     'mistweaverco/kulala.nvim',
     ft = { "http", "rest" },
+    event = { "SessionLoadPost", "VimLeavePre" },
     opts = {
       debug = false,
       additional_curl_options = { "--insecure" },
