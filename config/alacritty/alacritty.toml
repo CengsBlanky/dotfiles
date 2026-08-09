@@ -90,3 +90,6 @@ dynamic_padding = true
 
 [scrolling]
 history = 100000
+
+[debug]
+prefer_egl = true

@@ -6,6 +6,7 @@ mode: Rule
 log-level: info
 external-controller: 127.0.0.1:9090
 
+# DNS 配置（重要，确保能正确解析域名）
 dns:
   enable: true
   listen: 0.0.0.0:1053
@@ -45,7 +46,6 @@ dns:
       - 0.0.0.0/32
       - 100.64.0.0/10
 
-# 代理提供者配置
 proxy-providers:
   baoma:
     type: http
@@ -92,8 +92,15 @@ proxy-groups:
     interval: 600
     tolerance: 50
 
+rule-providers:
+  direct-domain:
+    type: file
+    behavior: classical
+    path: ./rules/direct-domain.yaml
+    format: yaml
 # 规则配置
 rules:
   - IP-CIDR,127.0.0.0/8,DIRECT
+  - RULE-SET,direct-domain,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,Auto # 注意：这里改为Baoma组，因为您的组名是Baoma
+  - MATCH,Auto # 注意：这里改为组名
