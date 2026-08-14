@@ -649,6 +649,7 @@ require("lazy").setup({
         win_opts = {
           wo = { foldmethod = "manual" }, -- window options
         },
+        max_response_size = 327680,
       },
       global_keymaps = {
         ["Send request"] = { "<Space>r", function() require("kulala").run() end, mode = { "n" }, ft = { "http", "rest" } },

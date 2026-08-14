@@ -41,3 +41,5 @@ command("Restart", function ()
   vim.cmd("mksession! " .. vim.fn.fnameescape(session))
   vim.cmd("restart source " .. vim.fn.fnameescape(session))
 end, { desc = "restart neovim while preserving open buffers" })
+
+command("ToUnix", "%!dos2unix", { desc = "convert whole file from dos to unix format" })
