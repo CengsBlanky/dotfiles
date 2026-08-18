@@ -3,9 +3,12 @@ set watch true
 set number true
 set relativenumber true
 set incsearch true
-set timefmt "󱫙 2006-01-02 15:04 Mon"
+set timefmt " 2006-01-02 15:04 Mon"
 set icons true
 set truncatechar "*"
+# sort file by time newest
+set sortby time
+set reverse
 map <c-j> page-down
 map <c-k> page-up
 nmap <space> :toggle
