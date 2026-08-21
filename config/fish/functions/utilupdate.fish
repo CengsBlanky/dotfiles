@@ -18,4 +18,9 @@ function utilupdate
         echob "󰍿 mise upgrade:"
         mise upgrade
     end
+
+    if command -q $HOME/.local/bin/yt-dlp
+        echob " yt-dlp update:"
+        yt-dlp --update
+    end
 end
