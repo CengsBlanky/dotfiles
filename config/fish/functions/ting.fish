@@ -37,6 +37,7 @@ function ylisten
         --cookies-from-browser firefox \
         --format worstaudio \
         --remote-components ejs:npm \
+        --remote-components ejs:github \
         -o - "$url" |
         mpv --no-video \
             --script=/etc/mpv/scripts/sponsorblock_minimal.lua \
