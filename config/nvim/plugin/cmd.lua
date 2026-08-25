@@ -43,3 +43,55 @@ command("Restart", function ()
 end, { desc = "restart neovim while preserving open buffers" })
 
 command("ToUnix", "%!dos2unix", { desc = "convert whole file from dos to unix format" })
+
+-- treesitter parser language per filetype supported by Cpname
+local ts_lang_of = {
+  json = "json",
+  yaml = "yaml",
+}
+
+-- strip a matching pair of surrounding quotes (single or double)
+local function strip_quotes(text)
+  if #text >= 2 then
+    local first, last = text:sub(1, 1), text:sub(-1)
+    if (first == '"' and last == '"') or (first == "'" and last == "'") then
+      return text:sub(2, -2)
+    end
+  end
+  return text
+end
+
+-- resolve the dotted path of the JSON/YAML field under the cursor via treesitter
+local copy_field_path = function ()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local lang = ts_lang_of[vim.bo[bufnr].filetype]
+  if not lang then
+    vim.notify("Cpname: unsupported filetype (want json or yaml)", vim.log.levels.WARN)
+    return
+  end
+  local parser = vim.treesitter.get_parser(bufnr, lang)
+  local tree = parser:parse()[1]
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local row, col = cursor[1] - 1, cursor[2]
+  local node = tree:root():named_descendant_for_range(row, col, row, col)
+
+  local path = {}
+  while node ~= nil do
+    -- both json "pair" and yaml "*_mapping_pair" nodes expose a "key" field
+    local key_nodes = node:field("key")
+    if key_nodes and #key_nodes > 0 then
+      local key = strip_quotes(vim.treesitter.get_node_text(key_nodes[1], bufnr))
+      table.insert(path, 1, key)
+    end
+    node = node:parent()
+  end
+
+  if #path == 0 then
+    vim.notify("Cpname: cursor is not inside a mapping field", vim.log.levels.WARN)
+    return
+  end
+  local result = table.concat(path, ".")
+  vim.fn.setreg("+", result)
+  print(result)
+end
+command("Cpname", copy_field_path, { desc = "copy JSON/YAML field path under cursor" })
