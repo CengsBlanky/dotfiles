@@ -17,6 +17,7 @@ function FindProxyForURL(url, host) {
     "aliyundrive.com",
     "aliyundrive.net",
     "alicdn.com",
+    "amap.com",
     "huaweicloud.com",
     "qqmail.com",
     "leetcode-cn.com",
