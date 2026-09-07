@@ -243,7 +243,7 @@ require("lazy").setup({
     config = function()
       require("tree-sitter-manager").setup({
         ensure_installed = {
-          "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "zig", "go", "gomod", "gosum", "html", "html_tags", "htmldjango", "css", "svelte", "comment", "python", "rust", "sql", "javascript", "jsx", "typescript", "tsx", "embedded_template", "yaml", "toml", "elixir", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "json5", "printf", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "mermaid",
+          "cpp", "diff", "java", "javadoc", "kotlin", "groovy", "dockerfile", "zig", "go", "gomod", "gosum", "html", "html_tags", "htmldjango", "css", "svelte", "comment", "python", "rust", "sql", "javascript", "jsx", "typescript", "tsx", "embedded_template", "yaml", "toml", "bash", "http", "tmux", "xml", "fish", "awk", "jq", "json", "json5", "printf", "cmake", "csv", "dot", "func", "gotmpl", "graphql", "ini", "jsdoc", "luadoc", "make", "nginx", "regex", "requirements", "ssh_config", "strace", "styled", "templ", "todotxt", "vue", "xresources", "mermaid",
         },
         noauto_install = {
           "c", "lua", "markdown", "markdown_inline", "query", "vim", "vimdoc"
@@ -293,7 +293,7 @@ require("lazy").setup({
     opts= {
       automatic_enable = false,
       -- TODO kotlin_lsp too much slower
-      ensure_installed = { 'awk_ls', 'bashls', 'fish_lsp', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'basedpyright', 'djlsp', 'gopls', 'html', 'cssls', 'vtsls', 'vue_ls', 'jsonls', 'svelte', 'emmet_language_server', 'expert', 'systemd_lsp', 'oxfmt',},
+      ensure_installed = { 'awk_ls', 'bashls', 'fish_lsp', 'clangd', 'dockerls', 'lua_ls', 'marksman', 'basedpyright', 'djlsp', 'gopls', 'html', 'cssls', 'vtsls', 'vue_ls', 'jsonls', 'svelte', 'emmet_language_server', 'systemd_lsp', 'oxfmt',},
     },
     dependencies = {
       {
@@ -334,10 +334,6 @@ require("lazy").setup({
     tag = 'stable',
     event = { "BufRead Cargo.toml" },
     opts = {},
-  },
-  {
-    'elixir-editors/vim-elixir',
-    ft = "elixir"
   },
   {
     'rust-lang/rust.vim',
