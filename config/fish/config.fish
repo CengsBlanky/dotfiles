@@ -188,3 +188,8 @@ set -gx PI_OFFLINE 1
 if [ -f "$HOME/.local/bin/mise" ]
     $HOME/.local/bin/mise activate fish | source # added by https://mise.run/fish
 end
+
+# pnpm
+set -gx PNPM_HOME '/home/zeng/.local/share/pnpm'
+fish_add_path "$PNPM_HOME/bin"
+# pnpm end
